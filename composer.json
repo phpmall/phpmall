@@ -1,0 +1,50 @@
+{
+    "name": "phpmall/phpmall",
+    "type": "project",
+    "description": "一款开源的多商户移动商城系统",
+    "keywords": [
+        "phpmall",
+        "wechat",
+        "php"
+    ],
+    "license": "Apache-2.0",
+    "homepage": "https://www.phpmall.net/",
+    "require": {
+        "php": "^7.2",
+        "intervention/image": "^2.5",
+        "overtrue/easy-sms": "^1.2",
+        "overtrue/pinyin": "^4.0",
+        "overtrue/wechat": "^4.3",
+        "topthink/think-captcha": "^3.0",
+        "topthink/think-migration": "^3.0",
+        "topthink/framework": "^6.0",
+        "topthink/think-orm": "^2.0",
+        "topthink/think-queue": "^3.0",
+        "yansongda/pay": "^2.10"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.4",
+        "zircote/swagger-php": "^3.1"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-autoload-dump": [
+            "@php artisan service:discover",
+            "@php artisan vendor:publish"
+        ]
+    }
+}
