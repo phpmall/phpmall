@@ -7,10 +7,10 @@ info:
   version: '1.0'
 servers:
   -
-    url: 'http://127.0.0.1:8000/api/admin'
+    url: 'http://127.0.0.1:8000/admin'
     description: 开发环境
   -
-    url: 'https://demo.phpmall.net/api/admin'
+    url: 'https://demo.phpmall.net/admin'
     description: 测试环境
 paths:
   /:
