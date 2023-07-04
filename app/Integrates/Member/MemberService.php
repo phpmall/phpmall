@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Member;
+namespace App\Integrates\Member;
 
 class MemberService
 {

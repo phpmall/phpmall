@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Product;
+namespace App\Integrates\Product;
 
 class ProductService
 {

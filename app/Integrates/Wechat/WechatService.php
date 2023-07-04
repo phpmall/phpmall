@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Wechat;
+namespace App\Integrates\Wechat;
 
 use EasyWeChat\Kernel\Exceptions\InvalidArgumentException;
 use EasyWeChat\OfficialAccount\Application;

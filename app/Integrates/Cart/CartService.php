@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Cart;
+namespace App\Integrates\Cart;
 
 class CartService
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Coupon;
+namespace App\Integrates\Coupon;
 
 class CouponService
 {

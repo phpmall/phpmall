@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Store;
+namespace App\Integrates\Store;
 
 class StoreService
 {

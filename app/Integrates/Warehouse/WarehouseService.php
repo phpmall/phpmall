@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Warehouse;
+namespace App\Integrates\Warehouse;
 
 class WarehouseService
 {

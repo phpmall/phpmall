@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Supplier;
+namespace App\Integrates\Supplier;
 
 class SupplierService
 {
