@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: API文档
+  description: 供应商平台接口
+  contact:
+    name: 'API Develop Team'
+  version: '1.0'
+servers:
+  -
+    url: 'http://127.0.0.1:8000/api/supplier'
+    description: 开发环境
+  -
+    url: 'https://demo.phpmall.net/api/supplier'
+    description: 测试环境
+paths:
+  /:
+    get:
+      tags:
+        - supplier
+      summary: supplier
+      operationId: 3e7d3d5a7c9a9b3bb0a74207c024acf9
+      responses:
+        '200':
+          description: OK

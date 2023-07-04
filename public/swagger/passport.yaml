@@ -1,0 +1,233 @@
+openapi: 3.0.0
+info:
+  title: API文档
+  description: 认证平台接口
+  contact:
+    name: 'API Develop Team'
+  version: '1.0'
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+    description: 开发环境
+  -
+    url: 'https://demo.phpmall.net'
+    description: 测试环境
+paths:
+  /captcha:
+    get:
+      tags:
+        - 验证码
+      summary: 图片验证码
+      operationId: df98196eae1afe259b86266c45525250
+      responses:
+        '200':
+          description: OK
+  /password/forget/mobile:
+    post:
+      tags:
+        - 忘记密码
+      summary: 发送手机短信验证码
+      operationId: 0e58c85864a42995875e06af6fae48fb
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgetMobileRequest'
+      responses:
+        '200':
+          description: OK
+  /login:
+    post:
+      tags:
+        - 登录
+      summary: 通过手机号和密码登录
+      operationId: a9e8b22f134008fc01a94b2bfc8c6e9d
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginMobileRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+  /login/mobile:
+    post:
+      tags:
+        - 登录
+      summary: 通过手机短信登录
+      operationId: 25bc27b5b265ba82af57e31f7b732d24
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginSmsRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+  /oauth2/redirect:
+    post:
+      tags:
+        - 授权登录
+      summary: 获取授权跳转地址
+      operationId: 33593a848d063e8ad3e4b154d14b6709
+      responses:
+        '200':
+          description: OK
+  /oauth2/callback:
+    post:
+      tags:
+        - 授权登录
+      summary: 授权登录回调地址
+      operationId: f703c9332c2dd5a29ee839a8504907d8
+      responses:
+        '200':
+          description: OK
+  /oauth2/bind:
+    post:
+      tags:
+        - 授权登录
+      summary: 新用户绑定接口
+      operationId: 3bc3e3fde483e42cdb7bb38c33af4eb9
+      responses:
+        '200':
+          description: OK
+  /password/reset:
+    post:
+      tags:
+        - 重设密码
+      summary: 通过验证码重新设置新密码
+      operationId: 17916aa9570264bd53062e051966d96d
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetRequest'
+      responses:
+        '200':
+          description: OK
+  /signup/mobile:
+    post:
+      tags:
+        - 注册
+      summary: 通过手机号码注册
+      operationId: bd9545eb21582da206a8964cbdbf3bd8
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupMobileRequest'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    ForgetMobileRequest:
+      required:
+        - mobile
+        - captcha
+      properties:
+        mobile:
+          description: 手机号码
+          type: string
+          example: '13901889999'
+        captcha:
+          description: 图片验证码
+          type: string
+          example: '1234'
+      type: object
+    LoginMobileRequest:
+      required:
+        - mobile
+        - password
+        - captcha
+        - uuid
+      properties:
+        mobile:
+          description: 手机号码
+          type: string
+          example: '13901889999'
+        password:
+          description: 登录密码
+          type: string
+          example: 123456aA
+        captcha:
+          description: 图片验证码
+          type: string
+          example: '1234'
+        uuid:
+          description: 验证码UUID
+          type: string
+          example: '1234'
+      type: object
+    LoginSmsRequest:
+      required:
+        - mobile
+        - code
+      properties:
+        mobile:
+          description: 手机号码
+          type: string
+          example: '13901889999'
+        code:
+          description: 短信验证码
+          type: string
+          example: '123456'
+      type: object
+    ResetRequest:
+      required:
+        - mobile
+        - password
+        - captcha
+      properties:
+        mobile:
+          description: 手机号码
+          type: string
+          example: '13901889999'
+        password:
+          description: 登录密码
+          type: string
+          example: 123456aA
+        captcha:
+          description: 图片验证码
+          type: string
+          example: '1234'
+      type: object
+    SignupMobileRequest:
+      required:
+        - mobile
+        - code
+        - agreed
+      properties:
+        mobile:
+          description: 手机号码
+          type: string
+          example: '13901889999'
+        code:
+          description: 短信验证码
+          type: string
+          example: '123456'
+        agreed:
+          description: 注册协议
+          type: boolean
+          example: true
+      type: object
+    LoginResponse:
+      properties:
+        token:
+          description: '用户JSON Web Token凭证'
+          type: string
+          example: '123456'
+      type: object

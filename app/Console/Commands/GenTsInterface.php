@@ -41,7 +41,7 @@ class GenTsInterface extends Command
                 }
             }
 
-            $outDir = dirname(base_path()) . '/phpmall-'.$module. '/src/types/index.ts';
+            $outDir = resource_path('types/'.$module.'.ts');
             file_put_contents($outDir, $content);
 
             unlink($file);
