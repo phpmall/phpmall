@@ -5,7 +5,7 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>{{ $page_title ?? 'PHPMall' }} - 全场景新零售电商平台系统软件</title>
+<title>{{ $page_title ?? 'PHPMall' }} - 新零售电商平台系统软件</title>
 <meta name="generator" content="PHPMall.Net"/>
 <link rel="stylesheet" href="{{ asset('assets/layui/dist/css/red.css') }}">
 <link rel="stylesheet" href="{{ asset('static/portal/css/app.css') }}">
