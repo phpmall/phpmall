@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shop_employees', function (Blueprint $table) {
+        Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('seller_id')->comment('卖家id');
             $table->unsignedBigInteger('shop_id')->comment('店铺id');
 
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shop_employees');
+        Schema::dropIfExists('coupons');
     }
 };
