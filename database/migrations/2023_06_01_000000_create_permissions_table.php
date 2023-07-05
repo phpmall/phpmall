@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->comment('模块类型：admin,seller');
+            $table->enum('type', ['admin','seller','supplier'])->comment('模块类型');
             $table->unsignedInteger('parent_id')->default(0)->comment('父级ID');
             $table->string('icon')->default('')->comment('权限图标');
             $table->string('name')->default('')->comment('权限名称');

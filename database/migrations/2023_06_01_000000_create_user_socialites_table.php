@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id')->comment('用户ID');
             $table->string('type')->comment('凭证类型:email,wechat');
-            $table->string('identifier')->unique()->comment('唯一标识:如电子邮箱,openid');
+            $table->string('identifier')->comment('唯一标识:如电子邮箱,openid');
             $table->string('credentials')->comment('凭证:密码,token');
             $table->rememberToken()->comment('会话Token');
             $table->string('reset_token')->comment('重置Token');
             $table->timestamps();
+            $table->softDeletes();
+            $table->unique(['identifier', 'deleted_at']);
         });
     }
 
