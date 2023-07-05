@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Repositories\RoleRepository;
-use App\Services\Input\RoleInput;
-use App\Services\Output\RoleOutput;
 use Focite\Builder\Contracts\ServiceInterface;
 use Focite\Builder\Services\CommonService;
 

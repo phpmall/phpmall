@@ -15,6 +15,9 @@ class Role
     #[OA\Property(property: 'id', description: '', type: 'int')]
     protected int $id;
 
+    #[OA\Property(property: 'type', description: '模块类型', type: 'int')]
+    protected int $type;
+
     #[OA\Property(property: 'name', description: '角色名称', type: 'string')]
     protected string $name;
 
@@ -47,6 +50,22 @@ class Role
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * 获取模块类型
+     */
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    /**
+     * 设置模块类型
+     */
+    public function setType(int $type): void
+    {
+        $this->type = $type;
     }
 
     /**

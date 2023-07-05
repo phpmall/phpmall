@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class UserModel extends User
+use Illuminate\Database\Eloquent\Model;
+
+class UserModel extends Model
 {
     /**
      * The table associated with the model.
@@ -30,5 +32,6 @@ class UserModel extends User
         'remember_token',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 }

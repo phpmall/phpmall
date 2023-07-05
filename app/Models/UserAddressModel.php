@@ -35,6 +35,7 @@ class UserAddressModel extends Model
         'district_code',
         'detail_address',
         'is_default',
+        'is_invoice',
         'latitude',
         'longitude',
         'created_at',

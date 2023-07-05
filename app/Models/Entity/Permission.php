@@ -15,8 +15,8 @@ class Permission
     #[OA\Property(property: 'id', description: '', type: 'int')]
     protected int $id;
 
-    #[OA\Property(property: 'type', description: '模块类型：admin,seller', type: 'string')]
-    protected string $type;
+    #[OA\Property(property: 'type', description: '模块类型', type: 'int')]
+    protected int $type;
 
     #[OA\Property(property: 'parent_id', description: '父级ID', type: 'int')]
     protected int $parentId;
@@ -65,17 +65,17 @@ class Permission
     }
 
     /**
-     * 获取模块类型：admin,seller
+     * 获取模块类型
      */
-    public function getType(): string
+    public function getType(): int
     {
         return $this->type;
     }
 
     /**
-     * 设置模块类型：admin,seller
+     * 设置模块类型
      */
-    public function setType(string $type): void
+    public function setType(int $type): void
     {
         $this->type = $type;
     }

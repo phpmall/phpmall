@@ -22,6 +22,7 @@ class RoleModel extends Model
      */
     protected $fillable = [
         'id',
+        'type',
         'name',
         'description',
         'sort',

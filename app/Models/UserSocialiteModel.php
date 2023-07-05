@@ -30,5 +30,6 @@ class UserSocialiteModel extends Model
         'reset_token',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 }

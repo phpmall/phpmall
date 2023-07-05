@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Repositories\UserRepository;
-use App\Services\Input\UserInput;
 use App\Services\Output\UserOutput;
 use Focite\Builder\Contracts\ServiceInterface;
 use Focite\Builder\Exceptions\CustomException;

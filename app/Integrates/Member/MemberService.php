@@ -6,5 +6,4 @@ namespace App\Integrates\Member;
 
 class MemberService
 {
-
 }

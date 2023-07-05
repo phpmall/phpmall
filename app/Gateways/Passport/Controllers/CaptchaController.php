@@ -18,7 +18,7 @@ class CaptchaController extends BaseController
         try {
             return (new Captcha())->create([
                 'length' => 4,
-                'codeSet'  => '2345678ABCDEFGHJKLMNPQRTUVWXY',
+                'codeSet' => '2345678ABCDEFGHJKLMNPQRTUVWXY',
             ]);
         } catch (Exception $e) {
             return $this->error($e->getMessage());

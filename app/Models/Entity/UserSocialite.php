@@ -39,6 +39,9 @@ class UserSocialite
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
     protected string $updatedAt;
 
+    #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
+    protected string $deletedAt;
+
     /**
      * 获取
      */
@@ -181,5 +184,21 @@ class UserSocialite
     public function setUpdatedAt(string $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * 获取
+     */
+    public function getDeletedAt(): string
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * 设置
+     */
+    public function setDeletedAt(string $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 }

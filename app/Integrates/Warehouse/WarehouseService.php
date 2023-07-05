@@ -6,5 +6,4 @@ namespace App\Integrates\Warehouse;
 
 class WarehouseService
 {
-
 }

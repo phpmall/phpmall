@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['admin','seller','supplier'])->comment('模块类型');
+            $table->enum('type', ['admin', 'seller', 'supplier'])->comment('模块类型');
             $table->string('name')->unique()->comment('角色名称');
             $table->string('description')->default('')->comment('角色描述');
             $table->unsignedInteger('sort')->default(0)->comment('角色排序');

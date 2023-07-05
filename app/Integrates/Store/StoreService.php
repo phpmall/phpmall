@@ -6,5 +6,4 @@ namespace App\Integrates\Store;
 
 class StoreService
 {
-
 }

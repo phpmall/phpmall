@@ -54,6 +54,9 @@ class UserAddress
     #[OA\Property(property: 'is_default', description: '默认收货地址', type: 'int')]
     protected int $isDefault;
 
+    #[OA\Property(property: 'is_invoice', description: '默认收票地址', type: 'int')]
+    protected int $isInvoice;
+
     #[OA\Property(property: 'latitude', description: '纬度', type: 'string')]
     protected string $latitude;
 
@@ -291,6 +294,22 @@ class UserAddress
     public function setIsDefault(int $isDefault): void
     {
         $this->isDefault = $isDefault;
+    }
+
+    /**
+     * 获取默认收票地址
+     */
+    public function getIsInvoice(): int
+    {
+        return $this->isInvoice;
+    }
+
+    /**
+     * 设置默认收票地址
+     */
+    public function setIsInvoice(int $isInvoice): void
+    {
+        $this->isInvoice = $isInvoice;
     }
 
     /**

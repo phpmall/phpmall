@@ -34,7 +34,7 @@ class GenTsInterface extends Command
             if (isset($data['components']['schemas'])) {
                 foreach ($data['components']['schemas'] as $type => $schema) {
                     if (! isset($schema['properties'])) {
-                        dump($module . ' ' . $type);
+                        dump($module.' '.$type);
                         dd($schema);
                     }
                     $content .= $this->genCode($type, $schema);

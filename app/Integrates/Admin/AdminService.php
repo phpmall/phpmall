@@ -6,5 +6,4 @@ namespace App\Integrates\Admin;
 
 class AdminService
 {
-
 }

@@ -59,6 +59,7 @@ class SignupController extends BaseController
 
                 $response = new LoginResponse();
                 $response->setToken($token);
+
                 return $this->success($response->toArray());
             }
 

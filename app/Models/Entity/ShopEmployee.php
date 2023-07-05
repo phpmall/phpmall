@@ -15,7 +15,10 @@ class ShopEmployee
     #[OA\Property(property: 'id', description: '', type: 'int')]
     protected int $id;
 
-    #[OA\Property(property: 'shop_id', description: '店铺ID', type: 'int')]
+    #[OA\Property(property: 'seller_id', description: '卖家id', type: 'int')]
+    protected int $sellerId;
+
+    #[OA\Property(property: 'shop_id', description: '店铺id', type: 'int')]
     protected int $shopId;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
@@ -44,7 +47,23 @@ class ShopEmployee
     }
 
     /**
-     * 获取店铺ID
+     * 获取卖家id
+     */
+    public function getSellerId(): int
+    {
+        return $this->sellerId;
+    }
+
+    /**
+     * 设置卖家id
+     */
+    public function setSellerId(int $sellerId): void
+    {
+        $this->sellerId = $sellerId;
+    }
+
+    /**
+     * 获取店铺id
      */
     public function getShopId(): int
     {
@@ -52,7 +71,7 @@ class ShopEmployee
     }
 
     /**
-     * 设置店铺ID
+     * 设置店铺id
      */
     public function setShopId(int $shopId): void
     {

@@ -6,5 +6,4 @@ namespace App\Integrates\Shop;
 
 class ShopService
 {
-
 }

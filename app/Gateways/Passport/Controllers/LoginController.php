@@ -34,7 +34,7 @@ class LoginController extends BaseController
         $data = $request->validated();
 
         $captchaService = new Captcha();
-        if (!$captchaService->check($data['captcha'])) {
+        if (! $captchaService->check($data['captcha'])) {
             return $this->error('图片验证码输入错误');
         }
 
@@ -74,7 +74,7 @@ class LoginController extends BaseController
 
         try {
             // 校验短信验证码
-            $smsCode = Cache::get(GlobalConst::SMS_CACHE_PREFIX . $data['mobile']);
+            $smsCode = Cache::get(GlobalConst::SMS_CACHE_PREFIX.$data['mobile']);
             if ($smsCode !== $data['code']) {
                 return $this->error('短信验证码不正确');
             }

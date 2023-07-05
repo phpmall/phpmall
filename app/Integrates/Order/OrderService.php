@@ -6,5 +6,4 @@ namespace App\Integrates\Order;
 
 class OrderService
 {
-
 }

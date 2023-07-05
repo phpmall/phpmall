@@ -22,7 +22,17 @@ class CategoryModel extends Model
      */
     protected $fillable = [
         'id',
+        'parent_id',
         'name',
+        'icon',
+        'keywords',
+        'description',
+        'level',
+        'product_count',
+        'product_unit',
+        'nav_status',
+        'show_status',
+        'sort',
         'created_at',
         'updated_at',
         'deleted_at',
