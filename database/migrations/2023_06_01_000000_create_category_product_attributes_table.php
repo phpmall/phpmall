@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->comment('商品分类id');
             $table->unsignedBigInteger('product_attribute_id')->comment('商品属性id');
             $table->timestamps();
+            $table->comment('分类与商品属性关联表');
         });
     }
 

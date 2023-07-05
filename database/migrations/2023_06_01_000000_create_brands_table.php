@@ -25,6 +25,7 @@ return new class extends Migration
             $table->unsignedInteger('sort')->comment('排序');
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('品牌表');
         });
     }
 

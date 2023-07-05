@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_attribute_id')->comment('商品属性id');
             $table->string('value')->comment('手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开');
             $table->timestamps();
+            $table->comment('商品属性值表');
         });
     }
 

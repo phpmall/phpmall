@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->timestamps();
+            $table->comment('订单详情表');
         });
     }
 

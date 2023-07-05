@@ -22,6 +22,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->unique(['identifier', 'deleted_at']);
+            $table->comment('用户社会化登录表');
         });
     }
 

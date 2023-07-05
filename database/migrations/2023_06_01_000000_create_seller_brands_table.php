@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('卖家品牌表');
         });
     }
 

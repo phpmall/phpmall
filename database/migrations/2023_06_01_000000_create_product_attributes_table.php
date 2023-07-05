@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->unsignedInteger('type')->comment('属性的类型；0->规格；1->参数');
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('商品属性表');
         });
     }
 

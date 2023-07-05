@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('store_status')->comment('店铺状态：如"正常营业"、"关店维修"');
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('店铺表');
         });
     }
 

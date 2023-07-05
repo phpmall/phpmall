@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->comment('买家id');
 
             $table->timestamps();
+            $table->comment('优惠券使用记录表');
         });
     }
 

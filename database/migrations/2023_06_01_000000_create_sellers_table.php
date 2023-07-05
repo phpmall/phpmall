@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('bank_account')->comment('企业银行账户');
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('卖家表');
         });
     }
 

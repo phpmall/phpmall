@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('member_level_name')->comment('会员等级名称');
             $table->decimal('member_discount')->comment('会员折扣');
             $table->decimal('member_price')->comment('会员价格');
+            $table->comment('商品会员价格表');
         });
     }
 

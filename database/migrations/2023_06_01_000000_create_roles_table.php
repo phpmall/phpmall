@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('sort')->default(0)->comment('角色排序');
             $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常;2禁用');
             $table->timestamps();
+            $table->comment('用户角色表');
         });
     }
 

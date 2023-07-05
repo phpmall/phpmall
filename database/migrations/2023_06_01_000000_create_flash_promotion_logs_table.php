@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('', function (Blueprint $table) {
+        Schema::create('flash_promotion_logs', function (Blueprint $table) {
             $table->id();
 
             $table->timestamps();
+            $table->comment('限时抢购记录表');
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('');
+        Schema::dropIfExists('flash_promotion_logs');
     }
 };

@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->unsignedInteger('lock_stock')->default(0)->comment('锁定库存');
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('货品库存表');
         });
     }
 

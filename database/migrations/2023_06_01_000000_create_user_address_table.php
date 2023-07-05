@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('longitude')->comment('经度');
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('用户地址表');
         });
     }
 

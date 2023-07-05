@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->comment('用户ID');
             $table->unsignedBigInteger('role_id')->comment('角色ID');
             $table->unique(['user_id', 'role_id'], 'user_role_id');
+            $table->comment('用户与角色关联表');
         });
     }
 

@@ -24,12 +24,14 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->unique(['mobile', 'deleted_at']);
+            $table->comment('基础用户表');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('mobile')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
+            $table->comment('用户密码重置表');
         });
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('param_count')->comment('参数数量');
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('商品类型表');
         });
     }
 

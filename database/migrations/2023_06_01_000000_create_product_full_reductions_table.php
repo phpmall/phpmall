@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('product_id')->comment('商品id');
             $table->decimal('full_price', 2)->comment('商品满足金额');
             $table->decimal('reduce_price', 2)->comment('商品减少金额');
+            $table->comment('商品满减价格表');
         });
     }
 

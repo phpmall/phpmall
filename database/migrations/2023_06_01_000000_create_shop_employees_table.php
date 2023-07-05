@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->timestamps();
             $table->softDeletes();
+            $table->comment('店铺员工表');
         });
     }
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->timestamps();
+            $table->comment('限时抢购与商品关联表');
         });
     }
 
