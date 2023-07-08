@@ -10,17 +10,67 @@ High performance e-commerce platform for PHP based on Octane.
 
 ### 演示地址
 
-- 商城首页：https://demo.phpmall.net/
-- 运营平台：https://demo.phpmall.net/admin/
-- 卖家平台：https://demo.phpmall.net/seller/
-- 买家平台：https://demo.phpmall.net/user/
-- 微商城：https://demo.phpmall.net/mobile/
+- 商城首页：https://www.phpmall.net
+- 认证平台：https://passport.phpmall.net
+- 运营平台：https://console.phpmall.net
+- 供应平台：https://supplier.phpmall.net
+- 卖家平台：https://seller.phpmall.net
+- 买家平台：https://home.phpmall.net
+- 微商城：https://m.phpmall.net
 
-### 创建项目
+### 创建（克隆）项目
 
 ```
+git clone https://gitee.com/phpmall/phpmall.git
+```
+
+### 安装前端工程依赖
+
+```
+# 商城首页
+cd phpmall-web
+pnpm install
+pnpm run build-only
+
+# 认证平台
+cd phpmall-passport
+pnpm install
+pnpm run build-only
+
+# 运营平台
+cd phpmall-admin
+pnpm install
+pnpm run build-only
+
+# 供应平台
+cd phpmall-supplier
+pnpm install
+pnpm run build-only
+
+# 卖家平台
+cd phpmall-seller
+pnpm install
+pnpm run build-only
+
+# 买家平台
+cd phpmall-user
+pnpm install
+pnpm run build-only
+
+# 微商城
+cd phpmall-mobile
+pnpm install
+pnpm run build:h5
+```
+
+### 安装后端工程依赖
+
+```
+cd phpmall-server
 composer config -g repos.packagist composer https://packagist.pages.dev
-composer create-project phpmall/phpmall
+composer install -o
+cp .env.example .env
+php artisan key:generate
 ```
 
 ### 创建数据库
