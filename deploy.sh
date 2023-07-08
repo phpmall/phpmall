@@ -17,9 +17,9 @@ FrontendBuild()
     fi
 
     if [ ${module} = "mobile" ]; then
-        ossutil64 cp dist/build/h5/* oss://${oss}
+        ossutil64 cp -rf dist/build/h5/ oss://${oss}/
     else
-        ossutil64 cp dist/* oss://${oss}
+        ossutil64 cp -rf dist/ oss://${oss}/
     fi
 }
 
