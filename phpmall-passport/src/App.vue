@@ -4,15 +4,22 @@ import Header from '@/components/Header.vue'
 </script>
 
 <template>
-  <header>
-    <div>
-      <Header/>
-    </div>
-  </header>
+  <div>
+    <Header/>
 
-  <RouterView />
+    <div class="content">
+        <div class="wrapper">
+            <div class="wrapper-left">
+                <img src="@/assets/img/login.png" alt="PHPMall Login"/>
+            </div>
+            <div class="wrapper-right">
+              <RouterView />
+            </div>
+        </div>
+    </div>
+  </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

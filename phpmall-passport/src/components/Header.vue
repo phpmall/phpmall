@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-
 </script>
 
 <template>
-  <div>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-    </nav>
+  <div class="header">
+    <a href="https://www.phpmall.net/">
+      <img class="logo" src="@/assets/img/logo.png" alt="PHPMall Logo" />
+    </a>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped lang="scss"></style>
