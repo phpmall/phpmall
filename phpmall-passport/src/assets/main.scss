@@ -1,22 +1,27 @@
-@import "bootstrap/scss/bootstrap";
+@import "normalize.css/normalize.css";
 
 body {
     background: #fafafa url('./img/login-bg.png');
 }
 
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
 .header {
     height: 60px;
     line-height: 60px;
-    padding-left: 24px;
     border: none;
-    /*background-color: #FFF;*/
-    /*box-shadow: 0 2px 8px rgba(51, 51, 51, .08);*/
+    background-color: #FFF;
+    box-shadow: 0 2px 8px rgba(51, 51, 51, .08);
     z-index: 1;
     -webkit-font-smoothing: antialiased;
 }
 
 .logo {
-    height: 32px;
+    height: 28px;
+    vertical-align: middle;
 }
 
 .content {
@@ -35,9 +40,11 @@ body {
     position: relative;
 }
 
-.wrapper-left img {
-    width: 488px;
-    height: 580px;
+.wrapper-left {
+    width: 580px;
+    img {
+        height: 580px;
+    }
 }
 
 .wrapper-right {
@@ -45,28 +52,8 @@ body {
     flex-direction: column;
     padding: 40px 60px;
     flex: 1;
-    width: 410px;
+    width: 320px;
     justify-content: space-between;
-}
-
-.login-container {
-    padding: 20px;
-}
-
-.login-other {
-    text-align: center;
-}
-
-.login-other span {
-    margin: 0 20px;
-}
-
-.login-other .layui-icon {
-    position: relative;
-    display: inline-block;
-    margin: 0 2px;
-    top: 2px;
-    font-size: 26px;
 }
 
 .signup-container {
@@ -77,28 +64,6 @@ body {
     text-align: center;
 }
 
-.signup-other .layui-icon {
-    position: relative;
-    display: inline-block;
-    margin: 0 2px;
-    top: 2px;
-    font-size: 26px;
-}
-
-.switch {
-    position: absolute !important;
-    top: 0;
-    right: 0;
-}
-
-.switch img {
-    width: 100px;
-}
-
 .layui-tab .layui-tab-title li {
     font-size: 22px;
-}
-
-.layui-tab-content {
-    padding-bottom: 0;
 }
