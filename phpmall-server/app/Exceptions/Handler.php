@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\JsonResponse;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -19,6 +20,11 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    protected function shouldReturnJson($request, Throwable $e): bool
+    {
+        return true;
+    }
+
     /**
      * Register the exception handling callbacks for the application.
      */
@@ -29,23 +35,16 @@ class Handler extends ExceptionHandler
         });
     }
 
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @throws Throwable
-     */
-    public function render($request, Throwable $e): Response
+    public function render($request, Throwable $e): JsonResponse
     {
-        if ($request->expectsJson()) {
-            $error = $this->convertExceptionToResponse($e);
+        $response = parent::render($request, $e);
 
-            return response()->json([
-                'code' => $error->getStatusCode(),
-                'message' => $e->getMessage(),
-                'data' => config('app.debug') ? $e->getTrace() : null,
-            ], $error->getStatusCode());
-        } else {
-            return parent::render($request, $e);
-        }
+        $data = [
+            'code' => $response->getStatusCode(),
+            'message' => $e->getMessage(),
+            'data' => config('app.debug') ? $e->getTrace() : null,
+        ];
+
+        return new JsonResponse($data, $data['code']);
     }
 }
