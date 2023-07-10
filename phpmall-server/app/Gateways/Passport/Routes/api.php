@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api')->group(function () {
+Route::prefix('api')->middleware('api')->group(function () {
     Route::post('login', [\App\Gateways\Passport\Controllers\LoginController::class, 'login']);
     Route::post('login/mobile', [\App\Gateways\Passport\Controllers\LoginController::class, 'mobile']);
     Route::post('signup/mobile', [\App\Gateways\Passport\Controllers\SignupController::class, 'mobile']);
