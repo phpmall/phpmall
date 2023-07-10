@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class UserModel extends Model
+class UserModel extends User
 {
     /**
      * The table associated with the model.
