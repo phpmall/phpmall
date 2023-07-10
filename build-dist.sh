@@ -5,7 +5,6 @@ git pull
 FrontendBuild()
 {
     local module="$1"
-    local oss="$2"
     cd $cur_dir/phpmall-${module}
 
     pnpm install
@@ -16,6 +15,7 @@ FrontendBuild()
         pnpm run build-only
     fi
 
+    local oss="$2"
     if [ ${module} = "mobile" ]; then
         ossutil64 cp -rf dist/build/h5/ oss://${oss}/
     else
