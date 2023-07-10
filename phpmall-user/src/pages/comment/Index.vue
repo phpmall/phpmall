@@ -1,7 +1,7 @@
 <template>
-  <main>
-    Index
-  </main>
+  <div>
+    page 
+  </div>
 </template>
 
 <script setup lang="ts">
