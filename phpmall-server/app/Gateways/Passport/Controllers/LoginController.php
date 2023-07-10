@@ -12,7 +12,6 @@ use App\Gateways\Passport\Services\AuthService;
 use App\Services\UserService;
 use Exception;
 use Focite\Captcha\Captcha;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -21,11 +20,6 @@ use OpenApi\Attributes as OA;
 
 class LoginController extends BaseController
 {
-    public function showLoginForm(): JsonResponse|Renderable
-    {
-        return $this->response('auth::login');
-    }
-
     #[OA\Post(path: '/login', summary: '通过手机号和密码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginMobileRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]

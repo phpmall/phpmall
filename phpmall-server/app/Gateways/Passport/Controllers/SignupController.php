@@ -11,7 +11,6 @@ use App\Gateways\Passport\Services\AuthService;
 use App\Gateways\Passport\Services\Input\UserRegisterInput;
 use App\Gateways\Passport\Services\UserService;
 use Focite\Builder\Exceptions\CustomException;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -20,11 +19,6 @@ use Throwable;
 
 class SignupController extends BaseController
 {
-    public function showSignupForm(): JsonResponse|Renderable
-    {
-        return $this->response('auth::signup');
-    }
-
     #[OA\Post(path: '/signup/mobile', summary: '通过手机号码注册', tags: ['注册'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SignupMobileRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]

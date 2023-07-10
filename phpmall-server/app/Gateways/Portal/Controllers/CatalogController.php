@@ -13,6 +13,6 @@ class CatalogController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {
-        return $this->response('catalog');
+        return $this->success(['catalog']);
     }
 }

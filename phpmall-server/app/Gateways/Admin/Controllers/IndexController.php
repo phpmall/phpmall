@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Gateways\Admin\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\JsonResponse;
 
 class IndexController extends BaseController
 {
-    public function index(): Renderable
+    public function index(): JsonResponse
     {
-        return $this->display('admin::index');
+        return $this->success(['admin::index']);
     }
 }
