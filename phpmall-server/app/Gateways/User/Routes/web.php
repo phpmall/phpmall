@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('home')->middleware('web')->name('user.')->group(function () {
+Route::prefix('api/user')->middleware('web')->name('user.')->group(function () {
     Route::get('/', [\App\Gateways\User\Controllers\IndexController::class, 'index'])->name('index');
     // Route
     Route::get('address', [\App\Gateways\User\Controllers\AddressController::class, 'index'])->name('address');
