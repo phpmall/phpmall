@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import Header from '@/components/Header.vue'
 </script>
 
 <template>
-  <div>
+  <el-config-provider :locale="zhCn">
     <Header/>
     <RouterView />
-  </div>
+  </el-config-provider>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>
