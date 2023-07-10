@@ -1,7 +1,5 @@
 cur_dir=$(pwd)
 
-git pull
-
 FrontendBuild()
 {
     local module="$1"
@@ -30,6 +28,3 @@ FrontendBuild seller phpmall-seller
 FrontendBuild supplier phpmall-supplier
 FrontendBuild user phpmall-home
 FrontendBuild web phpmall-official
-
-cd $cur_dir/phpmall-server
-./scripts/docker-build.sh
