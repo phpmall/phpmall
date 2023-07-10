@@ -45,6 +45,9 @@ class LoginController extends BaseController
                     GlobalConst::JWT_USER_ID => Auth::id(),
                 ]);
 
+                // dd(Auth::user()->createToken('aa')->plainTextToken);
+                // 6|8Wm5EBHMW99gmOOCEuJPmanqOvtK94YXGfDw5yhT
+
                 $response = new LoginResponse();
                 $response->setToken($token);
 
