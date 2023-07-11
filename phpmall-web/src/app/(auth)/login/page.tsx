@@ -4,14 +4,13 @@ import type {ButtonProps, DatePickerProps } from 'antd'
 import { Button, DatePicker } from 'antd';
 import styles from './page.module.css'
 
-import { ILoginMobileRequest } from '@/types/passport';
 
 const onChange: DatePickerProps['onChange'] = (date, dateString) => {
   console.log(date, dateString);
 };
 
 const onLogin: ButtonProps['onClick'] = (e) => {
-  let req: ILoginMobileRequest = {
+  let req = {
     mobile: 'aa',
     password: 'bb',
     captcha: 'cc',
