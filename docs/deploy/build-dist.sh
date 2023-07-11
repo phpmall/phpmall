@@ -10,7 +10,11 @@ FrontendBuild()
     if [ ${module} = "mobile" ]; then
         pnpm run build:h5
     else
-        pnpm run build-only
+        if [ ${module} = "web" ]; then
+            pnpm run build
+        else
+            pnpm run build-only
+        fi
     fi
 
     local oss="$2"
