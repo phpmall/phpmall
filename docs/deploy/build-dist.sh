@@ -11,7 +11,7 @@ FrontendBuild()
         pnpm run build:h5
     else
         if [ ${module} = "web" ]; then
-            pnpm run build
+            pnpm run build-only
         else
             pnpm run build-only
         fi
