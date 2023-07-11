@@ -1,5 +1,9 @@
+'use client'
+
 import './globals.css'
 import type { Metadata } from 'next'
+import { ConfigProvider } from 'antd'
+import zhCN from 'antd/locale/zh_CN'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,8 +16,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="zh-Hans">
+      <body>
+        <ConfigProvider theme={{
+          token: {
+            colorPrimary: '#00b96b',
+          },
+        }} locale={zhCN}>
+          {children}
+        </ConfigProvider>
+      </body>
     </html>
   )
 }

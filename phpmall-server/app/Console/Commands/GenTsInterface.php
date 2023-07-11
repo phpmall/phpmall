@@ -11,7 +11,7 @@ class GenTsInterface extends Command
      *
      * @var string
      */
-    protected $signature = 'gen:ts-interface';
+    protected $signature = 'gen:ts';
 
     /**
      * The console command description.
@@ -41,7 +41,7 @@ class GenTsInterface extends Command
                 }
             }
 
-            $outDir = resource_path('types/'.$module.'.ts');
+            $outDir = base_path('/../phpmall-web/src/types/'.$module.'.ts');
             file_put_contents($outDir, $content);
 
             unlink($file);
@@ -63,7 +63,11 @@ class GenTsInterface extends Command
                     if (isset($property['items']['$ref'])) {
                         $type = 'I'.basename($property['items']['$ref']).'[]';
                     } elseif (isset($property['items']['type'])) {
-                        $type = $property['items']['type'].'[]';
+                        $type = $property['items']['type'];
+                        if (in_array($type, ['integer', 'float'])) {
+                            $type = 'number';
+                        }
+                        $type = $type.'[]';
                     }
                 }
             } elseif (isset($property['$ref'])) {
