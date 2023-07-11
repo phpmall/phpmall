@@ -10,11 +10,11 @@ High performance e-commerce platform for PHP based on Octane.
 
 ### 演示地址
 
-- 商城首页：https://www.phpmall.net
-- 运营平台：https://www.phpmall.net/admin
-- 供应平台：https://www.phpmall.net/supplier
-- 卖家平台：https://www.phpmall.net/seller
-- 买家平台：https://www.phpmall.net/home
+- 商城首页：https://demo.phpmall.net
+- 运营平台：https://demo.phpmall.net/admin
+- 供应平台：https://demo.phpmall.net/supplier
+- 卖家平台：https://demo.phpmall.net/seller
+- 买家平台：https://demo.phpmall.net/home
 - 微商城：https://m.phpmall.net
 
 ### 创建（克隆）项目
