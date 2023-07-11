@@ -1,22 +1,37 @@
 'use client'
 
-import type { DatePickerProps } from 'antd';
-import { DatePicker } from 'antd';
-import { Button } from 'antd'
+import type {ButtonProps, DatePickerProps } from 'antd'
+import { Button, DatePicker } from 'antd';
 import styles from './page.module.css'
+
+import { ILoginMobileRequest } from '@/types/passport';
 
 const onChange: DatePickerProps['onChange'] = (date, dateString) => {
   console.log(date, dateString);
 };
+
+const onLogin: ButtonProps['onClick'] = (e) => {
+  let req: ILoginMobileRequest = {
+    mobile: 'aa',
+    password: 'bb',
+    captcha: 'cc',
+    uuid: 'dd'
+  }
+
+  fetch('http://localhost/').then((res) => {
+    console.log(req);
+  })
+}
 
 export default function Page() {
   return (
     <main>
       <div>
         login page
-        <Button type="primary">Button</Button>
-
+        <hr />
         <DatePicker onChange={onChange} />
+        <hr />
+        <Button type="primary" onClick={onLogin}>Button</Button>
       </div>
     </main>
   )
