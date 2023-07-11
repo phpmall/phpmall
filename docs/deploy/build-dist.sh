@@ -27,4 +27,4 @@ FrontendBuild passport phpmall-passport
 FrontendBuild seller phpmall-seller
 FrontendBuild supplier phpmall-supplier
 FrontendBuild user phpmall-home
-# FrontendBuild web phpmall-official
+FrontendBuild web phpmall-official
