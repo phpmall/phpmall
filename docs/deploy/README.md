@@ -40,3 +40,13 @@ crontab -e
 # 添加计划任务
 * */1 * * * bash /home/wwwroot/demo.phpmall.net/deploy.sh
 ```
+
+### 清除注释
+
+```regexp
+// 清除代码注释
+^\s+?\/\/.+\n
+
+// 清除swagger注解
+^.+\#\[OA\\.+\n
+```
