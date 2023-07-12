@@ -10,11 +10,7 @@ FrontendBuild()
     if [ ${module} = "mobile" ]; then
         pnpm run build:h5
     else
-        if [ ${module} = "web" ]; then
-            pnpm run build-only
-        else
-            pnpm run build-only
-        fi
+        pnpm run build-only
     fi
 
     local oss="$2"
@@ -25,9 +21,9 @@ FrontendBuild()
     fi
 }
 
-FrontendBuild admin phpmall-console
+FrontendBuild auth phpmall-passport
+FrontendBuild manager phpmall-console
 FrontendBuild mobile phpmall-mobile
-FrontendBuild passport phpmall-passport
 FrontendBuild seller phpmall-seller
 FrontendBuild supplier phpmall-supplier
 FrontendBuild user phpmall-home

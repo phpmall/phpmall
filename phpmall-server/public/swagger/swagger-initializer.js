@@ -4,8 +4,8 @@ window.onload = function() {
   // the following lines will be replaced by docker/configurator, when it runs in a docker-container
   window.ui = SwaggerUIBundle({
     urls: [
-        {name: '运营模块', url: '/swagger/admin.yaml'},
-        {name: '认证模块', url: '/swagger/passport.yaml'},
+        {name: '认证模块', url: '/swagger/auth.yaml'},
+        {name: '运营模块', url: '/swagger/manager.yaml'},
         {name: '门户模块', url: '/swagger/portal.yaml'},
         {name: '卖家模块', url: '/swagger/seller.yaml'},
         {name: '供应商模块', url: '/swagger/supplier.yaml'},

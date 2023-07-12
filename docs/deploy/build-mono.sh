@@ -27,9 +27,9 @@ FrontendBuild()
     fi
 }
 
-FrontendBuild admin admin
+FrontendBuild auth passport
+FrontendBuild manager admin
 FrontendBuild mobile mobile
-FrontendBuild passport passport
 FrontendBuild seller seller
 FrontendBuild supplier supplier
 FrontendBuild user home
