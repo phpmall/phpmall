@@ -1,13 +1,9 @@
 <template>
   <view class="content">
-    <image class="logo" src="/static/logo.png" />
+    catalog page
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
-    
-    <navigator url="/pages/catalog/index">
-					<button type="default">goto catalog</button>
-				</navigator>
   </view>
 </template>
 

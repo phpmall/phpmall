@@ -5,6 +5,12 @@
 			"style": {
 				"navigationBarTitleText": "PHPMall"
 			}
+		}, 
+		{
+			"path": "pages/catalog/index",
+			"style": {
+				"navigationBarTitleText": "catalog"
+			}
 		}
 	],
 	"globalStyle": {
