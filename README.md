@@ -12,10 +12,11 @@ High performance e-commerce platform for PHP based on Octane.
 
 - 商城首页：https://demo.phpmall.net
 - 运营平台：https://demo.phpmall.net/admin
+- 认证平台：https://demo.phpmall.net/passport
 - 供应平台：https://demo.phpmall.net/supplier
 - 卖家平台：https://demo.phpmall.net/seller
 - 买家平台：https://demo.phpmall.net/home
-- 微商城：https://m.demo.phpmall.net
+- 微商城：https://demo.phpmall.net/mobile
 
 ### 创建（克隆）项目
 
@@ -31,8 +32,33 @@ cd phpmall-web
 pnpm install
 pnpm run build
 
+# 认证平台
+cd phpmall-auth
+pnpm install
+pnpm run build
+
+# 运营平台
+cd phpmall-manager
+pnpm install
+pnpm run build
+
+# 供应平台
+cd phpmall-supplier
+pnpm install
+pnpm run build
+
+# 卖家平台
+cd phpmall-seller
+pnpm install
+pnpm run build
+
+# 买家平台
+cd phpmall-user
+pnpm install
+pnpm run build
+
 # 微商城
-cd phpmall-client
+cd phpmall-mobile
 pnpm install
 pnpm run build:h5
 ```

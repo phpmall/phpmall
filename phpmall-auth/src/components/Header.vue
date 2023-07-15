@@ -4,7 +4,7 @@
 <template>
   <div class="header">
     <div class="container">
-      <a href="https://www.phpmall.net/">
+      <a href="/">
         <img class="logo" src="@/assets/img/logo.png" alt="PHPMall Logo" />
       </a>
     </div>

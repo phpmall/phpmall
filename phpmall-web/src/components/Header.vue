@@ -12,7 +12,8 @@ import { RouterLink } from 'vue-router'
       <RouterLink :to="{name: 'article'}">文章</RouterLink> | 
       <RouterLink :to="{name: 'brand'}">品牌</RouterLink> | 
       <RouterLink :to="{name: 'goods'}">商品</RouterLink> | 
-      <a href="https://passport.phpmall.net/login">登录</a>
+      <a href="/passport/#/login">登录</a>
+      <a href="/passport/#/signup">免费注册</a>
     </nav>
   </div>
 </template>

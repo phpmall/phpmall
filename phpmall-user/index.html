@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-    <meta charset="utf-8">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <title>会员中心</title>
-    <meta name="generator" content="PHPMall.Net"/>
-    <link rel="icon" href="/favicon.ico">
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+<title>会员中心</title>
+<meta name="generator" content="PHPMall.Net"/>
+<link rel="icon" href="/favicon.ico">
+<script>
+var currentUrl = window.location.href;
+if (!currentUrl.startsWith("https://")) {
+  window.location.href = "https" + currentUrl.substr(4);
+}
+</script>
+</head>
+<body>
+<div id="app"></div>
+<script type="module" src="/src/main.ts"></script>
+</body>
 </html>
