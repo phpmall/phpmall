@@ -14,7 +14,7 @@ FrontendBuild()
     else
         if [ ${module} = "web" ]; then
             pnpm run build-only
-            ossutil64 cp -rf dist/* oss://phpmall-demo/
+            ossutil64 cp -rf dist/ oss://phpmall-demo/
         else
             pnpm run build-only --base=/${to}/
             ossutil64 cp -rf dist/ oss://phpmall-demo/${to}
