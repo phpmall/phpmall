@@ -12,7 +12,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "element-plus": "^2.3.7",
+    "axios": "^1.4.0",
+    "element-plus": "^2.3.8",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.3",

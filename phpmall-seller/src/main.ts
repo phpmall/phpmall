@@ -10,6 +10,4 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 
-// console.log(import.meta.env)
-
 app.mount('#app')

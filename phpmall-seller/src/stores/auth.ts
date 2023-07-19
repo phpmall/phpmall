@@ -1,0 +1,20 @@
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+
+const tokenKey: string = 'seller_token'
+
+export const useAuthStore = defineStore('auth', () => {
+  const token = ref(localStorage.getItem(tokenKey) || '')
+
+  function setJwt(jwt: string) {
+    token.value = jwt;
+    localStorage.setItem(tokenKey, jwt);
+  }
+
+  function clearJwt() {
+    token.value = '';
+    localStorage.removeItem(tokenKey);
+  }
+
+  return { token, setJwt, clearJwt }
+})
