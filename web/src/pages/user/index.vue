@@ -1,6 +1,6 @@
 <template>
   <main>
-    Index
+    user Index
   </main>
 </template>
 

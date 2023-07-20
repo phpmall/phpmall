@@ -20,8 +20,8 @@
 import { onMounted } from 'vue';
 import { RouterView } from 'vue-router'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
-import Header from '@/components/Header.vue'
-import Aside from '@/components/Aside.vue'
+import Header from '@/pages/seller/components/Header.vue'
+import Aside from '@/pages/seller/components/Aside.vue'
 import { useAuthStore } from '@/stores/auth';
 import { fixedEncodeURIComponent } from '@/utils/url';
 
@@ -30,7 +30,7 @@ onMounted(() => {
   const authStore = useAuthStore();
   if (authStore.token == '') {
     let callback = fixedEncodeURIComponent(window.location.href)
-    window.location.href = '/passport/#/login?callback=' + callback
+    // window.location.href = '/passport/#/login?callback=' + callback
     return
   }
   // 注册页面到服务端

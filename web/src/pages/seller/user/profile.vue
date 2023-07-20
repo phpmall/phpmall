@@ -12,13 +12,13 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { fetchUsers } from '@/service/userService'
+import { fetchUsers } from '@/services/userService'
 
 const users = ref([]);
 
 onMounted(async () => {
     try {
-        users.value = await fetchUsers();
+        // users.value = await fetchUsers();
     } catch (error) {
         console.error(error);
     }

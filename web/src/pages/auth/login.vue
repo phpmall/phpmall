@@ -18,9 +18,9 @@
     </el-tabs>
 
     <div class="login-other">
-      <RouterLink :to="{ name: 'signup' }">免费注册</RouterLink>
+      <RouterLink :to="{ name: 'auth.signup' }">免费注册</RouterLink>
       <span> | </span>
-      <RouterLink :to="{ name: 'password.forget' }">忘记密码？</RouterLink>
+      <RouterLink :to="{ name: 'auth.password.forget' }">忘记密码？</RouterLink>
     </div>
   </div>
 
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import LoginForm from '@/components/LoginForm.vue'
+import LoginForm from '@/pages/auth/components/LoginForm.vue'
 
 const showQrCode = ref(false)
 const activeName = ref('default')

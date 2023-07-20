@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { login } from '@/api/auth'
+import { login } from '@/services/api/auth'
 import type { LoginRequest } from '@/models'
 
 const loginRequest = ref<LoginRequest>({
   name: '',
 });
 
-login(loginRequest.value).then(() => {
-
-});
+// login(loginRequest.value).then(() => {
+//
+//});
 </script>
 
 <template>
