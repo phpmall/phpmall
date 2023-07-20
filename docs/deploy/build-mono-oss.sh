@@ -3,7 +3,8 @@ cur_dir=$(pwd)
 FrontendBuild()
 {
     local module="$1"
-    cd $cur_dir/phpmall-${module}
+    # cd $cur_dir/phpmall-${module}
+    cd $cur_dir/${module}
 
     pnpm install
 
@@ -22,10 +23,10 @@ FrontendBuild()
     fi
 }
 
-FrontendBuild auth passport
-FrontendBuild manager admin
-FrontendBuild mobile mobile
-FrontendBuild seller seller
-FrontendBuild supplier supplier
-FrontendBuild user home
+# FrontendBuild auth passport
+# FrontendBuild manager admin
+# FrontendBuild mobile mobile
+# FrontendBuild seller seller
+# FrontendBuild supplier supplier
+# FrontendBuild user home
 FrontendBuild web
