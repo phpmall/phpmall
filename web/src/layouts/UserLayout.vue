@@ -1,5 +1,4 @@
 <template>
-  <el-config-provider :locale="zhCn">
     <el-container>
       <el-header>
         <Header></Header>
@@ -13,13 +12,11 @@
         </el-main>
       </el-container>
     </el-container>
-  </el-config-provider>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { RouterView } from 'vue-router'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import Header from '@/pages/user/components/Header.vue'
 import Aside from '@/pages/user/components/Aside.vue'
 import { useAuthStore } from '@/stores/auth';
