@@ -1,9 +1,9 @@
 <template>
   <div class="login-switch">
     <a href="javascript:void(0);">
-      <img src="@/assets/img/switch-qrcode.png" v-on:click="showQrCode = !showQrCode"
+      <img src="@/assets/auth/img/switch-qrcode.png" v-on:click="showQrCode = !showQrCode"
         v-if="!showQrCode">
-      <img src="@/assets/img/switch-mobile.png" v-on:click="showQrCode = !showQrCode" v-else>
+      <img src="@/assets/auth/img/switch-mobile.png" v-on:click="showQrCode = !showQrCode" v-else>
     </a>
   </div>
 
@@ -18,9 +18,9 @@
     </el-tabs>
 
     <div class="login-other">
-      <RouterLink :to="{ name: 'auth.signup' }">免费注册</RouterLink>
+      <RouterLink :to="{ name: 'passport.signup' }">免费注册</RouterLink>
       <span> | </span>
-      <RouterLink :to="{ name: 'auth.password.forget' }">忘记密码？</RouterLink>
+      <RouterLink :to="{ name: 'passport.password.forget' }">忘记密码？</RouterLink>
     </div>
   </div>
 
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import LoginForm from '@/pages/auth/components/LoginForm.vue'
+import LoginForm from '@/pages/passport/components/LoginForm.vue'
 
 const showQrCode = ref(false)
 const activeName = ref('default')

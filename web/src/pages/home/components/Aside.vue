@@ -3,13 +3,13 @@
     Aside
     <ul>
       <li>
-        <RouterLink :to="{name: 'user.order.index'}">Order</RouterLink>
+        <RouterLink :to="{name: 'home.order.index'}">Order</RouterLink>
       </li>
       <li>
-        <RouterLink :to="{name: 'user.profile.index'}">user/profile</RouterLink>
+        <RouterLink :to="{name: 'home.profile.index'}">user/profile</RouterLink>
       </li>
       <li>
-        <RouterLink :to="{name: 'user.address.index'}">user/address</RouterLink>
+        <RouterLink :to="{name: 'home.address.index'}">user/address</RouterLink>
       </li>
     </ul>
 

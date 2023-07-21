@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <nav>
-      <RouterLink :to="{name: 'user.index'}">Home</RouterLink>
+      <RouterLink :to="{name: 'seller.index'}">Home</RouterLink>
     </nav>
   </div>
 </template>
@@ -13,6 +13,6 @@ import { RouterLink } from 'vue-router'
 <style scoped lang="scss">
 .header {
   height: 60px;
-  background-color: #df3028;
+  background-color: #0052D9;
 }
 </style>

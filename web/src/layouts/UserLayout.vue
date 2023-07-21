@@ -17,8 +17,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { RouterView } from 'vue-router'
-import Header from '@/pages/user/components/Header.vue'
-import Aside from '@/pages/user/components/Aside.vue'
+import Header from '@/pages/home/components/Header.vue'
+import Aside from '@/pages/home/components/Aside.vue'
 import { useAuthStore } from '@/stores/auth';
 import { fixedEncodeURIComponent } from '@/utils/url';
 

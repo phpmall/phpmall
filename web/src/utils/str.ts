@@ -7,7 +7,7 @@ export const convertToLowerCase = (str: string, separator: string = '-'): string
 }
 
 export const replaceRight = (str: string, searchString: string, replacement: string): string => {
-    var lastIndex = str.lastIndexOf(searchString);
+    const lastIndex = str.lastIndexOf(searchString);
     if (lastIndex === -1) {
         return str;
     }
