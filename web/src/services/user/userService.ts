@@ -1,4 +1,4 @@
-import { getUsers, createUser, getUser } from '@/api/user';
+import { getUsers, createUser, getUser } from '@/services/user/api';
 
 // 获取用户列表
 export const fetchUsers = async () => {

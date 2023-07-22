@@ -10,7 +10,7 @@
     <div class="content">
       <div class="wrapper">
         <div class="wrapper-left">
-          <img src="@/assets/auth/img/login.png" alt="PHPMall Login"/>
+          <img src="@/assets/passport/img/login.png" alt="PHPMall Login"/>
         </div>
         <div class="wrapper-right">
           <RouterView/>
@@ -24,5 +24,6 @@
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/auth/app.scss";
+@import "@/assets/passport/app.scss";
+
 </style>

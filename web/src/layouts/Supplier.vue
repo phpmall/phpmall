@@ -17,17 +17,17 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { RouterView } from 'vue-router'
-import Header from '@/pages/seller/components/Header.vue'
-import Aside from '@/pages/seller/components/Aside.vue'
 import { useAuthStore } from '@/stores/auth';
 import { fixedEncodeURIComponent } from '@/utils/url';
+import Header from '@/pages/supplier/components/Header.vue'
+import Aside from '@/pages/supplier/components/Aside.vue'
 
 onMounted(() => {
   // 认证检查
   const authStore = useAuthStore();
   if (authStore.token == '') {
     let callback = fixedEncodeURIComponent(window.location.href)
-    // window.location.href = '/passport/#/login?callback=' + callback
+    // window.location.href = '/login?callback=' + callback
     return
   }
   // 注册页面到服务端
@@ -36,6 +36,8 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/supplier/app.scss";
+
 .el-header {
   --el-header-padding: 0;
 }

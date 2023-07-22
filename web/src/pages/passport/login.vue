@@ -1,9 +1,9 @@
 <template>
   <div class="login-switch">
     <a href="javascript:void(0);">
-      <img src="@/assets/auth/img/switch-qrcode.png" v-on:click="showQrCode = !showQrCode"
+      <img src="@/assets/passport/img/switch-qrcode.png" v-on:click="showQrCode = !showQrCode"
         v-if="!showQrCode">
-      <img src="@/assets/auth/img/switch-mobile.png" v-on:click="showQrCode = !showQrCode" v-else>
+      <img src="@/assets/passport/img/switch-mobile.png" v-on:click="showQrCode = !showQrCode" v-else>
     </a>
   </div>
 

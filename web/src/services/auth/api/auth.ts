@@ -1,4 +1,4 @@
-import type { LoginRequest } from '@/models';
+import type { LoginRequest } from '@/models/passport';
 import request from '@/utils/request'
 
 export const login = async (loginRequest: LoginRequest) => {

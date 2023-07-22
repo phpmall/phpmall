@@ -12,7 +12,6 @@
         <RouterLink :to="{name: 'home.address.index'}">user/address</RouterLink>
       </li>
     </ul>
-
   </div>
 </template>
 
