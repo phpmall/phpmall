@@ -6,6 +6,10 @@ const tokenKey: string = 'token'
 export const useAuthStore = defineStore('auth', () => {
   const token = ref(localStorage.getItem(tokenKey) || '')
 
+  function isLoggedIn(): boolean {
+    return token.value !== ''
+  }
+
   function setJwt(jwt: string) {
     token.value = jwt;
     localStorage.setItem(tokenKey, jwt);
@@ -16,5 +20,5 @@ export const useAuthStore = defineStore('auth', () => {
     localStorage.removeItem(tokenKey);
   }
 
-  return { token, setJwt, clearJwt }
+  return { token, isLoggedIn, setJwt, clearJwt }
 })
