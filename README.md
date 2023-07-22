@@ -28,37 +28,12 @@ git clone https://gitee.com/phpmall/phpmall.git
 
 ```
 # 商城首页
-cd phpmall-web
-pnpm install
-pnpm run build
-
-# 认证平台
-cd phpmall-auth
-pnpm install
-pnpm run build
-
-# 运营平台
-cd phpmall-manager
-pnpm install
-pnpm run build
-
-# 供应平台
-cd phpmall-supplier
-pnpm install
-pnpm run build
-
-# 卖家平台
-cd phpmall-seller
-pnpm install
-pnpm run build
-
-# 买家平台
-cd phpmall-user
+cd web
 pnpm install
 pnpm run build
 
 # 微商城
-cd phpmall-mobile
+cd client
 pnpm install
 pnpm run build:h5
 ```
@@ -66,7 +41,7 @@ pnpm run build:h5
 ### 安装后端工程依赖
 
 ```
-cd phpmall-server
+cd server
 composer config -g repos.packagist composer https://packagist.pages.dev
 composer install -o
 cp .env.example .env

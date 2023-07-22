@@ -3,7 +3,6 @@ cur_dir=$(pwd)
 FrontendBuild()
 {
     local module="$1"
-    # cd $cur_dir/phpmall-${module}
     cd $cur_dir/${module}
 
     pnpm install
@@ -13,20 +12,10 @@ FrontendBuild()
         pnpm run build:h5 --base=/${to}/
         ossutil64 cp -rf dist/build/h5/ oss://phpmall-demo/${to}
     else
-        if [ ${module} = "web" ]; then
-            pnpm run build-only
-            ossutil64 cp -rf dist/ oss://phpmall-demo/
-        else
-            pnpm run build-only --base=/${to}/
-            ossutil64 cp -rf dist/ oss://phpmall-demo/${to}
-        fi
+        pnpm run build-only
+        ossutil64 cp -rf dist/ oss://phpmall-demo/
     fi
 }
 
-# FrontendBuild auth passport
-# FrontendBuild manager admin
-# FrontendBuild mobile mobile
-# FrontendBuild seller seller
-# FrontendBuild supplier supplier
-# FrontendBuild user home
+FrontendBuild client mobile
 FrontendBuild web
