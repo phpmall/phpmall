@@ -1,0 +1,331 @@
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .wrap {
+            position: relative;
+            width: 200px;
+            left: 50px;
+            top: 50px;
+        }
+
+        ul {
+            padding: 15px 0;
+            margin: 0;
+            list-style: none;
+            background: #6c6669;
+            color: #ffffff;
+            border-right-width: 0;
+        }
+
+        li {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding-left: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            position: relative;
+        }
+
+        li.active {
+            background: #999395;
+        }
+
+        li span:hover {
+            color: #c81623;
+        }
+
+        .none {
+            display: none;
+        }
+
+        #sub {
+            width: 600px;
+            position: absolute;
+            border: 1px solid #f7f7f7;
+            background: #f7f7f7;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, .3);
+            left: 200px;
+            top: 0;
+            box-sizing: border-box;
+            margin: 0;
+            pad: 10px;
+        }
+
+        .sub-content {
+            padding: 10px;
+        }
+
+        .sub-content a {
+            font-size: 12px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        .sub-content dl {
+            margin: 5px 0;
+            overflow: hidden;
+        }
+
+        .sub-content dt {
+            float: left;
+            color: #333;
+            font-weight: 700;
+            width: 70px;
+            margin: 5px 0;
+            clear: left;
+            text-align: right;
+            position: relative;
+        }
+
+        .sub-content dt i {
+            font: 400 9px/14px consoleas;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        .sub-content dd {
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .sub-content dd a {
+            float: left;
+            margin: 3px 0;
+            padding: 0 7px;
+            height: 16px;
+            line-height: 16px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" id="test">
+        <ul>
+            <li data-id="a">
+                <span>家用电器</span>
+            </li>
+            <li data-id="b">
+                <span>手机数码</span>
+            </li>
+            <li data-id="c">
+                <span>服装</span>
+            </li>
+            <li data-id="d">
+                <span>家用电器</span>
+            </li>
+            <li data-id="e">
+                <span>手机数码</span>
+            </li>
+            <li data-id="f">
+                <span>服装</span>
+            </li>
+            <li data-id="g">
+                <span>家用电器</span>
+            </li>
+            <li data-id="h">
+                <span>手机数码</span>
+            </li>
+            <li data-id="i">
+                <span>服装</span>
+            </li>
+        </ul>
+        <div id="sub" class="none">
+            <div id="a" class="sub-content none">
+                <dl>
+                    <dt>
+                        <a href="#">a电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+            </div>
+            <div id="b" class="sub-content none">
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+            </div>
+            <div id="c" class="sub-content none">
+                <dl>
+                    <dt>
+                        <a href="#">cc电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">电视<i>&gt;</i></a>
+                    </dt>
+                    <dd>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                        <a href="#">asdgag</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

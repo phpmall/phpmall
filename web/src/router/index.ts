@@ -20,18 +20,7 @@ const router = createRouter({
             children: getRoutes('/admin/'),
             meta: {requiresAuth: true}
         },
-        {
-            path: '/home',
-            component: HomeLayout,
-            children: getRoutes('/home/'),
-            meta: {requiresAuth: true}
-        },
-        {
-            path: '/passport',
-            component: PassportLayout,
-            children: getRoutes('/passport/'),
-            meta: {requiresAuth: false}
-        },
+
         {
             path: '/seller',
             component: SellerLayout,
@@ -45,9 +34,23 @@ const router = createRouter({
             meta: {requiresAuth: true}
         },
         {
+            path: '/passport',
+            component: PassportLayout,
+            children: getRoutes('/passport/'),
+            meta: {requiresAuth: false}
+        },
+        {
             path: '/',
             component: PortalLayout,
-            children: getRoutes('/portal/')
+            children: [
+                {
+                    path: '/home',
+                    component: HomeLayout,
+                    children: getRoutes('/home/'),
+                    meta: {requiresAuth: true}
+                },
+                ...getRoutes('/portal/')
+            ]
         },
     ]
 })

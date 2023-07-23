@@ -75,6 +75,12 @@ refreshCaptcha();
 </script>
 
 <style scoped lang="scss">
+.el-tabs__item:hover,
+.el-tabs__item.is-active
+{
+  color: #FF2832 !important;
+}
+
 .login-form {
     padding: 10px;
 
