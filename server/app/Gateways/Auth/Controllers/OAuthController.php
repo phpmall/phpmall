@@ -12,7 +12,7 @@ use Throwable;
 
 class OAuthController extends BaseController
 {
-    #[OA\Post(path: '/oauth2/redirect', summary: '获取授权跳转地址', tags: ['授权登录'])]
+    #[OA\Post(path: '/auth/oauth/redirect', summary: '获取授权跳转地址', tags: ['授权登录'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function redirect(Request $request): RedirectResponse
     {
@@ -25,7 +25,7 @@ class OAuthController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/oauth2/callback', summary: '授权登录回调地址', tags: ['授权登录'])]
+    #[OA\Post(path: '/auth/oauth/callback', summary: '授权登录回调地址', tags: ['授权登录'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function callback(Request $request): RedirectResponse
     {
@@ -41,7 +41,7 @@ class OAuthController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/oauth2/bind', summary: '新用户绑定接口', tags: ['授权登录'])]
+    #[OA\Post(path: '/auth/oauth/bind', summary: '新用户绑定接口', tags: ['授权登录'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function bind()
     {

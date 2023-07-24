@@ -20,10 +20,10 @@ use OpenApi\Attributes as OA;
 
 class LoginController extends BaseController
 {
-    #[OA\Post(path: '/login', summary: '通过手机号和密码登录', tags: ['登录'])]
+    #[OA\Post(path: '/auth/login', summary: '通过手机号和密码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginMobileRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
-    public function login(LoginMobileRequest $request): JsonResponse
+    public function index(LoginMobileRequest $request): JsonResponse
     {
         $data = $request->validated();
 
@@ -62,7 +62,7 @@ class LoginController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/login/mobile', summary: '通过手机短信登录', tags: ['登录'])]
+    #[OA\Post(path: '/auth/login/mobile', summary: '通过手机短信验证码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginSmsRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function mobile(LoginMobileRequest $request): JsonResponse

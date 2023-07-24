@@ -7,18 +7,18 @@ info:
   version: '1.0'
 servers:
   -
-    url: 'http://127.0.0.1:8000/api/seller'
+    url: 'http://127.0.0.1:8000'
     description: 开发环境
   -
-    url: 'https://demo.phpmall.net/api/seller'
+    url: 'https://demo.phpmall.net'
     description: 测试环境
 paths:
-  /:
+  /seller:
     get:
       tags:
         - seller
       summary: 卖家
-      operationId: f7fc84819717cd793cc468d1491cdd4d
+      operationId: 7bf26081f000b97e1d0f283e147d77e3
       responses:
         '200':
           description: OK
