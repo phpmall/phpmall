@@ -6,7 +6,7 @@ const pages = import.meta.glob('@/pages/**/**.vue')
 Object.keys(pages).forEach(item => {
     const matches: RegExpMatchArray = item.match(/\/pages\/(.+)\.vue/) as RegExpMatchArray
     const pathInfo: string = matches?.slice(1)[0] as string;
-    if (pathInfo.search('components') === -1) {
+    if (pathInfo.search('components') === -1 && pathInfo.search('layout') === -1) {
         allRoutes.push({
             path: `/${pathInfo}`,
             name: pathInfo.replace(/\//g, '.'),

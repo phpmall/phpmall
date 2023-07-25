@@ -1,15 +1,15 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import AdminLayout from "@/pages/admin/layout.vue";
+import HomeLayout from "@/pages/home/layout.vue";
+import PassportLayout from "@/pages/passport/layout.vue";
+import PortalLayout from "@/pages/portal/layout.vue";
+import SellerLayout from "@/pages/seller/layout.vue";
+import SupplierLayout from "@/pages/supplier/layout.vue";
 import {useAuthStore} from "@/stores/auth";
 import {getRoutes} from "@/utils/routes";
 import {fixedEncodeURIComponent} from "@/utils/url";
-import AdminLayout from "@/layouts/AdminLayout.vue";
-import HomeLayout from "@/layouts/HomeLayout.vue";
-import PassportLayout from "@/layouts/PassportLayout.vue";
-import PortalLayout from "@/layouts/PortalLayout.vue";
-import SellerLayout from "@/layouts/SellerLayout.vue";
-import SupplierLayout from "@/layouts/SupplierLayout.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
