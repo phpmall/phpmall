@@ -41,7 +41,7 @@ class GenTsInterface extends Command
                 }
             }
 
-            $outDir = base_path('/../phpmall-'.$module.'/src/types');
+            $outDir = base_path('/../web/src/services/'.$module.'/models');
             if (! is_dir($outDir)) {
                 mkdir($outDir, 0755, true);
             }
