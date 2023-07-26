@@ -20,7 +20,6 @@ const router = createRouter({
             children: getRoutes('/admin/'),
             meta: {requiresAuth: true}
         },
-
         {
             path: '/seller',
             component: SellerLayout,

@@ -1,10 +1,13 @@
-import type {LoginRequest} from "@/models/passport";
-import {login} from "@/services/auth/api/auth";
+import type {ILoginMobileRequest} from "./models";
+import {login} from "./api";
 
 export const fetchUsers = async () => {
   try {
-    const LoginRequest: LoginRequest = {
-      name: '',
+    const LoginRequest: ILoginMobileRequest = {
+      mobile: 'string', // 手机号码
+      password: 'string', // 登录密码
+      captcha: 'string', // 图片验证码
+      uuid: 'string', // 验证码UUID
     }
     const users = await login(LoginRequest);
     // 其他业务逻辑处理，如数据转换、数据处理等

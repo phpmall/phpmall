@@ -19,6 +19,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+import {fetchCaptcha} from "@/services/auth/CaptchaService";
 
 interface RuleForm {
     mobile: string
@@ -66,8 +67,10 @@ const resetForm = (formEl: FormInstance | undefined) => {
 // 获取验证码图片
 const captchaImage = ref('');
 const refreshCaptcha = () => {
+  fetchCaptcha().then(res => {
     // 在这里发起获取验证码图片的请求，更新captchaImage的值
-    captchaImage.value = `https://api.phpmall.net/captcha?t=?${Date.now()}`;
+    captchaImage.value = res.captcha;
+  })
 };
 
 // 初始化时获取验证码图片
@@ -75,12 +78,6 @@ refreshCaptcha();
 </script>
 
 <style scoped lang="scss">
-.el-tabs__item:hover,
-.el-tabs__item.is-active
-{
-  color: #FF2832 !important;
-}
-
 .login-form {
     padding: 10px;
 
