@@ -61,7 +61,7 @@
           </ul>
         </div>
         <div class="middle_banner">
-          <img src="image/banner.png" alt="">
+<!--          <img src="image/banner.png" alt="">-->
         </div>
 
         <div class="right_banner">
@@ -69,7 +69,7 @@
             <!-- 用户等录信息 -->
             <div class="login_msg clearfix">
               <a href="#" class="no_login">
-                <img src="./image/下载.png" alt="">
+<!--                <img src="./image/下载.png" alt="">-->
               </a>
               <div class="text">
                 <p>Hi~欢迎逛京东</p>
@@ -113,7 +113,7 @@
             </div>
           </div>
           <div class="bottom_user">
-            <img src="image/content_title.png" alt="">
+<!--            <img src="image/content_title.png" alt="">-->
           </div>
         </div>
       </div>
