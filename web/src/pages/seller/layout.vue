@@ -69,8 +69,6 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/seller/app.scss";
-
 .el-header {
   --el-header-padding: 0;
 }

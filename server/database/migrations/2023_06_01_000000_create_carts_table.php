@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('seller_id')->comment('卖家id');
-            $table->unsignedBigInteger('shop_id')->comment('店铺id');
-            $table->unsignedBigInteger('user_id')->comment('买家id');
-
+            $table->unsignedBigInteger('seller_id')->comment('卖家ID');
+            $table->unsignedBigInteger('shop_id')->comment('店铺ID');
+            $table->unsignedBigInteger('user_id')->comment('买家ID');
+            $table->unsignedBigInteger('product_id')->comment('产品ID');
+            $table->unsignedBigInteger('quantity')->comment('商品数量');
             $table->timestamps();
             $table->comment('购物车表');
         });

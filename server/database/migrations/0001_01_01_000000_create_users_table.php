@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->unique(['mobile', 'deleted_at']);
-            $table->comment('基础用户表');
+            $table->comment('用户表');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

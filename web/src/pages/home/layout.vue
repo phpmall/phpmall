@@ -30,8 +30,6 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/home/app.scss";
-
 .home {
   width: 1200px;
   margin: 15px auto;
