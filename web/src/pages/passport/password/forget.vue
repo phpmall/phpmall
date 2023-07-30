@@ -11,7 +11,7 @@
             <el-input v-model="forgetForm.mobile" placeholder="请输入手机号码"></el-input>
           </el-form-item>
           <el-form-item prop="captcha" class="captcha">
-            <el-input v-model="forgetForm.captcha" placeholder="请输入图片验证码"></el-input>
+            <el-input v-if="captchaImage !== ''" v-model="forgetForm.captcha" placeholder="请输入图片验证码"></el-input>
             <img :src="captchaImage" alt="验证码" @click="refreshCaptcha" class="captcha-image">
           </el-form-item>
           <el-form-item>

@@ -1,7 +1,7 @@
 <template>
   <el-form :model="captchaForm" :rules="captchaRules" ref="captchaFormRef" class="captcha-form" size="large">
     <el-form-item prop="captcha" class="captcha">
-      <el-input v-model="captchaForm.captcha" placeholder="请输入图片验证码"></el-input>
+      <el-input v-if="captchaImage !== ''" v-model="captchaForm.captcha" placeholder="请输入图片验证码"></el-input>
       <img :src="captchaImage" alt="验证码" @click="refreshCaptcha" class="captcha-image">
     </el-form-item>
     <el-form-item>
