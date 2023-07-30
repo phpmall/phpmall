@@ -42,8 +42,8 @@
   .authing {
     display: flex;
     flex-direction: column;
-    width: 456px;
-    min-height: 540px;
+    width: 420px;
+    min-height: 520px;
     margin: 120px auto 0;
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, .05);
