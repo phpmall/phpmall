@@ -28,7 +28,7 @@ class LoginController extends BaseController
         $data = $request->validated();
 
         $captchaService = new Captcha();
-        if (! $captchaService->check($data['captcha'])) {
+        if (! $captchaService->check($data['uuid'], $data['captcha'])) {
             return $this->error('图片验证码输入错误');
         }
 
