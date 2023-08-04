@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -20,11 +21,6 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    protected function shouldReturnJson($request, Throwable $e): bool
-    {
-        return true;
-    }
-
     /**
      * Register the exception handling callbacks for the application.
      */
@@ -35,16 +31,20 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $e): JsonResponse
+    /**
+     * Convert an authentication exception into a response.
+     */
+    protected function unauthenticated($request, AuthenticationException $exception): JsonResponse|RedirectResponse
     {
-        $response = parent::render($request, $e);
-
-        $data = [
-            'code' => $response->getStatusCode(),
-            'message' => $e->getMessage(),
-            'data' => config('app.debug') ? $e->getTrace() : null,
-        ];
-
-        return new JsonResponse($data, $data['code']);
+        if ($this->shouldReturnJson($request, $exception)) {
+            return response()->json([
+                'code' => 401,
+                'message' => $exception->getMessage(),
+                'data' => config('app.debug') ? $exception->getTrace() : null,
+            ], 401);
+        } else {
+            $parameters = ['callback' => $request->fullUrl()];
+            return redirect()->guest(route('login', $parameters));
+        }
     }
 }
