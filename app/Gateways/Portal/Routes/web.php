@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix(config('app.context_path').'portal')->group(function () {
+Route::middleware('web')->group(function () {
     Route::get('/', [\App\Gateways\Portal\Controllers\IndexController::class, 'index']);
     // Route
     Route::get('catalog', [\App\Gateways\Portal\Controllers\CatalogController::class, 'index']);
