@@ -1,0 +1,16 @@
+{
+  "name": "phpmall",
+  "license": "Apache-2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.7.0",
+    "layui": "layui/layui#^2.8.12",
+    "vue": "~2.6.14"
+  }
+}
