@@ -11,7 +11,9 @@ use App\Gateways\Auth\Responses\LoginResponse;
 use App\Gateways\Auth\Services\AuthService;
 use App\Services\UserService;
 use Exception;
+use Focite\Builder\Exceptions\CustomException;
 use Focite\Captcha\Captcha;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -20,19 +22,24 @@ use OpenApi\Attributes as OA;
 
 class LoginController extends BaseController
 {
-    #[OA\Post(path: '/auth/login', summary: '通过手机号和密码登录', tags: ['登录'])]
+    public function showLoginForm(): Renderable
+    {
+        return $this->display('auth::login');
+    }
+
+    #[OA\Post(path: '/login', summary: '通过手机号和密码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginMobileRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
-    public function index(LoginMobileRequest $request): JsonResponse
+    public function login(LoginMobileRequest $request): JsonResponse
     {
-        $data = $request->validated();
-
-        $captchaService = new Captcha();
-        if (! $captchaService->check($data['uuid'], $data['captcha'])) {
-            return $this->error('图片验证码输入错误');
-        }
-
         try {
+            $data = $request->validated();
+
+            $captchaService = new Captcha();
+            if (! $captchaService->check($data['uuid'], $data['captcha'])) {
+                throw new CustomException('图片验证码输入错误');
+            }
+
             $credentials = [
                 'mobile' => $data['mobile'],
                 'password' => $data['password'],
@@ -55,6 +62,8 @@ class LoginController extends BaseController
             }
 
             return $this->error('手机号码登录失败');
+        } catch (CustomException $e) {
+            return $this->error($e->getMessage());
         } catch (Exception $e) {
             Log::error($e->getMessage());
 
@@ -62,14 +71,14 @@ class LoginController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/auth/login/mobile', summary: '通过手机短信验证码登录', tags: ['登录'])]
+    #[OA\Post(path: '/login/mobile', summary: '通过手机短信验证码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginSmsRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function mobile(LoginMobileRequest $request): JsonResponse
     {
-        $data = $request->validated();
-
         try {
+            $data = $request->validated();
+
             // 校验短信验证码
             $smsCode = Cache::get(GlobalConst::SMS_CACHE_PREFIX.$data['mobile']);
             if ($smsCode !== $data['code']) {
@@ -88,6 +97,8 @@ class LoginController extends BaseController
             $response->setToken($token);
 
             return $this->success($response->toArray());
+        } catch (CustomException $e) {
+            return $this->error($e->getMessage());
         } catch (Exception $e) {
             Log::error($e->getMessage());
 

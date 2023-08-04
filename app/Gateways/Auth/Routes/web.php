@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix(config('app.context_path').'auth')->group(function () {
+Route::middleware('web')->group(function () {
+    Route::get('login', [\App\Gateways\Auth\Controllers\LoginController::class, 'showLoginForm'])->name('login');
     Route::post('login', [\App\Gateways\Auth\Controllers\LoginController::class, 'index']);
     Route::post('login/mobile', [\App\Gateways\Auth\Controllers\LoginController::class, 'mobile']);
+
     Route::post('signup/mobile', [\App\Gateways\Auth\Controllers\SignupController::class, 'mobile']);
     Route::post('forget/mobile', [\App\Gateways\Auth\Controllers\ForgetController::class, 'mobile']);
     Route::post('reset', [\App\Gateways\Auth\Controllers\ResetController::class, 'index']);
