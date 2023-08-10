@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Gateways\Manager\Controllers;
+namespace App\Gateways\Admin\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
-class RoleController extends BaseController
+class ShopController extends BaseController
 {
-    #[OA\Get(path: '/manager/role', summary: '全部角色', tags: ['角色管理'])]
+    #[OA\Get(path: '/admin/shop', summary: '卖家店铺', tags: ['店铺管理'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {

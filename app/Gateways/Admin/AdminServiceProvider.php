@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Gateways\Manager;
+namespace App\Gateways\Admin;
 
 use Illuminate\Support\ServiceProvider;
 
-class ManagerServiceProvider extends ServiceProvider
+class AdminServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -22,6 +22,6 @@ class ManagerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__.'/Routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/Views', 'manager');
+        $this->loadViewsFrom(__DIR__.'/Views', 'admin');
     }
 }

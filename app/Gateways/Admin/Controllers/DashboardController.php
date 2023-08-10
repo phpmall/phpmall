@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Gateways\Manager\Controllers;
+namespace App\Gateways\Admin\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
 class DashboardController extends BaseController
 {
-    #[OA\Get(path: '/manager/dashboard', summary: '运营首页', tags: ['运营'])]
+    #[OA\Get(path: '/admin/dashboard', summary: '运营首页', tags: ['运营'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {

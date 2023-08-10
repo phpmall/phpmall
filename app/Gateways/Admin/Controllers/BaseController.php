@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gateways\Manager\Controllers;
+namespace App\Gateways\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 use OpenApi\Attributes as OA;
