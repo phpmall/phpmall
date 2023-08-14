@@ -14,12 +14,8 @@
     "require": {
         "php": "^8.1",
         "endroid/qr-code": "^4.8",
-        "focite/laravel-auth": "^1.0",
-        "focite/laravel-builder": "^1.0",
-        "focite/laravel-captcha": "^1.0",
-        "focite/laravel-filesystem": "^1.0",
-        "focite/laravel-image": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
+        "laractl/laractl": "^1.0",
         "laravel/framework": "^10.10",
         "laravel/octane": "^2.0",
         "laravel/sanctum": "^3.2",
