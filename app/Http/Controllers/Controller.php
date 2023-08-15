@@ -22,14 +22,10 @@ abstract class Controller extends BaseController
     /**
      * 响应内容自动协商
      */
-    protected function response($template, array $vars = []): Renderable|JsonResponse
+    protected function response($template, array $vars = []): JsonResponse|Renderable
     {
         if (request()->expectsJson()) {
-            if (! empty($vars)) {
-                $this->vars = array_merge($this->vars, $vars);
-            }
-
-            return $this->success($this->vars);
+            return $this->success(array_merge($this->vars, $vars));
         } else {
             return $this->display($template, $vars);
         }
