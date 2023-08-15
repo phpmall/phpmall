@@ -12,7 +12,7 @@ class Brand
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'name', description: '品牌的名称或商标', type: 'string')]
@@ -30,19 +30,19 @@ class Brand
     #[OA\Property(property: 'brand_story', description: '品牌故事', type: 'string')]
     protected string $brandStory;
 
-    #[OA\Property(property: 'factory_status', description: '是否为品牌制造商：0->不是；1->是', type: 'int')]
+    #[OA\Property(property: 'factory_status', description: '是否为品牌制造商：0->不是；1->是', type: 'integer')]
     protected int $factoryStatus;
 
-    #[OA\Property(property: 'show_status', description: '是否显示', type: 'int')]
+    #[OA\Property(property: 'show_status', description: '是否显示', type: 'integer')]
     protected int $showStatus;
 
-    #[OA\Property(property: 'product_count', description: '产品数量', type: 'int')]
+    #[OA\Property(property: 'product_count', description: '产品数量', type: 'integer')]
     protected int $productCount;
 
-    #[OA\Property(property: 'product_comment_count', description: '产品评论数量', type: 'int')]
+    #[OA\Property(property: 'product_comment_count', description: '产品评论数量', type: 'integer')]
     protected int $productCommentCount;
 
-    #[OA\Property(property: 'sort', description: '排序', type: 'int')]
+    #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
     protected int $sort;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

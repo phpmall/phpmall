@@ -11,5 +11,4 @@ use OpenApi\Attributes as OA;
 class AddressResponse
 {
     use ArrayObject;
-
 }

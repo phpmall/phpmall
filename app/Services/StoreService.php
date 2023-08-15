@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\StoreRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\StoreRepository;
 
 class StoreService extends CommonService implements ServiceInterface
 {

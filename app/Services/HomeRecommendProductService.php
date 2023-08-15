@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\HomeRecommendProductRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\HomeRecommendProductRepository;
 
 class HomeRecommendProductService extends CommonService implements ServiceInterface
 {

@@ -12,13 +12,13 @@ class ProductLadder
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'product_id', description: '商品id', type: 'int')]
+    #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
     protected int $productId;
 
-    #[OA\Property(property: 'count', description: '满足的商品数量', type: 'int')]
+    #[OA\Property(property: 'count', description: '满足的商品数量', type: 'integer')]
     protected int $count;
 
     #[OA\Property(property: 'discount', description: '折扣', type: 'float')]

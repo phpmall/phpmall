@@ -12,10 +12,10 @@ class ProductStock
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'product_id', description: '商品id', type: 'int')]
+    #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
     protected int $productId;
 
     #[OA\Property(property: 'sku_code', description: 'sku编码', type: 'string')]
@@ -27,10 +27,10 @@ class ProductStock
     #[OA\Property(property: 'promotion_price', description: '单品促销价格', type: 'float')]
     protected float $promotionPrice;
 
-    #[OA\Property(property: 'stock', description: '库存', type: 'int')]
+    #[OA\Property(property: 'stock', description: '库存', type: 'integer')]
     protected int $stock;
 
-    #[OA\Property(property: 'low_stock', description: '预警库存', type: 'int')]
+    #[OA\Property(property: 'low_stock', description: '预警库存', type: 'integer')]
     protected int $lowStock;
 
     #[OA\Property(property: 'sp1', description: '规格属性1', type: 'string')]
@@ -45,10 +45,10 @@ class ProductStock
     #[OA\Property(property: 'pic', description: '展示图片', type: 'string')]
     protected string $pic;
 
-    #[OA\Property(property: 'sale', description: '销量', type: 'int')]
+    #[OA\Property(property: 'sale', description: '销量', type: 'integer')]
     protected int $sale;
 
-    #[OA\Property(property: 'lock_stock', description: '锁定库存', type: 'int')]
+    #[OA\Property(property: 'lock_stock', description: '锁定库存', type: 'integer')]
     protected int $lockStock;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

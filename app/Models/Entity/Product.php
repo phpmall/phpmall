@@ -12,31 +12,31 @@ class Product
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'seller_id', description: '卖家id', type: 'int')]
+    #[OA\Property(property: 'seller_id', description: '卖家id', type: 'integer')]
     protected int $sellerId;
 
-    #[OA\Property(property: 'shop_id', description: '店铺id', type: 'int')]
+    #[OA\Property(property: 'shop_id', description: '店铺id', type: 'integer')]
     protected int $shopId;
 
-    #[OA\Property(property: 'category_id', description: '分类id', type: 'int')]
+    #[OA\Property(property: 'category_id', description: '分类id', type: 'integer')]
     protected int $categoryId;
 
     #[OA\Property(property: 'category_name', description: '分类名称', type: 'string')]
     protected string $categoryName;
 
-    #[OA\Property(property: 'brand_id', description: '品牌id', type: 'int')]
+    #[OA\Property(property: 'brand_id', description: '品牌id', type: 'integer')]
     protected int $brandId;
 
     #[OA\Property(property: 'brand_name', description: '品牌名称', type: 'string')]
     protected string $brandName;
 
-    #[OA\Property(property: 'freight_template_id', description: '运费模版id', type: 'int')]
+    #[OA\Property(property: 'freight_template_id', description: '运费模版id', type: 'integer')]
     protected int $freightTemplateId;
 
-    #[OA\Property(property: 'product_type_id', description: '商品类型id', type: 'int')]
+    #[OA\Property(property: 'product_type_id', description: '商品类型id', type: 'integer')]
     protected int $productTypeId;
 
     #[OA\Property(property: 'product_sn', description: '货号', type: 'string')]
@@ -54,7 +54,7 @@ class Product
     #[OA\Property(property: 'price', description: '价格', type: 'float')]
     protected float $price;
 
-    #[OA\Property(property: 'promotion_type', description: '促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购', type: 'int')]
+    #[OA\Property(property: 'promotion_type', description: '促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购', type: 'integer')]
     protected int $promotionType;
 
     #[OA\Property(property: 'promotion_price', description: '促销价格', type: 'float')]
@@ -66,25 +66,25 @@ class Product
     #[OA\Property(property: 'promotion_end_time', description: '促销结束时间', type: 'string')]
     protected string $promotionEndTime;
 
-    #[OA\Property(property: 'promotion_per_limit', description: '活动限购数量', type: 'int')]
+    #[OA\Property(property: 'promotion_per_limit', description: '活动限购数量', type: 'integer')]
     protected int $promotionPerLimit;
 
-    #[OA\Property(property: 'gift_growth', description: '赠送的成长值', type: 'int')]
+    #[OA\Property(property: 'gift_growth', description: '赠送的成长值', type: 'integer')]
     protected int $giftGrowth;
 
-    #[OA\Property(property: 'gift_point', description: '赠送的积分', type: 'int')]
+    #[OA\Property(property: 'gift_point', description: '赠送的积分', type: 'integer')]
     protected int $giftPoint;
 
-    #[OA\Property(property: 'use_point_limit', description: '限制使用的积分数', type: 'int')]
+    #[OA\Property(property: 'use_point_limit', description: '限制使用的积分数', type: 'integer')]
     protected int $usePointLimit;
 
-    #[OA\Property(property: 'sale', description: '销量', type: 'int')]
+    #[OA\Property(property: 'sale', description: '销量', type: 'integer')]
     protected int $sale;
 
-    #[OA\Property(property: 'stock', description: '库存', type: 'int')]
+    #[OA\Property(property: 'stock', description: '库存', type: 'integer')]
     protected int $stock;
 
-    #[OA\Property(property: 'low_stock', description: '库存预警值', type: 'int')]
+    #[OA\Property(property: 'low_stock', description: '库存预警值', type: 'integer')]
     protected int $lowStock;
 
     #[OA\Property(property: 'unit', description: '单位', type: 'string')]
@@ -93,7 +93,7 @@ class Product
     #[OA\Property(property: 'weight', description: '商品重量，默认为克', type: 'float')]
     protected float $weight;
 
-    #[OA\Property(property: 'preview_status', description: '是否为预告商品：0->不是；1->是', type: 'int')]
+    #[OA\Property(property: 'preview_status', description: '是否为预告商品：0->不是；1->是', type: 'integer')]
     protected int $previewStatus;
 
     #[OA\Property(property: 'service_ids', description: '以逗号分割的产品服务：1->无忧退货；2->快速退款；3->免费包邮', type: 'string')]
@@ -126,22 +126,22 @@ class Product
     #[OA\Property(property: 'detail_mobile_html', description: '移动端网页详情', type: 'string')]
     protected string $detailMobileHtml;
 
-    #[OA\Property(property: 'delete_status', description: '删除状态：0->未删除；1->已删除', type: 'int')]
+    #[OA\Property(property: 'delete_status', description: '删除状态：0->未删除；1->已删除', type: 'integer')]
     protected int $deleteStatus;
 
-    #[OA\Property(property: 'publish_status', description: '上架状态：0->下架；1->上架', type: 'int')]
+    #[OA\Property(property: 'publish_status', description: '上架状态：0->下架；1->上架', type: 'integer')]
     protected int $publishStatus;
 
-    #[OA\Property(property: 'new_status', description: '新品状态:0->不是新品；1->新品', type: 'int')]
+    #[OA\Property(property: 'new_status', description: '新品状态:0->不是新品；1->新品', type: 'integer')]
     protected int $newStatus;
 
-    #[OA\Property(property: 'recommend_status', description: '推荐状态；0->不推荐；1->推荐', type: 'int')]
+    #[OA\Property(property: 'recommend_status', description: '推荐状态；0->不推荐；1->推荐', type: 'integer')]
     protected int $recommendStatus;
 
-    #[OA\Property(property: 'verify_status', description: '审核状态：0->未审核；1->审核通过', type: 'int')]
+    #[OA\Property(property: 'verify_status', description: '审核状态：0->未审核；1->审核通过', type: 'integer')]
     protected int $verifyStatus;
 
-    #[OA\Property(property: 'sort', description: '排序', type: 'int')]
+    #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
     protected int $sort;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

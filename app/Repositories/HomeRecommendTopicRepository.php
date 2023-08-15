@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\HomeRecommendTopic;
 use App\Models\HomeRecommendTopicModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class HomeRecommendTopicRepository extends CurdRepository implements RepositoryInterface
 {

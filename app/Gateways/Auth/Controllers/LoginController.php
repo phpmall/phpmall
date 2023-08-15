@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace App\Gateways\Auth\Controllers;
 
 use App\Constants\GlobalConst;
+use App\Exceptions\CustomException;
 use App\Gateways\Auth\Requests\Login\LoginMobileRequest;
 use App\Gateways\Auth\Requests\Login\LoginSmsRequest;
 use App\Gateways\Auth\Responses\LoginResponse;
 use App\Gateways\Auth\Services\AuthService;
 use App\Services\UserService;
 use Exception;
-use App\Exceptions\CustomException;
-use Laractl\Captcha\Captcha;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Laractl\Captcha\Captcha;
 use OpenApi\Attributes as OA;
 
 class LoginController extends BaseController

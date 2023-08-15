@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\FlashPromotionSessionRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\FlashPromotionSessionRepository;
 
 class FlashPromotionSessionService extends CommonService implements ServiceInterface
 {

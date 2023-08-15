@@ -12,10 +12,10 @@ class SellerAddress
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'seller_id', description: '卖家ID', type: 'int')]
+    #[OA\Property(property: 'seller_id', description: '卖家ID', type: 'integer')]
     protected int $sellerId;
 
     #[OA\Property(property: 'name', description: '地址名称', type: 'string')]
@@ -54,13 +54,13 @@ class SellerAddress
     #[OA\Property(property: 'detail_address', description: '详情地址', type: 'string')]
     protected string $detailAddress;
 
-    #[OA\Property(property: 'send_status', description: '默认发货地址：0->否；1->是', type: 'int')]
+    #[OA\Property(property: 'send_status', description: '默认发货地址：0->否；1->是', type: 'integer')]
     protected int $sendStatus;
 
-    #[OA\Property(property: 'receive_status', description: '是否默认收货地址：0->否；1->是', type: 'int')]
+    #[OA\Property(property: 'receive_status', description: '是否默认收货地址：0->否；1->是', type: 'integer')]
     protected int $receiveStatus;
 
-    #[OA\Property(property: 'invoice_status', description: '默认收票地址：0->否；1->是', type: 'int')]
+    #[OA\Property(property: 'invoice_status', description: '默认收票地址：0->否；1->是', type: 'integer')]
     protected int $invoiceStatus;
 
     #[OA\Property(property: 'latitude', description: '纬度', type: 'string')]

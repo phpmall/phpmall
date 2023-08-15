@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\ShopEmployee;
 use App\Models\ShopEmployeeModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class ShopEmployeeRepository extends CurdRepository implements RepositoryInterface
 {

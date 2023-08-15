@@ -12,40 +12,40 @@ class ProductAttribute
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'product_type_id', description: '商品属性分类id', type: 'int')]
+    #[OA\Property(property: 'product_type_id', description: '商品属性分类id', type: 'integer')]
     protected int $productTypeId;
 
     #[OA\Property(property: 'name', description: '名称', type: 'string')]
     protected string $name;
 
-    #[OA\Property(property: 'select_type', description: '属性选择类型：0->唯一；1->单选；2->多选；对应属性和参数意义不同；', type: 'int')]
+    #[OA\Property(property: 'select_type', description: '属性选择类型：0->唯一；1->单选；2->多选；对应属性和参数意义不同；', type: 'integer')]
     protected int $selectType;
 
-    #[OA\Property(property: 'input_type', description: '属性录入方式：0->手工录入；1->从列表中选取', type: 'int')]
+    #[OA\Property(property: 'input_type', description: '属性录入方式：0->手工录入；1->从列表中选取', type: 'integer')]
     protected int $inputType;
 
     #[OA\Property(property: 'input_list', description: '可选值列表，以逗号隔开', type: 'string')]
     protected string $inputList;
 
-    #[OA\Property(property: 'sort', description: '排序字段：最高的可以单独上传图片', type: 'int')]
+    #[OA\Property(property: 'sort', description: '排序字段：最高的可以单独上传图片', type: 'integer')]
     protected int $sort;
 
-    #[OA\Property(property: 'filter_type', description: '分类筛选样式：1->普通；1->颜色', type: 'int')]
+    #[OA\Property(property: 'filter_type', description: '分类筛选样式：1->普通；1->颜色', type: 'integer')]
     protected int $filterType;
 
-    #[OA\Property(property: 'search_type', description: '检索类型；0->不需要进行检索；1->关键字检索；2->范围检索', type: 'int')]
+    #[OA\Property(property: 'search_type', description: '检索类型；0->不需要进行检索；1->关键字检索；2->范围检索', type: 'integer')]
     protected int $searchType;
 
-    #[OA\Property(property: 'related_status', description: '相同属性产品是否关联；0->不关联；1->关联', type: 'int')]
+    #[OA\Property(property: 'related_status', description: '相同属性产品是否关联；0->不关联；1->关联', type: 'integer')]
     protected int $relatedStatus;
 
-    #[OA\Property(property: 'hand_add_status', description: '是否支持手动新增；0->不支持；1->支持', type: 'int')]
+    #[OA\Property(property: 'hand_add_status', description: '是否支持手动新增；0->不支持；1->支持', type: 'integer')]
     protected int $handAddStatus;
 
-    #[OA\Property(property: 'type', description: '属性的类型；0->规格；1->参数', type: 'int')]
+    #[OA\Property(property: 'type', description: '属性的类型；0->规格；1->参数', type: 'integer')]
     protected int $type;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

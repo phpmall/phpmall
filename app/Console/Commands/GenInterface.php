@@ -48,7 +48,7 @@ class GenInterface extends Command
                 mkdir($outDir, 0755, true);
             }
 
-            file_put_contents($outDir . '/index.ts', $content);
+            file_put_contents($outDir.'/index.ts', $content);
 
             unlink($file);
         }

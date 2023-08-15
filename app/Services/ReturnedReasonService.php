@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\ReturnedReasonRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\ReturnedReasonRepository;
 
 class ReturnedReasonService extends CommonService implements ServiceInterface
 {

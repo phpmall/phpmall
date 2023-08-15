@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\OrderLog;
 use App\Models\OrderLogModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class OrderLogRepository extends CurdRepository implements RepositoryInterface
 {

@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\ProductTypeRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\ProductTypeRepository;
 
 class ProductTypeService extends CommonService implements ServiceInterface
 {

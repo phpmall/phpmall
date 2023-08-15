@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\ProductStock;
 use App\Models\ProductStockModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class ProductStockRepository extends CurdRepository implements RepositoryInterface
 {

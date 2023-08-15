@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\HomeBrand;
 use App\Models\HomeBrandModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class HomeBrandRepository extends CurdRepository implements RepositoryInterface
 {

@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\CouponProductRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\CouponProductRepository;
 
 class CouponProductService extends CommonService implements ServiceInterface
 {

@@ -44,6 +44,7 @@ class Handler extends ExceptionHandler
             ], 401);
         } else {
             $parameters = ['callback' => $request->fullUrl()];
+
             return redirect()->guest(route('login', $parameters));
         }
     }

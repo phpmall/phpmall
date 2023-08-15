@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\ProductFullReductionRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\ProductFullReductionRepository;
 
 class ProductFullReductionService extends CommonService implements ServiceInterface
 {

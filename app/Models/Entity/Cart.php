@@ -12,17 +12,23 @@ class Cart
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'seller_id', description: '卖家id', type: 'int')]
+    #[OA\Property(property: 'seller_id', description: '卖家ID', type: 'integer')]
     protected int $sellerId;
 
-    #[OA\Property(property: 'shop_id', description: '店铺id', type: 'int')]
+    #[OA\Property(property: 'shop_id', description: '店铺ID', type: 'integer')]
     protected int $shopId;
 
-    #[OA\Property(property: 'user_id', description: '买家id', type: 'int')]
+    #[OA\Property(property: 'user_id', description: '买家ID', type: 'integer')]
     protected int $userId;
+
+    #[OA\Property(property: 'product_id', description: '产品ID', type: 'integer')]
+    protected int $productId;
+
+    #[OA\Property(property: 'quantity', description: '商品数量', type: 'integer')]
+    protected int $quantity;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
     protected string $createdAt;
@@ -47,7 +53,7 @@ class Cart
     }
 
     /**
-     * 获取卖家id
+     * 获取卖家ID
      */
     public function getSellerId(): int
     {
@@ -55,7 +61,7 @@ class Cart
     }
 
     /**
-     * 设置卖家id
+     * 设置卖家ID
      */
     public function setSellerId(int $sellerId): void
     {
@@ -63,7 +69,7 @@ class Cart
     }
 
     /**
-     * 获取店铺id
+     * 获取店铺ID
      */
     public function getShopId(): int
     {
@@ -71,7 +77,7 @@ class Cart
     }
 
     /**
-     * 设置店铺id
+     * 设置店铺ID
      */
     public function setShopId(int $shopId): void
     {
@@ -79,7 +85,7 @@ class Cart
     }
 
     /**
-     * 获取买家id
+     * 获取买家ID
      */
     public function getUserId(): int
     {
@@ -87,11 +93,43 @@ class Cart
     }
 
     /**
-     * 设置买家id
+     * 设置买家ID
      */
     public function setUserId(int $userId): void
     {
         $this->userId = $userId;
+    }
+
+    /**
+     * 获取产品ID
+     */
+    public function getProductId(): int
+    {
+        return $this->productId;
+    }
+
+    /**
+     * 设置产品ID
+     */
+    public function setProductId(int $productId): void
+    {
+        $this->productId = $productId;
+    }
+
+    /**
+     * 获取商品数量
+     */
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * 设置商品数量
+     */
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
     }
 
     /**

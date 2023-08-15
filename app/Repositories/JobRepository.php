@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\Job;
 use App\Models\JobModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class JobRepository extends CurdRepository implements RepositoryInterface
 {

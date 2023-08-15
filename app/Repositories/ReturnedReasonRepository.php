@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\ReturnedReason;
 use App\Models\ReturnedReasonModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class ReturnedReasonRepository extends CurdRepository implements RepositoryInterface
 {

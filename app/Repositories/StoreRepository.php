@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\Store;
 use App\Models\StoreModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class StoreRepository extends CurdRepository implements RepositoryInterface
 {

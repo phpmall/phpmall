@@ -12,13 +12,13 @@ class RolePermission
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'role_id', description: '角色ID', type: 'int')]
+    #[OA\Property(property: 'role_id', description: '角色ID', type: 'integer')]
     protected int $roleId;
 
-    #[OA\Property(property: 'permission_id', description: '权限ID', type: 'int')]
+    #[OA\Property(property: 'permission_id', description: '权限ID', type: 'integer')]
     protected int $permissionId;
 
     /**

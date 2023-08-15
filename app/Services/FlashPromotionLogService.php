@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\FlashPromotionLogRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\FlashPromotionLogRepository;
 
 class FlashPromotionLogService extends CommonService implements ServiceInterface
 {

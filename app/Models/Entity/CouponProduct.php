@@ -12,16 +12,16 @@ class CouponProduct
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'seller_id', description: '卖家id', type: 'int')]
+    #[OA\Property(property: 'seller_id', description: '卖家id', type: 'integer')]
     protected int $sellerId;
 
-    #[OA\Property(property: 'shop_id', description: '店铺id', type: 'int')]
+    #[OA\Property(property: 'shop_id', description: '店铺id', type: 'integer')]
     protected int $shopId;
 
-    #[OA\Property(property: 'product_id', description: '商品id', type: 'int')]
+    #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
     protected int $productId;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

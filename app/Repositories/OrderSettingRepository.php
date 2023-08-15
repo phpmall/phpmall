@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\OrderSetting;
 use App\Models\OrderSettingModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class OrderSettingRepository extends CurdRepository implements RepositoryInterface
 {

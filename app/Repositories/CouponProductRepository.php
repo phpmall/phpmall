@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\CouponProductModel;
 use App\Models\Entity\CouponProduct;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class CouponProductRepository extends CurdRepository implements RepositoryInterface
 {

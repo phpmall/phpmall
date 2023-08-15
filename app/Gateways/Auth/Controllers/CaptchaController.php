@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Gateways\Auth\Controllers;
 
 use Exception;
-use Laractl\Captcha\Captcha;
 use Illuminate\Support\Str;
+use Laractl\Captcha\Captcha;
 use OpenApi\Attributes as OA;
 use Symfony\Component\HttpFoundation\Response;
 

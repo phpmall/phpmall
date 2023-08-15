@@ -12,13 +12,13 @@ class ProductMemberPrice
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'product_id', description: '商品id', type: 'int')]
+    #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
     protected int $productId;
 
-    #[OA\Property(property: 'member_level_id', description: '会员等级id', type: 'int')]
+    #[OA\Property(property: 'member_level_id', description: '会员等级id', type: 'integer')]
     protected int $memberLevelId;
 
     #[OA\Property(property: 'member_level_name', description: '会员等级名称', type: 'string')]

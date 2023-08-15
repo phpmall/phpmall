@@ -6,9 +6,9 @@ namespace App\Gateways\Auth\Services;
 
 use App\Constants\GlobalConst;
 use App\Services\UserService;
+use Illuminate\Support\Carbon;
 use Laractl\Auth\Authentication;
 use Laractl\Auth\BearerTokenExtractor;
-use Illuminate\Support\Carbon;
 
 class AuthService
 {

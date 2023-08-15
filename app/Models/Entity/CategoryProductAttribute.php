@@ -12,13 +12,13 @@ class CategoryProductAttribute
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'category_id', description: '商品分类id', type: 'int')]
+    #[OA\Property(property: 'category_id', description: '商品分类id', type: 'integer')]
     protected int $categoryId;
 
-    #[OA\Property(property: 'product_attribute_id', description: '商品属性id', type: 'int')]
+    #[OA\Property(property: 'product_attribute_id', description: '商品属性id', type: 'integer')]
     protected int $productAttributeId;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

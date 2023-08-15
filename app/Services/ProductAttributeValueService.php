@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\ProductAttributeValueRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\ProductAttributeValueRepository;
 
 class ProductAttributeValueService extends CommonService implements ServiceInterface
 {

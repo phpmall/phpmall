@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Gateways\Auth\Controllers;
 
 use App\Constants\GlobalConst;
+use App\Exceptions\CustomException;
 use App\Gateways\Auth\Requests\Signup\SignupMobileRequest;
 use App\Gateways\Auth\Responses\LoginResponse;
 use App\Gateways\Auth\Services\AuthService;
 use App\Gateways\Auth\Services\Input\UserRegisterInput;
 use App\Gateways\Auth\Services\UserService;
-use App\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;

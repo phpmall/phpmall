@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\CartModel;
 use App\Models\Entity\Cart;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class CartRepository extends CurdRepository implements RepositoryInterface
 {

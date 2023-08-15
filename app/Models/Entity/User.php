@@ -12,7 +12,7 @@ class User
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'name', description: '昵称', type: 'string')]
@@ -33,7 +33,7 @@ class User
     #[OA\Property(property: 'password', description: '登录密码', type: 'string')]
     protected string $password;
 
-    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'int')]
+    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'integer')]
     protected int $status;
 
     #[OA\Property(property: 'remember_token', description: '', type: 'string')]

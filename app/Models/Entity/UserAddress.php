@@ -12,10 +12,10 @@ class UserAddress
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'user_id', description: '用户ID', type: 'int')]
+    #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
     protected int $userId;
 
     #[OA\Property(property: 'consignee', description: '收件人姓名', type: 'string')]
@@ -51,10 +51,10 @@ class UserAddress
     #[OA\Property(property: 'detail_address', description: '详情地址', type: 'string')]
     protected string $detailAddress;
 
-    #[OA\Property(property: 'is_default', description: '默认收货地址', type: 'int')]
+    #[OA\Property(property: 'is_default', description: '默认收货地址', type: 'integer')]
     protected int $isDefault;
 
-    #[OA\Property(property: 'is_invoice', description: '默认收票地址', type: 'int')]
+    #[OA\Property(property: 'is_invoice', description: '默认收票地址', type: 'integer')]
     protected int $isInvoice;
 
     #[OA\Property(property: 'latitude', description: '纬度', type: 'string')]

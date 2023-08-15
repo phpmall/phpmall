@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\ReturnedOrderRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\ReturnedOrderRepository;
 
 class ReturnedOrderService extends CommonService implements ServiceInterface
 {

@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\ProductLadder;
 use App\Models\ProductLadderModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class ProductLadderRepository extends CurdRepository implements RepositoryInterface
 {

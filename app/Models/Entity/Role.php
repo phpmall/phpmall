@@ -12,11 +12,11 @@ class Role
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'type', description: '模块类型', type: 'int')]
-    protected int $type;
+    #[OA\Property(property: 'type', description: '模块类型:admin,seller,supplier', type: 'string')]
+    protected string $type;
 
     #[OA\Property(property: 'name', description: '角色名称', type: 'string')]
     protected string $name;
@@ -24,10 +24,10 @@ class Role
     #[OA\Property(property: 'description', description: '角色描述', type: 'string')]
     protected string $description;
 
-    #[OA\Property(property: 'sort', description: '角色排序', type: 'int')]
+    #[OA\Property(property: 'sort', description: '角色排序', type: 'integer')]
     protected int $sort;
 
-    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'int')]
+    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'integer')]
     protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
@@ -53,17 +53,17 @@ class Role
     }
 
     /**
-     * 获取模块类型
+     * 获取模块类型:admin,seller,supplier
      */
-    public function getType(): int
+    public function getType(): string
     {
         return $this->type;
     }
 
     /**
-     * 设置模块类型
+     * 设置模块类型:admin,seller,supplier
      */
-    public function setType(int $type): void
+    public function setType(string $type): void
     {
         $this->type = $type;
     }

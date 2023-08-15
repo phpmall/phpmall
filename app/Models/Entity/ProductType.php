@@ -12,16 +12,16 @@ class ProductType
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'name', description: '名称', type: 'string')]
     protected string $name;
 
-    #[OA\Property(property: 'attribute_count', description: '属性数量', type: 'int')]
+    #[OA\Property(property: 'attribute_count', description: '属性数量', type: 'integer')]
     protected int $attributeCount;
 
-    #[OA\Property(property: 'param_count', description: '参数数量', type: 'int')]
+    #[OA\Property(property: 'param_count', description: '参数数量', type: 'integer')]
     protected int $paramCount;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

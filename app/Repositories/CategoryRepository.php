@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\CategoryModel;
 use App\Models\Entity\Category;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class CategoryRepository extends CurdRepository implements RepositoryInterface
 {

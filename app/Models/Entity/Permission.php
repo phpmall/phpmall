@@ -12,13 +12,13 @@ class Permission
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'type', description: '模块类型', type: 'int')]
-    protected int $type;
+    #[OA\Property(property: 'type', description: '模块类型:admin,seller,supplier', type: 'string')]
+    protected string $type;
 
-    #[OA\Property(property: 'parent_id', description: '父级ID', type: 'int')]
+    #[OA\Property(property: 'parent_id', description: '父级ID', type: 'integer')]
     protected int $parentId;
 
     #[OA\Property(property: 'icon', description: '权限图标', type: 'string')]
@@ -33,13 +33,13 @@ class Permission
     #[OA\Property(property: 'code', description: '权限路由', type: 'string')]
     protected string $code;
 
-    #[OA\Property(property: 'menu', description: '是否为菜单项：1是,0否', type: 'int')]
+    #[OA\Property(property: 'menu', description: '是否为菜单项：1是,0否', type: 'integer')]
     protected int $menu;
 
-    #[OA\Property(property: 'sort', description: '权限排序', type: 'int')]
+    #[OA\Property(property: 'sort', description: '权限排序', type: 'integer')]
     protected int $sort;
 
-    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'int')]
+    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'integer')]
     protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
@@ -65,17 +65,17 @@ class Permission
     }
 
     /**
-     * 获取模块类型
+     * 获取模块类型:admin,seller,supplier
      */
-    public function getType(): int
+    public function getType(): string
     {
         return $this->type;
     }
 
     /**
-     * 设置模块类型
+     * 设置模块类型:admin,seller,supplier
      */
-    public function setType(int $type): void
+    public function setType(string $type): void
     {
         $this->type = $type;
     }

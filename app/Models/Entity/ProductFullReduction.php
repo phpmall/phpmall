@@ -12,10 +12,10 @@ class ProductFullReduction
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'product_id', description: '商品id', type: 'int')]
+    #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
     protected int $productId;
 
     #[OA\Property(property: 'full_price', description: '商品满足金额', type: 'float')]

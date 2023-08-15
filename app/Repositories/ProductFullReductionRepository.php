@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\ProductFullReduction;
 use App\Models\ProductFullReductionModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class ProductFullReductionRepository extends CurdRepository implements RepositoryInterface
 {

@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\SellerBrandRepository;
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
+use App\Repositories\SellerBrandRepository;
 
 class SellerBrandService extends CommonService implements ServiceInterface
 {

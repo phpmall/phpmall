@@ -96,5 +96,5 @@ interface CommonServiceInterface
     /**
      * 分页查询列表
      */
-    public function page(array $condition, int $page, int $perPage = 20, string $order, string $sort): array;
+    public function page(array $condition, int $page, int $perPage, string $order, string $sort): array;
 }

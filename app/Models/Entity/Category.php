@@ -12,10 +12,10 @@ class Category
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'parent_id', description: '上级分类的编号：0表示一级分类', type: 'int')]
+    #[OA\Property(property: 'parent_id', description: '上级分类的编号：0表示一级分类', type: 'integer')]
     protected int $parentId;
 
     #[OA\Property(property: 'name', description: '分类名称', type: 'string')]
@@ -30,22 +30,22 @@ class Category
     #[OA\Property(property: 'description', description: '描述', type: 'string')]
     protected string $description;
 
-    #[OA\Property(property: 'level', description: '分类级别：0->1级；1->2级', type: 'int')]
+    #[OA\Property(property: 'level', description: '分类级别：0->1级；1->2级', type: 'integer')]
     protected int $level;
 
-    #[OA\Property(property: 'product_count', description: '商品数量', type: 'int')]
+    #[OA\Property(property: 'product_count', description: '商品数量', type: 'integer')]
     protected int $productCount;
 
     #[OA\Property(property: 'product_unit', description: '商品单位', type: 'string')]
     protected string $productUnit;
 
-    #[OA\Property(property: 'nav_status', description: '是否显示在导航栏：0->不显示；1->显示', type: 'int')]
+    #[OA\Property(property: 'nav_status', description: '是否显示在导航栏：0->不显示；1->显示', type: 'integer')]
     protected int $navStatus;
 
-    #[OA\Property(property: 'show_status', description: '显示状态：0->不显示；1->显示', type: 'int')]
+    #[OA\Property(property: 'show_status', description: '显示状态：0->不显示；1->显示', type: 'integer')]
     protected int $showStatus;
 
-    #[OA\Property(property: 'sort', description: '排序', type: 'int')]
+    #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
     protected int $sort;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

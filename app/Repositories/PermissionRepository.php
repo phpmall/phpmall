@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\Permission;
 use App\Models\PermissionModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class PermissionRepository extends CurdRepository implements RepositoryInterface
 {

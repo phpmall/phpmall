@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\Entity\FlashPromotionLog;
 use App\Models\FlashPromotionLogModel;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class FlashPromotionLogRepository extends CurdRepository implements RepositoryInterface
 {

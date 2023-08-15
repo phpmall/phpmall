@@ -12,10 +12,10 @@ class UserSocialite
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'user_id', description: '用户ID', type: 'int')]
+    #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
     protected int $userId;
 
     #[OA\Property(property: 'type', description: '凭证类型:email,wechat', type: 'string')]

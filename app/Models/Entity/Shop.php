@@ -12,10 +12,10 @@ class Shop
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'seller_id', description: '卖家ID', type: 'int')]
+    #[OA\Property(property: 'seller_id', description: '卖家ID', type: 'integer')]
     protected int $sellerId;
 
     #[OA\Property(property: 'shop_name', description: '店铺名称', type: 'string')]

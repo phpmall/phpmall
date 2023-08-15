@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Contracts\RepositoryInterface;
 use App\Models\CategoryProductAttributeModel;
 use App\Models\Entity\CategoryProductAttribute;
-use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
 
 class CategoryProductAttributeRepository extends CurdRepository implements RepositoryInterface
 {

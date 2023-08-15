@@ -12,13 +12,13 @@ class ProductAttributeValue
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'product_id', description: '商品id', type: 'int')]
+    #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
     protected int $productId;
 
-    #[OA\Property(property: 'product_attribute_id', description: '商品属性id', type: 'int')]
+    #[OA\Property(property: 'product_attribute_id', description: '商品属性id', type: 'integer')]
     protected int $productAttributeId;
 
     #[OA\Property(property: 'value', description: '手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开', type: 'string')]

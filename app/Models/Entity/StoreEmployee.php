@@ -12,10 +12,10 @@ class StoreEmployee
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'int')]
+    #[OA\Property(property: 'id', description: '', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'store_id', description: '门店ID', type: 'int')]
+    #[OA\Property(property: 'store_id', description: '门店ID', type: 'integer')]
     protected int $storeId;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]

@@ -25,6 +25,8 @@ class CartModel extends Model
         'seller_id',
         'shop_id',
         'user_id',
+        'product_id',
+        'quantity',
         'created_at',
         'updated_at',
     ];

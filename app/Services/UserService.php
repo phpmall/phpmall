@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repositories\UserRepository;
-use App\Services\Output\UserOutput;
 use App\Contracts\ServiceInterface;
 use App\Exceptions\CustomException;
-use App\Services\CommonService;
+use App\Repositories\UserRepository;
+use App\Services\Output\UserOutput;
 
 class UserService extends CommonService implements ServiceInterface
 {
