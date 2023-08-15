@@ -18,4 +18,4 @@ vendor/bin/openapi app/Gateways/Seller/ -o storage/framework/cache/seller.json -
 vendor/bin/openapi app/Gateways/Supplier/ -o storage/framework/cache/supplier.json -f json
 vendor/bin/openapi app/Gateways/User/ -o storage/framework/cache/user.json -f json
 
-php artisan gen:ts
+php artisan gen:interface
