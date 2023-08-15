@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\FlashPromotionSession;
 use App\Models\FlashPromotionSessionModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class FlashPromotionSessionRepository extends CurdRepository implements RepositoryInterface
 {

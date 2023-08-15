@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\StoreEmployee;
 use App\Models\StoreEmployeeModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class StoreEmployeeRepository extends CurdRepository implements RepositoryInterface
 {

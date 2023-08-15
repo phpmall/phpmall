@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\BrandModel;
 use App\Models\Entity\Brand;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class BrandRepository extends CurdRepository implements RepositoryInterface
 {

@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\CategoryProductAttributeModel;
 use App\Models\Entity\CategoryProductAttribute;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class CategoryProductAttributeRepository extends CurdRepository implements RepositoryInterface
 {

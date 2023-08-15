@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\ProductType;
 use App\Models\ProductTypeModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class ProductTypeRepository extends CurdRepository implements RepositoryInterface
 {

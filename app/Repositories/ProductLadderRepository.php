@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\ProductLadder;
 use App\Models\ProductLadderModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class ProductLadderRepository extends CurdRepository implements RepositoryInterface
 {

@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\CategoryModel;
 use App\Models\Entity\Category;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class CategoryRepository extends CurdRepository implements RepositoryInterface
 {

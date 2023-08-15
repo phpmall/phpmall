@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\Seller;
 use App\Models\SellerModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class SellerRepository extends CurdRepository implements RepositoryInterface
 {

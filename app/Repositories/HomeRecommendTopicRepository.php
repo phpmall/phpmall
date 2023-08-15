@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\HomeRecommendTopic;
 use App\Models\HomeRecommendTopicModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class HomeRecommendTopicRepository extends CurdRepository implements RepositoryInterface
 {

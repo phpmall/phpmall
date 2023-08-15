@@ -6,8 +6,8 @@ namespace App\Gateways\Auth\Services;
 
 use App\Constants\GlobalConst;
 use App\Services\UserService;
-use Focite\Auth\Authentication;
-use Focite\Auth\BearerTokenExtractor;
+use Laractl\Auth\Authentication;
+use Laractl\Auth\BearerTokenExtractor;
 use Illuminate\Support\Carbon;
 
 class AuthService

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Repositories\ProductRepository;
-use Focite\Builder\Contracts\ServiceInterface;
-use Focite\Builder\Services\CommonService;
+use App\Contracts\ServiceInterface;
+use App\Services\CommonService;
 
 class ProductService extends CommonService implements ServiceInterface
 {

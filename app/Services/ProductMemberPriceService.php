@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Repositories\ProductMemberPriceRepository;
-use Focite\Builder\Contracts\ServiceInterface;
-use Focite\Builder\Services\CommonService;
+use App\Contracts\ServiceInterface;
+use App\Services\CommonService;
 
 class ProductMemberPriceService extends CommonService implements ServiceInterface
 {

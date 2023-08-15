@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\OrderLog;
 use App\Models\OrderLogModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class OrderLogRepository extends CurdRepository implements RepositoryInterface
 {

@@ -6,9 +6,9 @@ namespace App\Services;
 
 use App\Repositories\UserRepository;
 use App\Services\Output\UserOutput;
-use Focite\Builder\Contracts\ServiceInterface;
-use Focite\Builder\Exceptions\CustomException;
-use Focite\Builder\Services\CommonService;
+use App\Contracts\ServiceInterface;
+use App\Exceptions\CustomException;
+use App\Services\CommonService;
 
 class UserService extends CommonService implements ServiceInterface
 {

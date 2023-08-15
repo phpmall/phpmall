@@ -10,7 +10,7 @@ use App\Gateways\Auth\Responses\LoginResponse;
 use App\Gateways\Auth\Services\AuthService;
 use App\Gateways\Auth\Services\Input\UserRegisterInput;
 use App\Gateways\Auth\Services\UserService;
-use Focite\Builder\Exceptions\CustomException;
+use App\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;

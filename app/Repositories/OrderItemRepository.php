@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\OrderItem;
 use App\Models\OrderItemModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class OrderItemRepository extends CurdRepository implements RepositoryInterface
 {

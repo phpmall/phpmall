@@ -7,7 +7,7 @@ namespace App\Gateways\Auth\Services;
 use App\Gateways\Auth\Services\Input\UserRegisterInput;
 use App\Services\Input\UserInput;
 use App\Services\UserService as BaseUserService;
-use Focite\Builder\Exceptions\CustomException;
+use App\Exceptions\CustomException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Throwable;

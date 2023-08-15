@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\User;
 use App\Models\UserModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class UserRepository extends CurdRepository implements RepositoryInterface
 {

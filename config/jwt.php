@@ -1,6 +1,6 @@
 <?php
 
-use Focite\Auth\JWT;
+use Laractl\Auth\JWT;
 
 return [
     // 签名算法

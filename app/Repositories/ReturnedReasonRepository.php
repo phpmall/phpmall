@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\ReturnedReason;
 use App\Models\ReturnedReasonModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class ReturnedReasonRepository extends CurdRepository implements RepositoryInterface
 {

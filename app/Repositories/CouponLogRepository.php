@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\CouponLogModel;
 use App\Models\Entity\CouponLog;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class CouponLogRepository extends CurdRepository implements RepositoryInterface
 {

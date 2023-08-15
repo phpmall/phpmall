@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\HomeBrand;
 use App\Models\HomeBrandModel;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class HomeBrandRepository extends CurdRepository implements RepositoryInterface
 {

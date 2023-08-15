@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\CartModel;
 use App\Models\Entity\Cart;
-use Focite\Builder\Contracts\RepositoryInterface;
-use Focite\Builder\Repositories\CurdRepository;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
 
 class CartRepository extends CurdRepository implements RepositoryInterface
 {
