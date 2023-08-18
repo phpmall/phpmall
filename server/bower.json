@@ -10,7 +10,7 @@
   ],
   "dependencies": {
     "jquery": "^3.7.0",
-    "layui": "layui/layui#^2.8.12",
+    "layui": "layui/layui#^2.8.15",
     "vue": "~2.6.14"
   }
 }
