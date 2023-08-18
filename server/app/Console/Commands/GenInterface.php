@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class GenInterface extends Command
 {
@@ -27,7 +28,7 @@ class GenInterface extends Command
      */
     public function handle(): void
     {
-        $files = glob(storage_path('framework/cache/*.json'));
+        $files = glob(public_path('swagger/*.json'));
         foreach ($files as $file) {
             $module = basename($file, '.json');
 
@@ -35,9 +36,11 @@ class GenInterface extends Command
             $data = json_decode(file_get_contents($file), true);
             if (isset($data['components']['schemas'])) {
                 foreach ($data['components']['schemas'] as $type => $schema) {
+                    if (Str::contains($type, 'Schema')) {
+                        continue;
+                    }
                     if (! isset($schema['properties'])) {
-                        dump($module.' '.$type);
-                        dd($schema);
+                        exit($module.' '.$type.' 缺少 properties 参数');
                     }
                     $content .= $this->genCode($type, $schema);
                 }
