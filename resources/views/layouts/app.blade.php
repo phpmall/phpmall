@@ -7,12 +7,12 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>{{ $page_title ?? 'PHPMall' }} - 新零售电商平台系统软件</title>
 <meta name="generator" content="PHPMall.Net"/>
-<link rel="stylesheet" href="{{ asset('static/layui/dist/css/red.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/layui/dist/css/red.css') }}">
 <link rel="stylesheet" href="{{ asset('static/portal/css/app.css') }}">
 @yield('style')
-<script src="{{ asset('static/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('static/vue/dist/vue.min.js') }}"></script>
-<script src="{{ asset('static/layui/dist/layui.js') }}"></script>
+<script src="{{ asset('assets/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/vue/dist/vue.min.js') }}"></script>
+<script src="{{ asset('assets/layui/dist/layui.js') }}"></script>
 </head>
 <body>
 <div class="app-header layui-bg-gray">
