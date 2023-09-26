@@ -1,6 +1,18 @@
 cd /home/wwwroot/phpmall/
 
+git pull
+
 cur_dir=$(pwd)
+
+BackendBuild()
+{
+    cd $cur_dir
+    composer u --no-dev -o
+    php artisan optimize
+    php artisan migrate --force
+    php artisan db:seed --force
+    supervisorctl reload
+}
 
 FrontendBuild()
 {
@@ -17,18 +29,6 @@ MobileBuild()
     pnpm run build:h5
     ossutil64 cp -rf dist/build/h5 oss://phpmall-demo/mobile # --endpoint=oss-cn-hongkong.aliyuncs.com
 }
-
-BackendBuild()
-{
-    cd $cur_dir
-    composer u
-    php artisan optimize
-    php artisan migrate --force
-    php artisan db:seed --force
-    supervisorctl reload
-}
-
-git pull
 
 BackendBuild
 FrontendBuild
