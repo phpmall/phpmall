@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import 'element-plus/es/components/message/style/css'
 import { Session } from '@/utils/storage'
 
 // 配置新建一个 axios 实例
@@ -50,8 +51,11 @@ httpClient.interceptors.response.use(
     } else if (error.message == 'Network Error') {
       ElMessage.error('网络连接错误')
     } else {
-      if (error.response.data) ElMessage.error(error.response.statusText)
-      else ElMessage.error('接口路径找不到')
+      if (error.response.data) {
+        ElMessage.error(error.response.statusText)
+      } else {
+        ElMessage.error('接口路径找不到')
+      }
     }
     return Promise.reject(error)
   }
