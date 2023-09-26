@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 import type { IAddressQueryRequest,
 IAddressResponse,
-IAddressUpdateRequest,
 IAddressCreateRequest,
+IAddressUpdateRequest,
 ILoginRequest,
 ILoginResponse } from '@/types/user'
 
@@ -16,35 +16,12 @@ export const userAddressService = (page: number, pageSize: number, formData: IAd
     })
 }
 
-// [收货地址] 更新用户收货地址
-export const userAddressService = (page: number, pageSize: number, formData: IAddressQueryRequest, formData: IAddressUpdateRequest): Promise<any> => {
-    return request({
-        url: '/user/address',
-        method: 'put',
-        params: {page, pageSize},
-        data: formData,
-        data: formData
-    })
-}
-
 // [收货地址] 新增用户收货地址
-export const userAddressService = (page: number, pageSize: number, formData: IAddressQueryRequest, formData: IAddressUpdateRequest, formData: IAddressCreateRequest): Promise<any> => {
+export const userAddressStoreService = (formData: IAddressCreateRequest): Promise<any> => {
     return request({
-        url: '/user/address',
+        url: '/user/address/store',
         method: 'post',
-        params: {page, pageSize},
-        data: formData,
-        data: formData,
         data: formData
-    })
-}
-
-// [收货地址] 删除用户收货地址
-export const userAddressService = (id: number): Promise<any> => {
-    return request({
-        url: '/user/address',
-        method: 'delete',
-        params: {id}
     })
 }
 
@@ -53,6 +30,24 @@ export const userAddressShowService = (id: number): Promise<IAddressResponse> =>
     return request({
         url: '/user/address/show',
         method: 'get',
+        params: {id}
+    })
+}
+
+// [收货地址] 更新用户收货地址
+export const userAddressUpdateService = (formData: IAddressUpdateRequest): Promise<any> => {
+    return request({
+        url: '/user/address/update',
+        method: 'put',
+        data: formData
+    })
+}
+
+// [收货地址] 删除用户收货地址
+export const userAddressDestroyService = (id: number): Promise<any> => {
+    return request({
+        url: '/user/address/destroy',
+        method: 'delete',
         params: {id}
     })
 }

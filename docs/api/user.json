@@ -69,40 +69,15 @@
                         "bearerAuth": []
                     }
                 ]
-            },
-            "put": {
-                "tags": [
-                    "收货地址"
-                ],
-                "summary": "更新用户收货地址",
-                "operationId": "7b6af61bf012dea0d7c49f492a0428e3",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/AddressUpdateRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            },
+            }
+        },
+        "/user/address/store": {
             "post": {
                 "tags": [
                     "收货地址"
                 ],
                 "summary": "新增用户收货地址",
-                "operationId": "fc8d2722850027aed77abdf461670703",
+                "operationId": "64bde186fd7e791f205a2d05e7be8d80",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -113,32 +88,6 @@
                         }
                     }
                 },
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "收货地址"
-                ],
-                "summary": "删除用户收货地址",
-                "operationId": "bc8a2c586f07f4b29c6eb27eb29cc65b",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "收货地址ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -177,6 +126,63 @@
                                 }
                             }
                         }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/address/update": {
+            "put": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "更新用户收货地址",
+                "operationId": "ab0a201a1321019ee24465e1c48408a9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddressUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/address/destroy": {
+            "delete": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "删除用户收货地址",
+                "operationId": "39ef6ad8432ebbfb7d7ae9a9649d1643",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "收货地址ID",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
                     }
                 },
                 "security": [
