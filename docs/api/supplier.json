@@ -1,0 +1,49 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API文档",
+        "description": "提供供应商API接口",
+        "contact": {
+            "name": "API Develop Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "开发环境"
+        },
+        {
+            "url": "https://api.demo.phpmall.net",
+            "description": "测试环境"
+        }
+    ],
+    "paths": {
+        "/supplier": {
+            "get": {
+                "tags": [
+                    "supplier"
+                ],
+                "summary": "supplier",
+                "operationId": "4348e974f813abdac03640bc26eaab91",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT 认证信息",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

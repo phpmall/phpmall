@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\Portal\Controllers\Admin;
 
-use App\Gateways\Admin\Controllers\BaseController;
+use App\Gateways\Manager\Controllers\BaseController;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

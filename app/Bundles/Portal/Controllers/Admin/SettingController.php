@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\Portal\Controllers\Admin;
 
-use App\Gateways\Admin\Controllers\BaseController;
+use App\Gateways\Manager\Controllers\BaseController;
 use Illuminate\Http\JsonResponse;
 
 class SettingController extends BaseController
