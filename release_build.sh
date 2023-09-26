@@ -16,7 +16,7 @@ BackendBuild()
 
 FrontendBuild()
 {
-    cd $cur_dir
+    cd $cur_dir/desktop
     pnpm install
     pnpm run build-only
     ossutil64 cp -rf dist oss://phpmall-demo/ # --endpoint=oss-cn-hongkong.aliyuncs.com
