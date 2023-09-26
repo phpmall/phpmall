@@ -13,12 +13,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('name')->comment('昵称');
+            $table->string('avatar')->comment('头像');
+            $table->date('birthday')->comment('生日');
+            $table->string('mobile')->comment('手机号码');
+            $table->timestamp('mobile_verified_at')->nullable()->comment('手机号码验证时间');
+            $table->string('password')->comment('登录密码');
+            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常;2禁用');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+            $table->unique(['mobile', 'deleted_at']);
+            $table->comment('用户表');
+        });
+
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+            $table->string('mobile')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+            $table->comment('用户密码重置表');
         });
     }
 
@@ -28,5 +41,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('password_reset_tokens');
     }
 };

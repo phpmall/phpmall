@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Contracts\RepositoryInterface;
-use App\Models\Entity\Product;
-use App\Models\ProductModel;
+use App\Models\Entity\ProductEntity;
+use App\Models\Product;
+use Focite\Generator\Contracts\RepositoryInterface;
+use Focite\Generator\Repositories\CurdRepository;
 
 class ProductRepository extends CurdRepository implements RepositoryInterface
 {
@@ -27,7 +28,7 @@ class ProductRepository extends CurdRepository implements RepositoryInterface
     /**
      * 添加
      */
-    public function saveProduct(Product $entity): int
+    public function saveEntity(ProductEntity $entity): int
     {
         return $this->save($entity->toArray());
     }
@@ -35,75 +36,40 @@ class ProductRepository extends CurdRepository implements RepositoryInterface
     /**
      * 按照ID查询返回对象
      */
-    public function findOneByIdReturnProduct(int $id): ?Product
+    public function findOneById(int $id): ?ProductEntity
     {
         $data = $this->findById($id);
         if (empty($data)) {
             return null;
         }
 
-        $output = new Product();
-        $output->setData($data);
+        $entity = new ProductEntity();
+        $entity->setData($data);
 
-        return $output;
+        return $entity;
     }
 
     /**
      * 按照条件查询返回对象
      */
-    public function findOneByWhereReturnProduct(array $condition): ?Product
+    public function findOne(array $condition = []): ?ProductEntity
     {
-        $data = $this->findByWhere($condition);
+        $data = $this->find($condition);
         if (empty($data)) {
             return null;
         }
 
-        $output = new Product();
-        $output->setData($data);
+        $entity = new ProductEntity();
+        $entity->setData($data);
 
-        return $output;
-    }
-
-    /**
-     * 查询列表
-     */
-    public function findAllReturnProduct(array $condition = [], string $order = 'id', string $sort = 'asc'): array
-    {
-        $result = $this->findAll($condition, $order, $sort);
-        if (empty($result)) {
-            return [];
-        }
-
-        foreach ($result as $key => $item) {
-            $output = new Product();
-            $output->setData($item);
-            $result[$key] = $output;
-        }
-
-        return $result;
-    }
-
-    /**
-     * 分页查询
-     */
-    public function pageReturnProduct(array $condition, int $page, int $pageSize): array
-    {
-        $result = $this->page($condition, $page, $pageSize);
-
-        foreach ($result['data'] as $key => $item) {
-            $output = new Product();
-            $output->setData($item);
-            $result['data'][$key] = $output;
-        }
-
-        return $result;
+        return $entity;
     }
 
     /**
      * 定义数据数据模型类
      */
-    public function model(): ProductModel
+    public function model(): Product
     {
-        return new ProductModel();
+        return new Product();
     }
 }

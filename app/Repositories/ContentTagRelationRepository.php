@@ -1,0 +1,75 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Repositories;
+
+use App\Models\ContentTagRelation;
+use App\Models\Entity\ContentTagRelationEntity;
+use Focite\Generator\Contracts\RepositoryInterface;
+use Focite\Generator\Repositories\CurdRepository;
+
+class ContentTagRelationRepository extends CurdRepository implements RepositoryInterface
+{
+    private static ?ContentTagRelationRepository $instance = null;
+
+    /**
+     * 单例
+     */
+    public static function getInstance(): ContentTagRelationRepository
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new ContentTagRelationRepository();
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * 添加
+     */
+    public function saveEntity(ContentTagRelationEntity $entity): int
+    {
+        return $this->save($entity->toArray());
+    }
+
+    /**
+     * 按照ID查询返回对象
+     */
+    public function findOneById(int $id): ?ContentTagRelationEntity
+    {
+        $data = $this->findById($id);
+        if (empty($data)) {
+            return null;
+        }
+
+        $entity = new ContentTagRelationEntity();
+        $entity->setData($data);
+
+        return $entity;
+    }
+
+    /**
+     * 按照条件查询返回对象
+     */
+    public function findOne(array $condition = []): ?ContentTagRelationEntity
+    {
+        $data = $this->find($condition);
+        if (empty($data)) {
+            return null;
+        }
+
+        $entity = new ContentTagRelationEntity();
+        $entity->setData($data);
+
+        return $entity;
+    }
+
+    /**
+     * 定义数据数据模型类
+     */
+    public function model(): ContentTagRelation
+    {
+        return new ContentTagRelation();
+    }
+}

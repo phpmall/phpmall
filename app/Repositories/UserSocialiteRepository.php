@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Contracts\RepositoryInterface;
-use App\Models\Entity\UserSocialite;
-use App\Models\UserSocialiteModel;
+use App\Models\Entity\UserSocialiteEntity;
+use App\Models\UserSocialite;
+use Focite\Generator\Contracts\RepositoryInterface;
+use Focite\Generator\Repositories\CurdRepository;
 
 class UserSocialiteRepository extends CurdRepository implements RepositoryInterface
 {
@@ -27,7 +28,7 @@ class UserSocialiteRepository extends CurdRepository implements RepositoryInterf
     /**
      * 添加
      */
-    public function saveUserSocialite(UserSocialite $entity): int
+    public function saveEntity(UserSocialiteEntity $entity): int
     {
         return $this->save($entity->toArray());
     }
@@ -35,75 +36,40 @@ class UserSocialiteRepository extends CurdRepository implements RepositoryInterf
     /**
      * 按照ID查询返回对象
      */
-    public function findOneByIdReturnUserSocialite(int $id): ?UserSocialite
+    public function findOneById(int $id): ?UserSocialiteEntity
     {
         $data = $this->findById($id);
         if (empty($data)) {
             return null;
         }
 
-        $output = new UserSocialite();
-        $output->setData($data);
+        $entity = new UserSocialiteEntity();
+        $entity->setData($data);
 
-        return $output;
+        return $entity;
     }
 
     /**
      * 按照条件查询返回对象
      */
-    public function findOneByWhereReturnUserSocialite(array $condition): ?UserSocialite
+    public function findOne(array $condition = []): ?UserSocialiteEntity
     {
-        $data = $this->findByWhere($condition);
+        $data = $this->find($condition);
         if (empty($data)) {
             return null;
         }
 
-        $output = new UserSocialite();
-        $output->setData($data);
+        $entity = new UserSocialiteEntity();
+        $entity->setData($data);
 
-        return $output;
-    }
-
-    /**
-     * 查询列表
-     */
-    public function findAllReturnUserSocialite(array $condition = [], string $order = 'id', string $sort = 'asc'): array
-    {
-        $result = $this->findAll($condition, $order, $sort);
-        if (empty($result)) {
-            return [];
-        }
-
-        foreach ($result as $key => $item) {
-            $output = new UserSocialite();
-            $output->setData($item);
-            $result[$key] = $output;
-        }
-
-        return $result;
-    }
-
-    /**
-     * 分页查询
-     */
-    public function pageReturnUserSocialite(array $condition, int $page, int $pageSize): array
-    {
-        $result = $this->page($condition, $page, $pageSize);
-
-        foreach ($result['data'] as $key => $item) {
-            $output = new UserSocialite();
-            $output->setData($item);
-            $result['data'][$key] = $output;
-        }
-
-        return $result;
+        return $entity;
     }
 
     /**
      * 定义数据数据模型类
      */
-    public function model(): UserSocialiteModel
+    public function model(): UserSocialite
     {
-        return new UserSocialiteModel();
+        return new UserSocialite();
     }
 }

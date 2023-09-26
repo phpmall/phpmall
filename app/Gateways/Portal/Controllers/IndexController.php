@@ -4,16 +4,34 @@ declare(strict_types=1);
 
 namespace App\Gateways\Portal\Controllers;
 
+use App\Exceptions\CustomException;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\JsonResponse;
-use OpenApi\Attributes as OA;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class IndexController extends BaseController
 {
-    #[OA\Get(path: '/portal', summary: '商城首页', tags: ['首页'])]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function index(): JsonResponse|Renderable
+    public function index(Request $request): Renderable
     {
-        return $this->response('index');
+        try {
+            $pathInfo = $request->path();
+
+            if ($pathInfo === '/') {
+                return $this->display('index');
+            }
+
+            $data = DB::table('contents')->where('segment', $pathInfo)->first();
+            if (empty($data)) {
+                throw new CustomException('页面没有找到');
+            }
+
+            return $this->display($data->template);
+        } catch (CustomException|Throwable $e) {
+            return $this->display('error', [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }

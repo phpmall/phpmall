@@ -9,10 +9,10 @@ use OpenApi\Attributes as OA;
 
 class IndexController extends BaseController
 {
-    #[OA\Get(path: '/user', summary: '用户概要信息', tags: ['用户首页'])]
+    #[OA\Get(path: '/user', summary: '仪表台', security: [['bearerAuth' => []]], tags: ['用户中心'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {
-        return $this->success(['user::index']);
+        return $this->success(['test user token', $this->getUser()]);
     }
 }

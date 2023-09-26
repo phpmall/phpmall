@@ -4,15 +4,22 @@ declare(strict_types=1);
 
 namespace App\Gateways\User\Controllers;
 
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class ProfileController extends BaseController
 {
     #[OA\Get(path: '/user/profile', summary: '获取用户详细信息', tags: ['用户资料'])]
     #[OA\Response(response: 200, description: 'OK')]
-    public function index(): JsonResponse
+    public function index(): Renderable
     {
-        return $this->success();
+        return view('index');
+    }
+
+    public function updateHandle(Request $request): JsonResponse
+    {
+        return $this->success('');
     }
 }

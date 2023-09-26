@@ -5,11 +5,11 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>认证</title>
-    <link rel="stylesheet" href="{{ asset('static/layui/dist/css/red.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/layui/dist/css/red.css') }}">
     <link rel="stylesheet" href="{{ asset('static/common/css/common.css') }}">
-    <link rel="stylesheet" href="{{ asset('static/auth/css/app.css') }}">
-    <script src="{{ asset('static/layui/dist/layui.js') }}"></script>
-    <script src="{{ asset('static/vue/dist/vue.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/auth/css/app.css') }}">
+    <script src="{{ asset('assets/layui/dist/layui.js') }}"></script>
+    <script src="{{ asset('assets/vue/dist/vue.min.js') }}"></script>
     <script src="{{ asset('static/common/js/common.js') }}"></script>
 </head>
 <body>
@@ -24,6 +24,6 @@
         footer
     </div>
 </div>
-<script src="{{ asset('static/auth/js/app.js') }}"></script>
+<script src="{{ asset('assets/auth/js/app.js') }}"></script>
 </body>
 </html>

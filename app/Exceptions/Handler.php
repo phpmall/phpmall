@@ -4,8 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -33,8 +32,12 @@ class Handler extends ExceptionHandler
 
     /**
      * Convert an authentication exception into a response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    protected function unauthenticated($request, AuthenticationException $exception): JsonResponse|RedirectResponse
+    protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($this->shouldReturnJson($request, $exception)) {
             return response()->json([
@@ -43,9 +46,29 @@ class Handler extends ExceptionHandler
                 'data' => config('app.debug') ? $exception->getTrace() : null,
             ], 401);
         } else {
-            $parameters = ['callback' => $request->fullUrl()];
+            $params = ['callback' => $request->fullUrl()];
 
-            return redirect()->guest(route('login', $parameters));
+            return redirect()->guest(route('login', $params));
         }
+    }
+
+    /**
+     * Create a response object from the given validation exception.
+     *
+     * @param  \Illuminate\Validation\ValidationException  $e
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function convertValidationExceptionToResponse(ValidationException $e, $request)
+    {
+        if ($e->response) {
+            return $e->response;
+        }
+
+        return response()->json([
+            'code' => $e->status,
+            'message' => $e->getMessage(),
+            'data' => $e->errors(),
+        ], $e->status);
     }
 }

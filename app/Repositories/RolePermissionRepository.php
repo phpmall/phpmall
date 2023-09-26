@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Contracts\RepositoryInterface;
-use App\Models\Entity\RolePermission;
-use App\Models\RolePermissionModel;
+use App\Models\Entity\RolePermissionEntity;
+use App\Models\RolePermission;
+use Focite\Generator\Contracts\RepositoryInterface;
+use Focite\Generator\Repositories\CurdRepository;
 
 class RolePermissionRepository extends CurdRepository implements RepositoryInterface
 {
@@ -27,7 +28,7 @@ class RolePermissionRepository extends CurdRepository implements RepositoryInter
     /**
      * 添加
      */
-    public function saveRolePermission(RolePermission $entity): int
+    public function saveEntity(RolePermissionEntity $entity): int
     {
         return $this->save($entity->toArray());
     }
@@ -35,75 +36,40 @@ class RolePermissionRepository extends CurdRepository implements RepositoryInter
     /**
      * 按照ID查询返回对象
      */
-    public function findOneByIdReturnRolePermission(int $id): ?RolePermission
+    public function findOneById(int $id): ?RolePermissionEntity
     {
         $data = $this->findById($id);
         if (empty($data)) {
             return null;
         }
 
-        $output = new RolePermission();
-        $output->setData($data);
+        $entity = new RolePermissionEntity();
+        $entity->setData($data);
 
-        return $output;
+        return $entity;
     }
 
     /**
      * 按照条件查询返回对象
      */
-    public function findOneByWhereReturnRolePermission(array $condition): ?RolePermission
+    public function findOne(array $condition = []): ?RolePermissionEntity
     {
-        $data = $this->findByWhere($condition);
+        $data = $this->find($condition);
         if (empty($data)) {
             return null;
         }
 
-        $output = new RolePermission();
-        $output->setData($data);
+        $entity = new RolePermissionEntity();
+        $entity->setData($data);
 
-        return $output;
-    }
-
-    /**
-     * 查询列表
-     */
-    public function findAllReturnRolePermission(array $condition = [], string $order = 'id', string $sort = 'asc'): array
-    {
-        $result = $this->findAll($condition, $order, $sort);
-        if (empty($result)) {
-            return [];
-        }
-
-        foreach ($result as $key => $item) {
-            $output = new RolePermission();
-            $output->setData($item);
-            $result[$key] = $output;
-        }
-
-        return $result;
-    }
-
-    /**
-     * 分页查询
-     */
-    public function pageReturnRolePermission(array $condition, int $page, int $pageSize): array
-    {
-        $result = $this->page($condition, $page, $pageSize);
-
-        foreach ($result['data'] as $key => $item) {
-            $output = new RolePermission();
-            $output->setData($item);
-            $result['data'][$key] = $output;
-        }
-
-        return $result;
+        return $entity;
     }
 
     /**
      * 定义数据数据模型类
      */
-    public function model(): RolePermissionModel
+    public function model(): RolePermission
     {
-        return new RolePermissionModel();
+        return new RolePermission();
     }
 }

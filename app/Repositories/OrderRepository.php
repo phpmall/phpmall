@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Contracts\RepositoryInterface;
-use App\Models\Entity\Order;
-use App\Models\OrderModel;
+use App\Models\Entity\OrderEntity;
+use App\Models\Order;
+use Focite\Generator\Contracts\RepositoryInterface;
+use Focite\Generator\Repositories\CurdRepository;
 
 class OrderRepository extends CurdRepository implements RepositoryInterface
 {
@@ -27,7 +28,7 @@ class OrderRepository extends CurdRepository implements RepositoryInterface
     /**
      * 添加
      */
-    public function saveOrder(Order $entity): int
+    public function saveEntity(OrderEntity $entity): int
     {
         return $this->save($entity->toArray());
     }
@@ -35,75 +36,40 @@ class OrderRepository extends CurdRepository implements RepositoryInterface
     /**
      * 按照ID查询返回对象
      */
-    public function findOneByIdReturnOrder(int $id): ?Order
+    public function findOneById(int $id): ?OrderEntity
     {
         $data = $this->findById($id);
         if (empty($data)) {
             return null;
         }
 
-        $output = new Order();
-        $output->setData($data);
+        $entity = new OrderEntity();
+        $entity->setData($data);
 
-        return $output;
+        return $entity;
     }
 
     /**
      * 按照条件查询返回对象
      */
-    public function findOneByWhereReturnOrder(array $condition): ?Order
+    public function findOne(array $condition = []): ?OrderEntity
     {
-        $data = $this->findByWhere($condition);
+        $data = $this->find($condition);
         if (empty($data)) {
             return null;
         }
 
-        $output = new Order();
-        $output->setData($data);
+        $entity = new OrderEntity();
+        $entity->setData($data);
 
-        return $output;
-    }
-
-    /**
-     * 查询列表
-     */
-    public function findAllReturnOrder(array $condition = [], string $order = 'id', string $sort = 'asc'): array
-    {
-        $result = $this->findAll($condition, $order, $sort);
-        if (empty($result)) {
-            return [];
-        }
-
-        foreach ($result as $key => $item) {
-            $output = new Order();
-            $output->setData($item);
-            $result[$key] = $output;
-        }
-
-        return $result;
-    }
-
-    /**
-     * 分页查询
-     */
-    public function pageReturnOrder(array $condition, int $page, int $pageSize): array
-    {
-        $result = $this->page($condition, $page, $pageSize);
-
-        foreach ($result['data'] as $key => $item) {
-            $output = new Order();
-            $output->setData($item);
-            $result['data'][$key] = $output;
-        }
-
-        return $result;
+        return $entity;
     }
 
     /**
      * 定义数据数据模型类
      */
-    public function model(): OrderModel
+    public function model(): Order
     {
-        return new OrderModel();
+        return new Order();
     }
 }

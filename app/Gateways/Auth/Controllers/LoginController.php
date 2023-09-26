@@ -4,33 +4,64 @@ declare(strict_types=1);
 
 namespace App\Gateways\Auth\Controllers;
 
-use App\Constants\GlobalConst;
+use App\Bundles\Admin\Services\Input\LoginInput;
+use App\Bundles\Admin\Services\LoginService;
+use App\Bundles\Foundation\Constants\GlobalConst;
+use App\Bundles\Foundation\Enums\GuardTypeEnum;
 use App\Exceptions\CustomException;
 use App\Gateways\Auth\Requests\Login\LoginMobileRequest;
+use App\Gateways\Auth\Requests\Login\LoginRequest;
 use App\Gateways\Auth\Requests\Login\LoginSmsRequest;
 use App\Gateways\Auth\Responses\LoginResponse;
 use App\Gateways\Auth\Services\AuthService;
 use App\Services\UserService;
 use Exception;
+use Focite\Captcha\Captcha;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
-use Laractl\Captcha\Captcha;
 use OpenApi\Attributes as OA;
+use Throwable;
 
 class LoginController extends BaseController
 {
-    public function showLoginForm(): Renderable
+    #[OA\Post(path: '/login', summary: '登录操作', tags: ['认证管理'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
+    public function login(LoginRequest $request): JsonResponse
     {
-        return $this->display('auth::login');
+        try {
+            $request->validated();
+
+            $loginInput = new LoginInput();
+            $loginInput->setUsername($request->post('username'));
+            $loginInput->setPassword($request->post('password'));
+            $loginInput->setCaptcha($request->post('captcha'));
+            $loginInput->setUuid($request->post('uuid'));
+
+            $loginService = new LoginService();
+            $adminUser = $loginService->login($loginInput);
+            $token = $adminUser->createToken('token', ['role:'.GuardTypeEnum::Admin->value], now()->addMonths())->plainTextToken;
+
+            $loginResponse = new LoginResponse();
+            $loginResponse->setToken($token);
+
+            return $this->success($loginResponse->toArray());
+        } catch (CustomException $e) {
+            return $this->error($e->getMessage());
+        } catch (Throwable $e) {
+            Log::error($e->getMessage());
+
+            return $this->error($e->getMessage());
+        }
     }
 
-    #[OA\Post(path: '/login', summary: '通过手机号和密码登录', tags: ['登录'])]
+    #[OA\Post(path: '/login/mobile', summary: '通过手机号和密码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginMobileRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
-    public function login(LoginMobileRequest $request): JsonResponse
+    public function mobile2(LoginMobileRequest $request): JsonResponse
     {
         try {
             $data = $request->validated();

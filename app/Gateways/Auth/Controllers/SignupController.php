@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Gateways\Auth\Controllers;
 
-use App\Constants\GlobalConst;
+use App\Bundles\Foundation\Constants\GlobalConst;
 use App\Exceptions\CustomException;
 use App\Gateways\Auth\Requests\Signup\SignupMobileRequest;
 use App\Gateways\Auth\Responses\LoginResponse;
@@ -19,7 +19,7 @@ use Throwable;
 
 class SignupController extends BaseController
 {
-    #[OA\Post(path: '/auth/signup/mobile', summary: '通过手机号码注册', tags: ['注册'])]
+    #[OA\Post(path: '/signup/mobile', summary: '通过手机号码注册', tags: ['注册'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SignupMobileRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
     public function mobile(SignupMobileRequest $request): JsonResponse
@@ -28,14 +28,14 @@ class SignupController extends BaseController
 
         try {
             // 校验短信验证码
-            $smsCode = Cache::get(GlobalConst::SMS_CACHE_PREFIX.$data['mobile']);
+            $smsCode = Cache::get(GlobalConst::SMS_CACHE_PREFIX . $data['mobile']);
             if ($smsCode !== $data['code']) {
-                return $this->error('短信验证码不正确');
+                throw new CustomException('短信验证码不正确');
             }
 
             // 校验注册协议
             if ($data['agreed'] !== 'on') {
-                return $this->error('请阅读并同意协议');
+                throw new CustomException('请阅读并同意协议');
             }
 
             // 新用户注册
