@@ -21,6 +21,7 @@ const logout = () => {
   <div class="header">
       <RouterLink :to="{ name: 'portal.index' }">portal logo</RouterLink>
       <div style="float: right;">
+        <RouterLink :to="{ name: 'user.index' }">会员中心</RouterLink> | 
         <a href="#" @click="logout">退出</a>
       </div>
   </div>

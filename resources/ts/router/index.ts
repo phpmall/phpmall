@@ -5,8 +5,8 @@ import 'nprogress/nprogress.css'
 import { useAuthStore } from '@/stores/auth'
 import { decodeURIComponent2, encodeURIComponent2 } from '@/utils/urlx'
 
-const modules = import.meta.glob('../views/**/*.vue')
-const getPathInfo = (path: string) => path.replace(/^.*\/views\/(.+)\.vue$/, '$1')
+const modules = import.meta.glob('../pages/**/*.vue')
+const getPathInfo = (path: string) => path.replace(/^.*\/pages\/(.+)\.vue$/, '$1')
 
 const getRoutes = (prefix: string) => {
   const routes: Array<RouteRecordRaw> = []
@@ -37,7 +37,7 @@ const router = createRouter({
   routes: [
     {
       path: '/admin',
-      component: () => import('@/views/admin/layout.vue'),
+      component: () => import('@/pages/admin/layout.vue'),
       children: getRoutes('admin'),
       meta: {
         requiresAuth: true
@@ -45,7 +45,7 @@ const router = createRouter({
     },
     {
       path: '/passport',
-      component: () => import('@/views/passport/layout.vue'),
+      component: () => import('@/pages/passport/layout.vue'),
       children: getRoutes('passport'),
       meta: {
         guest: true
@@ -53,7 +53,7 @@ const router = createRouter({
     },
     {
       path: '/seller',
-      component: () => import('@/views/seller/layout.vue'),
+      component: () => import('@/pages/seller/layout.vue'),
       children: getRoutes('seller'),
       meta: {
         requiresAuth: true
@@ -61,7 +61,7 @@ const router = createRouter({
     },
     {
       path: '/supplier',
-      component: () => import('@/views/supplier/layout.vue'),
+      component: () => import('@/pages/supplier/layout.vue'),
       children: getRoutes('supplier'),
       meta: {
         requiresAuth: true
@@ -69,7 +69,7 @@ const router = createRouter({
     },
     {
       path: '/home',
-      component: () => import('@/views/user/layout.vue'),
+      component: () => import('@/pages/user/layout.vue'),
       children: getRoutes('user'),
       meta: {
         requiresAuth: true
@@ -77,7 +77,7 @@ const router = createRouter({
     },
     {
       path: '/',
-      component: () => import('@/views/portal/layout.vue'),
+      component: () => import('@/pages/portal/layout.vue'),
       children: getRoutes('portal')
     },
     {
