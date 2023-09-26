@@ -13,6 +13,9 @@ export default defineConfig(({ mode }) => {
   // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
   const env = loadEnv(mode, process.cwd(), '')
   return {
+    build: {
+      copyPublicDir: false
+    },
     plugins: [
       vue(),
       vueJsx(),
