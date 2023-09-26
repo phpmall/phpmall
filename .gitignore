@@ -10,10 +10,7 @@
 .env.production
 .phpunit.result.cache
 *.lock
-*-lock.yaml
 *.log
 /.fleet
 /.idea
 /.vscode
-auto-imports.d.ts
-components.d.ts
