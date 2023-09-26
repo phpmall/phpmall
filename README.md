@@ -4,11 +4,11 @@
 
 High performance e-commerce platform for PHP based on Octane.
 
-> 运行环境要求 PHP8.1。
+> 运行环境要求PHP8.1
 
 目标：打造千万级数据的在线交易平台系统，保证初创企业初期业务数据支撑。
 
-### 演示地址
+## 演示地址
 
 - 商城首页：https://demo.phpmall.net
 - 运营平台：https://demo.phpmall.net/admin
@@ -18,43 +18,43 @@ High performance e-commerce platform for PHP based on Octane.
 - 买家平台：https://demo.phpmall.net/home
 - 微商城：https://demo.phpmall.net/mobile
 
-### 创建（克隆）项目
+## 安装
 
 ```
-git clone https://gitee.com/phpmall/phpmall.git
+composer create-project phpmall/phpmall
 ```
 
-### 安装前端工程依赖
+## 安装前端工程依赖
 
 ```
 # 商城首页
-cd web
 pnpm install
 pnpm run build
 
 # 微商城
-cd client
+cd mobile
 pnpm install
 pnpm run build:h5
 ```
 
-### 安装后端工程依赖
+## 安装后端工程依赖
 
 ```
-cd server
 composer config -g repos.packagist composer https://packagist.pages.dev
 composer install -o
 cp .env.example .env
 php artisan key:generate
 ```
 
-### 创建数据库
+## 创建数据库
 
 ```
 CREATE DATABASE `phpmall` CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci';
 ```
 
-### 配置数据库连接
+## 数据库配置
+
+编辑 .env 文件，修改数据库连接信息：
 
 ```
 DB_CONNECTION=mysql
@@ -65,13 +65,18 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### 执行数据库迁移
+## 数据迁移及填充
 
 ```
 php artisan migrate
+php artisan db:seed
 ```
 
-### 测试运行
+## 运行
+
+现在只需要做最后一步来验证是否正常运行。
+
+进入命令行下面，执行下面指令
 
 ```
 php artisan serve
@@ -81,6 +86,6 @@ php artisan serve
 
 http://localhost:8000/
 
-### License
+## 版权信息
 
-Apache-2.0
+Apache2开源协议，并提供免费使用。

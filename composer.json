@@ -2,7 +2,7 @@
     "name": "phpmall/phpmall",
     "type": "project",
     "description": "High performance e-commerce platform for PHP based on Octane.",
-    "keywords": ["phpmall", "mysql", "redis", "swoole", "high performance"],
+    "keywords": ["phpmall", "multi-store", "laravel", "mysql", "redis", "swoole", "high performance"],
     "homepage": "https://www.phpmall.net/",
     "license": "Apache-2.0",
     "support": {
@@ -13,13 +13,12 @@
     },
     "require": {
         "php": "^8.1",
-        "endroid/qr-code": "^4.8",
-        "guzzlehttp/guzzle": "^7.2",
         "focite/laravel-auth": "^1.0",
         "focite/laravel-captcha": "^1.0",
         "focite/laravel-filesystem": "^1.0",
-        "focite/laravel-image": "^1.0",
         "focite/laravel-generator": "^1.0",
+        "focite/laravel-image": "^1.0",
+        "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/octane": "^2.0",
         "laravel/sanctum": "^3.2",
@@ -34,7 +33,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.10",
+        "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
@@ -61,8 +60,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "App\\Support\\ComposerScripts::postAutoloadDump"
+            "App\\Support\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
