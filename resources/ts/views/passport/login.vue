@@ -3,8 +3,8 @@ import { ref, reactive, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import type { FormInstance, FormRules } from 'element-plus'
-import { captchaService } from '@/services/passport';
-import type { ILoginMobileRequest } from '@/types/passport';
+import { captchaService } from '@/services/auth';
+import type { ILoginMobileRequest } from '@/types/auth';
 
 const loginFormRef = ref<FormInstance>()
 const authStore = useAuthStore()

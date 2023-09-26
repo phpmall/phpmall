@@ -12,8 +12,8 @@ const getRoutes = (prefix: string) => {
   const routes: Array<RouteRecordRaw> = []
   Object.keys(modules).forEach((file: string) => {
     const fullPathInfo = getPathInfo(file)
-    if (fullPathInfo.search('/components') !== -1 || 
-      fullPathInfo.search('/layout') !== -1 || 
+    if (fullPathInfo.search('/components') !== -1 ||
+      fullPathInfo.search('/layout') !== -1 ||
       !fullPathInfo.startsWith(prefix)) {
       return
     }
@@ -28,7 +28,7 @@ const getRoutes = (prefix: string) => {
       name: fullPathInfo.replace('/', '.'),
       component: modules[file]
     })
-  })  
+  })
   return routes
 }
 
@@ -52,8 +52,33 @@ const router = createRouter({
       }
     },
     {
+      path: '/seller',
+      component: () => import('@/views/seller/layout.vue'),
+      children: getRoutes('seller'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/supplier',
+      component: () => import('@/views/supplier/layout.vue'),
+      children: getRoutes('supplier'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/home',
+      component: () => import('@/views/user/layout.vue'),
+      children: getRoutes('user'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/',
-      redirect: { name: 'admin.index' }
+      component: () => import('@/views/portal/layout.vue'),
+      children: getRoutes('portal')
     },
     {
       path: '/:pathMatch(.*)*',
