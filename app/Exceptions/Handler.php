@@ -7,6 +7,8 @@ namespace App\Exceptions;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -36,22 +38,39 @@ class Handler extends ExceptionHandler
     {
         $response = parent::render($request, $e);
 
-        return response()->json([
-            'code' => $response->getStatusCode(),
-            'message' => $e->getMessage(),
-            'data' => config('app.debug') ? $e->getTrace() : null,
-        ], $response->getStatusCode());
+        if ($response instanceof JsonResponse) {
+            return $response;
+        }
+
+        return $this->response($response->getStatusCode(), $e);
     }
 
     /**
      * Convert an authentication exception into a response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Illuminate\Http\JsonResponse
      */
-    protected function unauthenticated($request, AuthenticationException $exception)
+    protected function unauthenticated($request, AuthenticationException $exception): JsonResponse
     {
-        return response()->json(['message' => $exception->getMessage()], 401);
+        return $this->response(401, $exception);
+    }
+
+    /**
+     * Create a response object from the given validation exception.
+     */
+    protected function convertValidationExceptionToResponse(ValidationException $e, $request): Response
+    {
+        if ($e->response) {
+            return $e->response;
+        }
+
+        return $this->response($e->status, $e);
+    }
+
+    private function response(int $code, Throwable $exception): JsonResponse
+    {
+        return response()->json([
+            'code' => $code,
+            'message' => $exception->getMessage(),
+            'data' => config('app.debug') ? $exception->getTrace() : null,
+        ], $code);
     }
 }
