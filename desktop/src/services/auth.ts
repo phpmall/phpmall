@@ -25,10 +25,10 @@ export const forgetMobileService = (formData: IForgetMobileRequest): Promise<any
     })
 }
 
-// [认证管理] 登录操作
-export const loginService = (formData: ILoginRequest): Promise<ILoginResponse> => {
+// [认证管理] 通过手机号和密码登录
+export const authLoginMobileService = (formData: ILoginRequest): Promise<ILoginResponse> => {
     return request({
-        url: '/login',
+        url: '/auth/login/mobile',
         method: 'post',
         data: formData
     })

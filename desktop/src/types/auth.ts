@@ -11,7 +11,7 @@ export interface ILoginMobileRequest {
 }
 
 export interface ILoginRequest {
-  username: string, // 登录用户名
+  mobile: string, // 登录手机号码
   password: string, // 登录密码
   captcha: string, // 图片验证码
   uuid: string, // 图片验证码UUID
