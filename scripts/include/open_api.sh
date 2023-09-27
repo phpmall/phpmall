@@ -30,3 +30,8 @@ Echo_Green ' 生成typescript接口'
 Echo_Green '------------------------------'
 
 php artisan gen:interface
+
+rm -rf */src/services
+rm -rf */src/types
+cp -a storage/app/ts/* desktop/src/
+cp -a storage/app/ts/* mobile/src/
