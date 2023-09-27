@@ -16,7 +16,6 @@ abstract class BaseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:sanctum');
-        $this->middleware('privilege:supplier');
+        $this->middleware(['auth:sanctum', 'privilege:supplier']);
     }
 }

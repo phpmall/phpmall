@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->middleware('web')->group(function () {
+Route::prefix('api/manager')->group(function () {
     Route::get('/', [\App\Gateways\Manager\Controllers\IndexController::class, 'index']);
     // Route
-    Route::get('/dashboard', [\App\Gateways\Manager\Controllers\DashboardController::class, 'index']);
+    Route::get('dashboard', [\App\Gateways\Manager\Controllers\DashboardController::class, 'index']);
 
     // end
 });

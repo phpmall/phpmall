@@ -13,8 +13,5 @@ use OpenApi\Attributes\Contact;
 #[OA\Server(url: 'https://api.demo.phpmall.net', description: '测试环境')]
 abstract class BaseController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+
 }

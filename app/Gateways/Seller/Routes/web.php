@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('seller')->middleware('web')->group(function () {
+Route::prefix('api/seller')->group(function () {
     Route::get('/', [\App\Gateways\Seller\Controllers\IndexController::class, 'index']);
     // Route
 

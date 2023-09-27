@@ -19,12 +19,6 @@ abstract class BaseController extends Controller
 {
     public function __construct()
     {
-        $guard = GuardTypeEnum::User->value;
-        $this->middleware(['auth:'.$guard, 'abilities:role:'.$guard]);
-    }
-
-    protected function getUser(): Authenticatable
-    {
-        return Auth::guard(GuardTypeEnum::User->value)->user();
+        $this->middleware('auth:sanctum');
     }
 }

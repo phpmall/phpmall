@@ -19,13 +19,7 @@ abstract class BaseController extends Controller
 {
     public function __construct()
     {
-        $guard = GuardTypeEnum::Admin->value;
-        $this->middleware(['auth:'.$guard, 'abilities:role:'.$guard]);
-    }
-
-    protected function getAdminUser(): Authenticatable
-    {
-        return Auth::guard(GuardTypeEnum::Admin->value)->user();
+        $this->middleware(['auth:sanctum', 'privilege:manager']);
     }
 
     protected function getUserRoles(): array

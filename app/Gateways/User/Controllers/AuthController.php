@@ -34,7 +34,7 @@ class AuthController extends Controller
 
             $loginService = new LoginService();
             $user = $loginService->login($loginInput);
-            $token = $user->createToken('token', ['role:'.GuardTypeEnum::User->value], now()->addMonths())->plainTextToken;
+            $token = $user->createToken('token')->plainTextToken;
 
             $loginResponse = new LoginResponse();
             $loginResponse->setToken($token);

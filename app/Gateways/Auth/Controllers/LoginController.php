@@ -43,7 +43,7 @@ class LoginController extends BaseController
 
             $loginService = new LoginService();
             $adminUser = $loginService->login($loginInput);
-            $token = $adminUser->createToken('token', ['role:'.GuardTypeEnum::Admin->value], now()->addMonths())->plainTextToken;
+            $token = $adminUser->createToken('token')->plainTextToken;
 
             $loginResponse = new LoginResponse();
             $loginResponse->setToken($token);
