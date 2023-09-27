@@ -90,11 +90,11 @@ abstract class Controller extends BaseController
     /**
      * 返回请求客户端ID
      */
-    protected function getClientId(string $clientName = 'X-Client-Id'): array
+    protected function getClientId(string $key = 'X-Client-Id'): array
     {
-        $clientValue = request()->header($clientName, $this->createSessionId());
+        $clientId = request()->header($key, $this->createSessionId());
 
-        return [$clientName => $clientValue];
+        return [$key => $clientId];
     }
 
     /**
