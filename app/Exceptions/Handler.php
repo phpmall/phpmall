@@ -45,17 +45,11 @@ class Handler extends ExceptionHandler
         return $this->response($response->getStatusCode(), $e);
     }
 
-    /**
-     * Convert an authentication exception into a response.
-     */
     protected function unauthenticated($request, AuthenticationException $exception): JsonResponse
     {
         return $this->response(401, $exception);
     }
 
-    /**
-     * Create a response object from the given validation exception.
-     */
     protected function convertValidationExceptionToResponse(ValidationException $e, $request): Response
     {
         if ($e->response) {
@@ -65,12 +59,12 @@ class Handler extends ExceptionHandler
         return $this->response($e->status, $e);
     }
 
-    private function response(int $code, Throwable $exception): JsonResponse
+    private function response(int $code, Throwable $e): JsonResponse
     {
         return response()->json([
             'code' => $code,
-            'message' => $exception->getMessage(),
-            'data' => config('app.debug') ? $exception->getTrace() : null,
+            'message' => $e->getMessage(),
+            'data' => config('app.debug') ? $e->getTrace() : null,
         ], $code);
     }
 }
