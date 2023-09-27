@@ -4,6 +4,7 @@ window.onload = function() {
   // the following lines will be replaced by docker/configurator, when it runs in a docker-container
   window.ui = SwaggerUIBundle({
     urls: [
+        {name: '基础模块', url: '/api/common.json'},
         {name: '认证模块', url: '/api/auth.json'},
         {name: '运营模块', url: '/api/admin.json'},
         {name: '卖家模块', url: '/api/seller.json'},

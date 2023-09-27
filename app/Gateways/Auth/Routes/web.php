@@ -11,6 +11,4 @@ Route::prefix('auth')->group(function () {
     Route::get('oauth/redirect', [\App\Gateways\Auth\Controllers\OAuthController::class, 'redirect']);
     Route::get('oauth/callback', [\App\Gateways\Auth\Controllers\OAuthController::class, 'callback']);
     Route::post('oauth/bind', [\App\Gateways\Auth\Controllers\OAuthController::class, 'bind']);
-
-    Route::get('captcha', [\App\Gateways\Auth\Controllers\CaptchaController::class, 'index']);
 });

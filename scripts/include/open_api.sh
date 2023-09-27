@@ -5,6 +5,9 @@ Echo_Green '------------------------------'
 vendor/bin/openapi app/Gateways/Auth \
   -o docs/api/auth.json -f json
 
+vendor/bin/openapi app/Gateways/Common \
+  -o docs/api/common.json -f json
+
 vendor/bin/openapi app/Gateways/Manager \
   $(Get_Bundles "Admin") \
   -o docs/api/admin.json -f json

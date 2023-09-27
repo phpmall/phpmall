@@ -1,0 +1,63 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API文档",
+        "description": "基础平台接口",
+        "contact": {
+            "name": "API Develop Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "开发环境"
+        },
+        {
+            "url": "https://api.demo.phpmall.net",
+            "description": "测试环境"
+        }
+    ],
+    "paths": {
+        "/common/captcha": {
+            "get": {
+                "tags": [
+                    "验证码"
+                ],
+                "summary": "图片验证码",
+                "operationId": "3acda7ae8764d566573508388fd33404",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CaptchaResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CaptchaResponse": {
+                "properties": {
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "123456"
+                    },
+                    "uuid": {
+                        "description": "验证码UUID",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gateways\Auth\Responses;
+namespace App\Gateways\Common\Responses;
 
 use Focite\Generator\Support\ArrayObject;
 use OpenApi\Attributes as OA;

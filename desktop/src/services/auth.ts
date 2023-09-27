@@ -1,20 +1,11 @@
 import request from '@/utils/request'
-import type { ICaptchaResponse,
-IForgetMobileRequest,
+import type { IForgetMobileRequest,
 ILoginRequest,
 ILoginResponse,
 ILoginMobileRequest,
 ILoginSmsRequest,
 IResetRequest,
 ISignupMobileRequest } from '@/types/auth'
-
-// [验证码] 图片验证码
-export const authCaptchaService = (): Promise<ICaptchaResponse> => {
-    return request({
-        url: '/auth/captcha',
-        method: 'get'
-    })
-}
 
 // [忘记密码] 发送手机短信验证码
 export const forgetMobileService = (formData: IForgetMobileRequest): Promise<any> => {
