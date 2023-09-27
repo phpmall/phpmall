@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Gateways\Auth\Services;
 
-use App\Constants\GlobalConst;
+use App\Bundles\Foundation\Constants\GlobalConst;
 use App\Services\UserService;
+use Focite\Auth\Authentication;
+use Focite\Auth\BearerTokenExtractor;
 use Illuminate\Support\Carbon;
-use Laractl\Auth\Authentication;
-use Laractl\Auth\BearerTokenExtractor;
 
 class AuthService
 {

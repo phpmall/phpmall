@@ -4,20 +4,18 @@ declare(strict_types=1);
 
 namespace App\Gateways\Auth\Controllers;
 
-use App\Bundles\Admin\Services\Input\LoginInput;
-use App\Bundles\Admin\Services\LoginService;
 use App\Bundles\Foundation\Constants\GlobalConst;
-use App\Bundles\Foundation\Enums\GuardTypeEnum;
 use App\Exceptions\CustomException;
 use App\Gateways\Auth\Requests\Login\LoginMobileRequest;
 use App\Gateways\Auth\Requests\Login\LoginRequest;
 use App\Gateways\Auth\Requests\Login\LoginSmsRequest;
 use App\Gateways\Auth\Responses\LoginResponse;
 use App\Gateways\Auth\Services\AuthService;
+use App\Gateways\Auth\Services\Input\LoginViaMobileInput;
+use App\Gateways\Auth\Services\LoginService;
 use App\Services\UserService;
 use Exception;
 use Focite\Captcha\Captcha;
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -27,22 +25,22 @@ use Throwable;
 
 class LoginController extends BaseController
 {
-    #[OA\Post(path: '/login', summary: '登录操作', tags: ['认证管理'])]
+    #[OA\Post(path: '/auth/login/mobile', summary: '通过手机号和密码登录', tags: ['认证管理'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
-    public function login(LoginRequest $request): JsonResponse
+    public function mobile(LoginRequest $request): JsonResponse
     {
         try {
             $request->validated();
 
-            $loginInput = new LoginInput();
-            $loginInput->setUsername($request->post('username'));
+            $loginInput = new LoginViaMobileInput();
+            $loginInput->setMobile($request->post('mobile'));
             $loginInput->setPassword($request->post('password'));
             $loginInput->setCaptcha($request->post('captcha'));
             $loginInput->setUuid($request->post('uuid'));
 
             $loginService = new LoginService();
-            $adminUser = $loginService->login($loginInput);
+            $adminUser = $loginService->mobile($loginInput);
             $token = $adminUser->createToken('token')->plainTextToken;
 
             $loginResponse = new LoginResponse();
@@ -105,7 +103,7 @@ class LoginController extends BaseController
     #[OA\Post(path: '/login/mobile', summary: '通过手机短信验证码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginSmsRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
-    public function mobile(LoginMobileRequest $request): JsonResponse
+    public function mobile3(LoginMobileRequest $request): JsonResponse
     {
         try {
             $data = $request->validated();

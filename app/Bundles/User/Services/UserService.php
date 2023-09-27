@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace App\Bundles\User\Services;
 
 use App\Bundles\User\Enums\UserStatusEnum;
-use App\Models\UserModel;
+use App\Models\User;
+use App\Services\UserService as BaseUserService;
 
-class UserService extends \App\Services\UserService
+class UserService extends BaseUserService
 {
     /**
      * 根据用户名查询用户
      */
-    public function findById(int $id, UserStatusEnum $status): ?UserModel
+    public function findById(int $id, UserStatusEnum $status): ?User
     {
         return $this->getUser('id', $id, $status);
     }
@@ -20,7 +21,7 @@ class UserService extends \App\Services\UserService
     /**
      * 根据用户名查询用户
      */
-    public function findByUsername(string $username, UserStatusEnum $status): ?UserModel
+    public function findByUsername(string $username, UserStatusEnum $status): ?User
     {
         return $this->getUser('username', $username, $status);
     }
@@ -28,7 +29,7 @@ class UserService extends \App\Services\UserService
     /**
      * 根据手机号码查询用户
      */
-    public function findByMobile(string $mobile, UserStatusEnum $status): ?UserModel
+    public function findByMobile(string $mobile, UserStatusEnum $status): ?User
     {
         $userAuthService = new UserAuthService();
         $userAuth = $userAuthService->find('mobile', $mobile);
@@ -42,7 +43,7 @@ class UserService extends \App\Services\UserService
     /**
      * 根据电子邮箱查询用户
      */
-    public function findByEmail(string $email, UserStatusEnum $status): ?UserModel
+    public function findByEmail(string $email, UserStatusEnum $status): ?User
     {
         $userAuthService = new UserAuthService();
         $userAuth = $userAuthService->find('email', $email);
@@ -56,7 +57,7 @@ class UserService extends \App\Services\UserService
     /**
      * 根据用户remember token查询用户
      */
-    public function findByRememberToken(string $remember_token, UserStatusEnum $status): ?UserModel
+    public function findByRememberToken(string $remember_token, UserStatusEnum $status): ?User
     {
         return $this->getUser('remember_token', $remember_token, $status);
     }
@@ -64,7 +65,7 @@ class UserService extends \App\Services\UserService
     /**
      * 根据用户reset token查询用户
      */
-    public function findByResetToken(string $reset_token, UserStatusEnum $status): ?UserModel
+    public function findByResetToken(string $reset_token, UserStatusEnum $status): ?User
     {
         return $this->getUser('reset_token', $reset_token, $status);
     }
@@ -72,7 +73,7 @@ class UserService extends \App\Services\UserService
     /**
      * 查询模型
      */
-    private function getUser(string $type, string $val, UserStatusEnum $status): ?UserModel
+    private function getUser(string $type, int|string $val, UserStatusEnum $status): ?User
     {
         return $this->getRepository()->model()->where([
             [$type, '=', $val],
