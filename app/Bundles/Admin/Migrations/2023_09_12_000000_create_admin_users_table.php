@@ -13,19 +13,9 @@ return new class extends Migration
     {
         Schema::create('admin_users', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->comment('登录用户名');
-            $table->string('password')->comment('登录用户密码');
-            $table->string('password_salt')->comment('用户密码盐值');
-            $table->string('name')->comment('昵称');
-            $table->string('avatar')->comment('头像');
-            $table->string('email')->comment('电子邮箱');
-            $table->timestamp('email_verified_at')->nullable()->comment('电子邮箱验证时间');
-            $table->string('mobile')->unique()->comment('手机号码');
-            $table->timestamp('mobile_verified_at')->nullable()->comment('手机号码验证时间');
-            $table->rememberToken();
+            $table->unsignedBigInteger('user_id')->index()->comment('用户ID');
             $table->string('status')->default(1)->comment('状态:1正常,2禁用');
             $table->timestamps();
-            $table->softDeletes();
             $table->comment('管理员表');
         });
     }
