@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Exceptions;
 
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Http\JsonResponse;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -30,45 +32,26 @@ class Handler extends ExceptionHandler
         });
     }
 
+    public function render($request, Throwable $e): JsonResponse
+    {
+        $response = parent::render($request, $e);
+
+        return response()->json([
+            'code' => $response->getStatusCode(),
+            'message' => $e->getMessage(),
+            'data' => null,
+        ], $response->getStatusCode());
+    }
+
     /**
      * Convert an authentication exception into a response.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        if ($this->shouldReturnJson($request, $exception)) {
-            return response()->json([
-                'code' => 401,
-                'message' => $exception->getMessage(),
-                'data' => config('app.debug') ? $exception->getTrace() : null,
-            ], 401);
-        } else {
-            $params = ['callback' => $request->fullUrl()];
-
-            return redirect()->guest(route('login', $params));
-        }
-    }
-
-    /**
-     * Create a response object from the given validation exception.
-     *
-     * @param  \Illuminate\Validation\ValidationException  $e
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    protected function convertValidationExceptionToResponse(ValidationException $e, $request)
-    {
-        if ($e->response) {
-            return $e->response;
-        }
-
-        return response()->json([
-            'code' => $e->status,
-            'message' => $e->getMessage(),
-            'data' => $e->errors(),
-        ], $e->status);
+        return response()->json(['message' => $exception->getMessage()], 401);
     }
 }
