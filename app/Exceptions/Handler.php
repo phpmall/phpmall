@@ -39,7 +39,7 @@ class Handler extends ExceptionHandler
         return response()->json([
             'code' => $response->getStatusCode(),
             'message' => $e->getMessage(),
-            'data' => null,
+            'data' => config('app.debug') ? $e->getTrace() : null,
         ], $response->getStatusCode());
     }
 
