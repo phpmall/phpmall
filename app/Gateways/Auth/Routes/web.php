@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/auth')->group(function () {
+Route::prefix('auth')->group(function () {
     Route::post('login', [\App\Gateways\Auth\Controllers\LoginController::class, 'mobile']);
     Route::post('signup', [\App\Gateways\Auth\Controllers\SignupController::class, 'mobile']);
     Route::post('forget', [\App\Gateways\Auth\Controllers\ForgetController::class, 'mobile']);

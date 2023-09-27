@@ -9,9 +9,9 @@ IResetRequest,
 ISignupMobileRequest } from '@/types/auth'
 
 // [验证码] 图片验证码
-export const apiAuthCaptchaService = (): Promise<ICaptchaResponse> => {
+export const authCaptchaService = (): Promise<ICaptchaResponse> => {
     return request({
-        url: '/api/auth/captcha',
+        url: '/auth/captcha',
         method: 'get'
     })
 }
