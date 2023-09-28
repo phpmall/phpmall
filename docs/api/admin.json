@@ -166,6 +166,71 @@
         }
     },
     "components": {
+        "schemas": {
+            "AddressCreateRequest": {
+                "required": [
+                    "mobile"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    }
+                },
+                "type": "object"
+            },
+            "AddressQueryRequest": {
+                "required": [
+                    "mobile"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    }
+                },
+                "type": "object"
+            },
+            "AddressUpdateRequest": {
+                "required": [
+                    "mobile"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    }
+                },
+                "type": "object"
+            },
+            "AddressResponse": {
+                "properties": {
+                    "id": {
+                        "description": "编号",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileResponse": {
+                "properties": {
+                    "id": {
+                        "description": "编号",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "名称",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "securitySchemes": {
             "bearerAuth": {
                 "type": "http",

@@ -66,7 +66,7 @@ abstract class Controller extends BaseController
     /**
      * 返回封装后的API数据到客户端
      */
-    protected function success(array $data = [], array $headers = []): JsonResponse
+    protected function success(array|string $data, array $headers = []): JsonResponse
     {
         return $this->json([
             'code' => 0,

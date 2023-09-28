@@ -18,12 +18,16 @@ class CaptchaController extends BaseController
     public function index(): JsonResponse
     {
         try {
-            $uuid = Str::uuid();
+            $uuid = strval(Str::uuid());
 
-            return $this->success([
-                'captcha' => (new Captcha())->create(strval($uuid)),
-                'uuid' => $uuid,
-            ]);
+            $captcha = new Captcha();
+            $base64 = $captcha->create($uuid);
+
+            $captchaResponse = new CaptchaResponse();
+            $captchaResponse->setCaptcha($base64);
+            $captchaResponse->setUuid($uuid);
+
+            return $this->success($captchaResponse->toArray());
         } catch (Exception $e) {
             return $this->error($e->getMessage());
         }

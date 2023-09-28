@@ -2,9 +2,7 @@ import request from '@/utils/request'
 import type { IAddressQueryRequest,
 IAddressResponse,
 IAddressCreateRequest,
-IAddressUpdateRequest,
-ILoginRequest,
-ILoginResponse } from '@/types/user'
+IAddressUpdateRequest } from '@/types/user'
 
 // [收货地址] 获取用户全部收货地址
 export const userAddressService = (page: number, pageSize: number, formData: IAddressQueryRequest): Promise<IAddressResponse> => {
@@ -52,12 +50,11 @@ export const userAddressDestroyService = (id: number): Promise<any> => {
     })
 }
 
-// [认证管理] 登录操作
-export const userLoginService = (formData: ILoginRequest): Promise<ILoginResponse> => {
+// [用户资料] 获取用户详细信息
+export const userProfileService = (): Promise<any> => {
     return request({
-        url: '/user/login',
-        method: 'post',
-        data: formData
+        url: '/user/profile',
+        method: 'get'
     })
 }
 
@@ -65,14 +62,6 @@ export const userLoginService = (formData: ILoginRequest): Promise<ILoginRespons
 export const userService = (): Promise<any> => {
     return request({
         url: '/user',
-        method: 'get'
-    })
-}
-
-// [用户资料] 获取用户详细信息
-export const userProfileService = (): Promise<any> => {
-    return request({
-        url: '/user/profile',
         method: 'get'
     })
 }

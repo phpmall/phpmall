@@ -25,7 +25,7 @@
                     "收货地址"
                 ],
                 "summary": "获取用户全部收货地址",
-                "operationId": "2b61a2bbc50aa08f789555e837901007",
+                "operationId": "57e44b3898a0ec63108ca4951cc1b10a",
                 "parameters": [
                     {
                         "name": "page",
@@ -77,7 +77,7 @@
                     "收货地址"
                 ],
                 "summary": "新增用户收货地址",
-                "operationId": "64bde186fd7e791f205a2d05e7be8d80",
+                "operationId": "37ba6e8d6371e4f61e39ec8b9aebd834",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -106,7 +106,7 @@
                     "收货地址"
                 ],
                 "summary": "查询用户收货地址",
-                "operationId": "edf0534a396c8b2602f73d8fd1a3826d",
+                "operationId": "0c742cf0ad166177c95a91cac4a1c563",
                 "parameters": [
                     {
                         "name": "id",
@@ -141,7 +141,7 @@
                     "收货地址"
                 ],
                 "summary": "更新用户收货地址",
-                "operationId": "ab0a201a1321019ee24465e1c48408a9",
+                "operationId": "1b3144304236f02861aee3f558daccb6",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -170,7 +170,7 @@
                     "收货地址"
                 ],
                 "summary": "删除用户收货地址",
-                "operationId": "39ef6ad8432ebbfb7d7ae9a9649d1643",
+                "operationId": "3c42ad2294d91567ecd94a2efefdd1af",
                 "parameters": [
                     {
                         "name": "id",
@@ -192,33 +192,16 @@
                 ]
             }
         },
-        "/user/login": {
-            "post": {
+        "/user/profile": {
+            "get": {
                 "tags": [
-                    "认证管理"
+                    "用户资料"
                 ],
-                "summary": "登录操作",
-                "operationId": "35823934210cd3c1559a10e91c196931",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LoginRequest"
-                            }
-                        }
-                    }
-                },
+                "summary": "获取用户详细信息",
+                "operationId": "fe29864c0f74ee011266afdfc9f322e9",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LoginResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     }
                 }
             }
@@ -240,20 +223,6 @@
                         "bearerAuth": []
                     }
                 ]
-            }
-        },
-        "/user/profile": {
-            "get": {
-                "tags": [
-                    "用户资料"
-                ],
-                "summary": "获取用户详细信息",
-                "operationId": "bc67ab6e90d6ae4604fe9a936c616c69",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
             }
         }
     },
@@ -298,52 +267,12 @@
                 },
                 "type": "object"
             },
-            "LoginRequest": {
-                "required": [
-                    "username",
-                    "password",
-                    "captcha",
-                    "uuid"
-                ],
-                "properties": {
-                    "username": {
-                        "description": "登录用户名",
-                        "type": "string",
-                        "example": "15858589988"
-                    },
-                    "password": {
-                        "description": "登录密码",
-                        "type": "string",
-                        "example": "md5密码"
-                    },
-                    "captcha": {
-                        "description": "图片验证码",
-                        "type": "string",
-                        "example": "1234"
-                    },
-                    "uuid": {
-                        "description": "图片验证码UUID",
-                        "type": "string",
-                        "example": "abc"
-                    }
-                },
-                "type": "object"
-            },
             "AddressResponse": {
                 "properties": {
                     "id": {
                         "description": "编号",
                         "type": "integer",
                         "example": 1
-                    }
-                },
-                "type": "object"
-            },
-            "LoginResponse": {
-                "properties": {
-                    "token": {
-                        "description": "JWT",
-                        "type": "string"
                     }
                 },
                 "type": "object"
