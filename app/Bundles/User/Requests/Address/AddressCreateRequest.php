@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gateways\User\Requests\Address;
+namespace App\Bundles\User\Requests\Address;
 
 use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Attributes as OA;

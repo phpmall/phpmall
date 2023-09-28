@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name')->comment('昵称');
             $table->string('avatar')->comment('头像');
             $table->date('birthday')->comment('生日');
-            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常;2禁用');
+            $table->unsignedTinyInteger('status')->comment('状态:1正常;2禁用');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

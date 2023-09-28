@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gateways\User\Controllers;
+namespace App\Bundles\User\Controllers\User;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;

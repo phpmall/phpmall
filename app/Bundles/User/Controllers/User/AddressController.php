@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Gateways\User\Controllers;
+namespace App\Bundles\User\Controllers\User;
 
-use App\Gateways\User\Requests\Address\AddressCreateRequest;
-use App\Gateways\User\Requests\Address\AddressQueryRequest;
-use App\Gateways\User\Requests\Address\AddressUpdateRequest;
-use App\Gateways\User\Responses\AddressResponse;
+use App\Bundles\User\Requests\Address\AddressCreateRequest;
+use App\Bundles\User\Requests\Address\AddressQueryRequest;
+use App\Bundles\User\Requests\Address\AddressUpdateRequest;
+use App\Bundles\User\Responses\AddressResponse;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
