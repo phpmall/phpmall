@@ -27,9 +27,16 @@ MobileBuild()
     cd $cur_dir/mobile
     pnpm install
     pnpm run build:h5
-    ossutil64 cp -rf dist/build/h5 oss://phpmall-demo/mobile # --endpoint=oss-cn-hongkong.aliyuncs.com
+    ossutil64 cp -rf dist/build/h5 oss://phpmall-demo/mobile
+}
+
+DocsBuild()
+{
+    cd $cur_dir
+    ossutil64 cp -rf docs oss://phpmall-docs/
 }
 
 BackendBuild
 FrontendBuild
 MobileBuild
+DocsBuild
