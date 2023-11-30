@@ -4,7 +4,7 @@
 
 High performance e-commerce platform for PHP based on Octane.
 
-> 运行环境要求PHP8.1
+> 运行环境要求 PHP8.2
 
 目标：打造千万级数据的在线交易平台系统，保证初创企业初期业务数据支撑。
 
@@ -16,7 +16,7 @@ High performance e-commerce platform for PHP based on Octane.
 - 供应平台：https://demo.phpmall.net/supplier
 - 卖家平台：https://demo.phpmall.net/seller
 - 买家平台：https://demo.phpmall.net/home
-- 微商城：https://demo.phpmall.net/mobile
+- 微商城：https://m.phpmall.net
 
 ## 安装
 
