@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Foundation\Enums;
+namespace App\Foundation\Enums;
 
 /**
  * 认证类型

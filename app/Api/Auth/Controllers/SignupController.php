@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Controllers;
 
-use App\Bundles\Foundation\Constants\GlobalConst;
-use App\Exceptions\CustomException;
 use App\Api\Auth\Requests\Signup\SignupMobileRequest;
 use App\Api\Auth\Responses\LoginResponse;
 use App\Api\Auth\Services\AuthService;
 use App\Api\Auth\Services\Input\UserRegisterInput;
 use App\Api\Auth\Services\UserService;
+use App\Exceptions\CustomException;
+use App\Foundation\Constants\GlobalConst;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;

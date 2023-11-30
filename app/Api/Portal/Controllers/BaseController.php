@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Portal\Controllers;
 
-use App\Bundles\Foundation\Controllers\Controller;
+use App\Foundation\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use OpenApi\Attributes as OA;
 use OpenApi\Attributes\Contact;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Foundation\Constants;
+namespace App\Foundation\Constants;
 
 class GlobalConst
 {

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Controllers;
 
-use App\Bundles\Foundation\Constants\GlobalConst;
-use App\Exceptions\CustomException;
 use App\Api\Auth\Requests\Login\LoginMobileRequest;
 use App\Api\Auth\Requests\Login\LoginRequest;
 use App\Api\Auth\Requests\Login\LoginSmsRequest;
@@ -13,6 +11,8 @@ use App\Api\Auth\Responses\LoginResponse;
 use App\Api\Auth\Services\AuthService;
 use App\Api\Auth\Services\Input\LoginViaMobileInput;
 use App\Api\Auth\Services\LoginService;
+use App\Exceptions\CustomException;
+use App\Foundation\Constants\GlobalConst;
 use App\Services\UserService;
 use Exception;
 use Focite\Captcha\Captcha;

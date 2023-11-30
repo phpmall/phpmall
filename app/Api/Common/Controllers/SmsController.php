@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Api\Common\Controllers;
 
-use App\Bundles\Foundation\Constants\GlobalConst;
-use App\Exceptions\CustomException;
 use App\Api\Common\Requests\SmsSendRequest;
+use App\Exceptions\CustomException;
+use App\Foundation\Constants\GlobalConst;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use OpenApi\Attributes as OA;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Foundation\Services;
+namespace App\Foundation\Services;
 
 use Focite\Auth\Authentication;
 use Focite\Auth\BearerTokenExtractor;

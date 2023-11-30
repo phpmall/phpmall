@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Manager\Controllers;
 
-use App\Bundles\Foundation\Enums\GuardTypeEnum;
-use App\Bundles\Foundation\Controllers\Controller;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Support\Facades\Auth;
+use App\Foundation\Controllers\Controller;
 use OpenApi\Attributes as OA;
 use OpenApi\Attributes\Contact;
 

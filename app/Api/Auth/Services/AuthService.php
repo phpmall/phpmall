@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Services;
 
-use App\Bundles\Foundation\Constants\GlobalConst;
+use App\Foundation\Constants\GlobalConst;
 use App\Services\UserService;
 use Focite\Auth\Authentication;
 use Focite\Auth\BearerTokenExtractor;
