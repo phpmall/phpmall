@@ -11,16 +11,26 @@ class BundleServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $gateways = array_merge(
-            glob(base_path('app/Gateways/*/*GatewayProvider.php')),
-            glob(base_path('app/Bundles/*/*BundleProvider.php'))
+        $dirs = array_merge(
+            glob(base_path('app/Api/*/')),
+            glob(base_path('app/Bundles/*/'))
         );
 
-        foreach ($gateways as $provider) {
-            preg_match('/(app\/\w+\/\w+\/\w+Provider)/', $provider, $matches);
-            if (isset($matches[1])) {
-                $provider = str_replace('/', '\\', $matches[1]);
-                $this->app->register(Str::studly($provider));
+        foreach ($dirs as $dir) {
+            $migration = $dir.'Migrations';
+            if (is_dir($migration)) {
+                $this->loadMigrationsFrom($migration);
+            }
+
+            $route = $dir.'Routes/web.php';
+            if (is_file($route)) {
+                $this->loadRoutesFrom($route);
+            }
+
+            $view = $dir.'Views';
+            if (is_dir($view)) {
+                $provider = basename($dir);
+                $this->loadViewsFrom($view, Str::camel($provider));
             }
         }
     }
