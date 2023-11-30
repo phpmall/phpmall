@@ -23,11 +23,12 @@ class RegionController extends BaseController
         $requestData = $request->validated();
 
         try {
-            $cacheKey = 'system_region_' . $requestData['id'];
+            $cacheKey = 'system_region_'.$requestData['id'];
             $data = Cache::rememberForever($cacheKey, function () use ($requestData) {
                 $regionService = new RegionService();
+
                 return $regionService->getList([
-                    ['parent_id', '=', $requestData['id']]
+                    ['parent_id', '=', $requestData['id']],
                 ]);
             });
 

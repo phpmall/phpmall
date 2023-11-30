@@ -10,7 +10,7 @@ use App\Api\Auth\Services\AuthService;
 use App\Api\Auth\Services\Input\UserRegisterInput;
 use App\Api\Auth\Services\UserService;
 use App\Exceptions\CustomException;
-use App\Foundation\Constants\GlobalConst;
+use App\Foundation\Constants\Constant;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -28,7 +28,7 @@ class SignupController extends BaseController
 
         try {
             // 校验短信验证码
-            $smsCode = Cache::get(GlobalConst::SMS_CACHE_PREFIX . $data['mobile']);
+            $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX . $data['mobile']);
             if ($smsCode !== $data['code']) {
                 throw new CustomException('短信验证码不正确');
             }
@@ -48,7 +48,7 @@ class SignupController extends BaseController
                 $authService = new AuthService();
                 $userOutput = $userService->findOneByMobile($data['mobile']);
                 $token = $authService->createToken([
-                    GlobalConst::JWT_USER_ID => $userOutput->getId(),
+                    Constant::JWT_USER_ID => $userOutput->getId(),
                 ]);
 
                 $response = new LoginResponse();

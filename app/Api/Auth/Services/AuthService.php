@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Services;
 
-use App\Foundation\Constants\GlobalConst;
+use App\Foundation\Constants\Constant;
 use App\Services\UserService;
 use Juling\Auth\Authentication;
 use Juling\Auth\BearerTokenExtractor;
@@ -23,9 +23,9 @@ class AuthService
             $payload = $this->getPayloadByToken($token);
         }
 
-        if (isset($payload[GlobalConst::JWT_USER_ID])) {
+        if (isset($payload[Constant::JWT_USER_ID])) {
             $userService = new UserService();
-            $userOutput = $userService->getRepository()->findOneByIdReturnUser($payload[GlobalConst::JWT_USER_ID]);
+            $userOutput = $userService->getRepository()->findOneByIdReturnUser($payload[Constant::JWT_USER_ID]);
 
             return $userOutput->toArray();
         }

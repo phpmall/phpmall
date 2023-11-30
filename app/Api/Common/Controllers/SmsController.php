@@ -6,7 +6,7 @@ namespace App\Api\Common\Controllers;
 
 use App\Api\Common\Requests\SmsSendRequest;
 use App\Exceptions\CustomException;
-use App\Foundation\Constants\GlobalConst;
+use App\Foundation\Constants\Constant;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use OpenApi\Attributes as OA;
@@ -23,7 +23,7 @@ class SmsController extends BaseController
 
         try {
             $code = mt_rand(100000, 999999);
-            cache(GlobalConst::SMS_CACHE_PREFIX.$requestData['mobile'], $code, GlobalConst::SMS_CACHE_EXPIRE);
+            cache(Constant::SMS_CACHE_PREFIX.$requestData['mobile'], $code, Constant::SMS_CACHE_EXPIRE);
 
             $sms = new Sms();
             $sms->send($requestData['mobile'], 'SMS_CODE', ['code' => $code]);

@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Api\Manager\Controllers\IndexController;
+use App\Api\Manager\Controllers\ManagerController;
+use App\Api\Manager\Controllers\PermissionController;
+use App\Api\Manager\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('manager')->group(function () {
-    Route::get('/', [\App\Api\Manager\Controllers\IndexController::class, 'index']);
-    // Route
-    Route::get('dashboard', [\App\Api\Manager\Controllers\DashboardController::class, 'index']);
-
-    // end
+Route::prefix('admin')->middleware('web')->group(function () {
+    Route::get('/', [IndexController::class, 'index']);
+    Route::get('manager', [ManagerController::class, 'index']);
+    Route::get('role', [RoleController::class, 'index']);
+    Route::get('permission', [PermissionController::class, 'index']);
 });

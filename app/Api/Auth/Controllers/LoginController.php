@@ -12,7 +12,7 @@ use App\Api\Auth\Services\AuthService;
 use App\Api\Auth\Services\Input\LoginViaMobileInput;
 use App\Api\Auth\Services\LoginService;
 use App\Exceptions\CustomException;
-use App\Foundation\Constants\GlobalConst;
+use App\Foundation\Constants\Constant;
 use App\Services\UserService;
 use Exception;
 use Juling\Captcha\Captcha;
@@ -78,7 +78,7 @@ class LoginController extends BaseController
             if (Auth::attempt($credentials, $remember === 'on')) {
                 $authService = new AuthService();
                 $token = $authService->createToken([
-                    GlobalConst::JWT_USER_ID => Auth::id(),
+                    Constant::JWT_USER_ID => Auth::id(),
                 ]);
 
                 // dd(Auth::user()->createToken('aa')->plainTextToken);
@@ -109,7 +109,7 @@ class LoginController extends BaseController
             $data = $request->validated();
 
             // 校验短信验证码
-            $smsCode = Cache::get(GlobalConst::SMS_CACHE_PREFIX.$data['mobile']);
+            $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX.$data['mobile']);
             if ($smsCode !== $data['code']) {
                 return $this->error('短信验证码不正确');
             }
@@ -119,7 +119,7 @@ class LoginController extends BaseController
 
             $authService = new AuthService();
             $token = $authService->createToken([
-                GlobalConst::JWT_USER_ID => $userOutput->getId(),
+                Constant::JWT_USER_ID => $userOutput->getId(),
             ]);
 
             $response = new LoginResponse();
