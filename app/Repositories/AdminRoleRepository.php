@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\AdminRole;
 use App\Models\Entity\AdminRoleEntity;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class AdminRoleRepository extends CurdRepository implements RepositoryInterface
 {

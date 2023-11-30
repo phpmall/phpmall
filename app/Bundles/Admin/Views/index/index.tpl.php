@@ -71,7 +71,7 @@
 				</span>
         <span class="center"></span>
         <span class="right">
-					Copyright &copy; 2023 Focite Inc.
+					Copyright &copy; 2023 Juling Technology Inc.
 				</span>
     </div>
     <!-- 遮 盖 层 -->

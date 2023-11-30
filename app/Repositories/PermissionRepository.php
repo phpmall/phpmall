@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\PermissionEntity;
 use App\Models\Permission;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class PermissionRepository extends CurdRepository implements RepositoryInterface
 {

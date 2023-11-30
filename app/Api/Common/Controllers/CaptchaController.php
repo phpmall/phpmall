@@ -6,7 +6,7 @@ namespace App\Api\Common\Controllers;
 
 use App\Api\Common\Responses\CaptchaResponse;
 use Exception;
-use Focite\Captcha\Captcha;
+use Juling\Captcha\Captcha;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 use OpenApi\Attributes as OA;

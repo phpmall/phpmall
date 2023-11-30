@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\PayOrderEntity;
 use App\Models\PayOrder;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class PayOrderRepository extends CurdRepository implements RepositoryInterface
 {

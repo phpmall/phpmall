@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\ContentHistory;
 use App\Models\Entity\ContentHistoryEntity;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class ContentHistoryRepository extends CurdRepository implements RepositoryInterface
 {

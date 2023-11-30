@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\RolePermissionEntity;
 use App\Models\RolePermission;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class RolePermissionRepository extends CurdRepository implements RepositoryInterface
 {

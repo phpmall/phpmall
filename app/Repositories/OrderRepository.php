@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\OrderEntity;
 use App\Models\Order;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class OrderRepository extends CurdRepository implements RepositoryInterface
 {

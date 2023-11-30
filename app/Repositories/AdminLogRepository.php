@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\AdminLog;
 use App\Models\Entity\AdminLogEntity;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class AdminLogRepository extends CurdRepository implements RepositoryInterface
 {

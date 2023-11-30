@@ -6,7 +6,7 @@ namespace App\Api\Common\Requests;
 
 use App\Rules\CaptchaRule;
 use App\Rules\PhoneNumberRule;
-use Focite\Captcha\Captcha;
+use Juling\Captcha\Captcha;
 use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Attributes as OA;
 

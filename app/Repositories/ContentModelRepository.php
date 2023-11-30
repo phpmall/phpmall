@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\ContentModel;
 use App\Models\Entity\ContentModelEntity;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class ContentModelRepository extends CurdRepository implements RepositoryInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-use Focite\Auth\JWT;
+use Juling\Auth\JWT;
 
 return [
     // 签名算法

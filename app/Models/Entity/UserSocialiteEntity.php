@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Entity;
 
-use Focite\Generator\Support\ArrayObject;
+use Juling\Generator\Support\ArrayObject;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'UserSocialiteEntity')]

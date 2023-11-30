@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Comment;
 use App\Models\Entity\CommentEntity;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class CommentRepository extends CurdRepository implements RepositoryInterface
 {

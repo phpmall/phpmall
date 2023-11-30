@@ -6,8 +6,8 @@ namespace App\Api\Auth\Services;
 
 use App\Foundation\Constants\GlobalConst;
 use App\Services\UserService;
-use Focite\Auth\Authentication;
-use Focite\Auth\BearerTokenExtractor;
+use Juling\Auth\Authentication;
+use Juling\Auth\BearerTokenExtractor;
 use Illuminate\Support\Carbon;
 
 class AuthService

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Rules;
 
 use Closure;
-use Focite\Captcha\Captcha;
+use Juling\Captcha\Captcha;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\ValidationRule;
 

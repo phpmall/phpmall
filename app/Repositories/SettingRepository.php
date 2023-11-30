@@ -6,8 +6,8 @@ namespace App\Repositories;
 
 use App\Models\Entity\SettingEntity;
 use App\Models\Setting;
-use Focite\Generator\Contracts\RepositoryInterface;
-use Focite\Generator\Repositories\CurdRepository;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
 
 class SettingRepository extends CurdRepository implements RepositoryInterface
 {
