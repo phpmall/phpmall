@@ -9,7 +9,7 @@ use OpenApi\Attributes as OA;
 
 class UserController extends BaseController
 {
-    #[OA\Get(path: '/admin/user', summary: '买家管理', tags: ['买家管理'])]
+    #[OA\Get(path: '/api/admin/user', summary: '买家管理', tags: ['买家管理'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {

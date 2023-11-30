@@ -21,7 +21,7 @@ class UploadController extends BaseController
         $this->middleware(['auth:sanctum']);
     }
 
-    #[OA\Post(path: '/common/upload', summary: '附件上传接口', security: [['bearerAuth' => []]], tags: ['素材'])]
+    #[OA\Post(path: '/api/common/upload', summary: '附件上传接口', security: [['bearerAuth' => []]], tags: ['素材'])]
     #[OA\RequestBody(
         required: true,
         content: [
