@@ -29,7 +29,9 @@ class CaptchaController extends BaseController
 
             return $this->success($captchaResponse->toArray());
         } catch (Exception $e) {
-            return $this->error($e->getMessage());
+            Log::error($e->getMessage());
+
+            return $this->error('获取图片验证码错误');
         }
     }
 }

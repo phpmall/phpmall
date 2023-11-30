@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace App\Api\Manager\Controllers;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class ManagerController extends BaseController
 {
-    #[OA\Get(path: '/api/admin/manager', summary: '运营员工管理', tags: ['员工管理'])]
+    #[OA\Get(path: '/admin', summary: '管理员接口', security: [['bearerAuth' => []]], tags: ['管理员'])]
     #[OA\Response(response: 200, description: 'OK')]
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        return $this->success(['admin::manager.index']);
+        return $this->success($request->path());
     }
 }

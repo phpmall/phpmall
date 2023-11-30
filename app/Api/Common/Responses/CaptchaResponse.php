@@ -12,10 +12,10 @@ class CaptchaResponse
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'captcha', description: '图片验证码', type: 'string', example: '123456'), ]
+    #[OA\Property(property: 'captcha', description: '图片验证码', type: 'string', example: '123456')]
     private string $captcha;
 
-    #[OA\Property(property: 'uuid', description: '验证码UUID', type: 'string', example: '123456'), ]
+    #[OA\Property(property: 'uuid', description: '验证码UUID', type: 'string', example: '123456')]
     private string $uuid;
 
     public function setCaptcha(string $captcha): void

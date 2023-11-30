@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Api\Auth\Requests;
 
 use Illuminate\Auth\Events\Lockout;

@@ -4,17 +4,24 @@ declare(strict_types=1);
 
 namespace App\Api\Manager\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use App\Api\Manager\Services\PermissionService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 use OpenApi\Attributes as OA;
 
 class IndexController extends BaseController
 {
-    #[OA\Get(path: '/api/admin', summary: '仪表台', security: [['bearerAuth' => []]], tags: ['运营中心'])]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function index(): JsonResponse
+    public function index(): View
     {
-        return $this->success(['test admin token', $this->getAdminUser()]);
+        return view('admin::index');
+    }
+
+    #[OA\Get(path: '/admin', summary: '管理仪表台', security: [['bearerAuth' => []]], tags: ['运营中心'])]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function index1(Request $request): JsonResponse
+    {
+        return $this->success(['test admin token', $request->user()]);
     }
 
     /**
@@ -25,7 +32,7 @@ class IndexController extends BaseController
         $permissionService = new PermissionService();
         $menu = $permissionService->getMenu();
 
-        return $this->json($menu);
+        return $this->success($menu);
     }
 
     /**
@@ -33,7 +40,7 @@ class IndexController extends BaseController
      */
     public function message(): JsonResponse
     {
-        return $this->json(['message']);
+        return $this->success(['message']);
     }
 
     /**
@@ -47,7 +54,7 @@ class IndexController extends BaseController
     /**
      * 个人资料
      */
-    public function profile(): Renderable
+    public function profile(): JsonResponse
     {
         return $this->success('ok');
     }
