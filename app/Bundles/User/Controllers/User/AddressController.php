@@ -8,7 +8,7 @@ use App\Bundles\User\Requests\Address\AddressCreateRequest;
 use App\Bundles\User\Requests\Address\AddressQueryRequest;
 use App\Bundles\User\Requests\Address\AddressUpdateRequest;
 use App\Bundles\User\Responses\AddressResponse;
-use App\Gateways\User\Controllers\BaseController;
+use App\Api\User\Controllers\BaseController;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
