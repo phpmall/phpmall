@@ -1,5 +1,5 @@
-FROM hyperf/hyperf:8.1-alpine-vedge-swoole
-LABEL maintainer="Focite Developers <team@focite.com>" version="1.0" license="Apache-2.0" app.name="PHPMall"
+FROM hyperf/hyperf:8.2-alpine-vedge-swoole
+LABEL maintainer="Juling Developers <team@julingyun.cn>" version="1.0" license="Apache-2.0" app.name="PHPMall"
 
 ARG timezone
 

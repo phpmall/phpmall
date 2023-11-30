@@ -12,10 +12,8 @@
 /.fleet
 /.idea
 /.vscode
+
 /.git
 /bootstrap/cache/*.php
-/desktop
-/docs
-/mobile
 /scripts
 /tests
