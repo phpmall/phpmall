@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\Common\Requests;
 
-use App\Rules\CaptchaRule;
-use App\Rules\PhoneNumberRule;
-use Juling\Captcha\Captcha;
+use App\Foundation\Rules\CaptchaRule;
+use App\Foundation\Rules\PhoneNumberRule;
 use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Attributes as OA;
 

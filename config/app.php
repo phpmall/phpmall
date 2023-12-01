@@ -171,7 +171,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        App\Providers\BundleServiceProvider::class,
+        App\Foundation\Providers\BundleServiceProvider::class,
     ])->toArray(),
 
     /*

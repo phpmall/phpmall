@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Managers\Sms;
+namespace App\Foundation\Managers\Sms;
 
 use Exception;
 

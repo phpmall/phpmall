@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Rules;
+namespace App\Foundation\Rules;
 
 use Closure;
-use Juling\Captcha\Captcha;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Juling\Captcha\Captcha;
 
 class CaptchaRule implements DataAwareRule, ValidationRule
 {

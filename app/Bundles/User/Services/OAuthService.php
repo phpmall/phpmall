@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Bundles\User\Services;
 
 use App\Bundles\Wechat\Services\WechatService;
-use App\Exceptions\CustomException;
+use App\Foundation\Exceptions\CustomException;
 use EasyWeChat\OfficialAccount\Application;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Api\Common\Controllers;
 
-use App\Exceptions\CustomException;
 use App\Api\Common\Requests\UploadRequest;
 use App\Api\Common\Responses\UploadResponse;
+use App\Foundation\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Services;
 
+use App\Api\Auth\Services\Input\LoginViaMobileInput;
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Bundles\User\Services\UserService;
-use App\Exceptions\CustomException;
-use App\Api\Auth\Services\Input\LoginViaMobileInput;
+use App\Foundation\Exceptions\CustomException;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 

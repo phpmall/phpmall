@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Services;
 
-use App\Exceptions\CustomException;
 use App\Api\Auth\Services\Input\UserRegisterInput;
+use App\Foundation\Exceptions\CustomException;
 use App\Services\UserService as BaseUserService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

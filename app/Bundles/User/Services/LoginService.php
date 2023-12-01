@@ -6,7 +6,7 @@ namespace App\Bundles\User\Services;
 
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Bundles\User\Services\Input\LoginInput;
-use App\Exceptions\CustomException;
+use App\Foundation\Exceptions\CustomException;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

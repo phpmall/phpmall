@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Portal\Controllers;
 
-use App\Exceptions\CustomException;
+use App\Foundation\Exceptions\CustomException;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

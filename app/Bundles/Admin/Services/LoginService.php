@@ -6,7 +6,7 @@ namespace App\Bundles\Admin\Services;
 
 use App\Bundles\Admin\Enums\AdminUserStatusEnum;
 use App\Bundles\Admin\Services\Input\LoginInput;
-use App\Exceptions\CustomException;
+use App\Foundation\Exceptions\CustomException;
 use App\Models\AdminUserModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
