@@ -2,33 +2,63 @@ Echo_Green '------------------------------'
 Echo_Green ' 生成swagger接口文档'
 Echo_Green '------------------------------'
 
-vendor/bin/openapi app/Api/Auth \
-  $(Get_Bundles "Auth") \
-  -o ../phpmall-docs/api/auth.json -f json
+Get_Modules() {
+    local directory="app/Api"
 
-vendor/bin/openapi app/Api/Common \
-  $(Get_Bundles "Common") \
-  -o ../phpmall-docs/api/common.json -f json
+    # 查找目录下的所有目录
+    local modules=($(ls "$directory"))
 
-vendor/bin/openapi app/Api/Manager \
-  $(Get_Bundles "Admin") \
-  -o ../phpmall-docs/api/admin.json -f json
+    for item in "${modules[@]}"
+    do
+        local result=()
+        local c="app/Api/${item}/Controllers/${module}"
+        if [ -d "$c" ]; then
+            result+=($c)
+            c=("app/Api/${item}/Requests/")
+            if [ -d "$c" ]; then
+                result+=($c)
+            fi
+            c=("app/Api/${item}/Responses/")
+            if [ -d "$c" ]; then
+                result+=($c)
+            fi
+        fi
 
-vendor/bin/openapi app/Api/Seller \
-  $(Get_Bundles "Seller") \
-  -o ../phpmall-docs/api/seller.json -f json
+        result+=($(Get_Bundles ${item}))
 
-vendor/bin/openapi app/Api/Supplier \
-  $(Get_Bundles "Supplier") \
-  -o ../phpmall-docs/api/supplier.json -f json
+        vendor/bin/openapi ${result[@]} -o ../phpmall-docs/api/${item,,}.json -f json
+    done
+}
 
-vendor/bin/openapi app/Api/User \
-  $(Get_Bundles "User") \
-  -o ../phpmall-docs/api/user.json -f json
+Get_Bundles()
+{
+    local directory="app/Bundles"
+    local module=$1
 
-vendor/bin/openapi app/Api/Portal \
-  $(Get_Bundles "Portal") \
-  -o ../phpmall-docs/api/portal.json -f json
+    # 查找目录下的所有目录
+    local bundles=($(ls "$directory"))
+
+    local result=()
+    for item in "${bundles[@]}"
+    do
+        local c="app/Bundles/${item}/Controllers/${module}/"
+        if [ -d "$c" ]; then
+            result+=($c)
+            c="app/Bundles/${item}/Requests/"
+            if [ -d "$c" ]; then
+                result+=($c)
+            fi
+            c="app/Bundles/${item}/Responses/"
+            if [ -d "$c" ]; then
+                result+=($c)
+            fi
+        fi
+    done
+
+    echo ${result[@]}
+}
+
+Get_Modules
 
 Echo_Green '------------------------------'
 Echo_Green ' 生成typescript接口'
@@ -41,10 +71,10 @@ cp storage/app/ts/services/common.ts ../phpmall-mobile/src/services/common.ts
 cp storage/app/ts/services/portal.ts ../phpmall-mobile/src/services/portal.ts
 cp storage/app/ts/services/user.ts ../phpmall-mobile/src/services/user.ts
 
-cp storage/app/ts/types/auth.ts ../phpmall-mobile/src/types/auth.d.ts
-cp storage/app/ts/types/common.ts ../phpmall-mobile/src/types/common.d.ts
-cp storage/app/ts/types/portal.ts ../phpmall-mobile/src/types/portal.d.ts
-cp storage/app/ts/types/user.ts ../phpmall-mobile/src/types/user.d.ts
+cp storage/app/ts/types/auth.d.ts ../phpmall-mobile/src/types/auth.d.ts
+cp storage/app/ts/types/common.d.ts ../phpmall-mobile/src/types/common.d.ts
+cp storage/app/ts/types/portal.d.ts ../phpmall-mobile/src/types/portal.d.ts
+cp storage/app/ts/types/user.d.ts ../phpmall-mobile/src/types/user.d.ts
 
 rm -rf ../phpmall-web/src/services
 rm -rf ../phpmall-web/src/types

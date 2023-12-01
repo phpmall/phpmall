@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Printing\Controllers;
+namespace App\Api\Printer\Controllers;
 
 use App\Foundation\Controllers\Controller;
 use OpenApi\Attributes as OA;
