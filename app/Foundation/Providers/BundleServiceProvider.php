@@ -13,6 +13,7 @@ class BundleServiceProvider extends ServiceProvider
     {
         foreach ($this->getDirs() as $dir) {
             $module = basename($dir);
+
             $migration = $dir . 'Migrations';
             if (is_dir($migration)) {
                 $this->loadMigrationsFrom($migration);
@@ -25,12 +26,11 @@ class BundleServiceProvider extends ServiceProvider
 
             $view = $dir . 'Views';
             if (is_dir($view)) {
-                $provider = basename($dir);
-                $this->loadViewsFrom($view, Str::camel($provider));
+                $this->loadViewsFrom($view, Str::camel($module));
             }
 
             $asset = $dir . 'Assets';
-            if (is_dir($view)) {
+            if (is_dir($asset)) {
                 $this->publishes([
                     $asset => public_path('assets/' . $module),
                 ], 'public');
