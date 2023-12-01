@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/comment')->group(function () {
+Route::prefix('comment')->group(function () {
 
 });

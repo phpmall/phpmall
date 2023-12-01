@@ -11,7 +11,7 @@ use OpenApi\Attributes as OA;
 
 class RoleController extends BaseController
 {
-    #[OA\Get(path: '/api/admin/role', summary: '角色列表', tags: ['角色管理'])]
+    #[OA\Get(path: '/admin/role', summary: '角色列表', tags: ['角色管理'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {

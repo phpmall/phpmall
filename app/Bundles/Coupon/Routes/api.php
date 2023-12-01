@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/coupon')->group(function () {
+Route::prefix('coupon')->group(function () {
     Route::get('/', [\App\Api\Seller\Controllers\IndexController::class, 'index']);
     // Route
 

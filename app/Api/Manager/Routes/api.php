@@ -8,7 +8,7 @@ use App\Api\Manager\Controllers\PermissionController;
 use App\Api\Manager\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/manager')->middleware('web')->group(function () {
+Route::prefix('manager')->middleware('web')->group(function () {
     Route::get('/', [IndexController::class, 'index']);
     Route::get('manager', [AdminController::class, 'index']);
     Route::get('role', [RoleController::class, 'index']);

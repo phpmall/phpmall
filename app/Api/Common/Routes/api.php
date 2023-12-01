@@ -7,7 +7,7 @@ use App\Bundles\Captcha\Controllers\Common\CaptchaController;
 use App\Bundles\Region\Controllers\Common\RegionController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/common')->group(function () {
+Route::prefix('common')->group(function () {
     Route::get('captcha', [CaptchaController::class, 'index']);
     Route::get('region', [RegionController::class, 'index']);
     Route::post('upload', [UploadController::class, 'index']);

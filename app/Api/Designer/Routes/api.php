@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/designer')->group(function () {
+Route::prefix('designer')->group(function () {
     // Route
 
     // end

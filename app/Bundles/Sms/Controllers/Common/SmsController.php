@@ -16,7 +16,7 @@ use Throwable;
 
 class SmsController extends BaseController
 {
-    #[OA\Post(path: '/api/common/sms', summary: '发送手机短信验证码', tags: ['短信'])]
+    #[OA\Post(path: '/common/sms', summary: '发送手机短信验证码', tags: ['短信'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SmsSendRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(SmsSendRequest $request): JsonResponse

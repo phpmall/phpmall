@@ -16,7 +16,7 @@ use Throwable;
 
 class RegionController extends BaseController
 {
-    #[OA\Get(path: '/api/common/region', summary: '查询地区列表', tags: ['地区'])]
+    #[OA\Get(path: '/common/region', summary: '查询地区列表', tags: ['地区'])]
     #[OA\QueryParameter(name: 'id', description: '上级地区ID，默认值为0显示省份数据', required: true, example: 0)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RegionResponse::class))]
     public function index(RegionRequest $request): JsonResponse

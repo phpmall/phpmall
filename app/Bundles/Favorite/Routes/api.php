@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('api/favorite')->group(function () {
+Route::prefix('favorite')->group(function () {
     Route::get('/', [\App\Api\Seller\Controllers\IndexController::class, 'index']);
     // Route
 

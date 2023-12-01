@@ -9,7 +9,7 @@ use OpenApi\Attributes as OA;
 
 class SellerController extends BaseController
 {
-    #[OA\Get(path: '/api/admin/seller', summary: '全部卖家', tags: ['卖家管理'])]
+    #[OA\Get(path: '/admin/seller', summary: '全部卖家', tags: ['卖家管理'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {
