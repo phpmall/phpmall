@@ -18,7 +18,7 @@ class BundleServiceProvider extends ServiceProvider
                 $this->loadMigrationsFrom($migration);
             }
 
-            $route = $dir . 'Routes/web.php';
+            $route = $dir . 'Routes/api.php';
             if (is_file($route)) {
                 $this->loadRoutesFrom($route);
             }
