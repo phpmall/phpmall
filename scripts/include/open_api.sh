@@ -3,9 +3,11 @@ Echo_Green ' 生成swagger接口文档'
 Echo_Green '------------------------------'
 
 vendor/bin/openapi app/Api/Auth \
+  $(Get_Bundles "Auth") \
   -o ../phpmall-docs/api/auth.json -f json
 
 vendor/bin/openapi app/Api/Common \
+  $(Get_Bundles "Common") \
   -o ../phpmall-docs/api/common.json -f json
 
 vendor/bin/openapi app/Api/Manager \
