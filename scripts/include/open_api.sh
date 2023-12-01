@@ -11,7 +11,7 @@ Get_Modules() {
     for item in "${modules[@]}"
     do
         local result=()
-        local c="app/Api/${item}/Controllers/${module}"
+        local c="app/Api/${item}/Controllers/"
         if [ -d "$c" ]; then
             result+=($c)
             c=("app/Api/${item}/Requests/")
@@ -66,15 +66,10 @@ Echo_Green '------------------------------'
 
 php artisan gen:interface
 
-cp storage/app/ts/services/auth.ts ../phpmall-mobile/src/services/auth.ts
-cp storage/app/ts/services/common.ts ../phpmall-mobile/src/services/common.ts
-cp storage/app/ts/services/portal.ts ../phpmall-mobile/src/services/portal.ts
-cp storage/app/ts/services/user.ts ../phpmall-mobile/src/services/user.ts
-
-cp storage/app/ts/types/auth.d.ts ../phpmall-mobile/src/types/auth.d.ts
-cp storage/app/ts/types/common.d.ts ../phpmall-mobile/src/types/common.d.ts
-cp storage/app/ts/types/portal.d.ts ../phpmall-mobile/src/types/portal.d.ts
-cp storage/app/ts/types/user.d.ts ../phpmall-mobile/src/types/user.d.ts
+rm -rf ../phpmall-mobile/src/services/*.ts
+rm -rf ../phpmall-mobile/src/types/*.d.ts
+cp storage/app/ts/services/{auth,common,portal,user}.ts ../phpmall-mobile/src/services/
+cp storage/app/ts/types/{auth,common,portal,user}.d.ts ../phpmall-mobile/src/types/
 
 rm -rf ../phpmall-web/src/services
 rm -rf ../phpmall-web/src/types
