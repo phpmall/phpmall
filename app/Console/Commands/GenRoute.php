@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionMethod;
@@ -35,13 +36,13 @@ class GenRoute extends Command
     public function handle(): void
     {
         $files = array_merge(
-            glob(app_path('Gateways/*/Controllers/*.php'))
+            glob(app_path('Api/*/Controllers/*.php'))
         );
 
         $routes = [];
         foreach ($files as $file) {
             $file = str_replace('/', '\\', $file);
-            preg_match('/app\\\\Gateways\\\\(\w+?)\\\\Controllers\\\\(\w+)Controller/', $file, $matches);
+            preg_match('/app\\\\Api\\\\(\w+?)\\\\Controllers\\\\(\w+)Controller/', $file, $matches);
             if (! in_array($matches[2], $this->ignoreList)) {
                 $class = ucfirst($matches[0]);
 
@@ -52,19 +53,17 @@ class GenRoute extends Command
                 });
 
                 foreach ($methods as $method) {
-                    if ($matches[2] === 'Index' && $method->name === 'index') {
-                        continue;
+                    $methodAttributes = $reflectionClass->getMethod($method->name)->getAttributes();
+                    if (isset($methodAttributes[0])) {
+                        $methodAttribute = $methodAttributes[0];
+                        $routes[$matches[1]][] = [
+                            'httpMethod' => Str::lower(Arr::last(explode('\\', $methodAttribute->getName()))),
+                            'path' => ltrim($methodAttribute->getArguments()['path'], '/'),
+                            'class' => $class,
+                            'action' => $method->name,
+                            'summary' => $methodAttribute->getArguments()['summary'],
+                        ];
                     }
-                    $methodDoc = $reflectionClass->getMethod($method->name)->getDocComment();
-                    preg_match('/@httpMethod (\w+)/', $methodDoc, $m);
-                    $httpMethod = $m[1] ?? 'get';
-                    $routes[$matches[1]][] = [
-                        'httpMethod' => $httpMethod,
-                        'path' => Str::snake($matches[2]).($method->name === 'index' ? '' : '/'.$method->name),
-                        'class' => $class,
-                        'controller' => $matches[2],
-                        'action' => $method->name,
-                    ];
                 }
             }
         }
@@ -72,6 +71,7 @@ class GenRoute extends Command
         foreach ($routes as $m => $list) {
             $routeContent = '// Route';
             foreach ($list as $route) {
+                $routeContent .= "\n// ".$route['summary'];
                 $routeContent .= "\nRoute::{$route['httpMethod']}('{$route['path']}', [\\{$route['class']}::class, '{$route['action']}'])";
                 if ($route['httpMethod'] === 'get') {
                     $name = Str::replace('/', '.', $route['path']);
@@ -81,7 +81,7 @@ class GenRoute extends Command
             }
             $routeContent .= "\n// end";
 
-            $route_file = app_path('Gateways/'.$m.'/Routes/web.php');
+            $route_file = app_path('Api/'.$m.'/Routes/api.php');
             $content = file_get_contents($route_file);
             $content = preg_replace('/\/\/ Route.*?\/\/ end/is', $routeContent, $content);
             file_put_contents($route_file, $content);

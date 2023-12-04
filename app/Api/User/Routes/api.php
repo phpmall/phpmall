@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('user')->group(function () {
-    Route::get('/', [\App\Api\User\Controllers\IndexController::class, 'index']);
-    // Route
-
-    // end
-});
+// Route
+// 仪表台
+Route::get('user', [\App\Api\User\Controllers\IndexController::class, 'index'])->name('user');
+// end

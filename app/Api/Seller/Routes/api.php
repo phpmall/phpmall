@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('seller')->group(function () {
-    Route::get('/', [\App\Api\Seller\Controllers\IndexController::class, 'index']);
-    // Route
+// Route
+// 卖家
+Route::get('seller', [\App\Api\Seller\Controllers\IndexController::class, 'index'])->name('seller');
+// end
 
-    // end
-});
