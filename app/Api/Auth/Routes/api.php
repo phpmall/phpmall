@@ -13,4 +13,7 @@ Route::prefix('auth')->group(function () {
     Route::post('signup/mobile', [SignupController::class, 'mobile']);
     Route::post('forget/mobile', [ForgetController::class, 'mobile']);
     Route::post('reset', [ResetController::class, 'index']);
+    // Route
+
+    // end
 });

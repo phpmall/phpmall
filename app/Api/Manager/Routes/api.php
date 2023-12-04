@@ -13,4 +13,7 @@ Route::prefix('manager')->middleware('web')->group(function () {
     Route::get('manager', [AdminController::class, 'index']);
     Route::get('role', [RoleController::class, 'index']);
     Route::get('permission', [PermissionController::class, 'index']);
+    // Route
+
+    // end
 });
