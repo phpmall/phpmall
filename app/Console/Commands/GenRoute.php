@@ -26,7 +26,7 @@ class GenRoute extends Command
      */
     protected $description = 'Generate route rules';
 
-    protected array $ignoreList = ['Base', 'Auth'];
+    protected array $ignoreList = ['Base'];
 
     /**
      * Execute the console command.
