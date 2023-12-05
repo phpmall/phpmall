@@ -1,7 +1,3 @@
-Echo_Green '------------------------------'
-Echo_Green ' 生成swagger接口文档'
-Echo_Green '------------------------------'
-
 Get_Modules() {
     local directory="app/Api"
 
@@ -57,6 +53,16 @@ Get_Bundles()
 
     echo ${result[@]}
 }
+
+Echo_Green '------------------------------'
+Echo_Green ' 生成API路由配置'
+Echo_Green '------------------------------'
+
+php artisan gen:route
+
+Echo_Green '------------------------------'
+Echo_Green ' 生成swagger接口文档'
+Echo_Green '------------------------------'
 
 Get_Modules
 
