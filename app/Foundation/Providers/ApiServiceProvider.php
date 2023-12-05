@@ -7,7 +7,7 @@ namespace App\Foundation\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 
-class BundleServiceProvider extends ServiceProvider
+class ApiServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
