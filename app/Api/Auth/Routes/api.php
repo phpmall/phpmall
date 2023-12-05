@@ -17,4 +17,10 @@ Route::post('login/mobile', [\App\Api\Auth\Controllers\LoginController::class, '
 Route::post('reset', [\App\Api\Auth\Controllers\ResetController::class, 'reset']);
 // 通过手机号码注册
 Route::post('signup/mobile', [\App\Api\Auth\Controllers\SignupController::class, 'mobile']);
+// 获取授权跳转地址
+Route::post('auth/oauth/redirect', [\App\Bundles\OAuth\Controllers\Auth\OAuthController::class, 'redirect']);
+// 授权登录回调地址
+Route::post('auth/oauth/callback', [\App\Bundles\OAuth\Controllers\Auth\OAuthController::class, 'callback']);
+// 新用户绑定接口
+Route::post('auth/oauth/bind', [\App\Bundles\OAuth\Controllers\Auth\OAuthController::class, 'bind']);
 // end

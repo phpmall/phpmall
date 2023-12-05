@@ -7,4 +7,10 @@ use Illuminate\Support\Facades\Route;
 // Route
 // 附件上传接口
 Route::post('common/upload', [\App\Api\Common\Controllers\UploadController::class, 'index']);
+// 图片验证码
+Route::get('common/captcha', [\App\Bundles\Captcha\Controllers\Common\CaptchaController::class, 'index'])->name('common.captcha');
+// 查询地区列表
+Route::get('common/region', [\App\Bundles\Region\Controllers\Common\RegionController::class, 'index'])->name('common.region');
+// 发送手机短信验证码
+Route::post('common/sms', [\App\Bundles\Sms\Controllers\Common\SmsController::class, 'index']);
 // end

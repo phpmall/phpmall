@@ -8,6 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use ReflectionClass;
+use ReflectionException;
 use ReflectionMethod;
 
 class GenRoute extends Command
@@ -31,60 +32,87 @@ class GenRoute extends Command
     /**
      * Execute the console command.
      *
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function handle(): void
     {
-        $files = array_merge(
-            glob(app_path('Api/*/Controllers/*.php'))
-        );
+        $dirs = glob(app_path('Api/*'), GLOB_ONLYDIR);
+        foreach ($dirs as $dir) {
+            $module = basename($dir);
+            $files = array_merge(
+                glob($dir . '/Controllers/*Controller.php'),
+                glob(app_path('Bundles/*/Controllers/' . $module . '/*Controller.php'))
+            );
+            $routes = $this->getRoutes($files);
+            $this->genRoutes($routes, $dir . '/Routes/api.php');
+        }
+    }
 
+    /**
+     * @throws ReflectionException
+     */
+    private function getRoutes(array $files): array
+    {
         $routes = [];
+
         foreach ($files as $file) {
             $file = str_replace('/', '\\', $file);
-            preg_match('/app\\\\Api\\\\(\w+?)\\\\Controllers\\\\(\w+)Controller/', $file, $matches);
-            if (! in_array($matches[2], $this->ignoreList)) {
-                $class = ucfirst($matches[0]);
-
-                $reflectionClass = new ReflectionClass($class);
-                $methods = $reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC);
-                $methods = array_filter($methods, function ($item) use ($class) {
-                    return $item->class === $class;
-                });
-
-                foreach ($methods as $method) {
-                    $methodAttributes = $reflectionClass->getMethod($method->name)->getAttributes();
-                    if (isset($methodAttributes[0])) {
-                        $methodAttribute = $methodAttributes[0];
-                        $routes[$matches[1]][] = [
-                            'httpMethod' => Str::lower(Arr::last(explode('\\', $methodAttribute->getName()))),
-                            'path' => ltrim($methodAttribute->getArguments()['path'], '/'),
-                            'class' => $class,
-                            'action' => $method->name,
-                            'summary' => $methodAttribute->getArguments()['summary'],
-                        ];
-                    }
-                }
+            preg_match('/(app\\\\.+?\\\\(\w+)Controller)\.php/', $file, $matches);
+            if (!in_array($matches[2], $this->ignoreList)) {
+                $class = ucfirst($matches[1]);
+                $classRoutes = $this->reflectionRoutes($class);
+                $routes = array_merge($routes, $classRoutes);
             }
         }
 
-        foreach ($routes as $m => $list) {
-            $routeContent = '// Route';
-            foreach ($list as $route) {
-                $routeContent .= "\n// ".$route['summary'];
-                $routeContent .= "\nRoute::{$route['httpMethod']}('{$route['path']}', [\\{$route['class']}::class, '{$route['action']}'])";
-                if ($route['httpMethod'] === 'get') {
-                    $name = Str::replace('/', '.', $route['path']);
-                    $routeContent .= "->name('$name')";
-                }
-                $routeContent .= ';';
-            }
-            $routeContent .= "\n// end";
+        return $routes;
+    }
 
-            $route_file = app_path('Api/'.$m.'/Routes/api.php');
-            $content = file_get_contents($route_file);
-            $content = preg_replace('/\/\/ Route.*?\/\/ end/is', $routeContent, $content);
-            file_put_contents($route_file, $content);
+    /**
+     * @throws ReflectionException
+     */
+    private function reflectionRoutes(string $class): array
+    {
+        $reflectionClass = new ReflectionClass($class);
+        $methods = $reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC);
+        $methods = array_filter($methods, function ($item) use ($class) {
+            return $item->class === $class;
+        });
+
+        $routes = [];
+        foreach ($methods as $method) {
+            $methodAttributes = $reflectionClass->getMethod($method->name)->getAttributes();
+            if (isset($methodAttributes[0])) {
+                $methodAttribute = $methodAttributes[0];
+                $routes[] = [
+                    'httpMethod' => Str::lower(Arr::last(explode('\\', $methodAttribute->getName()))),
+                    'path' => ltrim($methodAttribute->getArguments()['path'], '/'),
+                    'class' => $class,
+                    'action' => $method->name,
+                    'summary' => $methodAttribute->getArguments()['summary'],
+                ];
+            }
         }
+
+        return $routes;
+    }
+
+    private function genRoutes(array $routes, string $routeFile): void
+    {
+        $routeContent = '// Route';
+        foreach ($routes as $route) {
+            $routeContent .= "\n// " . $route['summary'];
+            $routeContent .= "\nRoute::{$route['httpMethod']}('{$route['path']}', [\\{$route['class']}::class, '{$route['action']}'])";
+            if ($route['httpMethod'] === 'get') {
+                $name = Str::replace('/', '.', $route['path']);
+                $routeContent .= "->name('$name')";
+            }
+            $routeContent .= ';';
+        }
+        $routeContent .= "\n// end";
+
+        $content = file_get_contents($routeFile);
+        $content = preg_replace('/\/\/ Route.*?\/\/ end/is', $routeContent, $content);
+        file_put_contents($routeFile, $content);
     }
 }
