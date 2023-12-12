@@ -23,6 +23,21 @@ BackendBuild()
 
 FrontendBuild()
 {
+    cd $cur_dir/phpmall-admin
+    pnpm install
+    pnpm run build
+    ossutil cp -rf dist oss://phpmall-demo/admin --endpoint=oss-cn-shanghai.aliyuncs.com
+
+    cd $cur_dir/phpmall-seller
+    pnpm install
+    pnpm run build
+    ossutil cp -rf dist oss://phpmall-demo/seller --endpoint=oss-cn-shanghai.aliyuncs.com
+
+    cd $cur_dir/phpmall-supplier
+    pnpm install
+    pnpm run build
+    ossutil cp -rf dist oss://phpmall-demo/supplier --endpoint=oss-cn-shanghai.aliyuncs.com
+
     cd $cur_dir/phpmall-web
     pnpm install
     pnpm run build

@@ -12,27 +12,42 @@ High performance e-commerce platform for PHP based on Octane.
 
 - 商城首页：https://demo.phpmall.net
 - 运营平台：https://demo.phpmall.net/admin
-- 认证平台：https://demo.phpmall.net/passport
 - 供应平台：https://demo.phpmall.net/supplier
 - 卖家平台：https://demo.phpmall.net/seller
-- 买家平台：https://demo.phpmall.net/home
-- 微商城：https://m.phpmall.net
+- 买家平台：https://demo.phpmall.net/user
+- 微商城：https://demo.phpmall.net/mobile
 
 ## 安装
 
 ```
-composer create-project phpmall/phpmall
+git clone https://gitee.com/phpmall/phpmall.git
 ```
 
 ## 安装前端工程依赖
 
 ```
+# 运营平台
+cd phpmall-admin
+pnpm install
+pnpm run build
+
+# 卖家中心
+cd phpmall-seller
+pnpm install
+pnpm run build
+
+# 供应商中心
+cd phpmall-supplier
+pnpm install
+pnpm run build
+
 # 商城首页
+cd phpmall-web
 pnpm install
 pnpm run build
 
 # 微商城
-cd mobile
+cd phpmall-mobile
 pnpm install
 pnpm run build:h5
 ```
@@ -40,8 +55,9 @@ pnpm run build:h5
 ## 安装后端工程依赖
 
 ```
+cd phpmall-server
 composer config -g repos.packagist composer https://packagist.pages.dev
-composer install -o
+composer install -oW
 cp .env.example .env
 php artisan key:generate
 ```
