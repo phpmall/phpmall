@@ -5,7 +5,7 @@ import { useAuthStore } from '@/stores/auth'
 import type { FormInstance, FormRules } from 'element-plus'
 import { commonCaptchaService } from '@/services/common';
 import type { ILoginMobileRequest } from '@/types/auth';
-import { authLoginMobileService } from '@/services/auth';
+import { apiAuthLoginMobileService } from '@/services/auth';
 
 const loginFormRef = ref<FormInstance>()
 const authStore = useAuthStore()
@@ -71,7 +71,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
         uuid: '' // 图片验证码UUID参数
       })
 
-      authLoginMobileService(formData.value).then((res) => {
+      apiAuthLoginMobileService(formData.value).then((res) => {
         console.log(res)
 
         authStore.login('jwt string')
