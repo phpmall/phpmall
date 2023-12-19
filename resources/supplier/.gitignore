@@ -27,6 +27,4 @@ coverage
 *.sln
 *.sw?
 
-auto-imports.d.ts
-components.d.ts
-pnpm-lock.yaml
+*.tsbuildinfo

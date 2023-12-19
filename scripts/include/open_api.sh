@@ -72,11 +72,19 @@ Echo_Green '------------------------------'
 
 php artisan gen:interface
 
-rm -rf ../phpmall-mobile/src/services/*.ts
-rm -rf ../phpmall-mobile/src/types/*.d.ts
-cp storage/app/ts/services/{auth,common,portal,user}.ts ../phpmall-mobile/src/services/
-cp storage/app/ts/types/{auth,common,portal,user}.d.ts ../phpmall-mobile/src/types/
+rm -rf ../resources/mobile/src/services/*.ts
+rm -rf ../resources/mobile/src/types/*.d.ts
+cp storage/app/ts/services/{auth,common,portal,user}.ts ../resources/mobile/src/services/
+cp storage/app/ts/types/{auth,common,portal,user}.d.ts ../resources/mobile/src/types/
 
-rm -rf ../phpmall-web/src/services
-rm -rf ../phpmall-web/src/types
-cp -a storage/app/ts/* ../phpmall-web/src/
+rm -rf ../resources/admin/src/services
+rm -rf ../resources/admin/src/types
+cp -a storage/app/ts/* ../resources/admin/src/
+
+rm -rf ../resources/seller/src/services
+rm -rf ../resources/seller/src/types
+cp -a storage/app/ts/* ../resources/seller/src/
+
+rm -rf ../resources/supplier/src/services
+rm -rf ../resources/supplier/src/types
+cp -a storage/app/ts/* ../resources/supplier/src/

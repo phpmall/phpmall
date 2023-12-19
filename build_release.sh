@@ -13,7 +13,7 @@ fi
 
 BackendBuild()
 {
-    cd $cur_dir/phpmall-server
+    cd $cur_dir
     composer u --no-dev -oW
     php artisan optimize
     php artisan migrate --force
@@ -23,39 +23,38 @@ BackendBuild()
 
 FrontendBuild()
 {
-    cd $cur_dir/phpmall-admin
+    cd $cur_dir/resources/admin
     pnpm install
     pnpm run build
-    ossutil cp -rf dist oss://phpmall-demo/admin --endpoint=oss-cn-shanghai.aliyuncs.com
+    rm -rf $cur_dir/public/admin
+    cp dist $cur_dir/public/admin
 
-    cd $cur_dir/phpmall-seller
+    cd $cur_dir/resources/seller
     pnpm install
     pnpm run build
-    ossutil cp -rf dist oss://phpmall-demo/seller --endpoint=oss-cn-shanghai.aliyuncs.com
+    rm -rf $cur_dir/public/seller
+    cp dist $cur_dir/public/seller
 
-    cd $cur_dir/phpmall-supplier
+    cd $cur_dir/resources/supplier
     pnpm install
     pnpm run build
-    ossutil cp -rf dist oss://phpmall-demo/supplier --endpoint=oss-cn-shanghai.aliyuncs.com
-
-    cd $cur_dir/phpmall-web
-    pnpm install
-    pnpm run build
-    ossutil cp -rf dist oss://phpmall-demo/ --endpoint=oss-cn-shanghai.aliyuncs.com
+    rm -rf $cur_dir/public/supplier
+    cp dist $cur_dir/public/supplier
 }
 
 MobileBuild()
 {
-    cd $cur_dir/phpmall-mobile
+    cd $cur_dir/resources/mobile
     pnpm install
     pnpm run build:h5
-    ossutil cp -rf dist/build/h5 oss://phpmall-demo/mobile --endpoint=oss-cn-shanghai.aliyuncs.com
+    rm -rf $cur_dir/public/mobile
+    cp dist/build/h5 $cur_dir/public/mobile
 }
 
 DocsBuild()
 {
-    cd $cur_dir/phpmall-docs
-    ossutil cp -rf api oss://phpmall-demo/api --endpoint=oss-cn-shanghai.aliyuncs.com
+    cd $cur_dir/docs
+    # ossutil cp -rf api oss://phpmall-demo/api --endpoint=oss-cn-shanghai.aliyuncs.com
 }
 
 if [[ "${Stack}" = "all" ]]; then
