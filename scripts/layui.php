@@ -1,6 +1,6 @@
 <?php
 
-$cf = dirname(__DIR__) . '/public/assets/layui/dist/css/layui.css';
+$cf = dirname(__DIR__) . '/public/assets/layui@2.9.2/css/layui.css';
 
 $originColors = [
     '#16baaa',
