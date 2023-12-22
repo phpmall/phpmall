@@ -20,7 +20,7 @@
         "juling/laravel-generator": "^1.0",
         "juling/laravel-image": "^1.0",
         "laravel/framework": "^10.34",
-        "laravel/octane": "^2.1",
+        "laravel/octane": "^2.2",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "overtrue/laravel-easy-sms": "^2.1",
@@ -40,7 +40,7 @@
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0",
-        "zircote/swagger-php": "^4.7"
+        "zircote/swagger-php": "^4.8"
     },
     "autoload": {
         "psr-4": {

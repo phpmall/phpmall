@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Portal\Responses;
+namespace App\Portal\Http\Responses;
 
 class CatalogResponse
 {

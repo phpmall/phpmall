@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Portal\Controllers;
+namespace App\Portal\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 

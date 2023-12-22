@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Portal\Controllers;
+namespace App\Portal\Http\Controllers;
 
 use App\Foundation\Http\Controllers\Controller;
+use App\Portal\Providers\PortalServiceProvider;
 use Illuminate\Contracts\Support\Renderable;
 use OpenApi\Attributes as OA;
 use OpenApi\Attributes\Contact;
@@ -20,6 +21,6 @@ abstract class BaseController extends Controller
      */
     protected function display($template, array $vars = []): Renderable
     {
-        return parent::display('portal::'.$template, $vars);
+        return parent::display(PortalServiceProvider::MODULE.'::'.$template, $vars);
     }
 }

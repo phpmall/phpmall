@@ -4,13 +4,7 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $page_title ?? '' }}</title>
-    <link rel="stylesheet" href="{{ asset('assets/layui/dist/css/layui.css') }}">
-    <link rel="stylesheet" href="{{ asset('static/css/common.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/portal/css/app.css') }}">
-    <script type="text/javascript" src="{{ asset('assets/layui/dist/layui.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vue/dist/vue.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('static/js/common.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/portal/js/app.js') }}"></script>
+    @vite(['app/Portal/Assets/ts/app.ts'])
 </head>
 <body>
 
