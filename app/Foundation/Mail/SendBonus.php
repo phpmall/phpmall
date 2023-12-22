@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Foundation\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class VirtualCard extends Mailable
+class SendBonus extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,7 +26,7 @@ class VirtualCard extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '虚拟卡片',
+            subject: '发红包',
         );
     }
 
@@ -36,7 +36,7 @@ class VirtualCard extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.virtual_card',
+            view: 'view.send_bonus',
         );
     }
 

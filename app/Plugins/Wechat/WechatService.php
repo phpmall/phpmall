@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Foundation\Managers\Wechat;
+namespace App\Plugins\Wechat;
 
 class WechatService
 {

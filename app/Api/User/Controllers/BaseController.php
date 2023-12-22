@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
-use App\Foundation\Controllers\Controller;
+use App\Foundation\Http\Controllers\Controller;
 use OpenApi\Attributes as OA;
 use OpenApi\Attributes\Contact;
 

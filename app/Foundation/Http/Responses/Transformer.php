@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Foundation\Responses;
+namespace App\Foundation\Http\Responses;
 
 abstract class Transformer
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Foundation\Controllers;
+namespace App\Foundation\Http\Controllers;
 
 use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Contracts\Support\Renderable;

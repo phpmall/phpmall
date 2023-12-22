@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Foundation\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class OrderConfirm extends Mailable
+class OrderInvalid extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,7 +26,7 @@ class OrderConfirm extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '订单确认通知',
+            subject: '订单无效',
         );
     }
 
@@ -36,7 +36,7 @@ class OrderConfirm extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.order_confirm',
+            view: 'view.order_invalid',
         );
     }
 

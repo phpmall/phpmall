@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Foundation\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SendPassword extends Mailable
+class Attention extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,7 +26,7 @@ class SendPassword extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '密码找回',
+            subject: '关注商品',
         );
     }
 
@@ -36,7 +36,7 @@ class SendPassword extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.send_password',
+            view: 'emails.attention_list',
         );
     }
 

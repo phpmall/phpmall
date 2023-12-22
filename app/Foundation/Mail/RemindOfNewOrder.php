@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Foundation\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Attention extends Mailable
+class RemindOfNewOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,7 +26,7 @@ class Attention extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '关注商品',
+            subject: '新订单通知',
         );
     }
 
@@ -36,7 +36,7 @@ class Attention extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.attention_list',
+            view: 'view.remind_of_new_order',
         );
     }
 

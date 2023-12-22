@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Foundation\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RegisterValidate extends Mailable
+class OrderCancel extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,7 +26,7 @@ class RegisterValidate extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '邮件验证',
+            subject: '订单取消',
         );
     }
 
@@ -36,7 +36,7 @@ class RegisterValidate extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.register_validate',
+            view: 'view.order_cancel',
         );
     }
 

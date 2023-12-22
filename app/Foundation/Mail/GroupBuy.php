@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Foundation\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Recomment extends Mailable
+class GroupBuy extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,7 +26,7 @@ class Recomment extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '用户评论回复',
+            subject: '团购商品',
         );
     }
 
@@ -36,7 +36,7 @@ class Recomment extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.recomment',
+            view: 'view.group_buy',
         );
     }
 
