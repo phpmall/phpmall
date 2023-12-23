@@ -2,8 +2,14 @@
 <html lang="zh-Hans">
 <head>
     <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{{ $page_title ?? '' }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{{ asset('assets/layui@2.9.2/css/layui.css') }}">
+    <script type="text/javascript" src="{{ asset('assets/layui@2.9.2/layui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vue@2.7.15/vue.min.js') }}"></script>
     @vite(['app/Portal/Assets/ts/app.ts'])
 </head>
 <body>
