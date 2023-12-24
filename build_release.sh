@@ -1,4 +1,4 @@
-cd /home/wwwroot/phpmall/
+cd /home/wwwroot/demo.phpmall.net
 
 git pull
 
@@ -18,7 +18,7 @@ BackendBuild()
     php artisan optimize
     php artisan migrate --force
     php artisan db:seed --force
-    # supervisorctl reload
+    supervisorctl reload
 }
 
 FrontendBuild()
