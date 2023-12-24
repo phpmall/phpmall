@@ -25,7 +25,7 @@ use Throwable;
 
 class LoginController extends BaseController
 {
-    #[OA\Post(path: '/auth/login/mobile', summary: '通过手机号和密码登录', tags: ['认证管理'])]
+    #[OA\Post(path: 'login/mobile', summary: '通过手机号和密码登录', tags: ['认证管理'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function mobile(LoginRequest $request): JsonResponse
@@ -56,7 +56,7 @@ class LoginController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/login/mobile2', summary: '通过手机号和密码登录', tags: ['登录'])]
+    #[OA\Post(path: 'login/mobile2', summary: '通过手机号和密码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginMobileRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function mobile2(LoginMobileRequest $request): JsonResponse
@@ -100,7 +100,7 @@ class LoginController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/login/mobile', summary: '通过手机短信验证码登录', tags: ['登录'])]
+    #[OA\Post(path: 'login/mobile', summary: '通过手机短信验证码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginSmsRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function mobile3(LoginMobileRequest $request): JsonResponse

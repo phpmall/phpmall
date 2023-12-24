@@ -19,7 +19,7 @@ use Throwable;
 
 class SignupController extends BaseController
 {
-    #[OA\Post(path: '/signup/mobile', summary: '通过手机号码注册', tags: ['注册'])]
+    #[OA\Post(path: 'signup/mobile', summary: '通过手机号码注册', tags: ['注册'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SignupMobileRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
     public function mobile(SignupMobileRequest $request): JsonResponse

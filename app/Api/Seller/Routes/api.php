@@ -9,6 +9,8 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 
 // Route start
-// 卖家
-Route::get('seller', [\App\Api\Seller\Controllers\IndexController::class, 'index'])->name('seller');
+Route::prefix('api/seller')->middleware('api')->group(function () {
+    // 卖家
+    Route::get('seller', [\App\Api\Seller\Controllers\IndexController::class, 'index'])->name('seller');
+});
 // end
