@@ -10,18 +10,18 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000",
+            "url": "http://127.0.0.1:8000/api/common",
             "description": "开发环境"
         }
     ],
     "paths": {
-        "/common/upload": {
+        "/upload": {
             "post": {
                 "tags": [
                     "素材"
                 ],
                 "summary": "附件上传接口",
-                "operationId": "1d1cb519e2baedbbb01e971b965a52c2",
+                "operationId": "7344a54bc539006807309c39793bc8ad",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -51,13 +51,13 @@
                 ]
             }
         },
-        "/common/captcha": {
+        "/captcha": {
             "get": {
                 "tags": [
                     "验证码"
                 ],
                 "summary": "图片验证码",
-                "operationId": "b00bf6a37772b3068ad10ba056f7bdcd",
+                "operationId": "a65b88b9fda72070b59fc09fc63de277",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -72,13 +72,13 @@
                 }
             }
         },
-        "/common/region": {
+        "/region": {
             "get": {
                 "tags": [
                     "地区"
                 ],
                 "summary": "查询地区列表",
-                "operationId": "406dfadf1b5ef26740e2ad607feadd26",
+                "operationId": "7dfe7c2e610f5cc15bf293081c90610e",
                 "parameters": [
                     {
                         "name": "id",
@@ -102,13 +102,13 @@
                 }
             }
         },
-        "/common/sms": {
+        "/sms": {
             "post": {
                 "tags": [
                     "短信"
                 ],
                 "summary": "发送手机短信验证码",
-                "operationId": "5b9eb463b1ac6d9d24303cb83899b54b",
+                "operationId": "dae7391b59f293bc000c565fe4bd4c02",
                 "requestBody": {
                     "required": true,
                     "content": {

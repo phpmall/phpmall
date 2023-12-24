@@ -22,7 +22,7 @@ Get_Modules() {
 
         result+=($(Get_Bundles ${item}))
 
-        vendor/bin/openapi ${result[@]} -o ../phpmall-docs/api/${item,,}.json -f json
+        vendor/bin/openapi ${result[@]} -o docs/api/${item,,}.json -f json
     done
 }
 
@@ -72,19 +72,15 @@ Echo_Green '------------------------------'
 
 php artisan gen:interface
 
-rm -rf ../resources/mobile/src/services/*.ts
-rm -rf ../resources/mobile/src/types/*.d.ts
-cp storage/app/ts/services/{auth,common,portal,user}.ts ../resources/mobile/src/services/
-cp storage/app/ts/types/{auth,common,portal,user}.d.ts ../resources/mobile/src/types/
+rm -rf resources/mobile/src/{services,types}/*.ts
+cp storage/app/ts/services/{auth,common,user}.ts resources/mobile/src/services/
+cp storage/app/ts/types/{auth,common,user}.d.ts resources/mobile/src/types/
 
-rm -rf ../resources/admin/src/services
-rm -rf ../resources/admin/src/types
-cp -a storage/app/ts/* ../resources/admin/src/
+rm -rf resources/admin/src/{services,types}
+cp -a storage/app/ts/* resources/admin/src/
 
-rm -rf ../resources/seller/src/services
-rm -rf ../resources/seller/src/types
-cp -a storage/app/ts/* ../resources/seller/src/
+rm -rf resources/seller/src/{services,types}
+cp -a storage/app/ts/* resources/seller/src/
 
-rm -rf ../resources/supplier/src/services
-rm -rf ../resources/supplier/src/types
-cp -a storage/app/ts/* ../resources/supplier/src/
+rm -rf resources/supplier/src/{services,types}
+cp -a storage/app/ts/* resources/supplier/src/

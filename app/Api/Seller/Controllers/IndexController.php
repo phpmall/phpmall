@@ -10,7 +10,7 @@ use OpenApi\Attributes as OA;
 
 class IndexController extends BaseController
 {
-    #[OA\Get(path: 'seller', summary: '卖家', tags: ['seller'])]
+    #[OA\Get(path: '/seller', summary: '卖家', tags: ['seller'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(Request $request): JsonResponse
     {
