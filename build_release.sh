@@ -53,8 +53,8 @@ MobileBuild()
 
 DocsBuild()
 {
-    cd $cur_dir/docs
-    # ossutil cp -rf api oss://phpmall-demo/api --endpoint=oss-cn-shanghai.aliyuncs.com
+    rm -rf $cur_dir/public/docs
+    cp -a docs/ $cur_dir/public/
 }
 
 if [[ "${Stack}" = "all" ]]; then
