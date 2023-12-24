@@ -27,19 +27,19 @@ FrontendBuild()
     pnpm install
     pnpm run build
     rm -rf $cur_dir/public/admin
-    cp dist $cur_dir/public/admin
+    mv dist $cur_dir/public/admin
 
     cd $cur_dir/resources/seller
     pnpm install
     pnpm run build
     rm -rf $cur_dir/public/seller
-    cp dist $cur_dir/public/seller
+    mv dist $cur_dir/public/seller
 
     cd $cur_dir/resources/supplier
     pnpm install
     pnpm run build
     rm -rf $cur_dir/public/supplier
-    cp dist $cur_dir/public/supplier
+    mv dist $cur_dir/public/supplier
 }
 
 MobileBuild()
@@ -48,7 +48,7 @@ MobileBuild()
     pnpm install
     pnpm run build:h5
     rm -rf $cur_dir/public/mobile
-    cp dist/build/h5 $cur_dir/public/mobile
+    mv dist/build/h5 $cur_dir/public/mobile
 }
 
 DocsBuild()
