@@ -53,6 +53,7 @@ MobileBuild()
 
 DocsBuild()
 {
+    cd $cur_dir
     rm -rf $cur_dir/public/docs
     cp -a docs/ $cur_dir/public/
 }
