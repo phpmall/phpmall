@@ -8,9 +8,6 @@ devDependencies:
   axios:
     specifier: ^1.6.1
     version: 1.6.2
-  jquery:
-    specifier: ^3.7.1
-    version: 3.7.1
   laravel-vite-plugin:
     specifier: ^1.0.0
     version: 1.0.0(vite@5.0.10)
@@ -498,10 +495,6 @@ packages:
   /is-number@7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
-    dev: true
-
-  /jquery@3.7.1:
-    resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
     dev: true
 
   /laravel-vite-plugin@1.0.0(vite@5.0.10):

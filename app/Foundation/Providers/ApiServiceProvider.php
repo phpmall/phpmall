@@ -28,13 +28,6 @@ class ApiServiceProvider extends ServiceProvider
             if (is_dir($view)) {
                 $this->loadViewsFrom($view, Str::camel($module));
             }
-
-            $asset = $dir . 'Assets';
-            if (is_dir($asset)) {
-                $this->publishes([
-                    $asset => public_path('assets/' . $module),
-                ], 'public');
-            }
         }
     }
 

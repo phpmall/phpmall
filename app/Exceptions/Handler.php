@@ -34,32 +34,30 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $e): JsonResponse
+    public function render($request, Throwable $e): Response
     {
         $response = parent::render($request, $e);
 
-        if ($response instanceof JsonResponse) {
-            return $response;
+        if ($request->is('api/*')) {
+            if ($response instanceof JsonResponse) {
+                return $response;
+            }
+
+            if ($e instanceof AuthenticationException) {
+                return $this->errorResponse(401, $e);
+            }
+
+            if ($e instanceof ValidationException) {
+                return $this->errorResponse($e->status, $e);
+            }
+
+            return $this->errorResponse($response->getStatusCode(), $e);
         }
 
-        return $this->response($response->getStatusCode(), $e);
+        return $response;
     }
 
-    protected function unauthenticated($request, AuthenticationException $exception): JsonResponse
-    {
-        return $this->response(401, $exception);
-    }
-
-    protected function convertValidationExceptionToResponse(ValidationException $e, $request): Response
-    {
-        if ($e->response) {
-            return $e->response;
-        }
-
-        return $this->response($e->status, $e);
-    }
-
-    private function response(int $code, Throwable $e): JsonResponse
+    private function errorResponse(int $code, Throwable $e): JsonResponse
     {
         return response()->json([
             'code' => $code,

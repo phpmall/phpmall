@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/layui@2.9.2/css/layui.css') }}">
     <script type="text/javascript" src="{{ asset('assets/layui@2.9.2/layui.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vue@2.7.15/vue.min.js') }}"></script>
-    @vite(['app/Portal/Assets/ts/app.ts'])
+    @vite(['app/Portal/Assets/js/app.js'])
 </head>
 <body>
 

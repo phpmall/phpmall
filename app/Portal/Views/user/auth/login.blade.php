@@ -1,5 +1,6 @@
-{layout name="layout/app" /}
+@extends('portal::user.auth.layout')
 
+@section('content')
 login page.
 <form class="layui-form" lay-filter="loginForm" action="" method="post">
     {:token_field()}
@@ -32,3 +33,4 @@ login page.
 </div>
 
 </form>
+@endsection
