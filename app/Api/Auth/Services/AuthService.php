@@ -5,72 +5,28 @@ declare(strict_types=1);
 namespace App\Api\Auth\Services;
 
 use App\Foundation\Constants\Constant;
+use App\Foundation\Services\JWTService;
 use App\Services\UserService;
-use Juling\Auth\Authentication;
-use Juling\Auth\BearerTokenExtractor;
-use Illuminate\Support\Carbon;
 
-class AuthService
+class AuthService extends UserService
 {
     /**
      * 返回用户数据
      */
     public function auth($token = null): array
     {
+        $JWTService = new JWTService();
+
         if (is_null($token)) {
-            $payload = $this->getPayloadByBearer();
+            $payload = $JWTService->getPayloadByBearer();
         } else {
-            $payload = $this->getPayloadByToken($token);
+            $payload = $JWTService->getPayloadByToken($token);
         }
 
         if (isset($payload[Constant::JWT_USER_ID])) {
-            $userService = new UserService();
-            $userOutput = $userService->getRepository()->findOneByIdReturnUser($payload[Constant::JWT_USER_ID]);
-
-            return $userOutput->toArray();
+            return $this->getOneById($payload[Constant::JWT_USER_ID]);
         }
 
         return [];
-    }
-
-    /**
-     * 创建JWT参数
-     */
-    public function createToken(array $body, int $expire = 0): string
-    {
-        $authentication = new Authentication();
-
-        $payload = config('jwt.payload');
-        $payload['body'] = $body;
-        if ($expire > 0) {
-            $payload['exp'] = Carbon::now()->timestamp + $expire;
-        }
-
-        return $authentication->createToken($payload);
-    }
-
-    /**
-     * 根据Token头获取JWT参数
-     */
-    public function getPayloadByBearer(): array
-    {
-        $authentication = new Authentication();
-
-        $bearerTokenExtractor = new BearerTokenExtractor();
-        $payload = $authentication->getPayload($bearerTokenExtractor);
-
-        return (array) $payload['body'] ?? [];
-    }
-
-    /**
-     * 根据Token头获取JWT参数
-     */
-    public function getPayloadByToken(string $token): array
-    {
-        $authentication = new Authentication();
-
-        $payload = $authentication->getPayloadByToken($token);
-
-        return (array) $payload['body'] ?? [];
     }
 }

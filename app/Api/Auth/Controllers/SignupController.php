@@ -6,11 +6,10 @@ namespace App\Api\Auth\Controllers;
 
 use App\Api\Auth\Requests\Signup\SignupMobileRequest;
 use App\Api\Auth\Responses\LoginResponse;
-use App\Api\Auth\Services\AuthService;
 use App\Api\Auth\Services\Input\UserRegisterInput;
-use App\Api\Auth\Services\UserService;
 use App\Foundation\Constants\Constant;
 use App\Foundation\Exceptions\CustomException;
+use App\Foundation\Services\JWTService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -45,9 +44,9 @@ class SignupController extends BaseController
             $userRegisterInput->setCode($data['code']);
             if ($userService->register($userRegisterInput)) {
                 // 用户JWT返回
-                $authService = new AuthService();
+                $JWTService = new JWTService();
                 $userOutput = $userService->findOneByMobile($data['mobile']);
-                $token = $authService->createToken([
+                $token = $JWTService->createToken([
                     Constant::JWT_USER_ID => $userOutput->getId(),
                 ]);
 
@@ -57,10 +56,14 @@ class SignupController extends BaseController
                 return $this->success($response->toArray());
             }
 
-            return $this->error('注册失败');
-        } catch (CustomException $e) {
-            return $this->error($e->getMessage());
-        } catch (Throwable $e) {
+            throw new CustomException('注册失败');
+        } catch (CustomException|Throwable $e) {
+
+
+            if ($e instanceof CustomException) {
+                return $this->error($e->getMessage());
+            }
+
             Log::error($e->getMessage());
 
             return $this->error('注册错误');

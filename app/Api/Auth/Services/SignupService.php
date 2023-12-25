@@ -6,19 +6,19 @@ namespace App\Api\Auth\Services;
 
 use App\Api\Auth\Services\Input\UserRegisterInput;
 use App\Foundation\Exceptions\CustomException;
-use App\Services\UserService as BaseUserService;
+use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Throwable;
 
-class SignupService extends BaseUserService
+class SignupService extends UserService
 {
     /**
      * 新用户注册
      *
      * @throws CustomException
      */
-    public function mobile(UserRegisterInput $input): bool
+    public function register(UserRegisterInput $input): bool
     {
         $userInput = new UserInput();
         $userInput->setName($input->getMobile());

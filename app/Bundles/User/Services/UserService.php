@@ -37,6 +37,15 @@ class UserService extends BaseUserService
             return null;
         }
 
+        /**
+         * $userSocialiteService = new UserSocialiteService();
+         * $userSocialite = $userSocialiteService->getOne([
+         * ['type', '=', UserSocialiteTypeEnum::Mobile->value],
+         * ['identifier', '=', $mobile],
+         * ['status', '=', $status->value],
+         * ]);
+         */
+
         return $this->findById($userAuth->user_id, $status);
     }
 
@@ -50,6 +59,15 @@ class UserService extends BaseUserService
         if ($userAuth->isEmpty()) {
             return null;
         }
+
+        /**
+         * $userSocialiteService = new UserSocialiteService();
+         * $userSocialite = $userSocialiteService->getOne([
+         * ['type', '=', UserSocialiteTypeEnum::Email->value],
+         * ['identifier', '=', $email],
+         * ['status', '=', $status->value],
+         * ]);
+         */
 
         return $this->findById($userAuth->user_id, $status);
     }
