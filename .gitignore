@@ -1,6 +1,7 @@
 /.phpunit.cache
 /node_modules
 /public/admin
+/public/apidoc
 /public/build
 /public/hot
 /public/seller
