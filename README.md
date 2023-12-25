@@ -4,8 +4,6 @@
 
 High performance e-commerce platform for PHP based on Octane.
 
-> 运行环境要求 PHP8.2
-
 目标：打造千万级数据的在线交易平台系统，保证初创企业初期业务数据支撑。
 
 ## 演示地址
@@ -17,49 +15,81 @@ High performance e-commerce platform for PHP based on Octane.
 - 买家平台：https://demo.phpmall.net/user
 - 微商城：https://demo.phpmall.net/mobile
 
-## 安装
+> 运行环境要求PHP8.2，启用 Redis 等扩展。
+
+## 安装 MySQL
+
+```shell
+docker run -d --name mysql -p 3306:3306 -v %CD%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:8.0.34 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8.0.34 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+```
+
+## 安装 Redis
+
+```shell
+docker run -d --name redis -p 6379:6379 redis:7.2 redis-server --save 60 1 --loglevel warning
+```
+
+## 开发环境
+
+### Docker 环境
+
+```shell
+docker build -t apache-php8.2 docker
+docker run --rm -d --name phpmall -v %cd%:/var/www/html -v %cd%/docker/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8.2
+```
+
+注意在`cmd`模式下运行以上代码。
+
+### WSL2 环境
+
+推荐参考 PHPUnit [部署文档](https://docs.phpunit.de/en/10.0/installation.html)，基于 Debian 快速搭建开发环境。
+
+```shell
+sudo apt install curl -y
+curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
+sudo apt update
+sudo apt install php8.2-{cli,curl,bcmath,dom,gd,mbstring,mysql,pcov,redis,swoole,zip}
+```
+
+### WAMP 环境
+
+推荐使用 [Laragon](https://laragon.org/download/) 集成开发环境。
+
+## 安装后端工程依赖
 
 ```
 git clone https://gitee.com/phpmall/phpmall.git
+
+cd phpmall
+composer config -g repos.packagist composer https://packagist.pages.dev
+composer install -oW
+cp .env.example .env
+php artisan key:generate
 ```
 
 ## 安装前端工程依赖
 
 ```
 # 运营平台
-cd phpmall-admin
+cd resources/admin
 pnpm install
 pnpm run build
 
 # 卖家中心
-cd phpmall-seller
+cd resources/seller
 pnpm install
 pnpm run build
 
 # 供应商中心
-cd phpmall-supplier
-pnpm install
-pnpm run build
-
-# 商城首页
-cd phpmall-web
+cd resources/supplier
 pnpm install
 pnpm run build
 
 # 微商城
-cd phpmall-mobile
+cd resources/mobile
 pnpm install
 pnpm run build:h5
-```
-
-## 安装后端工程依赖
-
-```
-cd phpmall-server
-composer config -g repos.packagist composer https://packagist.pages.dev
-composer install -oW
-cp .env.example .env
-php artisan key:generate
 ```
 
 ## 创建数据库
