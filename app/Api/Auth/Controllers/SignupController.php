@@ -23,9 +23,9 @@ class SignupController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function mobile(SignupMobileRequest $request): JsonResponse
     {
-        $data = $request->validated();
-
         try {
+            $data = $request->validated();
+
             // 校验短信验证码
             $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX . $data['mobile']);
             if ($smsCode !== $data['code']) {

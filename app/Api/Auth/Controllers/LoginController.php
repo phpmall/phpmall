@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Controllers;
 
-use App\Api\Auth\Requests\Login\LoginMobileRequest;
 use App\Api\Auth\Requests\Login\LoginRequest;
 use App\Api\Auth\Requests\Login\LoginSmsRequest;
 use App\Api\Auth\Responses\LoginResponse;
 use App\Api\Auth\Services\AuthService;
 use App\Api\Auth\Services\Input\LoginViaMobileInput;
 use App\Api\Auth\Services\LoginService;
+use App\Bundles\User\Enums\UserStatusEnum;
+use App\Bundles\User\Services\UserService;
 use App\Foundation\Constants\Constant;
 use App\Foundation\Exceptions\CustomException;
-use App\Services\UserService;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -31,47 +30,16 @@ class LoginController extends BaseController
     public function mobile(LoginRequest $request): JsonResponse
     {
         try {
-            $request->validated();
-
-            $loginInput = new LoginViaMobileInput();
-            $loginInput->setMobile($request->post('mobile'));
-            $loginInput->setPassword($request->post('password'));
-            $loginInput->setCaptcha($request->post('captcha'));
-            $loginInput->setUuid($request->post('uuid'));
-
-            $loginService = new LoginService();
-            $adminUser = $loginService->mobile($loginInput);
-            $token = $adminUser->createToken('token')->plainTextToken;
-
-            $loginResponse = new LoginResponse();
-            $loginResponse->setToken($token);
-
-            return $this->success($loginResponse->toArray());
-        } catch (CustomException $e) {
-            return $this->error($e->getMessage());
-        } catch (Throwable $e) {
-            Log::error($e->getMessage());
-
-            return $this->error($e->getMessage());
-        }
-    }
-
-    #[OA\Post(path: '/login/mobile2', summary: '通过手机号和密码登录', tags: ['登录'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginMobileRequest::class))]
-    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
-    public function mobile2(LoginMobileRequest $request): JsonResponse
-    {
-        try {
-            $data = $request->validated();
+            $formData = $request->validated();
 
             $captchaService = new Captcha();
-            if (! $captchaService->check($data['uuid'], $data['captcha'])) {
+            if (! $captchaService->check($request->post('uuid'), $request->post('captcha'))) {
                 throw new CustomException('图片验证码输入错误');
             }
 
             $credentials = [
-                'mobile' => $data['mobile'],
-                'password' => $data['password'],
+                'mobile' => $request->post('mobile'),
+                'password' => $request->post('password'),
             ];
             $remember = $data['remember'] ?? 'off';
 
@@ -90,45 +58,58 @@ class LoginController extends BaseController
                 return $this->success($response->toArray());
             }
 
-            return $this->error('手机号码登录失败');
-        } catch (CustomException $e) {
-            return $this->error($e->getMessage());
-        } catch (Exception $e) {
+            $loginInput = new LoginViaMobileInput();
+            $loginInput->setMobile($request->post('mobile'));
+            $loginInput->setPassword($request->post('password'));
+            $loginInput->setCaptcha($request->post('captcha'));
+            $loginInput->setUuid($request->post('uuid'));
+
+            $loginService = new LoginService();
+            $adminUser = $loginService->mobile($loginInput);
+            $token = $adminUser->createToken('token')->plainTextToken;
+
+            $loginResponse = new LoginResponse();
+            $loginResponse->setToken($token);
+
+            return $this->success($loginResponse->toArray());
+        } catch (Throwable $e) {
+            if ($e instanceof CustomException) {
+                return $this->error($e->getMessage());
+            }
+
             Log::error($e->getMessage());
 
-            return $this->error('帐号登录错误');
+            return $this->error($e->getMessage());
         }
     }
 
-    #[OA\Post(path: '/login/mobile3', summary: '通过手机短信验证码登录', tags: ['登录'])]
+    #[OA\Post(path: '/login/smsCode', summary: '通过手机短信验证码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginSmsRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
-    public function mobile3(LoginMobileRequest $request): JsonResponse
+    public function smsCode(LoginSmsRequest $request): JsonResponse
     {
         try {
-            $data = $request->validated();
+            $formData = $request->validated();
 
             // 校验短信验证码
-            $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX.$data['mobile']);
-            if ($smsCode !== $data['code']) {
+            $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX.$formData['mobile']);
+            if ($smsCode !== $formData['code']) {
                 return $this->error('短信验证码不正确');
             }
 
             $userService = new UserService();
-            $userOutput = $userService->findOneByMobile($data['mobile']);
-
-            $authService = new AuthService();
-            $token = $authService->createToken([
-                Constant::JWT_USER_ID => $userOutput->getId(),
-            ]);
+            $user = $userService->findByMobile($formData['mobile'], UserStatusEnum::Normal);
+            $token = $user->createToken('token')->plainTextToken;
 
             $response = new LoginResponse();
             $response->setToken($token);
 
             return $this->success($response->toArray());
-        } catch (CustomException $e) {
-            return $this->error($e->getMessage());
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
+            if ($e instanceof CustomException) {
+                return $this->error($e->getMessage());
+            }
+
             Log::error($e->getMessage());
 
             return $this->error('短信登录错误');

@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'mobile.required' => '请填写登录手机号码',
+            'mobile.required' => '请填写手机号码',
             'password.required' => '请填写登录密码',
             'captcha.required' => '请填写图片验证码',
             'uuid.required' => '请填写图片验证码UUID参数',
