@@ -20,11 +20,6 @@ enum GuardTypeEnum: string
     case Seller = 'seller';
 
     /**
-     * 供应商
-     */
-    case Supplier = 'supplier';
-
-    /**
      * 买家
      */
     case User = 'user';

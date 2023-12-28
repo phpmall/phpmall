@@ -8,7 +8,6 @@ window.onload = function() {
         {name: '基础模块', url: '/api/common.json'},
         {name: '运营模块', url: '/api/manager.json'},
         {name: '卖家模块', url: '/api/seller.json'},
-        {name: '供应商模块', url: '/api/supplier.json'},
         {name: '买家模块', url: '/api/user.json'},
         {name: '门户模块', url: '/api/portal.json'}
     ],
