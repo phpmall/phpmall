@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Foundation\Services;
 
+use Illuminate\Support\Carbon;
 use Juling\Auth\Authentication;
 use Juling\Auth\BearerTokenExtractor;
-use Illuminate\Support\Carbon;
 
 class JWTService
 {

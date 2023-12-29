@@ -12,6 +12,7 @@ class WechatService
 {
     /**
      * 获取微信公众平台实例
+     *
      * @throws InvalidArgumentException
      */
     public function officialAccount(): Application

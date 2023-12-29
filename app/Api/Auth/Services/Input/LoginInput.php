@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Services\Input;
 
-class LoginViaMobileInput
+class LoginInput
 {
-    private string $mobile;
+    private string $username;
 
     private string $password;
 
@@ -14,14 +14,14 @@ class LoginViaMobileInput
 
     private string $uuid;
 
-    public function getMobile(): string
+    public function getUsername(): string
     {
-        return $this->mobile;
+        return $this->username;
     }
 
-    public function setMobile(string $mobile): void
+    public function setUsername(string $username): void
     {
-        $this->mobile = $mobile;
+        $this->username = $username;
     }
 
     public function getPassword(): string

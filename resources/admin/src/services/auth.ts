@@ -2,7 +2,6 @@ import request from '@/utils/request'
 import type { IForgetMobileRequest,
 ILoginRequest,
 ILoginResponse,
-ILoginMobileRequest,
 ILoginSmsRequest,
 IResetRequest,
 ISignupMobileRequest } from '@/types/auth'
@@ -16,28 +15,19 @@ export const forgetMobileService = (formData: IForgetMobileRequest): Promise<any
     })
 }
 
-// [认证管理] 通过手机号和密码登录
-export const loginMobileService = (formData: ILoginRequest): Promise<ILoginResponse> => {
+// [登录] 通过用户名和密码登录
+export const loginService = (formData: ILoginRequest): Promise<ILoginResponse> => {
     return request({
-        url: '/login/mobile',
-        method: 'post',
-        data: formData
-    })
-}
-
-// [登录] 通过手机号和密码登录
-export const loginMobile2Service = (formData: ILoginMobileRequest): Promise<ILoginResponse> => {
-    return request({
-        url: '/login/mobile2',
+        url: '/login',
         method: 'post',
         data: formData
     })
 }
 
 // [登录] 通过手机短信验证码登录
-export const loginMobile3Service = (formData: ILoginSmsRequest): Promise<ILoginResponse> => {
+export const loginSmsCodeService = (formData: ILoginSmsRequest): Promise<ILoginResponse> => {
     return request({
-        url: '/login/mobile3',
+        url: '/login/smsCode',
         method: 'post',
         data: formData
     })

@@ -27,7 +27,7 @@ class SignupController extends BaseController
             $data = $request->validated();
 
             // 校验短信验证码
-            $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX . $data['mobile']);
+            $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX.$data['mobile']);
             if ($smsCode !== $data['code']) {
                 throw new CustomException('短信验证码不正确');
             }
@@ -58,8 +58,6 @@ class SignupController extends BaseController
 
             throw new CustomException('注册失败');
         } catch (CustomException|Throwable $e) {
-
-
             if ($e instanceof CustomException) {
                 return $this->error($e->getMessage());
             }

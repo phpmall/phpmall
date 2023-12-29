@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Services;
 
+use App\Api\User\Enums\UserSocialiteTypeEnum;
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Foundation\Exceptions\CustomException;
 use App\Models\User;
 use App\Services\UserService as BaseUserService;
+use App\Services\UserSocialiteService;
 
 class UserService extends BaseUserService
 {
@@ -28,7 +30,14 @@ class UserService extends BaseUserService
      */
     public function findByUsername(string $username, UserStatusEnum $status): User
     {
-        return $this->getUser('username', $username, $status);
+        $userSocialiteService = new UserSocialiteService();
+        $userSocialite = $userSocialiteService->getOne([
+            ['type', '=', UserSocialiteTypeEnum::Username->value],
+            ['identifier', '=', $username],
+            ['status', '=', $status->value],
+        ]);
+
+        return $this->findById($userSocialite['user_id'], $status);
     }
 
     /**
@@ -38,22 +47,7 @@ class UserService extends BaseUserService
      */
     public function findByMobile(string $mobile, UserStatusEnum $status): User
     {
-        $userAuthService = new UserAuthService();
-        $userAuth = $userAuthService->find('mobile', $mobile);
-        if ($userAuth->isEmpty()) {
-            throw new CustomException('没有找到用户');
-        }
-
-        /**
-         * $userSocialiteService = new UserSocialiteService();
-         * $userSocialite = $userSocialiteService->getOne([
-         * ['type', '=', UserSocialiteTypeEnum::Mobile->value],
-         * ['identifier', '=', $mobile],
-         * ['status', '=', $status->value],
-         * ]);
-         */
-
-        return $this->findById($userAuth->user_id, $status);
+        return $this->getUser('mobile', $mobile, $status);
     }
 
     /**
@@ -63,22 +57,14 @@ class UserService extends BaseUserService
      */
     public function findByEmail(string $email, UserStatusEnum $status): User
     {
-        $userAuthService = new UserAuthService();
-        $userAuth = $userAuthService->find('email', $email);
-        if ($userAuth->isEmpty()) {
-            throw new CustomException('没有找到用户');
-        }
+        $userSocialiteService = new UserSocialiteService();
+        $userSocialite = $userSocialiteService->getOne([
+            ['type', '=', UserSocialiteTypeEnum::Email->value],
+            ['identifier', '=', $email],
+            ['status', '=', $status->value],
+        ]);
 
-        /**
-         * $userSocialiteService = new UserSocialiteService();
-         * $userSocialite = $userSocialiteService->getOne([
-         * ['type', '=', UserSocialiteTypeEnum::Email->value],
-         * ['identifier', '=', $email],
-         * ['status', '=', $status->value],
-         * ]);
-         */
-
-        return $this->findById($userAuth->user_id, $status);
+        return $this->findById($userSocialite['user_id'], $status);
     }
 
     /**
@@ -89,16 +75,6 @@ class UserService extends BaseUserService
     public function findByRememberToken(string $remember_token, UserStatusEnum $status): User
     {
         return $this->getUser('remember_token', $remember_token, $status);
-    }
-
-    /**
-     * 根据用户reset token查询用户
-     *
-     * @throws CustomException
-     */
-    public function findByResetToken(string $reset_token, UserStatusEnum $status): User
-    {
-        return $this->getUser('reset_token', $reset_token, $status);
     }
 
     /**

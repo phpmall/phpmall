@@ -15,17 +15,17 @@ class PortalServiceProvider extends ServiceProvider
     {
         $modulePath = dirname(__DIR__);
 
-        $migration = $modulePath . '/Migrations';
+        $migration = $modulePath.'/Migrations';
         if (is_dir($migration)) {
             $this->loadMigrationsFrom($migration);
         }
 
-        $route = $modulePath . '/Routes/web.php';
+        $route = $modulePath.'/Routes/web.php';
         if (is_file($route)) {
             $this->loadRoutesFrom($route);
         }
 
-        $view = $modulePath . '/Views';
+        $view = $modulePath.'/Views';
         if (is_dir($view)) {
             $this->loadViewsFrom($view, Str::camel(self::MODULE));
         }

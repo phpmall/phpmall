@@ -21,13 +21,13 @@ class SmsService
     const CACHE_EXPIRE = 10 * 60;
 
     /**
-     * @throws Exception
+     * @throws CustomException
      */
     public function send(string $mobile, string $template, array $data): array
     {
         $templates = config('services.easy-sms.templates');
-        if (!isset($templates[$template])) {
-            throw new Exception('没有找到短信模板');
+        if (! isset($templates[$template])) {
+            throw new CustomException('没有找到短信模板');
         }
 
         $smsKey = array_key_first($templates[$template]);
@@ -43,13 +43,13 @@ class SmsService
     /**
      * 发送短信验证码
      *
-     * @throws Exception
+     * @throws CustomException
      */
     public function sendCode(string $mobile): void
     {
         $code = mt_rand(100000, 999999);
 
-        Cache::put(self::CACHE_PREFIX . $mobile, $code, self::CACHE_EXPIRE);
+        Cache::put(self::CACHE_PREFIX.$mobile, $code, self::CACHE_EXPIRE);
 
         $this->send($mobile, 'SMS_CODE', ['code' => $code]);
     }
@@ -59,7 +59,7 @@ class SmsService
      */
     public function checkCode(string $mobile, string $code): bool
     {
-        $smsCode = Cache::get(self::CACHE_PREFIX . $mobile);
+        $smsCode = Cache::get(self::CACHE_PREFIX.$mobile);
 
         return $smsCode === $code;
     }
@@ -72,7 +72,7 @@ class SmsService
         // 替换消息变量
         preg_match_all('/\$\{(.+?)\\\}/', $content, $matches);
         foreach ($matches[1] as $vo) {
-            $content = str_replace('${' . $vo . '}', $data[$vo], $content);
+            $content = str_replace('${'.$vo.'}', $data[$vo], $content);
         }
 
         return $content;

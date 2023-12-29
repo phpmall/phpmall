@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Api\Manager\Controllers;
 
-use App\Api\Manager\Controllers\BaseController;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

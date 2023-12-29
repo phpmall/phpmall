@@ -10,6 +10,11 @@ namespace App\Api\User\Enums;
 enum UserSocialiteTypeEnum: string
 {
     /**
+     * 用户名
+     */
+    case Username = 'username';
+
+    /**
      * 手机号码
      */
     case Mobile = 'mobile';

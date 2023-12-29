@@ -11,12 +11,12 @@ class ApiServiceProvider extends ServiceProvider
     public function boot(): void
     {
         foreach ($this->getDirs() as $dir) {
-            $migration = $dir . 'Migrations';
+            $migration = $dir.'Migrations';
             if (is_dir($migration)) {
                 $this->loadMigrationsFrom($migration);
             }
 
-            $route = $dir . 'Routes/api.php';
+            $route = $dir.'Routes/api.php';
             if (is_file($route)) {
                 $this->loadRoutesFrom($route);
             }
