@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name')->comment('昵称');
             $table->string('avatar')->comment('头像');
             $table->date('birthday')->comment('生日');
-            $table->string('email')->unique()->comment('登录用户邮箱');
-            $table->timestamp('email_verified_at')->nullable()->comment('邮箱验证时间');
+            $table->string('mobile')->unique()->comment('登录手机号');
+            $table->timestamp('mobile_verified_at')->nullable()->comment('手机号验证时间');
             $table->string('password')->comment('登录用户密码');
             $table->unsignedTinyInteger('status')->comment('状态:1正常;2禁用');
             $table->rememberToken()->comment('会话令牌');
@@ -27,7 +27,7 @@ return new class extends Migration
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
+            $table->string('mobile')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
             $table->comment('用户密码重置表');
