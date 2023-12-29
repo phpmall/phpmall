@@ -7,7 +7,6 @@ namespace App\Bundles\Sms\Controllers\Common;
 use App\Api\Common\Controllers\BaseController;
 use App\Bundles\Sms\Requests\SmsSendRequest;
 use App\Bundles\Sms\Services\SmsService;
-use App\Foundation\Constants\Constant;
 use App\Foundation\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
@@ -21,14 +20,11 @@ class SmsController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function index(SmsSendRequest $request): JsonResponse
     {
-        $requestData = $request->validated();
-
         try {
-            $code = mt_rand(100000, 999999);
-            cache(Constant::SMS_CACHE_PREFIX.$requestData['mobile'], $code, Constant::SMS_CACHE_EXPIRE);
+            $requestData = $request->validated();
 
             $sms = new SmsService();
-            $sms->send($requestData['mobile'], 'SMS_CODE', ['code' => $code]);
+            $sms->sendCode($requestData['mobile']);
 
             return $this->success('短信发送成功');
         } catch (CustomException|Throwable $e) {
