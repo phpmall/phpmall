@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Controllers;
 
+use App\Api\Auth\Requests\Login\LoginMobileRequest;
 use App\Api\Auth\Requests\Login\LoginRequest;
 use App\Api\Auth\Requests\Login\LoginSmsRequest;
 use App\Api\Auth\Responses\LoginResponse;
-use App\Api\Auth\Services\AuthService;
 use App\Api\Auth\Services\Input\LoginViaMobileInput;
 use App\Api\Auth\Services\LoginService;
+use App\Bundles\Sms\Services\SmsService;
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Bundles\User\Services\UserService;
-use App\Foundation\Constants\Constant;
 use App\Foundation\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Juling\Captcha\Captcha;
 use OpenApi\Attributes as OA;
@@ -24,33 +23,27 @@ use Throwable;
 
 class LoginController extends BaseController
 {
-    #[OA\Post(path: '/login/mobile', summary: '通过手机号和密码登录', tags: ['认证管理'])]
+    #[OA\Post(path: '/login', summary: '通过用户名和密码登录', tags: ['认证管理'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
-    public function mobile(LoginRequest $request): JsonResponse
+    public function index(LoginRequest $request): JsonResponse
     {
         try {
             $formData = $request->validated();
 
             $captchaService = new Captcha();
-            if (! $captchaService->check($request->post('uuid'), $request->post('captcha'))) {
+            if (! $captchaService->check($formData['uuid'], $formData['captcha'])) {
                 throw new CustomException('图片验证码输入错误');
             }
 
             $credentials = [
-                'mobile' => $request->post('mobile'),
-                'password' => $request->post('password'),
+                'username' => $formData['username'],
+                'password' => $formData['password'],
             ];
-            $remember = $data['remember'] ?? 'off';
+            $remember = $formData['remember'] ?? 'off';
 
             if (Auth::attempt($credentials, $remember === 'on')) {
-                $authService = new AuthService();
-                $token = $authService->createToken([
-                    Constant::JWT_USER_ID => Auth::id(),
-                ]);
-
-                // dd(Auth::user()->createToken('aa')->plainTextToken);
-                // 6|8Wm5EBHMW99gmOOCEuJPmanqOvtK94YXGfDw5yhT
+                $token = Auth::user()->createToken('token')->plainTextToken;
 
                 $response = new LoginResponse();
                 $response->setToken($token);
@@ -58,11 +51,36 @@ class LoginController extends BaseController
                 return $this->success($response->toArray());
             }
 
+            throw new CustomException('用户名或密码错误');
+        } catch (Throwable $e) {
+            if ($e instanceof CustomException) {
+                return $this->error($e->getMessage());
+            }
+
+            Log::error($e->getMessage());
+
+            return $this->error($e->getMessage());
+        }
+    }
+
+    #[OA\Post(path: '/login/mobile', summary: '通过手机号和密码登录', tags: ['认证管理'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginMobileRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
+    public function mobile(LoginMobileRequest $request): JsonResponse
+    {
+        try {
+            $formData = $request->validated();
+
+            $captchaService = new Captcha();
+            if (! $captchaService->check($formData['uuid'], $formData['captcha'])) {
+                throw new CustomException('图片验证码输入错误');
+            }
+
             $loginInput = new LoginViaMobileInput();
-            $loginInput->setMobile($request->post('mobile'));
-            $loginInput->setPassword($request->post('password'));
-            $loginInput->setCaptcha($request->post('captcha'));
-            $loginInput->setUuid($request->post('uuid'));
+            $loginInput->setMobile($formData['mobile']);
+            $loginInput->setPassword($formData['password']);
+            $loginInput->setCaptcha($formData['captcha']);
+            $loginInput->setUuid($formData['uuid']);
 
             $loginService = new LoginService();
             $adminUser = $loginService->mobile($loginInput);
@@ -92,9 +110,9 @@ class LoginController extends BaseController
             $formData = $request->validated();
 
             // 校验短信验证码
-            $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX.$formData['mobile']);
-            if ($smsCode !== $formData['code']) {
-                return $this->error('短信验证码不正确');
+            $smsService = new SmsService();
+            if (! $smsService->checkCode($formData['mobile'], $formData['code'])) {
+                throw new CustomException('短信验证码不正确');
             }
 
             $userService = new UserService();

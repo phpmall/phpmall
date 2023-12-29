@@ -43,8 +43,10 @@ class LoginService extends UserService
 
     /**
      * 获取登录用户
+     *
+     * @throws CustomException
      */
-    private function user(string $username, UserStatusEnum $status): ?User
+    private function user(string $username, UserStatusEnum $status): User
     {
         if (is_email($username)) {
             return $this->findByEmail($username, $status);
