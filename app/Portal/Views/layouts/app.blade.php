@@ -7,9 +7,9 @@
     <title>{{ $page_title ?? '' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="{{ asset('assets/layui@2.9.2/css/layui.css') }}">
-    <script type="text/javascript" src="{{ asset('assets/layui@2.9.2/layui.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vue@2.7.15/vue.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('static/layui@2.9.2/css/layui.css') }}">
+    <script type="text/javascript" src="{{ asset('static/layui@2.9.2/layui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('static/vue@2.7.15/vue.min.js') }}"></script>
     @vite(['app/Portal/Assets/js/app.js'])
 </head>
 <body>

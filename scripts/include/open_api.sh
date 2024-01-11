@@ -22,7 +22,7 @@ Get_Modules() {
 
         result+=($(Get_Bundles ${item}))
 
-        vendor/bin/openapi ${result[@]} -o docs/api/${item,,}.json -f json
+        vendor/bin/openapi ${result[@]} -o storage/app/ts/${item,,}.json -f json
     done
 }
 
@@ -65,6 +65,8 @@ Echo_Green ' 生成swagger接口文档'
 Echo_Green '------------------------------'
 
 Get_Modules
+rm -rf ../docs/api/*.json
+cp storage/app/ts/*.json ../docs/api/
 
 Echo_Green '------------------------------'
 Echo_Green ' 生成typescript接口'
@@ -72,15 +74,9 @@ Echo_Green '------------------------------'
 
 php artisan gen:interface
 
-rm -rf resources/mobile/src/{services,types}/*.ts
-cp storage/app/ts/services/{auth,common,user}.ts resources/mobile/src/services/
-cp storage/app/ts/types/{auth,common,user}.d.ts resources/mobile/src/types/
+rm -rf ../mobile/src/{services,types}/*.ts
+cp storage/app/ts/services/{auth,portal,user}.ts ../mobile/src/services/
+cp storage/app/ts/types/{auth,portal,user}.d.ts ../mobile/src/types/
 
-rm -rf resources/admin/src/{services,types}
-cp -a storage/app/ts/* resources/admin/src/
-
-rm -rf resources/seller/src/{services,types}
-cp -a storage/app/ts/* resources/seller/src/
-
-rm -rf resources/supplier/src/{services,types}
-cp -a storage/app/ts/* resources/supplier/src/
+rm -rf ../web/src/{services,types}
+cp -a storage/app/ts/{services,types} ../web/src/

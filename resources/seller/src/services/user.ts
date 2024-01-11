@@ -59,7 +59,7 @@ export const addressDestroyService = (id: number): Promise<any> => {
 }
 
 // [用户中心] 获取用户资料
-export const profileShowService = (): PromiseApp\Api\User\Responses\ProfileResponse => {
+export const profileShowService = (): Promise<any> => {
     return request({
         url: '/profile/show',
         method: 'get'

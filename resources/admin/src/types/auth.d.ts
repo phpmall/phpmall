@@ -3,10 +3,16 @@ export interface IForgetMobileRequest {
   captcha: string, // 图片验证码
 }
 
-export interface ILoginRequest {
-  username: string, // 登录用户名
+export interface ILoginMobileRequest {
+  mobile: string, // 手机号码
   password: string, // 登录密码
-  remember?: string, // 记住我
+  captcha: string, // 图片验证码
+  uuid: string, // 验证码UUID
+}
+
+export interface ILoginRequest {
+  mobile: string, // 登录手机号码
+  password: string, // 登录密码
   captcha: string, // 图片验证码
   uuid: string, // 图片验证码UUID
 }

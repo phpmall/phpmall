@@ -6,9 +6,9 @@ IRegionResponse,
 ISmsSendRequest } from '@/types/common'
 
 // [素材] 附件上传接口
-export const uploadService = (formData: IUploadRequest): Promise<IUploadResponse> => {
+export const commonUploadService = (formData: IUploadRequest): Promise<IUploadResponse> => {
     return request({
-        url: '/upload',
+        url: '/common/upload',
         method: 'post',
         data: formData,
         headers: { 'Content-Type': 'multipart/form-data' }
@@ -16,26 +16,26 @@ export const uploadService = (formData: IUploadRequest): Promise<IUploadResponse
 }
 
 // [验证码] 图片验证码
-export const captchaService = (): Promise<ICaptchaResponse> => {
+export const commonCaptchaService = (): Promise<ICaptchaResponse> => {
     return request({
-        url: '/captcha',
+        url: '/common/captcha',
         method: 'get'
     })
 }
 
 // [地区] 查询地区列表
-export const regionService = (id: number): Promise<IRegionResponse> => {
+export const commonRegionService = (id: number): Promise<IRegionResponse> => {
     return request({
-        url: '/region',
+        url: '/common/region',
         method: 'get',
         params: {id}
     })
 }
 
 // [短信] 发送手机短信验证码
-export const smsService = (formData: ISmsSendRequest): Promise<any> => {
+export const commonSmsService = (formData: ISmsSendRequest): Promise<any> => {
     return request({
-        url: '/sms',
+        url: '/common/sms',
         method: 'post',
         data: formData
     })

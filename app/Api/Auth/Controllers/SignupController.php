@@ -6,12 +6,12 @@ namespace App\Api\Auth\Controllers;
 
 use App\Api\Auth\Requests\Signup\SignupMobileRequest;
 use App\Api\Auth\Responses\LoginResponse;
-use App\Api\Auth\Services\Input\UserRegisterInput;
+use App\Api\Auth\Services\Input\RegisterInput;
+use App\Bundles\Sms\Services\SmsService;
 use App\Foundation\Constants\Constant;
 use App\Foundation\Exceptions\CustomException;
 use App\Foundation\Services\JWTService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use OpenApi\Attributes as OA;
 use Throwable;
@@ -24,22 +24,21 @@ class SignupController extends BaseController
     public function mobile(SignupMobileRequest $request): JsonResponse
     {
         try {
-            $data = $request->validated();
+            $formData = $request->validated();
 
-            // 校验短信验证码
-            $smsCode = Cache::get(Constant::SMS_CACHE_PREFIX.$data['mobile']);
-            if ($smsCode !== $data['code']) {
+            $smsService = new SmsService();
+            if (! $smsService->checkCode($formData['mobile'], $formData['code'])) {
                 throw new CustomException('短信验证码不正确');
             }
 
             // 校验注册协议
-            if ($data['agreed'] !== 'on') {
+            if ($formData['agreed'] !== 'on') {
                 throw new CustomException('请阅读并同意协议');
             }
 
             // 新用户注册
             $userService = new UserService();
-            $userRegisterInput = new UserRegisterInput();
+            $userRegisterInput = new RegisterInput();
             $userRegisterInput->setMobile($data['mobile']);
             $userRegisterInput->setCode($data['code']);
             if ($userService->register($userRegisterInput)) {

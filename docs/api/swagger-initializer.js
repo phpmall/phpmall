@@ -5,7 +5,6 @@ window.onload = function() {
   window.ui = SwaggerUIBundle({
     urls: [
         {name: '认证模块', url: '/api/auth.json'},
-        {name: '基础模块', url: '/api/common.json'},
         {name: '运营模块', url: '/api/manager.json'},
         {name: '卖家模块', url: '/api/seller.json'},
         {name: '买家模块', url: '/api/user.json'},

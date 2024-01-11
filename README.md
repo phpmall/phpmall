@@ -9,34 +9,31 @@ High performance e-commerce platform for PHP based on Octane.
 ## 演示地址
 
 - 商城首页：https://demo.phpmall.net
-- 运营平台：https://demo.phpmall.net/admin
-- 供应平台：https://demo.phpmall.net/supplier
-- 卖家平台：https://demo.phpmall.net/seller
-- 买家平台：https://demo.phpmall.net/user
+- 运营中心：https://demo.phpmall.net/admin
+- 卖家中心：https://demo.phpmall.net/seller
+- 买家中心：https://demo.phpmall.net/user
 - 微商城：https://demo.phpmall.net/mobile
-
-> 运行环境要求PHP8.2，启用 Redis 等扩展。
-
-## 安装 MySQL
-
-```shell
-docker run -d --name mysql -p 3306:3306 -v %CD%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:8.0.34 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8.0.34 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-```
-
-## 安装 Redis
-
-```shell
-docker run -d --name redis -p 6379:6379 redis:7.2 redis-server --save 60 1 --loglevel warning
-```
 
 ## 开发环境
 
-### Docker 环境
+### 安装 MySQL
 
-```shell
-docker build -t apache-php8.2 docker
-docker run --rm -d --name phpmall -v %cd%:/var/www/html -v %cd%/docker/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8.2
+```cmd
+docker run -d --name mysql -p 3306:3306 -v %cd%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:8.0.34 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8.0.34 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+```
+
+### 安装 Redis
+
+```cmd
+docker run -d --name redis -p 6379:6379 redis:7.2 redis-server --save 60 1 --loglevel warning
+```
+
+### Web 开发环境
+
+```cmd
+docker build -t apache-php8.2 docker/dev
+docker run --rm -d --name phpmall -v %cd%:/var/www/html -v %cd%/docker/dev/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8.2
 ```
 
 注意在`cmd`模式下运行以上代码。
@@ -49,7 +46,7 @@ docker run --rm -d --name phpmall -v %cd%:/var/www/html -v %cd%/docker/conf:/etc
 sudo apt install curl -y
 curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
 sudo apt update
-sudo apt install php8.2-{cli,curl,bcmath,dom,gd,mbstring,mysql,pcov,redis,swoole,zip}
+sudo apt install php8.2-{cli,curl,bcmath,dom,fpm,gd,mbstring,mysql,opcache,redis,swoole,zip}
 ```
 
 ### WAMP 环境
@@ -66,30 +63,6 @@ composer config -g repos.packagist composer https://packagist.pages.dev
 composer install -oW
 cp .env.example .env
 php artisan key:generate
-```
-
-## 安装前端工程依赖
-
-```
-# 运营平台
-cd resources/admin
-pnpm install
-pnpm run build
-
-# 卖家中心
-cd resources/seller
-pnpm install
-pnpm run build
-
-# 供应商中心
-cd resources/supplier
-pnpm install
-pnpm run build
-
-# 微商城
-cd resources/mobile
-pnpm install
-pnpm run build:h5
 ```
 
 ## 创建数据库

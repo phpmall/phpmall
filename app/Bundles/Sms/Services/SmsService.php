@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Bundles\Sms\Services;
 
 use App\Foundation\Exceptions\CustomException;
-use Exception;
 use Illuminate\Support\Facades\Cache;
 
 class SmsService

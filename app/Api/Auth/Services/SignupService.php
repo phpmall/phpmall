@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Services;
 
-use App\Api\Auth\Services\Input\UserRegisterInput;
+use App\Api\Auth\Services\Input\RegisterInput;
 use App\Foundation\Exceptions\CustomException;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Throwable;
 
 class SignupService extends UserService
 {
@@ -18,9 +17,9 @@ class SignupService extends UserService
      *
      * @throws CustomException
      */
-    public function register(UserRegisterInput $input): bool
+    public function handle(RegisterInput $input): bool
     {
-        $userInput = new UserInput();
+        $userInput = new LoginInput();
         $userInput->setName($input->getMobile());
         $userInput->setAvatar('');
         $userInput->setMobile($input->getMobile());
@@ -28,10 +27,6 @@ class SignupService extends UserService
         $userInput->setPassword(Hash::make(Str::random()));
         $userInput->setStatus(1);
 
-        try {
-            return $this->save($userInput->toArray());
-        } catch (Throwable $e) {
-            throw new CustomException($e->getMessage());
-        }
+        return $this->save($userInput->toArray());
     }
 }

@@ -44,7 +44,6 @@ class LoginController extends BaseController
             $loginService = new LoginService();
             $user = $loginService->handle($loginInput);
 
-            // 记录 Session 登录
             $routeMiddlewares = $request->route()->middleware();
             if (in_array('web', $routeMiddlewares)) {
                 $remember = $formData['remember'] ?? 'off';
