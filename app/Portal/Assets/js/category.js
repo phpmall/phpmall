@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 function sameSign(a, b) {
     return (a ^ b) >= 0
 }
