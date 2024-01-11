@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/portal')->middleware('api')->group(function () {
     // 附件上传接口
-    Route::post('upload', [\App\Api\Portal\Controllers\UploadController::class, 'index']);
+    Route::post('upload', [\App\Bundles\Material\Controllers\Portal\UploadController::class, 'index']);
     // 图片验证码
     Route::get('captcha', [\App\Bundles\Captcha\Controllers\Portal\CaptchaController::class, 'index'])->name('captcha');
     // 查询地区列表

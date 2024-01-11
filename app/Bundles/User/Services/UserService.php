@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Services;
 
-use App\Api\User\Enums\UserSocialiteTypeEnum;
+use App\Bundles\User\Enums\UserSocialiteTypeEnum;
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Foundation\Exceptions\CustomException;
 use App\Models\User;

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/user')->middleware('api')->group(function () {
     // 仪表台
-    Route::get('user', [\App\Api\User\Controllers\IndexController::class, 'index'])->name('user');
+    Route::get('user', [\App\Bundles\User\Controllers\User\DashboardController::class, 'index'])->name('user');
     // 获取用户全部收货地址
     Route::get('address', [\App\Bundles\User\Controllers\User\AddressController::class, 'index'])->name('address');
     // 新增用户收货地址
