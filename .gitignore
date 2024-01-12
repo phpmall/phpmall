@@ -1,9 +1,9 @@
 /.phpunit.cache
 /node_modules
 /public/admin
-/public/apidoc
 /public/build
 /public/hot
+/public/mobile
 /public/seller
 /public/storage
 /public/supplier

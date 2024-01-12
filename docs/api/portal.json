@@ -15,13 +15,34 @@
         }
     ],
     "paths": {
+        "/captcha": {
+            "get": {
+                "tags": [
+                    "验证码"
+                ],
+                "summary": "图片验证码",
+                "operationId": "9c5c9850d7c12154b08aa551e5ee690a",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CaptchaResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/upload": {
             "post": {
                 "tags": [
                     "素材"
                 ],
                 "summary": "附件上传接口",
-                "operationId": "f5127256ae53cb90f755684aa9fe88f2",
+                "operationId": "ce57c383a15cd01d07d100ceb2ce746c",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -49,27 +70,6 @@
                         "bearerAuth": []
                     }
                 ]
-            }
-        },
-        "/captcha": {
-            "get": {
-                "tags": [
-                    "验证码"
-                ],
-                "summary": "图片验证码",
-                "operationId": "9c5c9850d7c12154b08aa551e5ee690a",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CaptchaResponse"
-                                }
-                            }
-                        }
-                    }
-                }
             }
         },
         "/region": {
@@ -129,6 +129,21 @@
     },
     "components": {
         "schemas": {
+            "CaptchaResponse": {
+                "properties": {
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "123456"
+                    },
+                    "uuid": {
+                        "description": "验证码UUID",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
             "UploadRequest": {
                 "required": [
                     "file"
@@ -147,21 +162,6 @@
                     "url": {
                         "description": "素材URL地址",
                         "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "CaptchaResponse": {
-                "properties": {
-                    "captcha": {
-                        "description": "图片验证码",
-                        "type": "string",
-                        "example": "123456"
-                    },
-                    "uuid": {
-                        "description": "验证码UUID",
-                        "type": "string",
-                        "example": "123456"
                     }
                 },
                 "type": "object"

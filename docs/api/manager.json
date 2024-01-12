@@ -21,7 +21,7 @@
                     "管理员"
                 ],
                 "summary": "管理员接口",
-                "operationId": "763541661eca41de4350c955431f4750",
+                "operationId": "58c7a8424efc16b8d647c4ac242fee48",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -34,13 +34,13 @@
                 ]
             }
         },
-        "/admin/dashboard": {
+        "/dashboard": {
             "get": {
                 "tags": [
                     "运营"
                 ],
                 "summary": "运营首页",
-                "operationId": "0207b867984ab84d5cc4d9a03b72323b",
+                "operationId": "52b634a1c7882a03444bb3fc86554414",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -54,7 +54,7 @@
                     "运营中心"
                 ],
                 "summary": "管理仪表台",
-                "operationId": "7a638f14288a8d090f3f83d317015c0b",
+                "operationId": "3ed6e4cfa77c53a2d030858ea411cd16",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -67,13 +67,13 @@
                 ]
             }
         },
-        "/admin/permission": {
+        "/permission": {
             "get": {
                 "tags": [
                     "权限管理"
                 ],
                 "summary": "权限列表",
-                "operationId": "c0e81d5d276f1774121ae744a4c44ad5",
+                "operationId": "7c6a3f64e393e1cf22a68323183e3ee2",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -81,13 +81,13 @@
                 }
             }
         },
-        "/admin/role": {
+        "/role": {
             "get": {
                 "tags": [
                     "角色管理"
                 ],
                 "summary": "角色列表",
-                "operationId": "c3bf1afccbb8fe363248adecd1d99625",
+                "operationId": "6273801dc9cce376adcb17ef35bbf092",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -95,13 +95,13 @@
                 }
             }
         },
-        "/admin/seller": {
+        "/seller": {
             "get": {
                 "tags": [
                     "卖家管理"
                 ],
                 "summary": "全部卖家",
-                "operationId": "6277a152af9e71b7d92daeaee6366c94",
+                "operationId": "b4abc8e66f901b0e3789f0963e7a6a3e",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -109,13 +109,13 @@
                 }
             }
         },
-        "/admin/shop": {
+        "/shop": {
             "get": {
                 "tags": [
                     "店铺管理"
                 ],
                 "summary": "卖家店铺",
-                "operationId": "743c9952a86ab49a1ca4676b1e3fe6df",
+                "operationId": "75f481a0f2af6db60c2dcadf95ea8dd8",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -123,13 +123,13 @@
                 }
             }
         },
-        "/admin/store": {
+        "/store": {
             "get": {
                 "tags": [
                     "门店管理"
                 ],
                 "summary": "卖家门店",
-                "operationId": "4ca3f758b7fade32730f39fbf39fba02",
+                "operationId": "15d2457f52d0f14d91baabd43aa45c38",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -137,13 +137,13 @@
                 }
             }
         },
-        "/admin/userAddress": {
+        "/userAddress": {
             "get": {
                 "tags": [
                     "买家收货地址"
                 ],
                 "summary": "买家收货地址",
-                "operationId": "89d7e8b587bf3c1fdd45fd79f9e09192",
+                "operationId": "cf399d640d958e159ce5b8cde6ba0eca",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -157,7 +157,7 @@
                     "用户管理"
                 ],
                 "summary": "用户列表",
-                "operationId": "a88677d032cf13309e7743506d9bdabb",
+                "operationId": "402f36070f2de682256f7e014fa9680a",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -176,7 +176,7 @@
                     "用户管理"
                 ],
                 "summary": "添加新用户",
-                "operationId": "ccfb4e3e84ffbee55e0d66eaa3996c39",
+                "operationId": "9f3ece7a8629d9fe5ec04df9f31f4322",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -195,7 +195,7 @@
                     "用户管理"
                 ],
                 "summary": "获取详情",
-                "operationId": "a0a72be46c1be57e874f970eabfb0472",
+                "operationId": "8144000cf244cc7eabfa556ddcacdc7d",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -214,7 +214,7 @@
                     "用户管理"
                 ],
                 "summary": "更新用户详情",
-                "operationId": "9aedcb46279bad593aa02a014ed92762",
+                "operationId": "6bc93216de65b415ce9d81b3a10cb6fd",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -233,7 +233,7 @@
                     "用户管理"
                 ],
                 "summary": "删除用户",
-                "operationId": "509b3daced1f92eb98a466e133302ce1",
+                "operationId": "0e1975567c80a83e7ecfb90f8388ad97",
                 "responses": {
                     "200": {
                         "description": "OK"

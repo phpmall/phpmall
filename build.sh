@@ -26,6 +26,8 @@ AdminBuild()
     cd $cur_dir/resources/admin
     pnpm install
     pnpm run build
+    rm -rf $cur_dir/public/admin
+    mv dist $cur_dir/public/admin
 }
 
 SellerBuild()
@@ -33,6 +35,8 @@ SellerBuild()
     cd $cur_dir/resources/seller
     pnpm install
     pnpm run build
+    rm -rf $cur_dir/public/seller
+    mv dist $cur_dir/public/seller
 }
 
 MobileBuild()
@@ -40,6 +44,8 @@ MobileBuild()
     cd $cur_dir/resources/mobile
     pnpm install
     pnpm run build:h5
+    rm -rf $cur_dir/public/mobile
+    mv dist/build/h5 $cur_dir/public/mobile
 }
 
 DocsBuild()

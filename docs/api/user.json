@@ -15,25 +15,6 @@
         }
     ],
     "paths": {
-        "/user": {
-            "get": {
-                "tags": [
-                    "用户中心"
-                ],
-                "summary": "仪表台",
-                "operationId": "0d0f308e127d311458155c8535342ed6",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
         "/address": {
             "get": {
                 "tags": [
@@ -195,6 +176,25 @@
                         "example": 1
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/dashboard": {
+            "get": {
+                "tags": [
+                    "用户中心"
+                ],
+                "summary": "仪表台",
+                "operationId": "411ea5ff5547e0f12908b3472f7c58f0",
                 "responses": {
                     "200": {
                         "description": "OK"
