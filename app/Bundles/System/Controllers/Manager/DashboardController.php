@@ -10,7 +10,7 @@ use OpenApi\Attributes as OA;
 
 class DashboardController extends BaseController
 {
-    #[OA\Get(path: '/dashboard', summary: '运营首页', tags: ['运营'])]
+    #[OA\Get(path: 'dashboard', summary: '运营首页', tags: ['运营'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {

@@ -10,18 +10,18 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000/api/user",
+            "url": "http://127.0.0.1:8000/api/user/",
             "description": "开发环境"
         }
     ],
     "paths": {
-        "/address": {
+        "address": {
             "get": {
                 "tags": [
                     "收货地址"
                 ],
                 "summary": "获取用户全部收货地址",
-                "operationId": "b004afc6b9fc29e0f370deea38917a2c",
+                "operationId": "a96eae36c528566818e88f43d66cb55c",
                 "parameters": [
                     {
                         "name": "page",
@@ -67,13 +67,13 @@
                 ]
             }
         },
-        "/address/store": {
+        "address/store": {
             "post": {
                 "tags": [
                     "收货地址"
                 ],
                 "summary": "新增用户收货地址",
-                "operationId": "da6ef6c573a55a47f47fd4e30600b7ef",
+                "operationId": "9fd60651e6a49cfc47faffc5ee353135",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -96,13 +96,13 @@
                 ]
             }
         },
-        "/address/show": {
+        "address/show": {
             "get": {
                 "tags": [
                     "收货地址"
                 ],
                 "summary": "查询用户收货地址",
-                "operationId": "5cdfecb0410b9816d74f1124f1a48ca6",
+                "operationId": "a2651e2a8ea2c0c80d7fb355a8ae86cd",
                 "parameters": [
                     {
                         "name": "id",
@@ -131,13 +131,13 @@
                 ]
             }
         },
-        "/address/update": {
+        "address/update": {
             "put": {
                 "tags": [
                     "收货地址"
                 ],
                 "summary": "更新用户收货地址",
-                "operationId": "89a594f45c6a2cebcc2433730868172d",
+                "operationId": "0c968b8ef2451b52bfbb7fd18fde87dc",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -160,13 +160,13 @@
                 ]
             }
         },
-        "/address/destroy": {
+        "address/destroy": {
             "delete": {
                 "tags": [
                     "收货地址"
                 ],
                 "summary": "删除用户收货地址",
-                "operationId": "66fdf71811e1215f8076a5e17f080c39",
+                "operationId": "ca529a88b0bbf54b488f110d8a4df3e3",
                 "parameters": [
                     {
                         "name": "id",
@@ -188,13 +188,13 @@
                 ]
             }
         },
-        "/dashboard": {
+        "dashboard": {
             "get": {
                 "tags": [
                     "用户中心"
                 ],
                 "summary": "仪表台",
-                "operationId": "411ea5ff5547e0f12908b3472f7c58f0",
+                "operationId": "7f192949d6725dcbfc99b0473fa40ce7",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -207,13 +207,13 @@
                 ]
             }
         },
-        "/profile/show": {
+        "profile/show": {
             "get": {
                 "tags": [
                     "用户中心"
                 ],
                 "summary": "获取用户资料",
-                "operationId": "f72aec94dd85622c72fce62d3f6a39b9",
+                "operationId": "e4be9253059f10e1bdafd4d4acd6c1fd",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -233,13 +233,13 @@
                 ]
             }
         },
-        "/profile/update": {
+        "profile/update": {
             "put": {
                 "tags": [
                     "用户中心"
                 ],
                 "summary": "更新用户资料",
-                "operationId": "c49a9ec46c016018d68c85f522e0599e",
+                "operationId": "a669539beb24d2471be225532243a1fd",
                 "requestBody": {
                     "required": true,
                     "content": {

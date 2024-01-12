@@ -10,18 +10,18 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000/api/seller",
+            "url": "http://127.0.0.1:8000/api/seller/",
             "description": "开发环境"
         }
     ],
     "paths": {
-        "/dashboard": {
+        "dashboard": {
             "get": {
                 "tags": [
                     "seller"
                 ],
                 "summary": "卖家",
-                "operationId": "c3bd44ae185d13d3a5b5363819c9371c",
+                "operationId": "75444fb24fe0179abb5e519687e9484e",
                 "responses": {
                     "200": {
                         "description": "OK"
