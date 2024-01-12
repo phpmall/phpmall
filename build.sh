@@ -25,7 +25,7 @@ AdminBuild()
 {
     cd $cur_dir/resources/admin
     pnpm install
-    pnpm run build
+    pnpm run build-only
     rm -rf $cur_dir/public/admin
     mv dist $cur_dir/public/admin
 }
@@ -34,7 +34,7 @@ SellerBuild()
 {
     cd $cur_dir/resources/seller
     pnpm install
-    pnpm run build
+    pnpm run build-only
     rm -rf $cur_dir/public/seller
     mv dist $cur_dir/public/seller
 }
