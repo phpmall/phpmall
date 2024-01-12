@@ -3,9 +3,9 @@ import { ref, reactive, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import type { FormInstance, FormRules } from 'element-plus'
-import { commonCaptchaService } from '@/services/common';
-import type { ILoginMobileRequest } from '@/types/auth';
-import { apiAuthLoginMobileService } from '@/services/auth';
+import { captchaService } from '@/services/portal'
+import type { ILoginRequest } from '@/types/auth'
+import { loginService } from '@/services/auth'
 
 const loginFormRef = ref<FormInstance>()
 const authStore = useAuthStore()
@@ -64,14 +64,14 @@ const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.validate((valid) => {
     if (valid) {
-      const formData = ref<ILoginMobileRequest>({
-        mobile: '', // 手机号码
+      const formData = ref<ILoginRequest>({
+        username: '', // 手机号码
         password: '', // 登录密码
         captcha: '', // 图片验证码
         uuid: '' // 图片验证码UUID参数
       })
 
-      apiAuthLoginMobileService(formData.value).then((res) => {
+      loginService(formData.value).then((res) => {
         console.log(res)
 
         authStore.login('jwt string')
@@ -91,39 +91,49 @@ const resetForm = (formEl: FormInstance | undefined) => {
 }
 
 onMounted(() => {
-  commonCaptchaService().then((res) => {
-    console.log(res);
+  captchaService().then((res) => {
+    console.log(res)
   })
 })
 </script>
 
 <template>
-  <main>
-    <h1>login page</h1>
+  <div class="auth">
+    <div class="header">
+      <div class="left">
+        <RouterLink to="/">Home</RouterLink>
+      </div>
+      <div class="right">right</div>
+    </div>
+    <div class="boxes">
+      
+        <h1>login page</h1>
 
-    <el-form
-      ref="loginFormRef"
-      :model="ruleForm"
-      status-icon
-      :rules="rules"
-      label-width="120px"
-      class="loginForm"
-    >
-      <el-form-item label="Password" prop="pass">
-        <el-input v-model="ruleForm.pass" type="password" autocomplete="off" />
-      </el-form-item>
-      <el-form-item label="Confirm" prop="checkPass">
-        <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" />
-      </el-form-item>
-      <el-form-item label="Age" prop="age">
-        <el-input v-model.number="ruleForm.age" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm(loginFormRef)">登 录</el-button>
-        <el-button @click="resetForm(loginFormRef)">Reset</el-button>
-      </el-form-item>
-    </el-form>
+        <el-form
+          ref="loginFormRef"
+          :model="ruleForm"
+          status-icon
+          :rules="rules"
+          label-width="120px"
+          class="loginForm"
+        >
+          <el-form-item label="Password" prop="pass">
+            <el-input v-model="ruleForm.pass" type="password" autocomplete="off" />
+          </el-form-item>
+          <el-form-item label="Confirm" prop="checkPass">
+            <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" />
+          </el-form-item>
+          <el-form-item label="Age" prop="age">
+            <el-input v-model.number="ruleForm.age" />
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm(loginFormRef)">登 录</el-button>
+            <el-button @click="resetForm(loginFormRef)">Reset</el-button>
+          </el-form-item>
+        </el-form>
 
-    <RouterLink :to="{ name: 'admin.dashboard' }"> dashboard page </RouterLink>
-  </main>
+        <RouterLink :to="{ name: 'dashboard' }"> dashboard page </RouterLink>
+    </div>
+    <div class="footer">footer copyright</div>
+  </div>
 </template>

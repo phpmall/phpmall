@@ -20,7 +20,7 @@ const logout = () => {
 <template>
   <el-container>
     <el-header class="header">
-      <RouterLink :to="{ name: 'admin.dashboard' }">Admin logo</RouterLink>
+      <RouterLink :to="{ name: 'dashboard' }">Admin logo</RouterLink>
       <div style="float: right;">
         <a href="#" @click="logout">退出</a>
       </div>
