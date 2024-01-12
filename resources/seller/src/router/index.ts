@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory, useRoute} from 'vue-router'
+import {createRouter, createWebHashHistory, useRoute} from 'vue-router'
 import type {Router} from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -10,7 +10,7 @@ import sellerRoutes from '@/pages/seller/route';
 import userRoutes from '@/pages/user/route';
 
 const router: Router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHashHistory(import.meta.env.BASE_URL),
     routes: [
         ...adminRoutes,
         ...passportRoutes,
