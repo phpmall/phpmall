@@ -70,10 +70,10 @@ const router = createRouter({
   ]
 })
 
-const route = useRoute()
 router.beforeEach((to, from, next) => {
   NProgress.start()
 
+  const route = useRoute()
   const authStore = useAuthStore()
   if (to.meta.guest && authStore.check()) {
     const { callback } = route.query
