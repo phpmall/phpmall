@@ -65,18 +65,21 @@ Echo_Green ' 生成swagger接口文档'
 Echo_Green '------------------------------'
 
 Get_Modules
-rm -rf ../docs/api/*.json
-cp storage/app/ts/*.json ../docs/api/
+rm -rf docs/api/*.json
+cp storage/app/ts/*.json docs/api/
 
 Echo_Green '------------------------------'
 Echo_Green ' 生成typescript接口'
 Echo_Green '------------------------------'
 
-php artisan gen:interface
+php artisan gen:typescript
 
-rm -rf ../mobile/src/{services,types}/*.ts
-cp storage/app/ts/services/{auth,portal,user}.ts ../mobile/src/services/
-cp storage/app/ts/types/{auth,portal,user}.d.ts ../mobile/src/types/
+rm -rf resources/admin/src/{services,types}
+cp -a storage/app/ts/{services,types} resources/admin/src/
 
-rm -rf ../web/src/{services,types}
-cp -a storage/app/ts/{services,types} ../web/src/
+rm -rf resources/mobile/src/{services,types}/*.ts
+cp storage/app/ts/services/{auth,portal,user}.ts resources/mobile/src/services/
+cp storage/app/ts/types/{auth,portal,user}.d.ts resources/mobile/src/types/
+
+rm -rf resources/seller/src/{services,types}
+cp -a storage/app/ts/{services,types} resources/seller/src/
