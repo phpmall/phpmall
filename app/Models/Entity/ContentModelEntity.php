@@ -12,7 +12,7 @@ class ContentModelEntity
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'integer')]
+    #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'name', description: '模型名称', type: 'string')]

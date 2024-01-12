@@ -12,7 +12,7 @@ class UserEntity
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'integer')]
+    #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'username', description: '登录用户名', type: 'string')]

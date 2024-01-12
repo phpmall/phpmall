@@ -12,7 +12,7 @@ class AdminLogEntity
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'integer')]
+    #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'admin_user_id', description: '管理员ID', type: 'integer')]

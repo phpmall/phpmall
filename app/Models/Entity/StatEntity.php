@@ -12,7 +12,7 @@ class StatEntity
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'integer')]
+    #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'access_time', description: '请求日期', type: 'string')]

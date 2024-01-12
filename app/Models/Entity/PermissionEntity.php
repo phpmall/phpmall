@@ -12,7 +12,7 @@ class PermissionEntity
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'integer')]
+    #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'guard', description: '守卫模块', type: 'string')]

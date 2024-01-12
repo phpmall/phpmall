@@ -10,6 +10,6 @@ if (! function_exists('mobile_mask')) {
      */
     function mobile_mask(string $mobile): string
     {
-        return Str::mask($mobile, '*', -4, 3);
+        return Str::mask($mobile, '*', 3, 4);
     }
 }

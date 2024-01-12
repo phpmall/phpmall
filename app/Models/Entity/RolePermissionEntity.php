@@ -12,7 +12,7 @@ class RolePermissionEntity
 {
     use ArrayObject;
 
-    #[OA\Property(property: 'id', description: '', type: 'integer')]
+    #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
     #[OA\Property(property: 'role_id', description: '角色ID', type: 'integer')]
