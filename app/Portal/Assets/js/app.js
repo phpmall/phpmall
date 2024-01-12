@@ -1,3 +1,4 @@
 import '../css/app.scss';
-import './bootstrap';
+
+import './common';
 import './category';
