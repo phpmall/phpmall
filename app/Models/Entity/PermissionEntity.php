@@ -15,8 +15,8 @@ class PermissionEntity
     #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'guard', description: '守卫模块', type: 'string')]
-    protected string $guard;
+    #[OA\Property(property: 'module', description: '模块名', type: 'string')]
+    protected string $module;
 
     #[OA\Property(property: 'parent_id', description: '父级ID', type: 'integer')]
     protected int $parentId;
@@ -24,16 +24,16 @@ class PermissionEntity
     #[OA\Property(property: 'name', description: '名称', type: 'string')]
     protected string $name;
 
-    #[OA\Property(property: 'description', description: '描述', type: 'string')]
-    protected string $description;
-
-    #[OA\Property(property: 'path', description: '标识', type: 'string')]
-    protected string $path;
-
     #[OA\Property(property: 'icon', description: 'ICON图标', type: 'string')]
     protected string $icon;
 
-    #[OA\Property(property: 'type', description: '类型：1菜单,2页面,3接口', type: 'integer')]
+    #[OA\Property(property: 'path', description: '标识规则', type: 'string')]
+    protected string $path;
+
+    #[OA\Property(property: 'tags', description: '描述标签', type: 'string')]
+    protected string $tags;
+
+    #[OA\Property(property: 'type', description: '类型：1菜单,2按钮,3接口', type: 'integer')]
     protected int $type;
 
     #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
@@ -47,6 +47,9 @@ class PermissionEntity
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
     protected string $updatedAt;
+
+    #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
+    protected string $deletedAt;
 
     /**
      * 获取
@@ -65,19 +68,19 @@ class PermissionEntity
     }
 
     /**
-     * 获取守卫模块
+     * 获取模块名
      */
-    public function getGuard(): string
+    public function getModule(): string
     {
-        return $this->guard;
+        return $this->module;
     }
 
     /**
-     * 设置守卫模块
+     * 设置模块名
      */
-    public function setGuard(string $guard): void
+    public function setModule(string $module): void
     {
-        $this->guard = $guard;
+        $this->module = $module;
     }
 
     /**
@@ -113,38 +116,6 @@ class PermissionEntity
     }
 
     /**
-     * 获取描述
-     */
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    /**
-     * 设置描述
-     */
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * 获取标识
-     */
-    public function getPath(): string
-    {
-        return $this->path;
-    }
-
-    /**
-     * 设置标识
-     */
-    public function setPath(string $path): void
-    {
-        $this->path = $path;
-    }
-
-    /**
      * 获取ICON图标
      */
     public function getIcon(): string
@@ -161,7 +132,39 @@ class PermissionEntity
     }
 
     /**
-     * 获取类型：1菜单,2页面,3接口
+     * 获取标识规则
+     */
+    public function getPath(): string
+    {
+        return $this->path;
+    }
+
+    /**
+     * 设置标识规则
+     */
+    public function setPath(string $path): void
+    {
+        $this->path = $path;
+    }
+
+    /**
+     * 获取描述标签
+     */
+    public function getTags(): string
+    {
+        return $this->tags;
+    }
+
+    /**
+     * 设置描述标签
+     */
+    public function setTags(string $tags): void
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * 获取类型：1菜单,2按钮,3接口
      */
     public function getType(): int
     {
@@ -169,7 +172,7 @@ class PermissionEntity
     }
 
     /**
-     * 设置类型：1菜单,2页面,3接口
+     * 设置类型：1菜单,2按钮,3接口
      */
     public function setType(int $type): void
     {
@@ -238,5 +241,21 @@ class PermissionEntity
     public function setUpdatedAt(string $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * 获取
+     */
+    public function getDeletedAt(): string
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * 设置
+     */
+    public function setDeletedAt(string $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 }

@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\ContentAttachment;
 use App\Models\Entity\ContentAttachmentEntity;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
@@ -66,10 +67,10 @@ class ContentAttachmentRepository extends CurdRepository implements RepositoryIn
     }
 
     /**
-     * 定义数据数据模型类
+     * 定义数据表查询构造器
      */
-    public function model(): ContentAttachment
+    public function model(): Builder
     {
-        return new ContentAttachment();
+        return DB::table('content_attachment');
     }
 }

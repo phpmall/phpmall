@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Entity\ProductTypeEntity;
-use App\Models\ProductType;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
@@ -66,10 +67,10 @@ class ProductTypeRepository extends CurdRepository implements RepositoryInterfac
     }
 
     /**
-     * 定义数据数据模型类
+     * 定义数据表查询构造器
      */
-    public function model(): ProductType
+    public function model(): Builder
     {
-        return new ProductType();
+        return DB::table('product_type');
     }
 }

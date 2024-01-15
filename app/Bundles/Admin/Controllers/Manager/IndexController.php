@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Bundles\Admin\Controllers\Manager;
 
 use App\Api\Manager\Controllers\BaseController;
-use App\Bundles\Admin\Services\PermissionBundleService;
+use App\Bundles\System\Services\PermissionBundleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;

@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\ContentTagRelation;
 use App\Models\Entity\ContentTagRelationEntity;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
@@ -66,10 +67,10 @@ class ContentTagRelationRepository extends CurdRepository implements RepositoryI
     }
 
     /**
-     * 定义数据数据模型类
+     * 定义数据表查询构造器
      */
-    public function model(): ContentTagRelation
+    public function model(): Builder
     {
-        return new ContentTagRelation();
+        return DB::table('content_tag_relation');
     }
 }

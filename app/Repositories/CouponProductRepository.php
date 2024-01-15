@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\CouponProduct;
 use App\Models\Entity\CouponProductEntity;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
@@ -66,10 +67,10 @@ class CouponProductRepository extends CurdRepository implements RepositoryInterf
     }
 
     /**
-     * 定义数据数据模型类
+     * 定义数据表查询构造器
      */
-    public function model(): CouponProduct
+    public function model(): Builder
     {
-        return new CouponProduct();
+        return DB::table('coupon_product');
     }
 }

@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\ContentField;
 use App\Models\Entity\ContentFieldEntity;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
@@ -66,10 +67,10 @@ class ContentFieldRepository extends CurdRepository implements RepositoryInterfa
     }
 
     /**
-     * 定义数据数据模型类
+     * 定义数据表查询构造器
      */
-    public function model(): ContentField
+    public function model(): Builder
     {
-        return new ContentField();
+        return DB::table('content_field');
     }
 }

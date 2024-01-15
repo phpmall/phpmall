@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Admin\Enums;
+namespace App\Bundles\System\Enums;
 
 /**
  * 资源类型
@@ -15,9 +15,9 @@ enum PermissionTypeEnum: int
     case Menu = 1;
 
     /**
-     * 页面
+     * 按钮
      */
-    case Page = 2;
+    case Button = 2;
 
     /**
      * 接口

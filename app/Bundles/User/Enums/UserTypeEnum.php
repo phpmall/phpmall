@@ -7,7 +7,7 @@ namespace App\Bundles\User\Enums;
 /**
  * 认证类型
  */
-enum GuardTypeEnum: string
+enum UserTypeEnum: string
 {
     /**
      * 管理员

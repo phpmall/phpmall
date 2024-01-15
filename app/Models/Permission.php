@@ -22,16 +22,17 @@ class Permission extends Model
      */
     protected $fillable = [
         'id',
-        'guard',
+        'module',
         'parent_id',
         'name',
-        'description',
-        'path',
         'icon',
+        'path',
+        'tags',
         'type',
         'sort',
         'status',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 }

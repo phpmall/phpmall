@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\ContentHistory;
 use App\Models\Entity\ContentHistoryEntity;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
@@ -66,10 +67,10 @@ class ContentHistoryRepository extends CurdRepository implements RepositoryInter
     }
 
     /**
-     * 定义数据数据模型类
+     * 定义数据表查询构造器
      */
-    public function model(): ContentHistory
+    public function model(): Builder
     {
-        return new ContentHistory();
+        return DB::table('content_history');
     }
 }

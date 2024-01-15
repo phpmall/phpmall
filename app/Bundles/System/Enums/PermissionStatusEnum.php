@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Admin\Enums;
+namespace App\Bundles\System\Enums;
 
 /**
  * 资源状态

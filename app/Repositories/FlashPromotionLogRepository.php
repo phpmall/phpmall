@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Entity\FlashPromotionLogEntity;
-use App\Models\FlashPromotionLog;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
@@ -66,10 +67,10 @@ class FlashPromotionLogRepository extends CurdRepository implements RepositoryIn
     }
 
     /**
-     * 定义数据数据模型类
+     * 定义数据表查询构造器
      */
-    public function model(): FlashPromotionLog
+    public function model(): Builder
     {
-        return new FlashPromotionLog();
+        return DB::table('flash_promotion_log');
     }
 }

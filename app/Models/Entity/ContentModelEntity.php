@@ -30,7 +30,7 @@ class ContentModelEntity
     #[OA\Property(property: 'immutable', description: '系统模型:1是，2否', type: 'integer')]
     protected int $immutable;
 
-    #[OA\Property(property: 'status', description: '状态:1正常，2不正常', type: 'integer')]
+    #[OA\Property(property: 'status', description: '状态:1正常,2禁用', type: 'integer')]
     protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
@@ -139,7 +139,7 @@ class ContentModelEntity
     }
 
     /**
-     * 获取状态:1正常，2不正常
+     * 获取状态:1正常,2禁用
      */
     public function getStatus(): int
     {
@@ -147,7 +147,7 @@ class ContentModelEntity
     }
 
     /**
-     * 设置状态:1正常，2不正常
+     * 设置状态:1正常,2禁用
      */
     public function setStatus(int $status): void
     {

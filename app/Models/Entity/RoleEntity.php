@@ -15,11 +15,14 @@ class RoleEntity
     #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'guard', description: '守卫模块', type: 'string')]
-    protected string $guard;
+    #[OA\Property(property: 'module', description: '模块名', type: 'string')]
+    protected string $module;
 
     #[OA\Property(property: 'name', description: '角色名称', type: 'string')]
     protected string $name;
+
+    #[OA\Property(property: 'code', description: '角色编码', type: 'string')]
+    protected string $code;
 
     #[OA\Property(property: 'description', description: '角色描述', type: 'string')]
     protected string $description;
@@ -56,19 +59,19 @@ class RoleEntity
     }
 
     /**
-     * 获取守卫模块
+     * 获取模块名
      */
-    public function getGuard(): string
+    public function getModule(): string
     {
-        return $this->guard;
+        return $this->module;
     }
 
     /**
-     * 设置守卫模块
+     * 设置模块名
      */
-    public function setGuard(string $guard): void
+    public function setModule(string $module): void
     {
-        $this->guard = $guard;
+        $this->module = $module;
     }
 
     /**
@@ -85,6 +88,22 @@ class RoleEntity
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * 获取角色编码
+     */
+    public function getCode(): string
+    {
+        return $this->code;
+    }
+
+    /**
+     * 设置角色编码
+     */
+    public function setCode(string $code): void
+    {
+        $this->code = $code;
     }
 
     /**
