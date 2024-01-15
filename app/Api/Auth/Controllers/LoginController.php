@@ -8,10 +8,10 @@ use App\Api\Auth\Requests\Login\LoginRequest;
 use App\Api\Auth\Requests\Login\LoginSmsRequest;
 use App\Api\Auth\Responses\LoginResponse;
 use App\Api\Auth\Services\Input\LoginInput;
-use App\Api\Auth\Services\LoginService;
-use App\Bundles\Sms\Services\SmsService;
+use App\Api\Auth\Services\LoginBundleService;
+use App\Bundles\Sms\Services\SmsBundleService;
 use App\Bundles\User\Enums\UserStatusEnum;
-use App\Bundles\User\Services\UserService;
+use App\Bundles\User\Services\UserBundleService;
 use App\Foundation\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +41,7 @@ class LoginController extends BaseController
             $loginInput->setCaptcha($formData['captcha']);
             $loginInput->setUuid($formData['uuid']);
 
-            $loginService = new LoginService();
+            $loginService = new LoginBundleService();
             $user = $loginService->handle($loginInput);
 
             $routeMiddlewares = $request->route()->middleware();
@@ -75,12 +75,12 @@ class LoginController extends BaseController
         try {
             $formData = $request->validated();
 
-            $smsService = new SmsService();
+            $smsService = new SmsBundleService();
             if (! $smsService->checkCode($formData['mobile'], $formData['code'])) {
                 throw new CustomException('短信验证码不正确');
             }
 
-            $userService = new UserService();
+            $userService = new UserBundleService();
             $user = $userService->findByMobile($formData['mobile'], UserStatusEnum::Normal);
             $token = $user->createToken('token')->plainTextToken;
 

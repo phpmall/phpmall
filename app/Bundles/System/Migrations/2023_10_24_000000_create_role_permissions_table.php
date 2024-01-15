@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('role_permissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('role_id')->comment('角色ID');
-            $table->unsignedInteger('permission_id')->comment('权限ID');
+            $table->unsignedBigInteger('role_id')->comment('角色ID');
+            $table->unsignedBigInteger('permission_id')->comment('权限ID');
             $table->unique(['role_id', 'permission_id'], 'role_permission_id');
             $table->comment('管理角色关联表');
         });

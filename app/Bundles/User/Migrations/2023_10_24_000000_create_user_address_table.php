@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_address', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->comment('用户ID');
+            $table->unsignedBigInteger('user_id')->comment('用户ID');
             $table->string('consignee')->comment('收件人姓名');
             $table->string('mobile')->comment('收件人电话');
             $table->string('country_name')->default('中国')->comment('国家');

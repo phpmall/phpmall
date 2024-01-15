@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('merchant_address', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('merchant_id')->comment('商户ID');
+            $table->unsignedBigInteger('merchant_id')->comment('商户ID');
             $table->string('name')->comment('地址名称');
             $table->string('consignee')->comment('收件人姓名');
             $table->string('mobile')->comment('收件人电话');

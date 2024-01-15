@@ -7,7 +7,7 @@ namespace App\Api\Auth\Controllers;
 use App\Api\Auth\Requests\Signup\SignupMobileRequest;
 use App\Api\Auth\Responses\LoginResponse;
 use App\Api\Auth\Services\Input\RegisterInput;
-use App\Bundles\Sms\Services\SmsService;
+use App\Bundles\Sms\Services\SmsBundleService;
 use App\Foundation\Exceptions\CustomException;
 use App\Foundation\Services\JWTService;
 use Illuminate\Http\JsonResponse;
@@ -25,7 +25,7 @@ class SignupController extends BaseController
         try {
             $formData = $request->validated();
 
-            $smsService = new SmsService();
+            $smsService = new SmsBundleService();
             if (! $smsService->checkCode($formData['mobile'], $formData['code'])) {
                 throw new CustomException('短信验证码不正确');
             }

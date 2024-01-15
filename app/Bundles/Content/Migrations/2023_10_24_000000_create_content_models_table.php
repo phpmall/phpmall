@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('code')->unique()->comment('模型编码');
             $table->string('intro')->default('')->comment('模型描述');
             $table->mediumText('fields')->comment('模型附加字段');
-            $table->unsignedInteger('immutable')->default(2)->comment('系统模型:1是，2否');
-            $table->unsignedInteger('status')->default(1)->comment('状态:1正常，2不正常');
+            $table->unsignedTinyInteger('immutable')->default(2)->comment('系统模型:1是，2否');
+            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常,2禁用');
             $table->timestamps();
             $table->softDeletes();
             $table->comment('内容模型表');

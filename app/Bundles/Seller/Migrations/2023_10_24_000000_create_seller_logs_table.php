@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('seller_logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('seller_user_id')->comment('商户管理员ID');
+            $table->unsignedBigInteger('seller_user_id')->comment('商户管理员ID');
             $table->enum('level', ['debug', 'info', 'warning', 'error'])->comment('日志级别');
             $table->string('message')->comment('日志内容');
             $table->string('user_agent')->comment('User Agent');

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->comment('用户ID');
+            $table->unsignedBigInteger('user_id')->comment('用户ID');
             $table->string('level')->comment('日志级别');
             $table->string('message')->comment('日志内容');
             $table->string('user_agent')->comment('User Agent');

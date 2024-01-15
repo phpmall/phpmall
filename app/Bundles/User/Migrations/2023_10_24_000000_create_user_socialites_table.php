@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('user_socialites', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->comment('用户ID');
+            $table->unsignedBigInteger('user_id')->comment('用户ID');
             $table->string('type')->comment('凭证类型');
             $table->string('identifier')->unique()->comment('标识');
             $table->string('credentials')->comment('凭证或token');
             $table->dateTime('verified_time')->comment('验证时间');
-            $table->unsignedInteger('status')->comment('状态:1正常,2禁用');
+            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常,2禁用');
             $table->timestamps();
             $table->softDeletes();
             $table->comment('用户社会化登录表');

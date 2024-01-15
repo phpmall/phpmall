@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('merchant_brands', function (Blueprint $table) {
+        Schema::create('store_employees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('merchant_id')->comment('商户ID');
+            $table->unsignedBigInteger('store_id')->comment('门店ID');
 
             $table->timestamps();
             $table->softDeletes();
-            $table->comment('商户品牌表');
+            $table->comment('门店员工表');
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('merchant_brands');
+        Schema::dropIfExists('store_employees');
     }
 };

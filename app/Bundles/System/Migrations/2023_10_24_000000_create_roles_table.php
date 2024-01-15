@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name')->unique()->comment('角色名称');
             $table->string('description')->default('')->comment('角色描述');
             $table->unsignedInteger('sort')->default(0)->comment('排序');
-            $table->unsignedInteger('status')->default(1)->comment('状态:1正常,2禁用');
+            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常,2禁用');
             $table->timestamps();
             $table->softDeletes();
             $table->comment('管理角色表');

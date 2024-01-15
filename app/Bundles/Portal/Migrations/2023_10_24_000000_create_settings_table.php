@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('parent_id')->default(0)->comment('父节点id');
+            $table->unsignedBigInteger('parent_id')->default(0)->comment('父节点id');
             $table->string('name')->default('')->comment('配置名称');
             $table->string('code')->unique()->comment('配置code');
             $table->string('type')->default('')->comment('配置类型：text、select、file、hidden等');

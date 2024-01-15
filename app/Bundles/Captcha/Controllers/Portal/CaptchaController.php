@@ -6,7 +6,7 @@ namespace App\Bundles\Captcha\Controllers\Portal;
 
 use App\Api\Portal\Controllers\BaseController;
 use App\Bundles\Captcha\Responses\CaptchaResponse;
-use App\Bundles\Captcha\Services\CaptchaService;
+use App\Bundles\Captcha\Services\CaptchaBundleService;
 use App\Foundation\Exceptions\CustomException;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -20,7 +20,7 @@ class CaptchaController extends BaseController
     public function index(): JsonResponse
     {
         try {
-            $captchaService = new CaptchaService();
+            $captchaService = new CaptchaBundleService();
             $result = $captchaService->getCaptcha();
 
             return $this->success($result);

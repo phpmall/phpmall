@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('navigations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('parent_id')->default(0)->comment('父级ID');
+            $table->unsignedBigInteger('parent_id')->default(0)->comment('父级ID');
             $table->enum('type', ['top', 'middle', 'bottom'])->default('middle')->comment('导航类型');
             $table->string('name')->comment('导航文字');
             $table->string('description')->default('')->comment('导航描述');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('link')->default('')->comment('链接地址');
             $table->enum('target', ['_self', '_blank', '_top'])->default('_self')->comment('打开方式');
             $table->unsignedInteger('sort')->default(0)->comment('排序');
-            $table->unsignedInteger('status')->default(1)->comment('状态:1正常,2禁用');
+            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常,2禁用');
             $table->timestamps();
             $table->comment('导航表');
         });

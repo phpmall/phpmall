@@ -6,7 +6,7 @@ namespace App\Bundles\Sms\Controllers\Portal;
 
 use App\Api\Portal\Controllers\BaseController;
 use App\Bundles\Sms\Requests\SmsSendRequest;
-use App\Bundles\Sms\Services\SmsService;
+use App\Bundles\Sms\Services\SmsBundleService;
 use App\Foundation\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +23,7 @@ class SmsController extends BaseController
         try {
             $requestData = $request->validated();
 
-            $sms = new SmsService();
+            $sms = new SmsBundleService();
             $sms->sendCode($requestData['mobile']);
 
             return $this->success('短信发送成功');

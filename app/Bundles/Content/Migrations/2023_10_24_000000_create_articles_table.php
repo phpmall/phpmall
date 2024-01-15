@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('parent_id')->default(0)->comment('父级的ID');
-            $table->unsignedInteger('in_station')->default(1)->comment('内容类型:1站内,2站外');
-            $table->unsignedInteger('pattern_id')->comment('模型ID');
+            $table->unsignedBigInteger('parent_id')->default(0)->comment('父级的ID');
+            $table->unsignedTinyInteger('in_station')->default(1)->comment('内容类型:1站内,2站外');
+            $table->unsignedBigInteger('pattern_id')->comment('模型ID');
             $table->string('pattern_code')->comment('模型类型');
             $table->string('slug')->unique()->comment('URL PathInfo');
             $table->string('title')->unique()->comment('标题');
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('template_list')->default('')->comment('列表模板');
             $table->string('template_detail')->default('')->comment('详情模板');
             $table->unsignedInteger('sort')->default(0)->comment('排序');
-            $table->unsignedInteger('status')->default(1)->comment('状态:1正常,2禁用');
+            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常,2禁用');
             $table->timestamps();
             $table->softDeletes();
             $table->comment('内容表');

@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('parent_id')->default(0)->comment('父级的ID');
-            $table->unsignedInteger('user_id')->comment('用户ID');
+            $table->unsignedBigInteger('parent_id')->default(0)->comment('父级的ID');
+            $table->unsignedBigInteger('user_id')->comment('用户ID');
             $table->string('user_name')->default('')->comment('用户昵称');
-            $table->unsignedInteger('content_id')->comment('内容ID');
+            $table->unsignedBigInteger('content_id')->comment('内容ID');
             $table->string('comment')->default('')->comment('评论内容');
             $table->unsignedInteger('rank')->default(0)->comment('评论等级');
             $table->string('user_agent')->default('')->comment('User Agent');
             $table->string('ip_address')->default('')->comment('IP地址');
-            $table->unsignedInteger('status')->default(1)->comment('状态:1正常,2禁用');
+            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常,2禁用');
             $table->timestamps();
             $table->softDeletes();
             $table->comment('内容评论表');

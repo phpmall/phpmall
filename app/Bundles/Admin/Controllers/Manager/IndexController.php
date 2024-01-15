@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Bundles\Admin\Controllers\Manager;
 
 use App\Api\Manager\Controllers\BaseController;
-use App\Bundles\Admin\Services\PermissionService;
+use App\Bundles\Admin\Services\PermissionBundleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -30,7 +30,7 @@ class IndexController extends BaseController
      */
     public function menu(): JsonResponse
     {
-        $permissionService = new PermissionService();
+        $permissionService = new PermissionBundleService();
         $menu = $permissionService->getMenu();
 
         return $this->success($menu);

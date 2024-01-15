@@ -9,6 +9,7 @@ use EasyWeChat\Kernel\Exceptions\InvalidArgumentException;
 use EasyWeChat\Kernel\HttpClient\AccessTokenAwareClient;
 use EasyWeChat\MiniApp\Application;
 use EasyWeChat\MiniApp\Utils;
+use Illuminate\Support\Facades\Cache;
 use Throwable;
 
 class MiniAppService extends BaseService
@@ -25,7 +26,7 @@ class MiniAppService extends BaseService
         $config = config('wechat.mini_app');
 
         $this->app = new Application($config);
-        $this->app->setCache(new CustomCache());
+        $this->app->setCache(Cache::store());
     }
 
     public function getApp(): Application
