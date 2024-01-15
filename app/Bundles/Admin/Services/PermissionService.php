@@ -4,26 +4,29 @@ declare(strict_types=1);
 
 namespace App\Bundles\Admin\Services;
 
-class PermissionService
+use App\Bundles\Admin\Enums\PermissionStatusEnum;
+use App\Bundles\Admin\Enums\PermissionTypeEnum;
+use App\Services\PermissionService as BasePermissionService;
+
+class PermissionService extends BasePermissionService
 {
     /**
      * 获取管理资源链接
      */
     public function getMenu(): array
     {
-        $collection = Permission::where('status', 1)
-            ->where('is_menu', 1)
-            ->order('sort', 'asc')
-            ->order('id', 'asc')
-            ->select();
+        $data = $this->getList([
+            ['status', '=', PermissionStatusEnum::Normal->value],
+            ['type', '=', PermissionTypeEnum::Menu->value],
+        ], 'sort', 'asc');
 
-        $data = collect($collection)->toArray();
+        $collection = collect($data);
 
         $menu = [];
         foreach ($data as $item) {
             if ($item['parent_id'] == 0) {
                 $filtered = $collection->filter(function ($v) use ($item) {
-                    return $v['parent_id'] == $item['id'];
+                    return $v['parent_id'] === $item['id'];
                 });
 
                 $children = [];

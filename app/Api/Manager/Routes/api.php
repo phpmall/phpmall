@@ -11,32 +11,32 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/manager')->middleware('api')->group(function () {
     // 管理员接口
-    Route::get('admin', [\App\Bundles\System\Controllers\Manager\AdminController::class, 'index']);
+    Route::get('admin', [\App\Bundles\Admin\Controllers\Manager\AdminController::class, 'index']);
     // 运营首页
-    Route::get('dashboard', [\App\Bundles\System\Controllers\Manager\DashboardController::class, 'index']);
+    Route::get('dashboard', [\App\Bundles\Admin\Controllers\Manager\DashboardController::class, 'index']);
     // 管理仪表台
-    Route::get('admin/index1', [\App\Bundles\System\Controllers\Manager\IndexController::class, 'index1']);
+    Route::get('admin/index1', [\App\Bundles\Admin\Controllers\Manager\IndexController::class, 'index1']);
     // 权限列表
-    Route::get('permission', [\App\Bundles\System\Controllers\Manager\PermissionController::class, 'index']);
+    Route::get('permission', [\App\Bundles\Admin\Controllers\Manager\PermissionController::class, 'index']);
     // 角色列表
-    Route::get('role', [\App\Bundles\System\Controllers\Manager\RoleController::class, 'index']);
+    Route::get('role', [\App\Bundles\Admin\Controllers\Manager\RoleController::class, 'index']);
     // 全部卖家
-    Route::get('seller', [\App\Bundles\System\Controllers\Manager\SellerController::class, 'index']);
+    Route::get('seller', [\App\Bundles\Seller\Controllers\Manager\SellerController::class, 'index']);
     // 卖家店铺
-    Route::get('shop', [\App\Bundles\System\Controllers\Manager\ShopController::class, 'index']);
+    Route::get('shop', [\App\Bundles\Shop\Controllers\Manager\ShopController::class, 'index']);
     // 卖家门店
-    Route::get('store', [\App\Bundles\System\Controllers\Manager\StoreController::class, 'index']);
+    Route::get('store', [\App\Bundles\Store\Controllers\Manager\StoreController::class, 'index']);
     // 买家收货地址
-    Route::get('userAddress', [\App\Bundles\System\Controllers\Manager\UserAddressController::class, 'index']);
+    Route::get('userAddress', [\App\Bundles\User\Controllers\Manager\UserAddressController::class, 'index']);
     // 用户列表
-    Route::get('user', [\App\Bundles\System\Controllers\Manager\UserController::class, 'index']);
+    Route::get('user', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'index']);
     // 添加新用户
-    Route::post('user/store', [\App\Bundles\System\Controllers\Manager\UserController::class, 'store']);
+    Route::post('user/store', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'store']);
     // 获取详情
-    Route::get('user/show', [\App\Bundles\System\Controllers\Manager\UserController::class, 'show']);
+    Route::get('user/show', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'show']);
     // 更新用户详情
-    Route::put('user/update', [\App\Bundles\System\Controllers\Manager\UserController::class, 'update']);
+    Route::put('user/update', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'update']);
     // 删除用户
-    Route::delete('user/destroy', [\App\Bundles\System\Controllers\Manager\UserController::class, 'destroy']);
+    Route::delete('user/destroy', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'destroy']);
 });
 // end

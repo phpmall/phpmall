@@ -104,4 +104,20 @@ abstract class Controller extends BaseController
     {
         return bin2hex(pack('d', microtime(true)).pack('N', mt_rand()));
     }
+
+    /**
+     * 获取当前时间戳
+     */
+    protected function getCurrentTimestamp(): int
+    {
+        return now()->timestamp;
+    }
+
+    /**
+     * 获取当前毫秒时间戳
+     */
+    protected function getCurrentMillisecond(): int
+    {
+        return $this->getCurrentTimestamp() * 1000;
+    }
 }

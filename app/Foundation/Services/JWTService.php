@@ -11,6 +11,11 @@ use Juling\Auth\BearerTokenExtractor;
 class JWTService
 {
     /**
+     * 用户JWT参数名
+     */
+    const JWT_USER_ID = 'user_id';
+
+    /**
      * 创建JWT参数
      */
     public function createToken(array $body, int $expire = 0): string

@@ -7,7 +7,6 @@ namespace App\Api\Auth\Services;
 use App\Api\Auth\Services\Input\LoginInput;
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Bundles\User\Services\UserService;
-use App\Foundation\Constants\Constant;
 use App\Foundation\Exceptions\CustomException;
 use App\Foundation\Services\JWTService;
 use App\Models\User;
@@ -28,7 +27,7 @@ class LoginService extends UserService
             $payload = $JWTService->getPayloadByToken($token);
         }
 
-        $userId = $payload[Constant::JWT_USER_ID] ?? 0;
+        $userId = $payload[JWTService::JWT_USER_ID] ?? 0;
         if ($userId > 0) {
             return $this->getOneById($userId);
         }

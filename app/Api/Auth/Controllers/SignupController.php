@@ -8,7 +8,6 @@ use App\Api\Auth\Requests\Signup\SignupMobileRequest;
 use App\Api\Auth\Responses\LoginResponse;
 use App\Api\Auth\Services\Input\RegisterInput;
 use App\Bundles\Sms\Services\SmsService;
-use App\Foundation\Constants\Constant;
 use App\Foundation\Exceptions\CustomException;
 use App\Foundation\Services\JWTService;
 use Illuminate\Http\JsonResponse;
@@ -46,7 +45,7 @@ class SignupController extends BaseController
                 $JWTService = new JWTService();
                 $userOutput = $userService->findOneByMobile($data['mobile']);
                 $token = $JWTService->createToken([
-                    Constant::JWT_USER_ID => $userOutput->getId(),
+                    JWTService::JWT_USER_ID => $userOutput->getId(),
                 ]);
 
                 $response = new LoginResponse();

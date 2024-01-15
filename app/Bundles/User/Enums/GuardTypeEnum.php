@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Bundles\User\Enums;
+
+/**
+ * 认证类型
+ */
+enum GuardTypeEnum: string
+{
+    /**
+     * 管理员
+     */
+    case Admin = 'admin';
+
+    /**
+     * 卖家
+     */
+    case Seller = 'seller';
+
+    /**
+     * 买家
+     */
+    case User = 'user';
+}
