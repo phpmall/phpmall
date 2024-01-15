@@ -25,6 +25,7 @@ class Permission extends Model
         'guard',
         'parent_id',
         'name',
+        'description',
         'path',
         'icon',
         'type',

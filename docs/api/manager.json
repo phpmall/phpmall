@@ -21,7 +21,26 @@
                     "管理员"
                 ],
                 "summary": "管理员接口",
-                "operationId": "9527258b2c9443ef23fecea1ecbf5cdb",
+                "operationId": "4ad501b136fa3d655c44c852a64a9e95",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "admin/index1": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "管理仪表台",
+                "operationId": "e189e0f52a7b873b4f274b38737c0894",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -40,31 +59,13 @@
                     "运营"
                 ],
                 "summary": "运营首页",
-                "operationId": "a085ea2dc0076c026e87c890024953b5",
+                "description": "起始页",
+                "operationId": "b40e124b8a6afece088259b4f448d1fa",
                 "responses": {
                     "200": {
                         "description": "OK"
                     }
                 }
-            }
-        },
-        "admin/index1": {
-            "get": {
-                "tags": [
-                    "运营中心"
-                ],
-                "summary": "管理仪表台",
-                "operationId": "6a2daa2b49cf1afef1f93975927d2bd6",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
             }
         },
         "permission": {
@@ -73,7 +74,7 @@
                     "权限管理"
                 ],
                 "summary": "权限列表",
-                "operationId": "9956c9a321acbf20d4d934044e812bfd",
+                "operationId": "4127624188cf6b5c60c3a5f526c5e710",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -87,7 +88,7 @@
                     "角色管理"
                 ],
                 "summary": "角色列表",
-                "operationId": "e65b3a1f46da27252ddec50273b1db71",
+                "operationId": "dc5a51dbb1631f61caeeff28da26dbcd",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -101,7 +102,7 @@
                     "卖家管理"
                 ],
                 "summary": "全部卖家",
-                "operationId": "2d92d142a5b8db343584d9e6cdcd9c0a",
+                "operationId": "47a9a820bc7f1a74a63e2e928269e2d9",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -115,7 +116,7 @@
                     "店铺管理"
                 ],
                 "summary": "卖家店铺",
-                "operationId": "9c344c13f168909a65be8609b6ac9327",
+                "operationId": "3b6c48897e0c15261235e997e98c4e02",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -129,21 +130,7 @@
                     "门店管理"
                 ],
                 "summary": "卖家门店",
-                "operationId": "47e2b2a573d95d03a13abd618316e436",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "userAddress": {
-            "get": {
-                "tags": [
-                    "买家收货地址"
-                ],
-                "summary": "买家收货地址",
-                "operationId": "7aefe5528e1e337aae1c1fedfd8717fc",
+                "operationId": "9ea238a74b39a8c467d43cd1602946cb",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -157,7 +144,7 @@
                     "用户管理"
                 ],
                 "summary": "用户列表",
-                "operationId": "144c884a32483c23cf42edd0c584f5fc",
+                "operationId": "ce6ae6ad992609fea17c9e03d2e30489",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -176,7 +163,7 @@
                     "用户管理"
                 ],
                 "summary": "添加新用户",
-                "operationId": "2af5532d5880bd35ac6b81fce57b5c0c",
+                "operationId": "8755d21493fcfbd80df736805474de84",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -195,7 +182,7 @@
                     "用户管理"
                 ],
                 "summary": "获取详情",
-                "operationId": "8c07050988117d1895b3fff186995721",
+                "operationId": "bd3509eedef6481cb37d997be05388df",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -214,7 +201,7 @@
                     "用户管理"
                 ],
                 "summary": "更新用户详情",
-                "operationId": "135011a3816cbccb2ddafd95b7da1daa",
+                "operationId": "8bdb5d51501ab22c51e0a59f3278016c",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -233,7 +220,7 @@
                     "用户管理"
                 ],
                 "summary": "删除用户",
-                "operationId": "aae5342ca6749c65568bb28f45503172",
+                "operationId": "86814880439e276a6521bf70d548add6",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -244,6 +231,20 @@
                         "bearerAuth": []
                     }
                 ]
+            }
+        },
+        "userAddress": {
+            "get": {
+                "tags": [
+                    "买家收货地址"
+                ],
+                "summary": "买家收货地址",
+                "operationId": "78948f4ae0ad4e859f966f72bd5baadb",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
             }
         }
     },

@@ -21,10 +21,13 @@ class PermissionEntity
     #[OA\Property(property: 'parent_id', description: '父级ID', type: 'integer')]
     protected int $parentId;
 
-    #[OA\Property(property: 'name', description: '规则名称', type: 'string')]
+    #[OA\Property(property: 'name', description: '名称', type: 'string')]
     protected string $name;
 
-    #[OA\Property(property: 'path', description: '规则标识', type: 'string')]
+    #[OA\Property(property: 'description', description: '描述', type: 'string')]
+    protected string $description;
+
+    #[OA\Property(property: 'path', description: '标识', type: 'string')]
     protected string $path;
 
     #[OA\Property(property: 'icon', description: 'ICON图标', type: 'string')]
@@ -94,7 +97,7 @@ class PermissionEntity
     }
 
     /**
-     * 获取规则名称
+     * 获取名称
      */
     public function getName(): string
     {
@@ -102,7 +105,7 @@ class PermissionEntity
     }
 
     /**
-     * 设置规则名称
+     * 设置名称
      */
     public function setName(string $name): void
     {
@@ -110,7 +113,23 @@ class PermissionEntity
     }
 
     /**
-     * 获取规则标识
+     * 获取描述
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * 设置描述
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * 获取标识
      */
     public function getPath(): string
     {
@@ -118,7 +137,7 @@ class PermissionEntity
     }
 
     /**
-     * 设置规则标识
+     * 设置标识
      */
     public function setPath(string $path): void
     {

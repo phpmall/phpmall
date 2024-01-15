@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('merchants', function (Blueprint $table) {
             $table->id();
-            $table->comment('商户表');
+            $table->unsignedInteger('seller_user_id')->comment('卖家创始人ID');
+            $table->string('company_name')->comment('企业名称');
+            $table->string('company_address')->comment('企业地址');
+            $table->string('legal_person')->comment('企业法人姓名');
+            $table->string('business_license')->comment('企业营业执照号');
+            $table->string('tax_registration')->comment('企业税务登记号');
+            $table->string('opening_bank')->comment('开户银行');
+            $table->string('bank_account')->comment('企业银行账户');
+            $table->timestamps();
+            $table->softDeletes();
+            $table->comment('卖家表');
         });
     }
 

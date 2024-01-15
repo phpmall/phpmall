@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\Wechat\Services;
 
-use app\exception\CustomException;
+use App\Foundation\Exceptions\CustomException;
 use EasyWeChat\Kernel\Exceptions\InvalidArgumentException;
 use EasyWeChat\Pay\Application;
 

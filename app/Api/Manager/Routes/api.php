@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('api/manager')->middleware('api')->group(function () {
     // 管理员接口
     Route::get('admin', [\App\Bundles\Admin\Controllers\Manager\AdminController::class, 'index']);
-    // 运营首页
-    Route::get('dashboard', [\App\Bundles\Admin\Controllers\Manager\DashboardController::class, 'index']);
     // 管理仪表台
     Route::get('admin/index1', [\App\Bundles\Admin\Controllers\Manager\IndexController::class, 'index1']);
+    // 运营首页
+    Route::get('dashboard', [\App\Bundles\Admin\Controllers\Manager\IndexController::class, 'dashboard']);
     // 权限列表
     Route::get('permission', [\App\Bundles\Admin\Controllers\Manager\PermissionController::class, 'index']);
     // 角色列表
@@ -26,8 +26,6 @@ Route::prefix('api/manager')->middleware('api')->group(function () {
     Route::get('shop', [\App\Bundles\Shop\Controllers\Manager\ShopController::class, 'index']);
     // 卖家门店
     Route::get('store', [\App\Bundles\Store\Controllers\Manager\StoreController::class, 'index']);
-    // 买家收货地址
-    Route::get('userAddress', [\App\Bundles\User\Controllers\Manager\UserAddressController::class, 'index']);
     // 用户列表
     Route::get('user', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'index']);
     // 添加新用户
@@ -38,5 +36,7 @@ Route::prefix('api/manager')->middleware('api')->group(function () {
     Route::put('user/update', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'update']);
     // 删除用户
     Route::delete('user/destroy', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'destroy']);
+    // 买家收货地址
+    Route::get('userAddress', [\App\Bundles\User\Controllers\Manager\UserAddressController::class, 'index']);
 });
 // end

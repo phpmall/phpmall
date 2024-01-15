@@ -18,8 +18,8 @@ class UserLogEntity
     #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
     protected int $userId;
 
-    #[OA\Property(property: 'level', description: '日志级别', type: 'integer')]
-    protected int $level;
+    #[OA\Property(property: 'level', description: '日志级别', type: 'string')]
+    protected string $level;
 
     #[OA\Property(property: 'message', description: '日志内容', type: 'string')]
     protected string $message;
@@ -71,7 +71,7 @@ class UserLogEntity
     /**
      * 获取日志级别
      */
-    public function getLevel(): int
+    public function getLevel(): string
     {
         return $this->level;
     }
@@ -79,7 +79,7 @@ class UserLogEntity
     /**
      * 设置日志级别
      */
-    public function setLevel(int $level): void
+    public function setLevel(string $level): void
     {
         $this->level = $level;
     }

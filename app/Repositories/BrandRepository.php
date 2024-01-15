@@ -1,0 +1,75 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Repositories;
+
+use App\Models\Brand;
+use App\Models\Entity\BrandEntity;
+use Juling\Generator\Contracts\RepositoryInterface;
+use Juling\Generator\Repositories\CurdRepository;
+
+class BrandRepository extends CurdRepository implements RepositoryInterface
+{
+    private static ?BrandRepository $instance = null;
+
+    /**
+     * 单例
+     */
+    public static function getInstance(): BrandRepository
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new BrandRepository();
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * 添加
+     */
+    public function saveEntity(BrandEntity $entity): int
+    {
+        return $this->save($entity->toArray());
+    }
+
+    /**
+     * 按照ID查询返回对象
+     */
+    public function findOneById(int $id): ?BrandEntity
+    {
+        $data = $this->findById($id);
+        if (empty($data)) {
+            return null;
+        }
+
+        $entity = new BrandEntity();
+        $entity->setData($data);
+
+        return $entity;
+    }
+
+    /**
+     * 按照条件查询返回对象
+     */
+    public function findOne(array $condition = []): ?BrandEntity
+    {
+        $data = $this->find($condition);
+        if (empty($data)) {
+            return null;
+        }
+
+        $entity = new BrandEntity();
+        $entity->setData($data);
+
+        return $entity;
+    }
+
+    /**
+     * 定义数据数据模型类
+     */
+    public function model(): Brand
+    {
+        return new Brand();
+    }
+}

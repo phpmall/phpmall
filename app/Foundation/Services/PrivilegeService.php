@@ -17,7 +17,7 @@ class PrivilegeService
     {
         $adminRoleService = new RoleService();
         $roleIds = $adminRoleService->pluck('role_id', [
-            'user_id' => $adminId
+            'user_id' => $adminId,
         ]);
 
         // 检测有效角色状态

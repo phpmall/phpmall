@@ -18,14 +18,14 @@ class UserSocialiteEntity
     #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
     protected int $userId;
 
-    #[OA\Property(property: 'type', description: '凭证类型:mobile,email,wechat', type: 'string')]
+    #[OA\Property(property: 'type', description: '凭证类型', type: 'string')]
     protected string $type;
 
-    #[OA\Property(property: 'identifier', description: '唯一标识:如手机号码,电子邮箱,openid', type: 'string')]
+    #[OA\Property(property: 'identifier', description: '标识', type: 'string')]
     protected string $identifier;
 
-    #[OA\Property(property: 'credential', description: '凭证:密码或token', type: 'string')]
-    protected string $credential;
+    #[OA\Property(property: 'credentials', description: '凭证或token', type: 'string')]
+    protected string $credentials;
 
     #[OA\Property(property: 'verified_time', description: '验证时间', type: 'string')]
     protected string $verifiedTime;
@@ -75,7 +75,7 @@ class UserSocialiteEntity
     }
 
     /**
-     * 获取凭证类型:mobile,email,wechat
+     * 获取凭证类型
      */
     public function getType(): string
     {
@@ -83,7 +83,7 @@ class UserSocialiteEntity
     }
 
     /**
-     * 设置凭证类型:mobile,email,wechat
+     * 设置凭证类型
      */
     public function setType(string $type): void
     {
@@ -91,7 +91,7 @@ class UserSocialiteEntity
     }
 
     /**
-     * 获取唯一标识:如手机号码,电子邮箱,openid
+     * 获取标识
      */
     public function getIdentifier(): string
     {
@@ -99,7 +99,7 @@ class UserSocialiteEntity
     }
 
     /**
-     * 设置唯一标识:如手机号码,电子邮箱,openid
+     * 设置标识
      */
     public function setIdentifier(string $identifier): void
     {
@@ -107,19 +107,19 @@ class UserSocialiteEntity
     }
 
     /**
-     * 获取凭证:密码或token
+     * 获取凭证或token
      */
-    public function getCredential(): string
+    public function getCredentials(): string
     {
-        return $this->credential;
+        return $this->credentials;
     }
 
     /**
-     * 设置凭证:密码或token
+     * 设置凭证或token
      */
-    public function setCredential(string $credential): void
+    public function setCredentials(string $credentials): void
     {
-        $this->credential = $credential;
+        $this->credentials = $credentials;
     }
 
     /**

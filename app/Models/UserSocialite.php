@@ -25,7 +25,7 @@ class UserSocialite extends Model
         'user_id',
         'type',
         'identifier',
-        'credential',
+        'credentials',
         'verified_time',
         'status',
         'created_at',

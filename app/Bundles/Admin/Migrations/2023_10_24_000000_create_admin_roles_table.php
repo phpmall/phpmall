@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('admin_user_id')->comment('用户ID');
             $table->unsignedInteger('role_id')->comment('角色ID');
             $table->unique(['admin_user_id', 'role_id'], 'admin_user_role_id');
-            $table->comment('管理角色关联表');
+            $table->comment('管理员与角色关联表');
         });
     }
 

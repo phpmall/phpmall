@@ -9,18 +9,18 @@ export const adminService = (): Promise<any> => {
     })
 }
 
-// [运营] 运营首页
-export const dashboardService = (): Promise<any> => {
-    return request({
-        url: 'manager/dashboard',
-        method: 'get'
-    })
-}
-
 // [运营中心] 管理仪表台
 export const adminIndex1Service = (): Promise<any> => {
     return request({
         url: 'manager/admin/index1',
+        method: 'get'
+    })
+}
+
+// [运营] 运营首页
+export const dashboardService = (): Promise<any> => {
+    return request({
+        url: 'manager/dashboard',
         method: 'get'
     })
 }
@@ -65,14 +65,6 @@ export const storeService = (): Promise<any> => {
     })
 }
 
-// [买家收货地址] 买家收货地址
-export const userAddressService = (): Promise<any> => {
-    return request({
-        url: 'manager/userAddress',
-        method: 'get'
-    })
-}
-
 // [用户管理] 用户列表
 export const userService = (): Promise<any> => {
     return request({
@@ -110,5 +102,13 @@ export const userDestroyService = (): Promise<any> => {
     return request({
         url: 'manager/user/destroy',
         method: 'delete'
+    })
+}
+
+// [买家收货地址] 买家收货地址
+export const userAddressService = (): Promise<any> => {
+    return request({
+        url: 'manager/userAddress',
+        method: 'get'
     })
 }
