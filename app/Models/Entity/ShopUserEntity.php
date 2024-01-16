@@ -7,16 +7,19 @@ namespace App\Models\Entity;
 use Juling\Generator\Support\ArrayObject;
 use OpenApi\Attributes as OA;
 
-#[OA\Schema(schema: 'StoreEmployeeEntity')]
-class StoreEmployeeEntity
+#[OA\Schema(schema: 'ShopUserEntity')]
+class ShopUserEntity
 {
     use ArrayObject;
 
     #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'store_id', description: '门店ID', type: 'integer')]
-    protected int $storeId;
+    #[OA\Property(property: 'merchant_id', description: '商户id', type: 'integer')]
+    protected int $merchantId;
+
+    #[OA\Property(property: 'shop_id', description: '店铺id', type: 'integer')]
+    protected int $shopId;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
     protected string $createdAt;
@@ -44,19 +47,35 @@ class StoreEmployeeEntity
     }
 
     /**
-     * 获取门店ID
+     * 获取商户id
      */
-    public function getStoreId(): int
+    public function getMerchantId(): int
     {
-        return $this->storeId;
+        return $this->merchantId;
     }
 
     /**
-     * 设置门店ID
+     * 设置商户id
      */
-    public function setStoreId(int $storeId): void
+    public function setMerchantId(int $merchantId): void
     {
-        $this->storeId = $storeId;
+        $this->merchantId = $merchantId;
+    }
+
+    /**
+     * 获取店铺id
+     */
+    public function getShopId(): int
+    {
+        return $this->shopId;
+    }
+
+    /**
+     * 设置店铺id
+     */
+    public function setShopId(int $shopId): void
+    {
+        $this->shopId = $shopId;
     }
 
     /**

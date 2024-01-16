@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\Entity\ShopEmployeeEntity;
+use App\Models\Entity\StoreUserEntity;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
-class ShopEmployeeRepository extends CurdRepository implements RepositoryInterface
+class StoreUserRepository extends CurdRepository implements RepositoryInterface
 {
-    private static ?ShopEmployeeRepository $instance = null;
+    private static ?StoreUserRepository $instance = null;
 
     /**
      * 单例
      */
-    public static function getInstance(): ShopEmployeeRepository
+    public static function getInstance(): StoreUserRepository
     {
         if (is_null(self::$instance)) {
-            self::$instance = new ShopEmployeeRepository();
+            self::$instance = new StoreUserRepository();
         }
 
         return self::$instance;
@@ -29,7 +29,7 @@ class ShopEmployeeRepository extends CurdRepository implements RepositoryInterfa
     /**
      * 添加
      */
-    public function saveEntity(ShopEmployeeEntity $entity): int
+    public function saveEntity(StoreUserEntity $entity): int
     {
         return $this->save($entity->toArray());
     }
@@ -37,14 +37,14 @@ class ShopEmployeeRepository extends CurdRepository implements RepositoryInterfa
     /**
      * 按照ID查询返回对象
      */
-    public function findOneById(int $id): ?ShopEmployeeEntity
+    public function findOneById(int $id): ?StoreUserEntity
     {
         $data = $this->findById($id);
         if (empty($data)) {
             return null;
         }
 
-        $entity = new ShopEmployeeEntity();
+        $entity = new StoreUserEntity();
         $entity->setData($data);
 
         return $entity;
@@ -53,14 +53,14 @@ class ShopEmployeeRepository extends CurdRepository implements RepositoryInterfa
     /**
      * 按照条件查询返回对象
      */
-    public function findOne(array $condition = []): ?ShopEmployeeEntity
+    public function findOne(array $condition = []): ?StoreUserEntity
     {
         $data = $this->find($condition);
         if (empty($data)) {
             return null;
         }
 
-        $entity = new ShopEmployeeEntity();
+        $entity = new StoreUserEntity();
         $entity->setData($data);
 
         return $entity;
@@ -71,6 +71,6 @@ class ShopEmployeeRepository extends CurdRepository implements RepositoryInterfa
      */
     public function model(): Builder
     {
-        return DB::table('shop_employees');
+        return DB::table('store_users');
     }
 }

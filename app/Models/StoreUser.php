@@ -6,14 +6,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SellerUser extends Model
+class StoreUser extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'seller_users';
+    protected $table = 'store_users';
 
     /**
      * The attributes that are mass assignable.
@@ -22,9 +22,10 @@ class SellerUser extends Model
      */
     protected $fillable = [
         'id',
-        'user_id',
-        'status',
+        'merchant_id',
+        'store_id',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 }

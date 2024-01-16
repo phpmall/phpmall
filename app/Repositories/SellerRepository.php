@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\Entity\SellerUserEntity;
+use App\Models\Entity\SellerEntity;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
-class SellerUserRepository extends CurdRepository implements RepositoryInterface
+class SellerRepository extends CurdRepository implements RepositoryInterface
 {
-    private static ?SellerUserRepository $instance = null;
+    private static ?SellerRepository $instance = null;
 
     /**
      * 单例
      */
-    public static function getInstance(): SellerUserRepository
+    public static function getInstance(): SellerRepository
     {
         if (is_null(self::$instance)) {
-            self::$instance = new SellerUserRepository();
+            self::$instance = new SellerRepository();
         }
 
         return self::$instance;
@@ -29,7 +29,7 @@ class SellerUserRepository extends CurdRepository implements RepositoryInterface
     /**
      * 添加
      */
-    public function saveEntity(SellerUserEntity $entity): int
+    public function saveEntity(SellerEntity $entity): int
     {
         return $this->save($entity->toArray());
     }
@@ -37,14 +37,14 @@ class SellerUserRepository extends CurdRepository implements RepositoryInterface
     /**
      * 按照ID查询返回对象
      */
-    public function findOneById(int $id): ?SellerUserEntity
+    public function findOneById(int $id): ?SellerEntity
     {
         $data = $this->findById($id);
         if (empty($data)) {
             return null;
         }
 
-        $entity = new SellerUserEntity();
+        $entity = new SellerEntity();
         $entity->setData($data);
 
         return $entity;
@@ -53,14 +53,14 @@ class SellerUserRepository extends CurdRepository implements RepositoryInterface
     /**
      * 按照条件查询返回对象
      */
-    public function findOne(array $condition = []): ?SellerUserEntity
+    public function findOne(array $condition = []): ?SellerEntity
     {
         $data = $this->find($condition);
         if (empty($data)) {
             return null;
         }
 
-        $entity = new SellerUserEntity();
+        $entity = new SellerEntity();
         $entity->setData($data);
 
         return $entity;
@@ -71,6 +71,6 @@ class SellerUserRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('seller_users');
+        return DB::table('sellers');
     }
 }

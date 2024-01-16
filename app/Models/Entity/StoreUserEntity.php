@@ -7,25 +7,28 @@ namespace App\Models\Entity;
 use Juling\Generator\Support\ArrayObject;
 use OpenApi\Attributes as OA;
 
-#[OA\Schema(schema: 'SellerUserEntity')]
-class SellerUserEntity
+#[OA\Schema(schema: 'StoreUserEntity')]
+class StoreUserEntity
 {
     use ArrayObject;
 
     #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
-    #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
-    protected int $userId;
+    #[OA\Property(property: 'merchant_id', description: '商户id', type: 'integer')]
+    protected int $merchantId;
 
-    #[OA\Property(property: 'status', description: '状态:1正常,2禁用', type: 'string')]
-    protected string $status;
+    #[OA\Property(property: 'store_id', description: '门店ID', type: 'integer')]
+    protected int $storeId;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
     protected string $createdAt;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
     protected string $updatedAt;
+
+    #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
+    protected string $deletedAt;
 
     /**
      * 获取
@@ -44,35 +47,35 @@ class SellerUserEntity
     }
 
     /**
-     * 获取用户ID
+     * 获取商户id
      */
-    public function getUserId(): int
+    public function getMerchantId(): int
     {
-        return $this->userId;
+        return $this->merchantId;
     }
 
     /**
-     * 设置用户ID
+     * 设置商户id
      */
-    public function setUserId(int $userId): void
+    public function setMerchantId(int $merchantId): void
     {
-        $this->userId = $userId;
+        $this->merchantId = $merchantId;
     }
 
     /**
-     * 获取状态:1正常,2禁用
+     * 获取门店ID
      */
-    public function getStatus(): string
+    public function getStoreId(): int
     {
-        return $this->status;
+        return $this->storeId;
     }
 
     /**
-     * 设置状态:1正常,2禁用
+     * 设置门店ID
      */
-    public function setStatus(string $status): void
+    public function setStoreId(int $storeId): void
     {
-        $this->status = $status;
+        $this->storeId = $storeId;
     }
 
     /**
@@ -105,5 +108,21 @@ class SellerUserEntity
     public function setUpdatedAt(string $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * 获取
+     */
+    public function getDeletedAt(): string
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * 设置
+     */
+    public function setDeletedAt(string $deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 }

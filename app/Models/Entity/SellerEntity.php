@@ -7,8 +7,8 @@ namespace App\Models\Entity;
 use Juling\Generator\Support\ArrayObject;
 use OpenApi\Attributes as OA;
 
-#[OA\Schema(schema: 'ShopEmployeeEntity')]
-class ShopEmployeeEntity
+#[OA\Schema(schema: 'SellerEntity')]
+class SellerEntity
 {
     use ArrayObject;
 
@@ -21,14 +21,20 @@ class ShopEmployeeEntity
     #[OA\Property(property: 'shop_id', description: '店铺id', type: 'integer')]
     protected int $shopId;
 
+    #[OA\Property(property: 'store_id', description: '门店ID', type: 'integer')]
+    protected int $storeId;
+
+    #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
+    protected int $userId;
+
+    #[OA\Property(property: 'status', description: '状态:1正常,2禁用', type: 'string')]
+    protected string $status;
+
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
     protected string $createdAt;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
     protected string $updatedAt;
-
-    #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
 
     /**
      * 获取
@@ -79,6 +85,54 @@ class ShopEmployeeEntity
     }
 
     /**
+     * 获取门店ID
+     */
+    public function getStoreId(): int
+    {
+        return $this->storeId;
+    }
+
+    /**
+     * 设置门店ID
+     */
+    public function setStoreId(int $storeId): void
+    {
+        $this->storeId = $storeId;
+    }
+
+    /**
+     * 获取用户ID
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * 设置用户ID
+     */
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * 获取状态:1正常,2禁用
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * 设置状态:1正常,2禁用
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
      * 获取
      */
     public function getCreatedAt(): string
@@ -108,21 +162,5 @@ class ShopEmployeeEntity
     public function setUpdatedAt(string $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * 获取
-     */
-    public function getDeletedAt(): string
-    {
-        return $this->deletedAt;
-    }
-
-    /**
-     * 设置
-     */
-    public function setDeletedAt(string $deletedAt): void
-    {
-        $this->deletedAt = $deletedAt;
     }
 }

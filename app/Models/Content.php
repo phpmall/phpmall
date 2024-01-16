@@ -22,7 +22,28 @@ class Content extends Model
      */
     protected $fillable = [
         'id',
+        'parent_id',
+        'in_station',
+        'pattern_id',
+        'pattern_code',
+        'slug',
+        'title',
+        'keywords',
+        'description',
+        'author',
+        'image',
+        'intro',
+        'content',
+        'extension',
+        'attachment',
+        'redirect_url',
+        'template_index',
+        'template_list',
+        'template_detail',
+        'sort',
+        'status',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 }

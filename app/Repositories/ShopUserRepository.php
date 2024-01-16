@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\Entity\ArticleEntity;
+use App\Models\Entity\ShopUserEntity;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
 use Juling\Generator\Repositories\CurdRepository;
 
-class ArticleRepository extends CurdRepository implements RepositoryInterface
+class ShopUserRepository extends CurdRepository implements RepositoryInterface
 {
-    private static ?ArticleRepository $instance = null;
+    private static ?ShopUserRepository $instance = null;
 
     /**
      * 单例
      */
-    public static function getInstance(): ArticleRepository
+    public static function getInstance(): ShopUserRepository
     {
         if (is_null(self::$instance)) {
-            self::$instance = new ArticleRepository();
+            self::$instance = new ShopUserRepository();
         }
 
         return self::$instance;
@@ -29,7 +29,7 @@ class ArticleRepository extends CurdRepository implements RepositoryInterface
     /**
      * 添加
      */
-    public function saveEntity(ArticleEntity $entity): int
+    public function saveEntity(ShopUserEntity $entity): int
     {
         return $this->save($entity->toArray());
     }
@@ -37,14 +37,14 @@ class ArticleRepository extends CurdRepository implements RepositoryInterface
     /**
      * 按照ID查询返回对象
      */
-    public function findOneById(int $id): ?ArticleEntity
+    public function findOneById(int $id): ?ShopUserEntity
     {
         $data = $this->findById($id);
         if (empty($data)) {
             return null;
         }
 
-        $entity = new ArticleEntity();
+        $entity = new ShopUserEntity();
         $entity->setData($data);
 
         return $entity;
@@ -53,14 +53,14 @@ class ArticleRepository extends CurdRepository implements RepositoryInterface
     /**
      * 按照条件查询返回对象
      */
-    public function findOne(array $condition = []): ?ArticleEntity
+    public function findOne(array $condition = []): ?ShopUserEntity
     {
         $data = $this->find($condition);
         if (empty($data)) {
             return null;
         }
 
-        $entity = new ArticleEntity();
+        $entity = new ShopUserEntity();
         $entity->setData($data);
 
         return $entity;
@@ -71,6 +71,6 @@ class ArticleRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('articles');
+        return DB::table('shop_users');
     }
 }

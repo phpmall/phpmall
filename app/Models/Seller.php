@@ -6,14 +6,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ShopEmployee extends Model
+class Seller extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'shop_employees';
+    protected $table = 'sellers';
 
     /**
      * The attributes that are mass assignable.
@@ -24,8 +24,10 @@ class ShopEmployee extends Model
         'id',
         'merchant_id',
         'shop_id',
+        'store_id',
+        'user_id',
+        'status',
         'created_at',
         'updated_at',
-        'deleted_at',
     ];
 }
