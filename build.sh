@@ -1,4 +1,4 @@
-# cd /home/wwwroot/demo.phpmall.net
+cd /home/wwwroot/demo.phpmall.net
 
 git pull
 
@@ -24,8 +24,8 @@ BackendBuild()
 AdminBuild()
 {
     cd $cur_dir/resources/admin
-    pnpm install
-    pnpm run build-only
+    bun install
+    bun run build-only
     rm -rf $cur_dir/public/admin
     mv dist $cur_dir/public/admin
 }
@@ -33,17 +33,24 @@ AdminBuild()
 SellerBuild()
 {
     cd $cur_dir/resources/seller
-    pnpm install
-    pnpm run build-only
+    bun install
+    bun run build-only
     rm -rf $cur_dir/public/seller
     mv dist $cur_dir/public/seller
+}
+
+PortalBuild()
+{
+    cd $cur_dir
+    bun install
+    bun run build
 }
 
 MobileBuild()
 {
     cd $cur_dir/resources/mobile
-    pnpm install
-    pnpm run build:h5
+    bun install
+    bun run build:h5
     rm -rf $cur_dir/public/mobile
     mv dist/build/h5 $cur_dir/public/mobile
 }
@@ -57,6 +64,7 @@ if [[ "${Stack}" = "all" ]]; then
   BackendBuild
   AdminBuild
   SellerBuild
+  PortalBuild
   MobileBuild
   DocsBuild
 elif [[ "${Stack}" = "backend" ]]; then
@@ -65,6 +73,8 @@ elif [[ "${Stack}" = "admin" ]]; then
   AdminBuild
 elif [[ "${Stack}" = "seller" ]]; then
   SellerBuild
+elif [[ "${Stack}" = "portal" ]]; then
+  PortalBuild
 elif [[ "${Stack}" = "mobile" ]]; then
   MobileBuild
 elif [[ "${Stack}" = "docs" ]]; then

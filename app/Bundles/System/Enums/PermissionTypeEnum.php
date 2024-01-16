@@ -15,12 +15,17 @@ enum PermissionTypeEnum: int
     case Menu = 1;
 
     /**
+     * 页面
+     */
+    case Page = 2;
+
+    /**
      * 按钮
      */
-    case Button = 2;
+    case Button = 3;
 
     /**
      * 接口
      */
-    case Api = 3;
+    case Api = 4;
 }
