@@ -18,9 +18,9 @@ use OpenApi\Attributes as OA;
     properties: [
         new OA\Property(property: 'username', description: '登录用户名', type: 'string', example: 'name'),
         new OA\Property(property: 'password', description: '登录密码', type: 'string', example: 'md5密码'),
-        new OA\Property(property: 'remember', description: '记住我', type: 'string', example: 'off'),
         new OA\Property(property: 'captcha', description: '图片验证码', type: 'string', example: '1234'),
         new OA\Property(property: 'uuid', description: '图片验证码UUID', type: 'string', example: 'abc'),
+        new OA\Property(property: 'remember', description: '记住我', type: 'string', example: 'off'),
     ]
 )]
 class LoginRequest extends FormRequest

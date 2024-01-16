@@ -9,11 +9,11 @@ use OpenApi\Attributes as OA;
 
 #[OA\Schema(
     schema: 'SignupMobileRequest',
-    required: ['mobile', 'code', 'agreed'],
+    required: ['mobile', 'code', 'accept_term'],
     properties: [
         new OA\Property(property: 'mobile', description: '手机号码', type: 'string', example: '13901889999'),
         new OA\Property(property: 'code', description: '短信验证码', type: 'string', example: '123456'),
-        new OA\Property(property: 'agreed', description: '注册协议', type: 'bool', example: true),
+        new OA\Property(property: 'accept_term', description: '是否接受注册协议', type: 'bool', example: true),
     ]
 )]
 class SignupMobileRequest extends FormRequest
@@ -34,7 +34,7 @@ class SignupMobileRequest extends FormRequest
         return [
             'mobile' => 'required|max:11',
             'code' => 'required',
-            'agreed' => 'required',
+            'accept_term' => 'required',
         ];
     }
 }

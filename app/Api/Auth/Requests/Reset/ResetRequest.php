@@ -9,11 +9,12 @@ use OpenApi\Attributes as OA;
 
 #[OA\Schema(
     schema: 'ResetRequest',
-    required: ['mobile', 'password', 'captcha'],
+    required: ['mobile', 'password', 'captcha', 'uuid'],
     properties: [
         new OA\Property(property: 'mobile', description: '手机号码', type: 'string', example: '13901889999'),
         new OA\Property(property: 'password', description: '登录密码', type: 'string', example: '123456aA'),
         new OA\Property(property: 'captcha', description: '图片验证码', type: 'string', example: '1234'),
+        new OA\Property(property: 'uuid', description: '图片验证码UUID', type: 'string', example: 'abc'),
     ]
 )]
 class ResetRequest extends FormRequest
@@ -35,6 +36,7 @@ class ResetRequest extends FormRequest
             'mobile' => 'required|max:255',
             'password' => 'required',
             'captcha' => 'required',
+            'uuid' => 'required',
         ];
     }
 }
