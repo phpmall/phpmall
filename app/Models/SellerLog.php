@@ -22,7 +22,7 @@ class SellerLog extends Model
      */
     protected $fillable = [
         'id',
-        'seller_user_id',
+        'seller_id',
         'level',
         'message',
         'user_agent',

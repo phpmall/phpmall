@@ -25,7 +25,7 @@
                     "seller"
                 ],
                 "summary": "卖家",
-                "operationId": "c3bd44ae185d13d3a5b5363819c9371c",
+                "operationId": "287184d06a5a3601eee22885eedae6c3",
                 "responses": {
                     "200": {
                         "description": "OK"

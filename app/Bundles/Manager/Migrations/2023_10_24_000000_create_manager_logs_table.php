@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seller_logs', function (Blueprint $table) {
+        Schema::create('manager_logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('seller_id')->comment('商户管理员ID');
+            $table->unsignedBigInteger('manager_id')->comment('管理员ID');
             $table->enum('level', ['debug', 'info', 'warning', 'error'])->comment('日志级别');
             $table->string('message')->comment('日志内容');
             $table->string('user_agent')->comment('User Agent');
             $table->string('ip_address')->comment('IP地址');
             $table->timestamps();
-            $table->comment('商户管理员日志表');
+            $table->comment('管理员日志表');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seller_logs');
+        Schema::dropIfExists('manager_logs');
     }
 };

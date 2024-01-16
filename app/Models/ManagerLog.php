@@ -6,14 +6,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SellerRole extends Model
+class ManagerLog extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'seller_roles';
+    protected $table = 'manager_logs';
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +22,12 @@ class SellerRole extends Model
      */
     protected $fillable = [
         'id',
-        'seller_id',
-        'role_id',
+        'manager_id',
+        'level',
+        'message',
+        'user_agent',
+        'ip_address',
+        'created_at',
+        'updated_at',
     ];
 }

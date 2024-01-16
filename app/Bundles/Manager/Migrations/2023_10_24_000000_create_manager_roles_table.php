@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seller_roles', function (Blueprint $table) {
+        Schema::create('manager_roles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('seller_id')->comment('商户管理员ID');
+            $table->unsignedBigInteger('manager_id')->comment('用户ID');
             $table->unsignedBigInteger('role_id')->comment('角色ID');
-            $table->unique(['seller_id', 'role_id'], 'seller_role_id');
-            $table->comment('商户管理员与角色关联表');
+            $table->unique(['manager_id', 'role_id'], 'manager_role_id');
+            $table->comment('管理员与角色关联表');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seller_roles');
+        Schema::dropIfExists('manager_roles');
     }
 };

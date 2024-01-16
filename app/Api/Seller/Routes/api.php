@@ -11,6 +11,6 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/seller')->middleware('api')->group(function () {
     // 卖家
-    Route::get('dashboard', [\App\Bundles\Seller\Controllers\Seller\DashboardController::class, 'index']);
+    Route::get('dashboard', [\App\Api\Seller\Controllers\IndexController::class, 'dashboard']);
 });
 // end

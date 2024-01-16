@@ -5,6 +5,14 @@ IAddressCreateRequest,
 IAddressUpdateRequest,
 IProfileResponse } from '@/types/user'
 
+// [用户中心] 仪表台
+export const dashboardService = (): Promise<any> => {
+    return request({
+        url: 'user/dashboard',
+        method: 'get'
+    })
+}
+
 // [收货地址] 获取用户全部收货地址
 export const addressService = (page: number, pageSize: number, formData: IAddressQueryRequest): Promise<IAddressResponse> => {
     return request({
@@ -48,14 +56,6 @@ export const addressDestroyService = (id: number): Promise<any> => {
         url: 'user/address/destroy',
         method: 'delete',
         params: {id}
-    })
-}
-
-// [用户中心] 仪表台
-export const dashboardService = (): Promise<any> => {
-    return request({
-        url: 'user/dashboard',
-        method: 'get'
     })
 }
 

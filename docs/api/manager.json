@@ -19,13 +19,127 @@
         }
     ],
     "paths": {
-        "/admin": {
+        "/dashboard": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "运营首页",
+                "operationId": "14ad80dab6e6cfe5aa244baf04121a6b",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/menu": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "获取管理菜单",
+                "operationId": "8ea7e6ee0804cf0896de9807945228ca",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/message": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "获取系统消息",
+                "operationId": "89fbaa12e471719cf9624bc032694f4c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profile": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "获取个人资料",
+                "operationId": "b77b6d808a74bb374b8f17e48948bd6e",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/password": {
+            "post": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "修改密码",
+                "operationId": "2ff6f210f54887360ea4d631d66a65fc",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "注销登录",
+                "operationId": "6f2848dea002e32be2f9da0335d13121",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/manager": {
             "get": {
                 "tags": [
                     "管理员"
                 ],
                 "summary": "管理员接口",
-                "operationId": "d7035bc0c193af821d83be71eb69fcd5",
+                "operationId": "c5037754a7e5b532ec22723467e7d0b0",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -36,68 +150,6 @@
                         "bearerAuth": []
                     }
                 ]
-            }
-        },
-        "/admin/index1": {
-            "get": {
-                "tags": [
-                    "运营中心"
-                ],
-                "summary": "管理仪表台",
-                "operationId": "5753281da8a84e4095a09cb1a74b47a6",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/dashboard": {
-            "get": {
-                "tags": [
-                    "运营"
-                ],
-                "summary": "运营首页",
-                "description": "起始页",
-                "operationId": "4408efae0e2e9e67e4e644793a460c98",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/permission": {
-            "get": {
-                "tags": [
-                    "权限管理"
-                ],
-                "summary": "权限列表",
-                "operationId": "f2d9216719eee271a6a46143545b151c",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/role": {
-            "get": {
-                "tags": [
-                    "角色管理"
-                ],
-                "summary": "角色列表",
-                "operationId": "f2c62f883aab0c0e0b081d56fd0d74af",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
             }
         },
         "/seller": {
@@ -135,6 +187,34 @@
                 ],
                 "summary": "卖家门店",
                 "operationId": "7af5f293258c97513adec2b96fd8d14b",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/permission": {
+            "get": {
+                "tags": [
+                    "权限管理"
+                ],
+                "summary": "权限列表",
+                "operationId": "7c6a3f64e393e1cf22a68323183e3ee2",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/role": {
+            "get": {
+                "tags": [
+                    "角色管理"
+                ],
+                "summary": "角色列表",
+                "operationId": "6273801dc9cce376adcb17ef35bbf092",
                 "responses": {
                     "200": {
                         "description": "OK"

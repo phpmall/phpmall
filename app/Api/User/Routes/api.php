@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 // Route start
 Route::prefix('api/user')->middleware('api')->group(function () {
+    // 仪表台
+    Route::get('dashboard', [\App\Api\User\Controllers\IndexController::class, 'dashboard']);
     // 获取用户全部收货地址
     Route::get('address', [\App\Bundles\User\Controllers\User\AddressController::class, 'index']);
     // 新增用户收货地址
@@ -20,8 +22,6 @@ Route::prefix('api/user')->middleware('api')->group(function () {
     Route::put('address/update', [\App\Bundles\User\Controllers\User\AddressController::class, 'update']);
     // 删除用户收货地址
     Route::delete('address/destroy', [\App\Bundles\User\Controllers\User\AddressController::class, 'destroy']);
-    // 仪表台
-    Route::get('dashboard', [\App\Bundles\User\Controllers\User\DashboardController::class, 'index']);
     // 获取用户资料
     Route::get('profile/show', [\App\Bundles\User\Controllers\User\ProfileController::class, 'show']);
     // 更新用户资料
