@@ -34,4 +34,4 @@ Echo_Green '------------------------------'
 Echo_Green ' Git恢复部分代码'
 Echo_Green '------------------------------'
 
-# git checkout app/Repositories/UserRepository.php
+git checkout app/Models/User.php

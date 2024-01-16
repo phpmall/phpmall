@@ -12,6 +12,10 @@
         {
             "url": "http://127.0.0.1:8000/api/user/",
             "description": "开发环境"
+        },
+        {
+            "url": "https://demo.phpmall.net/api/user/",
+            "description": "演示环境"
         }
     ],
     "paths": {
