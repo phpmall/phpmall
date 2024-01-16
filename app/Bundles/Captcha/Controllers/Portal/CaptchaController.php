@@ -15,7 +15,7 @@ use OpenApi\Attributes as OA;
 
 class CaptchaController extends BaseController
 {
-    #[OA\Get(path: 'captcha', summary: '图片验证码', tags: ['验证码'])]
+    #[OA\Get(path: '/captcha', summary: '图片验证码', tags: ['验证码'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CaptchaResponse::class))]
     public function index(): JsonResponse
     {

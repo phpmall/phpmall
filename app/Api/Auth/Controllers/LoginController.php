@@ -22,7 +22,7 @@ use Throwable;
 
 class LoginController extends BaseController
 {
-    #[OA\Post(path: 'login', summary: '通过用户名和密码登录', tags: ['登录'])]
+    #[OA\Post(path: '/login', summary: '通过用户名和密码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function index(LoginRequest $request): JsonResponse
@@ -67,7 +67,7 @@ class LoginController extends BaseController
         }
     }
 
-    #[OA\Post(path: 'login/smsCode', summary: '通过手机短信验证码登录', tags: ['登录'])]
+    #[OA\Post(path: '/login/smsCode', summary: '通过手机短信验证码登录', tags: ['登录'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginSmsRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function smsCode(LoginSmsRequest $request): JsonResponse

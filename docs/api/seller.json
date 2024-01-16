@@ -19,13 +19,13 @@
         }
     ],
     "paths": {
-        "dashboard": {
+        "/dashboard": {
             "get": {
                 "tags": [
                     "seller"
                 ],
                 "summary": "卖家",
-                "operationId": "75444fb24fe0179abb5e519687e9484e",
+                "operationId": "c3bd44ae185d13d3a5b5363819c9371c",
                 "responses": {
                     "200": {
                         "description": "OK"

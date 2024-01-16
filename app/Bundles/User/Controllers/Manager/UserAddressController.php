@@ -11,7 +11,7 @@ use OpenApi\Attributes as OA;
 
 class UserAddressController extends BaseController
 {
-    #[OA\Get(path: 'userAddress', summary: '买家收货地址', tags: ['买家收货地址'])]
+    #[OA\Get(path: '/userAddress', summary: '买家收货地址', tags: ['买家收货地址'])]
     #[OA\Parameter(name: 'userId', description: '用户ID', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]

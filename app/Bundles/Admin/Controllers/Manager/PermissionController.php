@@ -12,7 +12,7 @@ use OpenApi\Attributes as OA;
 
 class PermissionController extends BaseController
 {
-    #[OA\Get(path: 'permission', summary: '权限列表', tags: ['权限管理'])]
+    #[OA\Get(path: '/permission', summary: '权限列表', tags: ['权限管理'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index(): JsonResponse
     {

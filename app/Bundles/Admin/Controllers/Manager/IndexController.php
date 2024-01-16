@@ -18,7 +18,7 @@ class IndexController extends BaseController
         return view('admin::index');
     }
 
-    #[OA\Get(path: 'admin/index1', summary: '管理仪表台', security: [['bearerAuth' => []]], tags: ['运营中心'])]
+    #[OA\Get(path: '/admin/index1', summary: '管理仪表台', security: [['bearerAuth' => []]], tags: ['运营中心'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function index1(Request $request): JsonResponse
     {
@@ -47,7 +47,7 @@ class IndexController extends BaseController
     /**
      * 起始页
      */
-    #[OA\Get(path: 'dashboard', summary: '运营首页', tags: ['运营'])]
+    #[OA\Get(path: '/dashboard', summary: '运营首页', tags: ['运营'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function dashboard(): JsonResponse
     {

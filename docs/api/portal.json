@@ -19,13 +19,13 @@
         }
     ],
     "paths": {
-        "captcha": {
+        "/captcha": {
             "get": {
                 "tags": [
                     "验证码"
                 ],
                 "summary": "图片验证码",
-                "operationId": "d458dab7f9e2c36bc9dd0093bc2aa38d",
+                "operationId": "9c5c9850d7c12154b08aa551e5ee690a",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -40,13 +40,13 @@
                 }
             }
         },
-        "upload": {
+        "/upload": {
             "post": {
                 "tags": [
                     "素材"
                 ],
                 "summary": "附件上传接口",
-                "operationId": "28afdd27288e852b68dec7715bd8e139",
+                "operationId": "ce57c383a15cd01d07d100ceb2ce746c",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -76,13 +76,13 @@
                 ]
             }
         },
-        "region": {
+        "/region": {
             "get": {
                 "tags": [
                     "地区"
                 ],
                 "summary": "查询地区列表",
-                "operationId": "8a8b7d2a19ec93c3ecb9a9b033645e66",
+                "operationId": "ca411332e24ad064add6ff4db29dbc13",
                 "parameters": [
                     {
                         "name": "id",
@@ -106,13 +106,13 @@
                 }
             }
         },
-        "sms": {
+        "/sms": {
             "post": {
                 "tags": [
                     "短信"
                 ],
                 "summary": "发送手机短信验证码",
-                "operationId": "b51fadd179c4e99d171e16ea647a57b4",
+                "operationId": "52344ff35aa85c97b594e2f409219571",
                 "requestBody": {
                     "required": true,
                     "content": {
