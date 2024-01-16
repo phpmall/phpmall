@@ -71,6 +71,6 @@ class OrderLogRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('order_log');
+        return DB::table('order_logs');
     }
 }

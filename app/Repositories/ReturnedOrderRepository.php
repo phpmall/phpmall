@@ -71,6 +71,6 @@ class ReturnedOrderRepository extends CurdRepository implements RepositoryInterf
      */
     public function model(): Builder
     {
-        return DB::table('returned_order');
+        return DB::table('returned_orders');
     }
 }

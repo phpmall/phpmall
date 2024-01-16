@@ -71,6 +71,6 @@ class ProductMemberPriceRepository extends CurdRepository implements RepositoryI
      */
     public function model(): Builder
     {
-        return DB::table('product_member_price');
+        return DB::table('product_member_prices');
     }
 }

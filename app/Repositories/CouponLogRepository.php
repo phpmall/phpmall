@@ -71,6 +71,6 @@ class CouponLogRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('coupon_log');
+        return DB::table('coupon_logs');
     }
 }

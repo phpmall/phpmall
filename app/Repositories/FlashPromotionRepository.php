@@ -71,6 +71,6 @@ class FlashPromotionRepository extends CurdRepository implements RepositoryInter
      */
     public function model(): Builder
     {
-        return DB::table('flash_promotion');
+        return DB::table('flash_promotions');
     }
 }

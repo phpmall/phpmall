@@ -71,6 +71,6 @@ class ProductTypeRepository extends CurdRepository implements RepositoryInterfac
      */
     public function model(): Builder
     {
-        return DB::table('product_type');
+        return DB::table('product_types');
     }
 }

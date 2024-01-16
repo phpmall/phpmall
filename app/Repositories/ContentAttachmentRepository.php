@@ -71,6 +71,6 @@ class ContentAttachmentRepository extends CurdRepository implements RepositoryIn
      */
     public function model(): Builder
     {
-        return DB::table('content_attachment');
+        return DB::table('content_attachments');
     }
 }

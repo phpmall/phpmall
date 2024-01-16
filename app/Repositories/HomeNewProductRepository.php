@@ -71,6 +71,6 @@ class HomeNewProductRepository extends CurdRepository implements RepositoryInter
      */
     public function model(): Builder
     {
-        return DB::table('home_new_product');
+        return DB::table('home_new_products');
     }
 }

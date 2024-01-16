@@ -71,6 +71,6 @@ class ProductAttributeRepository extends CurdRepository implements RepositoryInt
      */
     public function model(): Builder
     {
-        return DB::table('product_attribute');
+        return DB::table('product_attributes');
     }
 }

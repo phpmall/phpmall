@@ -138,13 +138,57 @@
                 }
             }
         },
+        "userAddress": {
+            "get": {
+                "tags": [
+                    "买家收货地址"
+                ],
+                "summary": "买家收货地址",
+                "operationId": "78948f4ae0ad4e859f966f72bd5baadb",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "当前页码",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "每页分页数",
+                        "required": false,
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AddressResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "user": {
             "get": {
                 "tags": [
                     "用户管理"
                 ],
                 "summary": "用户列表",
-                "operationId": "ce6ae6ad992609fea17c9e03d2e30489",
+                "operationId": "27e0c2468c418f6588502dd3c58e7eab",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -163,7 +207,7 @@
                     "用户管理"
                 ],
                 "summary": "添加新用户",
-                "operationId": "8755d21493fcfbd80df736805474de84",
+                "operationId": "86816a88c83250e109a1e318f9cc5e50",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -182,7 +226,7 @@
                     "用户管理"
                 ],
                 "summary": "获取详情",
-                "operationId": "bd3509eedef6481cb37d997be05388df",
+                "operationId": "b44a07de1859131346d73b6ba673597d",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -201,7 +245,7 @@
                     "用户管理"
                 ],
                 "summary": "更新用户详情",
-                "operationId": "8bdb5d51501ab22c51e0a59f3278016c",
+                "operationId": "efd251ae82fb0eb1a57def9fd2d0960c",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -220,7 +264,7 @@
                     "用户管理"
                 ],
                 "summary": "删除用户",
-                "operationId": "86814880439e276a6521bf70d548add6",
+                "operationId": "23830fdd6efad854643d64b80aec60bc",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -231,20 +275,6 @@
                         "bearerAuth": []
                     }
                 ]
-            }
-        },
-        "userAddress": {
-            "get": {
-                "tags": [
-                    "买家收货地址"
-                ],
-                "summary": "买家收货地址",
-                "operationId": "78948f4ae0ad4e859f966f72bd5baadb",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
             }
         }
     },

@@ -71,6 +71,6 @@ class CommentRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('comment');
+        return DB::table('comments');
     }
 }

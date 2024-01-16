@@ -71,6 +71,6 @@ class HomeAdvertisementRepository extends CurdRepository implements RepositoryIn
      */
     public function model(): Builder
     {
-        return DB::table('home_advertisement');
+        return DB::table('home_advertisements');
     }
 }

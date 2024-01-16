@@ -71,6 +71,6 @@ class RegionRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('region');
+        return DB::table('regions');
     }
 }

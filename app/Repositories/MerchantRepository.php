@@ -71,6 +71,6 @@ class MerchantRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('merchant');
+        return DB::table('merchants');
     }
 }

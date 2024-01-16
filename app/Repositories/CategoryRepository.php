@@ -71,6 +71,6 @@ class CategoryRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('category');
+        return DB::table('categories');
     }
 }

@@ -71,6 +71,6 @@ class AdminUserRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('admin_user');
+        return DB::table('admin_users');
     }
 }

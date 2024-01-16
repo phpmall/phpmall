@@ -71,6 +71,6 @@ class FlashPromotionProductRepository extends CurdRepository implements Reposito
      */
     public function model(): Builder
     {
-        return DB::table('flash_promotion_product');
+        return DB::table('flash_promotion_products');
     }
 }

@@ -220,7 +220,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "App\\Api\\User\\Responses\\ProfileResponse"
+                                    "$ref": "#/components/schemas/ProfileResponse"
                                 }
                             }
                         }
@@ -245,7 +245,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "App\\Api\\User\\Requests\\ProfileRequest"
+                                "$ref": "App\\Bundles\\User\\Requests\\ProfileRequest"
                             }
                         }
                     }

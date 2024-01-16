@@ -71,6 +71,6 @@ class UserSocialiteRepository extends CurdRepository implements RepositoryInterf
      */
     public function model(): Builder
     {
-        return DB::table('user_socialite');
+        return DB::table('user_socialites');
     }
 }

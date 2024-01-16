@@ -71,6 +71,6 @@ class FlashPromotionSessionRepository extends CurdRepository implements Reposito
      */
     public function model(): Builder
     {
-        return DB::table('flash_promotion_session');
+        return DB::table('flash_promotion_sessions');
     }
 }

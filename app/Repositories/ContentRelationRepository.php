@@ -71,6 +71,6 @@ class ContentRelationRepository extends CurdRepository implements RepositoryInte
      */
     public function model(): Builder
     {
-        return DB::table('content_relation');
+        return DB::table('content_relations');
     }
 }

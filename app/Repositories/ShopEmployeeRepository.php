@@ -71,6 +71,6 @@ class ShopEmployeeRepository extends CurdRepository implements RepositoryInterfa
      */
     public function model(): Builder
     {
-        return DB::table('shop_employee');
+        return DB::table('shop_employees');
     }
 }

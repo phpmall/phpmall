@@ -71,6 +71,6 @@ class HomeBrandRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('home_brand');
+        return DB::table('home_brands');
     }
 }

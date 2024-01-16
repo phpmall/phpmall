@@ -71,6 +71,6 @@ class CategoryProductAttributeRepository extends CurdRepository implements Repos
      */
     public function model(): Builder
     {
-        return DB::table('category_product_attribute');
+        return DB::table('category_product_attributes');
     }
 }

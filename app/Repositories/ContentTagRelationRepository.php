@@ -71,6 +71,6 @@ class ContentTagRelationRepository extends CurdRepository implements RepositoryI
      */
     public function model(): Builder
     {
-        return DB::table('content_tag_relation');
+        return DB::table('content_tag_relations');
     }
 }

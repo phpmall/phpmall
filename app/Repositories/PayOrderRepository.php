@@ -71,6 +71,6 @@ class PayOrderRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('pay_order');
+        return DB::table('pay_orders');
     }
 }

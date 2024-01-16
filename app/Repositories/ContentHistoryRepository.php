@@ -71,6 +71,6 @@ class ContentHistoryRepository extends CurdRepository implements RepositoryInter
      */
     public function model(): Builder
     {
-        return DB::table('content_history');
+        return DB::table('content_histories');
     }
 }

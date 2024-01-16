@@ -71,6 +71,6 @@ class SettingRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('setting');
+        return DB::table('settings');
     }
 }

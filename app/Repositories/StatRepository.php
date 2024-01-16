@@ -71,6 +71,6 @@ class StatRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('stat');
+        return DB::table('stats');
     }
 }

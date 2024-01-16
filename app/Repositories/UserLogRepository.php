@@ -71,6 +71,6 @@ class UserLogRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('user_log');
+        return DB::table('user_logs');
     }
 }

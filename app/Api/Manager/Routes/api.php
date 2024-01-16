@@ -26,17 +26,17 @@ Route::prefix('api/manager')->middleware('api')->group(function () {
     Route::get('shop', [\App\Bundles\Shop\Controllers\Manager\ShopController::class, 'index']);
     // 卖家门店
     Route::get('store', [\App\Bundles\Store\Controllers\Manager\StoreController::class, 'index']);
-    // 用户列表
-    Route::get('user', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'index']);
-    // 添加新用户
-    Route::post('user/store', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'store']);
-    // 获取详情
-    Route::get('user/show', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'show']);
-    // 更新用户详情
-    Route::put('user/update', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'update']);
-    // 删除用户
-    Route::delete('user/destroy', [\App\Bundles\User\Controllers\Manager\User2Controller::class, 'destroy']);
     // 买家收货地址
     Route::get('userAddress', [\App\Bundles\User\Controllers\Manager\UserAddressController::class, 'index']);
+    // 用户列表
+    Route::get('user', [\App\Bundles\User\Controllers\Manager\UserController::class, 'index']);
+    // 添加新用户
+    Route::post('user/store', [\App\Bundles\User\Controllers\Manager\UserController::class, 'store']);
+    // 获取详情
+    Route::get('user/show', [\App\Bundles\User\Controllers\Manager\UserController::class, 'show']);
+    // 更新用户详情
+    Route::put('user/update', [\App\Bundles\User\Controllers\Manager\UserController::class, 'update']);
+    // 删除用户
+    Route::delete('user/destroy', [\App\Bundles\User\Controllers\Manager\UserController::class, 'destroy']);
 });
 // end

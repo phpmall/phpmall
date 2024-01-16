@@ -71,6 +71,6 @@ class ReturnedReasonRepository extends CurdRepository implements RepositoryInter
      */
     public function model(): Builder
     {
-        return DB::table('returned_reason');
+        return DB::table('returned_reasons');
     }
 }

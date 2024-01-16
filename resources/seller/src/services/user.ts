@@ -2,7 +2,8 @@ import request from '@/utils/request'
 import type { IAddressQueryRequest,
 IAddressResponse,
 IAddressCreateRequest,
-IAddressUpdateRequest } from '@/types/user'
+IAddressUpdateRequest,
+IProfileResponse } from '@/types/user'
 
 // [收货地址] 获取用户全部收货地址
 export const addressService = (page: number, pageSize: number, formData: IAddressQueryRequest): Promise<IAddressResponse> => {
@@ -59,7 +60,7 @@ export const dashboardService = (): Promise<any> => {
 }
 
 // [用户中心] 获取用户资料
-export const profileShowService = (): PromiseApp\Api\User\Responses\ProfileResponse => {
+export const profileShowService = (): Promise<IProfileResponse> => {
     return request({
         url: 'user/profile/show',
         method: 'get'

@@ -71,6 +71,6 @@ class SellerUserRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('seller_user');
+        return DB::table('seller_users');
     }
 }

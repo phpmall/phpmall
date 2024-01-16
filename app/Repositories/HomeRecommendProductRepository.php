@@ -71,6 +71,6 @@ class HomeRecommendProductRepository extends CurdRepository implements Repositor
      */
     public function model(): Builder
     {
-        return DB::table('home_recommend_product');
+        return DB::table('home_recommend_products');
     }
 }

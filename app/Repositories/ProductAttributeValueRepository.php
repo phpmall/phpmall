@@ -71,6 +71,6 @@ class ProductAttributeValueRepository extends CurdRepository implements Reposito
      */
     public function model(): Builder
     {
-        return DB::table('product_attribute_value');
+        return DB::table('product_attribute_values');
     }
 }

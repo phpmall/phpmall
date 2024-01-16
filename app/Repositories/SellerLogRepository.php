@@ -71,6 +71,6 @@ class SellerLogRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('seller_log');
+        return DB::table('seller_logs');
     }
 }

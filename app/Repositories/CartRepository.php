@@ -71,6 +71,6 @@ class CartRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('cart');
+        return DB::table('carts');
     }
 }

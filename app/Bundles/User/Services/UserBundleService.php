@@ -8,10 +8,10 @@ use App\Bundles\User\Enums\UserSocialiteTypeEnum;
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Foundation\Exceptions\CustomException;
 use App\Models\User;
-use App\Services\UserService as BaseUserService;
+use App\Services\UserService;
 use App\Services\UserSocialiteService;
 
-class UserBundleService extends BaseUserService
+class UserBundleService extends UserService
 {
     /**
      * 根据用户名查询用户
@@ -84,12 +84,12 @@ class UserBundleService extends BaseUserService
      */
     private function getUser(string $type, int|string $val, UserStatusEnum $status): User
     {
-        $user = $this->getRepository()->model()->where([
+        $user = User::where([
             [$type, '=', $val],
             ['status', '=', $status->value],
         ])->first();
 
-        if ($user->isEmpty()) {
+        if (empty($user)) {
             throw new CustomException('没有找到用户');
         }
 

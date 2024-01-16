@@ -71,6 +71,6 @@ class CouponRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('coupon');
+        return DB::table('coupons');
     }
 }

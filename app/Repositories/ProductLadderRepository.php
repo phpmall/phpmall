@@ -71,6 +71,6 @@ class ProductLadderRepository extends CurdRepository implements RepositoryInterf
      */
     public function model(): Builder
     {
-        return DB::table('product_ladder');
+        return DB::table('product_ladders');
     }
 }

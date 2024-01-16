@@ -71,6 +71,6 @@ class SellerRoleRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('seller_role');
+        return DB::table('seller_roles');
     }
 }

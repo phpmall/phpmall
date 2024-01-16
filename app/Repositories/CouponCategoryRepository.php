@@ -71,6 +71,6 @@ class CouponCategoryRepository extends CurdRepository implements RepositoryInter
      */
     public function model(): Builder
     {
-        return DB::table('coupon_category');
+        return DB::table('coupon_categories');
     }
 }

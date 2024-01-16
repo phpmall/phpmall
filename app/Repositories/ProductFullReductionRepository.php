@@ -71,6 +71,6 @@ class ProductFullReductionRepository extends CurdRepository implements Repositor
      */
     public function model(): Builder
     {
-        return DB::table('product_full_reduction');
+        return DB::table('product_full_reductions');
     }
 }

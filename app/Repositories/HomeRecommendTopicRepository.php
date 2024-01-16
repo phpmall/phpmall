@@ -71,6 +71,6 @@ class HomeRecommendTopicRepository extends CurdRepository implements RepositoryI
      */
     public function model(): Builder
     {
-        return DB::table('home_recommend_topic');
+        return DB::table('home_recommend_topics');
     }
 }

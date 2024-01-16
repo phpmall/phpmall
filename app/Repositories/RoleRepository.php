@@ -71,6 +71,6 @@ class RoleRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('role');
+        return DB::table('roles');
     }
 }

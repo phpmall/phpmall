@@ -71,6 +71,6 @@ class ProductStockRepository extends CurdRepository implements RepositoryInterfa
      */
     public function model(): Builder
     {
-        return DB::table('product_stock');
+        return DB::table('product_stocks');
     }
 }

@@ -71,6 +71,6 @@ class FlashPromotionLogRepository extends CurdRepository implements RepositoryIn
      */
     public function model(): Builder
     {
-        return DB::table('flash_promotion_log');
+        return DB::table('flash_promotion_logs');
     }
 }

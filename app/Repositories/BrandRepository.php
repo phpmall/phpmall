@@ -71,6 +71,6 @@ class BrandRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('brand');
+        return DB::table('brands');
     }
 }

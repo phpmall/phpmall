@@ -71,6 +71,6 @@ class RolePermissionRepository extends CurdRepository implements RepositoryInter
      */
     public function model(): Builder
     {
-        return DB::table('role_permission');
+        return DB::table('role_permissions');
     }
 }

@@ -71,6 +71,6 @@ class OrderItemRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('order_item');
+        return DB::table('order_items');
     }
 }

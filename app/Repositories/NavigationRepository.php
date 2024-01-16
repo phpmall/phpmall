@@ -71,6 +71,6 @@ class NavigationRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('navigation');
+        return DB::table('navigations');
     }
 }

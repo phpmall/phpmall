@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import type {  } from '@/types/manager'
+import type { IAddressResponse } from '@/types/manager'
 
 // [管理员] 管理员接口
 export const adminService = (): Promise<any> => {
@@ -65,6 +65,15 @@ export const storeService = (): Promise<any> => {
     })
 }
 
+// [买家收货地址] 买家收货地址
+export const userAddressService = (userId: number, page: number, pageSize: number): Promise<IAddressResponse> => {
+    return request({
+        url: 'manager/userAddress',
+        method: 'get',
+        params: {userId, page, pageSize}
+    })
+}
+
 // [用户管理] 用户列表
 export const userService = (): Promise<any> => {
     return request({
@@ -102,13 +111,5 @@ export const userDestroyService = (): Promise<any> => {
     return request({
         url: 'manager/user/destroy',
         method: 'delete'
-    })
-}
-
-// [买家收货地址] 买家收货地址
-export const userAddressService = (): Promise<any> => {
-    return request({
-        url: 'manager/userAddress',
-        method: 'get'
     })
 }

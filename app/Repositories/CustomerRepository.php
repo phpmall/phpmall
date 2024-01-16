@@ -71,6 +71,6 @@ class CustomerRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('customer');
+        return DB::table('customers');
     }
 }

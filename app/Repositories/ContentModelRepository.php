@@ -71,6 +71,6 @@ class ContentModelRepository extends CurdRepository implements RepositoryInterfa
      */
     public function model(): Builder
     {
-        return DB::table('content_model');
+        return DB::table('content_models');
     }
 }

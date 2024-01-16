@@ -71,6 +71,6 @@ class PermissionRepository extends CurdRepository implements RepositoryInterface
      */
     public function model(): Builder
     {
-        return DB::table('permission');
+        return DB::table('permissions');
     }
 }

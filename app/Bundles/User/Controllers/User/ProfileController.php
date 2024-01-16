@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Bundles\User\Controllers\User;
 
 use App\Api\User\Controllers\BaseController;
-use App\Api\User\Requests\ProfileRequest;
-use App\Api\User\Responses\ProfileResponse;
+use App\Bundles\User\Requests\ProfileRequest;
+use App\Bundles\User\Responses\ProfileResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;

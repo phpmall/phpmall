@@ -71,6 +71,6 @@ class OrderSettingRepository extends CurdRepository implements RepositoryInterfa
      */
     public function model(): Builder
     {
-        return DB::table('order_setting');
+        return DB::table('order_settings');
     }
 }
