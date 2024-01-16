@@ -16,7 +16,7 @@ BackendBuild()
     cd $cur_dir
     composer u --no-dev -oW
     php artisan optimize
-    php artisan migrate --force
+    php artisan migrate:refresh --force
     php artisan db:seed --force
     supervisorctl reload
 }
