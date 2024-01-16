@@ -9,6 +9,7 @@ import {loginService} from '@/services/auth'
 
 const loginFormRef = ref<FormInstance>()
 const authStore = useAuthStore()
+
 const formData = reactive<ILoginRequest>({
     username: '',
     password: '',
@@ -16,12 +17,18 @@ const formData = reactive<ILoginRequest>({
     uuid: ''
 })
 
+const captchaImage = ref<string>('')
+
 onMounted(() => {
+    loadCaptcha()
+})
+
+const loadCaptcha = () => {
     captchaService().then((res) => {
-        formData.captcha = res.captcha;
+        captchaImage.value = res.captcha;
         formData.uuid = res.uuid;
     })
-})
+}
 
 const rules = reactive<FormRules<typeof formData>>({
     username: [{trigger: 'blur'}],
@@ -78,9 +85,9 @@ const resetForm = (formEl: FormInstance | undefined) => {
                 <el-form-item label="登录密码" prop="password">
                     <el-input v-model="formData.password" type="password" autocomplete="off"/>
                 </el-form-item>
-                <el-form-item label="图片验证码" prop="captcha" v-if="formData.captcha">
+                <el-form-item label="图片验证码" prop="captcha" v-if="captchaImage">
                     <el-input v-model="formData.captcha" type="text" autocomplete="off"/>
-                    <el-input v-model="formData.uuid" type="hidden" />
+                    <el-image :src="captchaImage" @click="loadCaptcha" class="captcha" />
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="submitForm(loginFormRef)">登 录</el-button>
