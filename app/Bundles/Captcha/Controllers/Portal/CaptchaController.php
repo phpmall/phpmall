@@ -8,10 +8,10 @@ use App\Api\Portal\Controllers\BaseController;
 use App\Bundles\Captcha\Responses\CaptchaResponse;
 use App\Bundles\Captcha\Services\CaptchaBundleService;
 use App\Foundation\Exceptions\CustomException;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use OpenApi\Attributes as OA;
+use Throwable;
 
 class CaptchaController extends BaseController
 {
@@ -24,9 +24,11 @@ class CaptchaController extends BaseController
             $result = $captchaService->getCaptcha();
 
             return $this->success($result);
-        } catch (CustomException $e) {
-            return $this->error($e->getMessage());
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
+            if ($e instanceof CustomException) {
+                return $this->error($e->getMessage());
+            }
+
             Log::error($e->getMessage());
 
             return $this->error('获取图片验证码错误');

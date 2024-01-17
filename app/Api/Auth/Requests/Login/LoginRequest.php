@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Requests\Login;
 
+use App\Foundation\Rules\CaptchaRule;
 use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Attributes as OA;
 
@@ -38,7 +39,7 @@ class LoginRequest extends FormRequest
         return [
             'username' => 'required',
             'password' => 'required',
-            'captcha' => 'required',
+            'captcha' => ['required', new CaptchaRule()],
             'uuid' => 'required',
         ];
     }

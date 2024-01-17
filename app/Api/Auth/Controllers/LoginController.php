@@ -16,7 +16,6 @@ use App\Foundation\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Juling\Captcha\Captcha;
 use OpenApi\Attributes as OA;
 use Throwable;
 
@@ -27,14 +26,9 @@ class LoginController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function index(LoginRequest $request): JsonResponse
     {
+        $formData = $request->validated();
+
         try {
-            $formData = $request->validated();
-
-            $captchaService = new Captcha();
-            if (! $captchaService->check($formData['uuid'], $formData['captcha'])) {
-                throw new CustomException('图片验证码输入错误');
-            }
-
             $loginInput = new LoginInput();
             $loginInput->setUsername($formData['username']);
             $loginInput->setPassword($formData['password']);
