@@ -11,6 +11,11 @@ php artisan db:seed
 Echo_Green '------------------------------'
 Echo_Green ' 开始生成业务代码'
 Echo_Green '------------------------------'
+rm -rf app/Models/*.php
+rm -rf app/Models/Entity/*.php
+rm -rf app/Repositories/*.php
+rm -rf app/Services/*.php
+Echo_Green ' ...'
 php artisan gen:entity
 Echo_Green ' ...'
 php artisan gen:model
