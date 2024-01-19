@@ -20,7 +20,7 @@
         "juling/laravel-generator": "^1.0",
         "juling/laravel-image": "^1.0",
         "laravel/framework": "^10.34",
-        "laravel/octane": "^2.2",
+        "laravel/octane": "^2.3",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "overtrue/laravel-easy-sms": "^2.1",
@@ -33,6 +33,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "laravel/breeze": "^1.28",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",

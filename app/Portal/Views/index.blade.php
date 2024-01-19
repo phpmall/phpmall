@@ -1,6 +1,4 @@
-@extends('portal::layouts.app')
-
-@section('content')
+<x-app-layout>
     <div class="category-wrapper" id="test">
         <ul>
             <li data-id="a">
@@ -222,4 +220,4 @@
     </div>
 
     index page.
-@endsection
+</x-app-layout>
