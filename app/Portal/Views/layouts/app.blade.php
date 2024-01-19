@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="zh-Hans">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'PHPMall') }}</title>
+    <meta name="format-detection" content="telephone=no">
     @vite(['app/Portal/Assets/js/app.js'])
 </head>
 <body class="font-sans antialiased">

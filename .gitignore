@@ -13,7 +13,7 @@
 .env.backup
 .env.production
 .phpunit.result.cache
-*.lock
+*.lock*
 *.log
 /.fleet
 /.idea
