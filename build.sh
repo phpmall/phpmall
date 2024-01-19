@@ -1,5 +1,7 @@
 cd /home/wwwroot/demo.phpmall.net
 
+bun upgrade
+
 git pull
 
 cur_dir=$(pwd)
@@ -23,7 +25,7 @@ BackendBuild()
 
 AdminBuild()
 {
-    cd $cur_dir/resources/admin
+    cd $cur_dir/../phpmall-admin
     bun install
     bun run build-only
     rm -rf $cur_dir/public/admin
@@ -32,7 +34,7 @@ AdminBuild()
 
 SellerBuild()
 {
-    cd $cur_dir/resources/seller
+    cd $cur_dir/../phpmall-seller
     bun install
     bun run build-only
     rm -rf $cur_dir/public/seller
@@ -48,7 +50,7 @@ PortalBuild()
 
 MobileBuild()
 {
-    cd $cur_dir/resources/mobile
+    cd $cur_dir/../phpmall-mobile
     bun install
     bun run build:h5
     rm -rf $cur_dir/public/mobile
