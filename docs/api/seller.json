@@ -10,12 +10,8 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000/api/seller/",
+            "url": "/api/seller/",
             "description": "开发环境"
-        },
-        {
-            "url": "https://demo.phpmall.net/api/seller/",
-            "description": "演示环境"
         }
     ],
     "paths": {
