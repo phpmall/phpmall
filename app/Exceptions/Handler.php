@@ -38,23 +38,19 @@ class Handler extends ExceptionHandler
     {
         $response = parent::render($request, $e);
 
-        if ($request->is('api/*')) {
-            if ($response instanceof JsonResponse) {
-                return $response;
-            }
-
-            if ($e instanceof AuthenticationException) {
-                return $this->errorResponse(401, $e);
-            }
-
-            if ($e instanceof ValidationException) {
-                return $this->errorResponse($e->status, $e);
-            }
-
-            return $this->errorResponse($response->getStatusCode(), $e);
+        if ($response instanceof JsonResponse) {
+            return $response;
         }
 
-        return $response;
+        if ($e instanceof AuthenticationException) {
+            return $this->errorResponse(401, $e);
+        }
+
+        if ($e instanceof ValidationException) {
+            return $this->errorResponse($e->status, $e);
+        }
+
+        return $this->errorResponse($response->getStatusCode(), $e);
     }
 
     private function errorResponse(int $code, Throwable $e): JsonResponse

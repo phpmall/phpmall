@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'PHPMall'),
 
     /*
     |--------------------------------------------------------------------------
@@ -170,7 +170,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Foundation\Providers\ApiServiceProvider::class,
-        App\Portal\Providers\PortalServiceProvider::class,
     ])->toArray(),
 
     /*
