@@ -33,18 +33,18 @@ FrontendBuild()
     local to="$2"
     if [ ${module} = "mobile" ]; then
         bun run build:h5 --base=/${to}/
-        ossutil64 cp -rf dist/build/h5 oss://phpmall-demo/${to}
+        ossutil cp -rf dist/build/h5 oss://phpmall-demo/${to}
     else
         if [ ${module} = "web" ]; then
             bun run build-only
-            ossutil64 cp -rf dist oss://phpmall-demo/
+            ossutil cp -rf dist oss://phpmall-demo/
             # rm -rf $cur_dir/phpmall-server/public/assets/
             # rm -rf $cur_dir/phpmall-server/public/favicon.icon
             # rm -rf $cur_dir/phpmall-server/public/index.html
             # cp -a dist/* $cur_dir/phpmall-server/public/
         else
             bun run build-only --base=/${to}/
-            ossutil64 cp -rf dist oss://phpmall-demo/${to}
+            ossutil cp -rf dist oss://phpmall-demo/${to}
             # rm -rf $cur_dir/phpmall-server/public/${to}
             # cp -a dist $cur_dir/phpmall-server/public/${to}
         fi
@@ -54,7 +54,7 @@ FrontendBuild()
 DocsBuild()
 {
     cd $cur_dir
-    ossutil64 cp -rf docs/ oss://phpmall-demo/docs
+    ossutil cp -rf docs/ oss://phpmall-demo/docs
     # rm -rf $cur_dir/phpmall-server/public/docs
     # cp -a docs $cur_dir/phpmall-server/public/docs
 }
