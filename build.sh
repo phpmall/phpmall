@@ -1,7 +1,5 @@
 cd /home/wwwroot/demo.phpmall.net
 
-bun upgrade
-
 git pull
 
 cur_dir=$(pwd)
@@ -13,6 +11,8 @@ else
     Stack=$1
 fi
 
+bun upgrade
+
 BackendBuild()
 {
     cd $cur_dir/phpmall-server
@@ -23,78 +23,65 @@ BackendBuild()
     supervisorctl reload
 }
 
-AdminBuild()
+FrontendBuild()
 {
-    cd $cur_dir/phpmall-admin
-    bun install
-    bun run build-only
-    rm -rf $cur_dir/phpmall-server/public/admin
-    mv dist $cur_dir/phpmall-server/public/admin
-}
+    local module="$1"
+    cd $cur_dir/phpmall-${module}
 
-SellerBuild()
-{
-    cd $cur_dir/phpmall-seller
     bun install
-    bun run build-only
-    rm -rf $cur_dir/phpmall-server/public/seller
-    mv dist $cur_dir/phpmall-server/public/seller
-}
 
-SupplierBuild()
-{
-    cd $cur_dir/phpmall-supplier
-    bun install
-    bun run build-only
-    rm -rf $cur_dir/phpmall-server/public/supplier
-    mv dist $cur_dir/phpmall-server/public/supplier
-}
-
-MobileBuild()
-{
-    cd $cur_dir/phpmall-mobile
-    bun install
-    bun run build:h5
-    rm -rf $cur_dir/phpmall-server/public/mobile
-    mv dist/build/h5 $cur_dir/phpmall-server/public/mobile
-}
-
-PortalBuild()
-{
-    cd $cur_dir/phpmall-web
-    bun install
-    bun run build-only
-    rm -rf $cur_dir/phpmall-server/public/index.html
-    rm -rf $cur_dir/phpmall-server/public/assets
-    mv dist/{index.html,assets} $cur_dir/phpmall-server/public/
+    local to="$2"
+    if [ ${module} = "mobile" ]; then
+        bun run build:h5 --base=/${to}/
+        ossutil64 cp -rf dist/build/h5 oss://phpmall-demo/${to}
+    else
+        if [ ${module} = "web" ]; then
+            bun run build-only
+            ossutil64 cp -rf dist oss://phpmall-demo/
+            # rm -rf $cur_dir/phpmall-server/public/assets/
+            # rm -rf $cur_dir/phpmall-server/public/favicon.icon
+            # rm -rf $cur_dir/phpmall-server/public/index.html
+            # cp -a dist/* $cur_dir/phpmall-server/public/
+        else
+            bun run build-only --base=/${to}/
+            ossutil64 cp -rf dist oss://phpmall-demo/${to}
+            # rm -rf $cur_dir/phpmall-server/public/${to}
+            # cp -a dist $cur_dir/phpmall-server/public/${to}
+        fi
+    fi
 }
 
 DocsBuild()
 {
-    rm -rf $cur_dir/phpmall-server/public/docs
-    cp -a docs $cur_dir/phpmall-server/public/docs
+    cd $cur_dir
+    ossutil64 cp -rf docs/ oss://phpmall-demo/docs
+    # rm -rf $cur_dir/phpmall-server/public/docs
+    # cp -a docs $cur_dir/phpmall-server/public/docs
 }
 
 if [[ "${Stack}" = "all" ]]; then
   BackendBuild
-  AdminBuild
-  SellerBuild
-  SupplierBuild
-  MobileBuild
-  PortalBuild
+  FrontendBuild admin
+  FrontendBuild mobile
+  FrontendBuild seller
+  FrontendBuild supplier
+  FrontendBuild user
+  FrontendBuild web
   DocsBuild
 elif [[ "${Stack}" = "backend" ]]; then
   BackendBuild
 elif [[ "${Stack}" = "admin" ]]; then
-  AdminBuild
-elif [[ "${Stack}" = "seller" ]]; then
-  SellerBuild
-elif [[ "${Stack}" = "supplier" ]]; then
-  SupplierBuild
-elif [[ "${Stack}" = "portal" ]]; then
-  PortalBuild
+  FrontendBuild admin
 elif [[ "${Stack}" = "mobile" ]]; then
-  MobileBuild
+  FrontendBuild mobile
+elif [[ "${Stack}" = "seller" ]]; then
+  FrontendBuild seller
+elif [[ "${Stack}" = "supplier" ]]; then
+  FrontendBuild supplier
+elif [[ "${Stack}" = "user" ]]; then
+  FrontendBuild user
+elif [[ "${Stack}" = "web" ]]; then
+  FrontendBuild web
 elif [[ "${Stack}" = "docs" ]]; then
   DocsBuild
 fi
