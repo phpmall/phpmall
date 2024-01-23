@@ -30,10 +30,10 @@ FrontendBuild()
 
     bun install
 
-    local to="$2"
+    # local to="$2"
     if [ ${module} = "mobile" ]; then
-        bun run build:h5 --base=/${to}/
-        ossutil cp -rf dist/build/h5 oss://phpmall-demo/${to}
+        bun run build:h5 --base=/${module}/
+        ossutil cp -rf dist/build/h5 oss://phpmall-demo/${module}
     else
         if [ ${module} = "web" ]; then
             bun run build-only
@@ -43,10 +43,10 @@ FrontendBuild()
             # rm -rf $cur_dir/phpmall-server/public/index.html
             # cp -a dist/* $cur_dir/phpmall-server/public/
         else
-            bun run build-only --base=/${to}/
-            ossutil cp -rf dist oss://phpmall-demo/${to}
-            # rm -rf $cur_dir/phpmall-server/public/${to}
-            # cp -a dist $cur_dir/phpmall-server/public/${to}
+            bun run build-only --base=/${module}/
+            ossutil cp -rf dist oss://phpmall-demo/${module}
+            # rm -rf $cur_dir/phpmall-server/public/${module}
+            # cp -a dist $cur_dir/phpmall-server/public/${module}
         fi
     fi
 }
