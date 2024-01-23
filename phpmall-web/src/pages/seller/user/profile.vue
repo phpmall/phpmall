@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { fetchUsers } from '@/services/userService'
 
 const users = ref([]);
 
