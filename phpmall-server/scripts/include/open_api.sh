@@ -65,8 +65,8 @@ Echo_Green ' 生成swagger接口文档'
 Echo_Green '------------------------------'
 
 Get_Modules
-rm -rf docs/api/*.json
-cp storage/app/ts/*.json docs/api/
+rm -rf ../docs/api/*.json
+cp storage/app/ts/*.json ../docs/api/
 
 Echo_Green '------------------------------'
 Echo_Green ' 生成typescript接口'
@@ -74,12 +74,22 @@ Echo_Green '------------------------------'
 
 php artisan gen:typescript
 
-rm -rf resources/admin/src/{services,types}
-cp -a storage/app/ts/{services,types} resources/admin/src/
+rm -rf ../phpmall-admin/src/{services,types}
+cp -a storage/app/ts/{services,types} ../phpmall-admin/src/
 
-rm -rf resources/mobile/src/{services,types}/*.ts
-cp storage/app/ts/services/{auth,portal,user}.ts resources/mobile/src/services/
-cp storage/app/ts/types/{auth,portal,user}.d.ts resources/mobile/src/types/
+rm -rf ../phpmall-seller/src/{services,types}
+cp -a storage/app/ts/{services,types} ../phpmall-seller/src/
 
-rm -rf resources/seller/src/{services,types}
-cp -a storage/app/ts/{services,types} resources/seller/src/
+rm -rf ../phpmall-supplier/src/{services,types}
+cp -a storage/app/ts/{services,types} ../phpmall-supplier/src/
+
+rm -rf ../phpmall-user/src/{services,types}
+cp -a storage/app/ts/{services,types} ../phpmall-user/src/
+
+rm -rf ../phpmall-web/src/{services,types}
+cp -a storage/app/ts/{services,types} ../phpmall-web/src/
+
+rm -rf ../phpmall-mobile/src/{services,types}/*.ts
+cp storage/app/ts/services/{auth,portal,user}.ts ../phpmall-mobile/src/services/
+cp storage/app/ts/types/{auth,portal,user}.d.ts ../phpmall-mobile/src/types/
+
