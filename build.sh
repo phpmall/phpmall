@@ -15,7 +15,7 @@ bun upgrade
 
 BackendBuild()
 {
-    cd $cur_dir/phpmall-server
+    cd $cur_dir/phpmall-api
     composer u --no-dev -oW
     php artisan optimize
     php artisan migrate:fresh --force
@@ -23,65 +23,41 @@ BackendBuild()
     supervisorctl reload
 }
 
+MobileBuild()
+{
+    cd $cur_dir/phpmall-mobile
+    bun install
+    bun run build:h5 --base=/${module}/
+    ossutil cp -rf dist/build/h5 oss://phpmall-demo/${module}
+}
+
 FrontendBuild()
 {
-    local module="$1"
-    cd $cur_dir/phpmall-${module}
-
+    cd $cur_dir/phpmall-web
     bun install
-
-    # local to="$2"
-    if [ ${module} = "mobile" ]; then
-        bun run build:h5 --base=/${module}/
-        ossutil cp -rf dist/build/h5 oss://phpmall-demo/${module}
-    else
-        if [ ${module} = "web" ]; then
-            bun run build-only
-            ossutil cp -rf dist oss://phpmall-demo/
-            # rm -rf $cur_dir/phpmall-server/public/assets/
-            # rm -rf $cur_dir/phpmall-server/public/favicon.icon
-            # rm -rf $cur_dir/phpmall-server/public/index.html
-            # cp -a dist/* $cur_dir/phpmall-server/public/
-        else
-            bun run build-only --base=/${module}/
-            ossutil cp -rf dist oss://phpmall-demo/${module}
-            # rm -rf $cur_dir/phpmall-server/public/${module}
-            # cp -a dist $cur_dir/phpmall-server/public/${module}
-        fi
-    fi
+    bun run build
+    ossutil cp -rf dist/* oss://phpmall-demo/
 }
 
 DocsBuild()
 {
     cd $cur_dir
     ossutil cp -rf docs/ oss://phpmall-demo/docs
-    # rm -rf $cur_dir/phpmall-server/public/docs
-    # cp -a docs $cur_dir/phpmall-server/public/docs
+    # rm -rf $cur_dir/phpmall-api/public/docs
+    # cp -a docs $cur_dir/phpmall-api/public/docs
 }
 
 if [[ "${Stack}" = "all" ]]; then
   BackendBuild
-  FrontendBuild admin
-  FrontendBuild mobile
-  FrontendBuild seller
-  FrontendBuild supplier
-  FrontendBuild user
-  FrontendBuild web
+  MobileBuild
+  FrontendBuild
   DocsBuild
-elif [[ "${Stack}" = "backend" ]]; then
+elif [[ "${Stack}" = "api" ]]; then
   BackendBuild
-elif [[ "${Stack}" = "admin" ]]; then
-  FrontendBuild admin
 elif [[ "${Stack}" = "mobile" ]]; then
-  FrontendBuild mobile
-elif [[ "${Stack}" = "seller" ]]; then
-  FrontendBuild seller
-elif [[ "${Stack}" = "supplier" ]]; then
-  FrontendBuild supplier
-elif [[ "${Stack}" = "user" ]]; then
-  FrontendBuild user
+  MobileBuild
 elif [[ "${Stack}" = "web" ]]; then
-  FrontendBuild web
+  FrontendBuild
 elif [[ "${Stack}" = "docs" ]]; then
   DocsBuild
 fi
