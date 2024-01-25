@@ -1,10 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+</script>
 
 <template>
-  <div class="page">
-    user logo
-    <RouterView />
-  </div>
+  <el-container>
+      <el-aside width="200px">
+        user Aside
+        <RouterLink :to="{name: 'user'}">会员中心</RouterLink>
+      </el-aside>
+      <el-main>
+        <RouterView />
+      </el-main>
+    </el-container>
 </template>
 
 <style scoped lang="scss"></style>

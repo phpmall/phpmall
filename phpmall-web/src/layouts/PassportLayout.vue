@@ -3,12 +3,14 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <div class="page">
-    <div>
+  <el-container>
+      <el-header>
         <RouterLink to='/'>logo</RouterLink>
-    </div>
-    <RouterView />
-  </div>
+      </el-header>
+      <el-main>
+        <RouterView />
+      </el-main>
+    </el-container>
 </template>
 
 <style scoped lang="scss"></style>
