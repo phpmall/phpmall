@@ -35,8 +35,8 @@ FrontendBuild()
 {
     cd $cur_dir/phpmall-web
     bun install
-    bun run build
-    ossutil cp -rf dist/* oss://phpmall-demo/
+    bun run build-only
+    ossutil cp -rf dist/ oss://phpmall-demo/
 }
 
 DocsBuild()
