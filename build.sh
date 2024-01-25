@@ -27,8 +27,9 @@ MobileBuild()
 {
     cd $cur_dir/phpmall-mobile
     bun install
-    bun run build:h5 --base=/${module}/
-    ossutil cp -rf dist/build/h5 oss://phpmall-demo/${module}
+    bun run build:h5 --base=/mobile/
+    ossutil rm -rf oss://phpmall-demo/mobile
+    ossutil cp -rf dist/build/h5 oss://phpmall-demo/mobile
 }
 
 FrontendBuild()
@@ -36,15 +37,15 @@ FrontendBuild()
     cd $cur_dir/phpmall-web
     bun install
     bun run build-only
+    ossutil rm -rf oss://phpmall-demo/assets
     ossutil cp -rf dist/ oss://phpmall-demo/
 }
 
 DocsBuild()
 {
     cd $cur_dir
+    ossutil rm -rf oss://phpmall-demo/docs
     ossutil cp -rf docs/ oss://phpmall-demo/docs
-    # rm -rf $cur_dir/phpmall-api/public/docs
-    # cp -a docs $cur_dir/phpmall-api/public/docs
 }
 
 if [[ "${Stack}" = "all" ]]; then
