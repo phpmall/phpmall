@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { Compass, DataAnalysis, PieChart, Setting, Connection,Calendar, User, CreditCard, ScaleToOriginal ,Coin} from '@element-plus/icons-vue'
+import {
+  Compass,
+  DataAnalysis,
+  PieChart,
+  Setting,
+  Connection,
+  Calendar,
+  User,
+  CreditCard,
+  ScaleToOriginal,
+  Coin
+} from '@element-plus/icons-vue'
 </script>
 
 <template>
@@ -8,7 +19,7 @@ import { Compass, DataAnalysis, PieChart, Setting, Connection,Calendar, User, Cr
     <el-header class="">
       <RouterLink :to="{ name: 'supplier' }">慧开印务管理系统</RouterLink>
     </el-header>
-    <el-container style="height: calc(100vh - 60px);">
+    <el-container style="height: calc(100vh - 60px)">
       <el-aside width="150px">
         <el-menu class="h-full">
           <el-menu-item index="1">

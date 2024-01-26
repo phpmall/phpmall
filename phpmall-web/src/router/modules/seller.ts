@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 export const sellerRoutes: RouteRecordRaw[] = [
-    {
+  {
     path: '',
     name: 'seller',
     redirect: {

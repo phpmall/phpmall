@@ -29,3 +29,5 @@ coverage
 
 *.tsbuildinfo
 bun.lockb
+auto-imports.d.ts
+components.d.ts

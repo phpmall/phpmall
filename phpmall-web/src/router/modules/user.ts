@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import NotFound from '@/modules/user/NotFound.vue'
 
 export const userRoutes: RouteRecordRaw[] = [
-    {
+  {
     path: '',
     name: 'user',
     redirect: {

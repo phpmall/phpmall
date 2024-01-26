@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import NotFound from '@/components/NotFound.vue'
 
 export const portalRoutes: RouteRecordRaw[] = [
-    {
+  {
     path: '',
     name: 'portal',
     component: () => import('@/views/Index.vue'),
