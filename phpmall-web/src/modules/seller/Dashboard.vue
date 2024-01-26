@@ -7,7 +7,3 @@
         seller dashboard page content
     </div>    
 </template>
-
-<style scoped lang="scss">
-
-</style>

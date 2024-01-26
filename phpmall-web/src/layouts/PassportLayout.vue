@@ -12,5 +12,3 @@ import { RouterLink, RouterView } from 'vue-router'
       </el-main>
     </el-container>
 </template>
-
-<style scoped lang="scss"></style>

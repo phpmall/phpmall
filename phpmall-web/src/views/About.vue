@@ -12,5 +12,3 @@ const size = ref<'default' | 'large' | 'small'>('default')
     <el-date-picker v-model="value1" type="date" placeholder="Pick a day" :size="size" />
   </div>
 </template>
-
-<style scoped lang="scss"></style>

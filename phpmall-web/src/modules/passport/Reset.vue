@@ -4,6 +4,6 @@
 
 <template>
     <div class="page">
-       supplier dashboard page content
+        reset page content
     </div>    
 </template>

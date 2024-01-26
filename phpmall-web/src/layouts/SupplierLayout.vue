@@ -68,5 +68,3 @@ import { Compass, DataAnalysis, PieChart, Setting, Connection,Calendar, User, Cr
     </el-container>
   </el-container>
 </template>
-
-<style scoped lang="scss"></style>

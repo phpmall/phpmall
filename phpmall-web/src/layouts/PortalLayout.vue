@@ -22,5 +22,3 @@ import { RouterLink } from 'vue-router'
     <el-footer>Footer</el-footer>
   </el-container>
 </template>
-
-<style scoped lang="scss"></style>

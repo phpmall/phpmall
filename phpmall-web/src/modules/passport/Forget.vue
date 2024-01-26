@@ -4,6 +4,6 @@
 
 <template>
     <div class="page">
-       supplier dashboard page content
+        forget page content
     </div>    
 </template>

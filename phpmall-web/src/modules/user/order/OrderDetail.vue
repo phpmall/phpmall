@@ -7,7 +7,3 @@
         user OrderDetail {{ $route.params.id }}
     </div>    
 </template>
-
-<style scoped lang="scss">
-
-</style>

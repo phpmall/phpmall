@@ -9,5 +9,3 @@ import { RouterLink } from 'vue-router'
     <RouterLink :to="{ name: 'user.order.detail', params: { id: 99 } }">订单详情</RouterLink>
   </div>
 </template>
-
-<style scoped lang="scss"></style>
