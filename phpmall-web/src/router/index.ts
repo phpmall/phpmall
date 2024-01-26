@@ -4,6 +4,7 @@ import {
   passportRoutes,
   portalRoutes,
   sellerRoutes,
+  storeRoutes,
   supplierRoutes,
   userRoutes
 } from '@/router/modules'
@@ -15,33 +16,31 @@ const router = createRouter({
       path: '/admin',
       component: () => import('@/layouts/AdminLayout.vue'),
       children: adminRoutes,
-      meta: {
-        auth: true
-      }
+      meta: { requiresAuth: true },
     },
     {
       path: '/passport',
       component: () => import('@/layouts/PassportLayout.vue'),
       children: passportRoutes,
-      meta: {
-        guest: true
-      }
+      meta: { requiresAuth: false },
     },
     {
       path: '/seller',
       component: () => import('@/layouts/SellerLayout.vue'),
       children: sellerRoutes,
-      meta: {
-        auth: true
-      }
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/store',
+      component: () => import('@/layouts/StoreLayout.vue'),
+      children: storeRoutes,
+      meta: { requiresAuth: true },
     },
     {
       path: '/supplier',
       component: () => import('@/layouts/SupplierLayout.vue'),
       children: supplierRoutes,
-      meta: {
-        auth: true
-      }
+      meta: { requiresAuth: true },
     },
     {
       path: '/',
@@ -51,9 +50,7 @@ const router = createRouter({
           path: 'user',
           component: () => import('@/layouts/UserLayout.vue'),
           children: userRoutes,
-          meta: {
-            auth: true
-          }
+          meta: { requiresAuth: true },
         },
         ...portalRoutes
       ]
