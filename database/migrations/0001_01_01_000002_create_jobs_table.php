@@ -19,7 +19,19 @@ return new class extends Migration
             $table->unsignedInteger('reserved_at')->nullable();
             $table->unsignedInteger('available_at');
             $table->unsignedInteger('created_at');
-            $table->comment('计划任务表');
+        });
+
+        Schema::create('job_batches', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('name');
+            $table->integer('total_jobs');
+            $table->integer('pending_jobs');
+            $table->integer('failed_jobs');
+            $table->longText('failed_job_ids');
+            $table->mediumText('options')->nullable();
+            $table->integer('cancelled_at')->nullable();
+            $table->integer('created_at');
+            $table->integer('finished_at')->nullable();
         });
 
         Schema::create('failed_jobs', function (Blueprint $table) {
@@ -30,7 +42,6 @@ return new class extends Migration
             $table->longText('payload');
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
-            $table->comment('计划任务失败表');
         });
     }
 
@@ -40,6 +51,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('jobs');
+        Schema::dropIfExists('job_batches');
         Schema::dropIfExists('failed_jobs');
     }
 };

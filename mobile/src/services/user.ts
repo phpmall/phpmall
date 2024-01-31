@@ -1,5 +1,7 @@
 import request from '@/utils/request'
-import type { IAddressQueryRequest,
+import type { IUploadRequest,
+IUploadResponse,
+IAddressQueryRequest,
 IAddressResponse,
 IAddressCreateRequest,
 IAddressUpdateRequest,
@@ -10,6 +12,16 @@ export const dashboardService = (): Promise<any> => {
     return request({
         url: 'user/dashboard',
         method: 'get'
+    })
+}
+
+// [素材] 附件上传接口
+export const uploadService = (formData: IUploadRequest): Promise<IUploadResponse> => {
+    return request({
+        url: 'user/upload',
+        method: 'post',
+        data: formData,
+        headers: { 'Content-Type': 'multipart/form-data' }
     })
 }
 

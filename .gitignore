@@ -1,12 +1,8 @@
 /.phpunit.cache
 /node_modules
-/public/admin
 /public/build
 /public/hot
-/public/mobile
-/public/seller
 /public/storage
-/public/supplier
 /storage/*.key
 /vendor
 .env
@@ -18,7 +14,3 @@
 /.fleet
 /.idea
 /.vscode
-
-/caddy
-frankenphp
-frankenphp-worker.php

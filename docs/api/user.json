@@ -34,6 +34,42 @@
                 ]
             }
         },
+        "/upload": {
+            "post": {
+                "tags": [
+                    "素材"
+                ],
+                "summary": "附件上传接口",
+                "operationId": "24e9ceea4e51ee4ec6a59a4d009d8361",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UploadRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UploadResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/address": {
             "get": {
                 "tags": [
@@ -265,6 +301,28 @@
     },
     "components": {
         "schemas": {
+            "UploadRequest": {
+                "required": [
+                    "file"
+                ],
+                "properties": {
+                    "file": {
+                        "description": "文件",
+                        "type": "file",
+                        "format": "binary"
+                    }
+                },
+                "type": "object"
+            },
+            "UploadResponse": {
+                "properties": {
+                    "url": {
+                        "description": "素材URL地址",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "AddressCreateRequest": {
                 "required": [
                     "mobile"

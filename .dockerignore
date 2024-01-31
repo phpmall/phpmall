@@ -15,5 +15,9 @@
 
 /.git
 /bootstrap/cache/*.php
+/docker
+/docs
+/frontend
+/mobile
 /scripts
 /tests

@@ -1,3 +1,11 @@
+export interface IUploadRequest {
+  file: string, // 文件
+}
+
+export interface IUploadResponse {
+  url: string, // 素材URL地址
+}
+
 export interface IAddressCreateRequest {
   mobile: string, // 手机号码
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Material\Controllers\Portal;
+namespace App\Bundles\Material\Controllers\User;
 
-use App\Api\Portal\Controllers\BaseController;
+use App\Api\User\Controllers\BaseController;
 use App\Bundles\Material\Requests\UploadRequest;
 use App\Bundles\Material\Responses\UploadResponse;
 use App\Foundation\Exceptions\CustomException;
@@ -17,11 +17,6 @@ use Throwable;
 
 class UploadController extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware(['auth:sanctum']);
-    }
-
     #[OA\Post(path: '/upload', summary: '附件上传接口', security: [['bearerAuth' => []]], tags: ['素材'])]
     #[OA\RequestBody(
         required: true,
