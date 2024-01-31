@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -26,5 +32,33 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e): Response
+    {
+        $response = parent::render($request, $e);
+
+        if ($response instanceof JsonResponse) {
+            return $response;
+        }
+
+        if ($e instanceof AuthenticationException) {
+            return $this->errorResponse(401, $e);
+        }
+
+        if ($e instanceof ValidationException) {
+            return $this->errorResponse($e->status, $e);
+        }
+
+        return $this->errorResponse($response->getStatusCode(), $e);
+    }
+
+    private function errorResponse(int $code, Throwable $e): JsonResponse
+    {
+        return response()->json([
+            'code' => $code,
+            'message' => $e->getMessage(),
+            'data' => config('app.debug') ? $e->getTrace() : null,
+        ], $code);
     }
 }
