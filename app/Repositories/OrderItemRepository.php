@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\Entity\OrderItemEntity;
+use App\Entities\OrderItemEntity;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;

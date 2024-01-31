@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Responses;
 
-use Juling\Generator\Support\ArrayObject;
+use Juling\Generator\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProfileResponse')]
 class ProfileResponse
 {
-    use ArrayObject;
+    use ArrayHelper;
 
     #[OA\Property(property: 'id', description: '编号', type: 'integer', example: 1), ]
     private int $id;

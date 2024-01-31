@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Responses;
 
-use Juling\Generator\Support\ArrayObject;
+use Juling\Generator\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'LoginResponse')]
 class LoginResponse
 {
-    use ArrayObject;
+    use ArrayHelper;
 
     #[OA\Property(property: 'token', description: '用户JSON Web Token凭证', type: 'string', example: '123456'), ]
     private string $token;

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Entity;
+namespace App\Entities;
 
-use Juling\Generator\Support\ArrayObject;
+use Juling\Generator\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ContentTagEntity')]
 class ContentTagEntity
 {
-    use ArrayObject;
+    use ArrayHelper;
 
     #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;

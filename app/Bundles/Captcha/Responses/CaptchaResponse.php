@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Bundles\Captcha\Responses;
 
-use Juling\Generator\Support\ArrayObject;
+use Juling\Generator\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'CaptchaResponse')]
 class CaptchaResponse
 {
-    use ArrayObject;
+    use ArrayHelper;
 
     #[OA\Property(property: 'captcha', description: '图片验证码', type: 'string', example: '123456')]
     private string $captcha;

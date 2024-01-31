@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\Entity\ContentModelEntity;
+use App\Entities\ContentModelEntity;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;

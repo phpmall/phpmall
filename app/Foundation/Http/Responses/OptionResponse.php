@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Foundation\Http\Responses;
 
-use Juling\Generator\Support\ArrayObject;
+use Juling\Generator\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'OptionResponse')]
 class OptionResponse
 {
-    use ArrayObject;
+    use ArrayHelper;
 
     #[OA\Property(property: 'name', description: '名称', type: 'string', example: 'name')]
     private string $name;

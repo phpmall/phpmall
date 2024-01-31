@@ -6,7 +6,7 @@ namespace App\Bundles\System\Services;
 
 use App\Bundles\System\Enums\PermissionStatusEnum;
 use App\Bundles\System\Enums\PermissionTypeEnum;
-use App\Models\Entity\PermissionEntity;
+use App\Entities\PermissionEntity;
 use App\Services\PermissionService;
 use Illuminate\Support\Str;
 use ReflectionClass;

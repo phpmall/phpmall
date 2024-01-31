@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\Entity\ProductTypeEntity;
+use App\Entities\ProductTypeEntity;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 use Juling\Generator\Contracts\RepositoryInterface;
