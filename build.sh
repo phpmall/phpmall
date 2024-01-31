@@ -15,7 +15,7 @@ bun upgrade
 
 BackendBuild()
 {
-    cd $cur_dir/phpmall-api
+    cd $cur_dir
     composer u --no-dev -oW
     php artisan optimize
     php artisan migrate:fresh --force
@@ -23,22 +23,22 @@ BackendBuild()
     supervisorctl reload
 }
 
-MobileBuild()
-{
-    cd $cur_dir/phpmall-mobile
-    bun install
-    bun run build:h5 --base=/mobile/
-    ossutil rm -rf oss://phpmall-demo/mobile
-    ossutil cp -rf dist/build/h5 oss://phpmall-demo/mobile
-}
-
 FrontendBuild()
 {
-    cd $cur_dir/phpmall-web
+    cd $cur_dir/frontend
     bun install
     bun run build-only
     ossutil rm -rf oss://phpmall-demo/assets
     ossutil cp -rf dist/ oss://phpmall-demo/
+}
+
+MobileBuild()
+{
+    cd $cur_dir/mobile
+    bun install
+    bun run build:h5 --base=/mobile/
+    ossutil rm -rf oss://phpmall-demo/mobile
+    ossutil cp -rf dist/build/h5 oss://phpmall-demo/mobile
 }
 
 DocsBuild()
@@ -50,15 +50,15 @@ DocsBuild()
 
 if [[ "${Stack}" = "all" ]]; then
   BackendBuild
-  MobileBuild
   FrontendBuild
+  MobileBuild
   DocsBuild
 elif [[ "${Stack}" = "api" ]]; then
   BackendBuild
+elif [[ "${Stack}" = "frontend" ]]; then
+  FrontendBuild
 elif [[ "${Stack}" = "mobile" ]]; then
   MobileBuild
-elif [[ "${Stack}" = "web" ]]; then
-  FrontendBuild
 elif [[ "${Stack}" = "docs" ]]; then
   DocsBuild
 fi
