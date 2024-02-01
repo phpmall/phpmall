@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 import type { ICaptchaResponse,
 IRegionResponse,
-ISmsSendRequest } from '@/types/common'
+ISmsSendRequest } from '@/types/common.d'
 
 // [验证码] 图片验证码
 export const captchaService = (): Promise<ICaptchaResponse> => {

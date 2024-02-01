@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import type { IAddressResponse } from '@/types/manager'
+import type { IAddressResponse } from '@/types/manager.d'
 
 // [运营中心] 运营首页
 export const dashboardService = (): Promise<any> => {

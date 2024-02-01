@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import type { ILoginRequest } from '@/types/auth'
+import type { ILoginRequest } from '@/types/auth.d'
 
 const loginFormRef = ref<FormInstance>()
 

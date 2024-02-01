@@ -7,7 +7,6 @@ import {
   portalRoutes,
   sellerRoutes,
   storeRoutes,
-  supplierRoutes,
   userRoutes
 } from '@/router/modules'
 import { useAuthStore } from '@/stores/auth'
@@ -38,12 +37,6 @@ const router = createRouter({
       path: '/store',
       component: () => import('@/layouts/StoreLayout.vue'),
       children: storeRoutes,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: '/supplier',
-      component: () => import('@/layouts/SupplierLayout.vue'),
-      children: supplierRoutes,
       meta: { requiresAuth: true }
     },
     {

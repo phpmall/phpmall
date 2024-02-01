@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import type {  } from '@/types/seller'
+import type {  } from '@/types/seller.d'
 
 // [seller] 卖家
 export const dashboardService = (): Promise<any> => {
