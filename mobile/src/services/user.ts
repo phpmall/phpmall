@@ -5,7 +5,7 @@ IAddressQueryRequest,
 IAddressResponse,
 IAddressCreateRequest,
 IAddressUpdateRequest,
-IProfileResponse } from '@/types/user'
+IProfileResponse } from '@/types/user.d'
 
 // [用户中心] 仪表台
 export const dashboardService = (): Promise<any> => {

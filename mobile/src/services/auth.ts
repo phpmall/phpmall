@@ -4,7 +4,7 @@ ILoginRequest,
 ILoginResponse,
 ILoginSmsRequest,
 IResetRequest,
-ISignupMobileRequest } from '@/types/auth'
+ISignupMobileRequest } from '@/types/auth.d'
 
 // [忘记密码] 发送手机短信验证码
 export const forgetMobileService = (formData: IForgetMobileRequest): Promise<any> => {

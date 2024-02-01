@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Region\Controllers\Common;
+namespace App\Bundles\Region\Controllers\Portal;
 
-use App\Api\Common\Controllers\BaseController;
+use App\Api\Portal\Controllers\BaseController;
 use App\Bundles\Region\Requests\RegionRequest;
 use App\Bundles\Region\Responses\RegionResponse;
 use App\Services\RegionService;

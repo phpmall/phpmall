@@ -46,7 +46,7 @@ docker run --rm -d --name phpmall -v %cd%:/var/www/html -v %cd%/docker/dev/conf:
 sudo apt install curl -y
 curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
 sudo apt update
-sudo apt install php8.2-{cli,curl,bcmath,dom,fpm,gd,mbstring,mysql,opcache,redis,swoole,zip}
+sudo apt install php8.2-{cli,curl,bcmath,dom,fpm,gd,mbstring,mysql,opcache,redis,sqlite3,swoole,zip}
 ```
 
 ### WAMP 环境
