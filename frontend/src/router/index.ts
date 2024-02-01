@@ -8,51 +8,13 @@ import {
   sellerRoutes,
   storeRoutes,
   userRoutes
-} from '@/router/modules'
+} from '@/modules'
 import { useAuthStore } from '@/stores/auth'
 import { decodeURIComponent2, encodeURIComponent2 } from '@/utils/urlx'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/admin',
-      component: () => import('@/layouts/AdminLayout.vue'),
-      children: adminRoutes,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: '/passport',
-      component: () => import('@/layouts/PassportLayout.vue'),
-      children: passportRoutes,
-      meta: { guest: true }
-    },
-    {
-      path: '/seller',
-      component: () => import('@/layouts/SellerLayout.vue'),
-      children: sellerRoutes,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: '/store',
-      component: () => import('@/layouts/StoreLayout.vue'),
-      children: storeRoutes,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: '/',
-      component: () => import('@/layouts/PortalLayout.vue'),
-      children: [
-        {
-          path: 'user',
-          component: () => import('@/layouts/UserLayout.vue'),
-          children: userRoutes,
-          meta: { requiresAuth: true }
-        },
-        ...portalRoutes
-      ]
-    }
-  ]
+  routes: [adminRoutes, passportRoutes, portalRoutes, sellerRoutes, storeRoutes, userRoutes]
 })
 
 router.beforeEach((to, from, next) => {

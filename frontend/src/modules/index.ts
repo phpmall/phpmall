@@ -1,0 +1,6 @@
+export * from './admin/routes'
+export * from './passport/routes'
+export * from './portal/routes'
+export * from './seller/routes'
+export * from './store/routes'
+export * from './user/routes'

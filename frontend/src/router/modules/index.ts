@@ -1,6 +1,0 @@
-export * from './admin'
-export * from './passport'
-export * from './portal'
-export * from './seller'
-export * from './store'
-export * from './user'
