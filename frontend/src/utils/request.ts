@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ElMessage, ElMessageBox } from 'element-plus'
-// import 'element-plus/es/components/message/style/css'
+import 'element-plus/es/components/message/style/css'
 import { Session } from '@/utils/storage'
 
 // 配置新建一个 axios 实例
