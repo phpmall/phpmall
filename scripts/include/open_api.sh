@@ -9,6 +9,7 @@ Echo_Green ' 生成swagger接口文档'
 Echo_Green '------------------------------'
 
 Gen_OpenAPI
+
 rm -rf docs/api/*.json
 cp storage/app/ts/*.json docs/api/
 
@@ -25,4 +26,3 @@ cp storage/app/ts/types/{auth,portal,user}.d.ts mobile/src/types/
 
 rm -rf frontend/src/{services,types}
 cp -a storage/app/ts/{services,types} frontend/src/
-

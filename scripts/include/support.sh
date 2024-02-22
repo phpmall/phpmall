@@ -55,14 +55,14 @@ Get_Bundles()
         local c="app/Bundles/${item}/Controllers/${module}/"
         if [ -d "$c" ]; then
             result+=($c)
-            c="app/Bundles/${item}/Requests/"
-            if [ -d "$c" ]; then
-                result+=($c)
-            fi
-            c="app/Bundles/${item}/Responses/"
-            if [ -d "$c" ]; then
-                result+=($c)
-            fi
+        fi
+        c="app/Bundles/${item}/Requests/${module}/"
+        if [ -d "$c" ]; then
+            result+=($c)
+        fi
+        c="app/Bundles/${item}/Responses/${module}/"
+        if [ -d "$c" ]; then
+            result+=($c)
         fi
     done
 

@@ -5,3 +5,4 @@ vendor/bin/pint app/
 vendor/bin/pint bootstrap/
 vendor/bin/pint config/
 vendor/bin/pint database/
+vendor/bin/pint tests/
