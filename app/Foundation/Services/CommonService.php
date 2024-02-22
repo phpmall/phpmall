@@ -81,7 +81,7 @@ abstract class CommonService implements CommonServiceInterface
      */
     public function removeByIds(array $ids): bool
     {
-        return $this->getRepository()->deleteAllById($ids);
+        return $this->getRepository()->deleteAllByIds($ids);
     }
 
     /**
