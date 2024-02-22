@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 use Illuminate\Support\Str;
 
-if (! function_exists('mask_mobile')) {
+if (! function_exists('mobile_mask')) {
     /**
-     * 验证邮箱地址格式
+     * 显示脱敏手机号码
      */
-    function mask_mobile(string $mobile): string
+    function mobile_mask(string $mobile): string
     {
         return Str::mask($mobile, 3, 4);
     }

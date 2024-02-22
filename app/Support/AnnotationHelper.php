@@ -28,4 +28,46 @@ class AnnotationHelper
 
         return $list;
     }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function getElementByName($objectOrClass, string $name): array
+    {
+        $enums = $this->getReflectionEnums($objectOrClass);
+
+        $result = [];
+        foreach ($enums as $enum) {
+            if ($enum['val']->name === $name) {
+                $result = [
+                    'name' => $enum['name'],
+                    'code' => $enum['val']->name,
+                    'value' => $enum['val']->value,
+                ];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function getElementByVal($objectOrClass, $val): array
+    {
+        $enums = $this->getReflectionEnums($objectOrClass);
+
+        $result = [];
+        foreach ($enums as $enum) {
+            if ($enum['val']->value === $val) {
+                $result = [
+                    'name' => $enum['name'],
+                    'code' => $enum['val']->name,
+                    'value' => $enum['val']->value,
+                ];
+            }
+        }
+
+        return $result;
+    }
 }

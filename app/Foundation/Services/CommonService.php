@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Services;
+namespace App\Foundation\Services;
 
 use App\Foundation\Contracts\CommonServiceInterface;
 use App\Foundation\Contracts\CurdRepositoryInterface;

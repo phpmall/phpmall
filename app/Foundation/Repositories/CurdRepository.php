@@ -119,7 +119,9 @@ abstract class CurdRepository implements CurdRepositoryInterface
      */
     public function deleteById(int $id): bool
     {
-        return $this->model()->find($id)->delete();
+        $affectedRows = $this->model()->find($id)->delete();
+
+        return $affectedRows > 0;
     }
 
     /**

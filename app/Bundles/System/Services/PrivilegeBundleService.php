@@ -2,22 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Foundation\Services;
+namespace App\Bundles\System\Services;
 
+use App\Services\ManagerRoleService;
 use App\Services\PermissionService;
 use App\Services\RolePermissionService;
 use App\Services\RoleService;
 
-class PrivilegeService
+class PrivilegeBundleService
 {
     /**
      * 获取管理员角色
      */
-    public function getAdminRoles(int $adminId): array
+    public function getAdminRoles(int $managerId): array
     {
-        $adminRoleService = new RoleService();
-        $roleIds = $adminRoleService->pluck('role_id', [
-            'user_id' => $adminId,
+        $managerRoleService = new ManagerRoleService();
+        $roleIds = $managerRoleService->pluck('role_id', [
+            'manager_id' => $managerId,
         ]);
 
         // 检测有效角色状态
