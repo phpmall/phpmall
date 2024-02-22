@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ManagerRoleEntity')]
@@ -16,10 +16,10 @@ class ManagerRoleEntity
     protected int $id;
 
     #[OA\Property(property: 'manager_id', description: '用户ID', type: 'integer')]
-    protected int $managerId;
+    protected int $manager_id;
 
     #[OA\Property(property: 'role_id', description: '角色ID', type: 'integer')]
-    protected int $roleId;
+    protected int $role_id;
 
     /**
      * 获取
@@ -42,15 +42,15 @@ class ManagerRoleEntity
      */
     public function getManagerId(): int
     {
-        return $this->managerId;
+        return $this->manager_id;
     }
 
     /**
      * 设置用户ID
      */
-    public function setManagerId(int $managerId): void
+    public function setManagerId(int $manager_id): void
     {
-        $this->managerId = $managerId;
+        $this->manager_id = $manager_id;
     }
 
     /**
@@ -58,14 +58,14 @@ class ManagerRoleEntity
      */
     public function getRoleId(): int
     {
-        return $this->roleId;
+        return $this->role_id;
     }
 
     /**
      * 设置角色ID
      */
-    public function setRoleId(int $roleId): void
+    public function setRoleId(int $role_id): void
     {
-        $this->roleId = $roleId;
+        $this->role_id = $role_id;
     }
 }

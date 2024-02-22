@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Foundation\Contracts\ServiceInterface;
+use App\Foundation\Services\CommonService;
 use App\Repositories\ReturnedOrderRepository;
-use Juling\Generator\Contracts\ServiceInterface;
-use Juling\Generator\Services\CommonService;
 
 class ReturnedOrderService extends CommonService implements ServiceInterface
 {

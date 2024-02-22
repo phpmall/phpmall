@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ManagerLogEntity')]
@@ -16,7 +16,7 @@ class ManagerLogEntity
     protected int $id;
 
     #[OA\Property(property: 'manager_id', description: '管理员ID', type: 'integer')]
-    protected int $managerId;
+    protected int $manager_id;
 
     #[OA\Property(property: 'level', description: '日志级别', type: 'integer')]
     protected int $level;
@@ -25,16 +25,16 @@ class ManagerLogEntity
     protected string $message;
 
     #[OA\Property(property: 'user_agent', description: 'User Agent', type: 'string')]
-    protected string $userAgent;
+    protected string $user_agent;
 
     #[OA\Property(property: 'ip_address', description: 'IP地址', type: 'string')]
-    protected string $ipAddress;
+    protected string $ip_address;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     /**
      * 获取
@@ -57,15 +57,15 @@ class ManagerLogEntity
      */
     public function getManagerId(): int
     {
-        return $this->managerId;
+        return $this->manager_id;
     }
 
     /**
      * 设置管理员ID
      */
-    public function setManagerId(int $managerId): void
+    public function setManagerId(int $manager_id): void
     {
-        $this->managerId = $managerId;
+        $this->manager_id = $manager_id;
     }
 
     /**
@@ -105,15 +105,15 @@ class ManagerLogEntity
      */
     public function getUserAgent(): string
     {
-        return $this->userAgent;
+        return $this->user_agent;
     }
 
     /**
      * 设置User Agent
      */
-    public function setUserAgent(string $userAgent): void
+    public function setUserAgent(string $user_agent): void
     {
-        $this->userAgent = $userAgent;
+        $this->user_agent = $user_agent;
     }
 
     /**
@@ -121,15 +121,15 @@ class ManagerLogEntity
      */
     public function getIpAddress(): string
     {
-        return $this->ipAddress;
+        return $this->ip_address;
     }
 
     /**
      * 设置IP地址
      */
-    public function setIpAddress(string $ipAddress): void
+    public function setIpAddress(string $ip_address): void
     {
-        $this->ipAddress = $ipAddress;
+        $this->ip_address = $ip_address;
     }
 
     /**
@@ -137,15 +137,15 @@ class ManagerLogEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -153,14 +153,14 @@ class ManagerLogEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 }

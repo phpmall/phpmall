@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'CategoryProductAttributeEntity')]
@@ -16,16 +16,16 @@ class CategoryProductAttributeEntity
     protected int $id;
 
     #[OA\Property(property: 'category_id', description: '商品分类id', type: 'integer')]
-    protected int $categoryId;
+    protected int $category_id;
 
     #[OA\Property(property: 'product_attribute_id', description: '商品属性id', type: 'integer')]
-    protected int $productAttributeId;
+    protected int $product_attribute_id;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     /**
      * 获取
@@ -48,15 +48,15 @@ class CategoryProductAttributeEntity
      */
     public function getCategoryId(): int
     {
-        return $this->categoryId;
+        return $this->category_id;
     }
 
     /**
      * 设置商品分类id
      */
-    public function setCategoryId(int $categoryId): void
+    public function setCategoryId(int $category_id): void
     {
-        $this->categoryId = $categoryId;
+        $this->category_id = $category_id;
     }
 
     /**
@@ -64,15 +64,15 @@ class CategoryProductAttributeEntity
      */
     public function getProductAttributeId(): int
     {
-        return $this->productAttributeId;
+        return $this->product_attribute_id;
     }
 
     /**
      * 设置商品属性id
      */
-    public function setProductAttributeId(int $productAttributeId): void
+    public function setProductAttributeId(int $product_attribute_id): void
     {
-        $this->productAttributeId = $productAttributeId;
+        $this->product_attribute_id = $product_attribute_id;
     }
 
     /**
@@ -80,15 +80,15 @@ class CategoryProductAttributeEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -96,14 +96,14 @@ class CategoryProductAttributeEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 }

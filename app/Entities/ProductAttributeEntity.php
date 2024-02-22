@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProductAttributeEntity')]
@@ -16,46 +16,46 @@ class ProductAttributeEntity
     protected int $id;
 
     #[OA\Property(property: 'product_type_id', description: '商品属性分类id', type: 'integer')]
-    protected int $productTypeId;
+    protected int $product_type_id;
 
     #[OA\Property(property: 'name', description: '名称', type: 'string')]
     protected string $name;
 
     #[OA\Property(property: 'select_type', description: '属性选择类型：0->唯一；1->单选；2->多选；对应属性和参数意义不同；', type: 'integer')]
-    protected int $selectType;
+    protected int $select_type;
 
     #[OA\Property(property: 'input_type', description: '属性录入方式：0->手工录入；1->从列表中选取', type: 'integer')]
-    protected int $inputType;
+    protected int $input_type;
 
     #[OA\Property(property: 'input_list', description: '可选值列表，以逗号隔开', type: 'string')]
-    protected string $inputList;
+    protected string $input_list;
 
     #[OA\Property(property: 'sort', description: '排序字段：最高的可以单独上传图片', type: 'integer')]
     protected int $sort;
 
     #[OA\Property(property: 'filter_type', description: '分类筛选样式：1->普通；1->颜色', type: 'integer')]
-    protected int $filterType;
+    protected int $filter_type;
 
     #[OA\Property(property: 'search_type', description: '检索类型；0->不需要进行检索；1->关键字检索；2->范围检索', type: 'integer')]
-    protected int $searchType;
+    protected int $search_type;
 
     #[OA\Property(property: 'related_status', description: '相同属性产品是否关联；0->不关联；1->关联', type: 'integer')]
-    protected int $relatedStatus;
+    protected int $related_status;
 
     #[OA\Property(property: 'hand_add_status', description: '是否支持手动新增；0->不支持；1->支持', type: 'integer')]
-    protected int $handAddStatus;
+    protected int $hand_add_status;
 
     #[OA\Property(property: 'type', description: '属性的类型；0->规格；1->参数', type: 'integer')]
     protected int $type;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -78,15 +78,15 @@ class ProductAttributeEntity
      */
     public function getProductTypeId(): int
     {
-        return $this->productTypeId;
+        return $this->product_type_id;
     }
 
     /**
      * 设置商品属性分类id
      */
-    public function setProductTypeId(int $productTypeId): void
+    public function setProductTypeId(int $product_type_id): void
     {
-        $this->productTypeId = $productTypeId;
+        $this->product_type_id = $product_type_id;
     }
 
     /**
@@ -110,15 +110,15 @@ class ProductAttributeEntity
      */
     public function getSelectType(): int
     {
-        return $this->selectType;
+        return $this->select_type;
     }
 
     /**
      * 设置属性选择类型：0->唯一；1->单选；2->多选；对应属性和参数意义不同；
      */
-    public function setSelectType(int $selectType): void
+    public function setSelectType(int $select_type): void
     {
-        $this->selectType = $selectType;
+        $this->select_type = $select_type;
     }
 
     /**
@@ -126,15 +126,15 @@ class ProductAttributeEntity
      */
     public function getInputType(): int
     {
-        return $this->inputType;
+        return $this->input_type;
     }
 
     /**
      * 设置属性录入方式：0->手工录入；1->从列表中选取
      */
-    public function setInputType(int $inputType): void
+    public function setInputType(int $input_type): void
     {
-        $this->inputType = $inputType;
+        $this->input_type = $input_type;
     }
 
     /**
@@ -142,15 +142,15 @@ class ProductAttributeEntity
      */
     public function getInputList(): string
     {
-        return $this->inputList;
+        return $this->input_list;
     }
 
     /**
      * 设置可选值列表，以逗号隔开
      */
-    public function setInputList(string $inputList): void
+    public function setInputList(string $input_list): void
     {
-        $this->inputList = $inputList;
+        $this->input_list = $input_list;
     }
 
     /**
@@ -174,15 +174,15 @@ class ProductAttributeEntity
      */
     public function getFilterType(): int
     {
-        return $this->filterType;
+        return $this->filter_type;
     }
 
     /**
      * 设置分类筛选样式：1->普通；1->颜色
      */
-    public function setFilterType(int $filterType): void
+    public function setFilterType(int $filter_type): void
     {
-        $this->filterType = $filterType;
+        $this->filter_type = $filter_type;
     }
 
     /**
@@ -190,15 +190,15 @@ class ProductAttributeEntity
      */
     public function getSearchType(): int
     {
-        return $this->searchType;
+        return $this->search_type;
     }
 
     /**
      * 设置检索类型；0->不需要进行检索；1->关键字检索；2->范围检索
      */
-    public function setSearchType(int $searchType): void
+    public function setSearchType(int $search_type): void
     {
-        $this->searchType = $searchType;
+        $this->search_type = $search_type;
     }
 
     /**
@@ -206,15 +206,15 @@ class ProductAttributeEntity
      */
     public function getRelatedStatus(): int
     {
-        return $this->relatedStatus;
+        return $this->related_status;
     }
 
     /**
      * 设置相同属性产品是否关联；0->不关联；1->关联
      */
-    public function setRelatedStatus(int $relatedStatus): void
+    public function setRelatedStatus(int $related_status): void
     {
-        $this->relatedStatus = $relatedStatus;
+        $this->related_status = $related_status;
     }
 
     /**
@@ -222,15 +222,15 @@ class ProductAttributeEntity
      */
     public function getHandAddStatus(): int
     {
-        return $this->handAddStatus;
+        return $this->hand_add_status;
     }
 
     /**
      * 设置是否支持手动新增；0->不支持；1->支持
      */
-    public function setHandAddStatus(int $handAddStatus): void
+    public function setHandAddStatus(int $hand_add_status): void
     {
-        $this->handAddStatus = $handAddStatus;
+        $this->hand_add_status = $hand_add_status;
     }
 
     /**
@@ -254,15 +254,15 @@ class ProductAttributeEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -270,15 +270,15 @@ class ProductAttributeEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -286,14 +286,14 @@ class ProductAttributeEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

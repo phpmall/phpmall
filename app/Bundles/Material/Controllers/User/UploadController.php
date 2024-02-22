@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Bundles\Material\Controllers\User;
 
-use App\Api\User\Controllers\BaseController;
 use App\Bundles\Material\Requests\UploadRequest;
 use App\Bundles\Material\Responses\UploadResponse;
 use App\Foundation\Exceptions\CustomException;
+use App\Http\Controllers\User\BaseController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;

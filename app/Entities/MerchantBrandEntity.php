@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'MerchantBrandEntity')]
@@ -16,16 +16,16 @@ class MerchantBrandEntity
     protected int $id;
 
     #[OA\Property(property: 'merchant_id', description: '商户ID', type: 'integer')]
-    protected int $merchantId;
+    protected int $merchant_id;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -48,15 +48,15 @@ class MerchantBrandEntity
      */
     public function getMerchantId(): int
     {
-        return $this->merchantId;
+        return $this->merchant_id;
     }
 
     /**
      * 设置商户ID
      */
-    public function setMerchantId(int $merchantId): void
+    public function setMerchantId(int $merchant_id): void
     {
-        $this->merchantId = $merchantId;
+        $this->merchant_id = $merchant_id;
     }
 
     /**
@@ -64,15 +64,15 @@ class MerchantBrandEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -80,15 +80,15 @@ class MerchantBrandEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -96,14 +96,14 @@ class MerchantBrandEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

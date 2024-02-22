@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'CategoryEntity')]
@@ -16,7 +16,7 @@ class CategoryEntity
     protected int $id;
 
     #[OA\Property(property: 'parent_id', description: '上级分类的编号：0表示一级分类', type: 'integer')]
-    protected int $parentId;
+    protected int $parent_id;
 
     #[OA\Property(property: 'name', description: '分类名称', type: 'string')]
     protected string $name;
@@ -34,28 +34,28 @@ class CategoryEntity
     protected int $level;
 
     #[OA\Property(property: 'product_count', description: '商品数量', type: 'integer')]
-    protected int $productCount;
+    protected int $product_count;
 
     #[OA\Property(property: 'product_unit', description: '商品单位', type: 'string')]
-    protected string $productUnit;
+    protected string $product_unit;
 
     #[OA\Property(property: 'nav_status', description: '是否显示在导航栏：0->不显示；1->显示', type: 'integer')]
-    protected int $navStatus;
+    protected int $nav_status;
 
     #[OA\Property(property: 'show_status', description: '显示状态：0->不显示；1->显示', type: 'integer')]
-    protected int $showStatus;
+    protected int $show_status;
 
     #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
     protected int $sort;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -78,15 +78,15 @@ class CategoryEntity
      */
     public function getParentId(): int
     {
-        return $this->parentId;
+        return $this->parent_id;
     }
 
     /**
      * 设置上级分类的编号：0表示一级分类
      */
-    public function setParentId(int $parentId): void
+    public function setParentId(int $parent_id): void
     {
-        $this->parentId = $parentId;
+        $this->parent_id = $parent_id;
     }
 
     /**
@@ -174,15 +174,15 @@ class CategoryEntity
      */
     public function getProductCount(): int
     {
-        return $this->productCount;
+        return $this->product_count;
     }
 
     /**
      * 设置商品数量
      */
-    public function setProductCount(int $productCount): void
+    public function setProductCount(int $product_count): void
     {
-        $this->productCount = $productCount;
+        $this->product_count = $product_count;
     }
 
     /**
@@ -190,15 +190,15 @@ class CategoryEntity
      */
     public function getProductUnit(): string
     {
-        return $this->productUnit;
+        return $this->product_unit;
     }
 
     /**
      * 设置商品单位
      */
-    public function setProductUnit(string $productUnit): void
+    public function setProductUnit(string $product_unit): void
     {
-        $this->productUnit = $productUnit;
+        $this->product_unit = $product_unit;
     }
 
     /**
@@ -206,15 +206,15 @@ class CategoryEntity
      */
     public function getNavStatus(): int
     {
-        return $this->navStatus;
+        return $this->nav_status;
     }
 
     /**
      * 设置是否显示在导航栏：0->不显示；1->显示
      */
-    public function setNavStatus(int $navStatus): void
+    public function setNavStatus(int $nav_status): void
     {
-        $this->navStatus = $navStatus;
+        $this->nav_status = $nav_status;
     }
 
     /**
@@ -222,15 +222,15 @@ class CategoryEntity
      */
     public function getShowStatus(): int
     {
-        return $this->showStatus;
+        return $this->show_status;
     }
 
     /**
      * 设置显示状态：0->不显示；1->显示
      */
-    public function setShowStatus(int $showStatus): void
+    public function setShowStatus(int $show_status): void
     {
-        $this->showStatus = $showStatus;
+        $this->show_status = $show_status;
     }
 
     /**
@@ -254,15 +254,15 @@ class CategoryEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -270,15 +270,15 @@ class CategoryEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -286,14 +286,14 @@ class CategoryEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

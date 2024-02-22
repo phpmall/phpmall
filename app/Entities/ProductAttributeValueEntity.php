@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProductAttributeValueEntity')]
@@ -16,19 +16,19 @@ class ProductAttributeValueEntity
     protected int $id;
 
     #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
-    protected int $productId;
+    protected int $product_id;
 
     #[OA\Property(property: 'product_attribute_id', description: '商品属性id', type: 'integer')]
-    protected int $productAttributeId;
+    protected int $product_attribute_id;
 
     #[OA\Property(property: 'value', description: '手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开', type: 'string')]
     protected string $value;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     /**
      * 获取
@@ -51,15 +51,15 @@ class ProductAttributeValueEntity
      */
     public function getProductId(): int
     {
-        return $this->productId;
+        return $this->product_id;
     }
 
     /**
      * 设置商品id
      */
-    public function setProductId(int $productId): void
+    public function setProductId(int $product_id): void
     {
-        $this->productId = $productId;
+        $this->product_id = $product_id;
     }
 
     /**
@@ -67,15 +67,15 @@ class ProductAttributeValueEntity
      */
     public function getProductAttributeId(): int
     {
-        return $this->productAttributeId;
+        return $this->product_attribute_id;
     }
 
     /**
      * 设置商品属性id
      */
-    public function setProductAttributeId(int $productAttributeId): void
+    public function setProductAttributeId(int $product_attribute_id): void
     {
-        $this->productAttributeId = $productAttributeId;
+        $this->product_attribute_id = $product_attribute_id;
     }
 
     /**
@@ -99,15 +99,15 @@ class ProductAttributeValueEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -115,14 +115,14 @@ class ProductAttributeValueEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 }

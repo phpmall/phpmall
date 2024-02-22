@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'RolePermissionEntity')]
@@ -16,10 +16,10 @@ class RolePermissionEntity
     protected int $id;
 
     #[OA\Property(property: 'role_id', description: '角色ID', type: 'integer')]
-    protected int $roleId;
+    protected int $role_id;
 
     #[OA\Property(property: 'permission_id', description: '权限ID', type: 'integer')]
-    protected int $permissionId;
+    protected int $permission_id;
 
     /**
      * 获取
@@ -42,15 +42,15 @@ class RolePermissionEntity
      */
     public function getRoleId(): int
     {
-        return $this->roleId;
+        return $this->role_id;
     }
 
     /**
      * 设置角色ID
      */
-    public function setRoleId(int $roleId): void
+    public function setRoleId(int $role_id): void
     {
-        $this->roleId = $roleId;
+        $this->role_id = $role_id;
     }
 
     /**
@@ -58,14 +58,14 @@ class RolePermissionEntity
      */
     public function getPermissionId(): int
     {
-        return $this->permissionId;
+        return $this->permission_id;
     }
 
     /**
      * 设置权限ID
      */
-    public function setPermissionId(int $permissionId): void
+    public function setPermissionId(int $permission_id): void
     {
-        $this->permissionId = $permissionId;
+        $this->permission_id = $permission_id;
     }
 }

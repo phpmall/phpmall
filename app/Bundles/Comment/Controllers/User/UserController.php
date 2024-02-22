@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\Comment\Controllers\User;
 
-use App\Api\User\Controllers\BaseController;
+use App\Http\Controllers\User\BaseController;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends BaseController

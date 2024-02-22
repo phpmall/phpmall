@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'AdvertisingEntity')]
@@ -16,7 +16,7 @@ class AdvertisingEntity
     protected int $id;
 
     #[OA\Property(property: 'parent_id', description: '类型:0广告位,其他为广告内容', type: 'integer')]
-    protected int $parentId;
+    protected int $parent_id;
 
     #[OA\Property(property: 'name', description: '标题', type: 'string')]
     protected string $name;
@@ -37,13 +37,13 @@ class AdvertisingEntity
     protected string $code;
 
     #[OA\Property(property: 'start_time', description: '开始时间', type: 'string')]
-    protected string $startTime;
+    protected string $start_time;
 
     #[OA\Property(property: 'end_time', description: '结束时间', type: 'string')]
-    protected string $endTime;
+    protected string $end_time;
 
     #[OA\Property(property: 'click_count', description: '点击量', type: 'integer')]
-    protected int $clickCount;
+    protected int $click_count;
 
     #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
     protected int $sort;
@@ -52,13 +52,13 @@ class AdvertisingEntity
     protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -81,15 +81,15 @@ class AdvertisingEntity
      */
     public function getParentId(): int
     {
-        return $this->parentId;
+        return $this->parent_id;
     }
 
     /**
      * 设置类型:0广告位,其他为广告内容
      */
-    public function setParentId(int $parentId): void
+    public function setParentId(int $parent_id): void
     {
-        $this->parentId = $parentId;
+        $this->parent_id = $parent_id;
     }
 
     /**
@@ -193,15 +193,15 @@ class AdvertisingEntity
      */
     public function getStartTime(): string
     {
-        return $this->startTime;
+        return $this->start_time;
     }
 
     /**
      * 设置开始时间
      */
-    public function setStartTime(string $startTime): void
+    public function setStartTime(string $start_time): void
     {
-        $this->startTime = $startTime;
+        $this->start_time = $start_time;
     }
 
     /**
@@ -209,15 +209,15 @@ class AdvertisingEntity
      */
     public function getEndTime(): string
     {
-        return $this->endTime;
+        return $this->end_time;
     }
 
     /**
      * 设置结束时间
      */
-    public function setEndTime(string $endTime): void
+    public function setEndTime(string $end_time): void
     {
-        $this->endTime = $endTime;
+        $this->end_time = $end_time;
     }
 
     /**
@@ -225,15 +225,15 @@ class AdvertisingEntity
      */
     public function getClickCount(): int
     {
-        return $this->clickCount;
+        return $this->click_count;
     }
 
     /**
      * 设置点击量
      */
-    public function setClickCount(int $clickCount): void
+    public function setClickCount(int $click_count): void
     {
-        $this->clickCount = $clickCount;
+        $this->click_count = $click_count;
     }
 
     /**
@@ -273,15 +273,15 @@ class AdvertisingEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -289,15 +289,15 @@ class AdvertisingEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -305,14 +305,14 @@ class AdvertisingEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

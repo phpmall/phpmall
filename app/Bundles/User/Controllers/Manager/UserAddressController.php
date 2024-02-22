@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Controllers\Manager;
 
-use App\Api\Manager\Controllers\BaseController;
 use App\Bundles\User\Responses\AddressResponse;
+use App\Http\Controllers\Manager\BaseController;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 

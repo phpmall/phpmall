@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Entities\SettingEntity;
+use App\Foundation\Contracts\RepositoryInterface;
+use App\Foundation\Repositories\CurdRepository;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
-use Juling\Generator\Contracts\RepositoryInterface;
-use Juling\Generator\Repositories\CurdRepository;
 
 class SettingRepository extends CurdRepository implements RepositoryInterface
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'UserSocialiteEntity')]
@@ -16,7 +16,7 @@ class UserSocialiteEntity
     protected int $id;
 
     #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
-    protected int $userId;
+    protected int $user_id;
 
     #[OA\Property(property: 'type', description: '凭证类型', type: 'string')]
     protected string $type;
@@ -28,19 +28,19 @@ class UserSocialiteEntity
     protected string $credentials;
 
     #[OA\Property(property: 'verified_time', description: '验证时间', type: 'string')]
-    protected string $verifiedTime;
+    protected string $verified_time;
 
     #[OA\Property(property: 'status', description: '状态:1正常,2禁用', type: 'integer')]
     protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -63,15 +63,15 @@ class UserSocialiteEntity
      */
     public function getUserId(): int
     {
-        return $this->userId;
+        return $this->user_id;
     }
 
     /**
      * 设置用户ID
      */
-    public function setUserId(int $userId): void
+    public function setUserId(int $user_id): void
     {
-        $this->userId = $userId;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -127,15 +127,15 @@ class UserSocialiteEntity
      */
     public function getVerifiedTime(): string
     {
-        return $this->verifiedTime;
+        return $this->verified_time;
     }
 
     /**
      * 设置验证时间
      */
-    public function setVerifiedTime(string $verifiedTime): void
+    public function setVerifiedTime(string $verified_time): void
     {
-        $this->verifiedTime = $verifiedTime;
+        $this->verified_time = $verified_time;
     }
 
     /**
@@ -159,15 +159,15 @@ class UserSocialiteEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -175,15 +175,15 @@ class UserSocialiteEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -191,14 +191,14 @@ class UserSocialiteEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

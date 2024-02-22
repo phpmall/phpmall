@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Entities\ContentAttachmentEntity;
+use App\Foundation\Contracts\RepositoryInterface;
+use App\Foundation\Repositories\CurdRepository;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
-use Juling\Generator\Contracts\RepositoryInterface;
-use Juling\Generator\Repositories\CurdRepository;
 
 class ContentAttachmentRepository extends CurdRepository implements RepositoryInterface
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ShopEntity')]
@@ -16,34 +16,34 @@ class ShopEntity
     protected int $id;
 
     #[OA\Property(property: 'merchant_id', description: '商户id', type: 'integer')]
-    protected int $merchantId;
+    protected int $merchant_id;
 
     #[OA\Property(property: 'shop_name', description: '店铺名称', type: 'string')]
-    protected string $shopName;
+    protected string $shop_name;
 
     #[OA\Property(property: 'owner_name', description: '店主姓名', type: 'string')]
-    protected string $ownerName;
+    protected string $owner_name;
 
     #[OA\Property(property: 'owner_phone', description: '店主电话', type: 'string')]
-    protected string $ownerPhone;
+    protected string $owner_phone;
 
     #[OA\Property(property: 'owner_email', description: '店主邮箱', type: 'string')]
-    protected string $ownerEmail;
+    protected string $owner_email;
 
     #[OA\Property(property: 'store_address', description: '店铺地址', type: 'string')]
-    protected string $storeAddress;
+    protected string $store_address;
 
     #[OA\Property(property: 'store_status', description: '店铺状态：如"正常营业"、"关店维修"', type: 'string')]
-    protected string $storeStatus;
+    protected string $store_status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -66,15 +66,15 @@ class ShopEntity
      */
     public function getMerchantId(): int
     {
-        return $this->merchantId;
+        return $this->merchant_id;
     }
 
     /**
      * 设置商户id
      */
-    public function setMerchantId(int $merchantId): void
+    public function setMerchantId(int $merchant_id): void
     {
-        $this->merchantId = $merchantId;
+        $this->merchant_id = $merchant_id;
     }
 
     /**
@@ -82,15 +82,15 @@ class ShopEntity
      */
     public function getShopName(): string
     {
-        return $this->shopName;
+        return $this->shop_name;
     }
 
     /**
      * 设置店铺名称
      */
-    public function setShopName(string $shopName): void
+    public function setShopName(string $shop_name): void
     {
-        $this->shopName = $shopName;
+        $this->shop_name = $shop_name;
     }
 
     /**
@@ -98,15 +98,15 @@ class ShopEntity
      */
     public function getOwnerName(): string
     {
-        return $this->ownerName;
+        return $this->owner_name;
     }
 
     /**
      * 设置店主姓名
      */
-    public function setOwnerName(string $ownerName): void
+    public function setOwnerName(string $owner_name): void
     {
-        $this->ownerName = $ownerName;
+        $this->owner_name = $owner_name;
     }
 
     /**
@@ -114,15 +114,15 @@ class ShopEntity
      */
     public function getOwnerPhone(): string
     {
-        return $this->ownerPhone;
+        return $this->owner_phone;
     }
 
     /**
      * 设置店主电话
      */
-    public function setOwnerPhone(string $ownerPhone): void
+    public function setOwnerPhone(string $owner_phone): void
     {
-        $this->ownerPhone = $ownerPhone;
+        $this->owner_phone = $owner_phone;
     }
 
     /**
@@ -130,15 +130,15 @@ class ShopEntity
      */
     public function getOwnerEmail(): string
     {
-        return $this->ownerEmail;
+        return $this->owner_email;
     }
 
     /**
      * 设置店主邮箱
      */
-    public function setOwnerEmail(string $ownerEmail): void
+    public function setOwnerEmail(string $owner_email): void
     {
-        $this->ownerEmail = $ownerEmail;
+        $this->owner_email = $owner_email;
     }
 
     /**
@@ -146,15 +146,15 @@ class ShopEntity
      */
     public function getStoreAddress(): string
     {
-        return $this->storeAddress;
+        return $this->store_address;
     }
 
     /**
      * 设置店铺地址
      */
-    public function setStoreAddress(string $storeAddress): void
+    public function setStoreAddress(string $store_address): void
     {
-        $this->storeAddress = $storeAddress;
+        $this->store_address = $store_address;
     }
 
     /**
@@ -162,15 +162,15 @@ class ShopEntity
      */
     public function getStoreStatus(): string
     {
-        return $this->storeStatus;
+        return $this->store_status;
     }
 
     /**
      * 设置店铺状态：如"正常营业"、"关店维修"
      */
-    public function setStoreStatus(string $storeStatus): void
+    public function setStoreStatus(string $store_status): void
     {
-        $this->storeStatus = $storeStatus;
+        $this->store_status = $store_status;
     }
 
     /**
@@ -178,15 +178,15 @@ class ShopEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -194,15 +194,15 @@ class ShopEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -210,14 +210,14 @@ class ShopEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

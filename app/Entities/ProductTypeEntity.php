@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProductTypeEntity')]
@@ -19,19 +19,19 @@ class ProductTypeEntity
     protected string $name;
 
     #[OA\Property(property: 'attribute_count', description: '属性数量', type: 'integer')]
-    protected int $attributeCount;
+    protected int $attribute_count;
 
     #[OA\Property(property: 'param_count', description: '参数数量', type: 'integer')]
-    protected int $paramCount;
+    protected int $param_count;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -70,15 +70,15 @@ class ProductTypeEntity
      */
     public function getAttributeCount(): int
     {
-        return $this->attributeCount;
+        return $this->attribute_count;
     }
 
     /**
      * 设置属性数量
      */
-    public function setAttributeCount(int $attributeCount): void
+    public function setAttributeCount(int $attribute_count): void
     {
-        $this->attributeCount = $attributeCount;
+        $this->attribute_count = $attribute_count;
     }
 
     /**
@@ -86,15 +86,15 @@ class ProductTypeEntity
      */
     public function getParamCount(): int
     {
-        return $this->paramCount;
+        return $this->param_count;
     }
 
     /**
      * 设置参数数量
      */
-    public function setParamCount(int $paramCount): void
+    public function setParamCount(int $param_count): void
     {
-        $this->paramCount = $paramCount;
+        $this->param_count = $param_count;
     }
 
     /**
@@ -102,15 +102,15 @@ class ProductTypeEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -118,15 +118,15 @@ class ProductTypeEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -134,14 +134,14 @@ class ProductTypeEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

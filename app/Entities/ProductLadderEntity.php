@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProductLadderEntity')]
@@ -16,7 +16,7 @@ class ProductLadderEntity
     protected int $id;
 
     #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
-    protected int $productId;
+    protected int $product_id;
 
     #[OA\Property(property: 'count', description: '满足的商品数量', type: 'integer')]
     protected int $count;
@@ -48,15 +48,15 @@ class ProductLadderEntity
      */
     public function getProductId(): int
     {
-        return $this->productId;
+        return $this->product_id;
     }
 
     /**
      * 设置商品id
      */
-    public function setProductId(int $productId): void
+    public function setProductId(int $product_id): void
     {
-        $this->productId = $productId;
+        $this->product_id = $product_id;
     }
 
     /**

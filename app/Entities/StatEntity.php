@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'StatEntity')]
@@ -16,13 +16,13 @@ class StatEntity
     protected int $id;
 
     #[OA\Property(property: 'access_time', description: '请求日期', type: 'string')]
-    protected string $accessTime;
+    protected string $access_time;
 
     #[OA\Property(property: 'visit_times', description: '请求次数', type: 'integer')]
-    protected int $visitTimes;
+    protected int $visit_times;
 
     #[OA\Property(property: 'ip_address', description: 'IP地址', type: 'string')]
-    protected string $ipAddress;
+    protected string $ip_address;
 
     #[OA\Property(property: 'system', description: '操作系统', type: 'string')]
     protected string $system;
@@ -37,19 +37,19 @@ class StatEntity
     protected string $area;
 
     #[OA\Property(property: 'referer_domain', description: '来源域名', type: 'string')]
-    protected string $refererDomain;
+    protected string $referer_domain;
 
     #[OA\Property(property: 'referer_path', description: '来源地址', type: 'string')]
-    protected string $refererPath;
+    protected string $referer_path;
 
     #[OA\Property(property: 'access_url', description: '请求url地址', type: 'string')]
-    protected string $accessUrl;
+    protected string $access_url;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     /**
      * 获取
@@ -72,15 +72,15 @@ class StatEntity
      */
     public function getAccessTime(): string
     {
-        return $this->accessTime;
+        return $this->access_time;
     }
 
     /**
      * 设置请求日期
      */
-    public function setAccessTime(string $accessTime): void
+    public function setAccessTime(string $access_time): void
     {
-        $this->accessTime = $accessTime;
+        $this->access_time = $access_time;
     }
 
     /**
@@ -88,15 +88,15 @@ class StatEntity
      */
     public function getVisitTimes(): int
     {
-        return $this->visitTimes;
+        return $this->visit_times;
     }
 
     /**
      * 设置请求次数
      */
-    public function setVisitTimes(int $visitTimes): void
+    public function setVisitTimes(int $visit_times): void
     {
-        $this->visitTimes = $visitTimes;
+        $this->visit_times = $visit_times;
     }
 
     /**
@@ -104,15 +104,15 @@ class StatEntity
      */
     public function getIpAddress(): string
     {
-        return $this->ipAddress;
+        return $this->ip_address;
     }
 
     /**
      * 设置IP地址
      */
-    public function setIpAddress(string $ipAddress): void
+    public function setIpAddress(string $ip_address): void
     {
-        $this->ipAddress = $ipAddress;
+        $this->ip_address = $ip_address;
     }
 
     /**
@@ -184,15 +184,15 @@ class StatEntity
      */
     public function getRefererDomain(): string
     {
-        return $this->refererDomain;
+        return $this->referer_domain;
     }
 
     /**
      * 设置来源域名
      */
-    public function setRefererDomain(string $refererDomain): void
+    public function setRefererDomain(string $referer_domain): void
     {
-        $this->refererDomain = $refererDomain;
+        $this->referer_domain = $referer_domain;
     }
 
     /**
@@ -200,15 +200,15 @@ class StatEntity
      */
     public function getRefererPath(): string
     {
-        return $this->refererPath;
+        return $this->referer_path;
     }
 
     /**
      * 设置来源地址
      */
-    public function setRefererPath(string $refererPath): void
+    public function setRefererPath(string $referer_path): void
     {
-        $this->refererPath = $refererPath;
+        $this->referer_path = $referer_path;
     }
 
     /**
@@ -216,15 +216,15 @@ class StatEntity
      */
     public function getAccessUrl(): string
     {
-        return $this->accessUrl;
+        return $this->access_url;
     }
 
     /**
      * 设置请求url地址
      */
-    public function setAccessUrl(string $accessUrl): void
+    public function setAccessUrl(string $access_url): void
     {
-        $this->accessUrl = $accessUrl;
+        $this->access_url = $access_url;
     }
 
     /**
@@ -232,15 +232,15 @@ class StatEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -248,14 +248,14 @@ class StatEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 }

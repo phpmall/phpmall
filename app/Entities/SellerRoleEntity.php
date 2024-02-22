@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'SellerRoleEntity')]
@@ -16,10 +16,10 @@ class SellerRoleEntity
     protected int $id;
 
     #[OA\Property(property: 'seller_id', description: '商户管理员ID', type: 'integer')]
-    protected int $sellerId;
+    protected int $seller_id;
 
     #[OA\Property(property: 'role_id', description: '角色ID', type: 'integer')]
-    protected int $roleId;
+    protected int $role_id;
 
     /**
      * 获取
@@ -42,15 +42,15 @@ class SellerRoleEntity
      */
     public function getSellerId(): int
     {
-        return $this->sellerId;
+        return $this->seller_id;
     }
 
     /**
      * 设置商户管理员ID
      */
-    public function setSellerId(int $sellerId): void
+    public function setSellerId(int $seller_id): void
     {
-        $this->sellerId = $sellerId;
+        $this->seller_id = $seller_id;
     }
 
     /**
@@ -58,14 +58,14 @@ class SellerRoleEntity
      */
     public function getRoleId(): int
     {
-        return $this->roleId;
+        return $this->role_id;
     }
 
     /**
      * 设置角色ID
      */
-    public function setRoleId(int $roleId): void
+    public function setRoleId(int $role_id): void
     {
-        $this->roleId = $roleId;
+        $this->role_id = $role_id;
     }
 }

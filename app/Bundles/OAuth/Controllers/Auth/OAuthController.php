@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\OAuth\Controllers\Auth;
 
-use App\Api\Auth\Controllers\BaseController;
+use App\Http\Controllers\Auth\BaseController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;

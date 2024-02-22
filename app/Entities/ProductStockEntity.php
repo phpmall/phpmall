@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProductStockEntity')]
@@ -16,22 +16,22 @@ class ProductStockEntity
     protected int $id;
 
     #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
-    protected int $productId;
+    protected int $product_id;
 
     #[OA\Property(property: 'sku_code', description: 'sku编码', type: 'string')]
-    protected string $skuCode;
+    protected string $sku_code;
 
     #[OA\Property(property: 'price', description: '价格', type: 'float')]
     protected float $price;
 
     #[OA\Property(property: 'promotion_price', description: '单品促销价格', type: 'float')]
-    protected float $promotionPrice;
+    protected float $promotion_price;
 
     #[OA\Property(property: 'stock', description: '库存', type: 'integer')]
     protected int $stock;
 
     #[OA\Property(property: 'low_stock', description: '预警库存', type: 'integer')]
-    protected int $lowStock;
+    protected int $low_stock;
 
     #[OA\Property(property: 'sp1', description: '规格属性1', type: 'string')]
     protected string $sp1;
@@ -49,16 +49,16 @@ class ProductStockEntity
     protected int $sale;
 
     #[OA\Property(property: 'lock_stock', description: '锁定库存', type: 'integer')]
-    protected int $lockStock;
+    protected int $lock_stock;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -81,15 +81,15 @@ class ProductStockEntity
      */
     public function getProductId(): int
     {
-        return $this->productId;
+        return $this->product_id;
     }
 
     /**
      * 设置商品id
      */
-    public function setProductId(int $productId): void
+    public function setProductId(int $product_id): void
     {
-        $this->productId = $productId;
+        $this->product_id = $product_id;
     }
 
     /**
@@ -97,15 +97,15 @@ class ProductStockEntity
      */
     public function getSkuCode(): string
     {
-        return $this->skuCode;
+        return $this->sku_code;
     }
 
     /**
      * 设置sku编码
      */
-    public function setSkuCode(string $skuCode): void
+    public function setSkuCode(string $sku_code): void
     {
-        $this->skuCode = $skuCode;
+        $this->sku_code = $sku_code;
     }
 
     /**
@@ -129,15 +129,15 @@ class ProductStockEntity
      */
     public function getPromotionPrice(): float
     {
-        return $this->promotionPrice;
+        return $this->promotion_price;
     }
 
     /**
      * 设置单品促销价格
      */
-    public function setPromotionPrice(float $promotionPrice): void
+    public function setPromotionPrice(float $promotion_price): void
     {
-        $this->promotionPrice = $promotionPrice;
+        $this->promotion_price = $promotion_price;
     }
 
     /**
@@ -161,15 +161,15 @@ class ProductStockEntity
      */
     public function getLowStock(): int
     {
-        return $this->lowStock;
+        return $this->low_stock;
     }
 
     /**
      * 设置预警库存
      */
-    public function setLowStock(int $lowStock): void
+    public function setLowStock(int $low_stock): void
     {
-        $this->lowStock = $lowStock;
+        $this->low_stock = $low_stock;
     }
 
     /**
@@ -257,15 +257,15 @@ class ProductStockEntity
      */
     public function getLockStock(): int
     {
-        return $this->lockStock;
+        return $this->lock_stock;
     }
 
     /**
      * 设置锁定库存
      */
-    public function setLockStock(int $lockStock): void
+    public function setLockStock(int $lock_stock): void
     {
-        $this->lockStock = $lockStock;
+        $this->lock_stock = $lock_stock;
     }
 
     /**
@@ -273,15 +273,15 @@ class ProductStockEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -289,15 +289,15 @@ class ProductStockEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -305,14 +305,14 @@ class ProductStockEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

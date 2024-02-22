@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'RegionEntity')]
@@ -16,7 +16,7 @@ class RegionEntity
     protected int $id;
 
     #[OA\Property(property: 'parent_id', description: '父级ID', type: 'integer')]
-    protected int $parentId;
+    protected int $parent_id;
 
     #[OA\Property(property: 'name', description: '名称', type: 'string')]
     protected string $name;
@@ -25,7 +25,7 @@ class RegionEntity
     protected string $pinyin;
 
     #[OA\Property(property: 'first_letter', description: '首字母', type: 'string')]
-    protected string $firstLetter;
+    protected string $first_letter;
 
     #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
     protected int $sort;
@@ -34,13 +34,13 @@ class RegionEntity
     protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -63,15 +63,15 @@ class RegionEntity
      */
     public function getParentId(): int
     {
-        return $this->parentId;
+        return $this->parent_id;
     }
 
     /**
      * 设置父级ID
      */
-    public function setParentId(int $parentId): void
+    public function setParentId(int $parent_id): void
     {
-        $this->parentId = $parentId;
+        $this->parent_id = $parent_id;
     }
 
     /**
@@ -111,15 +111,15 @@ class RegionEntity
      */
     public function getFirstLetter(): string
     {
-        return $this->firstLetter;
+        return $this->first_letter;
     }
 
     /**
      * 设置首字母
      */
-    public function setFirstLetter(string $firstLetter): void
+    public function setFirstLetter(string $first_letter): void
     {
-        $this->firstLetter = $firstLetter;
+        $this->first_letter = $first_letter;
     }
 
     /**
@@ -159,15 +159,15 @@ class RegionEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -175,15 +175,15 @@ class RegionEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -191,14 +191,14 @@ class RegionEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

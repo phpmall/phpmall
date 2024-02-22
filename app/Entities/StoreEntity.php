@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'StoreEntity')]
@@ -16,34 +16,34 @@ class StoreEntity
     protected int $id;
 
     #[OA\Property(property: 'merchant_id', description: '商户id', type: 'integer')]
-    protected int $merchantId;
+    protected int $merchant_id;
 
     #[OA\Property(property: 'store_logo', description: '店铺LOGO', type: 'string')]
-    protected string $storeLogo;
+    protected string $store_logo;
 
     #[OA\Property(property: 'store_introduce', description: '店铺简介', type: 'string')]
-    protected string $storeIntroduce;
+    protected string $store_introduce;
 
     #[OA\Property(property: 'store_background', description: '店铺背景图', type: 'string')]
-    protected string $storeBackground;
+    protected string $store_background;
 
     #[OA\Property(property: 'store_category', description: '店铺所属类别', type: 'string')]
-    protected string $storeCategory;
+    protected string $store_category;
 
     #[OA\Property(property: 'store_rating', description: '店铺评分：一般取值范围在0~5之间', type: 'string')]
-    protected string $storeRating;
+    protected string $store_rating;
 
     #[OA\Property(property: 'store_status', description: '店铺状态：如"正常营业"、"关店维修"', type: 'string')]
-    protected string $storeStatus;
+    protected string $store_status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -66,15 +66,15 @@ class StoreEntity
      */
     public function getMerchantId(): int
     {
-        return $this->merchantId;
+        return $this->merchant_id;
     }
 
     /**
      * 设置商户id
      */
-    public function setMerchantId(int $merchantId): void
+    public function setMerchantId(int $merchant_id): void
     {
-        $this->merchantId = $merchantId;
+        $this->merchant_id = $merchant_id;
     }
 
     /**
@@ -82,15 +82,15 @@ class StoreEntity
      */
     public function getStoreLogo(): string
     {
-        return $this->storeLogo;
+        return $this->store_logo;
     }
 
     /**
      * 设置店铺LOGO
      */
-    public function setStoreLogo(string $storeLogo): void
+    public function setStoreLogo(string $store_logo): void
     {
-        $this->storeLogo = $storeLogo;
+        $this->store_logo = $store_logo;
     }
 
     /**
@@ -98,15 +98,15 @@ class StoreEntity
      */
     public function getStoreIntroduce(): string
     {
-        return $this->storeIntroduce;
+        return $this->store_introduce;
     }
 
     /**
      * 设置店铺简介
      */
-    public function setStoreIntroduce(string $storeIntroduce): void
+    public function setStoreIntroduce(string $store_introduce): void
     {
-        $this->storeIntroduce = $storeIntroduce;
+        $this->store_introduce = $store_introduce;
     }
 
     /**
@@ -114,15 +114,15 @@ class StoreEntity
      */
     public function getStoreBackground(): string
     {
-        return $this->storeBackground;
+        return $this->store_background;
     }
 
     /**
      * 设置店铺背景图
      */
-    public function setStoreBackground(string $storeBackground): void
+    public function setStoreBackground(string $store_background): void
     {
-        $this->storeBackground = $storeBackground;
+        $this->store_background = $store_background;
     }
 
     /**
@@ -130,15 +130,15 @@ class StoreEntity
      */
     public function getStoreCategory(): string
     {
-        return $this->storeCategory;
+        return $this->store_category;
     }
 
     /**
      * 设置店铺所属类别
      */
-    public function setStoreCategory(string $storeCategory): void
+    public function setStoreCategory(string $store_category): void
     {
-        $this->storeCategory = $storeCategory;
+        $this->store_category = $store_category;
     }
 
     /**
@@ -146,15 +146,15 @@ class StoreEntity
      */
     public function getStoreRating(): string
     {
-        return $this->storeRating;
+        return $this->store_rating;
     }
 
     /**
      * 设置店铺评分：一般取值范围在0~5之间
      */
-    public function setStoreRating(string $storeRating): void
+    public function setStoreRating(string $store_rating): void
     {
-        $this->storeRating = $storeRating;
+        $this->store_rating = $store_rating;
     }
 
     /**
@@ -162,15 +162,15 @@ class StoreEntity
      */
     public function getStoreStatus(): string
     {
-        return $this->storeStatus;
+        return $this->store_status;
     }
 
     /**
      * 设置店铺状态：如"正常营业"、"关店维修"
      */
-    public function setStoreStatus(string $storeStatus): void
+    public function setStoreStatus(string $store_status): void
     {
-        $this->storeStatus = $storeStatus;
+        $this->store_status = $store_status;
     }
 
     /**
@@ -178,15 +178,15 @@ class StoreEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -194,15 +194,15 @@ class StoreEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -210,14 +210,14 @@ class StoreEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Responses;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProfileResponse')]

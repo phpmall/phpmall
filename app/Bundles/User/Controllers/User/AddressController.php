@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Controllers\User;
 
-use App\Api\User\Controllers\BaseController;
 use App\Bundles\User\Requests\Address\AddressCreateRequest;
 use App\Bundles\User\Requests\Address\AddressQueryRequest;
 use App\Bundles\User\Requests\Address\AddressUpdateRequest;
 use App\Bundles\User\Responses\AddressResponse;
+use App\Http\Controllers\User\BaseController;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'MerchantEntity')]
@@ -16,37 +16,37 @@ class MerchantEntity
     protected int $id;
 
     #[OA\Property(property: 'seller_user_id', description: '卖家创始人ID', type: 'integer')]
-    protected int $sellerUserId;
+    protected int $seller_user_id;
 
     #[OA\Property(property: 'company_name', description: '企业名称', type: 'string')]
-    protected string $companyName;
+    protected string $company_name;
 
     #[OA\Property(property: 'company_address', description: '企业地址', type: 'string')]
-    protected string $companyAddress;
+    protected string $company_address;
 
     #[OA\Property(property: 'legal_person', description: '企业法人姓名', type: 'string')]
-    protected string $legalPerson;
+    protected string $legal_person;
 
     #[OA\Property(property: 'business_license', description: '企业营业执照号', type: 'string')]
-    protected string $businessLicense;
+    protected string $business_license;
 
     #[OA\Property(property: 'tax_registration', description: '企业税务登记号', type: 'string')]
-    protected string $taxRegistration;
+    protected string $tax_registration;
 
     #[OA\Property(property: 'opening_bank', description: '开户银行', type: 'string')]
-    protected string $openingBank;
+    protected string $opening_bank;
 
     #[OA\Property(property: 'bank_account', description: '企业银行账户', type: 'string')]
-    protected string $bankAccount;
+    protected string $bank_account;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -69,15 +69,15 @@ class MerchantEntity
      */
     public function getSellerUserId(): int
     {
-        return $this->sellerUserId;
+        return $this->seller_user_id;
     }
 
     /**
      * 设置卖家创始人ID
      */
-    public function setSellerUserId(int $sellerUserId): void
+    public function setSellerUserId(int $seller_user_id): void
     {
-        $this->sellerUserId = $sellerUserId;
+        $this->seller_user_id = $seller_user_id;
     }
 
     /**
@@ -85,15 +85,15 @@ class MerchantEntity
      */
     public function getCompanyName(): string
     {
-        return $this->companyName;
+        return $this->company_name;
     }
 
     /**
      * 设置企业名称
      */
-    public function setCompanyName(string $companyName): void
+    public function setCompanyName(string $company_name): void
     {
-        $this->companyName = $companyName;
+        $this->company_name = $company_name;
     }
 
     /**
@@ -101,15 +101,15 @@ class MerchantEntity
      */
     public function getCompanyAddress(): string
     {
-        return $this->companyAddress;
+        return $this->company_address;
     }
 
     /**
      * 设置企业地址
      */
-    public function setCompanyAddress(string $companyAddress): void
+    public function setCompanyAddress(string $company_address): void
     {
-        $this->companyAddress = $companyAddress;
+        $this->company_address = $company_address;
     }
 
     /**
@@ -117,15 +117,15 @@ class MerchantEntity
      */
     public function getLegalPerson(): string
     {
-        return $this->legalPerson;
+        return $this->legal_person;
     }
 
     /**
      * 设置企业法人姓名
      */
-    public function setLegalPerson(string $legalPerson): void
+    public function setLegalPerson(string $legal_person): void
     {
-        $this->legalPerson = $legalPerson;
+        $this->legal_person = $legal_person;
     }
 
     /**
@@ -133,15 +133,15 @@ class MerchantEntity
      */
     public function getBusinessLicense(): string
     {
-        return $this->businessLicense;
+        return $this->business_license;
     }
 
     /**
      * 设置企业营业执照号
      */
-    public function setBusinessLicense(string $businessLicense): void
+    public function setBusinessLicense(string $business_license): void
     {
-        $this->businessLicense = $businessLicense;
+        $this->business_license = $business_license;
     }
 
     /**
@@ -149,15 +149,15 @@ class MerchantEntity
      */
     public function getTaxRegistration(): string
     {
-        return $this->taxRegistration;
+        return $this->tax_registration;
     }
 
     /**
      * 设置企业税务登记号
      */
-    public function setTaxRegistration(string $taxRegistration): void
+    public function setTaxRegistration(string $tax_registration): void
     {
-        $this->taxRegistration = $taxRegistration;
+        $this->tax_registration = $tax_registration;
     }
 
     /**
@@ -165,15 +165,15 @@ class MerchantEntity
      */
     public function getOpeningBank(): string
     {
-        return $this->openingBank;
+        return $this->opening_bank;
     }
 
     /**
      * 设置开户银行
      */
-    public function setOpeningBank(string $openingBank): void
+    public function setOpeningBank(string $opening_bank): void
     {
-        $this->openingBank = $openingBank;
+        $this->opening_bank = $opening_bank;
     }
 
     /**
@@ -181,15 +181,15 @@ class MerchantEntity
      */
     public function getBankAccount(): string
     {
-        return $this->bankAccount;
+        return $this->bank_account;
     }
 
     /**
      * 设置企业银行账户
      */
-    public function setBankAccount(string $bankAccount): void
+    public function setBankAccount(string $bank_account): void
     {
-        $this->bankAccount = $bankAccount;
+        $this->bank_account = $bank_account;
     }
 
     /**
@@ -197,15 +197,15 @@ class MerchantEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -213,15 +213,15 @@ class MerchantEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -229,14 +229,14 @@ class MerchantEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

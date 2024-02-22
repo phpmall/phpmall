@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'CartEntity')]
@@ -16,25 +16,25 @@ class CartEntity
     protected int $id;
 
     #[OA\Property(property: 'merchant_id', description: '商户id', type: 'integer')]
-    protected int $merchantId;
+    protected int $merchant_id;
 
     #[OA\Property(property: 'shop_id', description: '店铺ID', type: 'integer')]
-    protected int $shopId;
+    protected int $shop_id;
 
     #[OA\Property(property: 'user_id', description: '买家ID', type: 'integer')]
-    protected int $userId;
+    protected int $user_id;
 
     #[OA\Property(property: 'product_id', description: '产品ID', type: 'integer')]
-    protected int $productId;
+    protected int $product_id;
 
     #[OA\Property(property: 'quantity', description: '商品数量', type: 'integer')]
     protected int $quantity;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     /**
      * 获取
@@ -57,15 +57,15 @@ class CartEntity
      */
     public function getMerchantId(): int
     {
-        return $this->merchantId;
+        return $this->merchant_id;
     }
 
     /**
      * 设置商户id
      */
-    public function setMerchantId(int $merchantId): void
+    public function setMerchantId(int $merchant_id): void
     {
-        $this->merchantId = $merchantId;
+        $this->merchant_id = $merchant_id;
     }
 
     /**
@@ -73,15 +73,15 @@ class CartEntity
      */
     public function getShopId(): int
     {
-        return $this->shopId;
+        return $this->shop_id;
     }
 
     /**
      * 设置店铺ID
      */
-    public function setShopId(int $shopId): void
+    public function setShopId(int $shop_id): void
     {
-        $this->shopId = $shopId;
+        $this->shop_id = $shop_id;
     }
 
     /**
@@ -89,15 +89,15 @@ class CartEntity
      */
     public function getUserId(): int
     {
-        return $this->userId;
+        return $this->user_id;
     }
 
     /**
      * 设置买家ID
      */
-    public function setUserId(int $userId): void
+    public function setUserId(int $user_id): void
     {
-        $this->userId = $userId;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -105,15 +105,15 @@ class CartEntity
      */
     public function getProductId(): int
     {
-        return $this->productId;
+        return $this->product_id;
     }
 
     /**
      * 设置产品ID
      */
-    public function setProductId(int $productId): void
+    public function setProductId(int $product_id): void
     {
-        $this->productId = $productId;
+        $this->product_id = $product_id;
     }
 
     /**
@@ -137,15 +137,15 @@ class CartEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -153,14 +153,14 @@ class CartEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 }

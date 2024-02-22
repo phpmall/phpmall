@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Bundles\Region\Controllers\Portal;
 
-use App\Api\Portal\Controllers\BaseController;
 use App\Bundles\Region\Requests\RegionRequest;
 use App\Bundles\Region\Responses\RegionResponse;
+use App\Http\Controllers\Portal\BaseController;
 use App\Services\RegionService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;

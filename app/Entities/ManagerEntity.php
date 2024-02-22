@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ManagerEntity')]
@@ -16,16 +16,16 @@ class ManagerEntity
     protected int $id;
 
     #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
-    protected int $userId;
+    protected int $user_id;
 
     #[OA\Property(property: 'status', description: '状态:1正常,2禁用', type: 'string')]
     protected string $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     /**
      * 获取
@@ -48,15 +48,15 @@ class ManagerEntity
      */
     public function getUserId(): int
     {
-        return $this->userId;
+        return $this->user_id;
     }
 
     /**
      * 设置用户ID
      */
-    public function setUserId(int $userId): void
+    public function setUserId(int $user_id): void
     {
-        $this->userId = $userId;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -80,15 +80,15 @@ class ManagerEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -96,14 +96,14 @@ class ManagerEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 }

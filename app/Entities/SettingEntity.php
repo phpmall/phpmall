@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'SettingEntity')]
@@ -16,7 +16,7 @@ class SettingEntity
     protected int $id;
 
     #[OA\Property(property: 'parent_id', description: '父节点id', type: 'integer')]
-    protected int $parentId;
+    protected int $parent_id;
 
     #[OA\Property(property: 'name', description: '配置名称', type: 'string')]
     protected string $name;
@@ -57,15 +57,15 @@ class SettingEntity
      */
     public function getParentId(): int
     {
-        return $this->parentId;
+        return $this->parent_id;
     }
 
     /**
      * 设置父节点id
      */
-    public function setParentId(int $parentId): void
+    public function setParentId(int $parent_id): void
     {
-        $this->parentId = $parentId;
+        $this->parent_id = $parent_id;
     }
 
     /**

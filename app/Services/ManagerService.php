@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Foundation\Contracts\ServiceInterface;
+use App\Foundation\Services\CommonService;
 use App\Repositories\ManagerRepository;
-use Juling\Generator\Contracts\ServiceInterface;
-use Juling\Generator\Services\CommonService;
 
 class ManagerService extends CommonService implements ServiceInterface
 {

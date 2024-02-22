@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProductMemberPriceEntity')]
@@ -16,19 +16,19 @@ class ProductMemberPriceEntity
     protected int $id;
 
     #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
-    protected int $productId;
+    protected int $product_id;
 
     #[OA\Property(property: 'member_level_id', description: '会员等级id', type: 'integer')]
-    protected int $memberLevelId;
+    protected int $member_level_id;
 
     #[OA\Property(property: 'member_level_name', description: '会员等级名称', type: 'string')]
-    protected string $memberLevelName;
+    protected string $member_level_name;
 
     #[OA\Property(property: 'member_discount', description: '会员折扣', type: 'float')]
-    protected float $memberDiscount;
+    protected float $member_discount;
 
     #[OA\Property(property: 'member_price', description: '会员价格', type: 'float')]
-    protected float $memberPrice;
+    protected float $member_price;
 
     /**
      * 获取
@@ -51,15 +51,15 @@ class ProductMemberPriceEntity
      */
     public function getProductId(): int
     {
-        return $this->productId;
+        return $this->product_id;
     }
 
     /**
      * 设置商品id
      */
-    public function setProductId(int $productId): void
+    public function setProductId(int $product_id): void
     {
-        $this->productId = $productId;
+        $this->product_id = $product_id;
     }
 
     /**
@@ -67,15 +67,15 @@ class ProductMemberPriceEntity
      */
     public function getMemberLevelId(): int
     {
-        return $this->memberLevelId;
+        return $this->member_level_id;
     }
 
     /**
      * 设置会员等级id
      */
-    public function setMemberLevelId(int $memberLevelId): void
+    public function setMemberLevelId(int $member_level_id): void
     {
-        $this->memberLevelId = $memberLevelId;
+        $this->member_level_id = $member_level_id;
     }
 
     /**
@@ -83,15 +83,15 @@ class ProductMemberPriceEntity
      */
     public function getMemberLevelName(): string
     {
-        return $this->memberLevelName;
+        return $this->member_level_name;
     }
 
     /**
      * 设置会员等级名称
      */
-    public function setMemberLevelName(string $memberLevelName): void
+    public function setMemberLevelName(string $member_level_name): void
     {
-        $this->memberLevelName = $memberLevelName;
+        $this->member_level_name = $member_level_name;
     }
 
     /**
@@ -99,15 +99,15 @@ class ProductMemberPriceEntity
      */
     public function getMemberDiscount(): float
     {
-        return $this->memberDiscount;
+        return $this->member_discount;
     }
 
     /**
      * 设置会员折扣
      */
-    public function setMemberDiscount(float $memberDiscount): void
+    public function setMemberDiscount(float $member_discount): void
     {
-        $this->memberDiscount = $memberDiscount;
+        $this->member_discount = $member_discount;
     }
 
     /**
@@ -115,14 +115,14 @@ class ProductMemberPriceEntity
      */
     public function getMemberPrice(): float
     {
-        return $this->memberPrice;
+        return $this->member_price;
     }
 
     /**
      * 设置会员价格
      */
-    public function setMemberPrice(float $memberPrice): void
+    public function setMemberPrice(float $member_price): void
     {
-        $this->memberPrice = $memberPrice;
+        $this->member_price = $member_price;
     }
 }

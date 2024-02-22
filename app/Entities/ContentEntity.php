@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ContentEntity')]
@@ -16,16 +16,16 @@ class ContentEntity
     protected int $id;
 
     #[OA\Property(property: 'parent_id', description: '父级的ID', type: 'integer')]
-    protected int $parentId;
+    protected int $parent_id;
 
     #[OA\Property(property: 'in_station', description: '内容类型:1站内,2站外', type: 'integer')]
-    protected int $inStation;
+    protected int $in_station;
 
     #[OA\Property(property: 'pattern_id', description: '模型ID', type: 'integer')]
-    protected int $patternId;
+    protected int $pattern_id;
 
     #[OA\Property(property: 'pattern_code', description: '模型类型', type: 'string')]
-    protected string $patternCode;
+    protected string $pattern_code;
 
     #[OA\Property(property: 'slug', description: 'URL PathInfo', type: 'string')]
     protected string $slug;
@@ -58,16 +58,16 @@ class ContentEntity
     protected string $attachment;
 
     #[OA\Property(property: 'redirect_url', description: '站外链接', type: 'string')]
-    protected string $redirectUrl;
+    protected string $redirect_url;
 
     #[OA\Property(property: 'template_index', description: '频道模板', type: 'string')]
-    protected string $templateIndex;
+    protected string $template_index;
 
     #[OA\Property(property: 'template_list', description: '列表模板', type: 'string')]
-    protected string $templateList;
+    protected string $template_list;
 
     #[OA\Property(property: 'template_detail', description: '详情模板', type: 'string')]
-    protected string $templateDetail;
+    protected string $template_detail;
 
     #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
     protected int $sort;
@@ -76,13 +76,13 @@ class ContentEntity
     protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -105,15 +105,15 @@ class ContentEntity
      */
     public function getParentId(): int
     {
-        return $this->parentId;
+        return $this->parent_id;
     }
 
     /**
      * 设置父级的ID
      */
-    public function setParentId(int $parentId): void
+    public function setParentId(int $parent_id): void
     {
-        $this->parentId = $parentId;
+        $this->parent_id = $parent_id;
     }
 
     /**
@@ -121,15 +121,15 @@ class ContentEntity
      */
     public function getInStation(): int
     {
-        return $this->inStation;
+        return $this->in_station;
     }
 
     /**
      * 设置内容类型:1站内,2站外
      */
-    public function setInStation(int $inStation): void
+    public function setInStation(int $in_station): void
     {
-        $this->inStation = $inStation;
+        $this->in_station = $in_station;
     }
 
     /**
@@ -137,15 +137,15 @@ class ContentEntity
      */
     public function getPatternId(): int
     {
-        return $this->patternId;
+        return $this->pattern_id;
     }
 
     /**
      * 设置模型ID
      */
-    public function setPatternId(int $patternId): void
+    public function setPatternId(int $pattern_id): void
     {
-        $this->patternId = $patternId;
+        $this->pattern_id = $pattern_id;
     }
 
     /**
@@ -153,15 +153,15 @@ class ContentEntity
      */
     public function getPatternCode(): string
     {
-        return $this->patternCode;
+        return $this->pattern_code;
     }
 
     /**
      * 设置模型类型
      */
-    public function setPatternCode(string $patternCode): void
+    public function setPatternCode(string $pattern_code): void
     {
-        $this->patternCode = $patternCode;
+        $this->pattern_code = $pattern_code;
     }
 
     /**
@@ -329,15 +329,15 @@ class ContentEntity
      */
     public function getRedirectUrl(): string
     {
-        return $this->redirectUrl;
+        return $this->redirect_url;
     }
 
     /**
      * 设置站外链接
      */
-    public function setRedirectUrl(string $redirectUrl): void
+    public function setRedirectUrl(string $redirect_url): void
     {
-        $this->redirectUrl = $redirectUrl;
+        $this->redirect_url = $redirect_url;
     }
 
     /**
@@ -345,15 +345,15 @@ class ContentEntity
      */
     public function getTemplateIndex(): string
     {
-        return $this->templateIndex;
+        return $this->template_index;
     }
 
     /**
      * 设置频道模板
      */
-    public function setTemplateIndex(string $templateIndex): void
+    public function setTemplateIndex(string $template_index): void
     {
-        $this->templateIndex = $templateIndex;
+        $this->template_index = $template_index;
     }
 
     /**
@@ -361,15 +361,15 @@ class ContentEntity
      */
     public function getTemplateList(): string
     {
-        return $this->templateList;
+        return $this->template_list;
     }
 
     /**
      * 设置列表模板
      */
-    public function setTemplateList(string $templateList): void
+    public function setTemplateList(string $template_list): void
     {
-        $this->templateList = $templateList;
+        $this->template_list = $template_list;
     }
 
     /**
@@ -377,15 +377,15 @@ class ContentEntity
      */
     public function getTemplateDetail(): string
     {
-        return $this->templateDetail;
+        return $this->template_detail;
     }
 
     /**
      * 设置详情模板
      */
-    public function setTemplateDetail(string $templateDetail): void
+    public function setTemplateDetail(string $template_detail): void
     {
-        $this->templateDetail = $templateDetail;
+        $this->template_detail = $template_detail;
     }
 
     /**
@@ -425,15 +425,15 @@ class ContentEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -441,15 +441,15 @@ class ContentEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -457,14 +457,14 @@ class ContentEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

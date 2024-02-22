@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'MerchantAddressEntity')]
@@ -16,7 +16,7 @@ class MerchantAddressEntity
     protected int $id;
 
     #[OA\Property(property: 'merchant_id', description: '商户ID', type: 'integer')]
-    protected int $merchantId;
+    protected int $merchant_id;
 
     #[OA\Property(property: 'name', description: '地址名称', type: 'string')]
     protected string $name;
@@ -28,40 +28,40 @@ class MerchantAddressEntity
     protected string $mobile;
 
     #[OA\Property(property: 'country_name', description: '国家', type: 'string')]
-    protected string $countryName;
+    protected string $country_name;
 
     #[OA\Property(property: 'country_code', description: '国家编码', type: 'string')]
-    protected string $countryCode;
+    protected string $country_code;
 
     #[OA\Property(property: 'province_name', description: '省份', type: 'string')]
-    protected string $provinceName;
+    protected string $province_name;
 
     #[OA\Property(property: 'province_code', description: '省份编码', type: 'string')]
-    protected string $provinceCode;
+    protected string $province_code;
 
     #[OA\Property(property: 'city_name', description: '城市', type: 'string')]
-    protected string $cityName;
+    protected string $city_name;
 
     #[OA\Property(property: 'city_code', description: '城市编码', type: 'string')]
-    protected string $cityCode;
+    protected string $city_code;
 
     #[OA\Property(property: 'district_name', description: '区/县', type: 'string')]
-    protected string $districtName;
+    protected string $district_name;
 
     #[OA\Property(property: 'district_code', description: '区/县编码', type: 'string')]
-    protected string $districtCode;
+    protected string $district_code;
 
     #[OA\Property(property: 'detail_address', description: '详情地址', type: 'string')]
-    protected string $detailAddress;
+    protected string $detail_address;
 
     #[OA\Property(property: 'send_status', description: '默认发货地址：0->否；1->是', type: 'integer')]
-    protected int $sendStatus;
+    protected int $send_status;
 
     #[OA\Property(property: 'receive_status', description: '是否默认收货地址：0->否；1->是', type: 'integer')]
-    protected int $receiveStatus;
+    protected int $receive_status;
 
     #[OA\Property(property: 'invoice_status', description: '默认收票地址：0->否；1->是', type: 'integer')]
-    protected int $invoiceStatus;
+    protected int $invoice_status;
 
     #[OA\Property(property: 'latitude', description: '纬度', type: 'string')]
     protected string $latitude;
@@ -70,13 +70,13 @@ class MerchantAddressEntity
     protected string $longitude;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -99,15 +99,15 @@ class MerchantAddressEntity
      */
     public function getMerchantId(): int
     {
-        return $this->merchantId;
+        return $this->merchant_id;
     }
 
     /**
      * 设置商户ID
      */
-    public function setMerchantId(int $merchantId): void
+    public function setMerchantId(int $merchant_id): void
     {
-        $this->merchantId = $merchantId;
+        $this->merchant_id = $merchant_id;
     }
 
     /**
@@ -163,15 +163,15 @@ class MerchantAddressEntity
      */
     public function getCountryName(): string
     {
-        return $this->countryName;
+        return $this->country_name;
     }
 
     /**
      * 设置国家
      */
-    public function setCountryName(string $countryName): void
+    public function setCountryName(string $country_name): void
     {
-        $this->countryName = $countryName;
+        $this->country_name = $country_name;
     }
 
     /**
@@ -179,15 +179,15 @@ class MerchantAddressEntity
      */
     public function getCountryCode(): string
     {
-        return $this->countryCode;
+        return $this->country_code;
     }
 
     /**
      * 设置国家编码
      */
-    public function setCountryCode(string $countryCode): void
+    public function setCountryCode(string $country_code): void
     {
-        $this->countryCode = $countryCode;
+        $this->country_code = $country_code;
     }
 
     /**
@@ -195,15 +195,15 @@ class MerchantAddressEntity
      */
     public function getProvinceName(): string
     {
-        return $this->provinceName;
+        return $this->province_name;
     }
 
     /**
      * 设置省份
      */
-    public function setProvinceName(string $provinceName): void
+    public function setProvinceName(string $province_name): void
     {
-        $this->provinceName = $provinceName;
+        $this->province_name = $province_name;
     }
 
     /**
@@ -211,15 +211,15 @@ class MerchantAddressEntity
      */
     public function getProvinceCode(): string
     {
-        return $this->provinceCode;
+        return $this->province_code;
     }
 
     /**
      * 设置省份编码
      */
-    public function setProvinceCode(string $provinceCode): void
+    public function setProvinceCode(string $province_code): void
     {
-        $this->provinceCode = $provinceCode;
+        $this->province_code = $province_code;
     }
 
     /**
@@ -227,15 +227,15 @@ class MerchantAddressEntity
      */
     public function getCityName(): string
     {
-        return $this->cityName;
+        return $this->city_name;
     }
 
     /**
      * 设置城市
      */
-    public function setCityName(string $cityName): void
+    public function setCityName(string $city_name): void
     {
-        $this->cityName = $cityName;
+        $this->city_name = $city_name;
     }
 
     /**
@@ -243,15 +243,15 @@ class MerchantAddressEntity
      */
     public function getCityCode(): string
     {
-        return $this->cityCode;
+        return $this->city_code;
     }
 
     /**
      * 设置城市编码
      */
-    public function setCityCode(string $cityCode): void
+    public function setCityCode(string $city_code): void
     {
-        $this->cityCode = $cityCode;
+        $this->city_code = $city_code;
     }
 
     /**
@@ -259,15 +259,15 @@ class MerchantAddressEntity
      */
     public function getDistrictName(): string
     {
-        return $this->districtName;
+        return $this->district_name;
     }
 
     /**
      * 设置区/县
      */
-    public function setDistrictName(string $districtName): void
+    public function setDistrictName(string $district_name): void
     {
-        $this->districtName = $districtName;
+        $this->district_name = $district_name;
     }
 
     /**
@@ -275,15 +275,15 @@ class MerchantAddressEntity
      */
     public function getDistrictCode(): string
     {
-        return $this->districtCode;
+        return $this->district_code;
     }
 
     /**
      * 设置区/县编码
      */
-    public function setDistrictCode(string $districtCode): void
+    public function setDistrictCode(string $district_code): void
     {
-        $this->districtCode = $districtCode;
+        $this->district_code = $district_code;
     }
 
     /**
@@ -291,15 +291,15 @@ class MerchantAddressEntity
      */
     public function getDetailAddress(): string
     {
-        return $this->detailAddress;
+        return $this->detail_address;
     }
 
     /**
      * 设置详情地址
      */
-    public function setDetailAddress(string $detailAddress): void
+    public function setDetailAddress(string $detail_address): void
     {
-        $this->detailAddress = $detailAddress;
+        $this->detail_address = $detail_address;
     }
 
     /**
@@ -307,15 +307,15 @@ class MerchantAddressEntity
      */
     public function getSendStatus(): int
     {
-        return $this->sendStatus;
+        return $this->send_status;
     }
 
     /**
      * 设置默认发货地址：0->否；1->是
      */
-    public function setSendStatus(int $sendStatus): void
+    public function setSendStatus(int $send_status): void
     {
-        $this->sendStatus = $sendStatus;
+        $this->send_status = $send_status;
     }
 
     /**
@@ -323,15 +323,15 @@ class MerchantAddressEntity
      */
     public function getReceiveStatus(): int
     {
-        return $this->receiveStatus;
+        return $this->receive_status;
     }
 
     /**
      * 设置是否默认收货地址：0->否；1->是
      */
-    public function setReceiveStatus(int $receiveStatus): void
+    public function setReceiveStatus(int $receive_status): void
     {
-        $this->receiveStatus = $receiveStatus;
+        $this->receive_status = $receive_status;
     }
 
     /**
@@ -339,15 +339,15 @@ class MerchantAddressEntity
      */
     public function getInvoiceStatus(): int
     {
-        return $this->invoiceStatus;
+        return $this->invoice_status;
     }
 
     /**
      * 设置默认收票地址：0->否；1->是
      */
-    public function setInvoiceStatus(int $invoiceStatus): void
+    public function setInvoiceStatus(int $invoice_status): void
     {
-        $this->invoiceStatus = $invoiceStatus;
+        $this->invoice_status = $invoice_status;
     }
 
     /**
@@ -387,15 +387,15 @@ class MerchantAddressEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -403,15 +403,15 @@ class MerchantAddressEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -419,14 +419,14 @@ class MerchantAddressEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

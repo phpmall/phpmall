@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'CommentEntity')]
@@ -16,16 +16,16 @@ class CommentEntity
     protected int $id;
 
     #[OA\Property(property: 'parent_id', description: '父级的ID', type: 'integer')]
-    protected int $parentId;
+    protected int $parent_id;
 
     #[OA\Property(property: 'user_id', description: '用户ID', type: 'integer')]
-    protected int $userId;
+    protected int $user_id;
 
     #[OA\Property(property: 'user_name', description: '用户昵称', type: 'string')]
-    protected string $userName;
+    protected string $user_name;
 
     #[OA\Property(property: 'content_id', description: '内容ID', type: 'integer')]
-    protected int $contentId;
+    protected int $content_id;
 
     #[OA\Property(property: 'comment', description: '评论内容', type: 'string')]
     protected string $comment;
@@ -34,22 +34,22 @@ class CommentEntity
     protected int $rank;
 
     #[OA\Property(property: 'user_agent', description: 'User Agent', type: 'string')]
-    protected string $userAgent;
+    protected string $user_agent;
 
     #[OA\Property(property: 'ip_address', description: 'IP地址', type: 'string')]
-    protected string $ipAddress;
+    protected string $ip_address;
 
     #[OA\Property(property: 'status', description: '状态:1正常,2禁用', type: 'integer')]
     protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
-    protected string $createdAt;
+    protected string $created_at;
 
     #[OA\Property(property: 'updated_at', description: '', type: 'string')]
-    protected string $updatedAt;
+    protected string $updated_at;
 
     #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
-    protected string $deletedAt;
+    protected string $deleted_at;
 
     /**
      * 获取
@@ -72,15 +72,15 @@ class CommentEntity
      */
     public function getParentId(): int
     {
-        return $this->parentId;
+        return $this->parent_id;
     }
 
     /**
      * 设置父级的ID
      */
-    public function setParentId(int $parentId): void
+    public function setParentId(int $parent_id): void
     {
-        $this->parentId = $parentId;
+        $this->parent_id = $parent_id;
     }
 
     /**
@@ -88,15 +88,15 @@ class CommentEntity
      */
     public function getUserId(): int
     {
-        return $this->userId;
+        return $this->user_id;
     }
 
     /**
      * 设置用户ID
      */
-    public function setUserId(int $userId): void
+    public function setUserId(int $user_id): void
     {
-        $this->userId = $userId;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -104,15 +104,15 @@ class CommentEntity
      */
     public function getUserName(): string
     {
-        return $this->userName;
+        return $this->user_name;
     }
 
     /**
      * 设置用户昵称
      */
-    public function setUserName(string $userName): void
+    public function setUserName(string $user_name): void
     {
-        $this->userName = $userName;
+        $this->user_name = $user_name;
     }
 
     /**
@@ -120,15 +120,15 @@ class CommentEntity
      */
     public function getContentId(): int
     {
-        return $this->contentId;
+        return $this->content_id;
     }
 
     /**
      * 设置内容ID
      */
-    public function setContentId(int $contentId): void
+    public function setContentId(int $content_id): void
     {
-        $this->contentId = $contentId;
+        $this->content_id = $content_id;
     }
 
     /**
@@ -168,15 +168,15 @@ class CommentEntity
      */
     public function getUserAgent(): string
     {
-        return $this->userAgent;
+        return $this->user_agent;
     }
 
     /**
      * 设置User Agent
      */
-    public function setUserAgent(string $userAgent): void
+    public function setUserAgent(string $user_agent): void
     {
-        $this->userAgent = $userAgent;
+        $this->user_agent = $user_agent;
     }
 
     /**
@@ -184,15 +184,15 @@ class CommentEntity
      */
     public function getIpAddress(): string
     {
-        return $this->ipAddress;
+        return $this->ip_address;
     }
 
     /**
      * 设置IP地址
      */
-    public function setIpAddress(string $ipAddress): void
+    public function setIpAddress(string $ip_address): void
     {
-        $this->ipAddress = $ipAddress;
+        $this->ip_address = $ip_address;
     }
 
     /**
@@ -216,15 +216,15 @@ class CommentEntity
      */
     public function getCreatedAt(): string
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     /**
      * 设置
      */
-    public function setCreatedAt(string $createdAt): void
+    public function setCreatedAt(string $created_at): void
     {
-        $this->createdAt = $createdAt;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -232,15 +232,15 @@ class CommentEntity
      */
     public function getUpdatedAt(): string
     {
-        return $this->updatedAt;
+        return $this->updated_at;
     }
 
     /**
      * 设置
      */
-    public function setUpdatedAt(string $updatedAt): void
+    public function setUpdatedAt(string $updated_at): void
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated_at = $updated_at;
     }
 
     /**
@@ -248,14 +248,14 @@ class CommentEntity
      */
     public function getDeletedAt(): string
     {
-        return $this->deletedAt;
+        return $this->deleted_at;
     }
 
     /**
      * 设置
      */
-    public function setDeletedAt(string $deletedAt): void
+    public function setDeletedAt(string $deleted_at): void
     {
-        $this->deletedAt = $deletedAt;
+        $this->deleted_at = $deleted_at;
     }
 }

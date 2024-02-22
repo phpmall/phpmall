@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use Juling\Generator\Support\ArrayHelper;
+use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'ProductFullReductionEntity')]
@@ -16,13 +16,13 @@ class ProductFullReductionEntity
     protected int $id;
 
     #[OA\Property(property: 'product_id', description: '商品id', type: 'integer')]
-    protected int $productId;
+    protected int $product_id;
 
     #[OA\Property(property: 'full_price', description: '商品满足金额', type: 'float')]
-    protected float $fullPrice;
+    protected float $full_price;
 
     #[OA\Property(property: 'reduce_price', description: '商品减少金额', type: 'float')]
-    protected float $reducePrice;
+    protected float $reduce_price;
 
     /**
      * 获取
@@ -45,15 +45,15 @@ class ProductFullReductionEntity
      */
     public function getProductId(): int
     {
-        return $this->productId;
+        return $this->product_id;
     }
 
     /**
      * 设置商品id
      */
-    public function setProductId(int $productId): void
+    public function setProductId(int $product_id): void
     {
-        $this->productId = $productId;
+        $this->product_id = $product_id;
     }
 
     /**
@@ -61,15 +61,15 @@ class ProductFullReductionEntity
      */
     public function getFullPrice(): float
     {
-        return $this->fullPrice;
+        return $this->full_price;
     }
 
     /**
      * 设置商品满足金额
      */
-    public function setFullPrice(float $fullPrice): void
+    public function setFullPrice(float $full_price): void
     {
-        $this->fullPrice = $fullPrice;
+        $this->full_price = $full_price;
     }
 
     /**
@@ -77,14 +77,14 @@ class ProductFullReductionEntity
      */
     public function getReducePrice(): float
     {
-        return $this->reducePrice;
+        return $this->reduce_price;
     }
 
     /**
      * 设置商品减少金额
      */
-    public function setReducePrice(float $reducePrice): void
+    public function setReducePrice(float $reduce_price): void
     {
-        $this->reducePrice = $reducePrice;
+        $this->reduce_price = $reduce_price;
     }
 }
