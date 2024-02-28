@@ -19,8 +19,8 @@ High performance e-commerce platform for PHP based on Octane.
 ### 安装 MySQL
 
 ```cmd
-docker run -d --name mysql -p 3306:3306 -v %cd%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:8.0.34 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8.0.34 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -d --name mysql -p 3306:3306 -v %cd%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:8.0.36 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8.0.36 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
 ### 安装 Redis

@@ -15,7 +15,7 @@ bun upgrade
 
 BackendBuild()
 {
-    cd $cur_dir
+    cd $cur_dir/phpmall-api
     composer u --no-dev -oW
     php artisan optimize
     php artisan migrate:fresh --force
@@ -25,16 +25,16 @@ BackendBuild()
 
 FrontendBuild()
 {
-    cd $cur_dir/frontend
+    cd $cur_dir/phpmall-web
     bun install
     bun run build-only
-    ossutil rm -rf oss://phpmall-demo/assets
+    ossutil rm -rf oss://phpmall-demo/assets # --endpoint=oss-cn-hongkong.aliyuncs.com
     ossutil cp -rf dist/ oss://phpmall-demo/
 }
 
 MobileBuild()
 {
-    cd $cur_dir/mobile
+    cd $cur_dir/phpmall-mobile
     bun install
     bun run build:h5 --base=/mobile/
     ossutil rm -rf oss://phpmall-demo/mobile
@@ -45,7 +45,7 @@ DocsBuild()
 {
     cd $cur_dir
     ossutil rm -rf oss://phpmall-demo/docs
-    ossutil cp -rf docs/ oss://phpmall-demo/docs
+    ossutil cp -rf phpmall-docs/ oss://phpmall-demo/docs
 }
 
 if [[ "${Stack}" = "all" ]]; then
