@@ -8,7 +8,7 @@ import {
   sellerRoutes,
   storeRoutes,
   userRoutes
-} from '@/pages'
+} from '@/views'
 import { useAuthStore } from '@/stores/auth'
 import { decodeURIComponent2, encodeURIComponent2 } from '@/utils/urlx'
 
