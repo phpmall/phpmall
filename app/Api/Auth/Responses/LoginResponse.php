@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Auth\Responses;
+namespace App\Api\Auth\Responses;
 
 use App\Support\ArrayHelper;
 use OpenApi\Attributes as OA;

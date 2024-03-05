@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Auth\Requests\Login;
+namespace App\Api\Auth\Requests\Login;
 
 use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Attributes as OA;

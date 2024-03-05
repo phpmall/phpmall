@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Auth\Services\Input;
+namespace App\Api\Auth\Services\Input;
 
 class RegisterInput
 {

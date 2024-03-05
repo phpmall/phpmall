@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Auth\Services;
+namespace App\Api\Auth\Services;
 
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Bundles\User\Services\UserBundleService;
