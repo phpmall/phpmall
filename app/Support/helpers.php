@@ -32,6 +32,6 @@ if (! function_exists('is_mobile')) {
     {
         $rule = '/^1[3-9]\d{9}$/';
 
-        return 1 === preg_match($rule, $mobile);
+        return preg_match($rule, $mobile) === 1;
     }
 }

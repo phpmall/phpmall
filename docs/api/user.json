@@ -1,0 +1,331 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API文档",
+        "description": "提供买家API接口",
+        "contact": {
+            "name": "API Develop Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "/api/user/",
+            "description": "开发环境"
+        }
+    ],
+    "paths": {
+        "/dashboard": {
+            "get": {
+                "tags": [
+                    "用户中心"
+                ],
+                "summary": "仪表台",
+                "operationId": "e79cbcc3a42f869179d2330111533960",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/upload": {
+            "post": {
+                "tags": [
+                    "素材"
+                ],
+                "summary": "附件上传接口",
+                "operationId": "24e9ceea4e51ee4ec6a59a4d009d8361",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "App\\Bundles\\Material\\Requests\\UploadRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Bundles\\Material\\Responses\\UploadResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/address": {
+            "get": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "获取用户全部收货地址",
+                "operationId": "b004afc6b9fc29e0f370deea38917a2c",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "当前页码",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "每页分页数",
+                        "required": false,
+                        "example": 10
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "App\\Bundles\\User\\Requests\\Address\\AddressQueryRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Bundles\\User\\Responses\\AddressResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/address/store": {
+            "post": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "新增用户收货地址",
+                "operationId": "da6ef6c573a55a47f47fd4e30600b7ef",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "App\\Bundles\\User\\Requests\\Address\\AddressCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/address/show": {
+            "get": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "查询用户收货地址",
+                "operationId": "5cdfecb0410b9816d74f1124f1a48ca6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "收货地址ID",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Bundles\\User\\Responses\\AddressResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/address/update": {
+            "put": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "更新用户收货地址",
+                "operationId": "89a594f45c6a2cebcc2433730868172d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "App\\Bundles\\User\\Requests\\Address\\AddressUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/address/destroy": {
+            "delete": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "删除用户收货地址",
+                "operationId": "66fdf71811e1215f8076a5e17f080c39",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "收货地址ID",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profile/show": {
+            "get": {
+                "tags": [
+                    "用户中心"
+                ],
+                "summary": "获取用户资料",
+                "operationId": "f72aec94dd85622c72fce62d3f6a39b9",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Bundles\\User\\Responses\\ProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profile/update": {
+            "put": {
+                "tags": [
+                    "用户中心"
+                ],
+                "summary": "更新用户资料",
+                "operationId": "c49a9ec46c016018d68c85f522e0599e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "App\\Bundles\\User\\Requests\\ProfileRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "OptionResponse": {
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "val": {
+                        "description": "值",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT 认证信息",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

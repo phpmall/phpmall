@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Controllers;
 
-use App\Api\Auth\Controllers\UserService;
+use App\Api\Auth\Requests\Signup\SignupMobileRequest;
+use App\Api\Auth\Responses\LoginResponse;
+use App\Api\Auth\Services\Input\RegisterInput;
 use App\Bundles\Sms\Services\SmsBundleService;
 use App\Exceptions\CustomException;
 use App\Services\JWTService;
-use App\Http\Controllers\Auth\Requests\Signup\SignupMobileRequest;
-use App\Http\Controllers\Auth\Responses\LoginResponse;
-use App\Http\Controllers\Auth\Services\Input\RegisterInput;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use OpenApi\Attributes as OA;

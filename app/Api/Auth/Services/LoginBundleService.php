@@ -8,7 +8,7 @@ use App\Bundles\User\Enums\UserStatusEnum;
 use App\Bundles\User\Services\UserBundleService;
 use App\Exceptions\CustomException;
 use App\Services\JWTService;
-use App\Http\Controllers\Auth\Services\Input\LoginInput;
+use App\Api\Auth\Services\Input\LoginInput;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 

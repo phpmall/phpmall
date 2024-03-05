@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\ServiceInterface;
-use App\Services\CommonService;
 use App\Repositories\ContentHistoryRepository;
 
 class ContentHistoryService extends CommonService implements ServiceInterface

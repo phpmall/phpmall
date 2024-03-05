@@ -141,7 +141,7 @@ class CategoryHelper
     private function getPid(int $id): int
     {
         foreach ($this->rawList as $key => $value) {
-            if ($this->rawList[$key][$this->field['id']] == $id) {
+            if ($id == $this->rawList[$key][$this->field['id']]) {
                 $this->formatList[] = $this->rawList[$key];
 
                 return $this->rawList[$key][$this->field['pid']];

@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Controllers;
 
+use App\Api\Auth\Requests\Login\LoginRequest;
+use App\Api\Auth\Requests\Login\LoginSmsRequest;
+use App\Api\Auth\Responses\LoginResponse;
+use App\Api\Auth\Services\Input\LoginInput;
+use App\Api\Auth\Services\LoginBundleService;
 use App\Bundles\Sms\Services\SmsBundleService;
 use App\Bundles\User\Enums\UserStatusEnum;
 use App\Bundles\User\Services\UserBundleService;
 use App\Exceptions\CustomException;
-use App\Http\Controllers\Auth\Requests\Login\LoginRequest;
-use App\Http\Controllers\Auth\Requests\Login\LoginSmsRequest;
-use App\Http\Controllers\Auth\Responses\LoginResponse;
-use App\Http\Controllers\Auth\Services\Input\LoginInput;
-use App\Http\Controllers\Auth\Services\LoginBundleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;

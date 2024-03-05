@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Entities\OrderEntity;
 use App\Contracts\RepositoryInterface;
-use App\Repositories\CurdRepository;
+use App\Entities\OrderEntity;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 

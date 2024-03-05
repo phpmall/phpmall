@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Controllers;
 
-use App\Http\Controllers\Auth\Requests\Forget\ForgetMobileRequest;
+use App\Api\Auth\Requests\Forget\ForgetMobileRequest;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 

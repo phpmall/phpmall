@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Bundles\Captcha\Controllers\Portal;
 
+use App\Api\Portal\Controllers\BaseController;
 use App\Bundles\Captcha\Responses\CaptchaResponse;
 use App\Bundles\Captcha\Services\CaptchaBundleService;
 use App\Exceptions\CustomException;
-use App\Api\Portal\Controllers\BaseController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use OpenApi\Attributes as OA;

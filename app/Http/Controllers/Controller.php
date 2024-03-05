@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 
 abstract class Controller extends BaseController

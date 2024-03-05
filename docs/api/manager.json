@@ -1,0 +1,390 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API文档",
+        "description": "提供运营API接口",
+        "contact": {
+            "name": "API Develop Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "/api/manager/",
+            "description": "开发环境"
+        }
+    ],
+    "paths": {
+        "/dashboard": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "运营首页",
+                "operationId": "14ad80dab6e6cfe5aa244baf04121a6b",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/menu": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "获取管理菜单",
+                "operationId": "8ea7e6ee0804cf0896de9807945228ca",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/message": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "获取系统消息",
+                "operationId": "89fbaa12e471719cf9624bc032694f4c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profile": {
+            "get": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "获取个人资料",
+                "operationId": "b77b6d808a74bb374b8f17e48948bd6e",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/password": {
+            "post": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "修改密码",
+                "operationId": "2ff6f210f54887360ea4d631d66a65fc",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "运营中心"
+                ],
+                "summary": "注销登录",
+                "operationId": "6f2848dea002e32be2f9da0335d13121",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/manager": {
+            "get": {
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "管理员接口",
+                "operationId": "c5037754a7e5b532ec22723467e7d0b0",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/seller": {
+            "get": {
+                "tags": [
+                    "卖家管理"
+                ],
+                "summary": "全部卖家",
+                "operationId": "54b8bc841cbbccffe03fc87e6722613f",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/shop": {
+            "get": {
+                "tags": [
+                    "店铺管理"
+                ],
+                "summary": "卖家店铺",
+                "operationId": "41fcfc2d0a09e9561370d53fd89c0a14",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/store": {
+            "get": {
+                "tags": [
+                    "门店管理"
+                ],
+                "summary": "卖家门店",
+                "operationId": "7af5f293258c97513adec2b96fd8d14b",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/permission": {
+            "get": {
+                "tags": [
+                    "权限管理"
+                ],
+                "summary": "权限列表",
+                "operationId": "7c6a3f64e393e1cf22a68323183e3ee2",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/role": {
+            "get": {
+                "tags": [
+                    "角色管理"
+                ],
+                "summary": "角色列表",
+                "operationId": "6273801dc9cce376adcb17ef35bbf092",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/userAddress": {
+            "get": {
+                "tags": [
+                    "买家收货地址"
+                ],
+                "summary": "买家收货地址",
+                "operationId": "39ca7ae5243cfe4c2a2ed8d5bf040dd7",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "当前页码",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "每页分页数",
+                        "required": false,
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "App\\Bundles\\User\\Responses\\AddressResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "用户列表",
+                "operationId": "f87f4746e8b37f620739486d38b50ebb",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/store": {
+            "post": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "添加新用户",
+                "operationId": "550aff7368df415e340870216bca7f9d",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/show": {
+            "get": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "获取详情",
+                "operationId": "a4bc074a44698cd5dffcc1431ff8ebf5",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/update": {
+            "put": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "更新用户详情",
+                "operationId": "7457250e080d76c39090e43c11969c04",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/destroy": {
+            "delete": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "删除用户",
+                "operationId": "1ce4b5a2f891a0519737b1430eb36705",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "OptionResponse": {
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "val": {
+                        "description": "值",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT 认证信息",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

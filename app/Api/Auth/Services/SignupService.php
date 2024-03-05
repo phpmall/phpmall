@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\Auth\Services;
 
-use App\Api\Auth\Services\LoginInput;
+use App\Api\Auth\Services\Input\RegisterInput;
 use App\Exceptions\CustomException;
-use App\Http\Controllers\Auth\Services\Input\RegisterInput;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
