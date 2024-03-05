@@ -30,7 +30,7 @@
     "@tsconfig/node20": "^20.1.2",
     "@types/crypto-js": "^4.2.2",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^20.11.6",
+    "@types/node": "^20.11.10",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vue/eslint-config-prettier": "^9.0.0",
