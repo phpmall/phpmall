@@ -1,0 +1,76 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Repositories;
+
+use App\Entities\HomeBrandEntity;
+use App\Contracts\RepositoryInterface;
+use App\Repositories\CurdRepository;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
+
+class HomeBrandRepository extends CurdRepository implements RepositoryInterface
+{
+    private static ?HomeBrandRepository $instance = null;
+
+    /**
+     * 单例
+     */
+    public static function getInstance(): HomeBrandRepository
+    {
+        if (is_null(self::$instance)) {
+            self::$instance = new HomeBrandRepository();
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * 添加
+     */
+    public function saveEntity(HomeBrandEntity $entity): int
+    {
+        return $this->save($entity->toArray());
+    }
+
+    /**
+     * 按照ID查询返回对象
+     */
+    public function findOneById(int $id): ?HomeBrandEntity
+    {
+        $data = $this->findById($id);
+        if (empty($data)) {
+            return null;
+        }
+
+        $entity = new HomeBrandEntity();
+        $entity->setData($data);
+
+        return $entity;
+    }
+
+    /**
+     * 按照条件查询返回对象
+     */
+    public function findOne(array $condition = []): ?HomeBrandEntity
+    {
+        $data = $this->find($condition);
+        if (empty($data)) {
+            return null;
+        }
+
+        $entity = new HomeBrandEntity();
+        $entity->setData($data);
+
+        return $entity;
+    }
+
+    /**
+     * 定义数据表查询构造器
+     */
+    public function model(): Builder
+    {
+        return DB::table('home_brands');
+    }
+}
