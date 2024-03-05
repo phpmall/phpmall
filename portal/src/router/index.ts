@@ -2,8 +2,8 @@ import { createRouter, createWebHistory, useRoute } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import {
-  adminRoutes,
-  passportRoutes,
+  authRoutes,
+  managerRoutes,
   portalRoutes,
   sellerRoutes,
   storeRoutes,
@@ -14,7 +14,7 @@ import { decodeURIComponent2, encodeURIComponent2 } from '@/utils/urlx'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [adminRoutes, passportRoutes, portalRoutes, sellerRoutes, storeRoutes, userRoutes]
+  routes: [authRoutes, managerRoutes, portalRoutes, sellerRoutes, storeRoutes, userRoutes]
 })
 
 router.beforeEach((to, from, next) => {
@@ -31,7 +31,7 @@ router.beforeEach((to, from, next) => {
     next({ path: decodeURIComponent2(callback as string) })
   } else if (to.meta.requiresAuth && !authStore.check()) {
     next({
-      name: 'passport.login',
+      name: 'login',
       query: {
         callback: encodeURIComponent2(to.fullPath)
       }

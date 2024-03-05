@@ -1,19 +1,19 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-export const adminRoutes: RouteRecordRaw = {
+export const managerRoutes: RouteRecordRaw = {
   path: '/admin',
   component: () => import('./Layout.vue'),
   children: [
     {
       path: '',
-      name: 'admin',
+      name: 'manager',
       redirect: {
-        name: 'admin.dashboard'
+        name: 'manager.dashboard'
       }
     },
     {
       path: 'dashboard',
-      name: 'admin.dashboard',
+      name: 'manager.dashboard',
       component: () => import('./Dashboard.vue')
     }
   ],

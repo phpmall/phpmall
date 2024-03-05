@@ -1,5 +1,5 @@
-export * from './admin/routes'
-export * from './passport/routes'
+export * from './auth/routes'
+export * from './manager/routes'
 export * from './portal/routes'
 export * from './seller/routes'
 export * from './store/routes'
