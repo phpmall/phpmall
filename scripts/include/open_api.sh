@@ -11,7 +11,7 @@ Echo_Green '------------------------------'
 Gen_OpenAPI
 
 rm -rf docs/api/*.json
-cp storage/app/ts/*.json docs/api/
+cp storage/app/openapi/*.json docs/api/
 
 Echo_Green '------------------------------'
 Echo_Green ' 生成typescript接口'

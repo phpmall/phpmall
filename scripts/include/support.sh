@@ -21,8 +21,8 @@ Gen_OpenAPI() {
 
     for item in "${modules[@]}"
     do
-        local result=()        
-        local c="app/Api/${item}/"
+        local result=()
+        local c="app/Api/${item}/Controllers/"
         if [ -d "$c" ]; then
             result+=($c)
             c=("app/Api/${item}/Requests/")
@@ -35,10 +35,14 @@ Gen_OpenAPI() {
             fi
         fi
 
-        result+=($(Get_Bundles ${item}))
-        result+=("app/Http/Responses/")
+        c=("app/Http/Responses/")
+        if [ -d "$c" ]; then
+            result+=($c)
+        fi
 
-        vendor/bin/openapi ${result[@]} -o storage/app/ts/${item,,}.json -f json
+        result+=($(Get_Bundles ${item}))
+
+        vendor/bin/openapi ${result[@]} -o storage/app/openapi/${item,,}.json -f json
     done
 }
 

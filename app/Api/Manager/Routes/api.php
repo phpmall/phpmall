@@ -11,17 +11,17 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/manager')->middleware('api')->group(function () {
     // 运营首页
-    Route::get('dashboard', [\App\Http\Controllers\Manager\IndexController::class, 'dashboard']);
+    Route::get('dashboard', [\App\Api\Manager\Controllers\IndexController::class, 'dashboard']);
     // 获取管理菜单
-    Route::get('menu', [\App\Http\Controllers\Manager\IndexController::class, 'menu']);
+    Route::get('menu', [\App\Api\Manager\Controllers\IndexController::class, 'menu']);
     // 获取系统消息
-    Route::get('message', [\App\Http\Controllers\Manager\IndexController::class, 'message']);
+    Route::get('message', [\App\Api\Manager\Controllers\IndexController::class, 'message']);
     // 获取个人资料
-    Route::get('profile', [\App\Http\Controllers\Manager\IndexController::class, 'profile']);
+    Route::get('profile', [\App\Api\Manager\Controllers\IndexController::class, 'profile']);
     // 修改密码
-    Route::post('password', [\App\Http\Controllers\Manager\IndexController::class, 'password']);
+    Route::post('password', [\App\Api\Manager\Controllers\IndexController::class, 'password']);
     // 注销登录
-    Route::post('logout', [\App\Http\Controllers\Manager\IndexController::class, 'logout']);
+    Route::post('logout', [\App\Api\Manager\Controllers\IndexController::class, 'logout']);
     // 管理员接口
     Route::get('manager', [\App\Bundles\Manager\Controllers\Manager\ManagerController::class, 'index']);
     // 全部卖家

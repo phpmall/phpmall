@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/user')->middleware('api')->group(function () {
     // 仪表台
-    Route::get('dashboard', [\App\Http\Controllers\User\IndexController::class, 'dashboard']);
+    Route::get('dashboard', [\App\Api\User\Controllers\IndexController::class, 'dashboard']);
     // 附件上传接口
     Route::post('upload', [\App\Bundles\Material\Controllers\User\UploadController::class, 'index']);
     // 获取用户全部收货地址

@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/auth')->middleware('api')->group(function () {
     // 发送手机短信验证码
-    Route::post('forget/mobile', [\App\Http\Controllers\Auth\ForgetController::class, 'mobile']);
+    Route::post('forget/mobile', [\App\Api\Auth\Controllers\ForgetController::class, 'mobile']);
     // 通过用户名和密码登录
-    Route::post('login', [\App\Http\Controllers\Auth\LoginController::class, 'index']);
+    Route::post('login', [\App\Api\Auth\Controllers\LoginController::class, 'index']);
     // 通过手机短信验证码登录
-    Route::post('login/smsCode', [\App\Http\Controllers\Auth\LoginController::class, 'smsCode']);
+    Route::post('login/smsCode', [\App\Api\Auth\Controllers\LoginController::class, 'smsCode']);
     // 通过验证码重新设置新密码
-    Route::post('reset', [\App\Http\Controllers\Auth\ResetController::class, 'reset']);
+    Route::post('reset', [\App\Api\Auth\Controllers\ResetController::class, 'reset']);
     // 通过手机号码注册
-    Route::post('signup/mobile', [\App\Http\Controllers\Auth\SignupController::class, 'mobile']);
+    Route::post('signup/mobile', [\App\Api\Auth\Controllers\SignupController::class, 'mobile']);
     // 获取授权跳转地址
     Route::post('oauth/redirect', [\App\Bundles\OAuth\Controllers\Auth\OAuthController::class, 'redirect']);
     // 授权登录回调地址

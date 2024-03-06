@@ -47,7 +47,7 @@ class CategoryHelper
             $data = $this->rawList;
         }
         foreach ($data as $category) {
-            if ($category[$this->field['pid']] == $pid) {
+            if ($category[$this->field['pid']] === $pid) {
                 $childList[] = $category;
             }
         }
@@ -80,7 +80,7 @@ class CategoryHelper
         $tree = [];
 
         foreach ($data as $node) {
-            if ($node[$this->field['pid']] == $parentId) {
+            if ($node[$this->field['pid']] === $parentId) {
                 $node['child'] = $this->getTree2($data, $node[$this->field['id']]);
                 $tree[] = $node;
             }
@@ -141,7 +141,7 @@ class CategoryHelper
     private function getPid(int $id): int
     {
         foreach ($this->rawList as $key => $value) {
-            if ($id == $this->rawList[$key][$this->field['id']]) {
+            if ($this->rawList[$key][$this->field['id']] === $id) {
                 $this->formatList[] = $this->rawList[$key];
 
                 return $this->rawList[$key][$this->field['pid']];
