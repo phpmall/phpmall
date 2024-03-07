@@ -19,10 +19,10 @@ Echo_Green '------------------------------'
 
 php artisan gen:typescript
 
-rm -rf mobile/src/{services,types}
-mkdir -p mobile/src/{services,types}
-cp storage/app/ts/services/{auth,portal,user}.ts mobile/src/services/
-cp storage/app/ts/types/{auth,portal,user}.d.ts mobile/src/types/
+rm -rf resources/mobile/src/{services,types}
+mkdir -p resources/mobile/src/{services,types}
+cp storage/app/ts/services/{auth,portal,user}.ts resources/mobile/src/services/
+cp storage/app/ts/types/{auth,portal,user}.d.ts resources/mobile/src/types/
 
-rm -rf portal/src/{services,types}
-cp -a storage/app/ts/{services,types} portal/src/
+rm -rf resources/web/src/{services,types}
+cp -a storage/app/ts/{services,types} resources/web/src/

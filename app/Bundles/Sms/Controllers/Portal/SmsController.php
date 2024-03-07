@@ -27,7 +27,7 @@ class SmsController extends BaseController
             $sms->sendCode($requestData['mobile']);
 
             return $this->success('短信发送成功');
-        } catch (CustomException|Throwable $e) {
+        } catch (Throwable $e) {
             if ($e instanceof CustomException) {
                 return $this->error($e->getMessage());
             }

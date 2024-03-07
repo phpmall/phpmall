@@ -55,7 +55,7 @@ class SignupController extends BaseController
             }
 
             throw new CustomException('注册失败');
-        } catch (CustomException|Throwable $e) {
+        } catch (Throwable $e) {
             if ($e instanceof CustomException) {
                 return $this->error($e->getMessage());
             }

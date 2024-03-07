@@ -11,7 +11,9 @@ else
     Stack=$1
 fi
 
-bun upgrade
+npm i -g npm
+npm i -g pnpm
+npm i -g bun
 
 BackendBuild()
 {
@@ -55,7 +57,7 @@ if [[ "${Stack}" = "all" ]]; then
   DocsBuild
 elif [[ "${Stack}" = "api" ]]; then
   BackendBuild
-elif [[ "${Stack}" = "frontend" ]]; then
+elif [[ "${Stack}" = "web" ]]; then
   FrontendBuild
 elif [[ "${Stack}" = "mobile" ]]; then
   MobileBuild
