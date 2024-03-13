@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Captcha\Controllers\Portal;
+namespace App\Bundles\Captcha\Controllers\Common;
 
-use App\Api\Portal\Controllers\BaseController;
+use App\Api\Common\Controllers\BaseController;
 use App\Bundles\Captcha\Responses\CaptchaResponse;
 use App\Bundles\Captcha\Services\CaptchaBundleService;
 use App\Exceptions\CustomException;

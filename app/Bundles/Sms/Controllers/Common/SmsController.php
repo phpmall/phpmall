@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Sms\Controllers\Portal;
+namespace App\Bundles\Sms\Controllers\Common;
 
-use App\Api\Portal\Controllers\BaseController;
+use App\Api\Common\Controllers\BaseController;
 use App\Bundles\Sms\Requests\SmsSendRequest;
 use App\Bundles\Sms\Services\SmsBundleService;
 use App\Exceptions\CustomException;
