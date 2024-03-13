@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API文档",
-        "description": "基础平台接口",
+        "description": "门户接口",
         "contact": {
             "name": "API Develop Team"
         },
@@ -10,87 +10,10 @@
     },
     "servers": [
         {
-            "url": "/api/portal/",
+            "url": "/",
             "description": "开发环境"
         }
     ],
-    "paths": {
-        "/captcha": {
-            "get": {
-                "tags": [
-                    "验证码"
-                ],
-                "summary": "图片验证码",
-                "operationId": "9c5c9850d7c12154b08aa551e5ee690a",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "App\\Bundles\\Captcha\\Responses\\CaptchaResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/region": {
-            "get": {
-                "tags": [
-                    "地区"
-                ],
-                "summary": "查询地区列表",
-                "operationId": "ca411332e24ad064add6ff4db29dbc13",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "上级地区ID，默认值为0显示省份数据",
-                        "required": true,
-                        "example": 0
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "App\\Bundles\\Region\\Responses\\RegionResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/sms": {
-            "post": {
-                "tags": [
-                    "短信"
-                ],
-                "summary": "发送手机短信验证码",
-                "operationId": "52344ff35aa85c97b594e2f409219571",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "App\\Bundles\\Sms\\Requests\\SmsSendRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        }
-    },
     "components": {
         "schemas": {
             "OptionResponse": {
@@ -107,6 +30,16 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT 认证信息",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     }

@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services;
+
+use App\Contracts\ServiceInterface;
+use App\Repositories\{$name}Repository;
+use App\Services\CommonService;
+
+class {$name}Service extends CommonService implements ServiceInterface
+{
+    public function getRepository(): {$name}Repository
+    {
+        return {$name}Repository::getInstance();
+    }
+}

@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Requests\{$camelName};
+
+use Illuminate\Foundation\Http\FormRequest;
+use OpenApi\Attributes as OA;
+
+#[OA\Schema(
+    schema: '{$name}CreateRequest',
+    required: [
+{$dataSets[required]}
+    ],
+    properties: [
+{$dataSets[properties]}
+    ]
+)]
+class {$name}CreateRequest extends FormRequest
+{
+    protected array $rule = [
+{$dataSets[rule]}
+    ];
+
+    protected array $message = [
+{$dataSets[message]}
+    ];
+}

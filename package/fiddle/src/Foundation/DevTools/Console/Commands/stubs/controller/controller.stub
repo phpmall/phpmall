@@ -1,0 +1,215 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\{$camelName}\{$name}CreateRequest;
+use App\Http\Requests\{$camelName}\{$name}QueryRequest;
+use App\Http\Requests\{$camelName}\{$name}UpdateRequest;
+use App\Http\Responses\{$camelName}\{$name}QueryResponse;
+use App\Http\Responses\{$camelName}\{$name}Response;
+use App\Entities\{$name}Entity;
+use App\Exception\CustomException;
+use App\Services\{$name}Service;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facade\DB;
+use Illuminate\Support\Facade\Log;
+use OpenApi\Attributes as OA;
+use Throwable;
+
+class {$name}Controller extends Controller
+{
+    #[OA\Post(path: '/api/{$camelName}/query', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['{$comment}'])]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
+    #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: {$name}QueryRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: {$name}QueryResponse::class))]
+    public function query(): Response
+    {
+        try {
+            $request = $this->requestBody();
+            $page = intval($this->input('page', 1));
+            $pageSize = intval($this->input('pageSize', 10));
+
+            $v = new {$name}QueryRequest();
+            if (! $v->check($request)) {
+                throw new CustomException($v->getError());
+            }
+
+            $condition = [
+                //
+            ];
+
+            ${$camelName}Service = new {$name}Service();
+            $result = ${$camelName}Service->page($condition, $page, $pageSize);
+
+            foreach ($result['data'] as $key => $item) {
+                $response = new {$name}Response();
+                $response->setData($item);
+                $result['data'][$key] = $response->toArray();
+            }
+
+            return $this->success($result);
+        } catch (Throwable $e) {
+            if ($e instanceof CustomException) {
+                return $this->fail($e->getMessage());
+            }
+
+            Log::error($e);
+
+            return $this->fail('查询列表错误');
+        }
+    }
+
+    #[OA\Post(path: '/api/{$camelName}/create', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['{$comment}'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: {$name}CreateRequest::class))]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function create(): Response
+    {
+        DB::startTrans();
+        try {
+            $request = $this->requestBody();
+
+            $v = new {$name}CreateRequest();
+            if (! $v->check($request)) {
+                throw new CustomException($v->getError());
+            }
+
+            $input = new {$name}Input();
+            $input->setData($request);
+
+            ${$camelName}Service = new {$name}Service();
+            $insertId = ${$camelName}Service->save($input->toArray());
+            if ($insertId > 0) {
+                DB::commit();
+
+                return $this->success('新增数据成功');
+            }
+
+            throw new CustomException('新增数据失败');
+        } catch (Throwable $e) {
+            DB::rollback();
+
+            if ($e instanceof CustomException) {
+                return $this->fail($e->getMessage());
+            }
+
+            Log::error($e);
+
+            return $this->fail('新增数据错误');
+        }
+    }
+
+    #[OA\Get(path: '/api/{$camelName}/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['{$comment}'])]
+    #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: {$name}Response::class))]
+    public function show(): Response
+    {
+        try {
+            $id = intval($this->input('id', 0));
+
+            $condition = [
+                ['id', '=', $id],
+            ];
+
+            ${$camelName}Service = new {$name}Service();
+            ${$camelName} = ${$camelName}Service->getOne($condition);
+
+            if (empty(${$camelName})) {
+                throw new CustomException('数据不存在或状态异常');
+            }
+
+            $response = new {$name}Response();
+            $response->setData(${$camelName});
+
+            return $this->success($response->toArray());
+        } catch (Throwable $e) {
+            if ($e instanceof CustomException) {
+                return $this->fail($e->getMessage());
+            }
+
+            Log::error($e);
+
+            return $this->fail('获取详情错误');
+        }
+    }
+
+    #[OA\Put(path: '/api/{$camelName}/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['{$comment}'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: {$name}UpdateRequest::class))]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function update(): Response
+    {
+        DB::startTrans();
+        try {
+            $request = $this->requestBody();
+
+            $v = new {$name}UpdateRequest();
+            if (! $v->check($request)) {
+                throw new CustomException($v->getError());
+            }
+
+            ${$camelName}Service = new {$name}Service();
+            ${$camelName} = ${$camelName}Service->getById($request['id']);
+            if (empty(${$camelName})) {
+                throw new CustomException('数据不存在或状态异常');
+            }
+
+            $input = new {$name}Input();
+            $input->setData($request);
+
+            ${$camelName}Service->update($input->toArray(), [
+                ['id', '=', $request['id']],
+            ]);
+
+            DB::commit();
+
+            return $this->success('更新数据成功');
+        } catch (Throwable $e) {
+            DB::rollback();
+
+            if ($e instanceof CustomException) {
+                return $this->fail($e->getMessage());
+            }
+
+            Log::error($e);
+
+            return $this->fail('更新数据错误');
+        }
+    }
+
+    #[OA\Delete(path: '/api/{$camelName}/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['{$comment}'])]
+    #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function destroy(): Response
+    {
+        DB::startTrans();
+        try {
+            $id = intval($this->input('id', 0));
+
+            $condition = [
+                ['id', '=', $id],
+            ];
+
+            ${$camelName}Service = new {$name}Service();
+            if (${$camelName}Service->remove($condition)) {
+                DB::commit();
+
+                return $this->success('删除数据成功');
+            }
+
+            throw new CustomException('删除数据失败');
+        } catch (Throwable $e) {
+            DB::rollback();
+
+            if ($e instanceof CustomException) {
+                return $this->fail($e->getMessage());
+            }
+
+            Log::error($e);
+
+            return $this->fail('删除数据错误');
+        }
+    }
+}

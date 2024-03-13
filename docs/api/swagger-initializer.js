@@ -4,11 +4,10 @@ window.onload = function() {
   // the following lines will be replaced by docker/configurator, when it runs in a docker-container
   window.ui = SwaggerUIBundle({
     urls: [
-        {name: '认证模块', url: './auth.json'},
-        {name: '运营模块', url: './manager.json'},
-        {name: '卖家模块', url: './seller.json'},
-        {name: '买家模块', url: './user.json'},
-        {name: '门户模块', url: './portal.json'}
+      {name: '管理接口',  url: "./admin.json"},
+      {name: '公共接口',  url: "./common.json"},
+      {name: '会员接口',  url: "./member.json"},
+      {name: '门户接口',  url: "./portal.json"}
     ],
     dom_id: '#swagger-ui',
     deepLinking: true,
