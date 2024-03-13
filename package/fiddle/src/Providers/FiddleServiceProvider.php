@@ -11,6 +11,12 @@ class FiddleServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        $infrastructures = glob(dirname(__DIR__).'/Foundation/*/*ServiceProvider.php');
+        foreach ($infrastructures as $infra) {
+            $serviceProvider = Str::substr($infra, strrpos($infra, 'src/Foundation/') + 3, -4);
+            $this->app->register('App'.Str::replace('/', '\\', $serviceProvider));
+        };
+
         foreach ($this->getDirs() as $dir) {
             $module = basename($dir);
 
@@ -45,6 +51,9 @@ class FiddleServiceProvider extends ServiceProvider
 
     private function getDirs(): array
     {
-        return glob(app_path('*/'), GLOB_ONLYDIR);
+        return array_merge(
+            glob(app_path('Api/*'), GLOB_ONLYDIR),
+            glob(app_path('Bundles/*'), GLOB_ONLYDIR)
+        );
     }
 }

@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import type {  } from '@/types/portal.d'
+import type {  } from '@/types/common.d'
 
 // [验证码] 图片验证码
 export const captchaService = (): PromiseApp\Bundles\Captcha\Responses\CaptchaResponse => {
     return request({
-        url: 'portal/captcha',
+        url: 'common/captcha',
         method: 'get'
     })
 }
@@ -12,7 +12,7 @@ export const captchaService = (): PromiseApp\Bundles\Captcha\Responses\CaptchaRe
 // [地区] 查询地区列表
 export const regionService = (id: number): PromiseApp\Bundles\Region\Responses\RegionResponse => {
     return request({
-        url: 'portal/region',
+        url: 'common/region',
         method: 'get',
         params: {id}
     })
@@ -21,7 +21,7 @@ export const regionService = (id: number): PromiseApp\Bundles\Region\Responses\R
 // [短信] 发送手机短信验证码
 export const smsService = (): Promise<any> => {
     return request({
-        url: 'portal/sms',
+        url: 'common/sms',
         method: 'post'
     })
 }

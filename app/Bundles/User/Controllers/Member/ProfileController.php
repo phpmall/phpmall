@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\User\Controllers\User;
+namespace App\Bundles\User\Controllers\Member;
 
-use App\Api\User\Controllers\BaseController;
+use App\Api\Member\Controllers\BaseController;
 use App\Bundles\User\Requests\ProfileRequest;
 use App\Bundles\User\Responses\ProfileResponse;
 use Illuminate\Http\JsonResponse;

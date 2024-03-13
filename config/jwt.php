@@ -1,6 +1,6 @@
 <?php
 
-use App\Foundation\JWT\JWT;
+use App\Foundation\Auth\JWT;
 
 return [
     // 签名算法

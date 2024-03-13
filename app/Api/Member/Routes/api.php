@@ -9,24 +9,24 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 
 // Route start
-Route::prefix('api/user')->middleware('api')->group(function () {
+Route::prefix('api/member')->middleware('api')->group(function () {
     // 仪表台
-    Route::get('dashboard', [\App\Api\User\Controllers\IndexController::class, 'dashboard']);
+    Route::get('dashboard', [\App\Api\Member\Controllers\IndexController::class, 'dashboard']);
     // 附件上传接口
-    Route::post('upload', [\App\Bundles\Material\Controllers\User\UploadController::class, 'index']);
+    Route::post('upload', [\App\Bundles\Material\Controllers\Member\UploadController::class, 'index']);
     // 获取用户全部收货地址
-    Route::get('address', [\App\Bundles\User\Controllers\User\AddressController::class, 'index']);
+    Route::get('address', [\App\Bundles\User\Controllers\Member\AddressController::class, 'index']);
     // 新增用户收货地址
-    Route::post('address/store', [\App\Bundles\User\Controllers\User\AddressController::class, 'store']);
+    Route::post('address/store', [\App\Bundles\User\Controllers\Member\AddressController::class, 'store']);
     // 查询用户收货地址
-    Route::get('address/show', [\App\Bundles\User\Controllers\User\AddressController::class, 'show']);
+    Route::get('address/show', [\App\Bundles\User\Controllers\Member\AddressController::class, 'show']);
     // 更新用户收货地址
-    Route::put('address/update', [\App\Bundles\User\Controllers\User\AddressController::class, 'update']);
+    Route::put('address/update', [\App\Bundles\User\Controllers\Member\AddressController::class, 'update']);
     // 删除用户收货地址
-    Route::delete('address/destroy', [\App\Bundles\User\Controllers\User\AddressController::class, 'destroy']);
+    Route::delete('address/destroy', [\App\Bundles\User\Controllers\Member\AddressController::class, 'destroy']);
     // 获取用户资料
-    Route::get('profile/show', [\App\Bundles\User\Controllers\User\ProfileController::class, 'show']);
+    Route::get('profile/show', [\App\Bundles\User\Controllers\Member\ProfileController::class, 'show']);
     // 更新用户资料
-    Route::put('profile/update', [\App\Bundles\User\Controllers\User\ProfileController::class, 'update']);
+    Route::put('profile/update', [\App\Bundles\User\Controllers\Member\ProfileController::class, 'update']);
 });
 // end

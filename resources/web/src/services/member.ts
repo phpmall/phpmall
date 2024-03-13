@@ -1,10 +1,10 @@
 import request from '@/utils/request'
-import type {  } from '@/types/user.d'
+import type {  } from '@/types/member.d'
 
 // [用户中心] 仪表台
 export const dashboardService = (): Promise<any> => {
     return request({
-        url: 'user/dashboard',
+        url: 'member/dashboard',
         method: 'get'
     })
 }
@@ -12,7 +12,7 @@ export const dashboardService = (): Promise<any> => {
 // [素材] 附件上传接口
 export const uploadService = (): PromiseApp\Bundles\Material\Responses\UploadResponse => {
     return request({
-        url: 'user/upload',
+        url: 'member/upload',
         method: 'post'
     })
 }
@@ -20,7 +20,7 @@ export const uploadService = (): PromiseApp\Bundles\Material\Responses\UploadRes
 // [收货地址] 获取用户全部收货地址
 export const addressService = (page: number, pageSize: number): PromiseApp\Bundles\User\Responses\AddressResponse => {
     return request({
-        url: 'user/address',
+        url: 'member/address',
         method: 'get',
         params: {page, pageSize}
     })
@@ -29,7 +29,7 @@ export const addressService = (page: number, pageSize: number): PromiseApp\Bundl
 // [收货地址] 新增用户收货地址
 export const addressStoreService = (): Promise<any> => {
     return request({
-        url: 'user/address/store',
+        url: 'member/address/store',
         method: 'post'
     })
 }
@@ -37,7 +37,7 @@ export const addressStoreService = (): Promise<any> => {
 // [收货地址] 查询用户收货地址
 export const addressShowService = (id: number): PromiseApp\Bundles\User\Responses\AddressResponse => {
     return request({
-        url: 'user/address/show',
+        url: 'member/address/show',
         method: 'get',
         params: {id}
     })
@@ -46,7 +46,7 @@ export const addressShowService = (id: number): PromiseApp\Bundles\User\Response
 // [收货地址] 更新用户收货地址
 export const addressUpdateService = (): Promise<any> => {
     return request({
-        url: 'user/address/update',
+        url: 'member/address/update',
         method: 'put'
     })
 }
@@ -54,7 +54,7 @@ export const addressUpdateService = (): Promise<any> => {
 // [收货地址] 删除用户收货地址
 export const addressDestroyService = (id: number): Promise<any> => {
     return request({
-        url: 'user/address/destroy',
+        url: 'member/address/destroy',
         method: 'delete',
         params: {id}
     })
@@ -63,7 +63,7 @@ export const addressDestroyService = (id: number): Promise<any> => {
 // [用户中心] 获取用户资料
 export const profileShowService = (): PromiseApp\Bundles\User\Responses\ProfileResponse => {
     return request({
-        url: 'user/profile/show',
+        url: 'member/profile/show',
         method: 'get'
     })
 }
@@ -71,7 +71,7 @@ export const profileShowService = (): PromiseApp\Bundles\User\Responses\ProfileR
 // [用户中心] 更新用户资料
 export const profileUpdateService = (): Promise<any> => {
     return request({
-        url: 'user/profile/update',
+        url: 'member/profile/update',
         method: 'put'
     })
 }

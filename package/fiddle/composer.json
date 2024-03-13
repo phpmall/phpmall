@@ -42,6 +42,13 @@
             "src/Support/helpers.php"
         ]
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "App\\Providers\\FiddleServiceProvider"
+            ]
+        }
+    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

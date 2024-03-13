@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API文档",
-        "description": "提供买家API接口",
+        "description": "买家接口",
         "contact": {
             "name": "API Develop Team"
         },
@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "/api/user/",
+            "url": "/api/member/",
             "description": "开发环境"
         }
     ],
@@ -21,7 +21,7 @@
                     "用户中心"
                 ],
                 "summary": "仪表台",
-                "operationId": "e79cbcc3a42f869179d2330111533960",
+                "operationId": "44358cce660d2c900db59551544504a8",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -40,7 +40,7 @@
                     "素材"
                 ],
                 "summary": "附件上传接口",
-                "operationId": "24e9ceea4e51ee4ec6a59a4d009d8361",
+                "operationId": "b6a81336e2dd1ea64dcc4fda5d23e91b",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -76,7 +76,7 @@
                     "收货地址"
                 ],
                 "summary": "获取用户全部收货地址",
-                "operationId": "b004afc6b9fc29e0f370deea38917a2c",
+                "operationId": "ad3ce47413a30e2a1630f6d78d94f639",
                 "parameters": [
                     {
                         "name": "page",
@@ -128,7 +128,7 @@
                     "收货地址"
                 ],
                 "summary": "新增用户收货地址",
-                "operationId": "da6ef6c573a55a47f47fd4e30600b7ef",
+                "operationId": "62dc1f136a2b52d097458437c851181a",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -157,7 +157,7 @@
                     "收货地址"
                 ],
                 "summary": "查询用户收货地址",
-                "operationId": "5cdfecb0410b9816d74f1124f1a48ca6",
+                "operationId": "7644a3d2233cb8e3dcd0f23115fbe977",
                 "parameters": [
                     {
                         "name": "id",
@@ -192,7 +192,7 @@
                     "收货地址"
                 ],
                 "summary": "更新用户收货地址",
-                "operationId": "89a594f45c6a2cebcc2433730868172d",
+                "operationId": "b0697ee4c5578e41e4d5247c46d8365c",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -221,7 +221,7 @@
                     "收货地址"
                 ],
                 "summary": "删除用户收货地址",
-                "operationId": "66fdf71811e1215f8076a5e17f080c39",
+                "operationId": "f8784177d16a3471efa0cf039741cba7",
                 "parameters": [
                     {
                         "name": "id",
@@ -249,7 +249,7 @@
                     "用户中心"
                 ],
                 "summary": "获取用户资料",
-                "operationId": "f72aec94dd85622c72fce62d3f6a39b9",
+                "operationId": "acbc455867103cd209e638764abb8d38",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -275,7 +275,7 @@
                     "用户中心"
                 ],
                 "summary": "更新用户资料",
-                "operationId": "c49a9ec46c016018d68c85f522e0599e",
+                "operationId": "5c0e811077ec621895eed195dde6d826",
                 "requestBody": {
                     "required": true,
                     "content": {

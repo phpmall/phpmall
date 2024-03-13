@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/common')->middleware('api')->group(function () {
     // 图片验证码
-    Route::get('captcha', [\App\Foundation\Infra\Captcha\Controllers\Common\CaptchaController::class, 'index']);
+    Route::get('captcha', [\App\Bundles\Captcha\Controllers\Common\CaptchaController::class, 'index']);
     // 查询地区列表
-    Route::get('region', [\App\Foundation\Infra\Region\Controllers\Common\RegionController::class, 'index']);
+    Route::get('region', [\App\Bundles\Region\Controllers\Common\RegionController::class, 'index']);
+    // 发送手机短信验证码
+    Route::post('sms', [\App\Bundles\Sms\Controllers\Common\SmsController::class, 'index']);
 });
 // end

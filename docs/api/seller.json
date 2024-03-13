@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API文档",
-        "description": "提供卖家API接口",
+        "description": "卖家接口",
         "contact": {
             "name": "API Develop Team"
         },

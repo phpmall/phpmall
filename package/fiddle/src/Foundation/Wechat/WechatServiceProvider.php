@@ -19,11 +19,11 @@ use EasyWeChat\Pay\Application as Payment;
 use EasyWeChat\Work\Application as Work;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
-class ServiceProvider extends LaravelServiceProvider
+class WechatServiceProvider extends LaravelServiceProvider
 {
     protected function setupConfig()
     {
-        $source = realpath(__DIR__.'/../config/easywechat.php');
+        $source = realpath(__DIR__.'/Config/easywechat.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([$source => \config_path('easywechat.php')], 'laravel-wechat');
