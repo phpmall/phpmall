@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace App\Support;
 
+use App\Foundation\Auth\Authentication;
+use App\Foundation\Auth\BearerTokenExtractor;
 use Illuminate\Support\Carbon;
-use App\Foundation\JWT\Authentication;
-use App\Foundation\JWT\BearerTokenExtractor;
 
 class JWTHelper
 {
-    /**
-     * 用户JWT参数名
-     */
-    const JWT_USER_ID = 'user_id';
-
     /**
      * 创建JWT参数
      */
