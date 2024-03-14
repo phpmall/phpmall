@@ -13,11 +13,26 @@
     },
     "require": {
         "php": "^8.2",
-        "juling/fiddle": "^1.0",
+        "alibabacloud/aliyun-log-php-sdk": "^0.6.3",
+        "aliyuncs/oss-sdk-php": "^2.7",
+        "endroid/qr-code": "^5.0",
+        "elasticsearch/elasticsearch": "^8.10",
+        "firebase/php-jwt": "^6.10",
+        "intervention/image": "^3.4",
         "laravel/framework": "^11.0",
         "laravel/octane": "^2.3",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "overtrue/easy-sms": "^2.6",
+        "overtrue/pinyin": "^5.3",
+        "overtrue/socialite": "^4.9",
+        "phpoffice/phpspreadsheet": "^2.0",
+        "qcloud/cos-sdk-v5": "^2.6",
+        "qiniu/php-sdk": "^7.12",
+        "w7corp/easywechat": "^6.15",
+        "workerman/crontab": "^1.0",
+        "workerman/gateway-worker": "^3.1",
+        "yansongda/pay": "^3.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -78,16 +93,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "package/fiddle",
-            "options": {
-                "versions": {
-                    "juling/fiddle": "1.0"
-                }
-            }
-        }
-    ]
+    "prefer-stable": true
 }

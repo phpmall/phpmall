@@ -37,7 +37,7 @@ trait EnumMethods
         } catch (Throwable $e) {
             Log::error($e);
 
-            return ErrorCodeEnum::INTERNAL_SERVER_ERROR->name;
+            return '';
         }
     }
 }
