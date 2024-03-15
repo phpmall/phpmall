@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-use App\Support\ArrayHelper;
+use Juling\Foundation\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'UserEntity')]
@@ -33,11 +33,11 @@ class UserEntity
     #[OA\Property(property: 'password', description: '登录用户密码', type: 'string')]
     protected string $password;
 
-    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'integer')]
-    protected int $status;
-
     #[OA\Property(property: 'remember_token', description: '会话令牌', type: 'string')]
     protected string $remember_token;
+
+    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'integer')]
+    protected int $status;
 
     #[OA\Property(property: 'created_at', description: '', type: 'string')]
     protected string $created_at;
@@ -161,22 +161,6 @@ class UserEntity
     }
 
     /**
-     * 获取状态:1正常;2禁用
-     */
-    public function getStatus(): int
-    {
-        return $this->status;
-    }
-
-    /**
-     * 设置状态:1正常;2禁用
-     */
-    public function setStatus(int $status): void
-    {
-        $this->status = $status;
-    }
-
-    /**
      * 获取会话令牌
      */
     public function getRememberToken(): string
@@ -190,6 +174,22 @@ class UserEntity
     public function setRememberToken(string $remember_token): void
     {
         $this->remember_token = $remember_token;
+    }
+
+    /**
+     * 获取状态:1正常;2禁用
+     */
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    /**
+     * 设置状态:1正常;2禁用
+     */
+    public function setStatus(int $status): void
+    {
+        $this->status = $status;
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    App\Providers\FiddleServiceProvider::class,
+    App\Providers\AppServiceProvider::class,
 ];
