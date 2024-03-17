@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\Region\Controllers\Common;
 
-use App\Api\Common\Controllers\BaseController;
+use App\API\Common\Controllers\BaseController;
 use App\Bundles\Region\Requests\RegionRequest;
 use App\Bundles\Region\Responses\RegionResponse;
 use App\Services\RegionService;

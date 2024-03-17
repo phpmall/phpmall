@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\Material\Controllers\Member;
 
-use App\Api\Member\Controllers\BaseController;
+use App\API\Member\Controllers\BaseController;
 use App\Bundles\Material\Requests\UploadRequest;
 use App\Bundles\Material\Responses\UploadResponse;
 use App\Exceptions\CustomException;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\Manager\Controllers\Manager;
 
-use App\Api\Manager\Controllers\BaseController;
+use App\API\Manager\Controllers\BaseController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;

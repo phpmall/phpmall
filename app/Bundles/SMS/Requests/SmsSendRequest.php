@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Sms\Requests;
+namespace App\Bundles\SMS\Requests;
 
 use App\Rules\CaptchaRule;
 use App\Rules\PhoneNumberRule;

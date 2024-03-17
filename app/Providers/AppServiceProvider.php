@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
     private function getDirs(): array
     {
         return array_merge(
-            glob(app_path('Api/*/'), GLOB_ONLYDIR),
+            glob(app_path('API/*/'), GLOB_ONLYDIR),
             glob(app_path('Bundles/*/'), GLOB_ONLYDIR)
         );
     }

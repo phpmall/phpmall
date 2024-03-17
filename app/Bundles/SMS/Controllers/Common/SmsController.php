@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Bundles\Sms\Controllers\Common;
+namespace App\Bundles\SMS\Controllers\Common;
 
-use App\Api\Common\Controllers\BaseController;
-use App\Bundles\Sms\Requests\SmsSendRequest;
-use App\Bundles\Sms\Services\SmsBundleService;
+use App\API\Common\Controllers\BaseController;
+use App\Bundles\SMS\Requests\SmsSendRequest;
+use App\Bundles\SMS\Services\SmsBundleService;
 use App\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;

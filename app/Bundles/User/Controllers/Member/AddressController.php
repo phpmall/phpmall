@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Controllers\Member;
 
-use App\Api\Member\Controllers\BaseController;
+use App\API\Member\Controllers\BaseController;
 use App\Bundles\User\Requests\Address\AddressCreateRequest;
 use App\Bundles\User\Requests\Address\AddressQueryRequest;
 use App\Bundles\User\Requests\Address\AddressUpdateRequest;
