@@ -14,7 +14,7 @@ Echo_Green()
 }
 
 Gen_OpenAPI() {
-    local directory="app/Api"
+    local directory="app/API"
 
     # 查找目录下的所有目录
     local modules=($(ls "$directory"))
@@ -22,14 +22,14 @@ Gen_OpenAPI() {
     for item in "${modules[@]}"
     do
         local result=()
-        local c="app/Api/${item}/Controllers/"
+        local c="app/API/${item}/Controllers/"
         if [ -d "$c" ]; then
             result+=($c)
-            c=("app/Api/${item}/Requests/")
+            c=("app/API/${item}/Requests/")
             if [ -d "$c" ]; then
                 result+=($c)
             fi
-            c=("app/Api/${item}/Responses/")
+            c=("app/API/${item}/Responses/")
             if [ -d "$c" ]; then
                 result+=($c)
             fi

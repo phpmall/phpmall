@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Bundles\Captcha\Controllers\Common;
 
 use App\API\Common\Controllers\BaseController;
+use App\Bundles\Captcha\Enums\CaptchaErrorEnum;
 use App\Bundles\Captcha\Responses\CaptchaResponse;
 use App\Bundles\Captcha\Services\CaptchaBundleService;
-use App\Exceptions\CustomException;
+use Illuminate\Support\Str;
+use Juling\Foundation\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use OpenApi\Attributes as OA;
@@ -20,18 +22,24 @@ class CaptchaController extends BaseController
     public function index(): JsonResponse
     {
         try {
-            $captchaService = new CaptchaBundleService();
-            $result = $captchaService->getCaptcha();
+            $uuid = strval(Str::uuid());
 
-            return $this->success($result);
+            $captchaBundleService = new CaptchaBundleService();
+            $captcha = $captchaBundleService->getCaptcha($uuid);
+
+            $captchaResponse = new CaptchaResponse();
+            $captchaResponse->setUuid($uuid);
+            $captchaResponse->setCaptcha($captcha);
+
+            return $this->success($captchaResponse->toArray());
         } catch (Throwable $e) {
             if ($e instanceof CustomException) {
-                return $this->error($e->getMessage());
+                return $this->error($e);
             }
 
-            Log::error($e->getMessage());
+            Log::error($e);
 
-            return $this->error('获取图片验证码错误');
+            return $this->error(CaptchaErrorEnum::CAPTCHA_ERROR);
         }
     }
 }

@@ -4,32 +4,18 @@ declare(strict_types=1);
 
 namespace App\Bundles\Captcha\Services;
 
-use App\Bundles\Captcha\Responses\CaptchaResponse;
-use App\Exceptions\CustomException;
 use Exception;
-use Illuminate\Support\Str;
-use Juling\Captcha\Captcha;
+use Juling\Foundation\Infrastructures\Captcha\Captcha;
 
 class CaptchaBundleService
 {
     /**
      * @throws Exception
      */
-    public function getCaptcha(): array
+    public function getCaptcha(string $uuid): string
     {
-        try {
-            $uuid = strval(Str::uuid());
+        $captcha = new Captcha();
 
-            $captcha = new Captcha();
-            $base64 = $captcha->create($uuid);
-
-            $captchaResponse = new CaptchaResponse();
-            $captchaResponse->setCaptcha($base64);
-            $captchaResponse->setUuid($uuid);
-
-            return $captchaResponse->toArray();
-        } catch (Exception $e) {
-            throw new CustomException($e->getMessage());
-        }
+        return $captcha->create($uuid);
     }
 }

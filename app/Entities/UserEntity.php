@@ -15,37 +15,34 @@ class UserEntity
     #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     protected int $id;
 
+    #[OA\Property(property: 'uuid', description: '唯一ID', type: 'string')]
+    protected string $uuid;
+
     #[OA\Property(property: 'name', description: '昵称', type: 'string')]
     protected string $name;
 
     #[OA\Property(property: 'avatar', description: '头像', type: 'string')]
     protected string $avatar;
 
-    #[OA\Property(property: 'birthday', description: '生日', type: 'string')]
-    protected string $birthday;
-
-    #[OA\Property(property: 'mobile', description: '登录手机号', type: 'string')]
+    #[OA\Property(property: 'mobile', description: '手机号码', type: 'string')]
     protected string $mobile;
 
-    #[OA\Property(property: 'mobile_verified_at', description: '手机号验证时间', type: 'string')]
-    protected string $mobile_verified_at;
+    #[OA\Property(property: 'mobile_verified_time', description: '手机号验证时间', type: 'string')]
+    protected string $mobile_verified_time;
 
-    #[OA\Property(property: 'password', description: '登录用户密码', type: 'string')]
+    #[OA\Property(property: 'password', description: '登录密码', type: 'string')]
     protected string $password;
 
-    #[OA\Property(property: 'remember_token', description: '会话令牌', type: 'string')]
+    #[OA\Property(property: 'remember_token', description: '', type: 'string')]
     protected string $remember_token;
 
-    #[OA\Property(property: 'status', description: '状态:1正常;2禁用', type: 'integer')]
-    protected int $status;
-
-    #[OA\Property(property: 'created_at', description: '', type: 'string')]
+    #[OA\Property(property: 'created_at', description: '创建时间', type: 'string')]
     protected string $created_at;
 
-    #[OA\Property(property: 'updated_at', description: '', type: 'string')]
+    #[OA\Property(property: 'updated_at', description: '更新时间', type: 'string')]
     protected string $updated_at;
 
-    #[OA\Property(property: 'deleted_at', description: '', type: 'string')]
+    #[OA\Property(property: 'deleted_at', description: '删除时间', type: 'string')]
     protected string $deleted_at;
 
     /**
@@ -62,6 +59,22 @@ class UserEntity
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * 获取唯一ID
+     */
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * 设置唯一ID
+     */
+    public function setUuid(string $uuid): void
+    {
+        $this->uuid = $uuid;
     }
 
     /**
@@ -97,23 +110,7 @@ class UserEntity
     }
 
     /**
-     * 获取生日
-     */
-    public function getBirthday(): string
-    {
-        return $this->birthday;
-    }
-
-    /**
-     * 设置生日
-     */
-    public function setBirthday(string $birthday): void
-    {
-        $this->birthday = $birthday;
-    }
-
-    /**
-     * 获取登录手机号
+     * 获取手机号码
      */
     public function getMobile(): string
     {
@@ -121,7 +118,7 @@ class UserEntity
     }
 
     /**
-     * 设置登录手机号
+     * 设置手机号码
      */
     public function setMobile(string $mobile): void
     {
@@ -131,21 +128,21 @@ class UserEntity
     /**
      * 获取手机号验证时间
      */
-    public function getMobileVerifiedAt(): string
+    public function getMobileVerifiedTime(): string
     {
-        return $this->mobile_verified_at;
+        return $this->mobile_verified_time;
     }
 
     /**
      * 设置手机号验证时间
      */
-    public function setMobileVerifiedAt(string $mobile_verified_at): void
+    public function setMobileVerifiedTime(string $mobile_verified_time): void
     {
-        $this->mobile_verified_at = $mobile_verified_at;
+        $this->mobile_verified_time = $mobile_verified_time;
     }
 
     /**
-     * 获取登录用户密码
+     * 获取登录密码
      */
     public function getPassword(): string
     {
@@ -153,7 +150,7 @@ class UserEntity
     }
 
     /**
-     * 设置登录用户密码
+     * 设置登录密码
      */
     public function setPassword(string $password): void
     {
@@ -161,7 +158,7 @@ class UserEntity
     }
 
     /**
-     * 获取会话令牌
+     * 获取
      */
     public function getRememberToken(): string
     {
@@ -169,27 +166,11 @@ class UserEntity
     }
 
     /**
-     * 设置会话令牌
+     * 设置
      */
     public function setRememberToken(string $remember_token): void
     {
         $this->remember_token = $remember_token;
-    }
-
-    /**
-     * 获取状态:1正常;2禁用
-     */
-    public function getStatus(): int
-    {
-        return $this->status;
-    }
-
-    /**
-     * 设置状态:1正常;2禁用
-     */
-    public function setStatus(int $status): void
-    {
-        $this->status = $status;
     }
 
     /**

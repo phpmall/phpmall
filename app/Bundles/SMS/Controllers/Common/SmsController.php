@@ -7,7 +7,6 @@ namespace App\Bundles\SMS\Controllers\Common;
 use App\API\Common\Controllers\BaseController;
 use App\Bundles\SMS\Requests\SmsSendRequest;
 use App\Bundles\SMS\Services\SmsBundleService;
-use App\Exceptions\CustomException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use OpenApi\Attributes as OA;

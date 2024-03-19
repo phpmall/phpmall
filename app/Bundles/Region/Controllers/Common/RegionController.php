@@ -7,7 +7,7 @@ namespace App\Bundles\Region\Controllers\Common;
 use App\API\Common\Controllers\BaseController;
 use App\Bundles\Region\Requests\RegionRequest;
 use App\Bundles\Region\Responses\RegionResponse;
-use App\Services\RegionService;
+use App\Bundles\Region\Services\RegionBundleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -26,9 +26,9 @@ class RegionController extends BaseController
         try {
             $cacheKey = 'system_region_'.$requestData['id'];
             $data = Cache::rememberForever($cacheKey, function () use ($requestData) {
-                $regionService = new RegionService();
+                $regionBundleService = new RegionBundleService();
 
-                return $regionService->getList([
+                return $regionBundleService->getList([
                     ['parent_id', '=', $requestData['id']],
                 ]);
             });
@@ -43,7 +43,7 @@ class RegionController extends BaseController
 
             return $this->success($data);
         } catch (Throwable $e) {
-            Log::error($e->getMessage());
+            Log::error($e);
 
             return $this->error('获取地区信息错误');
         }

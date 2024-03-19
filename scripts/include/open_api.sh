@@ -10,8 +10,8 @@ Echo_Green '------------------------------'
 
 Gen_OpenAPI
 
-rm -rf docs/api/*.json
-cp storage/app/openapi/*.json docs/api/
+rm -rf ../phpmall-docs/api/*.json
+cp storage/app/openapi/*.json ../phpmall-docs/api/
 
 Echo_Green '------------------------------'
 Echo_Green ' 生成typescript接口'
@@ -21,8 +21,8 @@ php artisan gen:typescript
 
 rm -rf resources/mobile/src/{services,types}
 mkdir -p resources/mobile/src/{services,types}
-cp storage/app/ts/services/{auth,portal,user}.ts resources/mobile/src/services/
-cp storage/app/ts/types/{auth,portal,user}.d.ts resources/mobile/src/types/
+cp storage/app/ts/services/member.ts resources/mobile/src/services/
+cp storage/app/ts/types/member.d.ts resources/mobile/src/types/
 
-rm -rf resources/web/src/{services,types}
-cp -a storage/app/ts/{services,types} resources/web/src/
+rm -rf resources/admin/src/{services,types}
+cp -a storage/app/ts/{services,types} resources/admin/src/

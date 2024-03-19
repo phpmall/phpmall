@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Bundles\Region\Services;
 
-class RegionBundleService
+use App\Services\RegionService;
+
+class RegionBundleService extends RegionService
 {
 }

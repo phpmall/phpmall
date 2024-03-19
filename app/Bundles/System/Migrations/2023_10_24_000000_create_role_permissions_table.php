@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('role_permissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('role_id')->comment('角色ID');
-            $table->unsignedBigInteger('permission_id')->comment('权限ID');
-            $table->unique(['role_id', 'permission_id'], 'role_permission_id');
-            $table->comment('管理角色关联表');
+            $table->unsignedInteger('role_id')->nullable(false)->comment('角色ID');
+            $table->unsignedInteger('permission_id')->nullable(false)->comment('权限资源ID');
+            $table->unique(['role_id', 'permission_id'], 'role_permission_unique');
+            $table->comment('角色资源权限表');
         });
     }
 

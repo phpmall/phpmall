@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Migrations;
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,15 +15,14 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('module')->comment('模块名');
-            $table->string('name')->comment('角色名称');
-            $table->string('code')->unique()->comment('角色编码');
-            $table->string('description')->default('')->comment('角色描述');
-            $table->unsignedInteger('sort')->default(0)->comment('排序');
-            $table->unsignedTinyInteger('status')->default(1)->comment('状态:1正常,2禁用');
+            $table->string('name')->nullable(false)->comment('角色名称');
+            $table->string('code')->unique('code_unique')->nullable(false)->comment('角色代码');
+            $table->string('description')->default('')->nullable(false)->comment('角色描述');
+            $table->unsignedInteger('sort')->nullable(false)->comment('排序');
+            $table->unsignedTinyInteger('status')->nullable(false)->comment('状态:1正常,2禁用');
             $table->timestamps();
             $table->softDeletes();
-            $table->comment('管理角色表');
+            $table->comment('用户角色表');
         });
     }
 
