@@ -17,12 +17,12 @@ npm i -g pnpm
 
 BackendBuild()
 {
-    cd $cur_dir/server
+    cd $cur_dir/api
     composer u --no-dev -oW
     php artisan optimize
     php artisan migrate:fresh --force
     php artisan db:seed --force
-    supervisorctl reload
+    supervisorctl restart phpmall
 }
 
 FrontendBuild()
