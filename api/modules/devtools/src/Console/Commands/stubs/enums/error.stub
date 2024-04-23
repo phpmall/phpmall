@@ -1,0 +1,61 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\API\Enums\{$name};
+
+use Juling\Foundation\Contracts\EnumMethodInterface;
+use Juling\Foundation\Enums\EnumMethods;
+
+/**
+ * {$comment}枚举
+ */
+enum {$name}ErrorEnum: int implements EnumMethodInterface
+{
+    use EnumMethods;
+
+    /**
+     * 查询列表错误
+     */
+    case QUERY_ERROR = {$index}01;
+
+    /**
+     * 查询数据不存在
+     */
+    case NOT_FOUND = {$index}02;
+
+    /**
+     * 新增数据失败
+     */
+    case CREATE_FAIL = {$index}03;
+
+    /**
+     * 新增数据错误
+     */
+    case CREATE_ERROR = {$index}04;
+
+    /**
+     * 获取详情错误
+     */
+    case SHOW_ERROR = {$index}05;
+
+    /**
+     * 更新数据失败
+     */
+    case UPDATE_FAIL = {$index}06;
+
+    /**
+     * 更新数据错误
+     */
+    case UPDATE_ERROR = {$index}07;
+
+    /**
+     * 删除数据失败
+     */
+    case DESTROY_FAIL = {$index}08;
+
+    /**
+     * 删除数据错误
+     */
+    case DESTROY_ERROR = {$index}09;
+}

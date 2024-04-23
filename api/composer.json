@@ -1,0 +1,309 @@
+{
+    "name": "phpmall/phpmall",
+    "type": "project",
+    "description": "High performance e-commerce platform for PHP based on Octane.",
+    "keywords": [
+        "phpmall",
+        "multi-store",
+        "mysql",
+        "redis",
+        "swoole",
+        "high performance"
+    ],
+    "homepage": "https://www.phpmall.net/",
+    "license": "Apache-2.0",
+    "support": {
+        "issues": "https://github.com/phpmall/phpmall/issues?state=open",
+        "forum": "https://www.phpmall.net/forum/",
+        "wiki": "https://www.phpmall.net/wiki/",
+        "source": "https://github.com/phpmall/phpmall"
+    },
+    "require": {
+        "php": "^8.2",
+        "juling/laravel-foundation": "^1.0",
+        "juling/laravel-portal": "^1.0",
+        "laravel/framework": "^11.0",
+        "laravel/octane": "^2.3",
+        "laravel/sanctum": "^4.0",
+        "laravel/scout": "^10.8",
+        "laravel/tinker": "^2.9"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "juling/laravel-devtools": "^1.0",
+        "laravel/pint": "^1.14",
+        "laravel/sail": "^1.29",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.1",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^11.0",
+        "spatie/laravel-ignition": "^2.4",
+        "zircote/swagger-php": "^4.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Support/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "modules/portal",
+            "options": {
+                "versions": {
+                    "juling/laravel-portal": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/devtools",
+            "options": {
+                "versions": {
+                    "juling/laravel-devtools": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/foundation",
+            "options": {
+                "versions": {
+                    "juling/laravel-foundation": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/auth",
+            "options": {
+                "versions": {
+                    "juling/laravel-auth": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/captcha",
+            "options": {
+                "versions": {
+                    "juling/laravel-captcha": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/data-permission",
+            "options": {
+                "versions": {
+                    "juling/laravel-data-permission": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/database",
+            "options": {
+                "versions": {
+                    "juling/laravel-database": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/excel",
+            "options": {
+                "versions": {
+                    "juling/laravel-excel": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/filesystem",
+            "options": {
+                "versions": {
+                    "juling/laravel-filesystem": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/flowable",
+            "options": {
+                "versions": {
+                    "juling/laravel-flowable": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/image",
+            "options": {
+                "versions": {
+                    "juling/laravel-image": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/ip",
+            "options": {
+                "versions": {
+                    "juling/laravel-ip": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/monitor",
+            "options": {
+                "versions": {
+                    "juling/laravel-monitor": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/operate-log",
+            "options": {
+                "versions": {
+                    "juling/laravel-operate-log": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/pay",
+            "options": {
+                "versions": {
+                    "juling/laravel-pay": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/pinyin",
+            "options": {
+                "versions": {
+                    "juling/laravel-pinyin": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/protection",
+            "options": {
+                "versions": {
+                    "juling/laravel-protection": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/region",
+            "options": {
+                "versions": {
+                    "juling/laravel-region": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/sms",
+            "options": {
+                "versions": {
+                    "juling/laravel-sms": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/snowflake",
+            "options": {
+                "versions": {
+                    "juling/laravel-snowflake": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/social",
+            "options": {
+                "versions": {
+                    "juling/laravel-social": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/tenant",
+            "options": {
+                "versions": {
+                    "juling/laravel-tenant": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/websocket",
+            "options": {
+                "versions": {
+                    "juling/laravel-websocket": "1.0"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "modules/wechat",
+            "options": {
+                "versions": {
+                    "juling/laravel-wechat": "1.0"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+$stagedFiles = explode("\n", shell_exec('git diff --cached --name-only --diff-filter=ACM'));
+
+if (empty($stagedFiles[count($stagedFiles) - 1])) {
+    array_pop($stagedFiles);
+}
+
+if (empty($stagedFiles)) {
+    exit(0);
+}
+
+echo 'Validating Pint...'.PHP_EOL;
+
+foreach ($stagedFiles as $file) {
+    $result = shell_exec('.'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'bin'.DIRECTORY_SEPARATOR."pint $file");
+    shell_exec("git add $file");
+    echo $result.PHP_EOL;
+}
+
+exit(0);

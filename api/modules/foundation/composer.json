@@ -1,0 +1,55 @@
+{
+    "name": "juling/laravel-foundation",
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^8.2",
+        "juling/laravel-auth": "^1.0",
+        "juling/laravel-captcha": "^1.0",
+        "juling/laravel-data-permission": "^1.0",
+        "juling/laravel-database": "^1.0",
+        "juling/laravel-excel": "^1.0",
+        "juling/laravel-filesystem": "^1.0",
+        "juling/laravel-flowable": "^1.0",
+        "juling/laravel-image": "^1.0",
+        "juling/laravel-ip": "^1.0",
+        "juling/laravel-monitor": "^1.0",
+        "juling/laravel-operate-log": "^1.0",
+        "juling/laravel-pay": "^1.0",
+        "juling/laravel-pinyin": "^1.0",
+        "juling/laravel-protection": "^1.0",
+        "juling/laravel-region": "^1.0",
+        "juling/laravel-sms": "^1.0",
+        "juling/laravel-snowflake": "^1.0",
+        "juling/laravel-social": "^1.0",
+        "juling/laravel-tenant": "^1.0",
+        "juling/laravel-websocket": "^1.0",
+        "juling/laravel-wechat": "^1.0",
+        "laravel/framework": "^11.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Juling\\Foundation\\": "src/"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Juling\\Foundation\\FoundationServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

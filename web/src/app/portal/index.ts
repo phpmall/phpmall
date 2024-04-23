@@ -1,0 +1,7 @@
+export * from './appstore/routes'
+export * from './commerce/routes'
+export * from './customer/routes'
+export * from './marketing/routes'
+export * from './passport/routes'
+export * from './statcenter/routes'
+export * from './system/routes'

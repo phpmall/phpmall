@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\API\Enums\{$name};
+
+use Juling\Foundation\Contracts\EnumMethodInterface;
+use Juling\Foundation\Enums\EnumMethods;
+
+/**
+ * {$comment}状态枚举
+ */
+enum {$name}StatusEnum: int implements EnumMethodInterface
+{
+    use EnumMethods;
+
+    /**
+     * 正常
+     */
+    case Normal = 1;
+
+    /**
+     * 禁用
+     */
+    case Disabled = 2;
+}

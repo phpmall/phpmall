@@ -1,0 +1,32 @@
+{
+    "name": "juling/laravel-excel",
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0",
+        "phpoffice/phpspreadsheet": "^2.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Juling\\Excel\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Juling\\Excel\\ExcelServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

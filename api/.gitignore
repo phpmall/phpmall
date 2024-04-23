@@ -1,0 +1,17 @@
+/.phpunit.cache
+/app/Http/API
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+*.lock*
+*.log
+/.fleet
+/.idea
+/.vscode

@@ -1,0 +1,434 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API文档",
+        "description": "买家接口",
+        "contact": {
+            "name": "API Develop Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "/api/member/",
+            "description": "开发环境"
+        }
+    ],
+    "paths": {
+        "/login/mobile": {
+            "post": {
+                "tags": [
+                    "认证"
+                ],
+                "summary": "手机号码登录",
+                "operationId": "41a426c7edc7ec84b730c6a876d25430",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/brand/query": {
+            "post": {
+                "tags": [
+                    "商品品牌模块"
+                ],
+                "summary": "查询列表接口",
+                "operationId": "bb19a47705632fdec0faf0477acef27c",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "当前页码",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "每页分页数",
+                        "required": false,
+                        "example": 10
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BrandQueryRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BrandQueryResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/brand/show": {
+            "get": {
+                "tags": [
+                    "商品品牌模块"
+                ],
+                "summary": "获取详情接口",
+                "operationId": "962237c7a5f33fd8bc6a4a12c5dc711f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "ID",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BrandResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "LoginResponse": {
+                "properties": {
+                    "token": {
+                        "description": "token",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CaptchaResponse": {
+                "properties": {
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "123456"
+                    },
+                    "uuid": {
+                        "description": "验证码UUID",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
+            "BrandCreateRequest": {
+                "required": [
+                    "name",
+                    "pinyin",
+                    "first_letter",
+                    "sort",
+                    "status"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string"
+                    },
+                    "pinyin": {
+                        "description": "拼音",
+                        "type": "string"
+                    },
+                    "first_letter": {
+                        "description": "首字母",
+                        "type": "string"
+                    },
+                    "sort": {
+                        "description": "排序",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "description": "状态:1正常,2禁用",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "BrandQueryRequest": {
+                "required": [],
+                "properties": {}
+            },
+            "BrandUpdateRequest": {
+                "required": [
+                    "id",
+                    "name",
+                    "pinyin",
+                    "first_letter",
+                    "sort",
+                    "status"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "名称",
+                        "type": "string"
+                    },
+                    "pinyin": {
+                        "description": "拼音",
+                        "type": "string"
+                    },
+                    "first_letter": {
+                        "description": "首字母",
+                        "type": "string"
+                    },
+                    "sort": {
+                        "description": "排序",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "description": "状态:1正常,2禁用",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "BrandDestroyResponse": {
+                "properties": {
+                    "status": {
+                        "description": "状态:1成功，2失败",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "BrandQueryResponse": {
+                "properties": {
+                    "current_page": {
+                        "description": "当前页码",
+                        "type": "integer"
+                    },
+                    "data": {
+                        "description": "数据列表",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BrandResponse"
+                        }
+                    },
+                    "first_page_url": {
+                        "description": "首页URL",
+                        "type": "string"
+                    },
+                    "from": {
+                        "description": "当前页面上的开始位置",
+                        "type": "integer"
+                    },
+                    "last_page": {
+                        "description": "最后页码",
+                        "type": "integer"
+                    },
+                    "last_page_url": {
+                        "description": "最后页URL",
+                        "type": "string"
+                    },
+                    "links": {
+                        "description": "分页链接的数组",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PaginateLinkVo"
+                        }
+                    },
+                    "next_page_url": {
+                        "description": "下一页URL",
+                        "type": "string"
+                    },
+                    "path": {
+                        "description": "分页URL",
+                        "type": "string"
+                    },
+                    "per_page": {
+                        "description": "每页显示的记录数量",
+                        "type": "integer"
+                    },
+                    "prev_page_url": {
+                        "description": "上一页URL",
+                        "type": "string"
+                    },
+                    "to": {
+                        "description": "当前页面上的最后位置",
+                        "type": "integer"
+                    },
+                    "total": {
+                        "description": "数据总数",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "BrandResponse": {
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "名称",
+                        "type": "string"
+                    },
+                    "pinyin": {
+                        "description": "拼音",
+                        "type": "string"
+                    },
+                    "firstLetter": {
+                        "description": "首字母",
+                        "type": "string"
+                    },
+                    "sort": {
+                        "description": "排序",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "description": "状态:1正常,2禁用",
+                        "type": "integer"
+                    },
+                    "createdAt": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "deletedAt": {
+                        "description": "",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "RegionRequest": {
+                "properties": {
+                    "id": {
+                        "description": "地区ID",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "RegionResponse": {
+                "properties": {
+                    "id": {
+                        "description": "地区ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "地区名称",
+                        "type": "string"
+                    },
+                    "first_letter": {
+                        "description": "地区名称首字母",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "SmsSendRequest": {
+                "required": [
+                    "mobile",
+                    "captcha",
+                    "uuid"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    },
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "000000"
+                    },
+                    "uuid": {
+                        "description": "图片验证码UUID",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
+            "OptionResponse": {
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "val": {
+                        "description": "值",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "PaginateLinkVo": {
+                "properties": {
+                    "url": {
+                        "description": "链接URL",
+                        "type": "string"
+                    },
+                    "label": {
+                        "description": "页标签",
+                        "type": "string"
+                    },
+                    "next": {
+                        "description": "当前页",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT 认证信息",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

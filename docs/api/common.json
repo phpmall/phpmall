@@ -1,0 +1,205 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API文档",
+        "description": "公共接口",
+        "contact": {
+            "name": "API Develop Team"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "/api/common/",
+            "description": "开发环境"
+        }
+    ],
+    "paths": {
+        "/captcha": {
+            "get": {
+                "tags": [
+                    "验证码"
+                ],
+                "summary": "图片验证码",
+                "operationId": "40373a192aaf67dd3601e8d628738f39",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CaptchaResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/region": {
+            "get": {
+                "tags": [
+                    "地区"
+                ],
+                "summary": "查询地区列表",
+                "operationId": "d82ecda64b96458659a321a118123b1a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "上级地区ID，默认值为0显示省份数据",
+                        "required": true,
+                        "example": 0
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RegionResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sms": {
+            "post": {
+                "tags": [
+                    "短信"
+                ],
+                "summary": "发送手机短信验证码",
+                "operationId": "611f7f8be709d90688ad5110c67c5469",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SmsSendRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "LoginResponse": {
+                "properties": {
+                    "token": {
+                        "description": "token",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CaptchaResponse": {
+                "properties": {
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "123456"
+                    },
+                    "uuid": {
+                        "description": "验证码UUID",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
+            "RegionRequest": {
+                "properties": {
+                    "id": {
+                        "description": "地区ID",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "RegionResponse": {
+                "properties": {
+                    "id": {
+                        "description": "地区ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "地区名称",
+                        "type": "string"
+                    },
+                    "first_letter": {
+                        "description": "地区名称首字母",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "SmsSendRequest": {
+                "required": [
+                    "mobile",
+                    "captcha",
+                    "uuid"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    },
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "000000"
+                    },
+                    "uuid": {
+                        "description": "图片验证码UUID",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
+            "OptionResponse": {
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "val": {
+                        "description": "值",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "PaginateLinkVo": {
+                "properties": {
+                    "url": {
+                        "description": "链接URL",
+                        "type": "string"
+                    },
+                    "label": {
+                        "description": "页标签",
+                        "type": "string"
+                    },
+                    "next": {
+                        "description": "当前页",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

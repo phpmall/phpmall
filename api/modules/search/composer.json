@@ -1,0 +1,36 @@
+{
+    "name": "juling/laravel-search",
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^8.2",
+        "http-interop/http-factory-guzzle": "^1.2",
+        "laravel/framework": "^11.0",
+        "meilisearch/meilisearch-php": "^1.7"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Juling\\Search\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Juling\\Search\\SearchServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
