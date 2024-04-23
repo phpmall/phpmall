@@ -1,31 +1,31 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-export const passportRoutes: RouteRecordRaw = {
+export const authRoutes: RouteRecordRaw = {
   path: '/passport',
-  component: () => import('./Layout.vue'),
+  component: () => import('./LayoutView.vue'),
   children: [
     {
       path: 'login',
       name: 'login',
-      component: () => import('./Login.vue'),
+      component: () => import('./LoginView.vue'),
       meta: { title: '登录' }
     },
     {
       path: 'signup',
       name: 'signup',
-      component: () => import('./Signup.vue'),
+      component: () => import('./SignupView.vue'),
       meta: { title: '注册新账号' }
     },
     {
       path: 'forget',
       name: 'forget',
-      component: () => import('./Forget.vue'),
+      component: () => import('./ForgetView.vue'),
       meta: { title: '找回密码' }
     },
     {
       path: 'reset',
       name: 'reset',
-      component: () => import('./Reset.vue'),
+      component: () => import('./ResetView.vue'),
       meta: { title: '重设密码' }
     }
   ],

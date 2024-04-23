@@ -3,10 +3,8 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import {
   authRoutes,
-  managerRoutes,
-  portalRoutes,
+  consoleRoutes,
   sellerRoutes,
-  storeRoutes,
   userRoutes
 } from '@/views'
 import { useAuthStore } from '@/stores/auth'
@@ -14,7 +12,7 @@ import { decodeURIComponent2, encodeURIComponent2 } from '@/utils/urlx'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [authRoutes, managerRoutes, portalRoutes, sellerRoutes, storeRoutes, userRoutes]
+  routes: [authRoutes, consoleRoutes, sellerRoutes, userRoutes]
 })
 
 router.beforeEach((to, from, next) => {

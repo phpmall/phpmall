@@ -1,4 +1,4 @@
-cd /home/wwwroot/demo.phpmall.net
+cd /home/wwwroot/www.phpmall.net
 
 git pull
 
