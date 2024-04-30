@@ -20,7 +20,7 @@
     },
     "require": {
         "php": "^8.2",
-        "juling/laravel-foundation": "^1.0",
+        "juling/laravel-foundation": "dev-master",
         "juling/laravel-portal": "^1.0",
         "laravel/framework": "^11.0",
         "laravel/octane": "^2.3",
@@ -30,7 +30,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "juling/laravel-devtools": "^1.0",
+        "juling/laravel-devtools": "dev-master",
         "laravel/pint": "^1.14",
         "laravel/sail": "^1.29",
         "mockery/mockery": "^1.6",
