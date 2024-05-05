@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API文档",
-        "description": "公共接口",
+        "description": "客户接口",
         "contact": {
             "name": "API Develop Team"
         },
@@ -10,253 +10,125 @@
     },
     "servers": [
         {
-            "url": "https://www.phpmall.net/api/common/",
+            "url": "https://www.phpmall.net/api/buyer/",
             "description": "开发环境"
         }
     ],
     "paths": {
-        "/forget/mobile": {
-            "post": {
-                "tags": [
-                    "忘记密码"
-                ],
-                "summary": "发送手机短信验证码",
-                "operationId": "1615005e9238284952f5171dd5258b4f",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ForgetMobileRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/login": {
-            "post": {
-                "tags": [
-                    "登录"
-                ],
-                "summary": "通过用户名和密码登录",
-                "operationId": "aa37b93bc585dd927954ede283c44cbc",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LoginRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LoginResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/login/mobile": {
-            "post": {
-                "tags": [
-                    "认证管理"
-                ],
-                "summary": "通过手机号和密码登录",
-                "operationId": "047ec49055b2f5c40dae60304486f80a",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LoginRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LoginResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/login/smsCode": {
-            "post": {
-                "tags": [
-                    "登录"
-                ],
-                "summary": "通过手机短信验证码登录",
-                "operationId": "ffc482c2b0086acd9a5f0111f671b4ce",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/LoginSmsRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LoginResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/oauth/redirect": {
-            "post": {
-                "tags": [
-                    "开放授权登录"
-                ],
-                "summary": "获取授权跳转地址",
-                "operationId": "beaaeca6298d9bb29044fb55ca3117de",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/oauth/callback": {
-            "post": {
-                "tags": [
-                    "开放授权登录"
-                ],
-                "summary": "授权登录回调地址",
-                "operationId": "5882ec44ddbe53dbdbd743930a16a890",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/oauth/bind": {
-            "post": {
-                "tags": [
-                    "开放授权登录"
-                ],
-                "summary": "新用户绑定接口",
-                "operationId": "1689c5c2a6b0cf2a5b28026ada44e391",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/reset": {
-            "post": {
-                "tags": [
-                    "重设密码"
-                ],
-                "summary": "通过验证码重新设置新密码",
-                "operationId": "d1dad4473ab9f874cca41d11a8713c8b",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ResetRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/signup/mobile": {
-            "post": {
-                "tags": [
-                    "注册"
-                ],
-                "summary": "通过手机号码注册",
-                "operationId": "91b41db5a8197f8f0059076a612cc989",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SignupMobileRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/captcha": {
+        "/dashboard": {
             "get": {
                 "tags": [
-                    "验证码"
+                    "客户中心"
                 ],
-                "summary": "图片验证码",
-                "operationId": "40373a192aaf67dd3601e8d628738f39",
+                "summary": "客户首页",
+                "operationId": "263edcae9d2d898be49f553526f34780",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/address": {
+            "get": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "获取用户全部收货地址",
+                "operationId": "30d6886d5c6a3c0c8d430da8ad4aa3de",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "当前页码",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "每页分页数",
+                        "required": false,
+                        "example": 10
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddressQueryRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CaptchaResponse"
+                                    "$ref": "#/components/schemas/AddressResponse"
                                 }
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
-        "/region": {
+        "/address/store": {
+            "post": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "新增用户收货地址",
+                "operationId": "5c7cda76ef0c535e31f9f58916b71275",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddressCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/address/show": {
             "get": {
                 "tags": [
-                    "地区"
+                    "收货地址"
                 ],
-                "summary": "查询地区列表",
-                "operationId": "d82ecda64b96458659a321a118123b1a",
+                "summary": "查询用户收货地址",
+                "operationId": "aa0c86d1b784a39aa741f4bb0a434eb9",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "query",
-                        "description": "上级地区ID，默认值为0显示省份数据",
+                        "description": "收货地址ID",
                         "required": true,
-                        "example": 0
+                        "example": 1
                     }
                 ],
                 "responses": {
@@ -265,27 +137,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "App\\Bundles\\Region\\Responses\\Common\\RegionResponse"
+                                    "$ref": "#/components/schemas/AddressResponse"
                                 }
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
-        "/sms": {
-            "post": {
+        "/address/update": {
+            "put": {
                 "tags": [
-                    "短信"
+                    "收货地址"
                 ],
-                "summary": "发送手机短信验证码",
-                "operationId": "a16c5c5566e8c698ef9a8fd77e286198",
+                "summary": "更新用户收货地址",
+                "operationId": "9be07369b93be4ab678c7689fcf9036c",
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/SmsSendRequest"
+                                "$ref": "#/components/schemas/AddressUpdateRequest"
                             }
                         }
                     }
@@ -294,7 +171,95 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/address/destroy": {
+            "delete": {
+                "tags": [
+                    "收货地址"
+                ],
+                "summary": "删除用户收货地址",
+                "operationId": "0228783528d6cd0b072fc115eef0eeaa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "收货地址ID",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profile/show": {
+            "get": {
+                "tags": [
+                    "用户中心"
+                ],
+                "summary": "获取用户资料",
+                "operationId": "bb636f6c32b7d6107be02eeddde2238a",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profile/update": {
+            "put": {
+                "tags": [
+                    "用户中心"
+                ],
+                "summary": "更新用户资料",
+                "operationId": "3718254dc417ea9d3c40ab887920f03a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProfileRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
@@ -619,6 +584,16 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT 认证信息",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     }

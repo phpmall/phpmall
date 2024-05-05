@@ -10,146 +10,21 @@
     },
     "servers": [
         {
-            "url": "/api/manager/",
+            "url": "https://www.phpmall.net/api/manager/",
             "description": "开发环境"
         }
     ],
     "paths": {
-        "/login/mobile": {
-            "post": {
-                "tags": [
-                    "认证"
-                ],
-                "summary": "手机号码登录",
-                "operationId": "4f4df2197c2629318e915e85912d43e7",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/LoginResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/brand/query": {
-            "post": {
-                "tags": [
-                    "商品品牌模块"
-                ],
-                "summary": "查询列表接口",
-                "operationId": "b87892559f2eb734f8b133623499e565",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "当前页码",
-                        "required": true,
-                        "example": 1
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "每页分页数",
-                        "required": false,
-                        "example": 10
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/BrandQueryRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BrandQueryResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/brand/create": {
-            "post": {
-                "tags": [
-                    "商品品牌模块"
-                ],
-                "summary": "新增接口",
-                "operationId": "9af3de508797d29570d052838be95b93",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/BrandCreateRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BrandResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/brand/show": {
+        "/dashboard": {
             "get": {
                 "tags": [
-                    "商品品牌模块"
+                    "运营中心"
                 ],
-                "summary": "获取详情接口",
-                "operationId": "9cba42b155ef458eaefd3d56785cc3d0",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
+                "summary": "运营首页",
+                "operationId": "b446f945cf15aae5d6fd1f822168d9ea",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BrandResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     }
                 },
                 "security": [
@@ -159,191 +34,16 @@
                 ]
             }
         },
-        "/brand/update": {
-            "put": {
-                "tags": [
-                    "商品品牌模块"
-                ],
-                "summary": "更新接口",
-                "operationId": "703e14154b1dd3308ae41660ea26d1c7",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/BrandUpdateRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BrandResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/brand/destroy": {
-            "delete": {
-                "tags": [
-                    "商品品牌模块"
-                ],
-                "summary": "删除接口",
-                "operationId": "49d90a0c5d55dc5bc0a18a4ce1d921c3",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BrandDestroyResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/category/query": {
-            "post": {
-                "tags": [
-                    "商品分类模块"
-                ],
-                "summary": "查询列表接口",
-                "operationId": "c42c071fa9cd0fb0ec7cc6e43118b5bf",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "当前页码",
-                        "required": true,
-                        "example": 1
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "每页分页数",
-                        "required": false,
-                        "example": 10
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CategoryQueryRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CategoryQueryResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/category/create": {
-            "post": {
-                "tags": [
-                    "商品分类模块"
-                ],
-                "summary": "新增接口",
-                "operationId": "de90143bdaa1bec9e14d744f8145ce8b",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CategoryCreateRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CategoryResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/category/show": {
+        "/menu": {
             "get": {
                 "tags": [
-                    "商品分类模块"
+                    "运营中心"
                 ],
-                "summary": "获取详情接口",
-                "operationId": "1282f43c2b89f28bd085a4dc0f538182",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
+                "summary": "获取管理菜单",
+                "operationId": "fe83f3f04bd94b84dfac7a78e8f1a495",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CategoryResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     }
                 },
                 "security": [
@@ -353,191 +53,16 @@
                 ]
             }
         },
-        "/category/update": {
-            "put": {
-                "tags": [
-                    "商品分类模块"
-                ],
-                "summary": "更新接口",
-                "operationId": "0a3d67ff40b65da82de5ccf7b3468f5e",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CategoryUpdateRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CategoryResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/category/destroy": {
-            "delete": {
-                "tags": [
-                    "商品分类模块"
-                ],
-                "summary": "删除接口",
-                "operationId": "c49d0b002aacd3f1def5b1d9962049c4",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/CategoryDestroyResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/product/query": {
-            "post": {
-                "tags": [
-                    "商品模块"
-                ],
-                "summary": "查询列表接口",
-                "operationId": "e9fc3f71e2c7ae9028eef6d336284ef3",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "当前页码",
-                        "required": true,
-                        "example": 1
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "每页分页数",
-                        "required": false,
-                        "example": 10
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ProductQueryRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductQueryResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/product/create": {
-            "post": {
-                "tags": [
-                    "商品模块"
-                ],
-                "summary": "新增接口",
-                "operationId": "438cdbaec8951042bbf555f9110b0183",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ProductCreateRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/product/show": {
+        "/message": {
             "get": {
                 "tags": [
-                    "商品模块"
+                    "运营中心"
                 ],
-                "summary": "获取详情接口",
-                "operationId": "3f8ec8548eff39d87965ae7a51a103fa",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
+                "summary": "获取系统消息",
+                "operationId": "23f8dd3f42f59c0bc7829bb39072c818",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     }
                 },
                 "security": [
@@ -547,191 +72,16 @@
                 ]
             }
         },
-        "/product/update": {
-            "put": {
-                "tags": [
-                    "商品模块"
-                ],
-                "summary": "更新接口",
-                "operationId": "c940d80aeec0f5f5a06240e6f35823cf",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ProductUpdateRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/product/destroy": {
-            "delete": {
-                "tags": [
-                    "商品模块"
-                ],
-                "summary": "删除接口",
-                "operationId": "5b461c17f21bab244979a727ba1326e4",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductDestroyResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/productSku/query": {
-            "post": {
-                "tags": [
-                    "商品货品模块"
-                ],
-                "summary": "查询列表接口",
-                "operationId": "35aceb2b2536224df61ab061886df658",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "当前页码",
-                        "required": true,
-                        "example": 1
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "每页分页数",
-                        "required": false,
-                        "example": 10
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ProductSkuQueryRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductSkuQueryResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/productSku/create": {
-            "post": {
-                "tags": [
-                    "商品货品模块"
-                ],
-                "summary": "新增接口",
-                "operationId": "7614160ff2cf99e63d397bd7ebb672e6",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ProductSkuCreateRequest"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductSkuResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/productSku/show": {
+        "/profile": {
             "get": {
                 "tags": [
-                    "商品货品模块"
+                    "运营中心"
                 ],
-                "summary": "获取详情接口",
-                "operationId": "0deaaf5576beca38236974b3d674ef64",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
+                "summary": "管理员信息",
+                "operationId": "908e35611f9628e2ce8ca7400149fda4",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductSkuResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     }
                 },
                 "security": [
@@ -741,33 +91,16 @@
                 ]
             }
         },
-        "/productSku/update": {
-            "put": {
+        "/password": {
+            "post": {
                 "tags": [
-                    "商品货品模块"
+                    "运营中心"
                 ],
-                "summary": "更新接口",
-                "operationId": "22f57104002bb9be2a1450bc3d5d70bb",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/ProductSkuUpdateRequest"
-                            }
-                        }
-                    }
-                },
+                "summary": "修改密码",
+                "operationId": "cc267443faf25e34978aa9859291324f",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductSkuResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     }
                 },
                 "security": [
@@ -777,32 +110,35 @@
                 ]
             }
         },
-        "/productSku/destroy": {
-            "delete": {
+        "/logout": {
+            "post": {
                 "tags": [
-                    "商品货品模块"
+                    "运营中心"
                 ],
-                "summary": "删除接口",
-                "operationId": "19d1dd2872bb855528a17074a9d49f10",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "description": "ID",
-                        "required": true,
-                        "example": 1
-                    }
-                ],
+                "summary": "注销登录",
+                "operationId": "88ad13d9f8f0bba549df50a44a4a2856",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProductSkuDestroyResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/manager": {
+            "get": {
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "管理员接口",
+                "operationId": "bc7dbbdf3f6fc0d1e6aeda6344b2aa5b",
+                "responses": {
+                    "200": {
+                        "description": "OK"
                     }
                 },
                 "security": [
@@ -2169,15 +1505,262 @@
                     }
                 ]
             }
+        },
+        "/permission": {
+            "get": {
+                "tags": [
+                    "权限管理"
+                ],
+                "summary": "权限列表",
+                "operationId": "2e7aa2af5b90f9149588049744a4f872",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/role": {
+            "get": {
+                "tags": [
+                    "角色管理"
+                ],
+                "summary": "角色列表",
+                "operationId": "009c1c43c7b33a43a5de349c7d02d959",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/userAddress": {
+            "get": {
+                "tags": [
+                    "买家收货地址"
+                ],
+                "summary": "买家收货地址",
+                "operationId": "e6f2a2bed77cd5b3c34db1ab7d06f451",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "当前页码",
+                        "required": true,
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "每页分页数",
+                        "required": false,
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AddressResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "用户列表",
+                "operationId": "ca660ff0da6ab8e1844da1ad9a569a9c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/store": {
+            "post": {
+                "tags": [
+                    "用户管理"
+                ],
+                "summary": "添加新用户",
+                "operationId": "da8ae92d9eb4bf2d5365ddec55a6f147",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
         "schemas": {
+            "ForgetMobileRequest": {
+                "required": [
+                    "mobile",
+                    "captcha",
+                    "uuid"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    },
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "1234"
+                    },
+                    "uuid": {
+                        "description": "图片验证码UUID",
+                        "type": "string",
+                        "example": "abc"
+                    }
+                },
+                "type": "object"
+            },
+            "LoginRequest": {
+                "required": [
+                    "username",
+                    "password",
+                    "captcha",
+                    "uuid"
+                ],
+                "properties": {
+                    "username": {
+                        "description": "登录用户名",
+                        "type": "string",
+                        "example": "name"
+                    },
+                    "password": {
+                        "description": "登录密码",
+                        "type": "string",
+                        "example": "md5密码"
+                    },
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "1234"
+                    },
+                    "uuid": {
+                        "description": "图片验证码UUID",
+                        "type": "string",
+                        "example": "abc"
+                    },
+                    "remember": {
+                        "description": "记住我",
+                        "type": "string",
+                        "example": "off"
+                    }
+                },
+                "type": "object"
+            },
+            "LoginSmsRequest": {
+                "required": [
+                    "mobile",
+                    "code"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    },
+                    "code": {
+                        "description": "短信验证码",
+                        "type": "string",
+                        "example": "123456"
+                    }
+                },
+                "type": "object"
+            },
+            "ResetRequest": {
+                "required": [
+                    "mobile",
+                    "password",
+                    "captcha",
+                    "uuid"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    },
+                    "password": {
+                        "description": "登录密码",
+                        "type": "string",
+                        "example": "123456aA"
+                    },
+                    "captcha": {
+                        "description": "图片验证码",
+                        "type": "string",
+                        "example": "1234"
+                    },
+                    "uuid": {
+                        "description": "图片验证码UUID",
+                        "type": "string",
+                        "example": "abc"
+                    }
+                },
+                "type": "object"
+            },
+            "SignupMobileRequest": {
+                "required": [
+                    "mobile",
+                    "code",
+                    "accept_term"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    },
+                    "code": {
+                        "description": "短信验证码",
+                        "type": "string",
+                        "example": "123456"
+                    },
+                    "accept_term": {
+                        "description": "是否接受注册协议",
+                        "type": "boolean",
+                        "example": true
+                    }
+                },
+                "type": "object"
+            },
             "LoginResponse": {
                 "properties": {
                     "token": {
-                        "description": "token",
-                        "type": "string"
+                        "description": "用户JSON Web Token凭证",
+                        "type": "string",
+                        "example": "123456"
                     }
                 },
                 "type": "object"
@@ -2193,708 +1776,6 @@
                         "description": "验证码UUID",
                         "type": "string",
                         "example": "123456"
-                    }
-                },
-                "type": "object"
-            },
-            "BrandCreateRequest": {
-                "required": [
-                    "name",
-                    "pinyin",
-                    "first_letter",
-                    "sort",
-                    "status"
-                ],
-                "properties": {
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "pinyin": {
-                        "description": "拼音",
-                        "type": "string"
-                    },
-                    "first_letter": {
-                        "description": "首字母",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "BrandQueryRequest": {
-                "required": [],
-                "properties": {}
-            },
-            "BrandUpdateRequest": {
-                "required": [
-                    "id",
-                    "name",
-                    "pinyin",
-                    "first_letter",
-                    "sort",
-                    "status"
-                ],
-                "properties": {
-                    "id": {
-                        "description": "ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "pinyin": {
-                        "description": "拼音",
-                        "type": "string"
-                    },
-                    "first_letter": {
-                        "description": "首字母",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryCreateRequest": {
-                "required": [
-                    "parent_id",
-                    "name",
-                    "pinyin",
-                    "first_letter",
-                    "sort",
-                    "status"
-                ],
-                "properties": {
-                    "parent_id": {
-                        "description": "父级ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "pinyin": {
-                        "description": "拼音",
-                        "type": "string"
-                    },
-                    "first_letter": {
-                        "description": "首字母",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryQueryRequest": {
-                "required": [],
-                "properties": {}
-            },
-            "CategoryUpdateRequest": {
-                "required": [
-                    "id",
-                    "parent_id",
-                    "name",
-                    "pinyin",
-                    "first_letter",
-                    "sort",
-                    "status"
-                ],
-                "properties": {
-                    "id": {
-                        "description": "ID",
-                        "type": "integer"
-                    },
-                    "parent_id": {
-                        "description": "父级ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "pinyin": {
-                        "description": "拼音",
-                        "type": "string"
-                    },
-                    "first_letter": {
-                        "description": "首字母",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductCreateRequest": {
-                "required": [
-                    "name",
-                    "sort",
-                    "status"
-                ],
-                "properties": {
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductQueryRequest": {
-                "required": [],
-                "properties": {}
-            },
-            "ProductUpdateRequest": {
-                "required": [
-                    "id",
-                    "name",
-                    "sort",
-                    "status"
-                ],
-                "properties": {
-                    "id": {
-                        "description": "ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductSkuCreateRequest": {
-                "required": [
-                    "name",
-                    "sort",
-                    "status"
-                ],
-                "properties": {
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductSkuQueryRequest": {
-                "required": [],
-                "properties": {}
-            },
-            "ProductSkuUpdateRequest": {
-                "required": [
-                    "id",
-                    "name",
-                    "sort",
-                    "status"
-                ],
-                "properties": {
-                    "id": {
-                        "description": "ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "BrandDestroyResponse": {
-                "properties": {
-                    "status": {
-                        "description": "状态:1成功，2失败",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "BrandQueryResponse": {
-                "properties": {
-                    "current_page": {
-                        "description": "当前页码",
-                        "type": "integer"
-                    },
-                    "data": {
-                        "description": "数据列表",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/BrandResponse"
-                        }
-                    },
-                    "first_page_url": {
-                        "description": "首页URL",
-                        "type": "string"
-                    },
-                    "from": {
-                        "description": "当前页面上的开始位置",
-                        "type": "integer"
-                    },
-                    "last_page": {
-                        "description": "最后页码",
-                        "type": "integer"
-                    },
-                    "last_page_url": {
-                        "description": "最后页URL",
-                        "type": "string"
-                    },
-                    "links": {
-                        "description": "分页链接的数组",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/PaginateLinkVo"
-                        }
-                    },
-                    "next_page_url": {
-                        "description": "下一页URL",
-                        "type": "string"
-                    },
-                    "path": {
-                        "description": "分页URL",
-                        "type": "string"
-                    },
-                    "per_page": {
-                        "description": "每页显示的记录数量",
-                        "type": "integer"
-                    },
-                    "prev_page_url": {
-                        "description": "上一页URL",
-                        "type": "string"
-                    },
-                    "to": {
-                        "description": "当前页面上的最后位置",
-                        "type": "integer"
-                    },
-                    "total": {
-                        "description": "数据总数",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "BrandResponse": {
-                "properties": {
-                    "id": {
-                        "description": "ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "pinyin": {
-                        "description": "拼音",
-                        "type": "string"
-                    },
-                    "firstLetter": {
-                        "description": "首字母",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    },
-                    "createdAt": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "deletedAt": {
-                        "description": "",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryDestroyResponse": {
-                "properties": {
-                    "status": {
-                        "description": "状态:1成功，2失败",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryQueryResponse": {
-                "properties": {
-                    "current_page": {
-                        "description": "当前页码",
-                        "type": "integer"
-                    },
-                    "data": {
-                        "description": "数据列表",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/CategoryResponse"
-                        }
-                    },
-                    "first_page_url": {
-                        "description": "首页URL",
-                        "type": "string"
-                    },
-                    "from": {
-                        "description": "当前页面上的开始位置",
-                        "type": "integer"
-                    },
-                    "last_page": {
-                        "description": "最后页码",
-                        "type": "integer"
-                    },
-                    "last_page_url": {
-                        "description": "最后页URL",
-                        "type": "string"
-                    },
-                    "links": {
-                        "description": "分页链接的数组",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/PaginateLinkVo"
-                        }
-                    },
-                    "next_page_url": {
-                        "description": "下一页URL",
-                        "type": "string"
-                    },
-                    "path": {
-                        "description": "分页URL",
-                        "type": "string"
-                    },
-                    "per_page": {
-                        "description": "每页显示的记录数量",
-                        "type": "integer"
-                    },
-                    "prev_page_url": {
-                        "description": "上一页URL",
-                        "type": "string"
-                    },
-                    "to": {
-                        "description": "当前页面上的最后位置",
-                        "type": "integer"
-                    },
-                    "total": {
-                        "description": "数据总数",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "CategoryResponse": {
-                "properties": {
-                    "id": {
-                        "description": "ID",
-                        "type": "integer"
-                    },
-                    "parentId": {
-                        "description": "父级ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "pinyin": {
-                        "description": "拼音",
-                        "type": "string"
-                    },
-                    "firstLetter": {
-                        "description": "首字母",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    },
-                    "createdAt": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "deletedAt": {
-                        "description": "",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductDestroyResponse": {
-                "properties": {
-                    "status": {
-                        "description": "状态:1成功，2失败",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductQueryResponse": {
-                "properties": {
-                    "current_page": {
-                        "description": "当前页码",
-                        "type": "integer"
-                    },
-                    "data": {
-                        "description": "数据列表",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ProductResponse"
-                        }
-                    },
-                    "first_page_url": {
-                        "description": "首页URL",
-                        "type": "string"
-                    },
-                    "from": {
-                        "description": "当前页面上的开始位置",
-                        "type": "integer"
-                    },
-                    "last_page": {
-                        "description": "最后页码",
-                        "type": "integer"
-                    },
-                    "last_page_url": {
-                        "description": "最后页URL",
-                        "type": "string"
-                    },
-                    "links": {
-                        "description": "分页链接的数组",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/PaginateLinkVo"
-                        }
-                    },
-                    "next_page_url": {
-                        "description": "下一页URL",
-                        "type": "string"
-                    },
-                    "path": {
-                        "description": "分页URL",
-                        "type": "string"
-                    },
-                    "per_page": {
-                        "description": "每页显示的记录数量",
-                        "type": "integer"
-                    },
-                    "prev_page_url": {
-                        "description": "上一页URL",
-                        "type": "string"
-                    },
-                    "to": {
-                        "description": "当前页面上的最后位置",
-                        "type": "integer"
-                    },
-                    "total": {
-                        "description": "数据总数",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductResponse": {
-                "properties": {
-                    "id": {
-                        "description": "ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    },
-                    "createdAt": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "deletedAt": {
-                        "description": "",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductSkuDestroyResponse": {
-                "properties": {
-                    "status": {
-                        "description": "状态:1成功，2失败",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductSkuQueryResponse": {
-                "properties": {
-                    "current_page": {
-                        "description": "当前页码",
-                        "type": "integer"
-                    },
-                    "data": {
-                        "description": "数据列表",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ProductSkuResponse"
-                        }
-                    },
-                    "first_page_url": {
-                        "description": "首页URL",
-                        "type": "string"
-                    },
-                    "from": {
-                        "description": "当前页面上的开始位置",
-                        "type": "integer"
-                    },
-                    "last_page": {
-                        "description": "最后页码",
-                        "type": "integer"
-                    },
-                    "last_page_url": {
-                        "description": "最后页URL",
-                        "type": "string"
-                    },
-                    "links": {
-                        "description": "分页链接的数组",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/PaginateLinkVo"
-                        }
-                    },
-                    "next_page_url": {
-                        "description": "下一页URL",
-                        "type": "string"
-                    },
-                    "path": {
-                        "description": "分页URL",
-                        "type": "string"
-                    },
-                    "per_page": {
-                        "description": "每页显示的记录数量",
-                        "type": "integer"
-                    },
-                    "prev_page_url": {
-                        "description": "上一页URL",
-                        "type": "string"
-                    },
-                    "to": {
-                        "description": "当前页面上的最后位置",
-                        "type": "integer"
-                    },
-                    "total": {
-                        "description": "数据总数",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ProductSkuResponse": {
-                "properties": {
-                    "id": {
-                        "description": "ID",
-                        "type": "integer"
-                    },
-                    "name": {
-                        "description": "名称",
-                        "type": "string"
-                    },
-                    "sort": {
-                        "description": "排序",
-                        "type": "integer"
-                    },
-                    "status": {
-                        "description": "状态:1正常,2禁用",
-                        "type": "integer"
-                    },
-                    "createdAt": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "updatedAt": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "deletedAt": {
-                        "description": "",
-                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -4166,6 +3047,82 @@
                     "roleId": {
                         "description": "角色ID",
                         "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "AddressCreateRequest": {
+                "required": [
+                    "mobile"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    }
+                },
+                "type": "object"
+            },
+            "AddressQueryRequest": {
+                "required": [
+                    "mobile"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    }
+                },
+                "type": "object"
+            },
+            "AddressUpdateRequest": {
+                "required": [
+                    "mobile"
+                ],
+                "properties": {
+                    "mobile": {
+                        "description": "手机号码",
+                        "type": "string",
+                        "example": "13901889999"
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileRequest": {
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "名称",
+                        "type": "string",
+                        "example": "名称"
+                    }
+                },
+                "type": "object"
+            },
+            "AddressResponse": {
+                "properties": {
+                    "id": {
+                        "description": "编号",
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileResponse": {
+                "properties": {
+                    "id": {
+                        "description": "编号",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "名称",
+                        "type": "string"
                     }
                 },
                 "type": "object"

@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Route;
 
 // Route start
 Route::prefix('api/common')->middleware('api')->group(function () {
+    // 发送手机短信验证码
+    Route::post('forget/mobile', [\App\Bundles\Auth\API\Common\Controllers\ForgetController::class, 'mobile']);
+    // 通过用户名和密码登录
+    Route::post('login', [\App\Bundles\Auth\API\Common\Controllers\LoginController::class, 'index']);
+    // 通过手机号和密码登录
+    Route::post('login/mobile', [\App\Bundles\Auth\API\Common\Controllers\LoginController::class, 'mobile']);
+    // 通过手机短信验证码登录
+    Route::post('login/smsCode', [\App\Bundles\Auth\API\Common\Controllers\LoginController::class, 'smsCode']);
+    // 获取授权跳转地址
+    Route::post('oauth/redirect', [\App\Bundles\Auth\API\Common\Controllers\OAuthController::class, 'redirect']);
+    // 授权登录回调地址
+    Route::post('oauth/callback', [\App\Bundles\Auth\API\Common\Controllers\OAuthController::class, 'callback']);
+    // 新用户绑定接口
+    Route::post('oauth/bind', [\App\Bundles\Auth\API\Common\Controllers\OAuthController::class, 'bind']);
+    // 通过验证码重新设置新密码
+    Route::post('reset', [\App\Bundles\Auth\API\Common\Controllers\ResetController::class, 'reset']);
+    // 通过手机号码注册
+    Route::post('signup/mobile', [\App\Bundles\Auth\API\Common\Controllers\SignupController::class, 'mobile']);
     // 图片验证码
     Route::get('captcha', [\App\Bundles\Captcha\API\Common\Controllers\CaptchaController::class, 'index']);
     // 查询地区列表

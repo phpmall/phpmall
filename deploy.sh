@@ -47,7 +47,7 @@ DocsBuild()
 {
     cd $cur_dir
     pnpm run docs:build
-    cp docs/api docs/.vitepress/dist/
+    cp -a docs/api docs/.vitepress/dist/
     # ossutil rm -rf oss://phpmall-demo/docs
     # ossutil cp -rf docs/ oss://phpmall-demo/docs
 }

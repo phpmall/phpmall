@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\User\Responses;
 
-use App\Support\ArrayHelper;
+use Juling\Foundation\Support\ArrayHelper;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'AddressResponse')]

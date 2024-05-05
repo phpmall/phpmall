@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Bundles\System\API\Manager;
 
-use App\API\Admin\Controllers\BaseController;
+use App\API\Manager\Controllers\BaseController;
 use App\Bundles\System\Services\PermissionService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

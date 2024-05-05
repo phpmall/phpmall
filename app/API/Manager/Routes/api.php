@@ -11,19 +11,11 @@ use Illuminate\Support\Facades\Route;
 // Route start
 Route::prefix('api/manager')->middleware('api')->group(function () {
     // 运营首页
-    Route::get('dashboard', [\App\API\Manager\Controllers\DashboardController::class, 'dashboard']);
+    Route::get('dashboard', [\App\API\Manager\Controllers\DashboardController::class, 'index']);
     // 获取管理菜单
     Route::get('menu', [\App\API\Manager\Controllers\DashboardController::class, 'menu']);
     // 获取系统消息
     Route::get('message', [\App\API\Manager\Controllers\DashboardController::class, 'message']);
-    // 获取个人资料
-    Route::get('profile', [\App\API\Manager\Controllers\DashboardController::class, 'profile']);
-    // 修改密码
-    Route::post('password', [\App\API\Manager\Controllers\DashboardController::class, 'password']);
-    // 注销登录
-    Route::post('logout', [\App\API\Manager\Controllers\DashboardController::class, 'logout']);
-    // 手机号码登录
-    Route::post('login/mobile', [\App\Bundles\Auth\API\Manager\Controllers\LoginController::class, 'mobile']);
     // 运营首页
     Route::get('dashboard', [\App\Bundles\System\API\Manager\Controllers\DashboardController::class, 'index']);
     // 管理员信息
@@ -120,5 +112,17 @@ Route::prefix('api/manager')->middleware('api')->group(function () {
     Route::put('userRole/update', [\App\Bundles\System\API\Manager\Controllers\UserRoleController::class, 'update']);
     // 删除接口
     Route::delete('userRole/destroy', [\App\Bundles\System\API\Manager\Controllers\UserRoleController::class, 'destroy']);
+    // 买家收货地址
+    Route::get('userAddress', [\App\Bundles\User\API\Manager\Controllers\UserAddressController::class, 'index']);
+    // 用户列表
+    Route::get('user', [\App\Bundles\User\API\Manager\Controllers\UserController::class, 'index']);
+    // 添加新用户
+    Route::post('user/store', [\App\Bundles\User\API\Manager\Controllers\UserController::class, 'store']);
+    // 获取详情
+    Route::get('user/show', [\App\Bundles\User\API\Manager\Controllers\UserController::class, 'show']);
+    // 更新用户详情
+    Route::put('user/update', [\App\Bundles\User\API\Manager\Controllers\UserController::class, 'update']);
+    // 删除用户
+    Route::delete('user/destroy', [\App\Bundles\User\API\Manager\Controllers\UserController::class, 'destroy']);
 });
 // end
