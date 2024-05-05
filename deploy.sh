@@ -1,4 +1,4 @@
-cd /home/wwwroot/demo.phpmall.net
+cd /home/wwwroot/www.phpmall.net
 
 git pull
 
@@ -11,24 +11,18 @@ else
     Stack=$1
 fi
 
-# npm i -g npm
-# npm i -g pnpm
-# npm i -g bun
+npm i -g npm
+npm i -g pnpm
+npm i -g bun
 
 BackendBuild()
 {
     cd $cur_dir
-    docker build -t phpmall-demo:latest .
-    docker stop phpmall-demo
-    docker run -d --rm --name phpmall-demo -p 8002:8000 phpmall-demo:latest
-    docker exec -it phpmall-demo php artisan optimize
-    docker exec -it phpmall-demo php artisan migrate:fresh --force
-    docker exec -it phpmall-demo php artisan db:seed --force
-#     composer u --no-dev -oW
-#     php artisan optimize
-#     php artisan migrate:fresh --force
-#     php artisan db:seed --force
-#     supervisorctl restart phpmall
+    composer u --no-dev -oW
+    php artisan optimize
+    php artisan migrate:fresh --force
+    php artisan db:seed --force
+    supervisorctl restart phpmall
 }
 
 FrontendBuild()
@@ -52,6 +46,8 @@ MobileBuild()
 DocsBuild()
 {
     cd $cur_dir
+    pnpm run docs:build
+    cp docs/api docs/.vitepress/dist/
     # ossutil rm -rf oss://phpmall-demo/docs
     # ossutil cp -rf docs/ oss://phpmall-demo/docs
 }
