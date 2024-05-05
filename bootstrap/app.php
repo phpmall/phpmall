@@ -7,25 +7,6 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 
-function json(int $code, Throwable $e): JsonResponse
-{
-    $data = null;
-
-    // 如果是开发环境，添加额外的错误信息
-    if (config('app.debug')) {
-        $data = [
-            'exception' => get_class($e), // 异常类名
-            'trace' => $e->getTraceAsString(), // 异常追踪信息
-        ];
-    }
-
-    return response()->json([
-        'code' => $code,
-        'message' => $e->getMessage(),
-        'data' => $data,
-    ], $code);
-}
-
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         commands: __DIR__ . '/../routes/console.php',
@@ -36,14 +17,26 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (AuthenticationException $e) {
-            return json(401, $e);
+            return response()->json([
+                'code' => 401,
+                'message' => $e->getMessage(),
+                'data' => $data,
+            ], 401);
         });
 
         $exceptions->render(function (ValidationException $e) {
-            return json($e->status, $e);
+            return response()->json([
+                'code' => $e->status,
+                'message' => $e->getMessage(),
+                'data' => $data,
+            ], $e->status);
         });
 
         $exceptions->render(function (Exception $e) {
-            return json(500, $e);
+            return response()->json([
+                'code' => 500,
+                'message' => $e->getMessage(),
+                'data' => $data,
+            ], 500);
         });
     })->create();
