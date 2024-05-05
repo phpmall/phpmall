@@ -8,24 +8,24 @@ High performance e-commerce platform for PHP based on Octane.
 
 ## 演示地址
 
-- 商城首页：https://www.phpmall.net
-- 运营中心：https://www.phpmall.net/admin
-- 卖家中心：https://www.phpmall.net/seller
-- 买家中心：https://www.phpmall.net/user
-- 微商城：https://m.phpmall.net
+- 运营中心：https://demo.phpmall.net/console
+- 卖家中心：https://demo.phpmall.net/admin
+- 买家中心：https://demo.phpmall.net/home
+- 商城首页：https://demo.phpmall.net
+- 微商城：https://demo.phpmall.net/mobile
 
 ## 开发环境
 
 ### 安装 MySQL
 
 ```cmd
-docker run -d --name mysql -p 3306:3306 -v %cd%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:8.0.36 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -d --name mysql -p 3306:3306 -v %cd%/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root mysql:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_ai_ci
 ```
 
 ### 安装 Redis
 
 ```cmd
-docker run -d --name redis -p 6379:6379 redis:7.2 redis-server --save 60 1 --loglevel warning
+docker run -d --name redis -p 6379:6379 redis:latest redis-server --save 60 1 --loglevel warning
 ```
 
 ### Web 开发环境

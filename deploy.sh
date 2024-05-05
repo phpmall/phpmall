@@ -1,4 +1,4 @@
-cd /home/wwwroot/www.phpmall.net
+cd /home/wwwroot/demo.phpmall.net
 
 git pull
 
@@ -11,23 +11,29 @@ else
     Stack=$1
 fi
 
-npm i -g npm
-npm i -g pnpm
+# npm i -g npm
+# npm i -g pnpm
 # npm i -g bun
 
 BackendBuild()
 {
-    cd $cur_dir/api
-    composer u --no-dev -oW
-    php artisan optimize
-    php artisan migrate:fresh --force
-    php artisan db:seed --force
-    supervisorctl restart phpmall
+    cd $cur_dir
+    docker build -t phpmall-demo:latest .
+    docker stop phpmall-demo
+    docker run -d --rm --name phpmall-demo -p 8002:8000 phpmall-demo:latest
+    docker exec -it phpmall-demo php artisan optimize
+    docker exec -it phpmall-demo php artisan migrate:fresh --force
+    docker exec -it phpmall-demo php artisan db:seed --force
+#     composer u --no-dev -oW
+#     php artisan optimize
+#     php artisan migrate:fresh --force
+#     php artisan db:seed --force
+#     supervisorctl restart phpmall
 }
 
 FrontendBuild()
 {
-    cd $cur_dir/web
+    cd $cur_dir/frontend
     pnpm install
     pnpm run build-only
     # ossutil rm -rf oss://phpmall-demo/assets # --endpoint=oss-cn-hongkong.aliyuncs.com
@@ -55,9 +61,9 @@ if [[ "${Stack}" = "all" ]]; then
   FrontendBuild
   MobileBuild
   DocsBuild
-elif [[ "${Stack}" = "server" ]]; then
+elif [[ "${Stack}" = "backend" ]]; then
   BackendBuild
-elif [[ "${Stack}" = "web" ]]; then
+elif [[ "${Stack}" = "frontend" ]]; then
   FrontendBuild
 elif [[ "${Stack}" = "mobile" ]]; then
   MobileBuild
