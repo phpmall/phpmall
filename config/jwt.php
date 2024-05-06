@@ -4,9 +4,13 @@ use Juling\Auth\JWT;
 
 return [
     // 签名算法
-    'algorithm' => JWT::ALGORITHM_HS256,
+    'algorithm' => JWT::ALGORITHM_RS256,
     // 钥匙
     'key' => env('APP_KEY', md5(__DIR__)),
+    // 私钥
+    'privateKey' => storage_path('key/rsa_key.private'),
+    // 公钥
+    'publicKey' => storage_path('key/rsa_key.public'),
     // 荷载
     'payload' => [
         // 签发者
@@ -18,6 +22,6 @@ return [
         // 某个时间点后才能访问
         'nbf' => now()->timestamp,
         // 过期时间，默认一个月
-        'exp' => now()->addYears()->timestamp,
+        'exp' => now()->addMonths()->timestamp,
     ],
 ];
