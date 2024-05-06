@@ -26,7 +26,7 @@ concurrency:
 jobs:
   # 构建工作
   build:
-    if: github.repository == 'phpmall/docs'
+    if: github.repository == 'phpmall/phpmall'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
