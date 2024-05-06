@@ -34,7 +34,7 @@ WORKDIR /opt/www
 COPY . /opt/www
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-RUN apk update && apk upgrade
+# RUN apk update && apk upgrade
 RUN composer config -g repos.packagist composer https://packagist.pages.dev
 RUN composer install --no-dev -o
 RUN php artisan optimize

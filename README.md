@@ -8,11 +8,13 @@ High performance e-commerce platform for PHP based on Octane.
 
 ## 演示地址
 
-- 运营中心：https://demo.phpmall.net/console
-- 卖家中心：https://demo.phpmall.net/admin
-- 买家中心：https://demo.phpmall.net/home
-- 商城首页：https://demo.phpmall.net
-- 微商城：https://demo.phpmall.net/mobile
+- 商城首页：https://www.phpmall.net
+- 微商城：https://m.phpmall.net
+- 买家中心：https://home.phpmall.net
+- 卖家中心：https://console.phpmall.net
+- 运营中心：https://console.phpmall.net/admin
+- 产品文档：https://docs.phpmall.net
+- 接口文档：https://docs.phpmall.net/api
 
 ## 开发环境
 
@@ -31,7 +33,7 @@ docker run -d --name redis -p 6379:6379 redis:latest redis-server --save 60 1 --
 ### Web 开发环境
 
 ```cmd
-docker build -t apache-php8.2 docker/dev
+docker build -t apache-php8.2 docker
 docker run --rm -d --name phpmall -v %cd%:/var/www/html -v %cd%/docker/dev/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8.2
 ```
 
@@ -39,7 +41,7 @@ docker run --rm -d --name phpmall -v %cd%:/var/www/html -v %cd%/docker/dev/conf:
 
 ### WSL2 环境
 
-推荐参考 PHPUnit [部署文档](https://docs.phpunit.de/en/10.0/installation.html)，基于 Debian 快速搭建开发环境。
+推荐参考 PHPUnit [部署文档](https://docs.phpunit.de/en/11.1/installation.html#debian)，基于 Debian 快速搭建开发环境。
 
 ```shell
 sudo apt install curl -y
