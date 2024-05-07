@@ -1,5 +1,5 @@
 {
-  "name": "phpmall-admin",
+  "name": "phpmall-console",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -26,30 +26,25 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.7.2",
-    "@tsconfig/node20": "^20.1.2",
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@tsconfig/node20": "^20.1.4",
     "@types/crypto-js": "^4.2.2",
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^20.11.28",
+    "@types/node": "^20.12.5",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/eslint-config-prettier": "^9.0.0",
-    "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.5.1",
-    "autoprefixer": "^10.4.18",
     "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.20.1",
+    "eslint-plugin-vue": "^9.23.0",
     "npm-run-all2": "^6.1.2",
-    "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "sass": "^1.71.1",
-    "tailwindcss": "^3.4.1",
     "typescript": "~5.4.0",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
-    "vite": "^5.1.6",
-    "vite-plugin-vue-devtools": "^7.0.18",
-    "vue-tsc": "^2.0.6"
+    "vite": "^5.2.8",
+    "vue-tsc": "^2.0.11"
   }
 }
