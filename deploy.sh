@@ -17,7 +17,7 @@ npm i -g bun
 
 BackendBuild()
 {
-    cd $cur_dir
+    cd $cur_dir/web
     composer u --no-dev -oW
     php artisan optimize
     php artisan migrate:fresh --force
@@ -27,7 +27,7 @@ BackendBuild()
 
 FrontendBuild()
 {
-    cd $cur_dir/frontend
+    cd $cur_dir/console
     pnpm install
     pnpm run build-only
     # ossutil rm -rf oss://phpmall-demo/assets # --endpoint=oss-cn-hongkong.aliyuncs.com
@@ -47,7 +47,7 @@ DocsBuild()
 {
     cd $cur_dir
     pnpm run docs:build
-    cp -a docs/api docs/.vitepress/dist/
+    cp -a api docs/.vitepress/dist/
     # ossutil rm -rf oss://phpmall-demo/docs
     # ossutil cp -rf docs/ oss://phpmall-demo/docs
 }

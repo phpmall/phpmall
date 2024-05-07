@@ -34,7 +34,7 @@ docker run -d --name redis -p 6379:6379 redis:latest redis-server --save 60 1 --
 
 ```cmd
 docker build -t apache-php8.2 docker
-docker run --rm -d --name phpmall -v %cd%:/var/www/html -v %cd%/docker/dev/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8.2
+docker run --rm -d --name phpmall -v %cd%/web:/var/www/html -v %cd%/docker/dev/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8.2
 ```
 
 注意在`cmd`模式下运行以上代码。
