@@ -1,4 +1,4 @@
-FROM php:8.2.18-apache-bullseye
+FROM php:8.3-apache-bullseye
 
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 

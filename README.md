@@ -33,8 +33,8 @@ docker run -d --name redis -p 6379:6379 redis:latest redis-server --save 60 1 --
 ### Web 开发环境
 
 ```cmd
-docker build -t apache-php8.2 docker
-docker run --rm -d --name phpmall -v %cd%/web:/var/www/html -v %cd%/docker/dev/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8.2
+docker build -t apache-php8 docker
+docker run --rm -d --name phpmall -v %cd%/web:/var/www/html -v %cd%/docker/dev/conf:/etc/apache2/sites-enabled -p 8000:80 apache-php8
 ```
 
 注意在`cmd`模式下运行以上代码。
@@ -47,7 +47,7 @@ docker run --rm -d --name phpmall -v %cd%/web:/var/www/html -v %cd%/docker/dev/c
 sudo apt install curl -y
 curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
 sudo apt update
-sudo apt install php8.2-{cli,curl,bcmath,dom,fpm,gd,mbstring,mysql,opcache,redis,sqlite3,swoole,zip}
+sudo apt install php8.3-{cli,curl,bcmath,dev,dom,gd,intl,mbstring,mysql,opcache,redis,sqlite3,swoole,zip}
 ```
 
 ### WAMP 环境

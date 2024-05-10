@@ -17,7 +17,6 @@ return new class extends Migration {
         Schema::create('authentications', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id')->index('user_id_index')->comment('用户ID');
-            $table->string('user_uuid', 36)->index('user_uuid_index')->comment('全局ID');
             $table->string('type')->default('')->nullable(false)->comment('类型:wechat_open_id,wechat_union_id,ding_talk_open_id');
             $table->string('identifier')->default('')->nullable(false)->comment('标识:如openid');
             $table->string('credentials')->default('')->nullable(false)->comment('凭证:如密码,token');
