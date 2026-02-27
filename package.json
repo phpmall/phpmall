@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
         "build:admin": "pnpm -F admin build",
         "build:seller": "pnpm -F seller build",
         "build:all": "pnpm -r build",
@@ -15,6 +15,8 @@
         "install:all": "pnpm install"
     },
     "dependencies": {
+		"@element-plus/icons-vue": "^2.3.2",
+		"element-plus": "^2.11.9",
         "pinia": "^3.0.4",
         "vue": "^3.5.25",
         "vue-router": "^4.6.3"
@@ -37,6 +39,7 @@
         "jiti": "^2.6.1",
         "npm-run-all2": "^8.0.4",
         "prettier": "3.6.2",
+		"sass-embedded": "^1.93.3",
         "typescript": "~5.9.0",
         "vite": "^7.2.4",
         "vite-plugin-vue-devtools": "^8.0.5",

@@ -16,6 +16,11 @@
 /public/build
 /public/hot
 /public/storage
+/public/admin
+/public/mobile
+/public/seller
+/public/supplier
+/public/user
 /storage/*.key
 /storage/pail
 /vendor
