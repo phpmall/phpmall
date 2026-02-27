@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>CMS后台管理系统</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <style>
+        .layui-layout-admin .layui-header {
+            background-color: #23262E;
+        }
+        .layui-layout-admin .layui-side {
+            background-color: #2F4056;
+        }
+        .layui-side-scroll {
+            background-color: #2F4056;
+        }
+        .layui-nav-tree .layui-nav-item a {
+            color: #C2C2C2;
+        }
+        .layui-nav-tree .layui-nav-item a:hover {
+            background-color: #1E9FFF;
+            color: #fff;
+        }
+        .layui-nav-tree .layui-this,
+        .layui-nav-tree .layui-this>a,
+        .layui-nav-tree .layui-nav-child dd.layui-this,
+        .layui-nav-tree .layui-nav-child dd.layui-this a {
+            background-color: #1E9FFF;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo" style="color: #fff; font-size: 18px;">CMS管理系统</div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="//t.cn/RCzsdCq" class="layui-nav-img">
+                    管理员
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">个人信息</a></dd>
+                    <dd><a href="">修改密码</a></dd>
+                    <dd><a href="">退出登录</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-filter="nav">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">内容管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/admin/article/list">文章管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/category/list">栏目管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/tag/list">标签管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/comment/list">评论管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">用户管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/admin/user/list">用户列表</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/user/role">角色管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/user/permission">权限管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/admin/system/config">基本设置</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/system/seo">SEO设置</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/system/template">模板管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/system/attachment">附件管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">扩展功能</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/admin/plugin/list">插件管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/advert/list">广告管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/link/list">友情链接</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/form/list">表单管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">日志管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/admin/log/operation">操作日志</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/log/login">登录日志</a></dd>
+                        <dd><a href="javascript:;" data-url="/admin/log/error">错误日志</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <div style="padding: 15px;">
+            <div class="layui-tab layui-tab-brief" lay-filter="tab">
+                <ul class="layui-tab-title">
+                    <li class="layui-this" lay-id="home">首页</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <iframe src="/admin/home" frameborder="0" style="width: 100%; height: calc(100vh - 150px);"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        &copy; {:date('Y')} PHPCMS管理系统 - Powered by PHPCMS
+    </div>
+</div>
+
+<script src="/static/layui/layui.js"></script>
+<script>
+layui.use(['element', 'layer'], function(){
+    var element = layui.element;
+    var layer = layui.layer;
+    var $ = layui.$;
+
+    // 监听左侧导航点击
+    $('.layui-nav-child dd a').on('click', function(){
+        var url = $(this).data('url');
+        var title = $(this).text();
+        var tabId = 'tab-' + new Date().getTime();
+        
+        // 新增一个Tab项
+        element.tabAdd('tab', {
+            title: title,
+            content: '<iframe src="' + url + '" frameborder="0" style="width: 100%; height: calc(100vh - 150px);"></iframe>',
+            id: tabId
+        });
+        
+        // 切换到新增的Tab项
+        element.tabChange('tab', tabId);
+    });
+    
+    // 监听Tab删除
+    element.on('tabDelete(tab)', function(data){
+        console.log('删除Tab项：', data);
+    });
+});
+</script>
+</body>
+</html>

@@ -1,17 +1,45 @@
 {
     "$schema": "https://www.schemastore.org/package.json",
+    "name": "phpmall",
     "private": true,
     "type": "module",
     "scripts": {
         "build": "vite build",
         "dev": "vite"
+        "build:admin": "pnpm -F admin build",
+        "build:seller": "pnpm -F seller build",
+        "build:all": "pnpm -r build",
+        "dev:admin": "pnpm -F admin dev",
+        "dev:seller": "pnpm -F seller dev",
+        "dev:all": "pnpm -r --parallel dev",
+        "install:all": "pnpm install"
+    },
+    "dependencies": {
+        "pinia": "^3.0.4",
+        "vue": "^3.5.25",
+        "vue-router": "^4.6.3"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
+        "@tsconfig/node24": "^24.0.3",
+        "@types/node": "^24.10.1",
+        "@vitejs/plugin-vue": "^6.0.2",
+        "@vitejs/plugin-vue-jsx": "^5.1.2",
+        "@vue/eslint-config-prettier": "^10.2.0",
+        "@vue/eslint-config-typescript": "^14.6.0",
+        "@vue/tsconfig": "^0.8.1",
         "axios": "^1.11.0",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^2.0.0",
         "tailwindcss": "^4.0.0",
-        "vite": "^7.0.7"
+        "eslint": "^9.39.1",
+        "eslint-plugin-vue": "~10.5.1",
+        "jiti": "^2.6.1",
+        "npm-run-all2": "^8.0.4",
+        "prettier": "3.6.2",
+        "typescript": "~5.9.0",
+        "vite": "^7.2.4",
+        "vite-plugin-vue-devtools": "^8.0.5",
+        "vue-tsc": "^3.1.5"
     }
 }
