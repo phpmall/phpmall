@@ -1,0 +1,47 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Helpers;
+
+class CodeHelper
+{
+    /**
+     * 加密函数
+     *
+     * @param  string  $str  加密前的字符串
+     * @param  string  $key  密钥
+     * @return string 加密后的字符串
+     */
+    public static function encrypt(string $str, string $key = ''): string
+    {
+        $coded = '';
+        $keyLength = strlen($key);
+
+        for ($i = 0, $count = strlen($str); $i < $count; $i += $keyLength) {
+            $coded .= substr($str, $i, $keyLength) ^ $key;
+        }
+
+        return str_replace('=', '', base64_encode($coded));
+    }
+
+    /**
+     * 解密函数
+     *
+     * @param  string  $str  加密后的字符串
+     * @param  string  $key  密钥
+     * @return string 加密前的字符串
+     */
+    public static function decrypt(string $str, string $key = ''): string
+    {
+        $coded = '';
+        $keyLength = strlen($key);
+        $str = base64_decode($str);
+
+        for ($i = 0, $count = strlen($str); $i < $count; $i += $keyLength) {
+            $coded .= substr($str, $i, $keyLength) ^ $key;
+        }
+
+        return $coded;
+    }
+}
