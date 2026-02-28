@@ -36,6 +36,10 @@ return [
     */
 
     'guards' => [
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin_users',
+        ],
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -60,9 +64,13 @@ return [
     */
 
     'providers' => [
+        'admin_users' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', \App\Bundles\Admin\Models\AdminUser::class),
+        ],
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => env('AUTH_MODEL', \App\Bundles\User\Models\User::class),
         ],
 
         // 'users' => [
@@ -91,6 +99,12 @@ return [
     */
 
     'passwords' => [
+        'admin_users' => [
+            'provider' => 'admin_users',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
         'users' => [
             'provider' => 'users',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
