@@ -1,0 +1,12 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services\Order;
+
+use App\Bundles\Order\Services\OrderDeliveryOrderBundleService;
+
+class OrderDeliveryOrderService extends OrderDeliveryOrderBundleService
+{
+    //
+}
