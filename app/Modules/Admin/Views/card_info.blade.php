@@ -1,0 +1,81 @@
+@include('admin::pageheader')
+<div class="main-div">
+    <form method="post" action="card.php" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+        <table cellspacing="1" cellpadding="3" width="100%">
+            <tr>
+                <td class="label">{{ $lang['card_name'] }}</td>
+                <td><input type="text" name="card_name" maxlength="60" size="30"
+                           value="{{ $card['card_name'] }}"/>{{ $lang['require_field'] }}</td>
+            </tr>
+            <tr>
+                <td class="label"><a href="javascript:showNotice('notice_cardfee');" title="{{ $lang['form_notice'] }}">
+                        <img src="{{ asset('static/admin/images/notice.gif') }}" width="16" height="16" border="0"
+                             alt="{{ $lang['form_notice'] }}"></a>{{ $lang['card_fee'] }}</td>
+                <td><input type="text" name="card_fee" maxlength="60" size="30"
+                           value="{{ $card['card_fee'] }}"/>{{ $lang['require_field'] }}
+                    <br/><span class="notice-span"
+                               {{ $help_open ? 'style="display:block" ' : ' style="display:none" ' }} id="notice_cardfee">{{ $lang['notice_cardfee'] }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><a href="javascript:showNotice('notice_cardfreemoney');"
+                                     title="{{ $lang['form_notice'] }}">
+                        <img src="{{ asset('static/admin/images/notice.gif') }}" width="16" height="16" border="0"
+                             alt="{{ $lang['form_notice'] }}"></a>{{ $lang['free_money'] }}</td>
+                <td><input type="text" name="free_money" maxlength="60" size="30"
+                           value="{{ $card['free_money'] }}"/>{{ $lang['require_field'] }}
+                    <br/><span class="notice-span"
+                               {{ $help_open ? 'style="display:block" ' : ' style="display:none" ' }} id="notice_cardfreemoney">{{ $lang['notice_cardfreemoney'] }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">@if($card['card_img'] != "")
+                        <a href="javascript:showNotice('warn_cardimg');" title="{{ $lang['form_notice'] }}">
+                            <img src="{{ asset('static/admin/images/warning_small.gif') }}" width="16" height="16"
+                                 border="0" alt="{{ $lang['form_notice'] }}"></a>
+                    @endif{{ $lang['card_img'] }}</td>
+                <td><input type="file" name="card_img" size="45">@if($card['card_img'] != "")
+                        <input type="button" value="{{ $lang['drop_card_img'] }}"
+                               onclick="if (confirm('{{ $lang['confirm_drop_card_img'] }}'))location.href='card.php?act=drop_card_img&id={{ $card['card_id'] }}'">
+                    @endif
+                    <br/><span class="notice-span"
+                               {{ $help_open ? 'style="display:block" ' : ' style="display:none" ' }} id="warn_cardimg">{{ $lang['warn_cardimg'] }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">{{ $lang['card_desc'] }}</td>
+                <td><textarea name="card_desc" cols="60" rows="4">{{ $card['card_desc'] }}</textarea></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" class="button" value="{{ $lang['button_submit'] }}"/>
+                    <input type="reset" class="button" value="{{ $lang['button_reset'] }}"/>
+                    <input type="hidden" name="act" value="{{ $form_action }}"/>
+                    <input type="hidden" name="id" value="{{ $card['card_id'] }}"/>
+                    <input type="hidden" name="old_cardname" value="{{ $card['card_name'] }}"/>
+                    <input type="hidden" name="old_cardimg" value="{{ $card['card_img'] }}">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script src="{{ asset('js/utils.js') }}"></script>
+<script src="{{ asset('static/admin/js/validator.js') }}"></script>
+
+<script type="text/javascript">
+    document.forms['theForm'].elements['card_name'].focus();
+
+    /**
+     * 检查表单输入的数据
+     */
+    function validate() {
+        validator = new Validator("theForm");
+        validator.required("card_name", no_cardname);
+        validator.isNumber("card_fee", cardfee_un_num, 1);
+        validator.isNumber("free_money", cardmoney_un_num, 1);
+        return validator.passed();
+    }
+</script>
+
+@include('admin::pagefooter')

@@ -1,0 +1,34 @@
+@if(empty($order_query))
+    <script type="text/javascript">var invalid_order_sn = "{{ $lang['invalid_order_sn'] }}"</script>
+    <div class="box">
+        <div class="box_1">
+            <h3><span>{{ $lang['order_query'] }}</span></h3>
+            <div class="boxCenterList">
+                <form name="ecsOrderQuery">
+                    <input type="text" name="order_sn" class="inputBg"/><br/>
+                    <div class="blank5"></div>
+                    <input type="button" value="{{ $lang['query_order'] }}" class="bnt_blue_2" onclick="orderQuery()"/>
+                </form>
+                <div id="ECS_ORDER_QUERY" style="margin-top:8px;">
+                    @else
+                        @if($order_query['user_id'])
+                            <b>{{ $lang['order_number'] }}：</b><a
+                                href="user.php?act=order_detail&order_id={{ $order_query['order_id'] }}"
+                                class="f6">{{ $order_query['order_sn'] }}</a><br>
+                        @else
+                            <b>{{ $lang['order_number'] }}：</b>{{ $order_query['order_sn'] }}<br>
+                        @endif
+                        <b>{{ $lang['order_status'] }}：</b><br>
+                        <font class="f1">{{ $order_query['order_status'] }}</font><br>
+                        @if($order_query['invoice_no'])
+                            <b>{{ $lang['consignment'] }}：</b>{{ $order_query['invoice_no'] }}<br>
+                        @endif
+                        @if($order_query['shipping_date'])
+                            ：{{ $lang['shipping_date'] }} {{ $order_query['shipping_date'] }}<br>
+                        @endif
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blank5"></div>

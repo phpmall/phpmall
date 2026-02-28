@@ -1,0 +1,17 @@
+<div class="form-div">
+    <form action="javascript:search_brand()" name="searchForm">
+        <img src="{{ asset('static/admin/images/icon_search.gif') }}" width="26" height="22" border="0" alt="SEARCH"/>
+        {{ $lang['keyword'] }} <input type="text" name="brand_name" size="15"/>
+        <input type="submit" value="{{ $lang['button_search'] }}" class="button"/>
+    </form>
+</div>
+
+<script type="text/javascript">
+    function search_brand() {
+        listTable.filter['brand_name'] = Utils.trim(document.forms['searchForm'].elements['brand_name'].value);
+        listTable.filter['page'] = 1;
+
+        listTable.loadList();
+    }
+
+</script>

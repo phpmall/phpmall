@@ -1,0 +1,18 @@
+@include('admin::pageheader')
+<form action="order.php" method="post">
+    <div class="main-div">
+        <table width="100%">
+            <tr>
+                <td>{{ $fckeditor }}</td>
+            </tr>
+        </table>
+        <div class="button-div ">
+            <input type="hidden" name="act" value="{{ $act }}"/>
+            <input type="submit" value="{{ $lang['button_submit'] }}" class="button"/>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+
+</script>
+@include('admin::pagefooter')

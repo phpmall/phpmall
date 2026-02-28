@@ -1,0 +1,81 @@
+@if($vote)
+    <script type="text/javascript" src="{{ asset('js/transport.js') }}"></script>
+
+    <div id="ECS_VOTE">
+        <div class="box">
+            <div class="box_1">
+                <h3><span>{{ $lang['online_vote'] }}</span></h3>
+                <div class="boxCenterList">
+                    <form id="formvote" name="ECS_VOTEFORM" method="post" action="javascript:submit_vote()">
+                        @foreach($vote as $title)
+                            {{ $title['vote_name'] }}<br/>
+                            ({{ $lang['vote_times'] }}:{{ $title['vote_count'] }})<br/>
+                        @endforeach
+                        @foreach($vote as $title)
+                            @foreach($title['options'] as $item)
+                                @if($title['can_multi'] == 0)
+                                    <input type="checkbox" name="option_id" value="{{ $item['option_id'] }}"/>
+                                    {{ $item['option_name'] }} ({{ $item['percent'] }}%)<br/>
+                                @else
+                                    <input type="radio" name="option_id" value="{{ $item['option_id'] }}"/>
+                                    {{ $item['option_name'] }} ({{ $item['percent'] }}%)<br/>
+                                @endif
+                            @endforeach
+                            <input type="hidden" name="type" value="{{ $title['can_multi'] }}"/>
+                        @endforeach
+                        <input type="hidden" name="id" value="{{ $vote_id }}"/>
+                        <input type="submit" name="submit" style="border:none;" value="{{ $lang['submit'] }}"
+                               class="bnt_bonus"/>
+                        <input type="reset" style="border:none;" value="{{ $lang['reset'] }}" class="bnt_blue"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blank5"></div>
+    <script type="text/javascript">
+
+        /**
+         * 处理用户的投票
+         */
+        function submit_vote() {
+            var frm = document.forms['ECS_VOTEFORM'];
+            var type = frm.elements['type'].value;
+            var vote_id = frm.elements['id'].value;
+            var option_id = 0;
+
+            if (frm.elements['option_id'].checked) {
+                option_id = frm.elements['option_id'].value;
+            } else {
+                for (i = 0; i < frm.elements['option_id'].length; i++) {
+                    if (frm.elements['option_id'][i].checked) {
+                        option_id = (type == 0) ? option_id + "," + frm.elements['option_id'][i].value : frm.elements['option_id'][i].value;
+                    }
+                }
+            }
+
+            if (option_id == 0) {
+                return;
+            } else {
+                Ajax.call('vote.php', 'vote=' + vote_id + '&options=' + option_id + "&type=" + type, voteResponse, 'POST', 'JSON');
+            }
+        }
+
+        /**
+         * 处理投票的反馈信息
+         */
+        function voteResponse(result) {
+            if (result.message.length > 0) {
+                alert(result.message);
+            }
+            if (result.error == 0) {
+                var layer = document.getElementById('ECS_VOTE');
+
+                if (layer) {
+                    layer.innerHTML = result.content;
+                }
+            }
+        }
+
+    </script>
+@endif
