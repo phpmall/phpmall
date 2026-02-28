@@ -1,0 +1,46 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - dev_network
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  redis:
+    image: redis:8.6
+    container_name: redis
+    command: redis-server --requirepass root --appendonly yes
+    ports:
+      - "6379:6379"
+    networks:
+      - dev_network
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - "9001:80"
+    networks:
+      - dev_network
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+networks:
+  dev_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:
