@@ -93,6 +93,8 @@ importers:
 
   packages/admin: {}
 
+  packages/infra: {}
+
   packages/mobile:
     dependencies:
       '@dcloudio/uni-app':
