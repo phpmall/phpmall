@@ -73,14 +73,14 @@
 ### 2.1 分层技术架构图
 
 ```
-┌────────────────────────────────────────────────────────────────────┐
-│                          用户接入层                                 │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐            │
-│  │  PC 商城  │  │  H5/小程序 │  │  商家 App │  │  管理后台  │            │
-│  │ React 19  │  │  UniApp   │  │  UniApp   │  │ React 19  │            │
-│  │ Next.js   │  │           │  │           │  │ Ant Design│            │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘            │
-├────────────────────────────────────────────────────────────────────┤
+┌────────────────────────────────────────────────────────────────────────────┐
+│                              用户接入层                                     │
+│  ┌──────────┐  ┌──────────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐ │
+│  │  PC 商城  │  │  Mobile 移动端 │  │  商家后台  │  │  管理后台  │  │ 供应商后台 │ │
+│  │ React 19 │  │  (H5/小程序/App) │  │ React 19 │  │ React 19 │  │ React 19 │ │
+│  │ Next.js  │  │    UniApp 3    │  │ Ant Des. │  │ Ant Des. │  │ Ant Des. │ │
+│  └──────────┘  └──────────────┘  └──────────┘  └──────────┘  └──────────┘ │
+├────────────────────────────────────────────────────────────────────────────┤
 │                          网关与负载层                               │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐            │
 │  │   CDN    │  │  Nginx    │  │  WAF/防爬 │  │ 限流熔断  │            │
@@ -121,10 +121,10 @@
 | | MongoDB | 7.x | 文档存储（日志、商品详情） |
 | **缓存** | Redis | 8.8.x | 缓存、会话、库存、队列 |
 | | OPcache | PHP 内置 | 字节码缓存 |
-| **前端** | React | 19.x | PC 商城 + 管理后台 |
-| | Next.js | 16.x | SSR 渲染 |
-| | UniApp | 3.x | H5/小程序/App |
-| | Ant Design | 6.x | 管理后台 UI |
+| **前端** | React | 19.x | PC 商城、管理后台、商家后台、供应商后台 |
+| | Next.js | 16.x | PC 商城 SSR 渲染 |
+| | UniApp | 3.x | Mobile 移动端（H5/小程序/App） |
+| | Ant Design | 6.x | 管理后台、商家后台、供应商后台 UI |
 | | Vite | 8.1.x | 构建工具 |
 | **队列** | Laravel Horizon | 5.x | Redis 队列监控 |
 | **容器** | Docker | 24.x | 容器化 |
@@ -1232,7 +1232,7 @@ class WalletService
 
 ## 8. 前端与多端方案
 
-### 8.1 PC 商城：React 19 + Next.js 16
+### 8.1 PC 商城（`apps/website`）：React 19 + Next.js 16
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -1294,7 +1294,7 @@ const nextConfig = {
 };
 ```
 
-### 8.2 H5 / 小程序：UniApp 3
+### 8.2 Mobile 移动端（`apps/mobile`）：UniApp 3（H5 / 微信小程序 / App）
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -1331,7 +1331,7 @@ const nextConfig = {
 └─────────────────────────────────────────────┘
 ```
 
-### 8.3 管理后台：React 19 + Ant Design 6 + Vite 8.1
+### 8.3 平台管理后台（`apps/admin`）：React 19 + Ant Design 6 + Vite 8.1
 
 ```typescript
 // 管理后台路由结构（基于 Ant Design Pro）
@@ -1414,6 +1414,14 @@ const routes = [
   },
 ];
 ```
+
+### 8.4 商家后台（`apps/seller`）：React 19 + Ant Design 6 + Vite 8.1
+
+面向入驻商家及子账号，提供商品发布/编辑/上下架、订单处理、库存管理、营销工具、数据报表、结算提现等能力。数据权限按 `merchant_id` 隔离，与平台管理后台共享 Ant Design 组件体系。
+
+### 8.5 供应商后台（`apps/supplier`）：React 19 + Ant Design 6 + Vite 8.1
+
+面向供应链供应商（可选），提供供货商品管理、采购订单、仓库库存、供货发货、对账结算等能力。技术栈与商家后台一致，便于统一维护和部署。
 
 ---
 
@@ -5382,7 +5390,7 @@ export default defineConfig({
 ```json
 // apps/mobile/package.json（UniApp 3 特定配置）
 {
-  "name": "@phpmall/h5-uniapp",
+  "name": "mobile",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -5522,7 +5530,35 @@ function addToCart() {
 </style>
 ```
 
-#### 13.3.4 `packages/tsconfig` - 共享 TypeScript 配置
+#### 13.3.4 `apps/seller` - 商家后台 Vite + React 19 + Ant Design 6 配置
+
+商家后台与平台管理后台技术栈一致，均使用 `apps/admin` 同构的 Vite + React + Ant Design 方案，应用目录为 `apps/seller`，构建产物通过 `vp build` 输出到 `dist/`。
+
+```typescript
+// apps/seller/vite.config.ts
+import { defineConfig, lazyPlugins } from "vite-plus";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: lazyPlugins(() => [react()]),
+});
+```
+
+#### 13.3.5 `apps/supplier` - 供应商后台 Vite + React 19 + Ant Design 6 配置
+
+供应商后台为可选端，应用目录为 `apps/supplier`，技术栈与商家后台保持一致，便于统一组件复用和部署流水线。
+
+```typescript
+// apps/supplier/vite.config.ts
+import { defineConfig, lazyPlugins } from "vite-plus";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: lazyPlugins(() => [react()]),
+});
+```
+
+#### 13.3.6 `packages/tsconfig` - 共享 TypeScript 配置
 
 ```json
 // packages/tsconfig/base.json
@@ -5689,15 +5725,18 @@ module.exports = {
 | 场景 | 命令 | 说明 |
 |------|------|------|
 | 首次安装 | `pnpm install` | 根目录执行，安装所有 workspace 依赖 |
-| 启动所有应用 | `pnpm dev` | 并行启动 api / pc-mall / admin / h5-uniapp |
-| 只启动后端 | `pnpm dev --filter=api` | 单独开发 Laravel 接口 |
-| 只启动 PC 商城 | `pnpm dev --filter=pc-mall` | 单独开发前端 |
+| 启动所有前端应用 | `pnpm dev:all` | 并行启动 admin / seller / supplier / website / mobile(h5) |
+| 只启动后端 | `cd apps/backend && php artisan octane:start --watch` | 单独开发 Laravel 接口 |
+| 只启动 PC 商城 | `pnpm dev:website` | 单独开发 PC 商城前端 |
+| 只启动管理后台 | `pnpm dev:admin` | 单独开发平台管理后台 |
+| 只启动商家后台 | `pnpm dev:seller` | 单独开发商家后台 |
+| 只启动供应商后台 | `pnpm dev:supplier` | 单独开发供应商后台 |
+| 只启动移动端 H5 | `pnpm dev:mobile` | 单独开发移动端 H5 |
 | 生成 API 类型 | `pnpm generate-api` | 从 Laravel 生成 TS 类型到 api-contract |
-| 构建所有 | `pnpm build` | 按依赖顺序构建所有应用 |
-| 构建受影响 | `pnpm turbo run build --affected` | 只构建变更的应用 |
-| 代码检查 | `pnpm lint` | 检查所有应用的代码 |
-| PHP 测试 | `pnpm --filter=api test` | 运行 Laravel 单元测试 |
-| 数据库迁移 | `pnpm api:migrate` | 执行 Laravel 迁移 |
+| 构建所有 | `vp run -r build` | 按依赖顺序构建所有前端应用 |
+| 代码检查 | `vp check` | 检查所有前端应用的代码 |
+| PHP 测试 | `cd apps/backend && php artisan test` | 运行 Laravel 单元测试 |
+| 数据库迁移 | `cd apps/backend && php artisan migrate` | 执行 Laravel 迁移 |
 | 清理缓存 | `pnpm clean` | 清理所有构建产物和 node_modules |
 
 > **文档结束**  
@@ -7258,11 +7297,12 @@ class TagFilterProcessor
         "generate-api": "php artisan openapi:generate --output=../packages/api-contract/openapi.json",
         "generate-api:admin": "php artisan openapi:generate --tag=Admin --output=../packages/api-contract/openapi-admin.json",
         "generate-api:seller": "php artisan openapi:generate --tag=Seller --output=../packages/api-contract/openapi-seller.json",
+        "generate-api:supplier": "php artisan openapi:generate --tag=Supplier --output=../packages/api-contract/openapi-supplier.json",
         "generate-api:shop": "php artisan openapi:generate --tag=Shop --output=../packages/api-contract/openapi-shop.json",
         "generate-api:user": "php artisan openapi:generate --tag=User --output=../packages/api-contract/openapi-user.json",
         "generate-api:portal": "php artisan openapi:generate --tag=Portal --output=../packages/api-contract/openapi-portal.json",
         "generate-api:common": "php artisan openapi:generate --tag=Common --output=../packages/api-contract/openapi-common.json",
-        "generate-api:all": "composer generate-api:admin && composer generate-api:seller && composer generate-api:shop && composer generate-api:user && composer generate-api:portal && composer generate-api:common"
+        "generate-api:all": "composer generate-api:admin && composer generate-api:seller && composer generate-api:supplier && composer generate-api:shop && composer generate-api:user && composer generate-api:portal && composer generate-api:common"
     }
 }
 ```
@@ -7281,6 +7321,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ENDPOINTS = [
     { name: 'admin', openapi: 'openapi-admin.json', package: 'api-admin' },
     { name: 'seller', openapi: 'openapi-seller.json', package: 'api-seller' },
+    { name: 'supplier', openapi: 'openapi-supplier.json', package: 'api-supplier' },
     { name: 'shop', openapi: 'openapi-shop.json', package: 'api-shop' },
     { name: 'user', openapi: 'openapi-user.json', package: 'api-user' },
     { name: 'portal', openapi: 'openapi-portal.json', package: 'api-portal' },
@@ -7328,6 +7369,7 @@ main().catch(console.error);
         "generate-api": "tsx scripts/generate-api-types.ts",
         "generate-api:admin": "tsx scripts/generate-api-types.ts admin",
         "generate-api:seller": "tsx scripts/generate-api-types.ts seller",
+        "generate-api:supplier": "tsx scripts/generate-api-types.ts supplier",
         "generate-api:shop": "tsx scripts/generate-api-types.ts shop",
         "generate-api:user": "tsx scripts/generate-api-types.ts user",
         "generate-api:all": "tsx scripts/generate-api-types.ts all"
@@ -7366,6 +7408,24 @@ main().catch(console.error);
         "@phpmall/api-portal": "workspace:*"
     }
 }
+
+// apps/seller/package.json
+{
+    "dependencies": {
+        "@phpmall/api-seller": "workspace:*",
+        "@phpmall/api-common": "workspace:*",
+        "@phpmall/api-portal": "workspace:*"
+    }
+}
+
+// apps/supplier/package.json
+{
+    "dependencies": {
+        "@phpmall/api-supplier": "workspace:*",
+        "@phpmall/api-common": "workspace:*",
+        "@phpmall/api-portal": "workspace:*"
+    }
+}
 ```
 
 **Monorepo 包结构**
@@ -7385,6 +7445,10 @@ packages/
 │
 ├── api-seller/          # 商家端契约（Seller + Common + Portal）
 │   ├── openapi-seller.json
+│   └── src/
+│
+├── api-supplier/        # 供应商端契约（Supplier + Common + Portal，可选）
+│   ├── openapi-supplier.json
 │   └── src/
 │
 ├── api-shop/            # C端商城契约（Shop + Common + Portal）
@@ -7416,8 +7480,8 @@ pnpm generate-api:all
 # 3. 或只生成特定端（如 PC 商城只依赖 Shop + User + Common + Portal）
 pnpm generate-api:shop && pnpm generate-api:user && pnpm generate-api:common && pnpm generate-api:portal
 
-# 4. Turborepo 自动检测到 api-shop / api-user 变更，重新构建 pc-mall
-pnpm turbo run build --filter=pc-mall...
+# 4. Vite+ 自动检测到 api-shop / api-user 变更，重新构建 website
+vp run website#build
 ```
 
 **方案对比**

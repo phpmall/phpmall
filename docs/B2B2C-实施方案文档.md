@@ -23,15 +23,18 @@
 | 场景 | 命令 | 说明 |
 |------|------|------|
 | 首次安装 | `pnpm install` | 根目录执行，安装所有 workspace 依赖 |
-| 启动所有应用 | `pnpm dev` | 并行启动 api / pc-mall / admin / h5-uniapp |
-| 只启动后端 | `pnpm dev --filter=api` | 单独开发 Laravel 接口 |
-| 只启动 PC 商城 | `pnpm dev --filter=pc-mall` | 单独开发前端 |
+| 启动所有前端应用 | `pnpm dev:all` | 并行启动 admin / seller / supplier / website / mobile(h5) |
+| 只启动后端 | `cd apps/backend && php artisan octane:start --watch` | 单独开发 Laravel 接口 |
+| 只启动 PC 商城 | `pnpm dev:website` | 单独开发 PC 商城前端 |
+| 只启动管理后台 | `pnpm dev:admin` | 单独开发平台管理后台 |
+| 只启动商家后台 | `pnpm dev:seller` | 单独开发商家后台 |
+| 只启动供应商后台 | `pnpm dev:supplier` | 单独开发供应商后台 |
+| 只启动移动端 H5 | `pnpm dev:mobile` | 单独开发移动端 H5 |
 | 生成 API 类型 | `pnpm generate-api` | 从 Laravel 生成 TS 类型到 api-contract |
-| 构建所有 | `pnpm build` | 按依赖顺序构建所有应用 |
-| 构建受影响 | `pnpm turbo run build --affected` | 只构建变更的应用 |
-| 代码检查 | `pnpm lint` | 检查所有应用的代码 |
-| PHP 测试 | `pnpm --filter=api test` | 运行 Laravel 单元测试 |
-| 数据库迁移 | `pnpm api:migrate` | 执行 Laravel 迁移 |
+| 构建所有 | `vp run -r build` | 按依赖顺序构建所有前端应用 |
+| 代码检查 | `vp check` | 检查所有前端应用的代码 |
+| PHP 测试 | `cd apps/backend && php artisan test` | 运行 Laravel 单元测试 |
+| 数据库迁移 | `cd apps/backend && php artisan migrate` | 执行 Laravel 迁移 |
 | 清理缓存 | `pnpm clean` | 清理所有构建产物和 node_modules |
 
 > **文档结束**  
@@ -1595,11 +1598,12 @@ class TagFilterProcessor
         "generate-api": "php artisan openapi:generate --output=../packages/api-contract/openapi.json",
         "generate-api:admin": "php artisan openapi:generate --tag=Admin --output=../packages/api-contract/openapi-admin.json",
         "generate-api:seller": "php artisan openapi:generate --tag=Seller --output=../packages/api-contract/openapi-seller.json",
+        "generate-api:supplier": "php artisan openapi:generate --tag=Supplier --output=../packages/api-contract/openapi-supplier.json",
         "generate-api:shop": "php artisan openapi:generate --tag=Shop --output=../packages/api-contract/openapi-shop.json",
         "generate-api:user": "php artisan openapi:generate --tag=User --output=../packages/api-contract/openapi-user.json",
         "generate-api:portal": "php artisan openapi:generate --tag=Portal --output=../packages/api-contract/openapi-portal.json",
         "generate-api:common": "php artisan openapi:generate --tag=Common --output=../packages/api-contract/openapi-common.json",
-        "generate-api:all": "composer generate-api:admin && composer generate-api:seller && composer generate-api:shop && composer generate-api:user && composer generate-api:portal && composer generate-api:common"
+        "generate-api:all": "composer generate-api:admin && composer generate-api:seller && composer generate-api:supplier && composer generate-api:shop && composer generate-api:user && composer generate-api:portal && composer generate-api:common"
     }
 }
 ```
@@ -1618,6 +1622,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ENDPOINTS = [
     { name: 'admin', openapi: 'openapi-admin.json', package: 'api-admin' },
     { name: 'seller', openapi: 'openapi-seller.json', package: 'api-seller' },
+    { name: 'supplier', openapi: 'openapi-supplier.json', package: 'api-supplier' },
     { name: 'shop', openapi: 'openapi-shop.json', package: 'api-shop' },
     { name: 'user', openapi: 'openapi-user.json', package: 'api-user' },
     { name: 'portal', openapi: 'openapi-portal.json', package: 'api-portal' },
@@ -1665,6 +1670,7 @@ main().catch(console.error);
         "generate-api": "tsx scripts/generate-api-types.ts",
         "generate-api:admin": "tsx scripts/generate-api-types.ts admin",
         "generate-api:seller": "tsx scripts/generate-api-types.ts seller",
+        "generate-api:supplier": "tsx scripts/generate-api-types.ts supplier",
         "generate-api:shop": "tsx scripts/generate-api-types.ts shop",
         "generate-api:user": "tsx scripts/generate-api-types.ts user",
         "generate-api:all": "tsx scripts/generate-api-types.ts all"
@@ -1703,6 +1709,24 @@ main().catch(console.error);
         "@phpmall/api-portal": "workspace:*"
     }
 }
+
+// apps/seller/package.json
+{
+    "dependencies": {
+        "@phpmall/api-seller": "workspace:*",
+        "@phpmall/api-common": "workspace:*",
+        "@phpmall/api-portal": "workspace:*"
+    }
+}
+
+// apps/supplier/package.json
+{
+    "dependencies": {
+        "@phpmall/api-supplier": "workspace:*",
+        "@phpmall/api-common": "workspace:*",
+        "@phpmall/api-portal": "workspace:*"
+    }
+}
 ```
 
 **Monorepo 包结构**
@@ -1722,6 +1746,10 @@ packages/
 │
 ├── api-seller/          # 商家端契约（Seller + Common + Portal）
 │   ├── openapi-seller.json
+│   └── src/
+│
+├── api-supplier/        # 供应商端契约（Supplier + Common + Portal，可选）
+│   ├── openapi-supplier.json
 │   └── src/
 │
 ├── api-shop/            # C端商城契约（Shop + Common + Portal）
@@ -1753,8 +1781,8 @@ pnpm generate-api:all
 # 3. 或只生成特定端（如 PC 商城只依赖 Shop + User + Common + Portal）
 pnpm generate-api:shop && pnpm generate-api:user && pnpm generate-api:common && pnpm generate-api:portal
 
-# 4. Turborepo 自动检测到 api-shop / api-user 变更，重新构建 pc-mall
-pnpm turbo run build --filter=pc-mall...
+# 4. Vite+ 自动检测到 api-shop / api-user 变更，重新构建 website
+vp run website#build
 ```
 
 **方案对比**
@@ -1811,9 +1839,11 @@ cd apps/backend
 php artisan octane:start --watch
 
 # 7. 启动前端开发服务器
-pnpm dev:admin    # 管理后台
-pnpm dev:pc       # PC 商城
-pnpm dev:h5       # H5 商城
+pnpm dev:admin      # 管理后台
+pnpm dev:seller     # 商家后台
+pnpm dev:supplier   # 供应商后台
+pnpm dev:website    # PC 商城
+pnpm dev:mobile     # 移动端 H5
 ```
 
 ### 3.3 环境变量配置

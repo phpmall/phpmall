@@ -28,14 +28,14 @@
 ### 1.1 分层技术架构图
 
 ```
-┌────────────────────────────────────────────────────────────────────┐
-│                          用户接入层                                 │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐            │
-│  │  PC 商城  │  │  H5/小程序 │  │  商家 App │  │  管理后台  │            │
-│  │ React 19  │  │  UniApp   │  │  UniApp   │  │ React 19  │            │
-│  │ Next.js   │  │           │  │           │  │ Ant Design│            │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘            │
-├────────────────────────────────────────────────────────────────────┤
+┌────────────────────────────────────────────────────────────────────────────┐
+│                              用户接入层                                     │
+│  ┌──────────┐  ┌──────────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐ │
+│  │  PC 商城  │  │  Mobile 移动端 │  │  商家后台  │  │  管理后台  │  │ 供应商后台 │ │
+│  │ React 19 │  │  (H5/小程序/App) │  │ React 19 │  │ React 19 │  │ React 19 │ │
+│  │ Next.js  │  │    UniApp 3    │  │ Ant Des. │  │ Ant Des. │  │ Ant Des. │ │
+│  └──────────┘  └──────────────┘  └──────────┘  └──────────┘  └──────────┘ │
+├────────────────────────────────────────────────────────────────────────────┤
 │                          网关与负载层                               │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐            │
 │  │   CDN    │  │  Nginx    │  │  WAF/防爬 │  │ 限流熔断  │            │
@@ -76,10 +76,10 @@
 | | MongoDB | 7.x | 文档存储（日志、商品详情） |
 | **缓存** | Redis | 8.8.x | 缓存、会话、库存、队列 |
 | | OPcache | PHP 内置 | 字节码缓存 |
-| **前端** | React | 19.x | PC 商城 + 管理后台 |
-| | Next.js | 16.x | SSR 渲染 |
-| | UniApp | 3.x | H5/小程序/App |
-| | Ant Design | 6.x | 管理后台 UI |
+| **前端** | React | 19.x | PC 商城、管理后台、商家后台、供应商后台 |
+| | Next.js | 16.x | PC 商城 SSR 渲染 |
+| | UniApp | 3.x | Mobile 移动端（H5/小程序/App） |
+| | Ant Design | 6.x | 管理后台、商家后台、供应商后台 UI |
 | | Vite | 8.1.x | 构建工具 |
 | **队列** | Laravel Horizon | 5.x | Redis 队列监控 |
 | **容器** | Docker | 24.x | 容器化 |
@@ -1702,7 +1702,7 @@ docker-compose exec app php artisan octane:start --watch
 
 ## 10. 深度附录：Monorepo 关键配置详解
 
-> **⚠️ 项目说明**：当前项目使用 **Vite+ (vp)** 作为统一工具链，而非 Turborepo。本附录中的前端配置示例（Next.js、Vite、UniApp、Turborepo）为规划设计参考，与 `apps/website`（Vite+ starter）、`packages/seller`（Vue 3）等实际代码目录可能有差异。实施时请以代码仓库为准。
+> **⚠️ 项目说明**：当前项目使用 **Vite+ (vp)** 作为统一工具链，而非 Turborepo。本附录中的前端配置示例（Next.js、Vite、UniApp）为规划设计参考，与实际代码目录的对应关系为：`apps/website`（PC 商城，Next.js）、`apps/admin`（平台管理后台，React + Ant Design）、`apps/seller`（商家后台，React + Ant Design）、`apps/supplier`（供应商后台，React + Ant Design）、`apps/mobile`（移动端，UniApp 3 + Vue 3）、`apps/backend`（Laravel 后端 API）。实施时请以代码仓库为准。
 
 ### 10.1 API 类型自动生成脚本（Laravel OpenAPI → TypeScript/Zod）
 
@@ -4609,7 +4609,7 @@ export default defineConfig({
 ```json
 // apps/mobile/package.json（UniApp 3 特定配置）
 {
-  "name": "@phpmall/h5-uniapp",
+  "name": "mobile",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -4749,7 +4749,35 @@ function addToCart() {
 </style>
 ```
 
-#### 10.3.4 `packages/tsconfig` - 共享 TypeScript 配置
+#### 10.3.4 `apps/seller` - 商家后台 Vite + React 19 + Ant Design 6 配置
+
+商家后台与平台管理后台技术栈一致，均使用 `apps/admin` 同构的 Vite + React + Ant Design 方案，应用目录为 `apps/seller`，构建产物通过 `vp build` 输出到 `dist/`。
+
+```typescript
+// apps/seller/vite.config.ts
+import { defineConfig, lazyPlugins } from "vite-plus";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: lazyPlugins(() => [react()]),
+});
+```
+
+#### 10.3.5 `apps/supplier` - 供应商后台 Vite + React 19 + Ant Design 6 配置
+
+供应商后台为可选端，应用目录为 `apps/supplier`，技术栈与商家后台保持一致，便于统一组件复用和部署流水线。
+
+```typescript
+// apps/supplier/vite.config.ts
+import { defineConfig, lazyPlugins } from "vite-plus";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: lazyPlugins(() => [react()]),
+});
+```
+
+#### 10.3.6 `packages/tsconfig` - 共享 TypeScript 配置
 
 ```json
 // packages/tsconfig/base.json
