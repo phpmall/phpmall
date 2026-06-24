@@ -1,29 +1,16 @@
 {
-  "name": "phpmall",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "ready": "vp check && vp run -r test && vp run -r build",
-    "dev": "vp run website#dev",
-    "dev:admin": "vp run admin#dev",
-    "dev:seller": "vp run seller#dev",
-    "dev:supplier": "vp run supplier#dev",
-    "dev:website": "vp run website#dev",
-    "dev:mobile": "vp run mobile#dev",
-    "dev:all": "pnpm --parallel --filter './apps/*' dev"
-  },
-  "devDependencies": {
-    "vite-plus": "catalog:"
-  },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "11.9.0",
-      "onFail": "download"
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.0.0",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^3.1",
+        "tailwindcss": "^4.0.0",
+        "vite": "^8.1.0"
     }
-  },
-  "engines": {
-    "node": ">=24.15.0"
-  }
 }
