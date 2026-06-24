@@ -10,9 +10,15 @@
     "preview": "vp preview"
   },
   "dependencies": {
+    "@ant-design/icons": "catalog:",
+    "@ant-design/pro-components": "catalog:",
+    "@tanstack/react-query": "catalog:",
+    "antd": "catalog:",
+    "axios": "catalog:",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "antd": "^6.0.0"
+    "react-router-dom": "catalog:",
+    "zustand": "catalog:"
   },
   "devDependencies": {
     "@types/node": "^24.12.3",
