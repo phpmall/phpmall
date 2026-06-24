@@ -9,22 +9,16 @@
 
 ## 目录
 
-1. [项目计划与里程碑](#1-项目计划与里程碑)
-2. [开发团队组织](#2-开发团队组织)
-3. [Monorepo 开发工作流](#3-monorepo-开发工作流)
-4. [代码目录结构](#4-代码目录结构)
-5. [各端控制器目录](#5-各端控制器目录)
-6. [各端 FormRequest 目录](#6-各端-formrequest-目录)
-7. [模型/服务层目录映射](#7-模型服务层目录映射)
-8. [多端 OpenAPI 生成策略](#8-多端-openapi-生成策略)
-9. [环境搭建指南](#9-环境搭建指南)
-10. [部署流程](#10-部署流程)
-11. [代码规范](#11-代码规范)
+1. [Monorepo 开发工作流总结](#1-monorepo-开发工作流总结)
+2. [多端控制器目录结构设计](#2-多端控制器目录结构设计)
+3. [环境搭建指南](#3-环境搭建指南)
+4. [部署流程](#4-部署流程)
+5. [代码规范](#5-代码规范)
 
 ---
 
 
-## 14. Monorepo 开发工作流总结
+## 1. Monorepo 开发工作流总结
 
 | 场景 | 命令 | 说明 |
 |------|------|------|
@@ -49,11 +43,11 @@
 
 ---
 
-## 15. 多端控制器目录结构设计
+## 2. 多端控制器目录结构设计
 
 基于图片中的 7 个目录（Admin、Common、Portal、Seller、Shop、Supplier、User），以下是完整的控制器目录、路由、中间件和权限体系设计。
 
-### 15.1 目录结构定义
+### 2.1 目录结构定义
 
 ```
 app/Http/Controllers/
@@ -67,7 +61,7 @@ app/Http/Controllers/
 └── Controller.php  # 基础控制器
 ```
 
-### 15.2 各目录详细用途
+### 2.2 各目录详细用途
 
 | 目录 | 端 | 鉴权方式 | 路由前缀 | 用途 |
 |------|------|---------|---------|------|
@@ -79,7 +73,7 @@ app/Http/Controllers/
 | `Common` | 全端 | 无鉴权 | `/api/common/v1` | 纯工具接口：上传、验证码、地区、物流查询、支付回调 |
 | `Supplier` | 供应商 | Sanctum + 供应商权限 | `/api/supplier/v1` | 供应链：采购、发货、对账（可选，视业务规模） |
 
-### 15.3 各目录控制器详细列表
+### 2.3 各目录控制器详细列表
 
 ```
 // app/Http/Controllers/Admin/  —— 平台运营端
@@ -183,7 +177,7 @@ app/Http/Controllers/
 └── ReconciliationController.php # 对账
 ```
 
-### 15.4 路由配置（`routes/` 目录）
+### 2.4 路由配置（`routes/` 目录）
 
 ```
 routes/
@@ -712,7 +706,7 @@ Route::get('s/{code}', [ShortLinkController::class, 'redirect'])->name('common.s
 Route::get('version/check', [VersionController::class, 'check'])->name('common.version.check');
 ```
 
-### 15.5 路由与中间件注册（Laravel 13：`bootstrap/app.php`）
+### 2.5 路由与中间件注册（Laravel 13：`bootstrap/app.php`）
 
 Laravel 13 将路由注册和中间件配置统一迁移到 `bootstrap/app.php`，不再使用 `RouteServiceProvider` 和 `app/Http/Kernel.php`。
 
@@ -901,7 +895,7 @@ RateLimiter::for('common', fn (Request $request) =>
 );
 ```
 
-### 15.6 自定义中间件
+### 2.6 自定义中间件
 
 ```php
 // app/Http/Middleware/AdminAuthenticate.php
@@ -956,7 +950,7 @@ class SellerAuthenticate
 }
 ```
 
-### 15.7 zircote/swagger-php Tag 组织
+### 2.7 zircote/swagger-php Tag 组织
 
 ```php
 // Admin 端
@@ -1006,7 +1000,7 @@ class SellerAuthenticate
 
 **Tag 命名规范**：`{端} - {模块}`，前端 Swagger UI / Postman 可按前缀分组展示。
 
-### 15.8 命名规范总结
+### 2.8 命名规范总结
 
 | 层级 | 规范 | 示例 |
 |------|------|------|
@@ -1018,7 +1012,7 @@ class SellerAuthenticate
 | **Tag** | `{端} - {模块}` | `Admin - Products`, `Seller - Finance` |
 | **中间件** | `{端}Authenticate` | `admin.auth`, `seller.auth` |
 
-### 15.9 各端 FormRequest 目录结构
+### 2.9 各端 FormRequest 目录结构
 
 与控制器目录严格对应，按端分离，避免跨端混用。
 
@@ -1285,7 +1279,7 @@ class AuditRequest extends BaseRequest
 
 ---
 
-### 15.10 模型/服务层目录与控制器对应关系
+### 2.10 模型/服务层目录与控制器对应关系
 
 ```
 app/
@@ -1443,16 +1437,16 @@ class ProductResource extends JsonResource
 
 ---
 
-### 15.11 多端 OpenAPI 生成策略：按 Tag 分组导出，前端只生成对应端类型
+### 2.11 多端 OpenAPI 生成策略：按 Tag 分组导出，前端只生成对应端类型
 
 **核心问题**：7 个端的控制器全部扫描后，openapi.json 文件过大（可能 5000+ 行），前端只需要自己端的类型。
 
 **方案：按 Tag 分组过滤，各端独立生成 openapi 文件**
 
-#### 15.11.1 后端：按 Tag 分组生成 OpenAPI
+#### 2.11.1 后端：按 Tag 分组生成 OpenAPI
 
 ```php
-// apps/api/app/Console/Commands/GenerateOpenApiCommand.php
+// apps/backend/app/Console/Commands/GenerateOpenApiCommand.php
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -1529,7 +1523,7 @@ class GenerateOpenApiCommand extends Command
 ```
 
 ```php
-// apps/api/app/OpenApi/Processors/TagFilterProcessor.php
+// apps/backend/app/OpenApi/Processors/TagFilterProcessor.php
 namespace App\OpenApi\Processors;
 
 use OpenApi\Analysis;
@@ -1595,7 +1589,7 @@ class TagFilterProcessor
 **composer.json 脚本：各端独立生成**
 
 ```json
-// apps/api/composer.json
+// apps/backend/composer.json
 {
     "scripts": {
         "generate-api": "php artisan openapi:generate --output=../packages/api-contract/openapi.json",
@@ -1610,7 +1604,7 @@ class TagFilterProcessor
 }
 ```
 
-#### 15.11.2 前端：按端独立生成类型
+#### 2.11.2 前端：按端独立生成类型
 
 ```typescript
 // scripts/generate-api-types.ts（更新版，支持多端独立生成）
@@ -1690,7 +1684,7 @@ main().catch(console.error);
     }
 }
 
-// apps/pc-mall/package.json
+// apps/website/package.json
 {
     "dependencies": {
         "@phpmall/api-shop": "workspace:*",
@@ -1700,7 +1694,7 @@ main().catch(console.error);
     }
 }
 
-// apps/h5-uniapp/package.json
+// apps/mobile/package.json
 {
     "dependencies": {
         "@phpmall/api-shop": "workspace:*",
@@ -1745,11 +1739,11 @@ packages/
     └── src/
 ```
 
-#### 15.11.3 完整开发工作流
+#### 2.11.3 完整开发工作流
 
 ```bash
 # 1. 后端修改接口后，生成各端独立 OpenAPI
-cd apps/api
+cd apps/backend
 composer generate-api:all
 
 # 2. 前端重新生成自己端的类型
@@ -1777,9 +1771,9 @@ pnpm turbo run build --filter=pc-mall...
 
 ---
 
-## 9. 环境搭建指南
+## 3. 环境搭建指南
 
-### 9.1 开发环境要求
+### 3.1 开发环境要求
 
 | 组件 | 版本 | 说明 |
 |------|------|------|
@@ -1790,7 +1784,7 @@ pnpm turbo run build --filter=pc-mall...
 | Docker | 24+ | 容器化环境 |
 | Docker Compose | 2.20+ | 本地开发环境编排 |
 
-### 9.2 本地开发环境启动
+### 3.2 本地开发环境启动
 
 ```bash
 # 1. 克隆代码仓库
@@ -1798,7 +1792,7 @@ git clone <repo-url>
 cd phpmall
 
 # 2. 安装 PHP 依赖
-cd apps/api
+cd apps/backend
 composer install
 cd ../..
 
@@ -1813,7 +1807,7 @@ docker-compose -f docker-compose.dev.yml up -d
 php artisan migrate:fresh --seed
 
 # 6. 启动后端开发服务器（Octane）
-cd apps/api
+cd apps/backend
 php artisan octane:start --watch
 
 # 7. 启动前端开发服务器
@@ -1822,7 +1816,7 @@ pnpm dev:pc       # PC 商城
 pnpm dev:h5       # H5 商城
 ```
 
-### 9.3 环境变量配置
+### 3.3 环境变量配置
 
 ```bash
 # .env (本地开发)
@@ -1855,9 +1849,9 @@ ALIPAY_APP_ID=xxx
 
 ---
 
-## 10. 部署流程
+## 4. 部署流程
 
-### 10.1 部署架构
+### 4.1 部署架构
 
 ```
 生产环境：
@@ -1882,7 +1876,7 @@ ALIPAY_APP_ID=xxx
 +---------------------------------------------------+
 ```
 
-### 10.2 CI/CD 流程
+### 4.2 CI/CD 流程
 
 ```yaml
 # .github/workflows/deploy.yml 简化示意
@@ -1917,7 +1911,7 @@ jobs:
           ssh deploy@server "cd /var/www/phpmall && git pull && composer install && php artisan migrate && php artisan octane:reload && pnpm build"
 ```
 
-### 10.3 发布 checklist
+### 4.3 发布 checklist
 
 - [ ] 代码合并到 main 分支
 - [ ] CI/CD 流水线全部通过（测试、构建、扫描）
@@ -1929,9 +1923,9 @@ jobs:
 
 ---
 
-## 11. 代码规范
+## 5. 代码规范
 
-### 11.1 PHP 代码规范（基于 PSR-12）
+### 5.1 PHP 代码规范（基于 PSR-12）
 
 ```php
 // 命名规范
@@ -1947,7 +1941,7 @@ $orderItems = [];           // 变量：camelCase
 $isPaid = false;            // 布尔：is/has/can 前缀
 ```
 
-### 11.2 前端代码规范
+### 5.2 前端代码规范
 
 ```typescript
 // 组件命名：PascalCase
@@ -1957,7 +1951,7 @@ $isPaid = false;            // 布尔：is/has/can 前缀
 // 类型命名：PascalCase + Type 后缀
 ```
 
-### 11.3 Git 提交规范
+### 5.3 Git 提交规范
 
 ```
 类型(范围): 简要描述

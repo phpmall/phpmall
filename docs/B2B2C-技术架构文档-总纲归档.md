@@ -21,6 +21,9 @@
 10. [B2B2C 核心模块架构](#10-b2b2c-核心模块架构)
 11. [版本号修正说明](#11-版本号修正说明)
 12. [附录](#12-附录)
+13. [深度附录：Monorepo 关键配置详解](#13-深度附录monorepo-关键配置详解)
+14. [Monorepo 开发工作流总结](#14-monorepo-开发工作流总结)
+15. [多端控制器目录结构设计](#15-多端控制器目录结构设计)
 
 ---
 
@@ -2499,7 +2502,7 @@ composer require --dev laravel/prompts  # 可选：用于交互式命令
 **控制器中使用 OpenAPI Attributes**
 
 ```php
-// apps/api/app/Http/Controllers/Api/ProductController.php
+// apps/backend/app/Http/Controllers/Api/ProductController.php
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -2760,7 +2763,7 @@ class ProductController extends Controller
 推荐将 Schema 定义在独立类中，供多个控制器复用。
 
 ```php
-// apps/api/app/OpenApi/Schemas/ProductSchema.php
+// apps/backend/app/OpenApi/Schemas/ProductSchema.php
 namespace App\OpenApi\Schemas;
 
 use OpenApi\Attributes as OA;
@@ -2821,7 +2824,7 @@ class ProductSchema
 ```
 
 ```php
-// apps/api/app/OpenApi/Schemas/ProductSkuSchema.php
+// apps/backend/app/OpenApi/Schemas/ProductSkuSchema.php
 namespace App\OpenApi\Schemas;
 
 use OpenApi\Attributes as OA;
@@ -2861,7 +2864,7 @@ class ProductSkuSchema
 ```
 
 ```php
-// apps/api/app/OpenApi/Schemas/StoreProductSchema.php
+// apps/backend/app/OpenApi/Schemas/StoreProductSchema.php
 namespace App\OpenApi\Schemas;
 
 use OpenApi\Attributes as OA;
@@ -2934,7 +2937,7 @@ class StoreProductSkuSchema
 **Artisan 命令生成 OpenAPI JSON**
 
 ```php
-// apps/api/app/Console/Commands/GenerateOpenApiCommand.php
+// apps/backend/app/Console/Commands/GenerateOpenApiCommand.php
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -3024,7 +3027,7 @@ class GenerateOpenApiCommand extends Command
 ```
 
 ```php
-// apps/api/routes/console.php（或注册到 ServiceProvider）
+// apps/backend/routes/console.php（或注册到 ServiceProvider）
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -3035,7 +3038,7 @@ Artisan::command('openapi:generate', \App\Console\Commands\GenerateOpenApiComman
 **composer.json 脚本配置**
 
 ```json
-// apps/api/composer.json
+// apps/backend/composer.json
 {
     "scripts": {
         "generate-api": "php artisan openapi:generate --output=../packages/api-contract/openapi.json",
@@ -3052,7 +3055,7 @@ Artisan::command('openapi:generate', \App\Console\Commands\GenerateOpenApiComman
 如果你的模型结构简单，也可以直接在 Model 上定义 Schema，但独立 Schema 类更灵活。
 
 ```php
-// apps/api/app/Models/Product.php
+// apps/backend/app/Models/Product.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -3115,7 +3118,7 @@ class Product extends Model
 **实现方案：自定义 Attribute + 反射解析**
 
 ```php
-// apps/api/app/OpenApi/Attributes/FromRequest.php
+// apps/backend/app/OpenApi/Attributes/FromRequest.php
 namespace App\OpenApi\Attributes;
 
 use OpenApi\Attributes as OA;
@@ -3269,7 +3272,7 @@ class FromRequest
 **自定义 OpenAPI 处理器：读取 #[FromRequest] 并生成 RequestBody**
 
 ```php
-// apps/api/app/OpenApi/Processors/FormRequestProcessor.php
+// apps/backend/app/OpenApi/Processors/FormRequestProcessor.php
 namespace App\OpenApi\Processors;
 
 use OpenApi\Annotations\Operation;
@@ -3376,7 +3379,7 @@ class FormRequestProcessor
 **注册处理器到 Generator**
 
 ```php
-// apps/api/app/Console/Commands/GenerateOpenApiCommand.php
+// apps/backend/app/Console/Commands/GenerateOpenApiCommand.php
 // 修改 handle() 方法，注册自定义处理器
 
 public function handle(): int
@@ -3406,7 +3409,7 @@ public function handle(): int
 **使用示例：控制器中简化定义**
 
 ```php
-// apps/api/app/Http/Controllers/Api/OrderController.php
+// apps/backend/app/Http/Controllers/Api/OrderController.php
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -3476,7 +3479,7 @@ class OrderController extends Controller
 ```
 
 ```php
-// apps/api/app/Http/Requests/StoreOrderRequest.php
+// apps/backend/app/Http/Requests/StoreOrderRequest.php
 namespace App\Http\Requests;
 
 use App\Enums\OrderStatus;
@@ -3584,7 +3587,7 @@ class StoreOrderRequest extends FormRequest
 **PHP 8.4 Backed Enum 定义**
 
 ```php
-// apps/api/app/Enums/OrderStatus.php
+// apps/backend/app/Enums/OrderStatus.php
 namespace App\Enums;
 
 /**
@@ -3654,7 +3657,7 @@ enum OrderStatus: int
 ```
 
 ```php
-// apps/api/app/Enums/PaymentMethod.php
+// apps/backend/app/Enums/PaymentMethod.php
 namespace App\Enums;
 
 enum PaymentMethod: string
@@ -3689,7 +3692,7 @@ enum PaymentMethod: string
 **方案一：独立 Schema 类中显式引用 Enum（推荐）**
 
 ```php
-// apps/api/app/OpenApi/Schemas/OrderSchema.php
+// apps/backend/app/OpenApi/Schemas/OrderSchema.php
 namespace App\OpenApi\Schemas;
 
 use App\Enums\OrderStatus;
@@ -3748,7 +3751,7 @@ class OrderSchema
 **方案二：自定义 Enum Attribute 自动生成 Schema（高级）**
 
 ```php
-// apps/api/app/OpenApi/Attributes/EnumSchema.php
+// apps/backend/app/OpenApi/Attributes/EnumSchema.php
 namespace App\OpenApi\Attributes;
 
 use OpenApi\Attributes as OA;
@@ -3807,7 +3810,7 @@ class EnumSchema
 **自定义 Enum Schema 处理器**
 
 ```php
-// apps/api/app/OpenApi/Processors/EnumSchemaProcessor.php
+// apps/backend/app/OpenApi/Processors/EnumSchemaProcessor.php
 namespace App\OpenApi\Processors;
 
 use OpenApi\Analysis;
@@ -3875,7 +3878,7 @@ class EnumSchemaProcessor
 **使用 EnumSchema Attribute 的简化定义**
 
 ```php
-// apps/api/app/OpenApi/Schemas/OrderSchema.php（简化版）
+// apps/backend/app/OpenApi/Schemas/OrderSchema.php（简化版）
 namespace App\OpenApi\Schemas;
 
 use App\Enums\OrderStatus;
@@ -3953,7 +3956,7 @@ const statusOptions = [
 **核心设计：一个通用分页结构，所有列表接口复用**
 
 ```php
-// apps/api/app/OpenApi/Schemas/PaginatedResponse.php
+// apps/backend/app/OpenApi/Schemas/PaginatedResponse.php
 namespace App\OpenApi\Schemas;
 
 use OpenApi\Attributes as OA;
@@ -4026,7 +4029,7 @@ class PaginatedResponse
 **方案一：使用 `allOf` 组合（标准 OpenAPI 3.1）**
 
 ```php
-// apps/api/app/OpenApi/Schemas/ProductListResponse.php
+// apps/backend/app/OpenApi/Schemas/ProductListResponse.php
 namespace App\OpenApi\Schemas;
 
 use OpenApi\Attributes as OA;
@@ -4067,7 +4070,7 @@ class ProductListResponse
 **方案二：使用泛型风格（更简洁，利用 zircote 的 $ref 覆盖）**
 
 ```php
-// apps/api/app/OpenApi/Schemas/PaginatedResponse.php
+// apps/backend/app/OpenApi/Schemas/PaginatedResponse.php
 // 扩展为支持泛型风格的快捷方法
 
 namespace App\OpenApi\Schemas;
@@ -4117,7 +4120,7 @@ class PaginatedResponseFactory
 **方案三：使用自定义 Attribute（推荐，最简洁）**
 
 ```php
-// apps/api/app/OpenApi/Attributes/Paginated.php
+// apps/backend/app/OpenApi/Attributes/Paginated.php
 namespace App\OpenApi\Attributes;
 
 use OpenApi\Attributes as OA;
@@ -4166,7 +4169,7 @@ class Paginated
 **控制器中使用分页响应**
 
 ```php
-// apps/api/app/Http/Controllers/Api/ProductController.php
+// apps/backend/app/Http/Controllers/Api/ProductController.php
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -4238,7 +4241,7 @@ class ProductController extends Controller
 **Laravel Resource 统一分页格式**
 
 ```php
-// apps/api/app/Http/Resources/Json/PaginatedResourceCollection.php
+// apps/backend/app/Http/Resources/Json/PaginatedResourceCollection.php
 namespace App\Http\Resources\Json;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -4281,7 +4284,7 @@ class PaginatedResourceCollection extends ResourceCollection
 ```
 
 ```php
-// apps/api/app/Http/Resources/ProductCollection.php
+// apps/backend/app/Http/Resources/ProductCollection.php
 namespace App\Http\Resources;
 
 use App\Http\Resources\Json\PaginatedResourceCollection;
@@ -4626,7 +4629,7 @@ main().catch(console.error);
 {
   "scripts": {
     "generate-api": "tsx scripts/generate-api-types.ts",
-    "generate-api:watch": "chokidar 'apps/api/storage/openapi.json' -c 'pnpm generate-api'"
+    "generate-api:watch": "chokidar 'apps/backend/storage/openapi.json' -c 'pnpm generate-api'"
   }
 }
 ```
@@ -4641,7 +4644,7 @@ export { apiClient, ApiError } from './client';
 ```
 
 ```typescript
-// apps/pc-mall/app/product/[id]/page.tsx
+// apps/website/app/product/[id]/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -4809,7 +4812,7 @@ jobs:
     },
     "generate-api": {
       "cache": true,
-      "inputs": ["apps/api/storage/openapi.json"],
+      "inputs": ["apps/backend/storage/openapi.json"],
       "outputs": ["packages/api-contract/src/**"]
     }
   }
@@ -4945,10 +4948,10 @@ pnpm turbo run build --remote-only
 
 ### 13.3 各应用 Vite/Next.js 具体配置
 
-#### 13.3.1 `apps/pc-mall` - Next.js 16 生产配置
+#### 13.3.1 `apps/website` - Next.js 16 生产配置
 
 ```javascript
-// apps/pc-mall/next.config.js
+// apps/website/next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // 输出模式：standalone 用于 Docker 部署
@@ -5053,7 +5056,7 @@ module.exports = nextConfig;
 ```
 
 ```typescript
-// apps/pc-mall/tsconfig.json
+// apps/website/tsconfig.json
 {
   "extends": "@phpmall/tsconfig/nextjs.json",
   "compilerOptions": {
@@ -5076,7 +5079,7 @@ module.exports = nextConfig;
 ```
 
 ```typescript
-// apps/pc-mall/tailwind.config.ts
+// apps/website/tailwind.config.ts
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -5319,10 +5322,10 @@ function App() {
 export default App;
 ```
 
-#### 13.3.3 `apps/h5-uniapp` - UniApp 3 + Vite 配置
+#### 13.3.3 `apps/mobile` - UniApp 3 + Vite 配置
 
 ```typescript
-// apps/h5-uniapp/vite.config.ts
+// apps/mobile/vite.config.ts
 import { defineConfig } from 'vite';
 import uni from '@dcloudio/vite-plugin-uni';
 import { resolve } from 'path';
@@ -5377,7 +5380,7 @@ export default defineConfig({
 ```
 
 ```json
-// apps/h5-uniapp/package.json（UniApp 3 特定配置）
+// apps/mobile/package.json（UniApp 3 特定配置）
 {
   "name": "@phpmall/h5-uniapp",
   "version": "1.0.0",
@@ -5412,7 +5415,7 @@ export default defineConfig({
 ```
 
 ```typescript
-// apps/h5-uniapp/src/utils/request.ts
+// apps/mobile/src/utils/request.ts
 // UniApp 封装请求（支持多平台）
 import { apiClient } from '@phpmall/api-contract';
 
@@ -5456,7 +5459,7 @@ export const uniApiClient = new UniAppApiClient();
 ```
 
 ```vue
-<!-- apps/h5-uniapp/src/pages/product/detail.vue -->
+<!-- apps/mobile/src/pages/product/detail.vue -->
 <template>
   <view class="product-page">
     <image :src="product?.coverImage" mode="aspectFit" class="cover" />
@@ -7106,7 +7109,7 @@ class ProductResource extends JsonResource
 #### 15.11.1 后端：按 Tag 分组生成 OpenAPI
 
 ```php
-// apps/api/app/Console/Commands/GenerateOpenApiCommand.php
+// apps/backend/app/Console/Commands/GenerateOpenApiCommand.php
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -7183,7 +7186,7 @@ class GenerateOpenApiCommand extends Command
 ```
 
 ```php
-// apps/api/app/OpenApi/Processors/TagFilterProcessor.php
+// apps/backend/app/OpenApi/Processors/TagFilterProcessor.php
 namespace App\OpenApi\Processors;
 
 use OpenApi\Analysis;
@@ -7249,7 +7252,7 @@ class TagFilterProcessor
 **composer.json 脚本：各端独立生成**
 
 ```json
-// apps/api/composer.json
+// apps/backend/composer.json
 {
     "scripts": {
         "generate-api": "php artisan openapi:generate --output=../packages/api-contract/openapi.json",
@@ -7344,7 +7347,7 @@ main().catch(console.error);
     }
 }
 
-// apps/pc-mall/package.json
+// apps/website/package.json
 {
     "dependencies": {
         "@phpmall/api-shop": "workspace:*",
@@ -7354,7 +7357,7 @@ main().catch(console.error);
     }
 }
 
-// apps/h5-uniapp/package.json
+// apps/mobile/package.json
 {
     "dependencies": {
         "@phpmall/api-shop": "workspace:*",
@@ -7403,7 +7406,7 @@ packages/
 
 ```bash
 # 1. 后端修改接口后，生成各端独立 OpenAPI
-cd apps/api
+cd apps/backend
 composer generate-api:all
 
 # 2. 前端重新生成自己端的类型
