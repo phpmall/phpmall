@@ -5,7 +5,13 @@
   "type": "module",
   "scripts": {
     "ready": "vp check && vp run -r test && vp run -r build",
-    "dev": "vp run website#dev"
+    "dev": "vp run website#dev",
+    "dev:admin": "vp run admin#dev",
+    "dev:seller": "vp run seller#dev",
+    "dev:supplier": "vp run supplier#dev",
+    "dev:website": "vp run website#dev",
+    "dev:mobile": "vp run mobile#dev",
+    "dev:all": "pnpm --parallel --filter './apps/*' dev"
   },
   "devDependencies": {
     "vite-plus": "catalog:"
