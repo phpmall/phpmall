@@ -23,9 +23,9 @@
 ---
 
 
-## 2. 技术栈总览
+## 1. 技术栈总览
 
-### 2.1 分层技术架构图
+### 1.1 分层技术架构图
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
@@ -64,7 +64,7 @@
 └────────────────────────────────────────────────────────────────────┘
 ```
 
-### 2.2 技术选型速查表
+### 1.2 技术选型速查表
 
 | 层级 | 技术组件 | 推荐版本 | 用途 |
 |------|----------|----------|------|
@@ -95,11 +95,11 @@
 
 ---
 
-## 3. 后端架构详解
+## 2. 后端架构详解
 
-### 3.1 框架选型：Laravel 13 + Octane (Swoole)
+### 2.1 框架选型：Laravel 13 + Octane (Swoole)
 
-#### 3.1.1 为什么选择 Laravel 13？
+#### 2.1.1 为什么选择 Laravel 13？
 
 | 特性 | 说明 |
 |------|------|
@@ -111,7 +111,7 @@
 | **Package 生态** | `spatie/laravel-permission`（RBAC）、`maatwebsite/excel`（导入导出）、`barryvdh/laravel-debugbar` 等 |
 | **PHP 8.2+ 特性** | 支持 Enum、Match 表达式、Fiber（Octane 基础） |
 
-#### 3.1.2 Laravel Octane 高性能模式
+#### 2.1.2 Laravel Octane 高性能模式
 
 ```php
 // config/octane.php
@@ -144,7 +144,7 @@ return [
 | Octane + Swoole | 常驻内存，协程复用 | 低 | 高并发 API、WebSocket |
 | RoadRunner | 常驻内存，进程池 | 中 | 替代方案，Go 编写 |
 
-#### 3.1.3 目录结构规范
+#### 2.1.3 目录结构规范
 
 ```
 phpmall/
@@ -190,9 +190,9 @@ phpmall/
 └── phpunit.xml
 ```
 
-### 3.2 核心服务层设计
+### 2.2 核心服务层设计
 
-#### 3.2.1 服务层模式（Service Layer）
+#### 2.2.1 服务层模式（Service Layer）
 
 ```php
 // app/Services/Order/OrderCreationService.php
@@ -269,7 +269,7 @@ class OrderCreationService
 }
 ```
 
-### 3.3 异常处理与错误码规范
+### 2.3 异常处理与错误码规范
 
 ```php
 // app/Exceptions/ApiException.php
@@ -330,11 +330,11 @@ class ApiException extends \Exception
 
 ---
 
-## 4. 数据层架构详解
+## 3. 数据层架构详解
 
-### 4.1 MySQL 主库设计
+### 3.1 MySQL 主库设计
 
-#### 4.1.1 分库分表策略
+#### 3.1.1 分库分表策略
 
 **分表策略**：
 
@@ -378,7 +378,7 @@ class Order extends Model
 }
 ```
 
-#### 4.1.2 读写分离配置
+#### 3.1.2 读写分离配置
 
 ```php
 // config/database.php
@@ -409,9 +409,9 @@ class Order extends Model
 ],
 ```
 
-### 4.2 Elasticsearch 搜索架构
+### 3.2 Elasticsearch 搜索架构
 
-#### 4.2.1 索引设计
+#### 3.2.1 索引设计
 
 ```json
 // 商品索引映射
@@ -464,7 +464,7 @@ class Order extends Model
 }
 ```
 
-#### 4.2.2 搜索服务封装
+#### 3.2.2 搜索服务封装
 
 ```php
 // app/Services/Search/ProductSearchService.php
@@ -561,7 +561,7 @@ class ProductSearchService
 }
 ```
 
-### 4.3 MongoDB 文档存储
+### 3.3 MongoDB 文档存储
 
 ```php
 // MongoDB 存储场景
@@ -604,11 +604,11 @@ class ProductSearchService
 
 ---
 
-## 5. 缓存与高性能层
+## 4. 缓存与高性能层
 
-### 5.1 Redis 缓存架构
+### 4.1 Redis 缓存架构
 
-#### 5.1.1 缓存分层策略
+#### 4.1.1 缓存分层策略
 
 | 层级 | 缓存内容 | TTL | 更新策略 |
 |------|----------|-----|----------|
@@ -617,7 +617,7 @@ class ProductSearchService
 | **L3 - Nginx 缓存** | 商品详情页、CMS 页面 | 1h-24h | 主动刷新/Purge |
 | **L4 - CDN** | 静态资源、图片、JS/CSS | 7d-30d | 文件名 Hash |
 
-#### 5.1.2 缓存 Key 命名规范
+#### 4.1.2 缓存 Key 命名规范
 
 ```
 # 格式: namespace:module:entity:id[:sub]
@@ -633,7 +633,7 @@ category:products:{category_id}      # 分类商品列表
 config:system                        # 系统配置
 ```
 
-#### 5.1.3 秒杀库存扣减（Redis + Lua 原子操作）
+#### 4.1.3 秒杀库存扣减（Redis + Lua 原子操作）
 
 ```lua
 -- scripts/deduct_stock.lua
@@ -699,7 +699,7 @@ class SeckillStockService
 }
 ```
 
-### 5.2 OPcache + JIT 优化
+### 4.2 OPcache + JIT 优化
 
 ```ini
 ; php.ini 配置
@@ -729,9 +729,9 @@ opcache.jit_hot_return=8
 
 ---
 
-## 6. 消息队列与异步处理
+## 5. 消息队列与异步处理
 
-### 6.1 Laravel Queue + Horizon 架构
+### 5.1 Laravel Queue + Horizon 架构
 
 ```
 ┌─────────────────────────────────────────┐
@@ -765,7 +765,7 @@ opcache.jit_hot_return=8
 └─────────────────────────────────────────┘
 ```
 
-### 6.2 核心队列任务设计
+### 5.2 核心队列任务设计
 
 ```php
 // app/Jobs/Order/OrderTimeoutCancelJob.php
@@ -869,7 +869,7 @@ class SettlementJob implements ShouldQueue
 }
 ```
 
-### 6.3 Horizon 配置
+### 5.3 Horizon 配置
 
 ```php
 // config/horizon.php
@@ -904,9 +904,9 @@ class SettlementJob implements ShouldQueue
 
 ---
 
-## 7. 支付与财务体系
+## 6. 支付与财务体系
 
-### 7.1 支付网关架构
+### 6.1 支付网关架构
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -1019,7 +1019,7 @@ class PaymentService
 }
 ```
 
-### 7.2 分账系统（平台-商户资金分离）
+### 6.2 分账系统（平台-商户资金分离）
 
 ```php
 // 微信分账示例
@@ -1068,7 +1068,7 @@ class WechatProfitSharingService
 }
 ```
 
-### 7.3 对账系统
+### 6.3 对账系统
 
 ```php
 // app/Console/Commands/ReconciliationCommand.php
@@ -1136,7 +1136,7 @@ class ReconciliationCommand extends Command
 }
 ```
 
-### 7.4 虚拟钱包体系
+### 6.4 虚拟钱包体系
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -1203,9 +1203,9 @@ class WalletService
 
 ---
 
-## 9. 基础设施与 DevOps
+## 7. 基础设施与 DevOps
 
-### 9.1 Docker 容器化
+### 7.1 Docker 容器化
 
 ```dockerfile
 # Dockerfile (PHP 8.4 + Swoole)
@@ -1342,7 +1342,7 @@ volumes:
   mongo_data:
 ```
 
-### 9.2 Kubernetes 生产编排
+### 7.2 Kubernetes 生产编排
 
 ```yaml
 # k8s/app-deployment.yaml
@@ -1447,7 +1447,7 @@ spec:
           averageUtilization: 80
 ```
 
-### 9.3 监控与告警
+### 7.3 监控与告警
 
 ```yaml
 # Prometheus 规则
@@ -1497,7 +1497,7 @@ groups:
 
 ---
 
-## 11. 版本号修正说明
+## 8. 版本号修正说明
 
 > 以下列出原始选型中需要修正的版本号，并说明推荐版本：
 
@@ -1526,9 +1526,9 @@ groups:
 
 ---
 
-## 12. 附录
+## 9. 附录
 
-### 12.1 环境变量模板
+### 9.1 环境变量模板
 
 ```env
 # .env.example
@@ -1623,7 +1623,7 @@ LOG_SLS_ACCESS_KEY_ID=xxxxxxxx
 LOG_SLS_ACCESS_KEY_SECRET=xxxxxxxx
 ```
 
-### 12.2 依赖包清单（composer.json）
+### 9.2 依赖包清单（composer.json）
 
 ```json
 {
@@ -1658,7 +1658,7 @@ LOG_SLS_ACCESS_KEY_SECRET=xxxxxxxx
 }
 ```
 
-### 12.3 开发环境快速启动
+### 9.3 开发环境快速启动
 
 ```bash
 # 1. 克隆项目
@@ -1700,11 +1700,13 @@ docker-compose exec app php artisan octane:start --watch
 
 ---
 
-## 13. 深度附录：Monorepo 关键配置详解
+## 10. 深度附录：Monorepo 关键配置详解
 
-### 13.1 API 类型自动生成脚本（Laravel OpenAPI → TypeScript/Zod）
+> **⚠️ 项目说明**：当前项目使用 **Vite+ (vp)** 作为统一工具链，而非 Turborepo。本附录中的前端配置示例（Next.js、Vite、UniApp、Turborepo）为规划设计参考，与 `apps/website`（Vite+ starter）、`packages/seller`（Vue 3）等实际代码目录可能有差异。实施时请以代码仓库为准。
 
-#### 13.1.1 Laravel 端：使用 zircote/swagger-php 生成 OpenAPI 3.1 规范
+### 10.1 API 类型自动生成脚本（Laravel OpenAPI → TypeScript/Zod）
+
+#### 10.1.1 Laravel 端：使用 zircote/swagger-php 生成 OpenAPI 3.1 规范
 
 **安装依赖**
 
@@ -2336,7 +2338,7 @@ class Product extends Model
 
 ---
 
-#### 13.1.1.1 FormRequest 集成：从 rules() 方法自动生成 OpenAPI 参数
+#### 10.1.1.1 FormRequest 集成：从 rules() 方法自动生成 OpenAPI 参数
 
 **核心思想**：将 Laravel `FormRequest` 的 `rules()` 方法自动解析为 OpenAPI 的 `#[OA\RequestBody]` 或 `#[OA\Parameter]`，避免在控制器和 Request 类中重复定义校验规则。
 
@@ -2807,7 +2809,7 @@ class StoreOrderRequest extends FormRequest
 
 ---
 
-#### 13.1.1.2 枚举类型（Backed Enum）：PHP 8.4 Enum 映射到 OpenAPI Schema
+#### 10.1.1.2 枚举类型（Backed Enum）：PHP 8.4 Enum 映射到 OpenAPI Schema
 
 **PHP 8.4 Backed Enum 定义**
 
@@ -3176,7 +3178,7 @@ const statusOptions = [
 
 ---
 
-#### 13.1.1.3 分页响应通用 Schema：PaginatedResponse 复用封装
+#### 10.1.1.3 分页响应通用 Schema：PaginatedResponse 复用封装
 
 **核心设计：一个通用分页结构，所有列表接口复用**
 
@@ -3698,7 +3700,7 @@ export function usePagination<T>(options: UsePaginationOptions<T>) {
 
 所有方案最终生成的 OpenAPI 结构完全一致，前端类型生成不受实现方式影响。
 
-#### 13.1.2 类型生成脚本：OpenAPI → TypeScript + Zod
+#### 10.1.2 类型生成脚本：OpenAPI → TypeScript + Zod
 
 ```bash
 # 根目录安装代码生成工具
@@ -3859,7 +3861,7 @@ main().catch(console.error);
 }
 ```
 
-#### 13.1.3 生成的类型使用示例
+#### 10.1.3 生成的类型使用示例
 
 ```typescript
 // packages/api-contract/src/index.ts
@@ -3935,9 +3937,9 @@ export default function CreateProduct() {
 
 ---
 
-### 13.2 Turborepo 远程缓存配置
+### 10.2 Turborepo 远程缓存配置
 
-#### 13.2.1 方案对比
+#### 10.2.1 方案对比
 
 | 方案 | 成本 | 适用场景 | 配置复杂度 |
 |------|------|----------|-----------|
@@ -3946,7 +3948,7 @@ export default function CreateProduct() {
 | **AWS S3 + Turbo** | 按量计费 | 已有 AWS 基础设施 | 中 |
 | **阿里云 OSS + Turbo** | 按量计费 | 国内部署，合规要求 | 中 |
 
-#### 13.2.2 Vercel Remote Cache（推荐快速方案）
+#### 10.2.2 Vercel Remote Cache（推荐快速方案）
 
 ```bash
 # 1. 安装 Vercel CLI
@@ -4044,7 +4046,7 @@ jobs:
 }
 ```
 
-#### 13.2.3 自托管 MinIO 远程缓存（企业方案）
+#### 10.2.3 自托管 MinIO 远程缓存（企业方案）
 
 ```yaml
 # docker/minio/docker-compose.yml
@@ -4127,7 +4129,7 @@ pnpm turbo run build --remote-only
     TURBO_TOKEN: ${{ secrets.MINIO_CACHE_TOKEN }}
 ```
 
-#### 13.2.4 缓存策略优化
+#### 10.2.4 缓存策略优化
 
 ```json
 // turbo.json - 缓存优化配置
@@ -4171,9 +4173,9 @@ pnpm turbo run build --remote-only
 
 ---
 
-### 13.3 各应用 Vite/Next.js 具体配置
+### 10.3 各应用 Vite/Next.js 具体配置
 
-#### 13.3.1 `apps/pc-mall` - Next.js 16 生产配置
+#### 10.3.1 `apps/pc-mall` - Next.js 16 生产配置
 
 ```javascript
 // apps/pc-mall/next.config.js
@@ -4345,7 +4347,7 @@ const config: Config = {
 export default config;
 ```
 
-#### 13.3.2 `apps/admin` - Vite 8.1 + React 19 + Ant Design 6 配置
+#### 10.3.2 `apps/admin` - Vite 8.1 + React 19 + Ant Design 6 配置
 
 ```typescript
 // apps/admin/vite.config.ts
@@ -4547,7 +4549,7 @@ function App() {
 export default App;
 ```
 
-#### 13.3.3 `apps/h5-uniapp` - UniApp 3 + Vite 配置
+#### 10.3.3 `apps/h5-uniapp` - UniApp 3 + Vite 配置
 
 ```typescript
 // apps/h5-uniapp/vite.config.ts
@@ -4747,7 +4749,7 @@ function addToCart() {
 </style>
 ```
 
-#### 13.3.4 `packages/tsconfig` - 共享 TypeScript 配置
+#### 10.3.4 `packages/tsconfig` - 共享 TypeScript 配置
 
 ```json
 // packages/tsconfig/base.json
@@ -4820,7 +4822,7 @@ function addToCart() {
 }
 ```
 
-#### 13.3.5 `packages/eslint-config` - 共享 ESLint 配置
+#### 10.3.5 `packages/eslint-config` - 共享 ESLint 配置
 
 ```javascript
 // packages/eslint-config/index.js

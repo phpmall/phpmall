@@ -403,9 +403,9 @@ DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 | merchant_id | `INT UNSIGNED` | NOT NULL | 商家ID（平台级订单可能为0，实际拆单后子订单有值） |
 | parent_order_id | `BIGINT UNSIGNED` | NULL | 父订单ID（拆单） |
 | order_type | `TINYINT UNSIGNED` | NOT NULL DEFAULT 1 | 1=普通 2=秒杀 3=拼团 4=分销 |
-| status | `TINYINT UNSIGNED` | NOT NULL DEFAULT 0 | 0=待付款 1=待发货 2=待收货 3=已完成 4=已取消 5=售后中 |
-| pay_status | `TINYINT UNSIGNED` | NOT NULL DEFAULT 0 | 0=未支付 1=已支付 2=部分退款 3=全额退款 |
-| refund_status | `TINYINT UNSIGNED` | NOT NULL DEFAULT 0 | 0=无退款 1=退款申请中 2=退款中 3=已退款 4=拒绝退款 |
+| status | `TINYINT UNSIGNED` | NOT NULL DEFAULT 10 | 10=待付款 20=已支付 30=待发货 40=已发货 50=待收货 60=已收货 70=已完成 80=已取消 90=退款中 100=已退款 |
+| pay_status | `TINYINT UNSIGNED` | NOT NULL DEFAULT 0 | 0=未支付 20=已支付 30=部分退款 100=全额退款 |
+| refund_status | `TINYINT UNSIGNED` | NOT NULL DEFAULT 0 | 0=无退款 10=退款申请中 20=退款中 30=已退款 40=拒绝退款 |
 | product_amount | `BIGINT UNSIGNED` | NOT NULL | 商品总金额（分） |
 | discount_amount | `BIGINT UNSIGNED` | NOT NULL DEFAULT 0 | 优惠金额（分） |
 | freight_amount | `BIGINT UNSIGNED` | NOT NULL DEFAULT 0 | 运费（分） |
@@ -856,27 +856,35 @@ DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 ### 14.2 订单状态
 
+> **对应 PHP Enum**：`App\Enums\OrderStatus`（int Backed Enum，与 PRD 文档第 8.4 节状态机定义一致）
+
 | 值 | 状态 | 说明 | 可执行操作 |
 |----|------|------|-----------|
-| 0 | 待付款 | 订单创建未支付 | 支付、取消 |
-| 1 | 待发货 | 已支付，商家未发货 | 发货、取消（超时前） |
-| 2 | 待收货 | 已发货，用户未确认 | 确认收货、查看物流 |
-| 3 | 已完成 | 已确认收货 | 评价、申请售后 |
-| 4 | 已取消 | 订单取消 | 无 |
-| 5 | 售后中 | 退款/退货处理中 | 查看售后进度 |
+| 10 | 待付款 | 订单创建未支付 | 支付、取消 |
+| 20 | 已支付 | 支付成功，待商家发货 | 退款申请 |
+| 30 | 待发货 | 已支付，商家未发货 | 发货、退款 |
+| 40 | 已发货 | 商家已发货，物流中 | 确认收货、查看物流 |
+| 50 | 待收货 | 已发货，用户待确认 | 确认收货、申请售后 |
+| 60 | 已收货 | 用户已确认收货 | 评价 |
+| 70 | 已完成 | 交易完成 | 评价、7天内申请售后 |
+| 80 | 已取消 | 订单取消 | 无 |
+| 90 | 退款中 | 退款/退货处理中 | 查看售后进度 |
+| 100 | 已退款 | 退款完成 | 无 |
 
 ### 14.3 售后退款状态
 
+> 退款状态与订单状态使用相同的 decimated 模式，便于状态机流转校验。
+
 | 值 | 状态 |
 |----|------|
-| 0 | 待商家处理 |
-| 1 | 商家同意 |
-| 2 | 商家拒绝 |
-| 3 | 退货中 |
-| 4 | 平台介入 |
-| 5 | 已退款 |
-| 6 | 已拒绝 |
-| 7 | 用户撤销 |
+| 10 | 待商家处理 |
+| 20 | 商家同意 |
+| 30 | 商家拒绝 |
+| 40 | 退货中 |
+| 50 | 平台介入 |
+| 60 | 已退款 |
+| 70 | 已拒绝 |
+| 80 | 用户撤销 |
 
 ### 14.4 支付渠道
 
@@ -892,10 +900,10 @@ DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 | 值 | 状态 |
 |----|------|
 | 0 | 待支付 |
-| 1 | 支付中 |
-| 2 | 支付成功 |
-| 3 | 支付失败 |
-| 4 | 已关闭 |
+| 10 | 支付中 |
+| 20 | 支付成功 |
+| 30 | 支付失败 |
+| 40 | 已关闭 |
 
 ### 14.6 商家审核状态
 

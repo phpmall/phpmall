@@ -148,7 +148,7 @@
 | **Event/Listener** | 订单状态变更、支付成功等事件驱动架构 |
 | **Policy/Gate** | 细粒度权限控制，适合 B2B2C 多角色场景 |
 | **Package 生态** | `spatie/laravel-permission`（RBAC）、`maatwebsite/excel`（导入导出）、`barryvdh/laravel-debugbar` 等 |
-| **PHP 8.2+ 特性** | 支持 Enum、Match 表达式、Fiber（Octane 基础） |
+| **PHP 8.4+ 特性** | 支持 Enum、Match 表达式、Fiber（Octane 基础） |
 
 #### 3.1.2 Laravel Octane 高性能模式
 
@@ -2129,7 +2129,7 @@ class OrderSplitService
 
                     ┌──────────┐
                     │  平台      │
-                    │  (抽佣 10%)│
+                    │  (抽佣 5%) │
                     └────┬─────┘
                          │
               ┌──────────┼──────────┐
@@ -2154,7 +2154,7 @@ class OrderSplitService
 - D 获得二级佣金 10%
 - A 获得一级佣金 15%
 - B 无佣金（无关联）
-- 平台获得 10% 服务费
+- 平台获得 5% 服务费
 ```
 
 ```php
