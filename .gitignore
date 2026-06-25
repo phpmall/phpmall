@@ -6,10 +6,12 @@
 .phpactor.json
 .phpunit.result.cache
 /.codex
-/.cursor/
+/.claude
+/.cursor
 /.idea
 /.nova
 /.phpunit.cache
+/.trae
 /.vscode
 /.zed
 /auth.json
@@ -22,6 +24,7 @@
 /public/seller
 /public/storage
 /public/supplier
+/public/user
 /storage/*.key
 /storage/pail
 /vendor
