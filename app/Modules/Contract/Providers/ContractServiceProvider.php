@@ -21,8 +21,8 @@ class ContractServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
-        $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'contract');
-        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
+        $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'contract');
+        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
     }
 }

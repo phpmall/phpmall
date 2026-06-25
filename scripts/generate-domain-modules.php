@@ -7,8 +7,7 @@ declare(strict_types=1);
  *
  * 运行：php scripts/generate-domain-modules.php
  */
-
-$basePath = __DIR__ . '/../app/Modules';
+$basePath = __DIR__.'/../app/Modules';
 
 $modules = [
     [
@@ -165,7 +164,7 @@ $providers = [];
 foreach ($modules as $module) {
     $name = $module['name'];
     $slug = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $name));
-    $modulePath = $basePath . '/' . $name;
+    $modulePath = $basePath.'/'.$name;
 
     $dirs = [
         'Database/factories',
@@ -185,7 +184,7 @@ foreach ($modules as $module) {
     ];
 
     foreach ($dirs as $dir) {
-        $fullDir = $modulePath . '/' . $dir;
+        $fullDir = $modulePath.'/'.$dir;
         ensureDir($fullDir);
 
         // 在空目录下放置 .gitignore
@@ -202,7 +201,7 @@ foreach ($modules as $module) {
             'Resources/Views',
             'Services',
         ], true)) {
-            writeFile($fullDir . '/.gitignore', $gitignore);
+            writeFile($fullDir.'/.gitignore', $gitignore);
         }
     }
 
@@ -241,7 +240,7 @@ foreach ($modules as $module) {
 
 待补充。
 MD;
-    writeFile($modulePath . '/README.md', $readme);
+    writeFile($modulePath.'/README.md', $readme);
 
     // ServiceProvider
     $provider = <<<PHP
@@ -274,7 +273,7 @@ class {$name}ServiceProvider extends ServiceProvider
     }
 }
 PHP;
-    writeFile($modulePath . "/Providers/{$name}ServiceProvider.php", $provider);
+    writeFile($modulePath."/Providers/{$name}ServiceProvider.php", $provider);
     $providers[] = "App\\Modules\\{$name}\\Providers\\{$name}ServiceProvider::class";
 
     // Entity placeholder
@@ -357,7 +356,7 @@ class {$name}Entity implements \\JsonSerializable
     }
 }
 PHP;
-    writeFile($modulePath . "/Entities/{$name}Entity.php", $entity);
+    writeFile($modulePath."/Entities/{$name}Entity.php", $entity);
 
     // Routes/web.php
     $route = <<<PHP
@@ -370,11 +369,11 @@ use Illuminate\\Support\\Facades\\Route;
 // {$module['title']}路由
 // 请使用 gen:route 工具生成或手动补充
 PHP;
-    writeFile($modulePath . '/Routes/web.php', $route);
+    writeFile($modulePath.'/Routes/web.php', $route);
 
     echo "Generated module: {$name}\n";
 }
 
 // 输出生成的 Provider 列表，供手动注册使用
 echo "\n// 请将以下 ServiceProvider 注册到 bootstrap/providers.php：\n";
-echo implode(",\n", $providers) . "\n";
+echo implode(",\n", $providers)."\n";

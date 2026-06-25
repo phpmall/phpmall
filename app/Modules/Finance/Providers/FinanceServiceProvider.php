@@ -21,8 +21,8 @@ class FinanceServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/migrations');
-        $this->loadViewsFrom(__DIR__ . '/../Resources/Views', 'finance');
-        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
+        $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'finance');
+        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
     }
 }

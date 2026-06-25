@@ -1,0 +1,25 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 6
+
+    paths:
+        - app
+        - routes
+        - database
+
+    excludePaths:
+        - app/Providers
+        - app/Support
+        # TODO: 现有 User 模块为早期脚手架，Phase 1 重构 Auth/User 时移除排除并修复类型问题
+        - app/Modules/User
+        - bootstrap
+        - storage
+        - vendor
+        - node_modules
+        - resources/views
+
+    ignoreErrors:
+        # Sanctum currentAccessToken() PHPDoc 未声明 nullable，但实际可能返回 null
+        - '#Strict comparison using !== between Laravel\\Sanctum\\PersonalAccessToken and null will always evaluate to true#'

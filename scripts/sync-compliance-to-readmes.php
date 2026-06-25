@@ -7,8 +7,7 @@ declare(strict_types=1);
  *
  * 运行：php scripts/sync-compliance-to-readmes.php
  */
-
-$basePath = __DIR__ . '/../app/Modules';
+$basePath = __DIR__.'/../app/Modules';
 
 $complianceNotes = [
     'Auth' => [
@@ -108,10 +107,11 @@ $complianceNotes = [
 ];
 
 foreach ($complianceNotes as $module => $notes) {
-    $readmePath = $basePath . '/' . $module . '/README.md';
+    $readmePath = $basePath.'/'.$module.'/README.md';
 
     if (! file_exists($readmePath)) {
         echo "Skip {$module}: README.md not found\n";
+
         continue;
     }
 
@@ -119,13 +119,14 @@ foreach ($complianceNotes as $module => $notes) {
 
     if (str_contains($content, '## 合规说明')) {
         echo "Skip {$module}: compliance section already exists\n";
+
         continue;
     }
 
     $items = implode("\n- ", $notes);
     $append = "\n\n## 合规说明\n\n- {$items}\n";
 
-    file_put_contents($readmePath, $content . $append);
+    file_put_contents($readmePath, $content.$append);
 
     echo "Updated {$module} README with compliance notes\n";
 }

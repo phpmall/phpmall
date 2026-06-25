@@ -1,8 +1,22 @@
 <?php
 
-declare(strict_types=1);
-
+use App\Modules\Auth\Http\Controllers\AuthController;
+use App\Modules\Auth\Http\Controllers\PermissionController;
+use App\Modules\Auth\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
-// 认证授权域路由
-// 请使用 gen:route 工具生成或手动补充
+Route::prefix('api/auth')->group(function () {
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('logout', [AuthController::class, 'logout']);
+        Route::get('me', [AuthController::class, 'me']);
+    });
+});
+
+Route::prefix('api/admin')->middleware('auth:sanctum')->group(function () {
+    Route::apiResource('roles', RoleController::class);
+    Route::apiResource('permissions', PermissionController::class);
+    Route::get('permissions/tree', [PermissionController::class, 'tree']);
+});

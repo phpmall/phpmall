@@ -1,0 +1,24 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "ordered_imports": {
+            "sort_algorithm": "alpha",
+            "imports_order": ["const", "class", "function"]
+        },
+        "no_unused_imports": true,
+        "array_syntax": {
+            "syntax": "short"
+        },
+        "single_quote": true,
+        "trailing_comma_in_multiline": {
+            "elements": ["arrays", "match", "parameters"]
+        }
+    },
+    "exclude": [
+        "bootstrap",
+        "storage",
+        "vendor",
+        "node_modules",
+        "resources/views"
+    ]
+}
