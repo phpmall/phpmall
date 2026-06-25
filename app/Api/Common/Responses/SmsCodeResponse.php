@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Api\Common\Responses;
 
-use Juling\Foundation\Support\DTOHelper;
+use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'SmsCodeResponse')]
 class SmsCodeResponse
 {
-    use DTOHelper;
+    use HasSerializableAttributes;
 
     #[OA\Property(property: 'codeId', description: '短信随机码', type: 'string')]
     private string $codeId;

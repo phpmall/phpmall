@@ -9,15 +9,15 @@ class Constant
     /**
      * 应用名称
      */
-    const string AppName = 'PHPMall';
+    public const string AppName = 'PHPMall';
 
     /**
      * 应用版本号
      */
-    const string Version = '1.0';
+    public const string Version = '1.0';
 
     /**
      * 应用发布时间
      */
-    const string Release = '2025-06-24';
+    public const string Release = '2025-06-24';
 }

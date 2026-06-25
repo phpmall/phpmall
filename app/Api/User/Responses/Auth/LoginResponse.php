@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Api\User\Responses\Auth;
 
-use Juling\Foundation\Support\DTOHelper;
+use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'LoginResponse')]
 class LoginResponse
 {
-    use DTOHelper;
+    use HasSerializableAttributes;
 
     #[OA\Property(property: 'status', description: '状态:1成功，2失败', type: 'integer')]
     private int $status;

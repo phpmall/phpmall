@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Api\Common\Responses;
 
-use Juling\Foundation\Support\DTOHelper;
+use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'CaptchaResponse')]
 class CaptchaResponse
 {
-    use DTOHelper;
+    use HasSerializableAttributes;
 
     #[OA\Property(property: 'captchaId', description: '图片验证码ID', type: 'string')]
     private string $captchaId;

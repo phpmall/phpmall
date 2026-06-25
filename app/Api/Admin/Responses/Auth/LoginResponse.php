@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Api\Admin\Responses\Auth;
 
-use Juling\Foundation\Support\DTOHelper;
+use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: LoginResponse::class)]
 class LoginResponse
 {
-    use DTOHelper;
+    use HasSerializableAttributes;
 
     #[OA\Property(property: 'token', description: 'token', type: 'string')]
     private string $token;
