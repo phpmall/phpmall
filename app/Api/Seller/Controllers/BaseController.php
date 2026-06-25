@@ -1,10 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Middleware\CheckAuth;
+use App\Constants\Constant;
 use App\Http\Controllers\Controller;
+use OpenApi\Attributes as OA;
+use OpenApi\Attributes\Contact;
 
-abstract class BaseController extends Controller
+#[OA\Info(version: Constant::Version, description: Constant::Release, title: '卖家API文档', contact: new Contact('API Develop Team'))]
+#[OA\Server(url: '/api/seller/', description: '开发环境')]
+#[OA\SecurityScheme(securityScheme: 'bearerAuth', type: 'http', description: 'JWT 认证信息', name: 'Authorization', in: 'header', bearerFormat: 'JWT', scheme: 'bearer')]
+class BaseController extends Controller
 {
-    //
+    const string MerchantId = 'merchant_id';
+
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum', CheckAuth::class]);
+    }
+
+    protected function queryWrapper(): array
+    {
+        return [
+            self::MerchantId => 1,
+        ];
+    }
 }

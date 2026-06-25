@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Web\Controllers;
+namespace App\Http\Controllers\Web\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;

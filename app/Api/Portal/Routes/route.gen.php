@@ -7,3 +7,8 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+
+// 首页
+Route::get('/', [\App\Api\Portal\Controllers\IndexController::class, 'index'])->name('index');
+// 搜索接口
+Route::get('search', [\App\Api\Portal\Controllers\SearchController::class, 'index'])->name('search');

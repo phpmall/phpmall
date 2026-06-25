@@ -7,3 +7,8 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+
+// 供应商登录接口
+Route::post('auth/login', [\App\Api\Supplier\Controllers\AuthController::class, 'login']);
+// 首页
+Route::get('/', [\App\Api\Supplier\Controllers\IndexController::class, 'index'])->name('index');

@@ -7,3 +7,8 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+
+// 显示图片验证码
+Route::get('captcha', [\App\Api\Common\Controllers\CaptchaController::class, 'index'])->name('captcha');
+// 发送短信验证码
+Route::post('sms/code', [\App\Api\Common\Controllers\SmsController::class, 'code']);

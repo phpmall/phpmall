@@ -7,3 +7,14 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+
+// 新会员注册
+Route::post('auth/signup', [\App\Api\User\Controllers\AuthController::class, 'signup']);
+// 会员登录接口
+Route::post('auth/login', [\App\Api\User\Controllers\AuthController::class, 'login']);
+// 首页
+Route::get('/', [\App\Api\User\Controllers\IndexController::class, 'index'])->name('index');
+// 获取会员资料
+Route::get('profile', [\App\Api\User\Controllers\ProfileController::class, 'index'])->name('profile');
+// 更新会员资料
+Route::put('profile', [\App\Api\User\Controllers\ProfileController::class, 'update']);
