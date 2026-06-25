@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\User\Controllers;
+namespace App\Modules\User\Http\Controllers;
 
 use App\Api\Admin\Controllers\BaseController;
 use App\Modules\User\Entities\UserEntity;
+use App\Modules\User\Http\Requests\User\UserCreateRequest;
+use App\Modules\User\Http\Requests\User\UserDestroyRequest;
+use App\Modules\User\Http\Requests\User\UserQueryRequest;
+use App\Modules\User\Http\Requests\User\UserUpdateRequest;
+use App\Modules\User\Http\Responses\User\UserDestroyResponse;
+use App\Modules\User\Http\Responses\User\UserQueryResponse;
+use App\Modules\User\Http\Responses\User\UserResponse;
 use App\Modules\User\Services\UserService;
-use App\Modules\User\Requests\User\UserCreateRequest;
-use App\Modules\User\Requests\User\UserDestroyRequest;
-use App\Modules\User\Requests\User\UserQueryRequest;
-use App\Modules\User\Requests\User\UserUpdateRequest;
-use App\Modules\User\Responses\User\UserDestroyResponse;
-use App\Modules\User\Responses\User\UserQueryResponse;
-use App\Modules\User\Responses\User\UserResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

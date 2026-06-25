@@ -40,7 +40,7 @@
 ### 1.3 项目范围
 
 本需求文档覆盖 B2B2C 商城的全量功能需求和非功能性需求，包括：
-- PC 商城（`apps/website`，Next.js SSR）、Mobile 移动端（`apps/mobile`，UniApp 3 融合 H5/小程序/App）、商家后台（`apps/seller`）、平台管理后台（`apps/admin`）、供应商后台（`apps/supplier`）五个前端终端
+- PC 商城（Laravel Blade 服务端渲染）、买家会员中心（`packages/user`，Vue 3 SPA）、Mobile 移动端（`packages/mobile`，UniApp 3 融合 H5/小程序/App）、商家后台（`packages/seller`，Vue 3 + Vite）、平台管理后台（`packages/admin`，Vue 3 + Vite）、供应商后台（`packages/supplier`，Vue 3 + Vite）六个前端终端
 - 商家入驻、商品管理、订单履约、支付结算、营销促销、分销佣金 六大业务域
 - 平台运营所需的审核、对账、配置、审计等后台管理功能
 

@@ -9,12 +9,12 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 
 // 查询列表接口
-Route::post('user/search', [\App\Modules\User\Controllers\UserController::class, 'search']);
+Route::post('user/search', [\App\Modules\User\Http\Controllers\UserController::class, 'search']);
 // 新增接口
-Route::post('user/store', [\App\Modules\User\Controllers\UserController::class, 'store']);
+Route::post('user/store', [\App\Modules\User\Http\Controllers\UserController::class, 'store']);
 // 获取详情接口
-Route::get('user/show', [\App\Modules\User\Controllers\UserController::class, 'show'])->name('user.show');
+Route::get('user/show', [\App\Modules\User\Http\Controllers\UserController::class, 'show'])->name('user.show');
 // 更新接口
-Route::put('user/update', [\App\Modules\User\Controllers\UserController::class, 'update']);
+Route::put('user/update', [\App\Modules\User\Http\Controllers\UserController::class, 'update']);
 // 删除接口
-Route::post('user/destroy', [\App\Modules\User\Controllers\UserController::class, 'destroy']);
+Route::post('user/destroy', [\App\Modules\User\Http\Controllers\UserController::class, 'destroy']);

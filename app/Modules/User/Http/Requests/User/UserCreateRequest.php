@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\User\Requests\User;
+namespace App\Modules\User\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use OpenApi\Attributes as OA;
