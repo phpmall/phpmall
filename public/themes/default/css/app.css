@@ -1,0 +1,16 @@
+.text-blue-036 {
+    color: #003366 !important;
+}
+
+.bg-blue-036 {
+    background-color: #003366 !important;
+}
+
+.layui-layout-admin .layui-header {
+    background-color: #003366 !important;
+}
+
+.layui-layout-admin .layui-logo {
+    color: white !important;
+    background-color: #003366 !important;
+}
