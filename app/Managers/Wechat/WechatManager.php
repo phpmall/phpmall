@@ -1,14 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Managers\Wechat;
 
-class WechatManager
-{
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        //
-    }
-}
+class WechatManager {}

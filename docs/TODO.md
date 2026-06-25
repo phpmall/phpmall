@@ -22,7 +22,7 @@
 
 ### 0.1 工程规范
 
-- [ ] 统一代码规范：PHP PSR-12、前端 ESLint/Prettier、提交信息规范
+- [x] 统一代码规范：PHP PSR-12、前端 ESLint/Prettier、提交信息规范
 - [ ] 制定分支管理策略（Git Flow / Trunk Based）
 - [ ] 建立 Code Review 与 Merge Request 模板
 - [ ] 制定 API 设计规范（RESTful / JSON 结构 / 错误码）
@@ -45,8 +45,8 @@
 
 ### 0.3 CI/CD 与工具链
 
-- [ ] 配置 Git 预提交钩子（lint、format、简单检查）
-- [ ] 建立 CI 流水线：PHPStan、Pint、PHPUnit、前端构建
+- [x] 配置 Git 预提交钩子（lint、format、简单检查）
+- [x] 建立 CI 流水线：PHPStan、Pint、PHPUnit、前端构建
 - [ ] 建立 CD 流水线：测试环境自动部署
 - [ ] 配置代码覆盖率报告
 - [ ] 配置依赖安全扫描（Dependabot / Snyk）
@@ -67,14 +67,14 @@
 
 > **说明**：认证（Auth）与用户资料（User）为两个独立模块。Auth 负责登录、Token、RBAC；User 负责 C 端资料、地址、会员等级。
 
-- [ ] 实现手机号/邮箱注册与验证码机制
-- [ ] 实现 JWT / Sanctum 认证与 Token 刷新
-- [ ] 实现 RBAC 角色权限与数据范围控制
+- [x] 实现手机号/邮箱注册与验证码机制
+- [x] 实现 JWT / Sanctum 认证与 Token 刷新
+- [x] 实现 RBAC 角色权限与数据范围控制
 - [ ] 实现商家子账号与权限管理
-- [ ] 实现用户资料管理（头像、昵称、安全设置）
-- [ ] 实现收货地址增删改查与默认地址
+- [x] 实现用户资料管理（头像、昵称、安全设置）
+- [x] 实现收货地址增删改查与默认地址
 - [ ] 实现第三方登录（微信/支付宝/Apple）
-- [ ] 实现密码复杂度策略与登录失败锁定
+- [x] 实现密码复杂度策略与登录失败锁定
 - [ ] 实现会员等级与成长体系（User 模块，对接 DataPrivacy 合规能力）
 
 ### 1.2 商户域（Merchant）
