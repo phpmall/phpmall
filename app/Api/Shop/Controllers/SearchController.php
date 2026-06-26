@@ -11,10 +11,14 @@ use OpenApi\Attributes as OA;
 
 class SearchController extends BaseController
 {
-    #[OA\Get(path: '/search', summary: '搜索接口', tags: ['店铺'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SearchRequest::class))]
+    #[OA\Get(path: '/search', summary: '搜索接口', security: [[]], tags: ['店铺'])]
+    #[OA\Parameter(name: 'keyword', description: '搜索关键词', in: 'query', required: true)]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query')]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query')]
+    #[OA\Parameter(name: 'sort_by', description: '排序字段', in: 'query')]
+    #[OA\Parameter(name: 'sort_direction', description: '排序方向: asc 或 desc', in: 'query')]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchResponse::class))]
-    public function index(): JsonResponse
+    public function index(SearchRequest $request): JsonResponse
     {
         return $this->success();
     }

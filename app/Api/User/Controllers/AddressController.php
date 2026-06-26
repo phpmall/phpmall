@@ -1,16 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Api\User\Controllers;
 
 use App\Api\User\Requests\AddressRequest;
+use App\Api\User\Responses\AddressResponse;
 use App\Modules\User\Models\Address;
 use App\Modules\User\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use OpenApi\Attributes as OA;
 
-class AddressController extends Controller
+class AddressController extends BaseController
 {
+    #[OA\Get(path: '/addresses', summary: '收货地址列表', security: [['bearerAuth' => []]], tags: ['会员中心'])]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(type: 'array', items: new OA\Items(ref: AddressResponse::class)))]
     public function index(Request $request): JsonResponse
     {
         $user = $this->resolveUser($request);
@@ -21,6 +26,9 @@ class AddressController extends Controller
         ]);
     }
 
+    #[OA\Post(path: '/addresses', summary: '新增收货地址', security: [['bearerAuth' => []]], tags: ['会员中心'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: AddressRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: AddressResponse::class))]
     public function store(AddressRequest $request): JsonResponse
     {
         $user = $this->resolveUser($request);
@@ -40,6 +48,9 @@ class AddressController extends Controller
         ]);
     }
 
+    #[OA\Get(path: '/addresses/{id}', summary: '收货地址详情', security: [['bearerAuth' => []]], tags: ['会员中心'])]
+    #[OA\Parameter(name: 'id', description: '地址ID', in: 'path', required: true)]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: AddressResponse::class))]
     public function show(Request $request, int $id): JsonResponse
     {
         $user = $this->resolveUser($request);
@@ -51,6 +62,10 @@ class AddressController extends Controller
         ]);
     }
 
+    #[OA\Put(path: '/addresses/{id}', summary: '更新收货地址', security: [['bearerAuth' => []]], tags: ['会员中心'])]
+    #[OA\Parameter(name: 'id', description: '地址ID', in: 'path', required: true)]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: AddressRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: AddressResponse::class))]
     public function update(AddressRequest $request, int $id): JsonResponse
     {
         $user = $this->resolveUser($request);
@@ -70,6 +85,9 @@ class AddressController extends Controller
         ]);
     }
 
+    #[OA\Delete(path: '/addresses/{id}', summary: '删除收货地址', security: [['bearerAuth' => []]], tags: ['会员中心'])]
+    #[OA\Parameter(name: 'id', description: '地址ID', in: 'path', required: true)]
+    #[OA\Response(response: 200, description: 'OK')]
     public function destroy(Request $request, int $id): JsonResponse
     {
         $user = $this->resolveUser($request);

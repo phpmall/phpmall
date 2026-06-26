@@ -23,7 +23,7 @@ class CaptchaController extends Controller
         $this->captchaService = $captchaService;
     }
 
-    #[OA\Get(path: '/captcha', summary: '显示图片验证码', tags: ['验证码'])]
+    #[OA\Get(path: '/captcha', summary: '显示图片验证码', security: [[]], tags: ['验证码'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CaptchaResponse::class))]
     public function index(): JsonResponse
     {

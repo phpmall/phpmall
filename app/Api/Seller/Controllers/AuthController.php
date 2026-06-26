@@ -12,7 +12,7 @@ use OpenApi\Attributes as OA;
 
 class AuthController extends Controller
 {
-    #[OA\Post(path: '/auth/login', summary: '商家登录接口', security: [['bearerAuth' => []]], tags: ['认证模块'])]
+    #[OA\Post(path: '/auth/login', summary: '商家登录接口', security: [[]], tags: ['商家认证'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function login(LoginRequest $request): JsonResponse

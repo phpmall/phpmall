@@ -25,7 +25,8 @@ class SmsController extends Controller
         $this->captchaService = $captchaService;
     }
 
-    #[OA\Post(path: '/sms/code', summary: '发送短信验证码', tags: ['手机短信'])]
+    #[OA\Post(path: '/sms/code', summary: '发送短信验证码', security: [[]], tags: ['手机短信'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SmsCodeRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SmsCodeResponse::class))]
     public function code(SmsCodeRequest $request): JsonResponse
     {

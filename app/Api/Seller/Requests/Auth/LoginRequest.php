@@ -14,7 +14,7 @@ use Juling\Foundation\Rules\PhoneNumberRule;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
-    schema: 'LoginRequest',
+    schema: 'SellerLoginRequest',
     required: [
         self::getMobile,
         self::getPassword,
@@ -28,7 +28,6 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getCaptcha, description: '登录图片验证码', type: 'string'),
         new OA\Property(property: self::getUUID, description: '图片验证码ID', type: 'string'),
         new OA\Property(property: self::getDeviceName, description: '设备名称', type: 'string'),
-
     ]
 )]
 class LoginRequest extends FormRequest

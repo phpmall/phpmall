@@ -9,7 +9,11 @@ use App\Api\User\Requests\Auth\LoginRequest;
 use App\Api\User\Requests\Auth\LogoutRequest;
 use App\Api\User\Requests\Auth\ResetPasswordRequest;
 use App\Api\User\Requests\Auth\SignupRequest;
+use App\Api\User\Responses\Auth\ForgotPasswordResponse;
 use App\Api\User\Responses\Auth\LoginResponse;
+use App\Api\User\Responses\Auth\LogoutResponse;
+use App\Api\User\Responses\Auth\ResetPasswordResponse;
+use App\Api\User\Responses\Auth\SignupResponse;
 use App\Http\Controllers\Controller;
 use App\Modules\User\Entities\UserEntity;
 use App\Modules\User\Models\User;
@@ -27,8 +31,9 @@ use OpenApi\Attributes as OA;
 
 class AuthController extends Controller
 {
-    #[OA\Post(path: '/auth/signup', summary: '新会员注册', tags: ['认证'])]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Post(path: '/auth/signup', summary: '新会员注册', security: [[]], tags: ['会员认证'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SignupRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SignupResponse::class))]
     public function signup(SignupRequest $request): Response
     {
         $request->validate([
@@ -50,7 +55,7 @@ class AuthController extends Controller
         return response()->noContent();
     }
 
-    #[OA\Post(path: '/auth/login', summary: '会员登录接口', security: [['bearerAuth' => []]], tags: ['认证模块'])]
+    #[OA\Post(path: '/auth/login', summary: '会员登录接口', security: [[]], tags: ['会员认证'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LoginRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LoginResponse::class))]
     public function login(LoginRequest $request): Response
@@ -62,6 +67,9 @@ class AuthController extends Controller
         return response()->noContent();
     }
 
+    #[OA\Post(path: '/auth/forgot-password', summary: '忘记密码', security: [[]], tags: ['会员认证'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ForgotPasswordRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ForgotPasswordResponse::class))]
     public function forgot(ForgotPasswordRequest $request): JsonResponse
     {
         $request->validate([
@@ -94,6 +102,9 @@ class AuthController extends Controller
         return response()->json(['status' => __($status)]);
     }
 
+    #[OA\Post(path: '/auth/reset-password', summary: '重置密码', security: [[]], tags: ['会员认证'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ResetPasswordRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ResetPasswordResponse::class))]
     public function reset(ResetPasswordRequest $request): JsonResponse
     {
         $request->validate([
@@ -102,7 +113,7 @@ class AuthController extends Controller
 
         // We will send the password reset link to this user. Once we have attempted
         // to send the link, we will examine the response then see the message we
-        // need to show to the user. Finally, we'll send out a proper response.
+        // need to show the user. Finally, we'll send out a proper response.
         $status = Password::sendResetLink(
             $request->only('email')
         );
@@ -116,6 +127,9 @@ class AuthController extends Controller
         return response()->json(['status' => __($status)]);
     }
 
+    #[OA\Post(path: '/auth/logout', summary: '会员登出', security: [['bearerAuth' => []]], tags: ['会员认证'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: LogoutRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LogoutResponse::class))]
     public function logout(LogoutRequest $request): Response
     {
         Auth::guard('web')->logout();

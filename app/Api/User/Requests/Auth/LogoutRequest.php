@@ -9,9 +9,7 @@ use OpenApi\Attributes as OA;
 
 #[OA\Schema(
     schema: 'LogoutRequest',
-    required: [
-
-    ],
+    description: '会员登出请求（无需额外参数）',
     properties: [
 
     ]

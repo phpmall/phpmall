@@ -7,21 +7,41 @@ namespace App\Api\Portal\Responses\Search;
 use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
-#[OA\Schema(schema: 'SearchResponse')]
+#[OA\Schema(schema: 'PortalSearchResponse')]
 class SearchResponse
 {
     use HasSerializableAttributes;
 
-    #[OA\Property(property: 'status', description: '状态:1成功，2失败', type: 'integer')]
-    private int $status;
+    #[OA\Property(property: 'items', description: '搜索结果列表', type: 'array', items: new OA\Items(type: 'object'))]
+    private array $items;
 
-    public function getStatus(): int
+    #[OA\Property(property: 'pagination', description: '分页信息', type: 'object', properties: [
+        new OA\Property(property: 'page', description: '当前页码', type: 'integer'),
+        new OA\Property(property: 'per_page', description: '每页数量', type: 'integer'),
+        new OA\Property(property: 'total', description: '总记录数', type: 'integer'),
+        new OA\Property(property: 'total_pages', description: '总页数', type: 'integer'),
+        new OA\Property(property: 'has_next', description: '是否有下一页', type: 'boolean'),
+        new OA\Property(property: 'has_prev', description: '是否有上一页', type: 'boolean'),
+    ])]
+    private array $pagination;
+
+    public function getItems(): array
     {
-        return $this->status;
+        return $this->items;
     }
 
-    public function setStatus(int $status): void
+    public function setItems(array $items): void
     {
-        $this->status = $status;
+        $this->items = $items;
+    }
+
+    public function getPagination(): array
+    {
+        return $this->pagination;
+    }
+
+    public function setPagination(array $pagination): void
+    {
+        $this->pagination = $pagination;
     }
 }
