@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\Commission\CommissionIndexRequest;
 use App\Api\User\Requests\Commission\CommissionWithdrawRequest;
 use App\Api\User\Responses\Commission\CommissionListResponse;
 use App\Api\User\Responses\Commission\CommissionStatsResponse;
@@ -15,7 +16,7 @@ class CommissionController extends BaseController
 {
     #[OA\Get(path: '/commissions', security: [['bearerAuth' => []]], summary: 'Commission Controller index', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CommissionListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(CommissionIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

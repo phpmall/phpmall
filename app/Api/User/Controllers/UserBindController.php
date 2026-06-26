@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\UserBind\UserBindIndexRequest;
 use App\Api\User\Requests\UserBind\UserBindRequest;
 use App\Api\User\Requests\UserBind\UserUnbindRequest;
 use App\Api\User\Responses\UserBind\UserBindListResponse;
@@ -15,7 +16,7 @@ class UserBindController extends BaseController
 {
     #[OA\Get(path: '/binds', security: [['bearerAuth' => []]], summary: 'User Bind Controller index', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: UserBindListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(UserBindIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\Contract\ContractIndexRequest;
 use App\Api\User\Requests\Contract\ContractSignRequest;
 use App\Api\User\Responses\Contract\ContractListResponse;
 use App\Api\User\Responses\Contract\ContractResponse;
@@ -16,7 +17,7 @@ class ContractController extends BaseController
 {
     #[OA\Get(path: '/contracts', security: [['bearerAuth' => []]], summary: 'Contract Controller index', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ContractListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(ContractIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

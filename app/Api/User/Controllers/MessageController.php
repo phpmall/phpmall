@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\Message\MessageIndexRequest;
 use App\Api\User\Responses\Message\MessageListResponse;
 use App\Api\User\Responses\Message\MessageResponse;
 use App\Api\User\Responses\Message\MessageUnreadCountResponse;
@@ -15,7 +16,7 @@ class MessageController extends BaseController
 {
     #[OA\Get(path: '/messages', security: [['bearerAuth' => []]], summary: 'Message Controller index', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MessageListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(MessageIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

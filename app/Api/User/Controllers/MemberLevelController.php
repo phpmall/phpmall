@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\MemberLevel\MemberLevelIndexRequest;
 use App\Api\User\Responses\MemberLevel\MemberLevelBenefitsResponse;
 use App\Api\User\Responses\MemberLevel\MemberLevelListResponse;
 use App\Api\User\Responses\MemberLevel\MemberLevelResponse;
@@ -15,7 +16,7 @@ class MemberLevelController extends BaseController
 {
     #[OA\Get(path: '/member-levels', security: [['bearerAuth' => []]], summary: 'Member Level Controller index', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MemberLevelListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(MemberLevelIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
