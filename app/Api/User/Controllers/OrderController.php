@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\Order\OrderIndexRequest;
 use App\Api\User\Requests\Order\OrderStoreRequest;
 use App\Api\User\Responses\Order\OrderListResponse;
 use App\Api\User\Responses\Order\OrderResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class OrderController extends BaseController
 {
     #[OA\Get(path: '/orders', security: [['bearerAuth' => []]], summary: 'Order Controller index', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(OrderIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

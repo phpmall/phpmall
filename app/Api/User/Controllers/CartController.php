@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Api\User\Controllers;
 
 use App\Api\User\Requests\Cart\CartBatchStoreRequest;
+use App\Api\User\Requests\Cart\CartIndexRequest;
 use App\Api\User\Requests\Cart\CartStoreRequest;
 use App\Api\User\Requests\Cart\CartUpdateRequest;
 use App\Api\User\Responses\Cart\CartListResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class CartController extends BaseController
 {
     #[OA\Get(path: '/cart', security: [['bearerAuth' => []]], summary: 'Cart Controller index', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CartListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(CartIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
