@@ -5,17 +5,19 @@ declare(strict_types=1);
 namespace App\Api\User\Controllers;
 
 use App\Api\User\Requests\Points\PointsExchangeRequest;
+use App\Api\User\Requests\Points\PointsIndexRequest;
 use App\Api\User\Responses\Points\PointsHistoryListResponse;
 use App\Api\User\Responses\Points\PointsResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class PointsController extends BaseController
 {
     #[OA\Get(path: '/points', security: [['bearerAuth' => []]], summary: 'Points Controller index', tags: ['会员中心'])]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', default: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', default: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PointsResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(PointsIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
