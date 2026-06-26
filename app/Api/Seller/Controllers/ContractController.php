@@ -1,0 +1,44 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Api\Seller\Controllers;
+
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
+
+class ContractController extends BaseController
+{
+    #[OA\Get(path: '/contracts', summary: '获取合同列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function index(Request $request): JsonResponse
+    {
+        return $this->success();
+    }
+
+    #[OA\Get(path: '/contracts/{id}', summary: '获取合同详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'id', description: '合同ID', in: 'path', required: true)]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function show(int $id): JsonResponse
+    {
+        return $this->success();
+    }
+
+    #[OA\Post(path: '/contracts/{id}/sign', summary: '签署合同', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'id', description: '合同ID', in: 'path', required: true)]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function sign(Request $request, int $id): JsonResponse
+    {
+        return $this->success();
+    }
+
+    #[OA\Get(path: '/contracts/{id}/download', summary: '下载合同', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'id', description: '合同ID', in: 'path', required: true)]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function download(int $id): JsonResponse
+    {
+        return $this->success();
+    }
+}

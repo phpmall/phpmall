@@ -8,7 +8,59 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 
+// 文章列表
+Route::get('articles', [\App\Api\Portal\Controllers\ArticleController::class, 'index'])->name('articles');
+// 文章详情
+Route::get('articles/{id}', [\App\Api\Portal\Controllers\ArticleController::class, 'show'])->name('articles.{id}');
+// 轮播图列表
+Route::get('banners', [\App\Api\Portal\Controllers\BannerController::class, 'index'])->name('banners');
+// 分类列表
+Route::get('categories', [\App\Api\Portal\Controllers\CategoryController::class, 'index'])->name('categories');
+// 分类树
+Route::get('categories/tree', [\App\Api\Portal\Controllers\CategoryController::class, 'tree'])->name('categories.tree');
+// 帮助中心列表
+Route::get('help-center', [\App\Api\Portal\Controllers\HelpCenterController::class, 'index'])->name('help-center');
+// 帮助中心详情
+Route::get('help-center/{id}', [\App\Api\Portal\Controllers\HelpCenterController::class, 'show'])->name('help-center.{id}');
+// 帮助中心搜索
+Route::get('help-center/search', [\App\Api\Portal\Controllers\HelpCenterController::class, 'search'])->name('help-center.search');
+// 帮助中心分类
+Route::get('help-center/categories', [\App\Api\Portal\Controllers\HelpCenterController::class, 'categories'])->name('help-center.categories');
 // 首页
 Route::get('/', [\App\Api\Portal\Controllers\IndexController::class, 'index'])->name('index');
+// 营销活动列表
+Route::get('marketing', [\App\Api\Portal\Controllers\MarketingController::class, 'index'])->name('marketing');
+// 当前营销活动
+Route::get('marketing/current', [\App\Api\Portal\Controllers\MarketingController::class, 'current'])->name('marketing.current');
+// 即将开始营销活动
+Route::get('marketing/upcoming', [\App\Api\Portal\Controllers\MarketingController::class, 'upcoming'])->name('marketing.upcoming');
+// 公告列表
+Route::get('notices', [\App\Api\Portal\Controllers\NoticeController::class, 'index'])->name('notices');
+// 公告详情
+Route::get('notices/{id}', [\App\Api\Portal\Controllers\NoticeController::class, 'show'])->name('notices.{id}');
+// 商品列表
+Route::get('products', [\App\Api\Portal\Controllers\ProductController::class, 'index'])->name('products');
+// 商品详情
+Route::get('products/{id}', [\App\Api\Portal\Controllers\ProductController::class, 'show'])->name('products.{id}');
+// 推荐商品
+Route::get('products/recommend', [\App\Api\Portal\Controllers\ProductController::class, 'recommend'])->name('products.recommend');
+// 热销商品
+Route::get('products/hot', [\App\Api\Portal\Controllers\ProductController::class, 'hot'])->name('products.hot');
 // 搜索接口
 Route::get('search', [\App\Api\Portal\Controllers\SearchController::class, 'index'])->name('search');
+// 商品搜索
+Route::get('search/products', [\App\Api\Portal\Controllers\SearchController::class, 'products'])->name('search.products');
+// 搜索建议
+Route::get('search/suggest', [\App\Api\Portal\Controllers\SearchController::class, 'suggest'])->name('search.suggest');
+// 热搜关键词
+Route::get('search/hot-keywords', [\App\Api\Portal\Controllers\SearchController::class, 'hotKeywords'])->name('search.hot-keywords');
+// 搜索筛选条件
+Route::get('search/filters', [\App\Api\Portal\Controllers\SearchController::class, 'filters'])->name('search.filters');
+// 秒杀活动列表
+Route::get('seckills', [\App\Api\Portal\Controllers\SeckillController::class, 'index'])->name('seckills');
+// 秒杀活动详情
+Route::get('seckills/{id}', [\App\Api\Portal\Controllers\SeckillController::class, 'show'])->name('seckills.{id}');
+// 店铺列表
+Route::get('shops', [\App\Api\Portal\Controllers\ShopController::class, 'index'])->name('shops');
+// 店铺详情
+Route::get('shops/{id}', [\App\Api\Portal\Controllers\ShopController::class, 'show'])->name('shops.{id}');

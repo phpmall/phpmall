@@ -8,7 +8,41 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 
+// 协议详情
+Route::get('agreements/{id}', [\App\Api\Common\Controllers\AgreementController::class, 'show'])->name('agreements.{id}');
+// 最新协议
+Route::get('latest', [\App\Api\Common\Controllers\AgreementController::class, 'latest'])->name('latest');
 // 显示图片验证码
 Route::get('captcha', [\App\Api\Common\Controllers\CaptchaController::class, 'index'])->name('captcha');
+// 配置列表
+Route::get('configs', [\App\Api\Common\Controllers\ConfigController::class, 'index'])->name('configs');
+// 配置详情
+Route::get('configs/{id}', [\App\Api\Common\Controllers\ConfigController::class, 'show'])->name('configs.{id}');
+// 字典列表
+Route::get('dictionaries', [\App\Api\Common\Controllers\DictionaryController::class, 'index'])->name('dictionaries');
+// 字典详情
+Route::get('dictionaries/{id}', [\App\Api\Common\Controllers\DictionaryController::class, 'show'])->name('dictionaries.{id}');
+// 快递回调通知
+Route::post('kuaidi/notify', [\App\Api\Common\Controllers\LogisticsCallbackController::class, 'kuaidiNotify']);
+// 公告列表
+Route::get('notices', [\App\Api\Common\Controllers\NoticeController::class, 'index'])->name('notices');
+// 公告详情
+Route::get('notices/{id}', [\App\Api\Common\Controllers\NoticeController::class, 'show'])->name('notices.{id}');
+// 支付宝支付回调
+Route::post('alipay/notify', [\App\Api\Common\Controllers\PaymentCallbackController::class, 'alipayNotify']);
+// 微信支付回调
+Route::post('wechat/notify', [\App\Api\Common\Controllers\PaymentCallbackController::class, 'wechatNotify']);
+// 银联支付回调
+Route::post('unionpay/notify', [\App\Api\Common\Controllers\PaymentCallbackController::class, 'unionpayNotify']);
+// 地区列表
+Route::get('regions', [\App\Api\Common\Controllers\RegionController::class, 'index'])->name('regions');
+// 地区子级列表
+Route::get('{id}/children', [\App\Api\Common\Controllers\RegionController::class, 'children'])->name('{id}.children');
 // 发送短信验证码
 Route::post('sms/code', [\App\Api\Common\Controllers\SmsController::class, 'code']);
+// 图片上传
+Route::post('image', [\App\Api\Common\Controllers\UploadController::class, 'image']);
+// 文件上传
+Route::post('file', [\App\Api\Common\Controllers\UploadController::class, 'file']);
+// OSS上传策略
+Route::post('oss-policy', [\App\Api\Common\Controllers\UploadController::class, 'ossPolicy']);

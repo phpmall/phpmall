@@ -22,4 +22,32 @@ class SearchController extends BaseController
     {
         return $this->success();
     }
+
+    #[OA\Get(path: '/search/products', summary: '商品搜索', security: [[]], tags: ['商城平台'])]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function products(Request $request): JsonResponse
+    {
+        return $this->success();
+    }
+
+    #[OA\Get(path: '/search/suggest', summary: '搜索建议', security: [[]], tags: ['商城平台'])]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function suggest(Request $request): JsonResponse
+    {
+        return $this->success();
+    }
+
+    #[OA\Get(path: '/search/hot-keywords', summary: '热搜关键词', security: [[]], tags: ['商城平台'])]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function hotKeywords(Request $request): JsonResponse
+    {
+        return $this->success();
+    }
+
+    #[OA\Get(path: '/search/filters', summary: '搜索筛选条件', security: [[]], tags: ['商城平台'])]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function filters(Request $request): JsonResponse
+    {
+        return $this->success();
+    }
 }
