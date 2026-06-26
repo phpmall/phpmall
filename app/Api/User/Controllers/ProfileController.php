@@ -20,7 +20,7 @@ class ProfileController extends BaseController
 
         return response()->json([
             'code' => 0,
-            'data' => $user,
+            'data' => UserProfileResponse::from($user->toArray()),
         ]);
     }
 
@@ -35,7 +35,7 @@ class ProfileController extends BaseController
         return response()->json([
             'code' => 0,
             'message' => '更新成功',
-            'data' => $user->fresh(),
+            'data' => UserProfileResponse::from($user->fresh()->toArray()),
         ]);
     }
 }
