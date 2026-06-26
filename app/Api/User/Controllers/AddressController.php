@@ -25,7 +25,7 @@ class AddressController extends BaseController
 
         $list = $addresses->map(fn ($address) => AddressResponse::from($address->toArray()))->toArray();
 
-        $response = new AddressListResponse();
+        $response = new AddressListResponse;
         $response->setItems($list);
         $response->setTotalCount($addresses->count());
 

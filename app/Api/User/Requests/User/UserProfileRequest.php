@@ -30,8 +30,8 @@ class UserProfileRequest extends FormRequest
     public function messages(): array
     {
         return [
-            self::getWithAddresses . '.integer' => '是否包含地址必须是整数',
-            self::getWithAddresses . '.in' => '是否包含地址只能是 0 或 1',
+            self::getWithAddresses.'.integer' => '是否包含地址必须是整数',
+            self::getWithAddresses.'.in' => '是否包含地址只能是 0 或 1',
         ];
     }
 }
