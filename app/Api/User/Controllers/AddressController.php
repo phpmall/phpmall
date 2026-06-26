@@ -23,9 +23,11 @@ class AddressController extends BaseController
         $user = $this->resolveUser($request);
         $addresses = $user->addresses()->orderByDesc('is_default')->orderByDesc('id')->get();
 
+        $list = $addresses->map(fn ($address) => AddressResponse::from($address->toArray()))->toArray();
+
         $response = new AddressListResponse();
-        $response->setList($addresses->toArray());
-        $response->setTotal($addresses->count());
+        $response->setItems($list);
+        $response->setTotalCount($addresses->count());
 
         return response()->json([
             'code' => 0,

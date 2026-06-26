@@ -14,33 +14,33 @@ class AddressListResponse
     use HasSerializableAttributes;
 
     #[OA\Property(
-        property: 'list',
+        property: 'items',
         description: '地址列表',
         type: 'array',
         items: new OA\Items(ref: AddressResponse::class)
     )]
-    private array $list;
+    private array $items;
 
-    #[OA\Property(property: 'total', description: '总记录数', type: 'integer')]
-    private int $total;
+    #[OA\Property(property: 'total_count', description: '总记录数', type: 'integer')]
+    private int $totalCount;
 
-    public function getList(): array
+    public function getItems(): array
     {
-        return $this->list;
+        return $this->items;
     }
 
-    public function setList(array $list): void
+    public function setItems(array $items): void
     {
-        $this->list = $list;
+        $this->items = $items;
     }
 
-    public function getTotal(): int
+    public function getTotalCount(): int
     {
-        return $this->total;
+        return $this->totalCount;
     }
 
-    public function setTotal(int $total): void
+    public function setTotalCount(int $totalCount): void
     {
-        $this->total = $total;
+        $this->totalCount = $totalCount;
     }
 }
