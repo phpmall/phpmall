@@ -28,9 +28,9 @@ class PrivacyStatusResponse
     private string $lastUpdatedAt;
 
     #[OA\Property(property: 'consent_history', description: '同意记录', type: 'array', items: new OA\Items(type: 'object', properties: [
-        new OA\Property(property: 'type', type: 'string'),
-        new OA\Property(property: 'consented', type: 'integer'),
-        new OA\Property(property: 'consented_at', type: 'string', format: 'date-time'),
+        new OA\Property(property: 'type', type: 'string', description: '同意类型'),
+        new OA\Property(property: 'consented', type: 'integer', description: '是否同意:0否，1是'),
+        new OA\Property(property: 'consented_at', type: 'string', format: 'date-time', description: '同意时间'),
     ]))]
     private array $consentHistory;
 

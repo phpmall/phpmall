@@ -56,12 +56,12 @@ class OrderResponse
         description: '订单商品列表',
         type: 'array',
         items: new OA\Items(type: 'object', properties: [
-            new OA\Property(property: 'id', type: 'integer'),
-            new OA\Property(property: 'product_name', type: 'string'),
-            new OA\Property(property: 'sku_name', type: 'string'),
-            new OA\Property(property: 'image', type: 'string'),
+            new OA\Property(property: 'id', type: 'integer', description: '商品项ID'),
+            new OA\Property(property: 'product_name', type: 'string', description: '商品名称'),
+            new OA\Property(property: 'sku_name', type: 'string', description: 'SKU规格名称'),
+            new OA\Property(property: 'image', type: 'string', description: '商品图片'),
             new OA\Property(property: 'price', type: 'integer', description: '单价(分)'),
-            new OA\Property(property: 'quantity', type: 'integer'),
+            new OA\Property(property: 'quantity', type: 'integer', description: '购买数量'),
             new OA\Property(property: 'total_price', type: 'integer', description: '小计(分)'),
         ])
     )]
@@ -72,12 +72,12 @@ class OrderResponse
         description: '收货地址',
         type: 'object',
         properties: [
-            new OA\Property(property: 'contact_name', type: 'string'),
-            new OA\Property(property: 'contact_phone', type: 'string'),
-            new OA\Property(property: 'province', type: 'string'),
-            new OA\Property(property: 'city', type: 'string'),
-            new OA\Property(property: 'district', type: 'string'),
-            new OA\Property(property: 'detail', type: 'string'),
+            new OA\Property(property: 'contact_name', type: 'string', description: '联系人姓名'),
+            new OA\Property(property: 'contact_phone', type: 'string', description: '联系人手机号'),
+            new OA\Property(property: 'province', type: 'string', description: '省份'),
+            new OA\Property(property: 'city', type: 'string', description: '城市'),
+            new OA\Property(property: 'district', type: 'string', description: '区县'),
+            new OA\Property(property: 'detail', type: 'string', description: '详细地址'),
         ],
         nullable: true
     )]

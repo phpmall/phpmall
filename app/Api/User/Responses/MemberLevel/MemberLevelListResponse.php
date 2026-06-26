@@ -21,9 +21,9 @@ class MemberLevelListResponse
     private array $items;
 
     #[OA\Property(property: 'current_level', description: '当前等级', type: 'object', properties: [
-        new OA\Property(property: 'id', type: 'integer'),
-        new OA\Property(property: 'name', type: 'string'),
-        new OA\Property(property: 'level', type: 'integer'),
+        new OA\Property(property: 'id', type: 'integer', description: '等级ID'),
+        new OA\Property(property: 'name', type: 'string', description: '等级名称'),
+        new OA\Property(property: 'level', type: 'integer', description: '等级序号'),
     ])]
     private array $currentLevel;
 

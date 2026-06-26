@@ -23,10 +23,10 @@ class MemberLevelBenefitsResponse
         description: '权益列表',
         type: 'array',
         items: new OA\Items(type: 'object', properties: [
-            new OA\Property(property: 'id', type: 'integer'),
-            new OA\Property(property: 'name', type: 'string'),
-            new OA\Property(property: 'description', type: 'string'),
-            new OA\Property(property: 'icon', type: 'string'),
+            new OA\Property(property: 'id', type: 'integer', description: '权益ID'),
+            new OA\Property(property: 'name', type: 'string', description: '权益名称'),
+            new OA\Property(property: 'description', type: 'string', description: '权益描述'),
+            new OA\Property(property: 'icon', type: 'string', description: '权益图标'),
             new OA\Property(property: 'is_available', type: 'integer', description: '是否可用:0否，1是'),
         ])
     )]
