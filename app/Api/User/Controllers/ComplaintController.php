@@ -5,19 +5,22 @@ declare(strict_types=1);
 namespace App\Api\User\Controllers;
 
 use App\Api\User\Requests\Complaint\ComplaintEvidenceRequest;
+use App\Api\User\Requests\Complaint\ComplaintIndexRequest;
 use App\Api\User\Requests\Complaint\ComplaintStoreRequest;
 use App\Api\User\Responses\Complaint\ComplaintEvidenceResponse;
 use App\Api\User\Responses\Complaint\ComplaintListResponse;
 use App\Api\User\Responses\Complaint\ComplaintResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class ComplaintController extends BaseController
 {
     #[OA\Get(path: '/complaints', security: [['bearerAuth' => []]], summary: 'Complaint Controller index', tags: ['会员中心'])]
+    #[OA\Parameter(name: 'status', description: '投诉状态', in: 'query', required: false, schema: new OA\Schema(type: 'integer', nullable: true))]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ComplaintListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(ComplaintIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
