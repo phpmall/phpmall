@@ -6,6 +6,7 @@ namespace App\Api\User\Controllers;
 
 use App\Api\User\Requests\UpdateProfileRequest;
 use App\Api\User\Responses\UserProfileResponse;
+use App\Modules\User\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use OpenApi\Attributes as OA;
@@ -17,6 +18,10 @@ class ProfileController extends BaseController
     public function index(): JsonResponse
     {
         $user = Auth::user();
+
+        if (! $user instanceof User) {
+            abort(401, '未登录');
+        }
 
         return response()->json([
             'code' => 0,

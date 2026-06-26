@@ -6,6 +6,7 @@ namespace App\Api\User\Controllers;
 
 use App\Api\User\Requests\UpdateProfileRequest;
 use App\Api\User\Requests\User\UserProfileRequest;
+use App\Api\User\Responses\AddressResponse;
 use App\Api\User\Responses\UserProfileResponse;
 use App\Modules\User\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -20,13 +21,21 @@ class UserController extends BaseController
     {
         $user = $this->resolveUser($request);
 
-        if ($request->input(UserProfileRequest::getWithAddresses) === 1) {
+        if ((int) $request->input(UserProfileRequest::getWithAddresses) === 1) {
             $user->load('addresses');
+        }
+
+        $userArray = $user->toArray();
+        if (isset($userArray['addresses'])) {
+            $userArray['addresses'] = array_map(
+                fn (array $address) => AddressResponse::from($address),
+                $userArray['addresses']
+            );
         }
 
         return response()->json([
             'code' => 0,
-            'data' => UserProfileResponse::from($user->toArray()),
+            'data' => UserProfileResponse::from($userArray),
         ]);
     }
 
