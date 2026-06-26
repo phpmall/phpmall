@@ -36,8 +36,8 @@ class UserProfileResponse
     #[OA\Property(property: 'birthday', description: '生日', type: 'string', format: 'date', nullable: true)]
     private ?string $birthday;
 
-    #[OA\Property(property: 'addresses', description: '收货地址列表', type: 'array', items: new OA\Items(ref: AddressResponse::class))]
-    private array $addresses;
+    #[OA\Property(property: 'addresses', description: '收货地址列表', type: 'array', items: new OA\Items(ref: AddressResponse::class), nullable: true)]
+    private ?array $addresses = null;
 
     public function getId(): int
     {
@@ -119,12 +119,12 @@ class UserProfileResponse
         $this->birthday = $birthday;
     }
 
-    public function getAddresses(): array
+    public function getAddresses(): ?array
     {
         return $this->addresses;
     }
 
-    public function setAddresses(array $addresses): void
+    public function setAddresses(?array $addresses): void
     {
         $this->addresses = $addresses;
     }
