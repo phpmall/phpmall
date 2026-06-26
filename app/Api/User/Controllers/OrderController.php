@@ -14,6 +14,10 @@ use OpenApi\Attributes as OA;
 class OrderController extends BaseController
 {
     #[OA\Get(path: '/orders', security: [['bearerAuth' => []]], summary: 'Order Controller index', tags: ['会员中心'])]
+    #[OA\Parameter(name: 'status', in: 'query', description: '订单状态', schema: new OA\Schema(type: 'integer', nullable: true))]
+    #[OA\Parameter(name: 'keyword', in: 'query', description: '搜索关键词', schema: new OA\Schema(type: 'string', nullable: true))]
+    #[OA\Parameter(name: 'page', in: 'query', description: '页码', schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', in: 'query', description: '每页数量', schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderListResponse::class))]
     public function index(OrderIndexRequest $request): JsonResponse
     {

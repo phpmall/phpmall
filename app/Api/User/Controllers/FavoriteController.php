@@ -13,6 +13,9 @@ use OpenApi\Attributes as OA;
 class FavoriteController extends BaseController
 {
     #[OA\Get(path: '/favorites', security: [['bearerAuth' => []]], summary: 'Favorite Controller index', tags: ['会员中心'])]
+    #[OA\Parameter(name: 'type', in: 'query', description: '收藏类型', schema: new OA\Schema(type: 'integer', nullable: true))]
+    #[OA\Parameter(name: 'page', in: 'query', description: '页码', schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', in: 'query', description: '每页数量', schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: FavoriteListResponse::class))]
     public function index(FavoriteIndexRequest $request): JsonResponse
     {

@@ -14,6 +14,8 @@ use OpenApi\Attributes as OA;
 class PointsController extends BaseController
 {
     #[OA\Get(path: '/points', security: [['bearerAuth' => []]], summary: 'Points Controller index', tags: ['会员中心'])]
+    #[OA\Parameter(name: 'page', in: 'query', description: '页码', schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', in: 'query', description: '每页数量', schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PointsResponse::class))]
     public function index(PointsIndexRequest $request): JsonResponse
     {

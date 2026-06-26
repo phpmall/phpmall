@@ -13,6 +13,9 @@ use OpenApi\Attributes as OA;
 class NotificationController extends BaseController
 {
     #[OA\Get(path: '/notifications', security: [['bearerAuth' => []]], summary: 'Notification Controller index', tags: ['会员中心'])]
+    #[OA\Parameter(name: 'is_read', in: 'query', description: '是否已读:0否,1是', schema: new OA\Schema(type: 'integer', nullable: true, enum: [0, 1]))]
+    #[OA\Parameter(name: 'page', in: 'query', description: '页码', schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', in: 'query', description: '每页数量', schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: NotificationListResponse::class))]
     public function index(NotificationIndexRequest $request): JsonResponse
     {
