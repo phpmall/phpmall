@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\Product\ProductBatchDeleteRequest;
+use App\Api\Seller\Requests\Product\ProductBatchOffShelfRequest;
+use App\Api\Seller\Requests\Product\ProductBatchOnShelfRequest;
+use App\Api\Seller\Requests\Product\ProductStoreRequest;
+use App\Api\Seller\Requests\Product\ProductUpdateRequest;
+use App\Api\Seller\Responses\Product\ProductListResponse;
+use App\Api\Seller\Responses\Product\ProductResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
@@ -11,23 +18,23 @@ use OpenApi\Attributes as OA;
 class ProductController extends BaseController
 {
     #[OA\Get(path: '/products', summary: '获取商品列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductListResponse::class))]
     public function index(Request $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Post(path: '/products', summary: '创建商品', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function store(Request $request): JsonResponse
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductStoreRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductResponse::class))]
+    public function store(ProductStoreRequest $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Get(path: '/products/{id}', summary: '获取商品详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
     #[OA\Parameter(name: 'id', description: '商品ID', in: 'path', required: true)]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductResponse::class))]
     public function show(int $id): JsonResponse
     {
         return $this->success();
@@ -35,9 +42,9 @@ class ProductController extends BaseController
 
     #[OA\Put(path: '/products/{id}', summary: '更新商品', security: [['bearerAuth' => []]], tags: ['商家中心'])]
     #[OA\Parameter(name: 'id', description: '商品ID', in: 'path', required: true)]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function update(Request $request, int $id): JsonResponse
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductUpdateRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductResponse::class))]
+    public function update(ProductUpdateRequest $request, int $id): JsonResponse
     {
         return $this->success();
     }
@@ -67,25 +74,25 @@ class ProductController extends BaseController
     }
 
     #[OA\Post(path: '/products/batch/on-shelf', summary: '批量上架商品', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductBatchOnShelfRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
-    public function batchOnShelf(Request $request): JsonResponse
+    public function batchOnShelf(ProductBatchOnShelfRequest $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Post(path: '/products/batch/off-shelf', summary: '批量下架商品', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductBatchOffShelfRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
-    public function batchOffShelf(Request $request): JsonResponse
+    public function batchOffShelf(ProductBatchOffShelfRequest $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Post(path: '/products/batch/delete', summary: '批量删除商品', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductBatchDeleteRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
-    public function batchDelete(Request $request): JsonResponse
+    public function batchDelete(ProductBatchDeleteRequest $request): JsonResponse
     {
         return $this->success();
     }

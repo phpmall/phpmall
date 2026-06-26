@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\Brand\BrandApplyRequest;
+use App\Api\Seller\Responses\Brand\BrandListResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
@@ -11,16 +13,16 @@ use OpenApi\Attributes as OA;
 class BrandController extends BaseController
 {
     #[OA\Get(path: '/brands', summary: '获取品牌列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: BrandListResponse::class))]
     public function index(Request $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Post(path: '/brands/apply', summary: '申请品牌', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: BrandApplyRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
-    public function apply(Request $request): JsonResponse
+    public function apply(BrandApplyRequest $request): JsonResponse
     {
         return $this->success();
     }

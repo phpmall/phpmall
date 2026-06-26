@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\SeckillActivity\SeckillActivityStoreRequest;
+use App\Api\Seller\Requests\SeckillActivity\SeckillActivityUpdateRequest;
+use App\Api\Seller\Responses\SeckillActivity\SeckillActivityListResponse;
+use App\Api\Seller\Responses\SeckillActivity\SeckillActivityResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
@@ -11,23 +15,23 @@ use OpenApi\Attributes as OA;
 class SeckillActivityController extends BaseController
 {
     #[OA\Get(path: '/seckill-activities', summary: '获取秒杀活动列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityListResponse::class))]
     public function index(Request $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Post(path: '/seckill-activities', summary: '创建秒杀活动', security: [['bearerAuth' => []]], tags: ['商家中心'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function store(Request $request): JsonResponse
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SeckillActivityStoreRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityResponse::class))]
+    public function store(SeckillActivityStoreRequest $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Get(path: '/seckill-activities/{id}', summary: '获取秒杀活动详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
     #[OA\Parameter(name: 'id', description: '活动ID', in: 'path', required: true)]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityResponse::class))]
     public function show(int $id): JsonResponse
     {
         return $this->success();
@@ -35,9 +39,9 @@ class SeckillActivityController extends BaseController
 
     #[OA\Put(path: '/seckill-activities/{id}', summary: '更新秒杀活动', security: [['bearerAuth' => []]], tags: ['商家中心'])]
     #[OA\Parameter(name: 'id', description: '活动ID', in: 'path', required: true)]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function update(Request $request, int $id): JsonResponse
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: SeckillActivityUpdateRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityResponse::class))]
+    public function update(SeckillActivityUpdateRequest $request, int $id): JsonResponse
     {
         return $this->success();
     }

@@ -4,22 +4,25 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\Privacy\PrivacyCorrectRequest;
+use App\Api\User\Requests\Privacy\PrivacyExportRequest;
+use App\Api\User\Responses\Privacy\PrivacyStatusResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class PrivacyController extends BaseController
 {
     #[OA\Get(path: '/privacy/status', security: [['bearerAuth' => []]], summary: 'Privacy Controller status', tags: ['会员中心'])]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PrivacyStatusResponse::class))]
     public function status(int $id): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Post(path: '/privacy/export', security: [['bearerAuth' => []]], summary: 'Privacy Controller export', tags: ['会员中心'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: PrivacyExportRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
-    public function export(Request $request): JsonResponse
+    public function export(PrivacyExportRequest $request): JsonResponse
     {
         return $this->success();
     }
@@ -33,8 +36,9 @@ class PrivacyController extends BaseController
     }
 
     #[OA\Post(path: '/privacy/correct', security: [['bearerAuth' => []]], summary: 'Privacy Controller correct', tags: ['会员中心'])]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: PrivacyCorrectRequest::class))]
     #[OA\Response(response: 200, description: 'OK')]
-    public function correct(Request $request): JsonResponse
+    public function correct(PrivacyCorrectRequest $request): JsonResponse
     {
         return $this->success();
     }

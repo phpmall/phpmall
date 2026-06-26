@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace App\Api\Shop\Controllers;
 
+use App\Api\Shop\Requests\Search\SearchFiltersRequest;
+use App\Api\Shop\Requests\Search\SearchHotKeywordsRequest;
+use App\Api\Shop\Requests\Search\SearchProductsRequest;
 use App\Api\Shop\Requests\Search\SearchRequest;
+use App\Api\Shop\Requests\Search\SearchSuggestRequest;
+use App\Api\Shop\Responses\Search\SearchFiltersResponse;
+use App\Api\Shop\Responses\Search\SearchHotKeywordsResponse;
+use App\Api\Shop\Responses\Search\SearchProductsResponse;
 use App\Api\Shop\Responses\Search\SearchResponse;
+use App\Api\Shop\Responses\Search\SearchSuggestResponse;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -24,29 +32,29 @@ class SearchController extends BaseController
     }
 
     #[OA\Get(path: '/search/products', summary: '搜索商品', security: [[]], tags: ['店铺'])]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function products(Request $request): JsonResponse
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchProductsResponse::class))]
+    public function products(SearchProductsRequest $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Get(path: '/search/suggest', summary: '搜索建议', security: [[]], tags: ['店铺'])]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function suggest(Request $request): JsonResponse
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchSuggestResponse::class))]
+    public function suggest(SearchSuggestRequest $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Get(path: '/search/hot-keywords', summary: '热搜关键词', security: [[]], tags: ['店铺'])]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function hotKeywords(Request $request): JsonResponse
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchHotKeywordsResponse::class))]
+    public function hotKeywords(SearchHotKeywordsRequest $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Get(path: '/search/filters', summary: '搜索筛选条件', security: [[]], tags: ['店铺'])]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function filters(Request $request): JsonResponse
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchFiltersResponse::class))]
+    public function filters(SearchFiltersRequest $request): JsonResponse
     {
         return $this->success();
     }

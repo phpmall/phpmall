@@ -4,22 +4,24 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Responses\Notification\NotificationListResponse;
+use App\Api\User\Responses\Notification\NotificationResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class NotificationController extends BaseController
 {
-    #[OA\Get(path: '/notifications', summary: 'Notification Controller index', tags: ['会员中心'])]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Get(path: '/notifications', security: [['bearerAuth' => []]], summary: 'Notification Controller index', tags: ['会员中心'])]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: NotificationListResponse::class))]
     public function index(Request $request): JsonResponse
     {
         return $this->success();
     }
 
-    #[OA\Get(path: '/notifications/{id}', summary: 'Notification Controller show', tags: ['会员中心'])]
+    #[OA\Get(path: '/notifications/{id}', security: [['bearerAuth' => []]], summary: 'Notification Controller show', tags: ['会员中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: NotificationResponse::class))]
     public function show(int $id): JsonResponse
     {
         return $this->success();

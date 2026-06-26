@@ -4,30 +4,33 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\Order\OrderStoreRequest;
+use App\Api\User\Responses\Order\OrderListResponse;
+use App\Api\User\Responses\Order\OrderResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class OrderController extends BaseController
 {
-    #[OA\Get(path: '/orders', summary: 'Order Controller index', tags: ['会员中心'])]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Get(path: '/orders', security: [['bearerAuth' => []]], summary: 'Order Controller index', tags: ['会员中心'])]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderListResponse::class))]
     public function index(Request $request): JsonResponse
     {
         return $this->success();
     }
 
     #[OA\Post(path: '/orders', security: [['bearerAuth' => []]], summary: 'Order Controller store', tags: ['会员中心'])]
-    #[OA\RequestBody(required: true, content: new OA\JsonContent)]
-    #[OA\Response(response: 200, description: 'OK')]
-    public function store(Request $request): JsonResponse
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderStoreRequest::class))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderResponse::class))]
+    public function store(OrderStoreRequest $request): JsonResponse
     {
         return $this->success();
     }
 
-    #[OA\Get(path: '/orders/{id}', summary: 'Order Controller show', tags: ['会员中心'])]
+    #[OA\Get(path: '/orders/{id}', security: [['bearerAuth' => []]], summary: 'Order Controller show', tags: ['会员中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
-    #[OA\Response(response: 200, description: 'OK')]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderResponse::class))]
     public function show(int $id): JsonResponse
     {
         return $this->success();
