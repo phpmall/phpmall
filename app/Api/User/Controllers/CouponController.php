@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\Coupon\CouponIndexRequest;
 use App\Api\User\Requests\Coupon\CouponReceiveRequest;
 use App\Api\User\Requests\Coupon\CouponUseRequest;
 use App\Api\User\Responses\Coupon\CouponListResponse;
 use App\Api\User\Responses\Coupon\MyCouponListResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class CouponController extends BaseController
 {
     #[OA\Get(path: '/coupons', security: [['bearerAuth' => []]], summary: 'Coupon Controller index', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CouponListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(CouponIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
