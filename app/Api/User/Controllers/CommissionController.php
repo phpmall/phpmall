@@ -9,7 +9,6 @@ use App\Api\User\Requests\Commission\CommissionWithdrawRequest;
 use App\Api\User\Responses\Commission\CommissionListResponse;
 use App\Api\User\Responses\Commission\CommissionStatsResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class CommissionController extends BaseController

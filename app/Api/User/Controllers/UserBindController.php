@@ -9,7 +9,6 @@ use App\Api\User\Requests\UserBind\UserBindRequest;
 use App\Api\User\Requests\UserBind\UserUnbindRequest;
 use App\Api\User\Responses\UserBind\UserBindListResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class UserBindController extends BaseController

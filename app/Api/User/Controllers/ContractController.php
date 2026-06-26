@@ -10,7 +10,6 @@ use App\Api\User\Responses\Contract\ContractListResponse;
 use App\Api\User\Responses\Contract\ContractResponse;
 use App\Api\User\Responses\Contract\ContractSignResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class ContractController extends BaseController

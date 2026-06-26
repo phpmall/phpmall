@@ -9,7 +9,6 @@ use App\Api\User\Responses\MemberLevel\MemberLevelBenefitsResponse;
 use App\Api\User\Responses\MemberLevel\MemberLevelListResponse;
 use App\Api\User\Responses\MemberLevel\MemberLevelResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class MemberLevelController extends BaseController

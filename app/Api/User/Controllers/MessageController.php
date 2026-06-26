@@ -9,7 +9,6 @@ use App\Api\User\Responses\Message\MessageListResponse;
 use App\Api\User\Responses\Message\MessageResponse;
 use App\Api\User\Responses\Message\MessageUnreadCountResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class MessageController extends BaseController
