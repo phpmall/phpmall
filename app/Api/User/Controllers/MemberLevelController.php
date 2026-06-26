@@ -31,7 +31,7 @@ class MemberLevelController extends BaseController
     #[OA\Get(path: '/member-levels/{id}/benefits', security: [['bearerAuth' => []]], summary: 'Member Level Controller benefits', tags: ['会员中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MemberLevelBenefitsResponse::class))]
-    public function benefits(): JsonResponse
+    public function benefits(int $id): JsonResponse
     {
         return $this->success();
     }
