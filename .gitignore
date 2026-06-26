@@ -14,6 +14,7 @@
 /.trae
 /.vscode
 /.zed
+/.worktrees
 /auth.json
 /node_modules
 /public/admin
