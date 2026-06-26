@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Api\User\Controllers;
 
+use App\Api\User\Requests\Address\AddressIndexRequest;
 use App\Api\User\Requests\AddressRequest;
+use App\Api\User\Responses\Address\AddressListResponse;
 use App\Api\User\Responses\AddressResponse;
 use App\Modules\User\Models\Address;
 use App\Modules\User\Models\User;
@@ -15,14 +17,19 @@ use OpenApi\Attributes as OA;
 class AddressController extends BaseController
 {
     #[OA\Get(path: '/addresses', summary: '收货地址列表', security: [['bearerAuth' => []]], tags: ['会员中心'])]
-    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(type: 'array', items: new OA\Items(ref: AddressResponse::class)))]
-    public function index(Request $request): JsonResponse
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: AddressListResponse::class))]
+    public function index(AddressIndexRequest $request): JsonResponse
     {
         $user = $this->resolveUser($request);
+        $addresses = $user->addresses()->orderByDesc('is_default')->orderByDesc('id')->get();
+
+        $response = new AddressListResponse();
+        $response->setList($addresses->toArray());
+        $response->setTotal($addresses->count());
 
         return response()->json([
             'code' => 0,
-            'data' => $user->addresses()->orderByDesc('is_default')->orderByDesc('id')->get(),
+            'data' => $response,
         ]);
     }
 
