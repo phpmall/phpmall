@@ -26,7 +26,7 @@ class NotificationIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            self::getIsRead => 'nullable|integer|in:0,1',
+            self::getIsRead => 'sometimes|integer|in:0,1',
             self::getPage => 'sometimes|integer|min:1',
             self::getPerPage => 'sometimes|integer|min:1|max:100',
         ];

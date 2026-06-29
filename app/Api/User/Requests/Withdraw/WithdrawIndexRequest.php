@@ -26,7 +26,7 @@ class WithdrawIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            self::getStatus => 'nullable|integer|min:0',
+            self::getStatus => 'sometimes|integer',
             self::getPage => 'sometimes|integer|min:1',
             self::getPerPage => 'sometimes|integer|min:1|max:100',
         ];
@@ -36,7 +36,6 @@ class WithdrawIndexRequest extends FormRequest
     {
         return [
             self::getStatus.'.integer' => '提现状态必须是整数',
-            self::getStatus.'.min' => '提现状态不能小于0',
             self::getPage.'.integer' => '页码必须是整数',
             self::getPage.'.min' => '页码不能小于1',
             self::getPerPage.'.integer' => '每页数量必须是整数',
