@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\SeckillActivity\SeckillActivityIndexRequest;
 use App\Api\Seller\Requests\SeckillActivity\SeckillActivityStoreRequest;
 use App\Api\Seller\Requests\SeckillActivity\SeckillActivityUpdateRequest;
 use App\Api\Seller\Responses\SeckillActivity\SeckillActivityListResponse;
 use App\Api\Seller\Responses\SeckillActivity\SeckillActivityResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class SeckillActivityController extends BaseController
 {
     #[OA\Get(path: '/seckill-activities', summary: '获取秒杀活动列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'status', description: '状态', in: 'query', required: false, schema: new OA\Schema(type: 'integer', nullable: true))]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(SeckillActivityIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

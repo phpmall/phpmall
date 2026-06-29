@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\Wallet\WalletIndexRequest;
 use App\Api\Seller\Responses\Wallet\WalletBalanceResponse;
 use App\Api\Seller\Responses\Wallet\WalletResponse;
 use App\Api\Seller\Responses\Wallet\WalletTransactionListResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class WalletController extends BaseController
 {
     #[OA\Get(path: '/wallet', summary: '获取钱包信息', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: WalletResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(WalletIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

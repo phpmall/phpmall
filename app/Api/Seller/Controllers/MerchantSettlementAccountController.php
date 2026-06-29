@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\MerchantSettlementAccount\MerchantSettlementAccountIndexRequest;
 use App\Api\Seller\Requests\MerchantSettlementAccount\MerchantSettlementAccountStoreRequest;
 use App\Api\Seller\Requests\MerchantSettlementAccount\MerchantSettlementAccountUpdateRequest;
 use App\Api\Seller\Responses\MerchantSettlementAccount\MerchantSettlementAccountListResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class MerchantSettlementAccountController extends BaseController
 {
     #[OA\Get(path: '/merchant-settlement-accounts', summary: '获取结算账户列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(type: 'array', items: new OA\Items(ref: MerchantSettlementAccountListResponse::class)))]
-    public function index(Request $request): JsonResponse
+    public function index(MerchantSettlementAccountIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
