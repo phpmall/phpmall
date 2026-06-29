@@ -72,7 +72,8 @@ class AuthenticationTest extends TestCase
         ]);
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors(['phone']);
+            ->assertJsonPath('code', 422)
+            ->assertJsonPath('message.phone.0', '手机号或密码错误。');
     }
 
     public function test_authenticated_user_can_fetch_profile(): void

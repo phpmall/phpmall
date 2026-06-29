@@ -34,7 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
                     'code' => Response::HTTP_UNAUTHORIZED,
                     'message' => $e->getMessage(),
                     'data' => null,
-                ]);
+                ], Response::HTTP_UNAUTHORIZED);
             });
 
             // 验证异常
@@ -43,7 +43,7 @@ return Application::configure(basePath: dirname(__DIR__))
                     'code' => $e->status,
                     'message' => $e->errors(),
                     'data' => null,
-                ]);
+                ], $e->status);
             });
 
             // 自定义异常
@@ -52,7 +52,7 @@ return Application::configure(basePath: dirname(__DIR__))
                     'code' => $e->getCode(),
                     'message' => $e->getMessage(),
                     'data' => null,
-                ]);
+                ], $e->getCode());
             });
 
             // NOTFOUND 异常
@@ -61,7 +61,7 @@ return Application::configure(basePath: dirname(__DIR__))
                     'code' => Response::HTTP_NOT_FOUND,
                     'message' => $e->getMessage(),
                     'data' => null,
-                ]);
+                ], Response::HTTP_NOT_FOUND);
             });
 
             // 统一错误处理
@@ -70,7 +70,7 @@ return Application::configure(basePath: dirname(__DIR__))
                     'code' => Response::HTTP_INTERNAL_SERVER_ERROR,
                     'message' => $e->getMessage(),
                     'data' => null,
-                ]);
+                ], Response::HTTP_INTERNAL_SERVER_ERROR);
             });
         }
     })->create();
