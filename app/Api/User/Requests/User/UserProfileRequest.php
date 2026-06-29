@@ -9,7 +9,9 @@ use OpenApi\Attributes as OA;
 
 #[OA\Schema(
     schema: 'UserProfileRequest',
-    description: '获取会员资料请求',
+    properties: [
+        new OA\Property(property: self::getWithAddresses, description: '是否携带地址列表:0否,1是', type: 'integer', example: 0, nullable: true),
+    ]
 )]
 class UserProfileRequest extends FormRequest
 {
@@ -18,7 +20,7 @@ class UserProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            self::getWithAddresses => 'sometimes|nullable|integer|in:0,1',
+            self::getWithAddresses => ['sometimes', 'integer', 'in:0,1'],
         ];
     }
 

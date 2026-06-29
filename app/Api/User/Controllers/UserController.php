@@ -20,7 +20,7 @@ class UserController extends BaseController
     {
         $user = $this->resolveUser($request);
 
-        if ((int) $request->input(UserProfileRequest::getWithAddresses) === 1) {
+        if ($request->integer(UserProfileRequest::getWithAddresses, 0) === 1) {
             $user->load('addresses');
         }
 
