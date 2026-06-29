@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\ShopReview\ShopReviewIndexRequest;
 use App\Api\Seller\Requests\ShopReview\ShopReviewReplyRequest;
 use App\Api\Seller\Responses\ShopReview\ShopReviewListResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class ShopReviewController extends BaseController
 {
     #[OA\Get(path: '/shop-reviews', summary: '获取店铺评价列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopReviewListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(ShopReviewIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
