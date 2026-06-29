@@ -6,6 +6,7 @@ namespace App\Api\User\Controllers;
 
 use App\Api\User\Requests\Address\AddressIndexRequest;
 use App\Api\User\Requests\AddressRequest;
+use App\Api\User\Responses\Address\AddressListResponse;
 use App\Api\User\Responses\AddressResponse;
 use App\Modules\User\Models\Address;
 use App\Modules\User\Models\User;
@@ -16,15 +17,19 @@ use OpenApi\Attributes as OA;
 class AddressController extends BaseController
 {
     #[OA\Get(path: '/addresses', summary: '收货地址列表', security: [['bearerAuth' => []]], tags: ['会员中心'])]
-    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(type: 'array', items: new OA\Items(ref: AddressResponse::class)))]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', schema: new OA\Schema(type: 'integer', default: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', schema: new OA\Schema(type: 'integer', default: 20))]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: AddressListResponse::class))]
     public function index(AddressIndexRequest $request): JsonResponse
     {
         $user = $this->resolveUser($request);
+        $addresses = $user->addresses()->orderByDesc('is_default')->orderByDesc('id')->get();
 
-        return response()->json([
-            'code' => 0,
-            'data' => $user->addresses()->orderByDesc('is_default')->orderByDesc('id')->get(),
-        ]);
+        $response = new AddressListResponse;
+        $response->setList($addresses->toArray());
+        $response->setTotal($addresses->count());
+
+        return response()->json(['code' => 0, 'data' => $response->toArray()]);
     }
 
     #[OA\Post(path: '/addresses', summary: '新增收货地址', security: [['bearerAuth' => []]], tags: ['会员中心'])]

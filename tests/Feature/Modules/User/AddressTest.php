@@ -52,7 +52,8 @@ class AddressTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonPath('code', 0)
-            ->assertJsonCount(1, 'data');
+            ->assertJsonCount(1, 'data.list')
+            ->assertJsonPath('data.total', 1);
     }
 
     public function test_user_can_update_address(): void
