@@ -29,8 +29,8 @@ class OrderIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            self::getStatus => 'nullable|integer|min:0',
-            self::getKeyword => 'nullable|string|max:100',
+            self::getStatus => 'sometimes|integer',
+            self::getKeyword => 'sometimes|string|max:100',
             self::getPage => 'sometimes|integer|min:1',
             self::getPerPage => 'sometimes|integer|min:1|max:100',
         ];

@@ -26,7 +26,7 @@ class OrderReviewIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            self::getOrderId => 'nullable|integer|min:1',
+            self::getOrderId => 'sometimes|integer',
             self::getPage => 'sometimes|integer|min:1',
             self::getPerPage => 'sometimes|integer|min:1|max:100',
         ];
