@@ -6,17 +6,20 @@ namespace App\Api\Seller\Controllers;
 
 use App\Api\Seller\Requests\Refund\RefundArbitrateRequest;
 use App\Api\Seller\Requests\Refund\RefundAuditRequest;
+use App\Api\Seller\Requests\Refund\RefundIndexRequest;
 use App\Api\Seller\Responses\Refund\RefundListResponse;
 use App\Api\Seller\Responses\Refund\RefundResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class RefundController extends BaseController
 {
     #[OA\Get(path: '/refunds', summary: '获取退款列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'status', description: '退款状态', in: 'query', required: false, schema: new OA\Schema(type: 'integer', nullable: true))]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RefundListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(RefundIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
