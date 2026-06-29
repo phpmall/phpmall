@@ -6,17 +6,20 @@ namespace App\Api\Supplier\Controllers;
 
 use App\Api\Supplier\Requests\Warehouse\StoreRequest;
 use App\Api\Supplier\Requests\Warehouse\UpdateRequest;
+use App\Api\Supplier\Requests\Warehouse\WarehouseIndexRequest;
 use App\Api\Supplier\Responses\Warehouse\WarehouseListResponse;
 use App\Api\Supplier\Responses\Warehouse\WarehouseResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class WarehouseController extends BaseController
 {
-    #[OA\Get(path: '/warehouses', summary: '仓库列表', tags: ['供应商中心'])]
+    #[OA\Get(path: '/warehouses', summary: '仓库列表', security: [['bearerAuth' => []]], tags: ['供应商中心'])]
+    #[OA\Parameter(name: 'status', description: '仓库状态', in: 'query', schema: new OA\Schema(type: 'integer', nullable: true))]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: WarehouseListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(WarehouseIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
