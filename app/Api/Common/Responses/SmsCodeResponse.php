@@ -12,7 +12,7 @@ class SmsCodeResponse
 {
     use HasSerializableAttributes;
 
-    #[OA\Property(property: 'codeId', description: '短信随机码', type: 'string')]
+    #[OA\Property(property: 'code_id', description: '短信随机码', type: 'string')]
     private string $codeId;
 
     #[OA\Property(property: 'status', description: '状态:1成功，2失败', type: 'integer')]

@@ -12,10 +12,10 @@ class CaptchaResponse
 {
     use HasSerializableAttributes;
 
-    #[OA\Property(property: 'captchaId', description: '图片验证码ID', type: 'string')]
+    #[OA\Property(property: 'captcha_id', description: '图片验证码ID', type: 'string')]
     private string $captchaId;
 
-    #[OA\Property(property: 'captchaImg', description: 'Base64格式的图片验证码', type: 'string')]
+    #[OA\Property(property: 'captcha_img', description: 'Base64格式的图片验证码', type: 'string')]
     private string $captchaImg;
 
     public function getCaptchaId(): string

@@ -33,7 +33,11 @@ class SearchFiltersResponse
     ]))]
     private array $brands;
 
-    #[OA\Property(property: 'attributes', description: '属性筛选', type: 'array', items: new OA\Items(type: 'object'))]
+    #[OA\Property(property: 'attributes', description: '属性筛选', type: 'array', items: new OA\Items(type: 'object', properties: [
+        new OA\Property(property: 'id', description: '属性ID', type: 'integer'),
+        new OA\Property(property: 'name', description: '属性名称', type: 'string'),
+        new OA\Property(property: 'values', description: '可选值列表', type: 'array', items: new OA\Items(type: 'string')),
+    ]))]
     private array $attributes;
 
     public function getCategories(): array
