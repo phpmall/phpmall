@@ -6,293 +6,334 @@
 
 declare(strict_types=1);
 
+use App\Api\Seller\Controllers\AuthController;
+use App\Api\Seller\Controllers\BrandController;
+use App\Api\Seller\Controllers\CategoryController;
+use App\Api\Seller\Controllers\ComplaintController;
+use App\Api\Seller\Controllers\ContractController;
+use App\Api\Seller\Controllers\CouponController;
+use App\Api\Seller\Controllers\DataController;
+use App\Api\Seller\Controllers\DistributionConfigController;
+use App\Api\Seller\Controllers\DistributorController;
+use App\Api\Seller\Controllers\FreightTemplateController;
+use App\Api\Seller\Controllers\IndexController;
+use App\Api\Seller\Controllers\InventoryController;
+use App\Api\Seller\Controllers\InventoryReservationController;
+use App\Api\Seller\Controllers\InventoryTransactionController;
+use App\Api\Seller\Controllers\InvoiceController;
+use App\Api\Seller\Controllers\MerchantApplicationController;
+use App\Api\Seller\Controllers\MerchantController;
+use App\Api\Seller\Controllers\MerchantQualificationController;
+use App\Api\Seller\Controllers\MerchantSettlementAccountController;
+use App\Api\Seller\Controllers\MessageController;
+use App\Api\Seller\Controllers\OrderController;
+use App\Api\Seller\Controllers\ProductAttributeController;
+use App\Api\Seller\Controllers\ProductAuditController;
+use App\Api\Seller\Controllers\ProductController;
+use App\Api\Seller\Controllers\ProductSkuController;
+use App\Api\Seller\Controllers\PromotionController;
+use App\Api\Seller\Controllers\RefundController;
+use App\Api\Seller\Controllers\SeckillActivityController;
+use App\Api\Seller\Controllers\SettingsController;
+use App\Api\Seller\Controllers\SettlementController;
+use App\Api\Seller\Controllers\ShipmentController;
+use App\Api\Seller\Controllers\ShopCategoryController;
+use App\Api\Seller\Controllers\ShopController;
+use App\Api\Seller\Controllers\ShopDecorationController;
+use App\Api\Seller\Controllers\ShopReviewController;
+use App\Api\Seller\Controllers\SubAccountController;
+use App\Api\Seller\Controllers\SubOrderController;
+use App\Api\Seller\Controllers\WalletController;
+use App\Api\Seller\Controllers\WarehouseController;
+use App\Api\Seller\Controllers\WaybillController;
+use App\Api\Seller\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
 // 商家登录接口
-Route::post('auth/login', [\App\Api\Seller\Controllers\AuthController::class, 'login']);
+Route::post('auth/login', [AuthController::class, 'login']);
 // 获取品牌列表
-Route::get('brands', [\App\Api\Seller\Controllers\BrandController::class, 'index'])->name('brands');
+Route::get('brands', [BrandController::class, 'index'])->name('brands');
 // 申请品牌
-Route::post('brands/apply', [\App\Api\Seller\Controllers\BrandController::class, 'apply']);
+Route::post('brands/apply', [BrandController::class, 'apply']);
 // 获取分类列表
-Route::get('categories', [\App\Api\Seller\Controllers\CategoryController::class, 'index'])->name('categories');
+Route::get('categories', [CategoryController::class, 'index'])->name('categories');
 // 获取分类树
-Route::get('categories/tree', [\App\Api\Seller\Controllers\CategoryController::class, 'tree'])->name('categories.tree');
+Route::get('categories/tree', [CategoryController::class, 'tree'])->name('categories.tree');
 // 获取投诉列表
-Route::get('complaints', [\App\Api\Seller\Controllers\ComplaintController::class, 'index'])->name('complaints');
+Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints');
 // 获取投诉详情
-Route::get('complaints/{id}', [\App\Api\Seller\Controllers\ComplaintController::class, 'show'])->name('complaints.{id}');
+Route::get('complaints/{id}', [ComplaintController::class, 'show'])->name('complaints.{id}');
 // 回应投诉
-Route::post('complaints/{id}/respond', [\App\Api\Seller\Controllers\ComplaintController::class, 'respond']);
+Route::post('complaints/{id}/respond', [ComplaintController::class, 'respond']);
 // 申诉投诉
-Route::post('complaints/{id}/appeal', [\App\Api\Seller\Controllers\ComplaintController::class, 'appeal']);
+Route::post('complaints/{id}/appeal', [ComplaintController::class, 'appeal']);
 // 获取合同列表
-Route::get('contracts', [\App\Api\Seller\Controllers\ContractController::class, 'index'])->name('contracts');
+Route::get('contracts', [ContractController::class, 'index'])->name('contracts');
 // 获取合同详情
-Route::get('contracts/{id}', [\App\Api\Seller\Controllers\ContractController::class, 'show'])->name('contracts.{id}');
+Route::get('contracts/{id}', [ContractController::class, 'show'])->name('contracts.{id}');
 // 签署合同
-Route::post('contracts/{id}/sign', [\App\Api\Seller\Controllers\ContractController::class, 'sign']);
+Route::post('contracts/{id}/sign', [ContractController::class, 'sign']);
 // 下载合同
-Route::get('contracts/{id}/download', [\App\Api\Seller\Controllers\ContractController::class, 'download'])->name('contracts.{id}.download');
+Route::get('contracts/{id}/download', [ContractController::class, 'download'])->name('contracts.{id}.download');
 // 获取优惠券列表
-Route::get('coupons', [\App\Api\Seller\Controllers\CouponController::class, 'index'])->name('coupons');
+Route::get('coupons', [CouponController::class, 'index'])->name('coupons');
 // 创建优惠券
-Route::post('coupons', [\App\Api\Seller\Controllers\CouponController::class, 'store']);
+Route::post('coupons', [CouponController::class, 'store']);
 // 获取优惠券详情
-Route::get('coupons/{id}', [\App\Api\Seller\Controllers\CouponController::class, 'show'])->name('coupons.{id}');
+Route::get('coupons/{id}', [CouponController::class, 'show'])->name('coupons.{id}');
 // 更新优惠券
-Route::put('coupons/{id}', [\App\Api\Seller\Controllers\CouponController::class, 'update']);
+Route::put('coupons/{id}', [CouponController::class, 'update']);
 // 删除优惠券
-Route::delete('coupons/{id}', [\App\Api\Seller\Controllers\CouponController::class, 'destroy']);
+Route::delete('coupons/{id}', [CouponController::class, 'destroy']);
 // 获取优惠券统计
-Route::get('coupons/{id}/stats', [\App\Api\Seller\Controllers\CouponController::class, 'stats'])->name('coupons.{id}.stats');
+Route::get('coupons/{id}/stats', [CouponController::class, 'stats'])->name('coupons.{id}.stats');
 // 数据概览
-Route::get('data/overview', [\App\Api\Seller\Controllers\DataController::class, 'overview'])->name('data.overview');
+Route::get('data/overview', [DataController::class, 'overview'])->name('data.overview');
 // 订单数据
-Route::get('data/orders', [\App\Api\Seller\Controllers\DataController::class, 'orders'])->name('data.orders');
+Route::get('data/orders', [DataController::class, 'orders'])->name('data.orders');
 // 商品数据
-Route::get('data/products', [\App\Api\Seller\Controllers\DataController::class, 'products'])->name('data.products');
+Route::get('data/products', [DataController::class, 'products'])->name('data.products');
 // 数据导出
-Route::post('data/export', [\App\Api\Seller\Controllers\DataController::class, 'export']);
+Route::post('data/export', [DataController::class, 'export']);
 // 获取分销配置
-Route::get('distribution-config/{id}', [\App\Api\Seller\Controllers\DistributionConfigController::class, 'show'])->name('distribution-config.{id}');
+Route::get('distribution-config/{id}', [DistributionConfigController::class, 'show'])->name('distribution-config.{id}');
 // 更新分销配置
-Route::put('distribution-config/{id}', [\App\Api\Seller\Controllers\DistributionConfigController::class, 'update']);
+Route::put('distribution-config/{id}', [DistributionConfigController::class, 'update']);
 // 获取分销商列表
-Route::get('distributors', [\App\Api\Seller\Controllers\DistributorController::class, 'index'])->name('distributors');
+Route::get('distributors', [DistributorController::class, 'index'])->name('distributors');
 // 获取分销商详情
-Route::get('distributors/{id}', [\App\Api\Seller\Controllers\DistributorController::class, 'show'])->name('distributors.{id}');
+Route::get('distributors/{id}', [DistributorController::class, 'show'])->name('distributors.{id}');
 // 审核分销商
-Route::post('distributors/{id}/audit', [\App\Api\Seller\Controllers\DistributorController::class, 'audit']);
+Route::post('distributors/{id}/audit', [DistributorController::class, 'audit']);
 // 获取运费模板列表
-Route::get('freight-templates', [\App\Api\Seller\Controllers\FreightTemplateController::class, 'index'])->name('freight-templates');
+Route::get('freight-templates', [FreightTemplateController::class, 'index'])->name('freight-templates');
 // 创建运费模板
-Route::post('freight-templates', [\App\Api\Seller\Controllers\FreightTemplateController::class, 'store']);
+Route::post('freight-templates', [FreightTemplateController::class, 'store']);
 // 获取运费模板详情
-Route::get('freight-templates/{id}', [\App\Api\Seller\Controllers\FreightTemplateController::class, 'show'])->name('freight-templates.{id}');
+Route::get('freight-templates/{id}', [FreightTemplateController::class, 'show'])->name('freight-templates.{id}');
 // 更新运费模板
-Route::put('freight-templates/{id}', [\App\Api\Seller\Controllers\FreightTemplateController::class, 'update']);
+Route::put('freight-templates/{id}', [FreightTemplateController::class, 'update']);
 // 删除运费模板
-Route::delete('freight-templates/{id}', [\App\Api\Seller\Controllers\FreightTemplateController::class, 'destroy']);
+Route::delete('freight-templates/{id}', [FreightTemplateController::class, 'destroy']);
 // 首页
-Route::get('/', [\App\Api\Seller\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
 // 获取库存列表
-Route::get('inventory', [\App\Api\Seller\Controllers\InventoryController::class, 'index'])->name('inventory');
+Route::get('inventory', [InventoryController::class, 'index'])->name('inventory');
 // 获取库存详情
-Route::get('inventory/{id}', [\App\Api\Seller\Controllers\InventoryController::class, 'show'])->name('inventory.{id}');
+Route::get('inventory/{id}', [InventoryController::class, 'show'])->name('inventory.{id}');
 // 更新库存
-Route::put('inventory/{id}', [\App\Api\Seller\Controllers\InventoryController::class, 'update']);
+Route::put('inventory/{id}', [InventoryController::class, 'update']);
 // 批量更新库存
-Route::post('inventory/batch', [\App\Api\Seller\Controllers\InventoryController::class, 'batchUpdate']);
+Route::post('inventory/batch', [InventoryController::class, 'batchUpdate']);
 // 获取库存预留列表
-Route::get('inventory-reservations', [\App\Api\Seller\Controllers\InventoryReservationController::class, 'index'])->name('inventory-reservations');
+Route::get('inventory-reservations', [InventoryReservationController::class, 'index'])->name('inventory-reservations');
 // 释放库存预留
-Route::post('inventory-reservations/{id}/release', [\App\Api\Seller\Controllers\InventoryReservationController::class, 'release']);
+Route::post('inventory-reservations/{id}/release', [InventoryReservationController::class, 'release']);
 // 获取库存流水列表
-Route::get('inventory-transactions', [\App\Api\Seller\Controllers\InventoryTransactionController::class, 'index'])->name('inventory-transactions');
+Route::get('inventory-transactions', [InventoryTransactionController::class, 'index'])->name('inventory-transactions');
 // 获取库存流水详情
-Route::get('inventory-transactions/{id}', [\App\Api\Seller\Controllers\InventoryTransactionController::class, 'show'])->name('inventory-transactions.{id}');
+Route::get('inventory-transactions/{id}', [InventoryTransactionController::class, 'show'])->name('inventory-transactions.{id}');
 // 获取发票列表
-Route::get('invoices', [\App\Api\Seller\Controllers\InvoiceController::class, 'index'])->name('invoices');
+Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices');
 // 获取发票详情
-Route::get('invoices/{id}', [\App\Api\Seller\Controllers\InvoiceController::class, 'show'])->name('invoices.{id}');
+Route::get('invoices/{id}', [InvoiceController::class, 'show'])->name('invoices.{id}');
 // 开具发票
-Route::post('invoices/{id}/issue', [\App\Api\Seller\Controllers\InvoiceController::class, 'issue']);
+Route::post('invoices/{id}/issue', [InvoiceController::class, 'issue']);
 // 红冲发票
-Route::post('invoices/{id}/red-flush', [\App\Api\Seller\Controllers\InvoiceController::class, 'redFlush']);
+Route::post('invoices/{id}/red-flush', [InvoiceController::class, 'redFlush']);
 // 提交商家入驻申请
-Route::post('merchant-application/apply', [\App\Api\Seller\Controllers\MerchantApplicationController::class, 'apply']);
+Route::post('merchant-application/apply', [MerchantApplicationController::class, 'apply']);
 // 获取入驻申请状态
-Route::get('merchant-application/status', [\App\Api\Seller\Controllers\MerchantApplicationController::class, 'status'])->name('merchant-application.status');
+Route::get('merchant-application/status', [MerchantApplicationController::class, 'status'])->name('merchant-application.status');
 // 重新提交入驻申请
-Route::post('merchant-application/resubmit', [\App\Api\Seller\Controllers\MerchantApplicationController::class, 'resubmit']);
+Route::post('merchant-application/resubmit', [MerchantApplicationController::class, 'resubmit']);
 // 获取商家信息
-Route::get('merchant', [\App\Api\Seller\Controllers\MerchantController::class, 'index'])->name('merchant');
+Route::get('merchant', [MerchantController::class, 'index'])->name('merchant');
 // 更新商家信息
-Route::put('merchant', [\App\Api\Seller\Controllers\MerchantController::class, 'update']);
+Route::put('merchant', [MerchantController::class, 'update']);
 // 获取商家资质列表
-Route::get('merchant-qualifications', [\App\Api\Seller\Controllers\MerchantQualificationController::class, 'index'])->name('merchant-qualifications');
+Route::get('merchant-qualifications', [MerchantQualificationController::class, 'index'])->name('merchant-qualifications');
 // 上传商家资质
-Route::post('merchant-qualifications/upload', [\App\Api\Seller\Controllers\MerchantQualificationController::class, 'upload']);
+Route::post('merchant-qualifications/upload', [MerchantQualificationController::class, 'upload']);
 // 更新商家资质
-Route::put('merchant-qualifications/{id}', [\App\Api\Seller\Controllers\MerchantQualificationController::class, 'update']);
+Route::put('merchant-qualifications/{id}', [MerchantQualificationController::class, 'update']);
 // 删除商家资质
-Route::delete('merchant-qualifications/{id}', [\App\Api\Seller\Controllers\MerchantQualificationController::class, 'delete']);
+Route::delete('merchant-qualifications/{id}', [MerchantQualificationController::class, 'delete']);
 // 获取结算账户列表
-Route::get('merchant-settlement-accounts', [\App\Api\Seller\Controllers\MerchantSettlementAccountController::class, 'index'])->name('merchant-settlement-accounts');
+Route::get('merchant-settlement-accounts', [MerchantSettlementAccountController::class, 'index'])->name('merchant-settlement-accounts');
 // 创建结算账户
-Route::post('merchant-settlement-accounts', [\App\Api\Seller\Controllers\MerchantSettlementAccountController::class, 'store']);
+Route::post('merchant-settlement-accounts', [MerchantSettlementAccountController::class, 'store']);
 // 更新结算账户
-Route::put('merchant-settlement-accounts/{id}', [\App\Api\Seller\Controllers\MerchantSettlementAccountController::class, 'update']);
+Route::put('merchant-settlement-accounts/{id}', [MerchantSettlementAccountController::class, 'update']);
 // 设置默认结算账户
-Route::post('merchant-settlement-accounts/{id}/default', [\App\Api\Seller\Controllers\MerchantSettlementAccountController::class, 'setDefault']);
+Route::post('merchant-settlement-accounts/{id}/default', [MerchantSettlementAccountController::class, 'setDefault']);
 // 获取消息列表
-Route::get('messages', [\App\Api\Seller\Controllers\MessageController::class, 'index'])->name('messages');
+Route::get('messages', [MessageController::class, 'index'])->name('messages');
 // 获取消息详情
-Route::get('messages/{id}', [\App\Api\Seller\Controllers\MessageController::class, 'show'])->name('messages.{id}');
+Route::get('messages/{id}', [MessageController::class, 'show'])->name('messages.{id}');
 // 标记消息已读
-Route::post('messages/{id}/read', [\App\Api\Seller\Controllers\MessageController::class, 'markRead']);
+Route::post('messages/{id}/read', [MessageController::class, 'markRead']);
 // 批量标记已读
-Route::post('messages/batch/read', [\App\Api\Seller\Controllers\MessageController::class, 'batchRead']);
+Route::post('messages/batch/read', [MessageController::class, 'batchRead']);
 // 获取订单列表
-Route::get('orders', [\App\Api\Seller\Controllers\OrderController::class, 'index'])->name('orders');
+Route::get('orders', [OrderController::class, 'index'])->name('orders');
 // 获取订单详情
-Route::get('orders/{id}', [\App\Api\Seller\Controllers\OrderController::class, 'show'])->name('orders.{id}');
+Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.{id}');
 // 订单发货
-Route::post('orders/{id}/ship', [\App\Api\Seller\Controllers\OrderController::class, 'ship']);
+Route::post('orders/{id}/ship', [OrderController::class, 'ship']);
 // 拒绝订单
-Route::post('orders/{id}/refuse', [\App\Api\Seller\Controllers\OrderController::class, 'refuse']);
+Route::post('orders/{id}/refuse', [OrderController::class, 'refuse']);
 // 获取商品属性列表
-Route::get('product-attributes', [\App\Api\Seller\Controllers\ProductAttributeController::class, 'index'])->name('product-attributes');
+Route::get('product-attributes', [ProductAttributeController::class, 'index'])->name('product-attributes');
 // 创建商品属性
-Route::post('product-attributes', [\App\Api\Seller\Controllers\ProductAttributeController::class, 'store']);
+Route::post('product-attributes', [ProductAttributeController::class, 'store']);
 // 更新商品属性
-Route::put('product-attributes/{id}', [\App\Api\Seller\Controllers\ProductAttributeController::class, 'update']);
+Route::put('product-attributes/{id}', [ProductAttributeController::class, 'update']);
 // 删除商品属性
-Route::delete('product-attributes/{id}', [\App\Api\Seller\Controllers\ProductAttributeController::class, 'destroy']);
+Route::delete('product-attributes/{id}', [ProductAttributeController::class, 'destroy']);
 // 获取商品审核列表
-Route::get('product-audits', [\App\Api\Seller\Controllers\ProductAuditController::class, 'index'])->name('product-audits');
+Route::get('product-audits', [ProductAuditController::class, 'index'])->name('product-audits');
 // 获取商品审核详情
-Route::get('product-audits/{id}', [\App\Api\Seller\Controllers\ProductAuditController::class, 'show'])->name('product-audits.{id}');
+Route::get('product-audits/{id}', [ProductAuditController::class, 'show'])->name('product-audits.{id}');
 // 获取商品列表
-Route::get('products', [\App\Api\Seller\Controllers\ProductController::class, 'index'])->name('products');
+Route::get('products', [ProductController::class, 'index'])->name('products');
 // 创建商品
-Route::post('products', [\App\Api\Seller\Controllers\ProductController::class, 'store']);
+Route::post('products', [ProductController::class, 'store']);
 // 获取商品详情
-Route::get('products/{id}', [\App\Api\Seller\Controllers\ProductController::class, 'show'])->name('products.{id}');
+Route::get('products/{id}', [ProductController::class, 'show'])->name('products.{id}');
 // 更新商品
-Route::put('products/{id}', [\App\Api\Seller\Controllers\ProductController::class, 'update']);
+Route::put('products/{id}', [ProductController::class, 'update']);
 // 删除商品
-Route::delete('products/{id}', [\App\Api\Seller\Controllers\ProductController::class, 'destroy']);
+Route::delete('products/{id}', [ProductController::class, 'destroy']);
 // 商品上架
-Route::post('products/{id}/on-shelf', [\App\Api\Seller\Controllers\ProductController::class, 'onShelf']);
+Route::post('products/{id}/on-shelf', [ProductController::class, 'onShelf']);
 // 商品下架
-Route::post('products/{id}/off-shelf', [\App\Api\Seller\Controllers\ProductController::class, 'offShelf']);
+Route::post('products/{id}/off-shelf', [ProductController::class, 'offShelf']);
 // 批量上架商品
-Route::post('products/batch/on-shelf', [\App\Api\Seller\Controllers\ProductController::class, 'batchOnShelf']);
+Route::post('products/batch/on-shelf', [ProductController::class, 'batchOnShelf']);
 // 批量下架商品
-Route::post('products/batch/off-shelf', [\App\Api\Seller\Controllers\ProductController::class, 'batchOffShelf']);
+Route::post('products/batch/off-shelf', [ProductController::class, 'batchOffShelf']);
 // 批量删除商品
-Route::post('products/batch/delete', [\App\Api\Seller\Controllers\ProductController::class, 'batchDelete']);
+Route::post('products/batch/delete', [ProductController::class, 'batchDelete']);
 // 获取商品SKU列表
-Route::get('product-skus', [\App\Api\Seller\Controllers\ProductSkuController::class, 'index'])->name('product-skus');
+Route::get('product-skus', [ProductSkuController::class, 'index'])->name('product-skus');
 // 创建商品SKU
-Route::post('product-skus', [\App\Api\Seller\Controllers\ProductSkuController::class, 'store']);
+Route::post('product-skus', [ProductSkuController::class, 'store']);
 // 更新商品SKU
-Route::put('product-skus/{id}', [\App\Api\Seller\Controllers\ProductSkuController::class, 'update']);
+Route::put('product-skus/{id}', [ProductSkuController::class, 'update']);
 // 删除商品SKU
-Route::delete('product-skus/{id}', [\App\Api\Seller\Controllers\ProductSkuController::class, 'destroy']);
+Route::delete('product-skus/{id}', [ProductSkuController::class, 'destroy']);
 // 批量更新商品SKU
-Route::post('product-skus/batch', [\App\Api\Seller\Controllers\ProductSkuController::class, 'batchUpdate']);
+Route::post('product-skus/batch', [ProductSkuController::class, 'batchUpdate']);
 // 获取促销活动列表
-Route::get('promotions', [\App\Api\Seller\Controllers\PromotionController::class, 'index'])->name('promotions');
+Route::get('promotions', [PromotionController::class, 'index'])->name('promotions');
 // 创建促销活动
-Route::post('promotions', [\App\Api\Seller\Controllers\PromotionController::class, 'store']);
+Route::post('promotions', [PromotionController::class, 'store']);
 // 获取促销活动详情
-Route::get('promotions/{id}', [\App\Api\Seller\Controllers\PromotionController::class, 'show'])->name('promotions.{id}');
+Route::get('promotions/{id}', [PromotionController::class, 'show'])->name('promotions.{id}');
 // 更新促销活动
-Route::put('promotions/{id}', [\App\Api\Seller\Controllers\PromotionController::class, 'update']);
+Route::put('promotions/{id}', [PromotionController::class, 'update']);
 // 删除促销活动
-Route::delete('promotions/{id}', [\App\Api\Seller\Controllers\PromotionController::class, 'destroy']);
+Route::delete('promotions/{id}', [PromotionController::class, 'destroy']);
 // 获取退款列表
-Route::get('refunds', [\App\Api\Seller\Controllers\RefundController::class, 'index'])->name('refunds');
+Route::get('refunds', [RefundController::class, 'index'])->name('refunds');
 // 获取退款详情
-Route::get('refunds/{id}', [\App\Api\Seller\Controllers\RefundController::class, 'show'])->name('refunds.{id}');
+Route::get('refunds/{id}', [RefundController::class, 'show'])->name('refunds.{id}');
 // 审核退款
-Route::post('refunds/{id}/audit', [\App\Api\Seller\Controllers\RefundController::class, 'audit']);
+Route::post('refunds/{id}/audit', [RefundController::class, 'audit']);
 // 仲裁退款
-Route::post('refunds/{id}/arbitrate', [\App\Api\Seller\Controllers\RefundController::class, 'arbitrate']);
+Route::post('refunds/{id}/arbitrate', [RefundController::class, 'arbitrate']);
 // 获取秒杀活动列表
-Route::get('seckill-activities', [\App\Api\Seller\Controllers\SeckillActivityController::class, 'index'])->name('seckill-activities');
+Route::get('seckill-activities', [SeckillActivityController::class, 'index'])->name('seckill-activities');
 // 创建秒杀活动
-Route::post('seckill-activities', [\App\Api\Seller\Controllers\SeckillActivityController::class, 'store']);
+Route::post('seckill-activities', [SeckillActivityController::class, 'store']);
 // 获取秒杀活动详情
-Route::get('seckill-activities/{id}', [\App\Api\Seller\Controllers\SeckillActivityController::class, 'show'])->name('seckill-activities.{id}');
+Route::get('seckill-activities/{id}', [SeckillActivityController::class, 'show'])->name('seckill-activities.{id}');
 // 更新秒杀活动
-Route::put('seckill-activities/{id}', [\App\Api\Seller\Controllers\SeckillActivityController::class, 'update']);
+Route::put('seckill-activities/{id}', [SeckillActivityController::class, 'update']);
 // 删除秒杀活动
-Route::delete('seckill-activities/{id}', [\App\Api\Seller\Controllers\SeckillActivityController::class, 'destroy']);
+Route::delete('seckill-activities/{id}', [SeckillActivityController::class, 'destroy']);
 // 获取设置
-Route::get('settings', [\App\Api\Seller\Controllers\SettingsController::class, 'index'])->name('settings');
+Route::get('settings', [SettingsController::class, 'index'])->name('settings');
 // 更新设置
-Route::put('settings', [\App\Api\Seller\Controllers\SettingsController::class, 'update']);
+Route::put('settings', [SettingsController::class, 'update']);
 // 修改密码
-Route::put('settings/password', [\App\Api\Seller\Controllers\SettingsController::class, 'updatePassword']);
+Route::put('settings/password', [SettingsController::class, 'updatePassword']);
 // 获取结算列表
-Route::get('settlements', [\App\Api\Seller\Controllers\SettlementController::class, 'index'])->name('settlements');
+Route::get('settlements', [SettlementController::class, 'index'])->name('settlements');
 // 获取结算详情
-Route::get('settlements/{id}', [\App\Api\Seller\Controllers\SettlementController::class, 'show'])->name('settlements.{id}');
+Route::get('settlements/{id}', [SettlementController::class, 'show'])->name('settlements.{id}');
 // 获取结算账单
-Route::get('settlements/{id}/statement', [\App\Api\Seller\Controllers\SettlementController::class, 'statement'])->name('settlements.{id}.statement');
+Route::get('settlements/{id}/statement', [SettlementController::class, 'statement'])->name('settlements.{id}.statement');
 // 获取发货单列表
-Route::get('shipments', [\App\Api\Seller\Controllers\ShipmentController::class, 'index'])->name('shipments');
+Route::get('shipments', [ShipmentController::class, 'index'])->name('shipments');
 // 创建发货单
-Route::post('shipments', [\App\Api\Seller\Controllers\ShipmentController::class, 'store']);
+Route::post('shipments', [ShipmentController::class, 'store']);
 // 批量发货
-Route::post('shipments/batch', [\App\Api\Seller\Controllers\ShipmentController::class, 'batchShip']);
+Route::post('shipments/batch', [ShipmentController::class, 'batchShip']);
 // 获取店铺分类列表
-Route::get('shop-categories', [\App\Api\Seller\Controllers\ShopCategoryController::class, 'index'])->name('shop-categories');
+Route::get('shop-categories', [ShopCategoryController::class, 'index'])->name('shop-categories');
 // 创建店铺分类
-Route::post('shop-categories', [\App\Api\Seller\Controllers\ShopCategoryController::class, 'store']);
+Route::post('shop-categories', [ShopCategoryController::class, 'store']);
 // 更新店铺分类
-Route::put('shop-categories/{id}', [\App\Api\Seller\Controllers\ShopCategoryController::class, 'update']);
+Route::put('shop-categories/{id}', [ShopCategoryController::class, 'update']);
 // 删除店铺分类
-Route::delete('shop-categories/{id}', [\App\Api\Seller\Controllers\ShopCategoryController::class, 'destroy']);
+Route::delete('shop-categories/{id}', [ShopCategoryController::class, 'destroy']);
 // 店铺分类排序
-Route::post('shop-categories/reorder', [\App\Api\Seller\Controllers\ShopCategoryController::class, 'reorder']);
+Route::post('shop-categories/reorder', [ShopCategoryController::class, 'reorder']);
 // 获取店铺信息
-Route::get('shop', [\App\Api\Seller\Controllers\ShopController::class, 'index'])->name('shop');
+Route::get('shop', [ShopController::class, 'index'])->name('shop');
 // 更新店铺信息
-Route::put('shop', [\App\Api\Seller\Controllers\ShopController::class, 'update']);
+Route::put('shop', [ShopController::class, 'update']);
 // 关闭店铺
-Route::post('shop/close', [\App\Api\Seller\Controllers\ShopController::class, 'close']);
+Route::post('shop/close', [ShopController::class, 'close']);
 // 开启店铺
-Route::post('shop/open', [\App\Api\Seller\Controllers\ShopController::class, 'open']);
+Route::post('shop/open', [ShopController::class, 'open']);
 // 获取店铺装修信息
-Route::get('shop-decoration', [\App\Api\Seller\Controllers\ShopDecorationController::class, 'index'])->name('shop-decoration');
+Route::get('shop-decoration', [ShopDecorationController::class, 'index'])->name('shop-decoration');
 // 更新店铺装修
-Route::put('shop-decoration', [\App\Api\Seller\Controllers\ShopDecorationController::class, 'update']);
+Route::put('shop-decoration', [ShopDecorationController::class, 'update']);
 // 预览店铺装修
-Route::get('shop-decoration/preview', [\App\Api\Seller\Controllers\ShopDecorationController::class, 'preview'])->name('shop-decoration.preview');
+Route::get('shop-decoration/preview', [ShopDecorationController::class, 'preview'])->name('shop-decoration.preview');
 // 获取店铺评价列表
-Route::get('shop-reviews', [\App\Api\Seller\Controllers\ShopReviewController::class, 'index'])->name('shop-reviews');
+Route::get('shop-reviews', [ShopReviewController::class, 'index'])->name('shop-reviews');
 // 回复店铺评价
-Route::post('shop-reviews/{id}/reply', [\App\Api\Seller\Controllers\ShopReviewController::class, 'reply']);
+Route::post('shop-reviews/{id}/reply', [ShopReviewController::class, 'reply']);
 // 获取子账号列表
-Route::get('sub-accounts', [\App\Api\Seller\Controllers\SubAccountController::class, 'index'])->name('sub-accounts');
+Route::get('sub-accounts', [SubAccountController::class, 'index'])->name('sub-accounts');
 // 创建子账号
-Route::post('sub-accounts', [\App\Api\Seller\Controllers\SubAccountController::class, 'store']);
+Route::post('sub-accounts', [SubAccountController::class, 'store']);
 // 启用子账号
-Route::post('sub-accounts/{id}/enable', [\App\Api\Seller\Controllers\SubAccountController::class, 'enable']);
+Route::post('sub-accounts/{id}/enable', [SubAccountController::class, 'enable']);
 // 禁用子账号
-Route::post('sub-accounts/{id}/disable', [\App\Api\Seller\Controllers\SubAccountController::class, 'disable']);
+Route::post('sub-accounts/{id}/disable', [SubAccountController::class, 'disable']);
 // 获取子订单列表
-Route::get('sub-orders', [\App\Api\Seller\Controllers\SubOrderController::class, 'index'])->name('sub-orders');
+Route::get('sub-orders', [SubOrderController::class, 'index'])->name('sub-orders');
 // 获取子订单详情
-Route::get('sub-orders/{id}', [\App\Api\Seller\Controllers\SubOrderController::class, 'show'])->name('sub-orders.{id}');
+Route::get('sub-orders/{id}', [SubOrderController::class, 'show'])->name('sub-orders.{id}');
 // 获取钱包信息
-Route::get('wallet', [\App\Api\Seller\Controllers\WalletController::class, 'index'])->name('wallet');
+Route::get('wallet', [WalletController::class, 'index'])->name('wallet');
 // 获取钱包余额
-Route::get('wallet/balance', [\App\Api\Seller\Controllers\WalletController::class, 'balance'])->name('wallet.balance');
+Route::get('wallet/balance', [WalletController::class, 'balance'])->name('wallet.balance');
 // 获取钱包交易记录
-Route::get('wallet/transactions', [\App\Api\Seller\Controllers\WalletController::class, 'transactions'])->name('wallet.transactions');
+Route::get('wallet/transactions', [WalletController::class, 'transactions'])->name('wallet.transactions');
 // 获取仓库列表
-Route::get('warehouses', [\App\Api\Seller\Controllers\WarehouseController::class, 'index'])->name('warehouses');
+Route::get('warehouses', [WarehouseController::class, 'index'])->name('warehouses');
 // 创建仓库
-Route::post('warehouses', [\App\Api\Seller\Controllers\WarehouseController::class, 'store']);
+Route::post('warehouses', [WarehouseController::class, 'store']);
 // 获取仓库详情
-Route::get('warehouses/{id}', [\App\Api\Seller\Controllers\WarehouseController::class, 'show'])->name('warehouses.{id}');
+Route::get('warehouses/{id}', [WarehouseController::class, 'show'])->name('warehouses.{id}');
 // 更新仓库
-Route::put('warehouses/{id}', [\App\Api\Seller\Controllers\WarehouseController::class, 'update']);
+Route::put('warehouses/{id}', [WarehouseController::class, 'update']);
 // 删除仓库
-Route::delete('warehouses/{id}', [\App\Api\Seller\Controllers\WarehouseController::class, 'destroy']);
+Route::delete('warehouses/{id}', [WarehouseController::class, 'destroy']);
 // 获取运单列表
-Route::get('waybills', [\App\Api\Seller\Controllers\WaybillController::class, 'index'])->name('waybills');
+Route::get('waybills', [WaybillController::class, 'index'])->name('waybills');
 // 打印运单
-Route::get('waybills/{id}/print', [\App\Api\Seller\Controllers\WaybillController::class, 'print'])->name('waybills.{id}.print');
+Route::get('waybills/{id}/print', [WaybillController::class, 'print'])->name('waybills.{id}.print');
 // 获取提现记录列表
-Route::get('withdraws', [\App\Api\Seller\Controllers\WithdrawController::class, 'index'])->name('withdraws');
+Route::get('withdraws', [WithdrawController::class, 'index'])->name('withdraws');
 // 申请提现
-Route::post('withdraws', [\App\Api\Seller\Controllers\WithdrawController::class, 'store']);
+Route::post('withdraws', [WithdrawController::class, 'store']);
 // 获取提现详情
-Route::get('withdraws/{id}', [\App\Api\Seller\Controllers\WithdrawController::class, 'show'])->name('withdraws.{id}');
+Route::get('withdraws/{id}', [WithdrawController::class, 'show'])->name('withdraws.{id}');
