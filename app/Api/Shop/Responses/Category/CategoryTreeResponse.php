@@ -27,7 +27,7 @@ class CategoryTreeResponse
     #[OA\Property(property: 'sort', description: '排序', type: 'integer')]
     private int $sort;
 
-    #[OA\Property(property: 'children', description: '子分类列表', type: 'array', items: new OA\Items(type: 'object'))]
+    #[OA\Property(property: 'children', description: '子分类列表', type: 'array', items: new OA\Items(ref: self::class))]
     private array $children;
 
     public function getId(): int

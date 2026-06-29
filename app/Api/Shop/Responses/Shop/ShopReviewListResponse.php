@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Shop\Responses\Shop;
 
+use App\Api\Shop\Responses\Review\ReviewResponse;
 use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
@@ -12,7 +13,7 @@ class ShopReviewListResponse
 {
     use HasSerializableAttributes;
 
-    #[OA\Property(property: 'items', description: '评价列表', type: 'array', items: new OA\Items(type: 'object'))]
+    #[OA\Property(property: 'items', description: '评价列表', type: 'array', items: new OA\Items(ref: ReviewResponse::class))]
     private array $items;
 
     #[OA\Property(property: 'pagination', description: '分页信息', type: 'object', properties: [

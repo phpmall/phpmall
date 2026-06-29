@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Shop\Responses\Search;
 
+use App\Api\Shop\Responses\Product\ProductResponse;
 use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
@@ -12,7 +13,7 @@ class SearchProductsResponse
 {
     use HasSerializableAttributes;
 
-    #[OA\Property(property: 'items', description: '商品列表', type: 'array', items: new OA\Items(type: 'object'))]
+    #[OA\Property(property: 'items', description: '商品列表', type: 'array', items: new OA\Items(ref: ProductResponse::class))]
     private array $items;
 
     #[OA\Property(property: 'pagination', description: '分页信息', type: 'object', properties: [
