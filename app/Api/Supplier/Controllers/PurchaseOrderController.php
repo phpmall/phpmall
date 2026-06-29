@@ -24,7 +24,7 @@ class PurchaseOrderController extends BaseController
         return $this->success();
     }
 
-    #[OA\Get(path: '/purchase-orders/{id}', summary: '采购订单详情', tags: ['供应商中心'])]
+    #[OA\Get(path: '/purchase-orders/{id}', summary: '采购订单详情', security: [['bearerAuth' => []]], tags: ['供应商中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PurchaseOrderResponse::class))]
     public function show(int $id): JsonResponse

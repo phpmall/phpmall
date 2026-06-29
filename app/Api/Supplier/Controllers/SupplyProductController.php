@@ -32,7 +32,7 @@ class SupplyProductController extends BaseController
         return $this->success();
     }
 
-    #[OA\Get(path: '/supply-products/{id}', summary: '供应商品详情', tags: ['供应商中心'])]
+    #[OA\Get(path: '/supply-products/{id}', summary: '供应商品详情', security: [['bearerAuth' => []]], tags: ['供应商中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SupplyProductResponse::class))]
     public function show(int $id): JsonResponse

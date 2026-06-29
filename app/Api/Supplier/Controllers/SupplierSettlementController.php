@@ -23,7 +23,7 @@ class SupplierSettlementController extends BaseController
         return $this->success();
     }
 
-    #[OA\Get(path: '/supplier-settlements/{id}', summary: '供应商结算详情', tags: ['供应商中心'])]
+    #[OA\Get(path: '/supplier-settlements/{id}', summary: '供应商结算详情', security: [['bearerAuth' => []]], tags: ['供应商中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SupplierSettlementResponse::class))]
     public function show(int $id): JsonResponse

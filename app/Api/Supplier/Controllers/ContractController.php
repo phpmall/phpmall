@@ -24,7 +24,7 @@ class ContractController extends BaseController
         return $this->success();
     }
 
-    #[OA\Get(path: '/contracts/{id}', summary: '合同详情', tags: ['供应商中心'])]
+    #[OA\Get(path: '/contracts/{id}', summary: '合同详情', security: [['bearerAuth' => []]], tags: ['供应商中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ContractResponse::class))]
     public function show(int $id): JsonResponse

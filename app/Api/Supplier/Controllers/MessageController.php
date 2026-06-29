@@ -24,7 +24,7 @@ class MessageController extends BaseController
         return $this->success();
     }
 
-    #[OA\Get(path: '/messages/{id}', summary: '消息详情', tags: ['供应商中心'])]
+    #[OA\Get(path: '/messages/{id}', summary: '消息详情', security: [['bearerAuth' => []]], tags: ['供应商中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MessageResponse::class))]
     public function show(int $id): JsonResponse

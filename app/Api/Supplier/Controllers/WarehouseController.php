@@ -32,7 +32,7 @@ class WarehouseController extends BaseController
         return $this->success();
     }
 
-    #[OA\Get(path: '/warehouses/{id}', summary: '仓库详情', tags: ['供应商中心'])]
+    #[OA\Get(path: '/warehouses/{id}', summary: '仓库详情', security: [['bearerAuth' => []]], tags: ['供应商中心'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'path', required: true)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: WarehouseResponse::class))]
     public function show(int $id): JsonResponse
