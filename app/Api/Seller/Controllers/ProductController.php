@@ -7,19 +7,24 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\Product\ProductBatchDeleteRequest;
 use App\Api\Seller\Requests\Product\ProductBatchOffShelfRequest;
 use App\Api\Seller\Requests\Product\ProductBatchOnShelfRequest;
+use App\Api\Seller\Requests\Product\ProductIndexRequest;
 use App\Api\Seller\Requests\Product\ProductStoreRequest;
 use App\Api\Seller\Requests\Product\ProductUpdateRequest;
 use App\Api\Seller\Responses\Product\ProductListResponse;
 use App\Api\Seller\Responses\Product\ProductResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class ProductController extends BaseController
 {
     #[OA\Get(path: '/products', summary: '获取商品列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'status', description: '商品状态', in: 'query', required: false, schema: new OA\Schema(type: 'integer', nullable: true))]
+    #[OA\Parameter(name: 'keyword', description: '搜索关键词', in: 'query', required: false, schema: new OA\Schema(type: 'string', nullable: true))]
+    #[OA\Parameter(name: 'category_id', description: '分类ID', in: 'query', required: false, schema: new OA\Schema(type: 'integer', nullable: true))]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(ProductIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

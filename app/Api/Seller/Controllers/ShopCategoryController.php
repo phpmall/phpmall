@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\ShopCategory\ShopCategoryIndexRequest;
 use App\Api\Seller\Requests\ShopCategory\ShopCategoryReorderRequest;
 use App\Api\Seller\Requests\ShopCategory\ShopCategoryStoreRequest;
 use App\Api\Seller\Requests\ShopCategory\ShopCategoryUpdateRequest;
 use App\Api\Seller\Responses\ShopCategory\ShopCategoryListResponse;
 use App\Api\Seller\Responses\ShopCategory\ShopCategoryResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class ShopCategoryController extends BaseController
 {
     #[OA\Get(path: '/shop-categories', summary: '获取店铺分类列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopCategoryListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(ShopCategoryIndexRequest $request): JsonResponse
     {
         return $this->success();
     }

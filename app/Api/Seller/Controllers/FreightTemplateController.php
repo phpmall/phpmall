@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace App\Api\Seller\Controllers;
 
+use App\Api\Seller\Requests\FreightTemplate\FreightTemplateIndexRequest;
 use App\Api\Seller\Requests\FreightTemplate\FreightTemplateStoreRequest;
 use App\Api\Seller\Requests\FreightTemplate\FreightTemplateUpdateRequest;
 use App\Api\Seller\Responses\FreightTemplate\FreightTemplateListResponse;
 use App\Api\Seller\Responses\FreightTemplate\FreightTemplateResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class FreightTemplateController extends BaseController
 {
     #[OA\Get(path: '/freight-templates', summary: '获取运费模板列表', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 1))]
+    #[OA\Parameter(name: 'per_page', description: '每页数量', in: 'query', required: false, schema: new OA\Schema(type: 'integer', example: 20))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: FreightTemplateListResponse::class))]
-    public function index(Request $request): JsonResponse
+    public function index(FreightTemplateIndexRequest $request): JsonResponse
     {
         return $this->success();
     }
