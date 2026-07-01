@@ -16,7 +16,7 @@ return new class extends Migration
         // payments
         Schema::create('payments', function (Blueprint $table): void {
             $table->id();
-            $table->string('payment_no', 32)->unique()->comment('支付单号');
+            $table->string('payment_no', 32)->comment('支付单号');
             $table->unsignedBigInteger('order_id')->comment('订单ID');
             $table->unsignedBigInteger('user_id')->comment('用户ID');
             $table->unsignedBigInteger('amount')->comment('支付金额（分）');

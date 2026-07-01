@@ -54,6 +54,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('status')->default(1)->comment('0=禁用 1=正常');
             $table->timestamp('last_login_at')->nullable()->comment('最后登录时间');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('merchant_id', 'idx_merchant_staffs_merchant_id');
         });

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('scope')->comment('1=全平台 2=指定分类 3=指定商品 4=指定商家');
             $table->unsignedBigInteger('threshold_amount')->default(0)->comment('使用门槛（分），0=无门槛');
             $table->unsignedBigInteger('discount_amount')->default(0)->comment('优惠金额（分，type=1,3时）');
-            $table->decimal('discount_rate', 3, 2)->nullable()->comment('折扣率（type=2时，0.85=85折）');
+            $table->decimal('discount_rate', 5, 4)->nullable()->comment('折扣率（type=2时，0.85=85折）');
             $table->unsignedBigInteger('max_discount_amount')->nullable()->comment('折扣券最高优惠金额（分）');
             $table->unsignedInteger('total_quantity')->comment('总发放数量');
             $table->unsignedInteger('remaining_quantity')->comment('剩余数量');
@@ -48,6 +48,7 @@ return new class extends Migration
             $table->timestamp('claim_time')->comment('领取时间');
             $table->timestamp('expire_time')->comment('过期时间');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(['user_id', 'status'], 'idx_user_coupons_user_id_status');
             $table->index('coupon_id', 'idx_user_coupons_coupon_id');

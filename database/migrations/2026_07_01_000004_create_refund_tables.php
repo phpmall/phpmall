@@ -16,7 +16,7 @@ return new class extends Migration
         // order_refunds (售后退款/退货)
         Schema::create('order_refunds', function (Blueprint $table): void {
             $table->id();
-            $table->string('refund_no', 32)->unique()->comment('退款单号');
+            $table->string('refund_no', 32)->comment('退款单号');
             $table->unsignedBigInteger('order_id')->comment('订单ID');
             $table->unsignedBigInteger('order_item_id')->nullable()->comment('订单商品项ID，可为空（整单退款）');
             $table->unsignedBigInteger('user_id')->comment('用户ID');
@@ -47,7 +47,7 @@ return new class extends Migration
         // payment_refunds (退款记录)
         Schema::create('payment_refunds', function (Blueprint $table): void {
             $table->id();
-            $table->string('refund_no', 32)->unique()->comment('退款单号');
+            $table->string('refund_no', 32)->comment('退款单号');
             $table->unsignedBigInteger('payment_id')->comment('原支付记录ID');
             $table->unsignedBigInteger('order_id')->comment('订单ID');
             $table->unsignedBigInteger('order_refund_id')->comment('关联售后单');
@@ -58,6 +58,11 @@ return new class extends Migration
             $table->string('channel_refund_id', 100)->nullable()->comment('渠道退款单号');
             $table->string('failure_reason', 255)->nullable()->comment('失败原因');
             $table->timestamps();
+
+            $table->index('payment_id', 'idx_payment_refunds_payment_id');
+            $table->index('order_id', 'idx_payment_refunds_order_id');
+            $table->index('status', 'idx_payment_refunds_status');
+            $table->unique('refund_no', 'udx_payment_refunds_refund_no');
         });
     }
 
