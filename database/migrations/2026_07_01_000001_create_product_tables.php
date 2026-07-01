@@ -110,6 +110,7 @@ return new class extends Migration
             $table->timestamp('merchant_reply_at')->nullable();
             $table->unsignedTinyInteger('status')->default(1)->comment('0=隐藏 1=显示');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('product_id', 'idx_product_reviews_product_id');
             $table->index('user_id', 'idx_product_reviews_user_id');

@@ -47,7 +47,7 @@ return new class extends Migration
             $table->timestamp('used_at')->nullable()->comment('使用时间');
             $table->timestamp('claim_time')->comment('领取时间');
             $table->timestamp('expire_time')->comment('过期时间');
-            $table->timestamp('created_at')->comment('创建时间');
+            $table->timestamps();
 
             $table->index(['user_id', 'status'], 'idx_user_coupons_user_id_status');
             $table->index('coupon_id', 'idx_user_coupons_coupon_id');
