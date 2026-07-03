@@ -27,6 +27,7 @@ trait JwtTokenHelper
             'type' => $type,
             'jti' => $jti,
             'merchant_id' => null,
+            'refreshable_until' => $now + $ttl,
         ];
 
         return $auth->createToken($payload);

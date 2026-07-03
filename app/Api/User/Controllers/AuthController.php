@@ -193,6 +193,7 @@ class AuthController extends Controller
             'type' => $type,
             'jti' => $jti,
             'merchant_id' => $merchantId,
+            'refreshable_until' => $now + $refreshTtl,
         ];
 
         $refreshPayload = [
@@ -206,6 +207,7 @@ class AuthController extends Controller
             'jti' => $refreshJti,
             'token_type' => 'refresh',
             'merchant_id' => $merchantId,
+            'refreshable_until' => $now + $refreshTtl,
         ];
 
         return [
