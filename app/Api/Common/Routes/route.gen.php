@@ -59,3 +59,5 @@ Route::post('image', [UploadController::class, 'image']);
 Route::post('file', [UploadController::class, 'file']);
 // OSS上传策略
 Route::post('oss-policy', [UploadController::class, 'ossPolicy']);
+// 上传确认
+Route::post('confirm', [UploadController::class, 'confirm']);

@@ -50,7 +50,7 @@ Route::get('purchase-orders/{id}', [PurchaseOrderController::class, 'show'])->na
 Route::post('purchase-orders/{id}/ship', [PurchaseOrderController::class, 'ship']);
 // 采购订单确认
 Route::post('purchase-orders/{id}/confirm', [PurchaseOrderController::class, 'confirm']);
-// 供应商信息
+// 供应商列表
 Route::get('supplier', [SupplierController::class, 'index'])->name('supplier');
 // 更新供应商信息
 Route::put('supplier', [SupplierController::class, 'update']);
