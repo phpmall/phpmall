@@ -6,7 +6,6 @@ namespace App\Api\User\Requests\Auth;
 
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -28,7 +27,6 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getCaptcha, description: '登录图片验证码', type: 'string'),
         new OA\Property(property: self::getUUID, description: '图片验证码ID', type: 'string'),
         new OA\Property(property: self::getDeviceName, description: '设备名称', type: 'string'),
-
     ]
 )]
 class LoginRequest extends FormRequest
@@ -65,32 +63,9 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
-    }
-
-    /**
-     * Attempt to authenticate the request's credentials.
-     *
-     * @throws ValidationException
-     */
-    public function authenticate(): void
-    {
-        $this->ensureIsNotRateLimited();
-
-        if (! Auth::attempt($this->only(self::getMobile, self::getPassword), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
-
-            throw ValidationException::withMessages([
-                self::getMobile => trans('auth.failed'),
-            ]);
-        }
-
-        RateLimiter::clear($this->throttleKey());
     }
 
     /**
@@ -116,9 +91,6 @@ class LoginRequest extends FormRequest
         ]);
     }
 
-    /**
-     * Get the rate limiting throttle key for the request.
-     */
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->string(self::getMobile)).'|'.$this->ip());

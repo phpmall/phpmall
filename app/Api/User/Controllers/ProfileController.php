@@ -8,16 +8,16 @@ use App\Api\User\Requests\UpdateProfileRequest;
 use App\Api\User\Responses\UserProfileResponse;
 use App\Modules\User\Models\User;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use OpenApi\Attributes as OA;
 
 class ProfileController extends BaseController
 {
     #[OA\Get(path: '/profile', summary: '获取会员资料', security: [['bearerAuth' => []]], tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: UserProfileResponse::class))]
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $user = Auth::user();
+        $user = $request->user();
 
         if (! $user instanceof User) {
             abort(401, '未登录');

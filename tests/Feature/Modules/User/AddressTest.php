@@ -6,9 +6,11 @@ use App\Modules\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
+use Tests\Traits\JwtTokenHelper;
 
 class AddressTest extends TestCase
 {
+    use JwtTokenHelper;
     use RefreshDatabase;
 
     private User $user;
@@ -24,7 +26,7 @@ class AddressTest extends TestCase
             'password' => Hash::make('password123'),
         ]);
 
-        $this->token = $this->user->createToken('test')->plainTextToken;
+        $this->token = $this->generateJwtToken($this->user);
     }
 
     public function test_user_can_create_address(): void
