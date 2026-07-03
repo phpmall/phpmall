@@ -7,6 +7,7 @@
 declare(strict_types=1);
 
 use App\Api\Common\Controllers\AgreementController;
+use App\Api\Common\Controllers\AuthController;
 use App\Api\Common\Controllers\CaptchaController;
 use App\Api\Common\Controllers\ConfigController;
 use App\Api\Common\Controllers\DictionaryController;
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('agreements/{id}', [AgreementController::class, 'show'])->name('agreements.{id}');
 // 最新协议
 Route::get('latest', [AgreementController::class, 'latest'])->name('latest');
+// 刷新 Token
+Route::post('v1/auth/refresh', [AuthController::class, 'refresh']);
 // 显示图片验证码
 Route::get('captcha', [CaptchaController::class, 'index'])->name('captcha');
 // 配置列表

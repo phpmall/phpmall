@@ -21,7 +21,7 @@ class AuthController extends Controller
         $this->auth = new Authentication;
     }
 
-    #[OA\Post(path: '/common/v1/auth/refresh', summary: '刷新 Token', security: [[]], tags: ['公共认证'])]
+    #[OA\Post(path: '/v1/auth/refresh', summary: '刷新 Token', security: [[]], tags: ['公共认证'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: RefreshRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(properties: [
         new OA\Property(property: 'code', type: 'integer'),
@@ -109,6 +109,7 @@ class AuthController extends Controller
             'type' => $type,
             'jti' => $jti,
             'merchant_id' => $merchantId,
+            'refreshable_until' => $now + $refreshTtl,
         ];
 
         $refreshPayload = [
@@ -122,6 +123,7 @@ class AuthController extends Controller
             'jti' => $refreshJti,
             'token_type' => 'refresh',
             'merchant_id' => $merchantId,
+            'refreshable_until' => $now + $refreshTtl,
         ];
 
         return [
