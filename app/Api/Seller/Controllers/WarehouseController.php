@@ -9,6 +9,7 @@ use App\Api\Seller\Requests\Warehouse\WarehouseStoreRequest;
 use App\Api\Seller\Requests\Warehouse\WarehouseUpdateRequest;
 use App\Api\Seller\Responses\Warehouse\WarehouseListResponse;
 use App\Api\Seller\Responses\Warehouse\WarehouseResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class WarehouseController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: WarehouseListResponse::class))]
     public function index(WarehouseIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/warehouses', summary: '创建仓库', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -29,7 +30,7 @@ class WarehouseController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function store(WarehouseStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/warehouses/{id}', summary: '获取仓库详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -37,7 +38,7 @@ class WarehouseController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: WarehouseResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/warehouses/{id}', summary: '更新仓库', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -46,7 +47,7 @@ class WarehouseController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function update(WarehouseUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Delete(path: '/warehouses/{id}', summary: '删除仓库', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -54,6 +55,6 @@ class WarehouseController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function destroy(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

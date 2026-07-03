@@ -7,6 +7,7 @@ namespace App\Api\User\Controllers;
 use App\Api\User\Requests\Favorite\FavoriteIndexRequest;
 use App\Api\User\Requests\Favorite\FavoriteStoreRequest;
 use App\Api\User\Responses\Favorite\FavoriteListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,7 +20,7 @@ class FavoriteController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: FavoriteListResponse::class))]
     public function index(FavoriteIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/favorites', security: [['bearerAuth' => []]], summary: 'Favorite Controller store', tags: ['会员中心'])]
@@ -27,7 +28,7 @@ class FavoriteController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function store(FavoriteStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Delete(path: '/favorites/{id}', security: [['bearerAuth' => []]], summary: 'Favorite Controller destroy', tags: ['会员中心'])]
@@ -35,6 +36,6 @@ class FavoriteController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function destroy(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -7,6 +7,7 @@ namespace App\Api\Common\Controllers;
 use App\Api\Common\Requests\Config\IndexRequest;
 use App\Api\Common\Responses\Config\ConfigListResponse;
 use App\Api\Common\Responses\Config\ConfigResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class ConfigController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ConfigListResponse::class))]
     public function index(IndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/configs/{id}', summary: '配置详情', security: [[]], tags: ['公共工具'])]
@@ -24,6 +25,6 @@ class ConfigController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ConfigResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

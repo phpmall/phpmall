@@ -8,6 +8,7 @@ use App\Api\User\Requests\Order\OrderIndexRequest;
 use App\Api\User\Requests\Order\OrderStoreRequest;
 use App\Api\User\Responses\Order\OrderListResponse;
 use App\Api\User\Responses\Order\OrderResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderListResponse::class))]
     public function index(OrderIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/orders', security: [['bearerAuth' => []]], summary: 'Order Controller store', tags: ['会员中心'])]
@@ -29,7 +30,7 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderResponse::class))]
     public function store(OrderStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/orders/{id}', security: [['bearerAuth' => []]], summary: 'Order Controller show', tags: ['会员中心'])]
@@ -37,7 +38,7 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/orders/{id}/cancel', security: [['bearerAuth' => []]], summary: 'Order Controller cancel', tags: ['会员中心'])]
@@ -45,7 +46,7 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function cancel(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/orders/{id}/confirm', security: [['bearerAuth' => []]], summary: 'Order Controller confirm', tags: ['会员中心'])]
@@ -53,6 +54,6 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function confirm(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -10,6 +10,7 @@ use App\Api\Seller\Requests\Coupon\CouponUpdateRequest;
 use App\Api\Seller\Responses\Coupon\CouponListResponse;
 use App\Api\Seller\Responses\Coupon\CouponResponse;
 use App\Api\Seller\Responses\Coupon\CouponStatsResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -22,7 +23,7 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CouponListResponse::class))]
     public function index(CouponIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/coupons', summary: '创建优惠券', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -30,7 +31,7 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CouponResponse::class))]
     public function store(CouponStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/coupons/{id}', summary: '获取优惠券详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -38,7 +39,7 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CouponResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/coupons/{id}', summary: '更新优惠券', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -47,7 +48,7 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CouponResponse::class))]
     public function update(CouponUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Delete(path: '/coupons/{id}', summary: '删除优惠券', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -55,7 +56,7 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function destroy(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/coupons/{id}/stats', summary: '获取优惠券统计', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -63,6 +64,6 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CouponStatsResponse::class))]
     public function stats(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

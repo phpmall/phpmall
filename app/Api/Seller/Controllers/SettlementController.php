@@ -8,6 +8,7 @@ use App\Api\Seller\Requests\Settlement\SettlementIndexRequest;
 use App\Api\Seller\Responses\Settlement\SettlementListResponse;
 use App\Api\Seller\Responses\Settlement\SettlementResponse;
 use App\Api\Seller\Responses\Settlement\SettlementStatementResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -20,7 +21,7 @@ class SettlementController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SettlementListResponse::class))]
     public function index(SettlementIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/settlements/{id}', summary: '获取结算详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -28,7 +29,7 @@ class SettlementController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SettlementResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/settlements/{id}/statement', summary: '获取结算账单', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -36,6 +37,6 @@ class SettlementController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SettlementStatementResponse::class))]
     public function statement(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

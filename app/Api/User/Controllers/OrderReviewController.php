@@ -9,6 +9,7 @@ use App\Api\User\Requests\OrderReview\OrderReviewStoreRequest;
 use App\Api\User\Requests\OrderReview\OrderReviewUpdateRequest;
 use App\Api\User\Responses\OrderReview\OrderReviewListResponse;
 use App\Api\User\Responses\OrderReview\OrderReviewResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class OrderReviewController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderReviewListResponse::class))]
     public function index(OrderReviewIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/order-reviews', security: [['bearerAuth' => []]], summary: 'Order Review Controller store', tags: ['会员中心'])]
@@ -29,7 +30,7 @@ class OrderReviewController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderReviewResponse::class))]
     public function store(OrderReviewStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/order-reviews/{id}', security: [['bearerAuth' => []]], summary: 'Order Review Controller show', tags: ['会员中心'])]
@@ -37,7 +38,7 @@ class OrderReviewController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderReviewResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/order-reviews/{id}', security: [['bearerAuth' => []]], summary: 'Order Review Controller update', tags: ['会员中心'])]
@@ -46,6 +47,6 @@ class OrderReviewController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderReviewResponse::class))]
     public function update(OrderReviewUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

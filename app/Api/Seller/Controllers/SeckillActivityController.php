@@ -9,6 +9,7 @@ use App\Api\Seller\Requests\SeckillActivity\SeckillActivityStoreRequest;
 use App\Api\Seller\Requests\SeckillActivity\SeckillActivityUpdateRequest;
 use App\Api\Seller\Responses\SeckillActivity\SeckillActivityListResponse;
 use App\Api\Seller\Responses\SeckillActivity\SeckillActivityResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class SeckillActivityController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityListResponse::class))]
     public function index(SeckillActivityIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/seckill-activities', summary: '创建秒杀活动', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -29,7 +30,7 @@ class SeckillActivityController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityResponse::class))]
     public function store(SeckillActivityStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/seckill-activities/{id}', summary: '获取秒杀活动详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -37,7 +38,7 @@ class SeckillActivityController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/seckill-activities/{id}', summary: '更新秒杀活动', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -46,7 +47,7 @@ class SeckillActivityController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillActivityResponse::class))]
     public function update(SeckillActivityUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Delete(path: '/seckill-activities/{id}', summary: '删除秒杀活动', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -54,6 +55,6 @@ class SeckillActivityController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function destroy(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

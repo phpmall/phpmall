@@ -14,6 +14,7 @@ use App\Api\Portal\Responses\Search\SearchHotKeywordsResponse;
 use App\Api\Portal\Responses\Search\SearchProductsResponse;
 use App\Api\Portal\Responses\Search\SearchResponse;
 use App\Api\Portal\Responses\Search\SearchSuggestResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -28,34 +29,34 @@ class SearchController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchResponse::class))]
     public function index(SearchRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/search/products', summary: '商品搜索', security: [[]], tags: ['商城平台'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchProductsResponse::class))]
     public function products(SearchProductsRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/search/suggest', summary: '搜索建议', security: [[]], tags: ['商城平台'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchSuggestResponse::class))]
     public function suggest(SearchSuggestRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/search/hot-keywords', summary: '热搜关键词', security: [[]], tags: ['商城平台'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchHotKeywordsResponse::class))]
     public function hotKeywords(SearchHotKeywordsRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/search/filters', summary: '搜索筛选条件', security: [[]], tags: ['商城平台'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SearchFiltersResponse::class))]
     public function filters(SearchFiltersRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

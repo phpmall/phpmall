@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\InventoryTransaction\InventoryTransactionIndexRequest;
 use App\Api\Seller\Responses\InventoryTransaction\InventoryTransactionListResponse;
 use App\Api\Seller\Responses\InventoryTransaction\InventoryTransactionResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -18,7 +19,7 @@ class InventoryTransactionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InventoryTransactionListResponse::class))]
     public function index(InventoryTransactionIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/inventory-transactions/{id}', summary: '获取库存流水详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -26,6 +27,6 @@ class InventoryTransactionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InventoryTransactionResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

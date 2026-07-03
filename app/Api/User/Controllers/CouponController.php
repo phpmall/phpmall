@@ -9,6 +9,7 @@ use App\Api\User\Requests\Coupon\CouponReceiveRequest;
 use App\Api\User\Requests\Coupon\CouponUseRequest;
 use App\Api\User\Responses\Coupon\CouponListResponse;
 use App\Api\User\Responses\Coupon\MyCouponListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CouponListResponse::class))]
     public function index(CouponIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/coupons/receive', security: [['bearerAuth' => []]], summary: 'Coupon Controller receive', tags: ['会员中心'])]
@@ -29,14 +30,14 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MyCouponListResponse::class))]
     public function receive(CouponReceiveRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/coupons/my', security: [['bearerAuth' => []]], summary: 'Coupon Controller my Coupons', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MyCouponListResponse::class))]
     public function myCoupons(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/coupons/{id}/use', security: [['bearerAuth' => []]], summary: 'Coupon Controller use', tags: ['会员中心'])]
@@ -45,6 +46,6 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function use(CouponUseRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

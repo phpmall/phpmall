@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\Merchant\MerchantIndexRequest;
 use App\Api\Seller\Requests\Merchant\MerchantUpdateRequest;
 use App\Api\Seller\Responses\Merchant\MerchantResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -18,7 +19,7 @@ class MerchantController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MerchantResponse::class))]
     public function index(MerchantIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/merchant', summary: '更新商家信息', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -26,6 +27,6 @@ class MerchantController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function update(MerchantUpdateRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

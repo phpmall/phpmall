@@ -8,6 +8,7 @@ use App\Api\User\Requests\Points\PointsExchangeRequest;
 use App\Api\User\Requests\Points\PointsIndexRequest;
 use App\Api\User\Responses\Points\PointsHistoryListResponse;
 use App\Api\User\Responses\Points\PointsResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,14 +20,14 @@ class PointsController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PointsResponse::class))]
     public function index(PointsIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/points/history', security: [['bearerAuth' => []]], summary: 'Points Controller history', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PointsHistoryListResponse::class))]
     public function history(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/points/exchange', security: [['bearerAuth' => []]], summary: 'Points Controller exchange', tags: ['会员中心'])]
@@ -34,6 +35,6 @@ class PointsController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function exchange(PointsExchangeRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

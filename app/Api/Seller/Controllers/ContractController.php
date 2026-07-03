@@ -8,6 +8,7 @@ use App\Api\Seller\Requests\Contract\ContractSignRequest;
 use App\Api\Seller\Responses\Contract\ContractDownloadResponse;
 use App\Api\Seller\Responses\Contract\ContractListResponse;
 use App\Api\Seller\Responses\Contract\ContractResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -17,7 +18,7 @@ class ContractController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ContractListResponse::class))]
     public function index(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/contracts/{id}', summary: '获取合同详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -25,7 +26,7 @@ class ContractController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ContractResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/contracts/{id}/sign', summary: '签署合同', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -34,7 +35,7 @@ class ContractController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function sign(ContractSignRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/contracts/{id}/download', summary: '下载合同', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -42,6 +43,6 @@ class ContractController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ContractDownloadResponse::class))]
     public function download(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

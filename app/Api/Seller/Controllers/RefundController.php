@@ -9,6 +9,7 @@ use App\Api\Seller\Requests\Refund\RefundAuditRequest;
 use App\Api\Seller\Requests\Refund\RefundIndexRequest;
 use App\Api\Seller\Responses\Refund\RefundListResponse;
 use App\Api\Seller\Responses\Refund\RefundResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class RefundController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RefundListResponse::class))]
     public function index(RefundIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/refunds/{id}', summary: '获取退款详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -29,7 +30,7 @@ class RefundController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RefundResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/refunds/{id}/audit', summary: '审核退款', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -38,7 +39,7 @@ class RefundController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function audit(RefundAuditRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/refunds/{id}/arbitrate', summary: '仲裁退款', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -47,6 +48,6 @@ class RefundController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function arbitrate(RefundArbitrateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

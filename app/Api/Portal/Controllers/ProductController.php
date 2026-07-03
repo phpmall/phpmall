@@ -7,6 +7,7 @@ namespace App\Api\Portal\Controllers;
 use App\Api\Portal\Requests\Product\ProductIndexRequest;
 use App\Api\Portal\Responses\Product\ProductListResponse;
 use App\Api\Portal\Responses\Product\ProductResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class ProductController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductListResponse::class))]
     public function index(ProductIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/products/{id}', summary: '商品详情', security: [[]], tags: ['商城平台'])]
@@ -24,20 +25,20 @@ class ProductController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/products/recommend', summary: '推荐商品', security: [[]], tags: ['商城平台'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductListResponse::class))]
     public function recommend(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/products/hot', summary: '热销商品', security: [[]], tags: ['商城平台'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductListResponse::class))]
     public function hot(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

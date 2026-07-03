@@ -9,6 +9,7 @@ use App\Api\Seller\Requests\Inventory\InventoryIndexRequest;
 use App\Api\Seller\Requests\Inventory\InventoryUpdateRequest;
 use App\Api\Seller\Responses\Inventory\InventoryListResponse;
 use App\Api\Seller\Responses\Inventory\InventoryResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class InventoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InventoryListResponse::class))]
     public function index(InventoryIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/inventory/{id}', summary: '获取库存详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -29,7 +30,7 @@ class InventoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InventoryResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/inventory/{id}', summary: '更新库存', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -38,7 +39,7 @@ class InventoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function update(InventoryUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/inventory/batch', summary: '批量更新库存', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -46,6 +47,6 @@ class InventoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function batchUpdate(InventoryBatchUpdateRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

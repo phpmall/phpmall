@@ -9,6 +9,7 @@ use App\Api\Shop\Requests\Store\StoreNearbyRequest;
 use App\Api\Shop\Responses\Store\StoreListResponse;
 use App\Api\Shop\Responses\Store\StoreNearbyResponse;
 use App\Api\Shop\Responses\Store\StoreResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -18,7 +19,7 @@ class StoreController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: StoreListResponse::class))]
     public function index(StoreIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/stores/{id}', summary: '门店详情', security: [[]], tags: ['店铺'])]
@@ -26,13 +27,13 @@ class StoreController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: StoreResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/stores/nearby', summary: '附近门店', security: [[]], tags: ['店铺'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: StoreNearbyResponse::class))]
     public function nearby(StoreNearbyRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

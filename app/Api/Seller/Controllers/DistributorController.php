@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\Distributor\DistributorAuditRequest;
 use App\Api\Seller\Responses\Distributor\DistributorListResponse;
 use App\Api\Seller\Responses\Distributor\DistributorResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class DistributorController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: DistributorListResponse::class))]
     public function index(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/distributors/{id}', summary: '获取分销商详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -24,7 +25,7 @@ class DistributorController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: DistributorResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/distributors/{id}/audit', summary: '审核分销商', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -33,6 +34,6 @@ class DistributorController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function audit(DistributorAuditRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

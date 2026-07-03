@@ -9,6 +9,7 @@ use App\Api\User\Requests\Cart\CartIndexRequest;
 use App\Api\User\Requests\Cart\CartStoreRequest;
 use App\Api\User\Requests\Cart\CartUpdateRequest;
 use App\Api\User\Responses\Cart\CartListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -20,7 +21,7 @@ class CartController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CartListResponse::class))]
     public function index(CartIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/cart', security: [['bearerAuth' => []]], summary: 'Cart Controller store', tags: ['会员中心'])]
@@ -28,7 +29,7 @@ class CartController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CartListResponse::class))]
     public function store(CartStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/cart/{id}', security: [['bearerAuth' => []]], summary: 'Cart Controller update', tags: ['会员中心'])]
@@ -37,7 +38,7 @@ class CartController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CartListResponse::class))]
     public function update(CartUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Delete(path: '/cart/{id}', security: [['bearerAuth' => []]], summary: 'Cart Controller destroy', tags: ['会员中心'])]
@@ -45,14 +46,14 @@ class CartController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CartListResponse::class))]
     public function destroy(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/cart/clear', security: [['bearerAuth' => []]], summary: 'Cart Controller clear', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CartListResponse::class))]
     public function clear(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/cart/batch', security: [['bearerAuth' => []]], summary: 'Cart Controller batch Store', tags: ['会员中心'])]
@@ -60,6 +61,6 @@ class CartController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CartListResponse::class))]
     public function batchStore(CartBatchStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

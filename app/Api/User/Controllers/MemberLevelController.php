@@ -8,6 +8,7 @@ use App\Api\User\Requests\MemberLevel\MemberLevelIndexRequest;
 use App\Api\User\Responses\MemberLevel\MemberLevelBenefitsResponse;
 use App\Api\User\Responses\MemberLevel\MemberLevelListResponse;
 use App\Api\User\Responses\MemberLevel\MemberLevelResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,7 +20,7 @@ class MemberLevelController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MemberLevelListResponse::class))]
     public function index(MemberLevelIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/member-levels/{id}', security: [['bearerAuth' => []]], summary: 'Member Level Controller show', tags: ['会员中心'])]
@@ -27,7 +28,7 @@ class MemberLevelController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MemberLevelResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/member-levels/{id}/benefits', security: [['bearerAuth' => []]], summary: 'Member Level Controller benefits', tags: ['会员中心'])]
@@ -35,6 +36,6 @@ class MemberLevelController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MemberLevelBenefitsResponse::class))]
     public function benefits(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

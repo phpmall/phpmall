@@ -6,6 +6,7 @@ namespace App\Api\Shop\Controllers;
 
 use App\Api\Shop\Requests\Coupon\CouponIndexRequest;
 use App\Api\Shop\Responses\Coupon\CouponListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -15,6 +16,6 @@ class CouponController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CouponListResponse::class))]
     public function index(CouponIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

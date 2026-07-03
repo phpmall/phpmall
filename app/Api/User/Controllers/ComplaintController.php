@@ -10,6 +10,7 @@ use App\Api\User\Requests\Complaint\ComplaintStoreRequest;
 use App\Api\User\Responses\Complaint\ComplaintEvidenceResponse;
 use App\Api\User\Responses\Complaint\ComplaintListResponse;
 use App\Api\User\Responses\Complaint\ComplaintResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -22,7 +23,7 @@ class ComplaintController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ComplaintListResponse::class))]
     public function index(ComplaintIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/complaints', security: [['bearerAuth' => []]], summary: 'Complaint Controller store', tags: ['会员中心'])]
@@ -30,7 +31,7 @@ class ComplaintController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ComplaintResponse::class))]
     public function store(ComplaintStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/complaints/{id}', security: [['bearerAuth' => []]], summary: 'Complaint Controller show', tags: ['会员中心'])]
@@ -38,7 +39,7 @@ class ComplaintController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ComplaintResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/complaints/{id}/evidence', security: [['bearerAuth' => []]], summary: 'Complaint Controller evidence', tags: ['会员中心'])]
@@ -47,6 +48,6 @@ class ComplaintController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ComplaintEvidenceResponse::class))]
     public function evidence(ComplaintEvidenceRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

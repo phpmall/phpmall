@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\SubOrder\SubOrderIndexRequest;
 use App\Api\Seller\Responses\SubOrder\SubOrderListResponse;
 use App\Api\Seller\Responses\SubOrder\SubOrderResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,7 +20,7 @@ class SubOrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SubOrderListResponse::class))]
     public function index(SubOrderIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/sub-orders/{id}', summary: '获取子订单详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -27,6 +28,6 @@ class SubOrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SubOrderResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

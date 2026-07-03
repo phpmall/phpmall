@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\Brand\BrandApplyRequest;
 use App\Api\Seller\Requests\Brand\BrandIndexRequest;
 use App\Api\Seller\Responses\Brand\BrandListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -20,7 +21,7 @@ class BrandController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: BrandListResponse::class))]
     public function index(BrandIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/brands/apply', summary: '申请品牌', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -28,6 +29,6 @@ class BrandController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function apply(BrandApplyRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

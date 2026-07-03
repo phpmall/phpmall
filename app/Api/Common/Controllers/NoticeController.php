@@ -7,6 +7,7 @@ namespace App\Api\Common\Controllers;
 use App\Api\Common\Requests\Notice\IndexRequest;
 use App\Api\Common\Responses\Notice\NoticeListResponse;
 use App\Api\Common\Responses\Notice\NoticeResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class NoticeController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: NoticeListResponse::class))]
     public function index(IndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/notices/{id}', summary: '公告详情', security: [[]], tags: ['公共工具'])]
@@ -24,6 +25,6 @@ class NoticeController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: NoticeResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

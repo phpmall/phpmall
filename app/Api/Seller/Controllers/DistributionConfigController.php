@@ -6,6 +6,7 @@ namespace App\Api\Seller\Controllers;
 
 use App\Api\Seller\Requests\DistributionConfig\DistributionConfigUpdateRequest;
 use App\Api\Seller\Responses\DistributionConfig\DistributionConfigResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class DistributionConfigController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: DistributionConfigResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/distribution-config/{id}', summary: '更新分销配置', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -25,6 +26,6 @@ class DistributionConfigController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function update(DistributionConfigUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

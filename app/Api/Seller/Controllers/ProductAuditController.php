@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\ProductAudit\ProductAuditIndexRequest;
 use App\Api\Seller\Responses\ProductAudit\ProductAuditListResponse;
 use App\Api\Seller\Responses\ProductAudit\ProductAuditResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,7 +20,7 @@ class ProductAuditController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductAuditListResponse::class))]
     public function index(ProductAuditIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/product-audits/{id}', summary: '获取商品审核详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -27,6 +28,6 @@ class ProductAuditController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ProductAuditResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -8,6 +8,7 @@ use App\Api\Seller\Requests\Complaint\ComplaintAppealRequest;
 use App\Api\Seller\Requests\Complaint\ComplaintRespondRequest;
 use App\Api\Seller\Responses\Complaint\ComplaintListResponse;
 use App\Api\Seller\Responses\Complaint\ComplaintResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -17,7 +18,7 @@ class ComplaintController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ComplaintListResponse::class))]
     public function index(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/complaints/{id}', summary: '获取投诉详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -25,7 +26,7 @@ class ComplaintController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ComplaintResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/complaints/{id}/respond', summary: '回应投诉', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -34,7 +35,7 @@ class ComplaintController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function respond(ComplaintRespondRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/complaints/{id}/appeal', summary: '申诉投诉', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -43,6 +44,6 @@ class ComplaintController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function appeal(ComplaintAppealRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

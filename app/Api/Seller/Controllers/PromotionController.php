@@ -9,6 +9,7 @@ use App\Api\Seller\Requests\Promotion\PromotionStoreRequest;
 use App\Api\Seller\Requests\Promotion\PromotionUpdateRequest;
 use App\Api\Seller\Responses\Promotion\PromotionListResponse;
 use App\Api\Seller\Responses\Promotion\PromotionResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class PromotionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PromotionListResponse::class))]
     public function index(PromotionIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/promotions', summary: '创建促销活动', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -29,7 +30,7 @@ class PromotionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PromotionResponse::class))]
     public function store(PromotionStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/promotions/{id}', summary: '获取促销活动详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -37,7 +38,7 @@ class PromotionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PromotionResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/promotions/{id}', summary: '更新促销活动', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -46,7 +47,7 @@ class PromotionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: PromotionResponse::class))]
     public function update(PromotionUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Delete(path: '/promotions/{id}', summary: '删除促销活动', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -54,6 +55,6 @@ class PromotionController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function destroy(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -8,6 +8,7 @@ use App\Api\User\Requests\Message\MessageIndexRequest;
 use App\Api\User\Responses\Message\MessageListResponse;
 use App\Api\User\Responses\Message\MessageResponse;
 use App\Api\User\Responses\Message\MessageUnreadCountResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -20,14 +21,14 @@ class MessageController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MessageListResponse::class))]
     public function index(MessageIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/messages/unread-count', security: [['bearerAuth' => []]], summary: 'Message Controller unread Count', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MessageUnreadCountResponse::class))]
     public function unreadCount(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/messages/{id}/read', security: [['bearerAuth' => []]], summary: 'Message Controller mark Read', tags: ['会员中心'])]
@@ -35,6 +36,6 @@ class MessageController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MessageResponse::class))]
     public function markRead(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

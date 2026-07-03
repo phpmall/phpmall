@@ -7,6 +7,7 @@ namespace App\Api\Portal\Controllers;
 use App\Api\Portal\Requests\Seckill\SeckillIndexRequest;
 use App\Api\Portal\Responses\Seckill\SeckillListResponse;
 use App\Api\Portal\Responses\Seckill\SeckillResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class SeckillController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillListResponse::class))]
     public function index(SeckillIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/seckills/{id}', summary: '秒杀活动详情', security: [[]], tags: ['商城平台'])]
@@ -24,6 +25,6 @@ class SeckillController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SeckillResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -8,6 +8,7 @@ use App\Api\Seller\Requests\MerchantQualification\MerchantQualificationIndexRequ
 use App\Api\Seller\Requests\MerchantQualification\MerchantQualificationUpdateRequest;
 use App\Api\Seller\Requests\MerchantQualification\MerchantQualificationUploadRequest;
 use App\Api\Seller\Responses\MerchantQualification\MerchantQualificationListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,7 +20,7 @@ class MerchantQualificationController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(type: 'array', items: new OA\Items(ref: MerchantQualificationListResponse::class)))]
     public function index(MerchantQualificationIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/merchant-qualifications/upload', summary: '上传商家资质', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -27,7 +28,7 @@ class MerchantQualificationController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function upload(MerchantQualificationUploadRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/merchant-qualifications/{id}', summary: '更新商家资质', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -36,7 +37,7 @@ class MerchantQualificationController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function update(MerchantQualificationUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Delete(path: '/merchant-qualifications/{id}', summary: '删除商家资质', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -44,6 +45,6 @@ class MerchantQualificationController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function delete(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -9,6 +9,7 @@ use App\Api\User\Requests\Contract\ContractSignRequest;
 use App\Api\User\Responses\Contract\ContractListResponse;
 use App\Api\User\Responses\Contract\ContractResponse;
 use App\Api\User\Responses\Contract\ContractSignResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class ContractController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ContractListResponse::class))]
     public function index(ContractIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/contracts/{id}', security: [['bearerAuth' => []]], summary: 'Contract Controller show', tags: ['会员中心'])]
@@ -29,7 +30,7 @@ class ContractController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ContractResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/contracts/{id}/sign', security: [['bearerAuth' => []]], summary: 'Contract Controller sign', tags: ['会员中心'])]
@@ -38,7 +39,7 @@ class ContractController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ContractSignResponse::class))]
     public function sign(ContractSignRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/contracts/{id}/download', security: [['bearerAuth' => []]], summary: 'Contract Controller download', tags: ['会员中心'])]
@@ -46,6 +47,6 @@ class ContractController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function download(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

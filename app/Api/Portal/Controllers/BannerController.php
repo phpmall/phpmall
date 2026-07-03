@@ -6,6 +6,7 @@ namespace App\Api\Portal\Controllers;
 
 use App\Api\Portal\Requests\Banner\BannerIndexRequest;
 use App\Api\Portal\Responses\Banner\BannerListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -15,6 +16,6 @@ class BannerController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: BannerListResponse::class))]
     public function index(BannerIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

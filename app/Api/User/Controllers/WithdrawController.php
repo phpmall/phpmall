@@ -8,6 +8,7 @@ use App\Api\User\Requests\Withdraw\WithdrawIndexRequest;
 use App\Api\User\Requests\Withdraw\WithdrawStoreRequest;
 use App\Api\User\Responses\Withdraw\WithdrawListResponse;
 use App\Api\User\Responses\Withdraw\WithdrawResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -20,7 +21,7 @@ class WithdrawController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: WithdrawListResponse::class))]
     public function index(WithdrawIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/withdraws', security: [['bearerAuth' => []]], summary: 'Withdraw Controller store', tags: ['会员中心'])]
@@ -28,7 +29,7 @@ class WithdrawController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: WithdrawResponse::class))]
     public function store(WithdrawStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/withdraws/{id}', security: [['bearerAuth' => []]], summary: 'Withdraw Controller show', tags: ['会员中心'])]
@@ -36,6 +37,6 @@ class WithdrawController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: WithdrawResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

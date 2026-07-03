@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\Shop\ShopIndexRequest;
 use App\Api\Seller\Requests\Shop\ShopUpdateRequest;
 use App\Api\Seller\Responses\Shop\ShopResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -18,7 +19,7 @@ class ShopController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopResponse::class))]
     public function index(ShopIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/shop', summary: '更新店铺信息', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -26,20 +27,20 @@ class ShopController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopResponse::class))]
     public function update(ShopUpdateRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/shop/close', summary: '关闭店铺', security: [['bearerAuth' => []]], tags: ['商家中心'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function close(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/shop/open', summary: '开启店铺', security: [['bearerAuth' => []]], tags: ['商家中心'])]
     #[OA\Response(response: 200, description: 'OK')]
     public function open(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\ShopReview\ShopReviewIndexRequest;
 use App\Api\Seller\Requests\ShopReview\ShopReviewReplyRequest;
 use App\Api\Seller\Responses\ShopReview\ShopReviewListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -18,7 +19,7 @@ class ShopReviewController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopReviewListResponse::class))]
     public function index(ShopReviewIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/shop-reviews/{id}/reply', summary: '回复店铺评价', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -27,6 +28,6 @@ class ShopReviewController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function reply(ShopReviewReplyRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

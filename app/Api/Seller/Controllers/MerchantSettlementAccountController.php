@@ -8,6 +8,7 @@ use App\Api\Seller\Requests\MerchantSettlementAccount\MerchantSettlementAccountI
 use App\Api\Seller\Requests\MerchantSettlementAccount\MerchantSettlementAccountStoreRequest;
 use App\Api\Seller\Requests\MerchantSettlementAccount\MerchantSettlementAccountUpdateRequest;
 use App\Api\Seller\Responses\MerchantSettlementAccount\MerchantSettlementAccountListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,7 +20,7 @@ class MerchantSettlementAccountController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(type: 'array', items: new OA\Items(ref: MerchantSettlementAccountListResponse::class)))]
     public function index(MerchantSettlementAccountIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/merchant-settlement-accounts', summary: '创建结算账户', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -27,7 +28,7 @@ class MerchantSettlementAccountController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function store(MerchantSettlementAccountStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/merchant-settlement-accounts/{id}', summary: '更新结算账户', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -36,7 +37,7 @@ class MerchantSettlementAccountController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function update(MerchantSettlementAccountUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/merchant-settlement-accounts/{id}/default', summary: '设置默认结算账户', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -44,6 +45,6 @@ class MerchantSettlementAccountController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function setDefault(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

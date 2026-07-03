@@ -6,6 +6,7 @@ namespace App\Api\Seller\Controllers;
 
 use App\Api\Seller\Requests\InventoryReservation\InventoryReservationIndexRequest;
 use App\Api\Seller\Responses\InventoryReservation\InventoryReservationListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -17,7 +18,7 @@ class InventoryReservationController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InventoryReservationListResponse::class))]
     public function index(InventoryReservationIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/inventory-reservations/{id}/release', summary: '释放库存预留', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -25,6 +26,6 @@ class InventoryReservationController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function release(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

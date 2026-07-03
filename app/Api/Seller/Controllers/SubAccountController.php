@@ -6,6 +6,7 @@ namespace App\Api\Seller\Controllers;
 
 use App\Api\Seller\Requests\SubAccount\SubAccountStoreRequest;
 use App\Api\Seller\Responses\SubAccount\SubAccountListResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -15,7 +16,7 @@ class SubAccountController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SubAccountListResponse::class))]
     public function index(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/sub-accounts', summary: '创建子账号', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -23,7 +24,7 @@ class SubAccountController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function store(SubAccountStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/sub-accounts/{id}/enable', summary: '启用子账号', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -31,7 +32,7 @@ class SubAccountController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function enable(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/sub-accounts/{id}/disable', summary: '禁用子账号', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -39,6 +40,6 @@ class SubAccountController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function disable(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

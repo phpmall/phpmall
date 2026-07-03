@@ -10,6 +10,7 @@ use App\Api\Seller\Requests\ShopCategory\ShopCategoryStoreRequest;
 use App\Api\Seller\Requests\ShopCategory\ShopCategoryUpdateRequest;
 use App\Api\Seller\Responses\ShopCategory\ShopCategoryListResponse;
 use App\Api\Seller\Responses\ShopCategory\ShopCategoryResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -21,7 +22,7 @@ class ShopCategoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopCategoryListResponse::class))]
     public function index(ShopCategoryIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/shop-categories', summary: '创建店铺分类', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -29,7 +30,7 @@ class ShopCategoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopCategoryResponse::class))]
     public function store(ShopCategoryStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/shop-categories/{id}', summary: '更新店铺分类', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -38,7 +39,7 @@ class ShopCategoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopCategoryResponse::class))]
     public function update(ShopCategoryUpdateRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Delete(path: '/shop-categories/{id}', summary: '删除店铺分类', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -46,7 +47,7 @@ class ShopCategoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function destroy(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/shop-categories/reorder', summary: '店铺分类排序', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -54,6 +55,6 @@ class ShopCategoryController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function reorder(ShopCategoryReorderRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

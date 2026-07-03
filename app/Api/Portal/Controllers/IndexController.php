@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api\Portal\Controllers;
 
 use App\Api\Portal\Responses\Index\IndexResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -14,6 +15,6 @@ class IndexController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: IndexResponse::class))]
     public function index(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

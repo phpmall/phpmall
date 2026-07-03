@@ -7,6 +7,7 @@ namespace App\Api\Seller\Controllers;
 use App\Api\Seller\Requests\Message\MessageBatchReadRequest;
 use App\Api\Seller\Responses\Message\MessageListResponse;
 use App\Api\Seller\Responses\Message\MessageResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class MessageController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MessageListResponse::class))]
     public function index(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/messages/{id}', summary: '获取消息详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -24,7 +25,7 @@ class MessageController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: MessageResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/messages/{id}/read', summary: '标记消息已读', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -32,7 +33,7 @@ class MessageController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function markRead(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/messages/batch/read', summary: '批量标记已读', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -40,6 +41,6 @@ class MessageController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function batchRead(MessageBatchReadRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

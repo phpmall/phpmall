@@ -8,6 +8,7 @@ use App\Api\Seller\Requests\ShopDecoration\ShopDecorationIndexRequest;
 use App\Api\Seller\Requests\ShopDecoration\ShopDecorationUpdateRequest;
 use App\Api\Seller\Responses\ShopDecoration\ShopDecorationPreviewResponse;
 use App\Api\Seller\Responses\ShopDecoration\ShopDecorationResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,7 +20,7 @@ class ShopDecorationController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopDecorationResponse::class))]
     public function index(ShopDecorationIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/shop-decoration', summary: '更新店铺装修', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -27,13 +28,13 @@ class ShopDecorationController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopDecorationResponse::class))]
     public function update(ShopDecorationUpdateRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/shop-decoration/preview', summary: '预览店铺装修', security: [['bearerAuth' => []]], tags: ['商家中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: ShopDecorationPreviewResponse::class))]
     public function preview(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

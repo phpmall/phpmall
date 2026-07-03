@@ -8,6 +8,7 @@ use App\Api\User\Requests\Refund\RefundIndexRequest;
 use App\Api\User\Requests\Refund\RefundStoreRequest;
 use App\Api\User\Responses\Refund\RefundListResponse;
 use App\Api\User\Responses\Refund\RefundResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -20,7 +21,7 @@ class RefundController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RefundListResponse::class))]
     public function index(RefundIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/refunds', security: [['bearerAuth' => []]], summary: 'Refund Controller store', tags: ['会员中心'])]
@@ -28,7 +29,7 @@ class RefundController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RefundResponse::class))]
     public function store(RefundStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/refunds/{id}', security: [['bearerAuth' => []]], summary: 'Refund Controller show', tags: ['会员中心'])]
@@ -36,7 +37,7 @@ class RefundController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RefundResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/refunds/{id}/cancel', security: [['bearerAuth' => []]], summary: 'Refund Controller cancel', tags: ['会员中心'])]
@@ -44,6 +45,6 @@ class RefundController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function cancel(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

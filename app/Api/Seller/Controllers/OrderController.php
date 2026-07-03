@@ -9,6 +9,7 @@ use App\Api\Seller\Requests\Order\OrderRefuseRequest;
 use App\Api\Seller\Requests\Order\OrderShipRequest;
 use App\Api\Seller\Responses\Order\OrderListResponse;
 use App\Api\Seller\Responses\Order\OrderResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -22,7 +23,7 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderListResponse::class))]
     public function index(OrderIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/orders/{id}', summary: '获取订单详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -30,7 +31,7 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/orders/{id}/ship', summary: '订单发货', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -39,7 +40,7 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function ship(OrderShipRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/orders/{id}/refuse', summary: '拒绝订单', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -48,6 +49,6 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function refuse(OrderRefuseRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

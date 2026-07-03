@@ -9,6 +9,7 @@ use App\Api\User\Requests\Security\SecurityUpdateEmailRequest;
 use App\Api\User\Requests\Security\SecurityUpdatePasswordRequest;
 use App\Api\User\Requests\Security\SecurityUpdatePhoneRequest;
 use App\Api\User\Responses\Security\SecurityUpdateResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -19,7 +20,7 @@ class SecurityController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SecurityUpdateResponse::class))]
     public function updatePassword(SecurityUpdatePasswordRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/security/phone', security: [['bearerAuth' => []]], summary: 'Security Controller update Phone', tags: ['会员中心'])]
@@ -27,7 +28,7 @@ class SecurityController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SecurityUpdateResponse::class))]
     public function updatePhone(SecurityUpdatePhoneRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Put(path: '/security/email', security: [['bearerAuth' => []]], summary: 'Security Controller update Email', tags: ['会员中心'])]
@@ -35,7 +36,7 @@ class SecurityController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SecurityUpdateResponse::class))]
     public function updateEmail(SecurityUpdateEmailRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/security/real-name', security: [['bearerAuth' => []]], summary: 'Security Controller real Name', tags: ['会员中心'])]
@@ -43,6 +44,6 @@ class SecurityController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: SecurityUpdateResponse::class))]
     public function realName(SecurityRealNameRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

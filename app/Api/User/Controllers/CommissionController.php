@@ -8,6 +8,7 @@ use App\Api\User\Requests\Commission\CommissionIndexRequest;
 use App\Api\User\Requests\Commission\CommissionWithdrawRequest;
 use App\Api\User\Responses\Commission\CommissionListResponse;
 use App\Api\User\Responses\Commission\CommissionStatsResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -20,14 +21,14 @@ class CommissionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CommissionListResponse::class))]
     public function index(CommissionIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/commissions/stats', security: [['bearerAuth' => []]], summary: 'Commission Controller stats', tags: ['会员中心'])]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: CommissionStatsResponse::class))]
     public function stats(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/commissions/withdraw', security: [['bearerAuth' => []]], summary: 'Commission Controller withdraw', tags: ['会员中心'])]
@@ -35,6 +36,6 @@ class CommissionController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function withdraw(CommissionWithdrawRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

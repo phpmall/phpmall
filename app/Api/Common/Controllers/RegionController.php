@@ -7,6 +7,7 @@ namespace App\Api\Common\Controllers;
 use App\Api\Common\Requests\Region\IndexRequest;
 use App\Api\Common\Responses\Region\RegionListResponse;
 use App\Api\Common\Responses\Region\RegionResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class RegionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RegionListResponse::class))]
     public function index(IndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/{id}/children', summary: '地区子级列表', security: [[]], tags: ['公共工具'])]
@@ -24,6 +25,6 @@ class RegionController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: RegionResponse::class))]
     public function children(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

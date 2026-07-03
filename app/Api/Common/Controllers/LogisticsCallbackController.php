@@ -6,6 +6,7 @@ namespace App\Api\Common\Controllers;
 
 use App\Api\Common\Requests\LogisticsCallback\KuaidiNotifyRequest;
 use App\Api\Common\Responses\LogisticsCallback\LogisticsNotifyResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,6 +17,6 @@ class LogisticsCallbackController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: LogisticsNotifyResponse::class))]
     public function kuaidiNotify(KuaidiNotifyRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

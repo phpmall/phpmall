@@ -8,6 +8,7 @@ use App\Api\User\Requests\Invoice\InvoiceIndexRequest;
 use App\Api\User\Requests\Invoice\InvoiceStoreRequest;
 use App\Api\User\Responses\Invoice\InvoiceListResponse;
 use App\Api\User\Responses\Invoice\InvoiceResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -20,7 +21,7 @@ class InvoiceController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InvoiceListResponse::class))]
     public function index(InvoiceIndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/invoices', security: [['bearerAuth' => []]], summary: 'Invoice Controller store', tags: ['会员中心'])]
@@ -28,7 +29,7 @@ class InvoiceController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InvoiceResponse::class))]
     public function store(InvoiceStoreRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/invoices/{id}', security: [['bearerAuth' => []]], summary: 'Invoice Controller show', tags: ['会员中心'])]
@@ -36,7 +37,7 @@ class InvoiceController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InvoiceResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/invoices/{id}/download', security: [['bearerAuth' => []]], summary: 'Invoice Controller download', tags: ['会员中心'])]
@@ -44,6 +45,6 @@ class InvoiceController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function download(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -7,6 +7,7 @@ namespace App\Api\Common\Controllers;
 use App\Api\Common\Requests\Dictionary\IndexRequest;
 use App\Api\Common\Responses\Dictionary\DictionaryListResponse;
 use App\Api\Common\Responses\Dictionary\DictionaryResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -16,7 +17,7 @@ class DictionaryController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: DictionaryListResponse::class))]
     public function index(IndexRequest $request): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/dictionaries/{id}', summary: '字典详情', security: [[]], tags: ['公共工具'])]
@@ -24,6 +25,6 @@ class DictionaryController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: DictionaryResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }

@@ -8,6 +8,7 @@ use App\Api\Seller\Requests\Invoice\InvoiceIssueRequest;
 use App\Api\Seller\Requests\Invoice\InvoiceRedFlushRequest;
 use App\Api\Seller\Responses\Invoice\InvoiceListResponse;
 use App\Api\Seller\Responses\Invoice\InvoiceResponse;
+use App\Exceptions\NotImplementedException;
 use Illuminate\Http\JsonResponse;
 use OpenApi\Attributes as OA;
 
@@ -17,7 +18,7 @@ class InvoiceController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InvoiceListResponse::class))]
     public function index(): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Get(path: '/invoices/{id}', summary: '获取发票详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -25,7 +26,7 @@ class InvoiceController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: InvoiceResponse::class))]
     public function show(int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/invoices/{id}/issue', summary: '开具发票', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -34,7 +35,7 @@ class InvoiceController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function issue(InvoiceIssueRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 
     #[OA\Post(path: '/invoices/{id}/red-flush', summary: '红冲发票', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -43,6 +44,6 @@ class InvoiceController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function redFlush(InvoiceRedFlushRequest $request, int $id): JsonResponse
     {
-        return $this->success();
+        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
     }
 }
