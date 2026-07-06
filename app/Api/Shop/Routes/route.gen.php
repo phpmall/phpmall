@@ -6,61 +6,51 @@
 
 declare(strict_types=1);
 
-use App\Api\Shop\Controllers\CategoryController;
-use App\Api\Shop\Controllers\CouponController;
-use App\Api\Shop\Controllers\FreightTemplateController;
-use App\Api\Shop\Controllers\IndexController;
-use App\Api\Shop\Controllers\ProductController;
-use App\Api\Shop\Controllers\ReviewController;
-use App\Api\Shop\Controllers\SearchController;
-use App\Api\Shop\Controllers\SeckillController;
-use App\Api\Shop\Controllers\ShopController;
-use App\Api\Shop\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 // 分类列表
-Route::get('categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('categories', [\App\Api\Shop\Controllers\CategoryController::class, 'index'])->name('categories');
 // 分类树
-Route::get('categories/tree', [CategoryController::class, 'tree'])->name('categories.tree');
+Route::get('categories/tree', [\App\Api\Shop\Controllers\CategoryController::class, 'tree'])->name('categories.tree');
 // 优惠券列表
-Route::get('coupons', [CouponController::class, 'index'])->name('coupons');
+Route::get('coupons', [\App\Api\Shop\Controllers\CouponController::class, 'index'])->name('coupons');
 // 运费计算
-Route::post('freight-templates/calculate', [FreightTemplateController::class, 'calculate']);
+Route::post('freight-templates/calculate', [\App\Api\Shop\Controllers\FreightTemplateController::class, 'calculate']);
 // 首页
-Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/', [\App\Api\Shop\Controllers\IndexController::class, 'index'])->name('index');
 // 商品列表
-Route::get('products', [ProductController::class, 'index'])->name('products');
+Route::get('products', [\App\Api\Shop\Controllers\ProductController::class, 'index'])->name('products');
 // 商品详情
-Route::get('products/{id}', [ProductController::class, 'show'])->name('products.{id}');
+Route::get('products/{id}', [\App\Api\Shop\Controllers\ProductController::class, 'show'])->name('products.{id}');
 // 商品SKU列表
-Route::get('products/{id}/skus', [ProductController::class, 'skus'])->name('products.{id}.skus');
+Route::get('products/{id}/skus', [\App\Api\Shop\Controllers\ProductController::class, 'skus'])->name('products.{id}.skus');
 // 商品评价列表
-Route::get('products/{id}/reviews', [ProductController::class, 'reviews'])->name('products.{id}.reviews');
+Route::get('products/{id}/reviews', [\App\Api\Shop\Controllers\ProductController::class, 'reviews'])->name('products.{id}.reviews');
 // 评价列表
-Route::get('reviews', [ReviewController::class, 'index'])->name('reviews');
+Route::get('reviews', [\App\Api\Shop\Controllers\ReviewController::class, 'index'])->name('reviews');
 // 搜索接口
-Route::get('search', [SearchController::class, 'index'])->name('search');
+Route::get('search', [\App\Api\Shop\Controllers\SearchController::class, 'index'])->name('search');
 // 搜索商品
-Route::get('search/products', [SearchController::class, 'products'])->name('search.products');
+Route::get('search/products', [\App\Api\Shop\Controllers\SearchController::class, 'products'])->name('search.products');
 // 搜索建议
-Route::get('search/suggest', [SearchController::class, 'suggest'])->name('search.suggest');
+Route::get('search/suggest', [\App\Api\Shop\Controllers\SearchController::class, 'suggest'])->name('search.suggest');
 // 热搜关键词
-Route::get('search/hot-keywords', [SearchController::class, 'hotKeywords'])->name('search.hot-keywords');
+Route::get('search/hot-keywords', [\App\Api\Shop\Controllers\SearchController::class, 'hotKeywords'])->name('search.hot-keywords');
 // 搜索筛选条件
-Route::get('search/filters', [SearchController::class, 'filters'])->name('search.filters');
+Route::get('search/filters', [\App\Api\Shop\Controllers\SearchController::class, 'filters'])->name('search.filters');
 // 秒杀列表
-Route::get('seckills', [SeckillController::class, 'index'])->name('seckills');
+Route::get('seckills', [\App\Api\Shop\Controllers\SeckillController::class, 'index'])->name('seckills');
 // 秒杀详情
-Route::get('seckills/{id}', [SeckillController::class, 'show'])->name('seckills.{id}');
+Route::get('seckills/{id}', [\App\Api\Shop\Controllers\SeckillController::class, 'show'])->name('seckills.{id}');
 // 店铺详情
-Route::get('shops/{id}', [ShopController::class, 'show'])->name('shops.{id}');
+Route::get('shops/{id}', [\App\Api\Shop\Controllers\ShopController::class, 'show'])->name('shops.{id}');
 // 店铺商品列表
-Route::get('shops/{id}/products', [ShopController::class, 'products'])->name('shops.{id}.products');
+Route::get('shops/{id}/products', [\App\Api\Shop\Controllers\ShopController::class, 'products'])->name('shops.{id}.products');
 // 店铺评价列表
-Route::get('shops/{id}/reviews', [ShopController::class, 'reviews'])->name('shops.{id}.reviews');
+Route::get('shops/{id}/reviews', [\App\Api\Shop\Controllers\ShopController::class, 'reviews'])->name('shops.{id}.reviews');
 // 门店列表
-Route::get('stores', [StoreController::class, 'index'])->name('stores');
+Route::get('stores', [\App\Api\Shop\Controllers\StoreController::class, 'index'])->name('stores');
 // 门店详情
-Route::get('stores/{id}', [StoreController::class, 'show'])->name('stores.{id}');
+Route::get('stores/{id}', [\App\Api\Shop\Controllers\StoreController::class, 'show'])->name('stores.{id}');
 // 附近门店
-Route::get('stores/nearby', [StoreController::class, 'nearby'])->name('stores.nearby');
+Route::get('stores/nearby', [\App\Api\Shop\Controllers\StoreController::class, 'nearby'])->name('stores.nearby');
