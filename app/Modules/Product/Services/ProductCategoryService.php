@@ -19,6 +19,35 @@ class ProductCategoryService extends CommonService implements ServiceInterface
         return $this->repository;
     }
 
-    // please fill in your code here
+    /**
+     * 获取前台展示的分类树
+     */
+    public function getTree(): array
+    {
+        $categories = $this->repository->findAll(['is_show' => 1], 'sort_order', 'asc');
 
+        return $this->buildTree($categories);
+    }
+
+    private function buildTree(array $categories, int $parentId = 0): array
+    {
+        $tree = [];
+
+        foreach ($categories as $category) {
+            if ((int) $category['parent_id'] !== $parentId) {
+                continue;
+            }
+
+            $tree[] = [
+                'id' => (int) $category['id'],
+                'name' => $category['name'],
+                'icon' => $category['icon_url'] ?? null,
+                'image' => null,
+                'sort' => (int) $category['sort_order'],
+                'children' => $this->buildTree($categories, (int) $category['id']),
+            ];
+        }
+
+        return $tree;
+    }
 }
