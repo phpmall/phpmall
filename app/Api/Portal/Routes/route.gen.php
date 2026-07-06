@@ -14,6 +14,7 @@ use App\Api\Portal\Controllers\IndexController;
 use App\Api\Portal\Controllers\MarketingController;
 use App\Api\Portal\Controllers\NoticeController;
 use App\Api\Portal\Controllers\ProductController;
+use App\Api\Portal\Controllers\RegionController;
 use App\Api\Portal\Controllers\SearchController;
 use App\Api\Portal\Controllers\SeckillController;
 use App\Api\Portal\Controllers\ShopController;
@@ -59,6 +60,8 @@ Route::get('products/recommend', [ProductController::class, 'recommend'])->name(
 Route::get('products/hot', [ProductController::class, 'hot'])->name('products.hot');
 // 商品评价列表
 Route::get('products/{id}/reviews', [ProductController::class, 'reviews'])->name('products.{id}.reviews');
+// 省市区列表
+Route::get('regions', [RegionController::class, 'index'])->name('regions');
 // 搜索接口
 Route::get('search', [SearchController::class, 'index'])->name('search');
 // 商品搜索
