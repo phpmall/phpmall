@@ -34,6 +34,8 @@ Route::get('products', [ProductController::class, 'index'])->name('products');
 Route::get('products/{id}', [ProductController::class, 'show'])->name('products.{id}');
 // 商品SKU列表
 Route::get('products/{id}/skus', [ProductController::class, 'skus'])->name('products.{id}.skus');
+// 商品评价列表
+Route::get('products/{id}/reviews', [ProductController::class, 'reviews'])->name('products.{id}.reviews');
 // 评价列表
 Route::get('reviews', [ReviewController::class, 'index'])->name('reviews');
 // 搜索接口

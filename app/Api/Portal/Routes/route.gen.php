@@ -57,6 +57,8 @@ Route::get('products/{id}', [ProductController::class, 'show'])->name('products.
 Route::get('products/recommend', [ProductController::class, 'recommend'])->name('products.recommend');
 // 热销商品
 Route::get('products/hot', [ProductController::class, 'hot'])->name('products.hot');
+// 商品评价列表
+Route::get('products/{id}/reviews', [ProductController::class, 'reviews'])->name('products.{id}.reviews');
 // 搜索接口
 Route::get('search', [SearchController::class, 'index'])->name('search');
 // 商品搜索
