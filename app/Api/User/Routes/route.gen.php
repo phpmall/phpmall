@@ -24,6 +24,7 @@ use App\Api\User\Controllers\MessageController;
 use App\Api\User\Controllers\NotificationController;
 use App\Api\User\Controllers\OrderController;
 use App\Api\User\Controllers\OrderReviewController;
+use App\Api\User\Controllers\PaymentController;
 use App\Api\User\Controllers\PointsController;
 use App\Api\User\Controllers\PrivacyController;
 use App\Api\User\Controllers\ProfileController;
@@ -169,6 +170,10 @@ Route::post('order-reviews', [OrderReviewController::class, 'store']);
 Route::get('order-reviews/{id}', [OrderReviewController::class, 'show'])->name('order-reviews.{id}');
 // Order Review Controller update
 Route::put('order-reviews/{id}', [OrderReviewController::class, 'update']);
+// 创建支付
+Route::post('payments', [PaymentController::class, 'store']);
+// 支付详情
+Route::get('payments/{id}', [PaymentController::class, 'show'])->name('payments.{id}');
 // Points Controller index
 Route::get('points', [PointsController::class, 'index'])->name('points');
 // Points Controller history
