@@ -6,67 +6,77 @@
 
 declare(strict_types=1);
 
+use App\Api\Supplier\Controllers\AuthController;
+use App\Api\Supplier\Controllers\ContractController;
+use App\Api\Supplier\Controllers\IndexController;
+use App\Api\Supplier\Controllers\InventoryController;
+use App\Api\Supplier\Controllers\MessageController;
+use App\Api\Supplier\Controllers\PurchaseOrderController;
+use App\Api\Supplier\Controllers\SupplierController;
+use App\Api\Supplier\Controllers\SupplierSettlementController;
+use App\Api\Supplier\Controllers\SupplyProductController;
+use App\Api\Supplier\Controllers\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
 // 供应商登录接口
-Route::post('auth/login', [\App\Api\Supplier\Controllers\AuthController::class, 'login']);
+Route::post('auth/login', [AuthController::class, 'login']);
 // 合同列表
-Route::get('contracts', [\App\Api\Supplier\Controllers\ContractController::class, 'index'])->name('contracts');
+Route::get('contracts', [ContractController::class, 'index'])->name('contracts');
 // 合同详情
-Route::get('contracts/{id}', [\App\Api\Supplier\Controllers\ContractController::class, 'show'])->name('contracts.{id}');
+Route::get('contracts/{id}', [ContractController::class, 'show'])->name('contracts.{id}');
 // 合同签署
-Route::post('contracts/{id}/sign', [\App\Api\Supplier\Controllers\ContractController::class, 'sign']);
+Route::post('contracts/{id}/sign', [ContractController::class, 'sign']);
 // 合同下载
-Route::get('contracts/{id}/download', [\App\Api\Supplier\Controllers\ContractController::class, 'download'])->name('contracts.{id}.download');
+Route::get('contracts/{id}/download', [ContractController::class, 'download'])->name('contracts.{id}.download');
 // 首页
-Route::get('/', [\App\Api\Supplier\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
 // 库存列表
-Route::get('inventory', [\App\Api\Supplier\Controllers\InventoryController::class, 'index'])->name('inventory');
+Route::get('inventory', [InventoryController::class, 'index'])->name('inventory');
 // 更新库存
-Route::put('inventory/{id}', [\App\Api\Supplier\Controllers\InventoryController::class, 'update']);
+Route::put('inventory/{id}', [InventoryController::class, 'update']);
 // 批量更新库存
-Route::post('inventory/batch', [\App\Api\Supplier\Controllers\InventoryController::class, 'batchUpdate']);
+Route::post('inventory/batch', [InventoryController::class, 'batchUpdate']);
 // 消息列表
-Route::get('messages', [\App\Api\Supplier\Controllers\MessageController::class, 'index'])->name('messages');
+Route::get('messages', [MessageController::class, 'index'])->name('messages');
 // 消息详情
-Route::get('messages/{id}', [\App\Api\Supplier\Controllers\MessageController::class, 'show'])->name('messages.{id}');
+Route::get('messages/{id}', [MessageController::class, 'show'])->name('messages.{id}');
 // 标记消息已读
-Route::post('messages/{id}/read', [\App\Api\Supplier\Controllers\MessageController::class, 'markRead']);
+Route::post('messages/{id}/read', [MessageController::class, 'markRead']);
 // 采购订单列表
-Route::get('purchase-orders', [\App\Api\Supplier\Controllers\PurchaseOrderController::class, 'index'])->name('purchase-orders');
+Route::get('purchase-orders', [PurchaseOrderController::class, 'index'])->name('purchase-orders');
 // 采购订单详情
-Route::get('purchase-orders/{id}', [\App\Api\Supplier\Controllers\PurchaseOrderController::class, 'show'])->name('purchase-orders.{id}');
+Route::get('purchase-orders/{id}', [PurchaseOrderController::class, 'show'])->name('purchase-orders.{id}');
 // 采购订单发货
-Route::post('purchase-orders/{id}/ship', [\App\Api\Supplier\Controllers\PurchaseOrderController::class, 'ship']);
+Route::post('purchase-orders/{id}/ship', [PurchaseOrderController::class, 'ship']);
 // 采购订单确认
-Route::post('purchase-orders/{id}/confirm', [\App\Api\Supplier\Controllers\PurchaseOrderController::class, 'confirm']);
+Route::post('purchase-orders/{id}/confirm', [PurchaseOrderController::class, 'confirm']);
 // 供应商列表
-Route::get('supplier', [\App\Api\Supplier\Controllers\SupplierController::class, 'index'])->name('supplier');
+Route::get('supplier', [SupplierController::class, 'index'])->name('supplier');
 // 更新供应商信息
-Route::put('supplier', [\App\Api\Supplier\Controllers\SupplierController::class, 'update']);
+Route::put('supplier', [SupplierController::class, 'update']);
 // 供应商资料
-Route::get('supplier/profile', [\App\Api\Supplier\Controllers\SupplierController::class, 'profile'])->name('supplier.profile');
+Route::get('supplier/profile', [SupplierController::class, 'profile'])->name('supplier.profile');
 // 供应商结算列表
-Route::get('supplier-settlements', [\App\Api\Supplier\Controllers\SupplierSettlementController::class, 'index'])->name('supplier-settlements');
+Route::get('supplier-settlements', [SupplierSettlementController::class, 'index'])->name('supplier-settlements');
 // 供应商结算详情
-Route::get('supplier-settlements/{id}', [\App\Api\Supplier\Controllers\SupplierSettlementController::class, 'show'])->name('supplier-settlements.{id}');
+Route::get('supplier-settlements/{id}', [SupplierSettlementController::class, 'show'])->name('supplier-settlements.{id}');
 // 供应商结算对账单
-Route::get('supplier-settlements/{id}/statement', [\App\Api\Supplier\Controllers\SupplierSettlementController::class, 'statement'])->name('supplier-settlements.{id}.statement');
+Route::get('supplier-settlements/{id}/statement', [SupplierSettlementController::class, 'statement'])->name('supplier-settlements.{id}.statement');
 // 供应商品列表
-Route::get('supply-products', [\App\Api\Supplier\Controllers\SupplyProductController::class, 'index'])->name('supply-products');
+Route::get('supply-products', [SupplyProductController::class, 'index'])->name('supply-products');
 // 创建供应商品
-Route::post('supply-products', [\App\Api\Supplier\Controllers\SupplyProductController::class, 'store']);
+Route::post('supply-products', [SupplyProductController::class, 'store']);
 // 供应商品详情
-Route::get('supply-products/{id}', [\App\Api\Supplier\Controllers\SupplyProductController::class, 'show'])->name('supply-products.{id}');
+Route::get('supply-products/{id}', [SupplyProductController::class, 'show'])->name('supply-products.{id}');
 // 更新供应商品
-Route::put('supply-products/{id}', [\App\Api\Supplier\Controllers\SupplyProductController::class, 'update']);
+Route::put('supply-products/{id}', [SupplyProductController::class, 'update']);
 // 删除供应商品
-Route::delete('supply-products/{id}', [\App\Api\Supplier\Controllers\SupplyProductController::class, 'destroy']);
+Route::delete('supply-products/{id}', [SupplyProductController::class, 'destroy']);
 // 仓库列表
-Route::get('warehouses', [\App\Api\Supplier\Controllers\WarehouseController::class, 'index'])->name('warehouses');
+Route::get('warehouses', [WarehouseController::class, 'index'])->name('warehouses');
 // 创建仓库
-Route::post('warehouses', [\App\Api\Supplier\Controllers\WarehouseController::class, 'store']);
+Route::post('warehouses', [WarehouseController::class, 'store']);
 // 仓库详情
-Route::get('warehouses/{id}', [\App\Api\Supplier\Controllers\WarehouseController::class, 'show'])->name('warehouses.{id}');
+Route::get('warehouses/{id}', [WarehouseController::class, 'show'])->name('warehouses.{id}');
 // 更新仓库
-Route::put('warehouses/{id}', [\App\Api\Supplier\Controllers\WarehouseController::class, 'update']);
+Route::put('warehouses/{id}', [WarehouseController::class, 'update']);

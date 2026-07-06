@@ -6,47 +6,58 @@
 
 declare(strict_types=1);
 
+use App\Api\Common\Controllers\AgreementController;
+use App\Api\Common\Controllers\AuthController;
+use App\Api\Common\Controllers\CaptchaController;
+use App\Api\Common\Controllers\ConfigController;
+use App\Api\Common\Controllers\DictionaryController;
+use App\Api\Common\Controllers\LogisticsCallbackController;
+use App\Api\Common\Controllers\NoticeController;
+use App\Api\Common\Controllers\PaymentCallbackController;
+use App\Api\Common\Controllers\RegionController;
+use App\Api\Common\Controllers\SmsController;
+use App\Api\Common\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 // 协议详情
-Route::get('agreements/{id}', [\App\Api\Common\Controllers\AgreementController::class, 'show'])->name('agreements.{id}');
+Route::get('agreements/{id}', [AgreementController::class, 'show'])->name('agreements.{id}');
 // 最新协议
-Route::get('latest', [\App\Api\Common\Controllers\AgreementController::class, 'latest'])->name('latest');
+Route::get('latest', [AgreementController::class, 'latest'])->name('latest');
 // 刷新 Token
-Route::post('v1/auth/refresh', [\App\Api\Common\Controllers\AuthController::class, 'refresh']);
+Route::post('v1/auth/refresh', [AuthController::class, 'refresh']);
 // 显示图片验证码
-Route::get('captcha', [\App\Api\Common\Controllers\CaptchaController::class, 'index'])->name('captcha');
+Route::get('captcha', [CaptchaController::class, 'index'])->name('captcha');
 // 配置列表
-Route::get('configs', [\App\Api\Common\Controllers\ConfigController::class, 'index'])->name('configs');
+Route::get('configs', [ConfigController::class, 'index'])->name('configs');
 // 配置详情
-Route::get('configs/{id}', [\App\Api\Common\Controllers\ConfigController::class, 'show'])->name('configs.{id}');
+Route::get('configs/{id}', [ConfigController::class, 'show'])->name('configs.{id}');
 // 字典列表
-Route::get('dictionaries', [\App\Api\Common\Controllers\DictionaryController::class, 'index'])->name('dictionaries');
+Route::get('dictionaries', [DictionaryController::class, 'index'])->name('dictionaries');
 // 字典详情
-Route::get('dictionaries/{id}', [\App\Api\Common\Controllers\DictionaryController::class, 'show'])->name('dictionaries.{id}');
+Route::get('dictionaries/{id}', [DictionaryController::class, 'show'])->name('dictionaries.{id}');
 // 快递回调通知
-Route::post('kuaidi/notify', [\App\Api\Common\Controllers\LogisticsCallbackController::class, 'kuaidiNotify']);
+Route::post('kuaidi/notify', [LogisticsCallbackController::class, 'kuaidiNotify']);
 // 公告列表
-Route::get('notices', [\App\Api\Common\Controllers\NoticeController::class, 'index'])->name('notices');
+Route::get('notices', [NoticeController::class, 'index'])->name('notices');
 // 公告详情
-Route::get('notices/{id}', [\App\Api\Common\Controllers\NoticeController::class, 'show'])->name('notices.{id}');
+Route::get('notices/{id}', [NoticeController::class, 'show'])->name('notices.{id}');
 // 支付宝支付回调
-Route::post('alipay/notify', [\App\Api\Common\Controllers\PaymentCallbackController::class, 'alipayNotify']);
+Route::post('alipay/notify', [PaymentCallbackController::class, 'alipayNotify']);
 // 微信支付回调
-Route::post('wechat/notify', [\App\Api\Common\Controllers\PaymentCallbackController::class, 'wechatNotify']);
+Route::post('wechat/notify', [PaymentCallbackController::class, 'wechatNotify']);
 // 银联支付回调
-Route::post('unionpay/notify', [\App\Api\Common\Controllers\PaymentCallbackController::class, 'unionpayNotify']);
+Route::post('unionpay/notify', [PaymentCallbackController::class, 'unionpayNotify']);
 // 地区列表
-Route::get('regions', [\App\Api\Common\Controllers\RegionController::class, 'index'])->name('regions');
+Route::get('regions', [RegionController::class, 'index'])->name('regions');
 // 地区子级列表
-Route::get('{id}/children', [\App\Api\Common\Controllers\RegionController::class, 'children'])->name('{id}.children');
+Route::get('{id}/children', [RegionController::class, 'children'])->name('{id}.children');
 // 发送短信验证码
-Route::post('sms/code', [\App\Api\Common\Controllers\SmsController::class, 'code']);
+Route::post('sms/code', [SmsController::class, 'code']);
 // 图片上传
-Route::post('image', [\App\Api\Common\Controllers\UploadController::class, 'image']);
+Route::post('image', [UploadController::class, 'image']);
 // 文件上传
-Route::post('file', [\App\Api\Common\Controllers\UploadController::class, 'file']);
+Route::post('file', [UploadController::class, 'file']);
 // OSS上传策略
-Route::post('oss-policy', [\App\Api\Common\Controllers\UploadController::class, 'ossPolicy']);
+Route::post('oss-policy', [UploadController::class, 'ossPolicy']);
 // 上传确认
-Route::post('confirm', [\App\Api\Common\Controllers\UploadController::class, 'confirm']);
+Route::post('confirm', [UploadController::class, 'confirm']);

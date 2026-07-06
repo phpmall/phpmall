@@ -6,199 +6,227 @@
 
 declare(strict_types=1);
 
+use App\Api\User\Controllers\AddressController;
+use App\Api\User\Controllers\AuthController;
+use App\Api\User\Controllers\CartController;
+use App\Api\User\Controllers\CommissionController;
+use App\Api\User\Controllers\ComplaintController;
+use App\Api\User\Controllers\ConsentController;
+use App\Api\User\Controllers\ContractController;
+use App\Api\User\Controllers\CouponController;
+use App\Api\User\Controllers\DistributionController;
+use App\Api\User\Controllers\FavoriteController;
+use App\Api\User\Controllers\IndexController;
+use App\Api\User\Controllers\InvoiceController;
+use App\Api\User\Controllers\KycController;
+use App\Api\User\Controllers\MemberLevelController;
+use App\Api\User\Controllers\MessageController;
+use App\Api\User\Controllers\NotificationController;
+use App\Api\User\Controllers\OrderController;
+use App\Api\User\Controllers\OrderReviewController;
+use App\Api\User\Controllers\PaymentController;
+use App\Api\User\Controllers\PointsController;
+use App\Api\User\Controllers\PrivacyController;
+use App\Api\User\Controllers\ProfileController;
+use App\Api\User\Controllers\RefundController;
+use App\Api\User\Controllers\SecurityController;
+use App\Api\User\Controllers\UserBindController;
+use App\Api\User\Controllers\UserController;
+use App\Api\User\Controllers\WalletController;
+use App\Api\User\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
 // 收货地址列表
-Route::get('addresses', [\App\Api\User\Controllers\AddressController::class, 'index'])->name('addresses');
+Route::get('addresses', [AddressController::class, 'index'])->name('addresses');
 // 新增收货地址
-Route::post('addresses', [\App\Api\User\Controllers\AddressController::class, 'store']);
+Route::post('addresses', [AddressController::class, 'store']);
 // 收货地址详情
-Route::get('addresses/{id}', [\App\Api\User\Controllers\AddressController::class, 'show'])->name('addresses.{id}');
+Route::get('addresses/{id}', [AddressController::class, 'show'])->name('addresses.{id}');
 // 更新收货地址
-Route::put('addresses/{id}', [\App\Api\User\Controllers\AddressController::class, 'update']);
+Route::put('addresses/{id}', [AddressController::class, 'update']);
 // 删除收货地址
-Route::delete('addresses/{id}', [\App\Api\User\Controllers\AddressController::class, 'destroy']);
+Route::delete('addresses/{id}', [AddressController::class, 'destroy']);
 // 新会员注册
-Route::post('auth/signup', [\App\Api\User\Controllers\AuthController::class, 'signup']);
+Route::post('auth/signup', [AuthController::class, 'signup']);
 // 会员登录接口
-Route::post('auth/login', [\App\Api\User\Controllers\AuthController::class, 'login']);
+Route::post('auth/login', [AuthController::class, 'login']);
 // 忘记密码
-Route::post('auth/forgot-password', [\App\Api\User\Controllers\AuthController::class, 'forgot']);
+Route::post('auth/forgot-password', [AuthController::class, 'forgot']);
 // 重置密码
-Route::post('auth/reset-password', [\App\Api\User\Controllers\AuthController::class, 'reset']);
+Route::post('auth/reset-password', [AuthController::class, 'reset']);
 // 会员登出
-Route::post('auth/logout', [\App\Api\User\Controllers\AuthController::class, 'logout']);
+Route::post('auth/logout', [AuthController::class, 'logout']);
 // Cart Controller index
-Route::get('cart', [\App\Api\User\Controllers\CartController::class, 'index'])->name('cart');
+Route::get('cart', [CartController::class, 'index'])->name('cart');
 // Cart Controller store
-Route::post('cart', [\App\Api\User\Controllers\CartController::class, 'store']);
+Route::post('cart', [CartController::class, 'store']);
 // Cart Controller update
-Route::put('cart/{id}', [\App\Api\User\Controllers\CartController::class, 'update']);
+Route::put('cart/{id}', [CartController::class, 'update']);
 // Cart Controller destroy
-Route::delete('cart/{id}', [\App\Api\User\Controllers\CartController::class, 'destroy']);
+Route::delete('cart/{id}', [CartController::class, 'destroy']);
 // Cart Controller clear
-Route::post('cart/clear', [\App\Api\User\Controllers\CartController::class, 'clear']);
+Route::post('cart/clear', [CartController::class, 'clear']);
 // Cart Controller batch Store
-Route::post('cart/batch', [\App\Api\User\Controllers\CartController::class, 'batchStore']);
+Route::post('cart/batch', [CartController::class, 'batchStore']);
 // Commission Controller index
-Route::get('commissions', [\App\Api\User\Controllers\CommissionController::class, 'index'])->name('commissions');
+Route::get('commissions', [CommissionController::class, 'index'])->name('commissions');
 // Commission Controller stats
-Route::get('commissions/stats', [\App\Api\User\Controllers\CommissionController::class, 'stats'])->name('commissions.stats');
+Route::get('commissions/stats', [CommissionController::class, 'stats'])->name('commissions.stats');
 // Commission Controller withdraw
-Route::post('commissions/withdraw', [\App\Api\User\Controllers\CommissionController::class, 'withdraw']);
+Route::post('commissions/withdraw', [CommissionController::class, 'withdraw']);
 // Complaint Controller index
-Route::get('complaints', [\App\Api\User\Controllers\ComplaintController::class, 'index'])->name('complaints');
+Route::get('complaints', [ComplaintController::class, 'index'])->name('complaints');
 // Complaint Controller store
-Route::post('complaints', [\App\Api\User\Controllers\ComplaintController::class, 'store']);
+Route::post('complaints', [ComplaintController::class, 'store']);
 // Complaint Controller show
-Route::get('complaints/{id}', [\App\Api\User\Controllers\ComplaintController::class, 'show'])->name('complaints.{id}');
+Route::get('complaints/{id}', [ComplaintController::class, 'show'])->name('complaints.{id}');
 // Complaint Controller evidence
-Route::post('complaints/{id}/evidence', [\App\Api\User\Controllers\ComplaintController::class, 'evidence']);
+Route::post('complaints/{id}/evidence', [ComplaintController::class, 'evidence']);
 // Consent Controller history
-Route::get('consents/history', [\App\Api\User\Controllers\ConsentController::class, 'history'])->name('consents.history');
+Route::get('consents/history', [ConsentController::class, 'history'])->name('consents.history');
 // Consent Controller withdraw
-Route::post('consents/withdraw', [\App\Api\User\Controllers\ConsentController::class, 'withdraw']);
+Route::post('consents/withdraw', [ConsentController::class, 'withdraw']);
 // Contract Controller index
-Route::get('contracts', [\App\Api\User\Controllers\ContractController::class, 'index'])->name('contracts');
+Route::get('contracts', [ContractController::class, 'index'])->name('contracts');
 // Contract Controller show
-Route::get('contracts/{id}', [\App\Api\User\Controllers\ContractController::class, 'show'])->name('contracts.{id}');
+Route::get('contracts/{id}', [ContractController::class, 'show'])->name('contracts.{id}');
 // Contract Controller sign
-Route::post('contracts/{id}/sign', [\App\Api\User\Controllers\ContractController::class, 'sign']);
+Route::post('contracts/{id}/sign', [ContractController::class, 'sign']);
 // Contract Controller download
-Route::get('contracts/{id}/download', [\App\Api\User\Controllers\ContractController::class, 'download'])->name('contracts.{id}.download');
+Route::get('contracts/{id}/download', [ContractController::class, 'download'])->name('contracts.{id}.download');
 // Coupon Controller index
-Route::get('coupons', [\App\Api\User\Controllers\CouponController::class, 'index'])->name('coupons');
+Route::get('coupons', [CouponController::class, 'index'])->name('coupons');
 // Coupon Controller receive
-Route::post('coupons/receive', [\App\Api\User\Controllers\CouponController::class, 'receive']);
+Route::post('coupons/receive', [CouponController::class, 'receive']);
 // Coupon Controller my Coupons
-Route::get('coupons/my', [\App\Api\User\Controllers\CouponController::class, 'myCoupons'])->name('coupons.my');
+Route::get('coupons/my', [CouponController::class, 'myCoupons'])->name('coupons.my');
 // Coupon Controller use
-Route::post('coupons/{id}/use', [\App\Api\User\Controllers\CouponController::class, 'use']);
+Route::post('coupons/{id}/use', [CouponController::class, 'use']);
 // Distribution Controller profile
-Route::get('distribution/profile', [\App\Api\User\Controllers\DistributionController::class, 'profile'])->name('distribution.profile');
+Route::get('distribution/profile', [DistributionController::class, 'profile'])->name('distribution.profile');
 // Distribution Controller stats
-Route::get('distribution/stats', [\App\Api\User\Controllers\DistributionController::class, 'stats'])->name('distribution.stats');
+Route::get('distribution/stats', [DistributionController::class, 'stats'])->name('distribution.stats');
 // Distribution Controller team
-Route::get('distribution/team', [\App\Api\User\Controllers\DistributionController::class, 'team'])->name('distribution.team');
+Route::get('distribution/team', [DistributionController::class, 'team'])->name('distribution.team');
 // Favorite Controller index
-Route::get('favorites', [\App\Api\User\Controllers\FavoriteController::class, 'index'])->name('favorites');
+Route::get('favorites', [FavoriteController::class, 'index'])->name('favorites');
 // Favorite Controller store
-Route::post('favorites', [\App\Api\User\Controllers\FavoriteController::class, 'store']);
+Route::post('favorites', [FavoriteController::class, 'store']);
 // Favorite Controller destroy
-Route::delete('favorites/{id}', [\App\Api\User\Controllers\FavoriteController::class, 'destroy']);
+Route::delete('favorites/{id}', [FavoriteController::class, 'destroy']);
 // 首页
-Route::get('/', [\App\Api\User\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
 // Invoice Controller index
-Route::get('invoices', [\App\Api\User\Controllers\InvoiceController::class, 'index'])->name('invoices');
+Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices');
 // Invoice Controller store
-Route::post('invoices', [\App\Api\User\Controllers\InvoiceController::class, 'store']);
+Route::post('invoices', [InvoiceController::class, 'store']);
 // Invoice Controller show
-Route::get('invoices/{id}', [\App\Api\User\Controllers\InvoiceController::class, 'show'])->name('invoices.{id}');
+Route::get('invoices/{id}', [InvoiceController::class, 'show'])->name('invoices.{id}');
 // Invoice Controller download
-Route::get('invoices/{id}/download', [\App\Api\User\Controllers\InvoiceController::class, 'download'])->name('invoices.{id}.download');
+Route::get('invoices/{id}/download', [InvoiceController::class, 'download'])->name('invoices.{id}.download');
 // Kyc Controller submit
-Route::post('kyc/submit', [\App\Api\User\Controllers\KycController::class, 'submit']);
+Route::post('kyc/submit', [KycController::class, 'submit']);
 // Kyc Controller status
-Route::get('kyc/status', [\App\Api\User\Controllers\KycController::class, 'status'])->name('kyc.status');
+Route::get('kyc/status', [KycController::class, 'status'])->name('kyc.status');
 // Kyc Controller resubmit
-Route::post('kyc/resubmit', [\App\Api\User\Controllers\KycController::class, 'resubmit']);
+Route::post('kyc/resubmit', [KycController::class, 'resubmit']);
 // Member Level Controller index
-Route::get('member-levels', [\App\Api\User\Controllers\MemberLevelController::class, 'index'])->name('member-levels');
+Route::get('member-levels', [MemberLevelController::class, 'index'])->name('member-levels');
 // Member Level Controller show
-Route::get('member-levels/{id}', [\App\Api\User\Controllers\MemberLevelController::class, 'show'])->name('member-levels.{id}');
+Route::get('member-levels/{id}', [MemberLevelController::class, 'show'])->name('member-levels.{id}');
 // Member Level Controller benefits
-Route::get('member-levels/{id}/benefits', [\App\Api\User\Controllers\MemberLevelController::class, 'benefits'])->name('member-levels.{id}.benefits');
+Route::get('member-levels/{id}/benefits', [MemberLevelController::class, 'benefits'])->name('member-levels.{id}.benefits');
 // Message Controller index
-Route::get('messages', [\App\Api\User\Controllers\MessageController::class, 'index'])->name('messages');
+Route::get('messages', [MessageController::class, 'index'])->name('messages');
 // Message Controller unread Count
-Route::get('messages/unread-count', [\App\Api\User\Controllers\MessageController::class, 'unreadCount'])->name('messages.unread-count');
+Route::get('messages/unread-count', [MessageController::class, 'unreadCount'])->name('messages.unread-count');
 // Message Controller mark Read
-Route::post('messages/{id}/read', [\App\Api\User\Controllers\MessageController::class, 'markRead']);
+Route::post('messages/{id}/read', [MessageController::class, 'markRead']);
 // Notification Controller index
-Route::get('notifications', [\App\Api\User\Controllers\NotificationController::class, 'index'])->name('notifications');
+Route::get('notifications', [NotificationController::class, 'index'])->name('notifications');
 // Notification Controller show
-Route::get('notifications/{id}', [\App\Api\User\Controllers\NotificationController::class, 'show'])->name('notifications.{id}');
+Route::get('notifications/{id}', [NotificationController::class, 'show'])->name('notifications.{id}');
 // Notification Controller mark Read
-Route::post('notifications/{id}/read', [\App\Api\User\Controllers\NotificationController::class, 'markRead']);
+Route::post('notifications/{id}/read', [NotificationController::class, 'markRead']);
 // Notification Controller mark All Read
-Route::post('notifications/read-all', [\App\Api\User\Controllers\NotificationController::class, 'markAllRead']);
+Route::post('notifications/read-all', [NotificationController::class, 'markAllRead']);
 // Notification Controller destroy
-Route::delete('notifications/{id}', [\App\Api\User\Controllers\NotificationController::class, 'destroy']);
+Route::delete('notifications/{id}', [NotificationController::class, 'destroy']);
 // Order Controller index
-Route::get('orders', [\App\Api\User\Controllers\OrderController::class, 'index'])->name('orders');
+Route::get('orders', [OrderController::class, 'index'])->name('orders');
 // Order Controller store
-Route::post('orders', [\App\Api\User\Controllers\OrderController::class, 'store']);
+Route::post('orders', [OrderController::class, 'store']);
 // Order Controller show
-Route::get('orders/{id}', [\App\Api\User\Controllers\OrderController::class, 'show'])->name('orders.{id}');
+Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.{id}');
 // Order Controller cancel
-Route::post('orders/{id}/cancel', [\App\Api\User\Controllers\OrderController::class, 'cancel']);
+Route::post('orders/{id}/cancel', [OrderController::class, 'cancel']);
 // Order Controller confirm
-Route::post('orders/{id}/confirm', [\App\Api\User\Controllers\OrderController::class, 'confirm']);
+Route::post('orders/{id}/confirm', [OrderController::class, 'confirm']);
 // Order Review Controller index
-Route::get('order-reviews', [\App\Api\User\Controllers\OrderReviewController::class, 'index'])->name('order-reviews');
+Route::get('order-reviews', [OrderReviewController::class, 'index'])->name('order-reviews');
 // Order Review Controller store
-Route::post('order-reviews', [\App\Api\User\Controllers\OrderReviewController::class, 'store']);
+Route::post('order-reviews', [OrderReviewController::class, 'store']);
 // Order Review Controller show
-Route::get('order-reviews/{id}', [\App\Api\User\Controllers\OrderReviewController::class, 'show'])->name('order-reviews.{id}');
+Route::get('order-reviews/{id}', [OrderReviewController::class, 'show'])->name('order-reviews.{id}');
 // Order Review Controller update
-Route::put('order-reviews/{id}', [\App\Api\User\Controllers\OrderReviewController::class, 'update']);
+Route::put('order-reviews/{id}', [OrderReviewController::class, 'update']);
 // 创建支付
-Route::post('payments', [\App\Api\User\Controllers\PaymentController::class, 'store']);
+Route::post('payments', [PaymentController::class, 'store']);
 // 支付详情
-Route::get('payments/{id}', [\App\Api\User\Controllers\PaymentController::class, 'show'])->name('payments.{id}');
+Route::get('payments/{id}', [PaymentController::class, 'show'])->name('payments.{id}');
 // Points Controller index
-Route::get('points', [\App\Api\User\Controllers\PointsController::class, 'index'])->name('points');
+Route::get('points', [PointsController::class, 'index'])->name('points');
 // Points Controller history
-Route::get('points/history', [\App\Api\User\Controllers\PointsController::class, 'history'])->name('points.history');
+Route::get('points/history', [PointsController::class, 'history'])->name('points.history');
 // Points Controller exchange
-Route::post('points/exchange', [\App\Api\User\Controllers\PointsController::class, 'exchange']);
+Route::post('points/exchange', [PointsController::class, 'exchange']);
 // Privacy Controller status
-Route::get('privacy/status', [\App\Api\User\Controllers\PrivacyController::class, 'status'])->name('privacy.status');
+Route::get('privacy/status', [PrivacyController::class, 'status'])->name('privacy.status');
 // Privacy Controller export
-Route::post('privacy/export', [\App\Api\User\Controllers\PrivacyController::class, 'export']);
+Route::post('privacy/export', [PrivacyController::class, 'export']);
 // Privacy Controller delete
-Route::delete('privacy/{id}', [\App\Api\User\Controllers\PrivacyController::class, 'delete']);
+Route::delete('privacy/{id}', [PrivacyController::class, 'delete']);
 // Privacy Controller correct
-Route::post('privacy/correct', [\App\Api\User\Controllers\PrivacyController::class, 'correct']);
+Route::post('privacy/correct', [PrivacyController::class, 'correct']);
 // 获取会员资料
-Route::get('profile', [\App\Api\User\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('profile', [ProfileController::class, 'index'])->name('profile');
 // 更新会员资料
-Route::put('profile', [\App\Api\User\Controllers\ProfileController::class, 'update']);
+Route::put('profile', [ProfileController::class, 'update']);
 // Refund Controller index
-Route::get('refunds', [\App\Api\User\Controllers\RefundController::class, 'index'])->name('refunds');
+Route::get('refunds', [RefundController::class, 'index'])->name('refunds');
 // Refund Controller store
-Route::post('refunds', [\App\Api\User\Controllers\RefundController::class, 'store']);
+Route::post('refunds', [RefundController::class, 'store']);
 // Refund Controller show
-Route::get('refunds/{id}', [\App\Api\User\Controllers\RefundController::class, 'show'])->name('refunds.{id}');
+Route::get('refunds/{id}', [RefundController::class, 'show'])->name('refunds.{id}');
 // Refund Controller cancel
-Route::post('refunds/{id}/cancel', [\App\Api\User\Controllers\RefundController::class, 'cancel']);
+Route::post('refunds/{id}/cancel', [RefundController::class, 'cancel']);
 // Security Controller update Password
-Route::put('security/password', [\App\Api\User\Controllers\SecurityController::class, 'updatePassword']);
+Route::put('security/password', [SecurityController::class, 'updatePassword']);
 // Security Controller update Phone
-Route::put('security/phone', [\App\Api\User\Controllers\SecurityController::class, 'updatePhone']);
+Route::put('security/phone', [SecurityController::class, 'updatePhone']);
 // Security Controller update Email
-Route::put('security/email', [\App\Api\User\Controllers\SecurityController::class, 'updateEmail']);
+Route::put('security/email', [SecurityController::class, 'updateEmail']);
 // Security Controller real Name
-Route::post('security/real-name', [\App\Api\User\Controllers\SecurityController::class, 'realName']);
+Route::post('security/real-name', [SecurityController::class, 'realName']);
 // User Bind Controller index
-Route::get('binds', [\App\Api\User\Controllers\UserBindController::class, 'index'])->name('binds');
+Route::get('binds', [UserBindController::class, 'index'])->name('binds');
 // User Bind Controller bind
-Route::post('binds/bind', [\App\Api\User\Controllers\UserBindController::class, 'bind']);
+Route::post('binds/bind', [UserBindController::class, 'bind']);
 // User Bind Controller unbind
-Route::post('binds/unbind', [\App\Api\User\Controllers\UserBindController::class, 'unbind']);
+Route::post('binds/unbind', [UserBindController::class, 'unbind']);
 // 获取会员资料
-Route::get('me', [\App\Api\User\Controllers\UserController::class, 'profile'])->name('me');
+Route::get('me', [UserController::class, 'profile'])->name('me');
 // 更新会员资料
-Route::put('me', [\App\Api\User\Controllers\UserController::class, 'updateProfile']);
+Route::put('me', [UserController::class, 'updateProfile']);
 // Wallet Controller index
-Route::get('wallet', [\App\Api\User\Controllers\WalletController::class, 'index'])->name('wallet');
+Route::get('wallet', [WalletController::class, 'index'])->name('wallet');
 // Wallet Controller balance
-Route::get('wallet/balance', [\App\Api\User\Controllers\WalletController::class, 'balance'])->name('wallet.balance');
+Route::get('wallet/balance', [WalletController::class, 'balance'])->name('wallet.balance');
 // Wallet Controller transactions
-Route::get('wallet/transactions', [\App\Api\User\Controllers\WalletController::class, 'transactions'])->name('wallet.transactions');
+Route::get('wallet/transactions', [WalletController::class, 'transactions'])->name('wallet.transactions');
 // Withdraw Controller index
-Route::get('withdraws', [\App\Api\User\Controllers\WithdrawController::class, 'index'])->name('withdraws');
+Route::get('withdraws', [WithdrawController::class, 'index'])->name('withdraws');
 // Withdraw Controller store
-Route::post('withdraws', [\App\Api\User\Controllers\WithdrawController::class, 'store']);
+Route::post('withdraws', [WithdrawController::class, 'store']);
 // Withdraw Controller show
-Route::get('withdraws/{id}', [\App\Api\User\Controllers\WithdrawController::class, 'show'])->name('withdraws.{id}');
+Route::get('withdraws/{id}', [WithdrawController::class, 'show'])->name('withdraws.{id}');
