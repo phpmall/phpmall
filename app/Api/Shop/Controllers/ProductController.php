@@ -7,6 +7,8 @@ namespace App\Api\Shop\Controllers;
 use App\Api\Shop\Requests\Product\ProductIndexRequest;
 use App\Api\Shop\Responses\Product\ProductListResponse;
 use App\Api\Shop\Responses\Product\ProductResponse;
+use App\Api\Shop\Responses\Product\ProductSkuListResponse;
+use App\Api\Shop\Responses\Product\ProductSkuResponse;
 use App\Api\Shop\Responses\Review\ReviewListResponse;
 use App\Api\Shop\Responses\Review\ReviewResponse;
 use App\Modules\Product\Services\ProductReviewService;
