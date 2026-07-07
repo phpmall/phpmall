@@ -46,6 +46,8 @@ Route::get('addresses/{id}', [AddressController::class, 'show'])->name('addresse
 Route::put('addresses/{id}', [AddressController::class, 'update']);
 // 删除收货地址
 Route::delete('addresses/{id}', [AddressController::class, 'destroy']);
+// 设置默认收货地址
+Route::post('addresses/{id}/default', [AddressController::class, 'setDefault']);
 // 新会员注册
 Route::post('auth/signup', [AuthController::class, 'signup']);
 // 会员登录接口
