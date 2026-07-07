@@ -74,6 +74,52 @@ class ProductService extends CommonService implements ServiceInterface
     }
 
     /**
+     * 分页查询店铺商品列表
+     *
+     * @param  array<string, mixed>  $params
+     */
+    public function paginateByShopId(int $shopId, array $params = []): array
+    {
+        $shop = DB::table('shops')->where('id', $shopId)->first();
+        if (empty($shop)) {
+            return [
+                'items' => [],
+                'pagination' => $this->emptyPagination((int) ($params['page'] ?? 1), (int) ($params['per_page'] ?? 20)),
+            ];
+        }
+
+        $condition = ['merchant_id' => (int) $shop->merchant_id];
+
+        if (! empty($params['status'])) {
+            $condition['status'] = (int) $params['status'];
+        }
+
+        if (! empty($params['category_id'])) {
+            $condition['category_id'] = (int) $params['category_id'];
+        }
+
+        $page = (int) ($params['page'] ?? 1);
+        $perPage = (int) ($params['per_page'] ?? 20);
+
+        $result = $this->getRepository()->page($condition, $page, $perPage, 'sort_order', 'desc');
+
+        $items = [];
+        foreach ($result['data'] ?? [] as $item) {
+            $items[] = $this->formatShopProduct($item, $shopId);
+        }
+
+        return [
+            'items' => $items,
+            'pagination' => [
+                'total' => (int) ($result['total'] ?? 0),
+                'per_page' => (int) ($result['per_page'] ?? $perPage),
+                'current_page' => (int) ($result['current_page'] ?? $page),
+                'last_page' => (int) ($result['last_page'] ?? 1),
+            ],
+        ];
+    }
+
+    /**
      * 创建商品
      */
     public function createForMerchant(int $merchantId, array $data): Product
@@ -213,6 +259,36 @@ class ProductService extends CommonService implements ServiceInterface
         ];
     }
 
+    /**
+     * @param  array<string, mixed>  $product
+     */
+    private function formatShopProduct(array $product, ?int $shopId = null): array
+    {
+        return [
+            'id' => (int) $product['id'],
+            'name' => $product['title'],
+            'subtitle' => $product['subtitle'] ?? null,
+            'description' => $product['description'] ?? null,
+            'mainImage' => $product['main_image'],
+            'images' => $this->decodeImages($product['images']),
+            'categoryId' => (int) $product['category_id'],
+            'categoryName' => null,
+            'shopId' => $shopId ?? (int) $product['merchant_id'],
+            'shopName' => null,
+            'price' => (int) $product['min_price'],
+            'marketPrice' => (int) $product['max_price'],
+            'stock' => (int) $product['total_stock'],
+            'soldCount' => (int) $product['sales_count'],
+            'rating' => null,
+            'reviewCount' => 0,
+            'isHot' => (int) $product['is_hot'],
+            'isRecommend' => (int) $product['is_recommend'],
+            'status' => (int) $product['status'],
+            'createdAt' => $product['created_at'],
+            'updatedAt' => $product['updated_at'],
+        ];
+    }
+
     private function formatPage(array $page): array
     {
         return [
@@ -225,6 +301,18 @@ class ProductService extends CommonService implements ServiceInterface
                 'has_next' => ! empty($page['next_page_url']),
                 'has_prev' => ! empty($page['prev_page_url']),
             ],
+        ];
+    }
+
+    private function emptyPagination(int $page, int $perPage): array
+    {
+        return [
+            'page' => $page,
+            'per_page' => $perPage,
+            'total' => 0,
+            'total_pages' => 1,
+            'has_next' => false,
+            'has_prev' => $page > 1,
         ];
     }
 

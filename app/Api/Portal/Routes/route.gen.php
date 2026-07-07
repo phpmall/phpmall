@@ -78,5 +78,7 @@ Route::get('seckills', [SeckillController::class, 'index'])->name('seckills');
 Route::get('seckills/{id}', [SeckillController::class, 'show'])->name('seckills.{id}');
 // 店铺列表
 Route::get('shops', [ShopController::class, 'index'])->name('shops');
+// 店铺首页
+Route::get('shops/{id}/home', [ShopController::class, 'home'])->name('shops.{id}.home');
 // 店铺详情
 Route::get('shops/{id}', [ShopController::class, 'show'])->name('shops.{id}');
