@@ -56,17 +56,17 @@ Route::post('auth/forgot-password', [AuthController::class, 'forgot']);
 Route::post('auth/reset-password', [AuthController::class, 'reset']);
 // 会员登出
 Route::post('auth/logout', [AuthController::class, 'logout']);
-// Cart Controller index
+// 购物车列表
 Route::get('cart', [CartController::class, 'index'])->name('cart');
-// Cart Controller store
+// 添加购物车商品
 Route::post('cart', [CartController::class, 'store']);
-// Cart Controller update
+// 更新购物车商品
 Route::put('cart/{id}', [CartController::class, 'update']);
-// Cart Controller destroy
+// 删除购物车商品
 Route::delete('cart/{id}', [CartController::class, 'destroy']);
-// Cart Controller clear
+// 清空购物车
 Route::post('cart/clear', [CartController::class, 'clear']);
-// Cart Controller batch Store
+// 批量添加购物车商品
 Route::post('cart/batch', [CartController::class, 'batchStore']);
 // Commission Controller index
 Route::get('commissions', [CommissionController::class, 'index'])->name('commissions');

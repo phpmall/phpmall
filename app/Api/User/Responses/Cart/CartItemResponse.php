@@ -8,12 +8,18 @@ use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'CartItemResponse')]
-class CartItemResponse
+class CartItemResponse implements \JsonSerializable
 {
     use HasSerializableAttributes;
 
     #[OA\Property(property: 'id', description: '购物车ID', type: 'integer')]
     private int $id;
+
+    #[OA\Property(property: 'merchant_id', description: '商家ID', type: 'integer')]
+    private int $merchantId;
+
+    #[OA\Property(property: 'merchant_name', description: '商家名称', type: 'string')]
+    private string $merchantName;
 
     #[OA\Property(property: 'sku_id', description: 'SKU ID', type: 'integer')]
     private int $skuId;
@@ -62,6 +68,26 @@ class CartItemResponse
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function getMerchantId(): int
+    {
+        return $this->merchantId;
+    }
+
+    public function setMerchantId(int $merchantId): void
+    {
+        $this->merchantId = $merchantId;
+    }
+
+    public function getMerchantName(): string
+    {
+        return $this->merchantName;
+    }
+
+    public function setMerchantName(string $merchantName): void
+    {
+        $this->merchantName = $merchantName;
     }
 
     public function getSkuId(): int
