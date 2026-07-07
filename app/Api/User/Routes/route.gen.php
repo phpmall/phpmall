@@ -138,21 +138,21 @@ Route::get('member-levels', [MemberLevelController::class, 'index'])->name('memb
 Route::get('member-levels/{id}', [MemberLevelController::class, 'show'])->name('member-levels.{id}');
 // Member Level Controller benefits
 Route::get('member-levels/{id}/benefits', [MemberLevelController::class, 'benefits'])->name('member-levels.{id}.benefits');
-// Message Controller index
+// 消息列表
 Route::get('messages', [MessageController::class, 'index'])->name('messages');
-// Message Controller unread Count
+// 未读消息数
 Route::get('messages/unread-count', [MessageController::class, 'unreadCount'])->name('messages.unread-count');
-// Message Controller mark Read
+// 标记消息已读
 Route::post('messages/{id}/read', [MessageController::class, 'markRead']);
-// Notification Controller index
+// 通知列表
 Route::get('notifications', [NotificationController::class, 'index'])->name('notifications');
-// Notification Controller show
+// 通知详情
 Route::get('notifications/{id}', [NotificationController::class, 'show'])->name('notifications.{id}');
-// Notification Controller mark Read
+// 标记通知已读
 Route::post('notifications/{id}/read', [NotificationController::class, 'markRead']);
-// Notification Controller mark All Read
+// 标记全部已读
 Route::post('notifications/read-all', [NotificationController::class, 'markAllRead']);
-// Notification Controller destroy
+// 删除通知
 Route::delete('notifications/{id}', [NotificationController::class, 'destroy']);
 // 订单预览
 Route::post('orders/preview', [OrderController::class, 'preview']);
