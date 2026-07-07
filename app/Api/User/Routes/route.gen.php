@@ -194,13 +194,13 @@ Route::post('privacy/correct', [PrivacyController::class, 'correct']);
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');
 // 更新会员资料
 Route::put('profile', [ProfileController::class, 'update']);
-// Refund Controller index
+// 退款列表
 Route::get('refunds', [RefundController::class, 'index'])->name('refunds');
-// Refund Controller store
+// 申请退款
 Route::post('refunds', [RefundController::class, 'store']);
-// Refund Controller show
+// 退款详情
 Route::get('refunds/{id}', [RefundController::class, 'show'])->name('refunds.{id}');
-// Refund Controller cancel
+// 撤销退款
 Route::post('refunds/{id}/cancel', [RefundController::class, 'cancel']);
 // Security Controller update Password
 Route::put('security/password', [SecurityController::class, 'updatePassword']);
