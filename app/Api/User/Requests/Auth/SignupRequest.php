@@ -35,7 +35,7 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            self::getMobile => 'required|mobile',
+            self::getMobile => 'required|string|min:11|max:11',
             self::getPassword => 'required|min:6|confirmed',
             self::getDeviceName => 'required',
         ];

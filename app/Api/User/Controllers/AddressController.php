@@ -106,6 +106,24 @@ class AddressController extends BaseController
         ]);
     }
 
+    #[OA\Post(path: '/addresses/{id}/default', summary: '设置默认收货地址', security: [['bearerAuth' => []]], tags: ['会员中心'])]
+    #[OA\Parameter(name: 'id', description: '地址ID', in: 'path', required: true)]
+    #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: AddressResponse::class))]
+    public function setDefault(Request $request, int $id): JsonResponse
+    {
+        $user = $this->resolveUser($request);
+        $address = $user->addresses()->findOrFail($id);
+
+        $user->addresses()->update(['is_default' => 0]);
+        $address->update(['is_default' => 1]);
+
+        return response()->json([
+            'code' => 0,
+            'message' => '设置成功',
+            'data' => $address->fresh(),
+        ]);
+    }
+
     private function resolveUser(Request $request): User
     {
         $user = $request->user();

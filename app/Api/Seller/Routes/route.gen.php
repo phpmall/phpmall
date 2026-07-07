@@ -85,6 +85,10 @@ Route::get('coupons/{id}', [CouponController::class, 'show'])->name('coupons.{id
 Route::put('coupons/{id}', [CouponController::class, 'update']);
 // 删除优惠券
 Route::delete('coupons/{id}', [CouponController::class, 'destroy']);
+// 启用优惠券
+Route::post('coupons/{id}/enable', [CouponController::class, 'enable']);
+// 禁用优惠券
+Route::post('coupons/{id}/disable', [CouponController::class, 'disable']);
 // 获取优惠券统计
 Route::get('coupons/{id}/stats', [CouponController::class, 'stats'])->name('coupons.{id}.stats');
 // 数据概览
@@ -181,6 +185,8 @@ Route::get('orders', [OrderController::class, 'index'])->name('orders');
 Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.{id}');
 // 订单发货
 Route::post('orders/{id}/ship', [OrderController::class, 'ship']);
+// 订单备注
+Route::post('orders/{id}/remark', [OrderController::class, 'remark']);
 // 拒绝订单
 Route::post('orders/{id}/refuse', [OrderController::class, 'refuse']);
 // 获取商品属性列表
@@ -303,6 +309,14 @@ Route::post('shop-reviews/{id}/reply', [ShopReviewController::class, 'reply']);
 Route::get('sub-accounts', [SubAccountController::class, 'index'])->name('sub-accounts');
 // 创建子账号
 Route::post('sub-accounts', [SubAccountController::class, 'store']);
+// 获取子账号详情
+Route::get('sub-accounts/{id}', [SubAccountController::class, 'show'])->name('sub-accounts.{id}');
+// 更新子账号
+Route::put('sub-accounts/{id}', [SubAccountController::class, 'update']);
+// 删除子账号
+Route::delete('sub-accounts/{id}', [SubAccountController::class, 'destroy']);
+// 分配子账号权限
+Route::post('sub-accounts/{id}/permissions', [SubAccountController::class, 'permissions']);
 // 启用子账号
 Route::post('sub-accounts/{id}/enable', [SubAccountController::class, 'enable']);
 // 禁用子账号

@@ -24,6 +24,7 @@ use App\Api\User\Controllers\MessageController;
 use App\Api\User\Controllers\NotificationController;
 use App\Api\User\Controllers\OrderController;
 use App\Api\User\Controllers\OrderReviewController;
+use App\Api\User\Controllers\PaymentController;
 use App\Api\User\Controllers\PointsController;
 use App\Api\User\Controllers\PrivacyController;
 use App\Api\User\Controllers\ProfileController;
@@ -45,6 +46,8 @@ Route::get('addresses/{id}', [AddressController::class, 'show'])->name('addresse
 Route::put('addresses/{id}', [AddressController::class, 'update']);
 // 删除收货地址
 Route::delete('addresses/{id}', [AddressController::class, 'destroy']);
+// 设置默认收货地址
+Route::post('addresses/{id}/default', [AddressController::class, 'setDefault']);
 // 新会员注册
 Route::post('auth/signup', [AuthController::class, 'signup']);
 // 会员登录接口
@@ -55,17 +58,17 @@ Route::post('auth/forgot-password', [AuthController::class, 'forgot']);
 Route::post('auth/reset-password', [AuthController::class, 'reset']);
 // 会员登出
 Route::post('auth/logout', [AuthController::class, 'logout']);
-// Cart Controller index
+// 购物车列表
 Route::get('cart', [CartController::class, 'index'])->name('cart');
-// Cart Controller store
+// 添加购物车商品
 Route::post('cart', [CartController::class, 'store']);
-// Cart Controller update
+// 更新购物车商品
 Route::put('cart/{id}', [CartController::class, 'update']);
-// Cart Controller destroy
+// 删除购物车商品
 Route::delete('cart/{id}', [CartController::class, 'destroy']);
-// Cart Controller clear
+// 清空购物车
 Route::post('cart/clear', [CartController::class, 'clear']);
-// Cart Controller batch Store
+// 批量添加购物车商品
 Route::post('cart/batch', [CartController::class, 'batchStore']);
 // Commission Controller index
 Route::get('commissions', [CommissionController::class, 'index'])->name('commissions');
@@ -135,31 +138,33 @@ Route::get('member-levels', [MemberLevelController::class, 'index'])->name('memb
 Route::get('member-levels/{id}', [MemberLevelController::class, 'show'])->name('member-levels.{id}');
 // Member Level Controller benefits
 Route::get('member-levels/{id}/benefits', [MemberLevelController::class, 'benefits'])->name('member-levels.{id}.benefits');
-// Message Controller index
+// 消息列表
 Route::get('messages', [MessageController::class, 'index'])->name('messages');
-// Message Controller unread Count
+// 未读消息数
 Route::get('messages/unread-count', [MessageController::class, 'unreadCount'])->name('messages.unread-count');
-// Message Controller mark Read
+// 标记消息已读
 Route::post('messages/{id}/read', [MessageController::class, 'markRead']);
-// Notification Controller index
+// 通知列表
 Route::get('notifications', [NotificationController::class, 'index'])->name('notifications');
-// Notification Controller show
+// 通知详情
 Route::get('notifications/{id}', [NotificationController::class, 'show'])->name('notifications.{id}');
-// Notification Controller mark Read
+// 标记通知已读
 Route::post('notifications/{id}/read', [NotificationController::class, 'markRead']);
-// Notification Controller mark All Read
+// 标记全部已读
 Route::post('notifications/read-all', [NotificationController::class, 'markAllRead']);
-// Notification Controller destroy
+// 删除通知
 Route::delete('notifications/{id}', [NotificationController::class, 'destroy']);
-// Order Controller index
+// 订单预览
+Route::post('orders/preview', [OrderController::class, 'preview']);
+// 订单列表
 Route::get('orders', [OrderController::class, 'index'])->name('orders');
-// Order Controller store
+// 创建订单
 Route::post('orders', [OrderController::class, 'store']);
-// Order Controller show
+// 订单详情
 Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.{id}');
-// Order Controller cancel
+// 取消订单
 Route::post('orders/{id}/cancel', [OrderController::class, 'cancel']);
-// Order Controller confirm
+// 确认收货
 Route::post('orders/{id}/confirm', [OrderController::class, 'confirm']);
 // Order Review Controller index
 Route::get('order-reviews', [OrderReviewController::class, 'index'])->name('order-reviews');
@@ -169,6 +174,10 @@ Route::post('order-reviews', [OrderReviewController::class, 'store']);
 Route::get('order-reviews/{id}', [OrderReviewController::class, 'show'])->name('order-reviews.{id}');
 // Order Review Controller update
 Route::put('order-reviews/{id}', [OrderReviewController::class, 'update']);
+// 创建支付
+Route::post('payments', [PaymentController::class, 'store']);
+// 支付详情
+Route::get('payments/{id}', [PaymentController::class, 'show'])->name('payments.{id}');
 // Points Controller index
 Route::get('points', [PointsController::class, 'index'])->name('points');
 // Points Controller history
@@ -187,13 +196,13 @@ Route::post('privacy/correct', [PrivacyController::class, 'correct']);
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');
 // 更新会员资料
 Route::put('profile', [ProfileController::class, 'update']);
-// Refund Controller index
+// 退款列表
 Route::get('refunds', [RefundController::class, 'index'])->name('refunds');
-// Refund Controller store
+// 申请退款
 Route::post('refunds', [RefundController::class, 'store']);
-// Refund Controller show
+// 退款详情
 Route::get('refunds/{id}', [RefundController::class, 'show'])->name('refunds.{id}');
-// Refund Controller cancel
+// 撤销退款
 Route::post('refunds/{id}/cancel', [RefundController::class, 'cancel']);
 // Security Controller update Password
 Route::put('security/password', [SecurityController::class, 'updatePassword']);

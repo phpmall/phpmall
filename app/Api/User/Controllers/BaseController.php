@@ -17,7 +17,7 @@ class BaseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:sanctum']);
+        $this->middleware(['jwt.auth']);
     }
 
     protected function queryWrapper(): array

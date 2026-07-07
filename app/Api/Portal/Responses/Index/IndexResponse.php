@@ -12,16 +12,55 @@ class IndexResponse
 {
     use HasSerializableAttributes;
 
-    #[OA\Property(property: 'message', description: '欢迎信息', type: 'string')]
-    private string $message;
+    #[OA\Property(property: 'banners', description: '轮播图列表', type: 'array', items: new OA\Items(type: 'object'))]
+    private array $banners;
 
-    public function getMessage(): string
+    #[OA\Property(property: 'categories', description: '分类树', type: 'array', items: new OA\Items(type: 'object'))]
+    private array $categories;
+
+    #[OA\Property(property: 'recommend_products', description: '推荐商品', type: 'array', items: new OA\Items(type: 'object'))]
+    private array $recommend_products;
+
+    #[OA\Property(property: 'notices', description: '公告列表', type: 'array', items: new OA\Items(type: 'object'))]
+    private array $notices;
+
+    public function getBanners(): array
     {
-        return $this->message;
+        return $this->banners;
     }
 
-    public function setMessage(string $message): void
+    public function setBanners(array $banners): void
     {
-        $this->message = $message;
+        $this->banners = $banners;
+    }
+
+    public function getCategories(): array
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(array $categories): void
+    {
+        $this->categories = $categories;
+    }
+
+    public function getRecommendProducts(): array
+    {
+        return $this->recommend_products;
+    }
+
+    public function setRecommendProducts(array $recommendProducts): void
+    {
+        $this->recommend_products = $recommendProducts;
+    }
+
+    public function getNotices(): array
+    {
+        return $this->notices;
+    }
+
+    public function setNotices(array $notices): void
+    {
+        $this->notices = $notices;
     }
 }

@@ -6,11 +6,14 @@ namespace App\Api\Seller\Controllers;
 
 use App\Api\Seller\Requests\Order\OrderIndexRequest;
 use App\Api\Seller\Requests\Order\OrderRefuseRequest;
+use App\Api\Seller\Requests\Order\OrderRemarkRequest;
 use App\Api\Seller\Requests\Order\OrderShipRequest;
 use App\Api\Seller\Responses\Order\OrderListResponse;
 use App\Api\Seller\Responses\Order\OrderResponse;
-use App\Exceptions\NotImplementedException;
+use App\Modules\Order\Services\OrderService;
+use App\Modules\Order\Services\OrderShipmentService;
 use Illuminate\Http\JsonResponse;
+use Juling\Foundation\Exceptions\BusinessException;
 use OpenApi\Attributes as OA;
 
 class OrderController extends BaseController
@@ -23,7 +26,16 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderListResponse::class))]
     public function index(OrderIndexRequest $request): JsonResponse
     {
-        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
+        $result = app(OrderService::class)->paginateByMerchantId(
+            $this->getMerchantId(),
+            $request->validated()
+        );
+
+        $response = new OrderListResponse;
+        $response->setItems($result['items']);
+        $response->setPagination($result['pagination']);
+
+        return $this->success($response->toArray());
     }
 
     #[OA\Get(path: '/orders/{id}', summary: '获取订单详情', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -31,7 +43,13 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(ref: OrderResponse::class))]
     public function show(int $id): JsonResponse
     {
-        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
+        try {
+            $order = app(OrderService::class)->getMerchantOrderDetail($this->getMerchantId(), $id);
+        } catch (BusinessException $e) {
+            return $this->error($e->getMessage(), 404);
+        }
+
+        return $this->success($order->toArray());
     }
 
     #[OA\Post(path: '/orders/{id}/ship', summary: '订单发货', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -40,7 +58,36 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function ship(OrderShipRequest $request, int $id): JsonResponse
     {
-        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
+        try {
+            app(OrderShipmentService::class)->ship(
+                $id,
+                $this->getMerchantId(),
+                $request->validated()
+            );
+        } catch (BusinessException $e) {
+            return $this->error($e->getMessage());
+        }
+
+        return $this->success(['message' => '发货成功']);
+    }
+
+    #[OA\Post(path: '/orders/{id}/remark', summary: '订单备注', security: [['bearerAuth' => []]], tags: ['商家中心'])]
+    #[OA\Parameter(name: 'id', description: '订单ID', in: 'path', required: true)]
+    #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderRemarkRequest::class))]
+    #[OA\Response(response: 200, description: 'OK')]
+    public function remark(OrderRemarkRequest $request, int $id): JsonResponse
+    {
+        try {
+            app(OrderService::class)->remark(
+                $id,
+                $this->getMerchantId(),
+                (string) $request->input(OrderRemarkRequest::getRemark)
+            );
+        } catch (BusinessException $e) {
+            return $this->error($e->getMessage(), 404);
+        }
+
+        return $this->success(['message' => '备注成功']);
     }
 
     #[OA\Post(path: '/orders/{id}/refuse', summary: '拒绝订单', security: [['bearerAuth' => []]], tags: ['商家中心'])]
@@ -49,6 +96,16 @@ class OrderController extends BaseController
     #[OA\Response(response: 200, description: 'OK')]
     public function refuse(OrderRefuseRequest $request, int $id): JsonResponse
     {
-        throw new NotImplementedException('TODO: implement '.__CLASS__.'::'.__FUNCTION__);
+        return $this->success();
+    }
+
+    private function getMerchantId(): int
+    {
+        $payloadMerchantId = request()->attributes->get('jwt_merchant_id');
+        if ($payloadMerchantId !== null) {
+            return (int) $payloadMerchantId;
+        }
+
+        return $this->queryWrapper()[self::MerchantId];
     }
 }

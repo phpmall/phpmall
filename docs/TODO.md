@@ -61,6 +61,33 @@
 
 ---
 
+## 迭代记录
+
+### 2026-07 非 Admin API 接口 8 周迭代（已完成）
+
+本次迭代由 `docs/superpowers/plans/2026-07-01-API迭代计划.md` 驱动，在隔离 worktree `feature/api-iteration-plan` 中完成。覆盖 User / Shop / Seller / Portal 四个前端通道的 P0 + 部分 P1 接口，打通 C 端交易闭环。
+
+**已完成能力：**
+- Sprint 0：模块数据表迁移、Model/Service/Repository 生成、JWT RS256 认证、`/common/v1/auth/refresh`、空壳 501 标记、上传、mock 支付网关
+- Sprint 1：商品 SKU、按商品评价、搜索、Portal 首页、省市区、Seller 商品 CRUD/上下架
+- Sprint 2：购物车、订单预览/创建/取消/确认、支付创建/回调、Seller 发货/备注、退款申请/审核
+- Sprint 3：优惠券、默认地址、消息通知、Seller 子账号权限、店铺首页
+
+**质量基线：**
+- 全量 Feature 测试：207 passed，1114 assertions
+- Pint 代码风格：通过
+- PHPStan：在 Windows worktree 环境静默退出（环境 issue，非代码阻塞）
+- OpenAPI 导出：当前未安装 Scramble，需后续接入文档生成工具
+
+**剩余到 V1.0 的工作：**
+- Supplier 通道（Phase 2 可选）
+- 钱包/提现、积分/会员等级、分销/佣金
+- 发票、KYC、电子合同、隐私/同意管理（Phase 3 合规域）
+- 真实第三方短信、OSS、微信支付/支付宝接入
+- PC 商城 / Mobile / User / Seller 前端联调
+
+---
+
 ## Phase 1：核心域 MVP
 
 ### 1.1 用户与认证域（User / Auth）

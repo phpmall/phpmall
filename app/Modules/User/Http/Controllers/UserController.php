@@ -50,7 +50,7 @@ class UserController extends BaseController
             if (isset($requestData[UserQueryRequest::getEmail])) {
                 $condition[] = [UserEntity::getEmail, '=', $requestData[UserQueryRequest::getEmail]];
             }
-            
+
             $userService = new UserService;
             $result = $userService->page($condition, $page, $pageSize);
 

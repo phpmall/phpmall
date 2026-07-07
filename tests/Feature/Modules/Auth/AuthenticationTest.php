@@ -6,9 +6,11 @@ use App\Modules\User\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
+use Tests\Traits\JwtTokenHelper;
 
 class AuthenticationTest extends TestCase
 {
+    use JwtTokenHelper;
     use RefreshDatabase;
 
     public function test_user_can_register_with_phone(): void
@@ -83,7 +85,7 @@ class AuthenticationTest extends TestCase
             'password' => Hash::make('password123'),
         ]);
 
-        $token = $user->createToken('test')->plainTextToken;
+        $token = $this->generateJwtToken($user);
 
         $response = $this->withHeader('Authorization', "Bearer {$token}")
             ->getJson('/api/auth/me');
@@ -100,7 +102,7 @@ class AuthenticationTest extends TestCase
             'password' => Hash::make('password123'),
         ]);
 
-        $token = $user->createToken('test')->plainTextToken;
+        $token = $this->generateJwtToken($user);
 
         $response = $this->withHeader('Authorization', "Bearer {$token}")
             ->postJson('/api/auth/logout');
@@ -108,9 +110,5 @@ class AuthenticationTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonPath('code', 0)
             ->assertJsonPath('message', '退出成功');
-
-        $this->assertDatabaseMissing('personal_access_tokens', [
-            'token' => hash('sha256', explode('|', $token)[1] ?? $token),
-        ]);
     }
 }

@@ -8,7 +8,7 @@ use Juling\Foundation\Support\Traits\HasSerializableAttributes;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(schema: 'CartListResponse')]
-class CartListResponse
+class CartListResponse implements \JsonSerializable
 {
     use HasSerializableAttributes;
 
