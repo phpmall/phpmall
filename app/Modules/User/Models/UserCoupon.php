@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Modules\User\Models;
 
+use App\Modules\Coupon\Models\Coupon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserCoupon extends Model
 {
@@ -36,4 +38,9 @@ class UserCoupon extends Model
         'claim_time',
         'expire_time',
     ];
+
+    public function coupon(): BelongsTo
+    {
+        return $this->belongsTo(Coupon::class, 'coupon_id', 'id');
+    }
 }

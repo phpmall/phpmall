@@ -85,6 +85,10 @@ Route::get('coupons/{id}', [CouponController::class, 'show'])->name('coupons.{id
 Route::put('coupons/{id}', [CouponController::class, 'update']);
 // 删除优惠券
 Route::delete('coupons/{id}', [CouponController::class, 'destroy']);
+// 启用优惠券
+Route::post('coupons/{id}/enable', [CouponController::class, 'enable']);
+// 禁用优惠券
+Route::post('coupons/{id}/disable', [CouponController::class, 'disable']);
 // 获取优惠券统计
 Route::get('coupons/{id}/stats', [CouponController::class, 'stats'])->name('coupons.{id}.stats');
 // 数据概览
