@@ -49,6 +49,7 @@ class Order extends Model
         'cancel_reason',
         'auto_receipt_time',
         'remark',
+        'seller_remark',
         'source',
     ];
 }

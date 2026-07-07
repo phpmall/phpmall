@@ -181,6 +181,8 @@ Route::get('orders', [OrderController::class, 'index'])->name('orders');
 Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.{id}');
 // 订单发货
 Route::post('orders/{id}/ship', [OrderController::class, 'ship']);
+// 订单备注
+Route::post('orders/{id}/remark', [OrderController::class, 'remark']);
 // 拒绝订单
 Route::post('orders/{id}/refuse', [OrderController::class, 'refuse']);
 // 获取商品属性列表

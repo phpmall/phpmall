@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Order\Services;
 
+use App\Api\Seller\Responses\Order\OrderResponse as SellerOrderResponse;
 use App\Api\User\Responses\Order\OrderListResponse;
 use App\Api\User\Responses\Order\OrderPreviewResponse;
 use App\Api\User\Responses\Order\OrderResponse;
@@ -26,9 +27,17 @@ class OrderService extends CommonService implements ServiceInterface
 
     private const int STATUS_PENDING_PAYMENT = 10;
 
-    private const int STATUS_CANCELLED = 80;
+    private const int STATUS_PAID = 20;
+
+    private const int STATUS_PENDING_SHIPMENT = 30;
+
+    private const int STATUS_SHIPPED = 40;
 
     private const int STATUS_RECEIVED = 60;
+
+    private const int STATUS_COMPLETED = 70;
+
+    private const int STATUS_CANCELLED = 80;
 
     public function __construct(
         private readonly OrderRepository $repository,
@@ -187,6 +196,91 @@ class OrderService extends CommonService implements ServiceInterface
     }
 
     /**
+     * 查询商家订单列表
+     *
+     * @param  array<string, mixed>  $filters
+     * @return array<string, mixed>
+     */
+    public function paginateByMerchantId(int $merchantId, array $filters): array
+    {
+        $status = $filters['status'] ?? null;
+        $keyword = (string) ($filters['keyword'] ?? '');
+        $page = (int) ($filters['page'] ?? 1);
+        $perPage = (int) ($filters['per_page'] ?? 20);
+
+        $query = $this->repository->builder()->where('orders.merchant_id', $merchantId);
+
+        if ($status !== null) {
+            $query->where('orders.status', (int) $status);
+        }
+
+        if ($keyword !== '') {
+            $query->where(function ($q) use ($keyword): void {
+                $q->where('orders.order_no', 'like', '%'.$keyword.'%')
+                    ->orWhereExists(function ($exists) use ($keyword): void {
+                        $exists->selectRaw('1')
+                            ->from('order_items')
+                            ->whereColumn('order_items.order_id', 'orders.id')
+                            ->where('order_items.product_title', 'like', '%'.$keyword.'%');
+                    });
+            });
+        }
+
+        $result = $query->orderByDesc('orders.id')->paginate($perPage, ['orders.*'], 'page', $page);
+        $orders = $result->toArray();
+        $total = (int) ($orders['total'] ?? 0);
+        $lastPage = (int) ($orders['last_page'] ?? 1);
+
+        $items = [];
+        foreach ($orders['data'] ?? [] as $order) {
+            $order = (array) $order;
+            $items[] = $this->buildSellerOrderResponse((int) $order['id'], $order)->toArray();
+        }
+
+        return [
+            'items' => $items,
+            'pagination' => [
+                'page' => $page,
+                'per_page' => $perPage,
+                'total' => $total,
+                'total_pages' => $lastPage,
+                'has_next' => $page < $lastPage,
+                'has_prev' => $page > 1,
+            ],
+        ];
+    }
+
+    /**
+     * 查询商家订单详情
+     */
+    public function getMerchantOrderDetail(int $merchantId, int $orderId): SellerOrderResponse
+    {
+        $order = $this->repository->findById($orderId);
+
+        if (empty($order) || (int) $order['merchant_id'] !== $merchantId) {
+            throw new BusinessException('订单不存在');
+        }
+
+        return $this->buildSellerOrderResponse($orderId, $order);
+    }
+
+    /**
+     * 商家备注
+     */
+    public function remark(int $orderId, int $merchantId, string $remark): bool
+    {
+        $order = $this->repository->findById($orderId);
+
+        if (empty($order) || (int) $order['merchant_id'] !== $merchantId) {
+            throw new BusinessException('订单不存在');
+        }
+
+        return $this->repository->updateById([
+            'seller_remark' => $remark,
+        ], $orderId) > 0;
+    }
+
+    /**
      * 查询订单详情
      */
     public function getOrderDetail(int $userId, int $orderId): OrderResponse
@@ -242,6 +336,40 @@ class OrderService extends CommonService implements ServiceInterface
             'status' => self::STATUS_RECEIVED,
             'receipt_time' => now(),
         ], $orderId) > 0;
+    }
+
+    /**
+     * 构建商家订单响应
+     *
+     * @param  array<string, mixed>|null  $orderData
+     */
+    private function buildSellerOrderResponse(int $orderId, ?array $orderData = null): SellerOrderResponse
+    {
+        $order = $orderData ?? $this->repository->findById($orderId);
+
+        if (empty($order)) {
+            throw new BusinessException('订单不存在');
+        }
+
+        $items = $this->orderItemService->getSellerItemsByOrderId((int) $order['id']);
+
+        $response = new SellerOrderResponse;
+        $response->setId((int) $order['id']);
+        $response->setOrderNo($order['order_no']);
+        $response->setStatus((int) $order['status']);
+        $response->setTotalAmount((int) $order['product_amount']);
+        $response->setPayAmount((int) $order['pay_amount']);
+        $response->setDiscountAmount((int) $order['discount_amount']);
+        $response->setFreightAmount((int) $order['freight_amount']);
+        $response->setItemCount((int) ($order['item_count'] ?? $this->countItems($items)));
+        $response->setRemark($order['remark']);
+        $response->setCreatedAt($order['created_at']);
+        $response->setPaidAt($order['pay_time']);
+        $response->setShippedAt($order['ship_time']);
+        $response->setConfirmedAt($order['receipt_time']);
+        $response->setItems($items);
+
+        return $response;
     }
 
     /**

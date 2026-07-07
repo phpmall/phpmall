@@ -77,6 +77,37 @@ class OrderItemService extends CommonService implements ServiceInterface
     }
 
     /**
+     * 根据订单ID获取商家端商品项列表
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function getSellerItemsByOrderId(int $orderId): array
+    {
+        $items = $this->repository->builder()
+            ->where('order_id', $orderId)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $result = [];
+        foreach ($items as $item) {
+            $item = (array) $item;
+            $result[] = [
+                'id' => (int) $item['id'],
+                'product_id' => (int) $item['product_id'],
+                'product_name' => $item['product_title'],
+                'product_image' => $item['product_image'],
+                'sku_id' => (int) $item['sku_id'],
+                'sku_spec' => $this->formatSkuSpecs($item['sku_specs']),
+                'price' => (int) $item['price'],
+                'quantity' => (int) $item['quantity'],
+                'total_amount' => (int) $item['total_amount'],
+            ];
+        }
+
+        return $result;
+    }
+
+    /**
      * 格式化 SKU 规格
      */
     private function formatSkuSpecs(mixed $specs): ?string
