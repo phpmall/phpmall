@@ -309,6 +309,14 @@ Route::post('shop-reviews/{id}/reply', [ShopReviewController::class, 'reply']);
 Route::get('sub-accounts', [SubAccountController::class, 'index'])->name('sub-accounts');
 // 创建子账号
 Route::post('sub-accounts', [SubAccountController::class, 'store']);
+// 获取子账号详情
+Route::get('sub-accounts/{id}', [SubAccountController::class, 'show'])->name('sub-accounts.{id}');
+// 更新子账号
+Route::put('sub-accounts/{id}', [SubAccountController::class, 'update']);
+// 删除子账号
+Route::delete('sub-accounts/{id}', [SubAccountController::class, 'destroy']);
+// 分配子账号权限
+Route::post('sub-accounts/{id}/permissions', [SubAccountController::class, 'permissions']);
 // 启用子账号
 Route::post('sub-accounts/{id}/enable', [SubAccountController::class, 'enable']);
 // 禁用子账号
