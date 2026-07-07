@@ -152,15 +152,17 @@ Route::post('notifications/{id}/read', [NotificationController::class, 'markRead
 Route::post('notifications/read-all', [NotificationController::class, 'markAllRead']);
 // Notification Controller destroy
 Route::delete('notifications/{id}', [NotificationController::class, 'destroy']);
-// Order Controller index
+// 订单预览
+Route::post('orders/preview', [OrderController::class, 'preview']);
+// 订单列表
 Route::get('orders', [OrderController::class, 'index'])->name('orders');
-// Order Controller store
+// 创建订单
 Route::post('orders', [OrderController::class, 'store']);
-// Order Controller show
+// 订单详情
 Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.{id}');
-// Order Controller cancel
+// 取消订单
 Route::post('orders/{id}/cancel', [OrderController::class, 'cancel']);
-// Order Controller confirm
+// 确认收货
 Route::post('orders/{id}/confirm', [OrderController::class, 'confirm']);
 // Order Review Controller index
 Route::get('order-reviews', [OrderReviewController::class, 'index'])->name('order-reviews');
