@@ -37,7 +37,7 @@ class CaptchaController extends Controller
 
             return $this->success($response->toArray());
         } catch (Throwable $e) {
-            Log::error($e);
+            Log::error($e->getMessage(), ['exception' => $e]);
 
             return $this->error(BusinessEnum::SHOW_ERROR);
         }

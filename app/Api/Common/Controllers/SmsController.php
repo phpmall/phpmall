@@ -47,7 +47,7 @@ class SmsController extends Controller
 
             return $this->success($smsCodeResp->toArray());
         } catch (Throwable $e) {
-            Log::error($e);
+            Log::error($e->getMessage(), ['exception' => $e]);
 
             return $this->error(BusinessEnum::SHOW_ERROR);
         }

@@ -14,6 +14,11 @@ enum RoleEnum: string implements EnumMethodInterface
     /**
      * 管理员
      */
+    case Admin = 'admin';
+
+    /**
+     * 管理后台
+     */
     case Manager = 'manager';
 
     /**

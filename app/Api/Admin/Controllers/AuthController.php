@@ -38,7 +38,7 @@ class AuthController extends Controller
                 return $this->error($e);
             }
 
-            Log::error($e);
+            Log::error($e->getMessage(), ['exception' => $e]);
 
             return $this->error(ErrorEnum::LOGIN_FAIL);
         }

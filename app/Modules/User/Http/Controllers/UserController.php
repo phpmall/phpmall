@@ -71,7 +71,7 @@ class UserController extends BaseController
                 return $this->error($e);
             }
 
-            Log::error($e);
+            Log::error($e->getMessage(), ['exception' => $e]);
 
             return $this->error(BusinessEnum::QUERY_ERROR);
         }
@@ -109,7 +109,7 @@ class UserController extends BaseController
                 return $this->error($e);
             }
 
-            Log::error($e);
+            Log::error($e->getMessage(), ['exception' => $e]);
 
             return $this->error(BusinessEnum::CREATE_ERROR);
         }
@@ -143,7 +143,7 @@ class UserController extends BaseController
                 return $this->error($e);
             }
 
-            Log::error($e);
+            Log::error($e->getMessage(), ['exception' => $e]);
 
             return $this->error(BusinessEnum::SHOW_ERROR);
         }
@@ -186,7 +186,7 @@ class UserController extends BaseController
                 return $this->error($e);
             }
 
-            Log::error($e);
+            Log::error($e->getMessage(), ['exception' => $e]);
 
             return $this->error(BusinessEnum::UPDATE_ERROR);
         }
@@ -222,7 +222,7 @@ class UserController extends BaseController
                 return $this->error($e);
             }
 
-            Log::error($e);
+            Log::error($e->getMessage(), ['exception' => $e]);
 
             return $this->error(BusinessEnum::DESTROY_ERROR);
         }

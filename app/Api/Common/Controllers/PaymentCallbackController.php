@@ -87,7 +87,7 @@ class PaymentCallbackController extends BaseController
             $payment->status = self::PAYMENT_STATUS_PAID;
             $payment->paid_at = $paidAt;
             $payment->transaction_id = $result['third_party_no'] ?? null;
-            $payment->notify_raw = $data;
+            $payment->notify_raw = json_encode($data, JSON_UNESCAPED_UNICODE);
             $payment->save();
 
             $order = Order::where('id', $payment->order_id)->first();
