@@ -1,0 +1,488 @@
+<?php
+
+namespace App\Support;
+
+use App\Models\CodeGenerationTable;
+use App\Models\Department;
+use App\Models\Dictionary;
+use App\Models\DictionaryItem;
+use App\Models\LoginLog;
+use App\Models\Menu;
+use App\Models\Notice;
+use App\Models\OnlineBuilder;
+use App\Models\OperationLog;
+use App\Models\Post;
+use App\Models\Role;
+use App\Models\ScheduledTask;
+use App\Models\ScheduledTaskLog;
+use App\Models\SystemParameter;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
+
+class AdminResourceRegistry
+{
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public static function all(): array
+    {
+        return [
+            'roles' => [
+                'title' => '角色管理',
+                'description' => '维护系统角色、数据权限范围和启用状态。',
+                'model' => Role::class,
+                'search' => ['name', 'code', 'remark'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'name', 'label' => '角色名称'],
+                    ['key' => 'code', 'label' => '角色编码'],
+                    ['key' => 'data_scope', 'label' => '数据权限'],
+                    ['key' => 'sort', 'label' => '排序'],
+                    ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                    ['key' => 'created_at', 'label' => '创建时间', 'type' => 'datetime'],
+                ],
+                'fields' => [
+                    ['name' => 'name', 'label' => '角色名称', 'required' => true],
+                    ['name' => 'code', 'label' => '角色编码', 'required' => true],
+                    ['name' => 'data_scope', 'label' => '数据权限范围', 'type' => 'select', 'default' => 'all', 'options' => self::dataScopeOptions()],
+                    ['name' => 'sort', 'label' => '显示排序', 'type' => 'number', 'default' => 0],
+                    ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'enabled', 'options' => self::statusOptions()],
+                    ['name' => 'remark', 'label' => '备注', 'type' => 'textarea'],
+                ],
+                'rules' => fn (?int $id = null) => [
+                    'name' => ['required', 'string', 'max:255'],
+                    'code' => ['required', 'string', 'max:255', Rule::unique('roles', 'code')->ignore($id)],
+                    'data_scope' => ['required', 'string', 'max:255'],
+                    'sort' => ['nullable', 'integer', 'min:0'],
+                    'status' => ['required', 'string', 'max:255'],
+                    'remark' => ['nullable', 'string', 'max:255'],
+                ],
+            ],
+            'departments' => [
+                'title' => '部门管理',
+                'description' => '维护企业组织架构、负责人和联系方式。',
+                'model' => Department::class,
+                'search' => ['name', 'code', 'phone', 'email', 'remark'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'name', 'label' => '部门名称'],
+                    ['key' => 'code', 'label' => '部门编码'],
+                    ['key' => 'parent_id', 'label' => '上级部门'],
+                    ['key' => 'leader_id', 'label' => '负责人'],
+                    ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                    ['key' => 'created_at', 'label' => '创建时间', 'type' => 'datetime'],
+                ],
+                'fields' => [
+                    ['name' => 'parent_id', 'label' => '上级部门ID', 'type' => 'number'],
+                    ['name' => 'leader_id', 'label' => '负责人用户ID', 'type' => 'number'],
+                    ['name' => 'name', 'label' => '部门名称', 'required' => true],
+                    ['name' => 'code', 'label' => '部门编码', 'required' => true],
+                    ['name' => 'sort', 'label' => '显示排序', 'type' => 'number', 'default' => 0],
+                    ['name' => 'phone', 'label' => '联系电话'],
+                    ['name' => 'email', 'label' => '联系邮箱', 'type' => 'email'],
+                    ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'enabled', 'options' => self::statusOptions()],
+                    ['name' => 'remark', 'label' => '备注', 'type' => 'textarea'],
+                ],
+                'rules' => fn (?int $id = null) => [
+                    'parent_id' => ['nullable', 'integer', 'exists:departments,id'],
+                    'leader_id' => ['nullable', 'integer', 'exists:users,id'],
+                    'name' => ['required', 'string', 'max:255'],
+                    'code' => ['required', 'string', 'max:255', Rule::unique('departments', 'code')->ignore($id)],
+                    'sort' => ['nullable', 'integer', 'min:0'],
+                    'phone' => ['nullable', 'string', 'max:255'],
+                    'email' => ['nullable', 'email', 'max:255'],
+                    'status' => ['required', 'string', 'max:255'],
+                    'remark' => ['nullable', 'string', 'max:255'],
+                ],
+            ],
+            'posts' => self::simpleCodeResource(Post::class, '岗位管理', '维护岗位字典和岗位状态。', 'posts', '岗位'),
+            'menus' => [
+                'title' => '菜单管理',
+                'description' => '维护后台菜单、路由、权限标识和显示状态。',
+                'model' => Menu::class,
+                'search' => ['name', 'permission', 'path', 'component', 'remark'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'name', 'label' => '菜单名称'],
+                    ['key' => 'type', 'label' => '类型'],
+                    ['key' => 'permission', 'label' => '权限标识'],
+                    ['key' => 'path', 'label' => '路由地址'],
+                    ['key' => 'visible', 'label' => '显示', 'type' => 'boolean'],
+                    ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                ],
+                'fields' => [
+                    ['name' => 'parent_id', 'label' => '父级菜单ID', 'type' => 'number'],
+                    ['name' => 'name', 'label' => '菜单名称', 'required' => true],
+                    ['name' => 'type', 'label' => '菜单类型', 'type' => 'select', 'default' => 'menu', 'options' => [
+                        ['label' => '目录', 'value' => 'directory'],
+                        ['label' => '菜单', 'value' => 'menu'],
+                        ['label' => '按钮', 'value' => 'button'],
+                    ]],
+                    ['name' => 'permission', 'label' => '权限标识'],
+                    ['name' => 'route_name', 'label' => '路由名称'],
+                    ['name' => 'path', 'label' => '路由地址'],
+                    ['name' => 'component', 'label' => '组件路径'],
+                    ['name' => 'icon', 'label' => '图标'],
+                    ['name' => 'sort', 'label' => '显示排序', 'type' => 'number', 'default' => 0],
+                    ['name' => 'visible', 'label' => '是否显示', 'type' => 'boolean', 'default' => true],
+                    ['name' => 'cacheable', 'label' => '是否缓存', 'type' => 'boolean', 'default' => false],
+                    ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'enabled', 'options' => self::statusOptions()],
+                    ['name' => 'remark', 'label' => '备注', 'type' => 'textarea'],
+                ],
+                'rules' => fn () => [
+                    'parent_id' => ['nullable', 'integer', 'exists:menus,id'],
+                    'name' => ['required', 'string', 'max:255'],
+                    'type' => ['required', 'string', 'max:255'],
+                    'permission' => ['nullable', 'string', 'max:255'],
+                    'route_name' => ['nullable', 'string', 'max:255'],
+                    'path' => ['nullable', 'string', 'max:255'],
+                    'component' => ['nullable', 'string', 'max:255'],
+                    'icon' => ['nullable', 'string', 'max:255'],
+                    'sort' => ['nullable', 'integer', 'min:0'],
+                    'visible' => ['boolean'],
+                    'cacheable' => ['boolean'],
+                    'status' => ['required', 'string', 'max:255'],
+                    'remark' => ['nullable', 'string', 'max:255'],
+                ],
+            ],
+            'dictionaries' => self::simpleCodeResource(Dictionary::class, '字典管理', '维护系统字典类型。', 'dictionaries', '字典'),
+            'dictionary-items' => [
+                'title' => '字典项管理',
+                'description' => '维护字典标签和值。',
+                'model' => DictionaryItem::class,
+                'search' => ['label', 'value', 'remark'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'dictionary_id', 'label' => '字典ID'],
+                    ['key' => 'label', 'label' => '标签'],
+                    ['key' => 'value', 'label' => '值'],
+                    ['key' => 'is_default', 'label' => '默认', 'type' => 'boolean'],
+                    ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                ],
+                'fields' => [
+                    ['name' => 'dictionary_id', 'label' => '字典ID', 'type' => 'number', 'required' => true],
+                    ['name' => 'label', 'label' => '字典标签', 'required' => true],
+                    ['name' => 'value', 'label' => '字典值', 'required' => true],
+                    ['name' => 'tag_type', 'label' => '标签类型'],
+                    ['name' => 'css_class', 'label' => 'CSS 类名'],
+                    ['name' => 'sort', 'label' => '显示排序', 'type' => 'number', 'default' => 0],
+                    ['name' => 'is_default', 'label' => '是否默认', 'type' => 'boolean', 'default' => false],
+                    ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'enabled', 'options' => self::statusOptions()],
+                    ['name' => 'remark', 'label' => '备注', 'type' => 'textarea'],
+                ],
+                'rules' => fn (?int $id = null) => [
+                    'dictionary_id' => ['required', 'integer', 'exists:dictionaries,id'],
+                    'label' => ['required', 'string', 'max:255'],
+                    'value' => ['required', 'string', 'max:255', Rule::unique('dictionary_items', 'value')->where('dictionary_id', request('dictionary_id'))->ignore($id)],
+                    'tag_type' => ['nullable', 'string', 'max:255'],
+                    'css_class' => ['nullable', 'string', 'max:255'],
+                    'sort' => ['nullable', 'integer', 'min:0'],
+                    'is_default' => ['boolean'],
+                    'status' => ['required', 'string', 'max:255'],
+                    'remark' => ['nullable', 'string', 'max:255'],
+                ],
+            ],
+            'parameters' => [
+                'title' => '参数管理',
+                'description' => '维护系统运行参数和配置项。',
+                'model' => SystemParameter::class,
+                'search' => ['name', 'param_key', 'param_value', 'remark'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'name', 'label' => '参数名称'],
+                    ['key' => 'param_key', 'label' => '参数键名'],
+                    ['key' => 'param_value', 'label' => '参数键值'],
+                    ['key' => 'is_system', 'label' => '系统内置', 'type' => 'boolean'],
+                    ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                ],
+                'fields' => [
+                    ['name' => 'name', 'label' => '参数名称', 'required' => true],
+                    ['name' => 'param_key', 'label' => '参数键名', 'required' => true],
+                    ['name' => 'param_value', 'label' => '参数键值', 'type' => 'textarea'],
+                    ['name' => 'value_type', 'label' => '值类型', 'type' => 'select', 'default' => 'string', 'options' => [
+                        ['label' => '字符串', 'value' => 'string'],
+                        ['label' => '数字', 'value' => 'number'],
+                        ['label' => '布尔', 'value' => 'boolean'],
+                        ['label' => 'JSON', 'value' => 'json'],
+                    ]],
+                    ['name' => 'is_system', 'label' => '是否系统内置', 'type' => 'boolean', 'default' => false],
+                    ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'enabled', 'options' => self::statusOptions()],
+                    ['name' => 'remark', 'label' => '备注', 'type' => 'textarea'],
+                ],
+                'rules' => fn (?int $id = null) => [
+                    'name' => ['required', 'string', 'max:255'],
+                    'param_key' => ['required', 'string', 'max:255', Rule::unique('system_parameters', 'param_key')->ignore($id)],
+                    'param_value' => ['nullable', 'string'],
+                    'value_type' => ['required', 'string', 'max:255'],
+                    'is_system' => ['boolean'],
+                    'status' => ['required', 'string', 'max:255'],
+                    'remark' => ['nullable', 'string', 'max:255'],
+                ],
+            ],
+            'notices' => [
+                'title' => '通知公告',
+                'description' => '维护通知公告内容、状态和发布时间。',
+                'model' => Notice::class,
+                'search' => ['title', 'content'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'title', 'label' => '标题'],
+                    ['key' => 'type', 'label' => '类型'],
+                    ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                    ['key' => 'published_at', 'label' => '发布时间', 'type' => 'datetime'],
+                    ['key' => 'expired_at', 'label' => '过期时间', 'type' => 'datetime'],
+                ],
+                'fields' => [
+                    ['name' => 'title', 'label' => '标题', 'required' => true],
+                    ['name' => 'type', 'label' => '类型', 'type' => 'select', 'default' => 'notice', 'options' => [
+                        ['label' => '通知', 'value' => 'notice'],
+                        ['label' => '公告', 'value' => 'announcement'],
+                    ]],
+                    ['name' => 'content', 'label' => '内容', 'type' => 'textarea', 'required' => true],
+                    ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'draft', 'options' => [
+                        ['label' => '草稿', 'value' => 'draft'],
+                        ['label' => '已发布', 'value' => 'published'],
+                        ['label' => '已归档', 'value' => 'archived'],
+                    ]],
+                    ['name' => 'published_at', 'label' => '发布时间', 'type' => 'datetime'],
+                    ['name' => 'expired_at', 'label' => '过期时间', 'type' => 'datetime'],
+                ],
+                'rules' => fn () => [
+                    'title' => ['required', 'string', 'max:255'],
+                    'type' => ['required', 'string', 'max:255'],
+                    'content' => ['required', 'string'],
+                    'status' => ['required', 'string', 'max:255'],
+                    'published_at' => ['nullable', 'date'],
+                    'expired_at' => ['nullable', 'date'],
+                ],
+                'beforeSave' => fn (array $data) => ['publisher_id' => request()->user()?->id, ...$data],
+            ],
+            'scheduled-tasks' => [
+                'title' => '定时任务',
+                'description' => '维护可配置定时任务和执行策略。',
+                'model' => ScheduledTask::class,
+                'search' => ['name', 'command', 'cron_expression', 'remark'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'name', 'label' => '任务名称'],
+                    ['key' => 'command', 'label' => '执行命令'],
+                    ['key' => 'cron_expression', 'label' => 'Cron'],
+                    ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                    ['key' => 'next_run_at', 'label' => '下次执行', 'type' => 'datetime'],
+                ],
+                'fields' => [
+                    ['name' => 'name', 'label' => '任务名称', 'required' => true],
+                    ['name' => 'command', 'label' => '执行命令', 'required' => true],
+                    ['name' => 'cron_expression', 'label' => 'Cron 表达式', 'required' => true],
+                    ['name' => 'timezone', 'label' => '时区', 'default' => 'Asia/Shanghai'],
+                    ['name' => 'without_overlapping', 'label' => '禁止重叠执行', 'type' => 'boolean', 'default' => false],
+                    ['name' => 'run_in_background', 'label' => '后台执行', 'type' => 'boolean', 'default' => false],
+                    ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'enabled', 'options' => self::statusOptions()],
+                    ['name' => 'remark', 'label' => '备注', 'type' => 'textarea'],
+                ],
+                'rules' => fn () => [
+                    'name' => ['required', 'string', 'max:255'],
+                    'command' => ['required', 'string', 'max:255'],
+                    'cron_expression' => ['required', 'string', 'max:255'],
+                    'timezone' => ['required', 'string', 'max:255'],
+                    'without_overlapping' => ['boolean'],
+                    'run_in_background' => ['boolean'],
+                    'status' => ['required', 'string', 'max:255'],
+                    'remark' => ['nullable', 'string', 'max:255'],
+                ],
+            ],
+            'scheduled-task-logs' => self::readonlyLogResource(ScheduledTaskLog::class, '定时任务日志', '查看定时任务执行记录。', ['task_name', 'command', 'status', 'error'], [
+                ['key' => 'id', 'label' => '编号'],
+                ['key' => 'task_name', 'label' => '任务名称'],
+                ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                ['key' => 'exit_code', 'label' => '退出码'],
+                ['key' => 'started_at', 'label' => '开始时间', 'type' => 'datetime'],
+                ['key' => 'duration_ms', 'label' => '耗时(ms)'],
+            ]),
+            'operation-logs' => self::readonlyLogResource(OperationLog::class, '操作日志', '查看系统操作审计记录。', ['module', 'action', 'description', 'url', 'ip_address'], [
+                ['key' => 'id', 'label' => '编号'],
+                ['key' => 'module', 'label' => '模块'],
+                ['key' => 'action', 'label' => '动作'],
+                ['key' => 'description', 'label' => '描述'],
+                ['key' => 'status_code', 'label' => '状态码'],
+                ['key' => 'operated_at', 'label' => '操作时间', 'type' => 'datetime'],
+            ]),
+            'login-logs' => self::readonlyLogResource(LoginLog::class, '登录日志', '查看用户登录记录。', ['email', 'status', 'message', 'ip_address'], [
+                ['key' => 'id', 'label' => '编号'],
+                ['key' => 'email', 'label' => '邮箱'],
+                ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                ['key' => 'message', 'label' => '消息'],
+                ['key' => 'ip_address', 'label' => 'IP 地址'],
+                ['key' => 'logged_at', 'label' => '登录时间', 'type' => 'datetime'],
+            ]),
+            'code-generation' => [
+                'title' => '代码生成',
+                'description' => '维护代码生成表配置。',
+                'model' => CodeGenerationTable::class,
+                'search' => ['table_name', 'class_name', 'module_name', 'business_name', 'function_name'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'table_name', 'label' => '表名'],
+                    ['key' => 'class_name', 'label' => '类名'],
+                    ['key' => 'module_name', 'label' => '模块'],
+                    ['key' => 'business_name', 'label' => '业务'],
+                    ['key' => 'template', 'label' => '模板'],
+                ],
+                'fields' => [
+                    ['name' => 'connection', 'label' => '数据库连接', 'default' => 'default'],
+                    ['name' => 'table_name', 'label' => '表名', 'required' => true],
+                    ['name' => 'class_name', 'label' => '类名', 'required' => true],
+                    ['name' => 'module_name', 'label' => '模块名称', 'required' => true],
+                    ['name' => 'business_name', 'label' => '业务名称', 'required' => true],
+                    ['name' => 'function_name', 'label' => '功能名称', 'required' => true],
+                    ['name' => 'author', 'label' => '作者'],
+                    ['name' => 'template', 'label' => '模板', 'default' => 'crud'],
+                    ['name' => 'package_name', 'label' => '包名或命名空间'],
+                    ['name' => 'route_prefix', 'label' => '路由前缀'],
+                    ['name' => 'options', 'label' => '生成选项(JSON)', 'type' => 'json'],
+                    ['name' => 'remark', 'label' => '备注', 'type' => 'textarea'],
+                ],
+                'rules' => fn (?int $id = null) => [
+                    'connection' => ['required', 'string', 'max:255'],
+                    'table_name' => ['required', 'string', 'max:255', Rule::unique('code_generation_tables', 'table_name')->where('connection', request('connection', 'default'))->ignore($id)],
+                    'class_name' => ['required', 'string', 'max:255'],
+                    'module_name' => ['required', 'string', 'max:255'],
+                    'business_name' => ['required', 'string', 'max:255'],
+                    'function_name' => ['required', 'string', 'max:255'],
+                    'author' => ['nullable', 'string', 'max:255'],
+                    'template' => ['required', 'string', 'max:255'],
+                    'package_name' => ['nullable', 'string', 'max:255'],
+                    'route_prefix' => ['nullable', 'string', 'max:255'],
+                    'options' => ['nullable', 'json'],
+                    'remark' => ['nullable', 'string', 'max:255'],
+                ],
+            ],
+            'online-builders' => [
+                'title' => '在线构建器',
+                'description' => '维护在线表单或页面构建器配置。',
+                'model' => OnlineBuilder::class,
+                'search' => ['name', 'type', 'status'],
+                'columns' => [
+                    ['key' => 'id', 'label' => '编号'],
+                    ['key' => 'name', 'label' => '名称'],
+                    ['key' => 'type', 'label' => '类型'],
+                    ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                    ['key' => 'published_at', 'label' => '发布时间', 'type' => 'datetime'],
+                ],
+                'fields' => [
+                    ['name' => 'name', 'label' => '名称', 'required' => true],
+                    ['name' => 'type', 'label' => '类型', 'type' => 'select', 'default' => 'form', 'options' => [
+                        ['label' => '表单', 'value' => 'form'],
+                        ['label' => '页面', 'value' => 'page'],
+                    ]],
+                    ['name' => 'builder_schema', 'label' => '业务结构(JSON)', 'type' => 'json', 'default' => '{}'],
+                    ['name' => 'ui_schema', 'label' => 'UI 配置(JSON)', 'type' => 'json'],
+                    ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'draft', 'options' => [
+                        ['label' => '草稿', 'value' => 'draft'],
+                        ['label' => '已发布', 'value' => 'published'],
+                    ]],
+                    ['name' => 'published_at', 'label' => '发布时间', 'type' => 'datetime'],
+                ],
+                'rules' => fn () => [
+                    'name' => ['required', 'string', 'max:255'],
+                    'type' => ['required', 'string', 'max:255'],
+                    'builder_schema' => ['required', 'json'],
+                    'ui_schema' => ['nullable', 'json'],
+                    'status' => ['required', 'string', 'max:255'],
+                    'published_at' => ['nullable', 'date'],
+                ],
+                'beforeSave' => fn (array $data) => ['user_id' => request()->user()?->id, ...$data],
+            ],
+        ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public static function get(string $resource): array
+    {
+        abort_unless(isset(self::all()[$resource]), 404);
+
+        return self::all()[$resource];
+    }
+
+    /**
+     * @return array<int, array{label: string, value: string}>
+     */
+    private static function statusOptions(): array
+    {
+        return [
+            ['label' => '启用', 'value' => 'enabled'],
+            ['label' => '停用', 'value' => 'disabled'],
+        ];
+    }
+
+    /**
+     * @return array<int, array{label: string, value: string}>
+     */
+    private static function dataScopeOptions(): array
+    {
+        return [
+            ['label' => '全部数据', 'value' => 'all'],
+            ['label' => '本部门数据', 'value' => 'department'],
+            ['label' => '本部门及以下', 'value' => 'department_tree'],
+            ['label' => '仅本人数据', 'value' => 'self'],
+            ['label' => '自定义部门', 'value' => 'custom'],
+        ];
+    }
+
+    /**
+     * @param  class-string<Model>  $model
+     * @return array<string, mixed>
+     */
+    private static function simpleCodeResource(string $model, string $title, string $description, string $table, string $label): array
+    {
+        return [
+            'title' => $title,
+            'description' => $description,
+            'model' => $model,
+            'search' => ['name', 'code', 'remark'],
+            'columns' => [
+                ['key' => 'id', 'label' => '编号'],
+                ['key' => 'name', 'label' => $label.'名称'],
+                ['key' => 'code', 'label' => $label.'编码'],
+                ['key' => 'sort', 'label' => '排序'],
+                ['key' => 'status', 'label' => '状态', 'type' => 'status'],
+                ['key' => 'created_at', 'label' => '创建时间', 'type' => 'datetime'],
+            ],
+            'fields' => [
+                ['name' => 'name', 'label' => $label.'名称', 'required' => true],
+                ['name' => 'code', 'label' => $label.'编码', 'required' => true],
+                ['name' => 'sort', 'label' => '显示排序', 'type' => 'number', 'default' => 0],
+                ['name' => 'status', 'label' => '状态', 'type' => 'select', 'default' => 'enabled', 'options' => self::statusOptions()],
+                ['name' => 'remark', 'label' => '备注', 'type' => 'textarea'],
+            ],
+            'rules' => fn (?int $id = null) => [
+                'name' => ['required', 'string', 'max:255'],
+                'code' => ['required', 'string', 'max:255', Rule::unique($table, 'code')->ignore($id)],
+                'sort' => ['nullable', 'integer', 'min:0'],
+                'status' => ['required', 'string', 'max:255'],
+                'remark' => ['nullable', 'string', 'max:255'],
+            ],
+        ];
+    }
+
+    /**
+     * @param  class-string<Model>  $model
+     * @param  array<int, string>  $search
+     * @param  array<int, array<string, mixed>>  $columns
+     * @return array<string, mixed>
+     */
+    private static function readonlyLogResource(string $model, string $title, string $description, array $search, array $columns): array
+    {
+        return [
+            'title' => $title,
+            'description' => $description,
+            'model' => $model,
+            'search' => $search,
+            'columns' => $columns,
+            'fields' => [],
+            'readonly' => true,
+        ];
+    }
+}

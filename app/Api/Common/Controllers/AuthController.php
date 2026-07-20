@@ -90,6 +90,8 @@ class AuthController extends Controller
 
     /**
      * 生成 access_token 和 refresh_token
+     *
+     * @return array{access_token: string, refresh_token: string, expires_in: int}
      */
     private function generateTokens(int $sub, string $type, ?int $merchantId = null): array
     {

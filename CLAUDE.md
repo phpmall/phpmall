@@ -193,3 +193,11 @@ The mobile package is UniApp 3 and supports H5, WeChat Mini Program and App targ
 | `vite.config.js` | Vite build config for the PC mall Blade entrypoints |
 | `app/Modules/README.md` | Full module list and DDD directory spec |
 | `AGENTS.md` | Project-wide agent instructions, BRD/PRD/tech docs index |
+
+## 项目特定指南
+
+- 优先加载 andrej-karpathy-skills@karpathy-skills
+- 使用 PHP 严格模式 declare(strict_types=1);
+- 所有 API 端点必须有测试
+- 使用 executing-plans 而不是 subagent-driven-development
+- git commit 的时候使用中文
