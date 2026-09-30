@@ -201,6 +201,16 @@ Use Wayfinder to generate TypeScript functions for Laravel routes. Import from `
 
 # Inertia + React
 
-- IMPORTANT: Activate `inertia-react-development` when working with Inertia React client-side patterns.
-
 </laravel-boost-guidelines>
+
+---
+
+# 项目专属架构与全端数据流向准则 (Architecture Guidelines)
+
+详细系统架构与数据流向拓扑已归档至 [docs/ARCHITECTURE.md](file:///d:/code/git/phpmall/docs/ARCHITECTURE.md)。后续开发任务必须遵循以下基准：
+
+1. **PC 前台商城 (Web Portal)**：在 `app/Http/Controllers` 中实现页面入口路由与 Blade 视图渲染，页面内数据交互通过 Ajax/Fetch 统一调用 `app/Api/Portal`。
+2. **移动端 (packages/mobile)**：Uni-App 多端工程直接调用 `app/Api/Portal` 接口，与 PC 端完全复用商品检索、SKU 规格、购物车与交易下单逻辑。
+3. **各类用户模块 UI (app/Modules)**：在 `app/Modules/{Admin,Seller,Supplier,User}` 中实现控制器与 Blade 视图骨架，前端通过 Ajax/Fetch 消费对应的 `app/Api/{Module}` 接口。
+4. **领域业务防腐 (app/Domains)**：所有商品计价、促销折扣、库存变更、订单状态扭转业务规则必须闭环在 `app/Domains` 中，Controller 保持薄层接入。
+
