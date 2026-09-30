@@ -1,0 +1,594 @@
+/* ========================================================
+   统一收银台专用样式表 (pay.css)
+   ======================================================== */
+
+.pay-body {
+  background-color: #f4f4f4;
+}
+
+.pay-header {
+  background-color: #fff;
+  border-bottom: 2px solid var(--primary-red);
+  padding: 16px 0;
+}
+
+.pay-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-pay-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cashier-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+}
+
+.secure-tag {
+  background-color: #f0fbf0;
+  border: 1px solid #c3e6cb;
+  color: #28a745;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.countdown-box {
+  font-size: 13px;
+  color: #666;
+}
+
+.cd-timer {
+  color: var(--primary-red);
+  font-weight: bold;
+}
+
+/* 主体容器 */
+.pay-main {
+  margin-top: 20px;
+  padding-bottom: 60px;
+}
+
+/* 订单摘要卡片 */
+.pay-order-summary {
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.order-primary-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.check-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #eaf8ea;
+  color: #28a745;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.order-info-text h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.order-meta {
+  font-size: 12px;
+  color: #777;
+  display: flex;
+  gap: 8px;
+}
+
+.order-meta .split {
+  color: #ddd;
+}
+
+.summary-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.amount-box {
+  display: flex;
+  align-items: baseline;
+}
+
+.amount-box .txt {
+  font-size: 13px;
+  color: #888;
+}
+
+.amount-box .yen {
+  font-size: 16px;
+  color: var(--primary-red);
+  font-weight: bold;
+}
+
+.amount-box .pay-money {
+  font-size: 28px;
+  color: var(--primary-red);
+  font-weight: 900;
+}
+
+.btn-toggle-detail {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #005ea7;
+  cursor: pointer;
+}
+
+/* 折叠清单抽屉 */
+.order-items-drawer {
+  display: none;
+  background-color: #fafafa;
+  border: 1px solid #e6e6e6;
+  border-top: none;
+  padding: 16px 24px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  gap: 20px;
+}
+
+.order-items-drawer.show {
+  display: flex;
+}
+
+.drawer-goods-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drawer-goods-item img {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.drawer-goods-item .g-title {
+  font-size: 12px;
+  color: #444;
+}
+
+.drawer-goods-item .g-price {
+  font-size: 12px;
+  color: var(--primary-red);
+  font-weight: bold;
+}
+
+/* 支付方式主面板 */
+.pay-methods-card {
+  margin-top: 16px;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.methods-tab-header {
+  display: flex;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #eee;
+}
+
+.method-tab {
+  flex: 1;
+  height: 52px;
+  background: none;
+  border: none;
+  border-right: 1px solid #eee;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.method-tab:last-child {
+  border-right: none;
+}
+
+.method-tab.active {
+  background-color: #fff;
+  color: var(--primary-red);
+  border-bottom: 2px solid var(--primary-red);
+  margin-bottom: -1px;
+}
+
+.methods-tab-body {
+  padding: 30px;
+}
+
+.method-panel {
+  display: none;
+}
+
+.method-panel.active {
+  display: block;
+}
+
+/* 白条分期 */
+.baitiao-account-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background-color: #fafafa;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #555;
+}
+
+.baitiao-account-bar .tag-safe {
+  color: var(--primary-red);
+  font-size: 11px;
+}
+
+.installment-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.inst-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.inst-card:hover {
+  border-color: #aaa;
+}
+
+.inst-card.active {
+  border-color: var(--primary-red);
+  background-color: #fffbfb;
+}
+
+.inst-card input {
+  accent-color: var(--primary-red);
+}
+
+.inst-info {
+  flex: 1;
+}
+
+.period-title {
+  font-size: 14px;
+  color: #333;
+}
+
+.badge-free {
+  background-color: var(--primary-red);
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
+.period-sub {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.period-amount {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--primary-red);
+}
+
+/* 微信/支付宝二维码容器 */
+.qrcode-pay-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 20px 0;
+}
+
+.qr-box {
+  width: 170px;
+  height: 170px;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.qr-code-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.qr-guide .tip-1 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.wx-green { color: #07c160; }
+.ali-blue { color: #1677ff; }
+
+.qr-guide .tip-2 {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.qr-guide .tip-price {
+  font-size: 14px;
+  color: #444;
+}
+
+.qr-guide .tip-price strong {
+  font-size: 20px;
+  color: var(--primary-red);
+}
+
+/* 银行卡快捷 */
+.bank-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bank-card-row {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bank-card-row.active {
+  border-color: var(--primary-red);
+  background-color: #fffbfb;
+}
+
+.bank-logo {
+  font-weight: 900;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.bank-logo.icbc { background-color: #c7000b; }
+.bank-logo.ccb { background-color: #003b90; }
+.bank-logo.cmb { background-color: #d80000; }
+
+.bank-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.card-num {
+  font-size: 12px;
+  color: #888;
+}
+
+.card-discount {
+  margin-left: auto;
+  color: var(--primary-red);
+  font-size: 11px;
+}
+
+/* B2B对公汇款 */
+.b2b-remit-info {
+  background-color: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.b2b-remit-info h4 {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+.remit-row {
+  font-size: 13px;
+  line-height: 24px;
+  color: #555;
+}
+
+.remit-row span {
+  width: 130px;
+  display: inline-block;
+  color: #888;
+}
+
+.b2b-tip {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #888;
+}
+
+.upload-voucher-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.btn-upload-voucher {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-upload-voucher:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+}
+
+.upload-tip {
+  font-size: 11px;
+  color: #999;
+}
+
+/* 支付提交区 */
+.pay-submit-bar {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-do-pay {
+  width: 280px;
+  height: 48px;
+  background-color: var(--primary-red);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn-do-pay:hover {
+  opacity: 0.92;
+  transform: scale(1.02);
+}
+
+.pay-safe-promise {
+  font-size: 11px;
+  color: #999;
+}
+
+/* 支付成功模态框 */
+.pay-success-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.pay-success-modal.show {
+  display: flex;
+}
+
+.modal-card {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 480px;
+  padding: 36px 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  animation: modalPop 0.3s ease;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #eaf8ea;
+  color: #28a745;
+  border-radius: 50%;
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.modal-card h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.sub-txt {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.detail-txt {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.deliver-notice {
+  font-size: 13px;
+  color: #666;
+  background-color: #fafafa;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+.modal-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-go-order {
+  background-color: var(--primary-red);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-go-home {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+}

@@ -164,7 +164,7 @@ class OrderService
                     'merchant_id' => $item['merchant_id'],
                     'product_title' => $item['product_title'],
                     'product_image' => $item['product_image'],
-                    'sku_specs' => $item['sku_specs'],
+                    'sku_specs' => is_array($item['sku_specs']) ? json_encode($item['sku_specs'], JSON_UNESCAPED_UNICODE) : $item['sku_specs'],
                     'price' => $item['price'],
                     'quantity' => $item['quantity'],
                     'total_amount' => $item['subtotal'],

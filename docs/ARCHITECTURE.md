@@ -206,7 +206,7 @@ sequenceDiagram
 - **规则**：
   1. 严禁按单表无节制新建 migration 文件。必须**按领域（如 Goods、Trade、User、Supplier）集中创建与维护迁移文件**（例如 `create_goods_domain_tables.php`、`create_trade_domain_tables.php`）。
   2. **Schema 必须包含简洁清晰的表注释**：每个表的迁移定义中必须显式声明 `$table->comment('XXX表');`（例如 `users` 表标注“用户表”、`orders` 表标注“订单表”、`carts` 表标注“购物车表”）。
-  3. **字段注释与枚举字段格式规范**：所有字段必须带有简洁的 comment 信息。若为状态或类型枚举字段，描述信息必须严格统一使用形如：**`状态：1-启用，2-不启用`** 格式（格式：`描述：值1-标签1，值2-标签2`，使用冒号与破折号、逗号隔开），以供 `php artisan gen:enums` 工具精准解析并自动生成对应的 PHP Enum 类。
+  3. **字段注释与枚举字段格式规范**：所有字段必须带有简洁的 comment 信息。若为状态或类型枚举字段，描述信息必须严格统一使用形如：**`状态：1-启用，2-不启用`** 格式（格式：`描述：值1-标签1，值2-标签2`，使用冒号与破折号、逗号隔开），以供 `php artisan gen:enum` 工具精准解析并自动生成对应的 PHP Enum 类。
 - **目的**：杜绝 `database/migrations` 随着表数增多而产生上百个碎片文件的无限膨胀；同时保障代码生成器（`php artisan gen:xxx`）及数据库字典工具能够精准提取表业务语义与枚举映射，自动生成规范的代码命名与枚举类。
 
 ### 4.2 服务层 (app/Services) 与领域生成代码防腐隔离

@@ -1,0 +1,393 @@
+/* ========================================================
+   京东用户注册页样式表 (register.css)
+   ======================================================== */
+
+.register-body {
+  background-color: #fbfbfb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部 Header */
+.register-header {
+  height: 80px;
+  background: #fff;
+  border-bottom: 2px solid #e1251b;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+.reg-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.reg-logo-box {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.reg-logo-text {
+  background: #e1251b;
+  color: #fff;
+  font-weight: 900;
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reg-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.reg-login-link {
+  font-size: 13px;
+  color: #666;
+}
+
+.reg-login-link a {
+  color: #e1251b;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.reg-login-link a:hover {
+  text-decoration: underline;
+}
+
+/* 主体容器 */
+.register-main {
+  flex: 1;
+  padding: 36px 0 50px;
+}
+
+/* 三步流程指示条 */
+.reg-step-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e8e8e8;
+  color: #999;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-text {
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+}
+
+.step-line {
+  width: 90px;
+  height: 2px;
+  background: #e8e8e8;
+  margin: 0 16px;
+}
+
+.step-item.active .step-num {
+  background: #e1251b;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(225, 37, 27, 0.2);
+}
+
+.step-item.active .step-text {
+  color: #e1251b;
+  font-weight: bold;
+}
+
+.step-item.completed .step-num {
+  background: #52c41a;
+  color: #fff;
+}
+
+.step-item.completed .step-text {
+  color: #333;
+}
+
+/* 核心注册卡片 */
+.register-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 36px 44px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.form-field-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.form-label .req {
+  color: #e1251b;
+}
+
+.reg-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  height: 42px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.reg-input-wrap:focus-within {
+  border-color: #e1251b;
+  box-shadow: 0 0 0 2px rgba(225, 37, 27, 0.1);
+}
+
+.reg-select-prefix {
+  border: none;
+  background: #f7f7f7;
+  height: 100%;
+  padding: 0 10px;
+  font-size: 13px;
+  color: #555;
+  border-right: 1px solid #d9d9d9;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.reg-input {
+  flex: 1;
+  border: none;
+  height: 100%;
+  padding: 0 12px;
+  font-size: 13px;
+  outline: none;
+  background: transparent;
+}
+
+/* 验证码按钮 */
+.btn-send-code {
+  background: #f7f7f7;
+  border: none;
+  border-left: 1px solid #d9d9d9;
+  color: #333;
+  font-size: 12px;
+  height: 100%;
+  padding: 0 16px;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-send-code:hover {
+  background: #eee;
+  color: #e1251b;
+}
+
+.btn-send-code:disabled {
+  background: #fafafa;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* 密码强度指示条 */
+.pwd-strength-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.strength-label {
+  font-size: 11px;
+  color: #888;
+}
+
+.strength-pills {
+  display: flex;
+  gap: 4px;
+}
+
+.s-pill {
+  width: 32px;
+  height: 4px;
+  background: #e8e8e8;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.s-pill.weak { background: #ff4d4f; }
+.s-pill.medium { background: #faad14; }
+.s-pill.strong { background: #52c41a; }
+
+/* 协议条款勾选 */
+.agree-terms-row {
+  margin: 16px 0 24px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.agree-terms-row input {
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.agree-terms-row a {
+  color: #005ea7;
+  text-decoration: none;
+}
+
+.agree-terms-row a:hover {
+  color: #e1251b;
+  text-decoration: underline;
+}
+
+/* 注册主按钮 */
+.btn-reg-submit {
+  width: 100%;
+  height: 44px;
+  background: #e1251b;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(225, 37, 27, 0.25);
+  transition: all 0.2s;
+}
+
+.btn-reg-submit:hover {
+  background: #c41810;
+  transform: translateY(-1px);
+}
+
+/* 企业注册引导条 */
+.b2b-reg-tip {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px dashed #eee;
+  font-size: 12px;
+  color: #888;
+}
+
+.b2b-reg-tip a {
+  color: #0052d9;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.b2b-reg-tip a:hover {
+  text-decoration: underline;
+}
+
+/* 注册成功反馈面板 */
+.reg-success-card {
+  display: none;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.reg-success-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.reg-success-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.reg-success-sub {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.gift-box-preview {
+  background: #fff8f8;
+  border: 1px dashed #ffd4d4;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.gift-box-preview h4 {
+  font-size: 14px;
+  color: #e1251b;
+  margin-bottom: 4px;
+}
+
+.gift-box-preview p {
+  font-size: 12px;
+  color: #888;
+}
+
+.success-action-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-go-shop {
+  background: #e1251b;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-go-user {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+}
