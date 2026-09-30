@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东领券中心 - 官方优惠券大促天天领 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>券</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/coupon.css">
+</head>
+<body class="coupon-body">
+  <!-- 1. 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="login.html" class="highlight">你好，请登录</a>
+          <a href="register.html" class="register-btn">免费注册</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="user/order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="user/index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="plus.html">PLUS会员</a></li>
+        <li class="spacer"></li>
+        <li><a href="cart.html">购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">商城首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. 领券中心红金 Header -->
+  <header class="coupon-header-banner">
+    <div class="w c-head-inner">
+      <div class="c-brand">
+        <h1><span>🎟️</span> 京东领券中心</h1>
+        <p>COUPON CENTER · 全品类神券限时开抢 先领券再下单折上折</p>
+      </div>
+      <div class="c-head-actions">
+        <a href="user/index.html" class="btn-my-coupons">我的优惠券 (5张) ›</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. 券品类吸顶分类条 -->
+  <nav class="coupon-cat-nav">
+    <div class="w c-cat-inner" id="couponTabs">
+      <div class="c-cat-tab active" data-cat="all">精选神券</div>
+      <div class="c-cat-tab" data-cat="digital">电脑数码</div>
+      <div class="c-cat-tab" data-cat="phone">手机通讯</div>
+      <div class="c-cat-tab" data-cat="beauty">美妆个护</div>
+      <div class="c-cat-tab" data-cat="food">食品酒饮</div>
+    </div>
+  </nav>
+
+  <!-- 4. 券卡片网格列表 -->
+  <main class="w">
+    <div class="coupon-grid" id="couponGrid">
+      <!-- 券 1 -->
+      <div class="coupon-card" data-cat="digital">
+        <div class="c-left-amount">
+          <div class="c-val"><small>¥</small>100</div>
+          <div class="c-limit">满1000可用</div>
+        </div>
+        <div class="c-right-info">
+          <div class="c-info-top">
+            <div>
+              <span class="c-scope-tag">全品类通用券</span>
+              <h4 class="c-title">数码家电跨店满减东券</h4>
+            </div>
+          </div>
+          <div class="c-expiry">有效期：今日至 2026.10.05</div>
+          <div class="c-foot-row">
+            <div class="c-progress-wrap">
+              <div class="c-prog-bar"><div class="c-prog-fill" style="width: 82%;"></div></div>
+              <div class="c-prog-txt">已抢 82%</div>
+            </div>
+            <button class="btn-get-coupon" data-title="数码家电满减100元券">立即领取</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 券 2 -->
+      <div class="coupon-card" data-cat="phone">
+        <div class="c-left-amount">
+          <div class="c-val"><small>¥</small>300</div>
+          <div class="c-limit">满5000可用</div>
+        </div>
+        <div class="c-right-info">
+          <div class="c-info-top">
+            <div>
+              <span class="c-scope-tag" style="background:#e6f7ff;color:#1890ff;border-color:#91d5ff;">Apple专享</span>
+              <h4 class="c-title">Apple自营店 iPhone 16 专享立减券</h4>
+            </div>
+          </div>
+          <div class="c-expiry">有效期：今日至 2026.10.02</div>
+          <div class="c-foot-row">
+            <div class="c-progress-wrap">
+              <div class="c-prog-bar"><div class="c-prog-fill" style="width: 95%;"></div></div>
+              <div class="c-prog-txt">仅剩 5%</div>
+            </div>
+            <button class="btn-get-coupon" data-title="Apple iPhone 300元立减券">立即领取</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 券 3 -->
+      <div class="coupon-card" data-cat="beauty">
+        <div class="c-left-amount">
+          <div class="c-val"><small>¥</small>50</div>
+          <div class="c-limit">满299可用</div>
+        </div>
+        <div class="c-right-info">
+          <div class="c-info-top">
+            <div>
+              <span class="c-scope-tag">美妆护肤</span>
+              <h4 class="c-title">SK-II/兰蔻国际大牌满减神券</h4>
+            </div>
+          </div>
+          <div class="c-expiry">有效期：今日至 2026.10.08</div>
+          <div class="c-foot-row">
+            <div class="c-progress-wrap">
+              <div class="c-prog-bar"><div class="c-prog-fill" style="width: 60%;"></div></div>
+              <div class="c-prog-txt">已抢 60%</div>
+            </div>
+            <button class="btn-get-coupon" data-title="大牌美妆50元券">立即领取</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 券 4 -->
+      <div class="coupon-card" data-cat="food">
+        <div class="c-left-amount">
+          <div class="c-val"><small>¥</small>20</div>
+          <div class="c-limit">满99可用</div>
+        </div>
+        <div class="c-right-info">
+          <div class="c-info-top">
+            <div>
+              <span class="c-scope-tag">食品生鲜</span>
+              <h4 class="c-title">粮油调味/休闲零食自营满减券</h4>
+            </div>
+          </div>
+          <div class="c-expiry">有效期：今日至 2026.10.15</div>
+          <div class="c-foot-row">
+            <div class="c-progress-wrap">
+              <div class="c-prog-bar"><div class="c-prog-fill" style="width: 45%;"></div></div>
+              <div class="c-prog-txt">已抢 45%</div>
+            </div>
+            <button class="btn-get-coupon" data-title="生鲜食品20元券">立即领取</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 券 5 -->
+      <div class="coupon-card" data-cat="digital">
+        <div class="c-left-amount" style="background:linear-gradient(135deg,#303642 0%,#181a1f 100%);">
+          <div class="c-val" style="color:#f5d085;"><small>¥</small>80</div>
+          <div class="c-limit" style="color:#d4af37;">PLUS专享</div>
+        </div>
+        <div class="c-right-info">
+          <div class="c-info-top">
+            <div>
+              <span class="c-scope-tag" style="background:#fffbe6;color:#d4af37;border-color:#ffe58f;">黑金特权</span>
+              <h4 class="c-title">PLUS 会员全品类无门槛抵用券</h4>
+            </div>
+          </div>
+          <div class="c-expiry">有效期：本月内有效</div>
+          <div class="c-foot-row">
+            <div class="c-progress-wrap">
+              <div class="c-prog-bar"><div class="c-prog-fill" style="width: 75%;background:#d4af37;"></div></div>
+              <div class="c-prog-txt">已领 75%</div>
+            </div>
+            <button class="btn-get-coupon" data-title="PLUS全品类80元神券" style="background:#181a1f;color:#f5d085;">会员专享领</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 券 6 -->
+      <div class="coupon-card soldout" data-cat="phone">
+        <div class="c-left-amount">
+          <div class="c-val"><small>¥</small>500</div>
+          <div class="c-limit">满8000可用</div>
+        </div>
+        <div class="c-right-info">
+          <div class="c-info-top">
+            <div>
+              <span class="c-scope-tag">限时大额</span>
+              <h4 class="c-title">旗舰微单/专业相机大额直降券</h4>
+            </div>
+          </div>
+          <div class="c-expiry">有效期：已截止</div>
+          <div class="c-foot-row">
+            <div class="c-progress-wrap">
+              <div class="c-prog-bar"><div class="c-prog-fill" style="width: 100%;"></div></div>
+              <div class="c-prog-txt" style="color:#e1251b;">今日已抢光</div>
+            </div>
+            <button class="btn-get-coupon" disabled>已抢光</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部页脚 -->
+  <footer class="footer">
+    <div class="w help-center-wrap">
+      <div class="help-col">
+        <h5>领券说明</h5>
+        <ul>
+          <li><a href="javascript:;">优惠券使用规则</a></li>
+          <li><a href="javascript:;">京豆折现说明</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>快捷入口</h5>
+        <ul>
+          <li><a href="user/index.html">我的资产</a></li>
+          <li><a href="cart.html">我的购物车</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>商家合作</h5>
+        <ul>
+          <li><a href="merchant/settle.html">商家发券招商</a></li>
+          <li><a href="seller/index.html">商家优惠券配置</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>平台运营</h5>
+        <ul>
+          <li><a href="admin/index.html">平台总控中台</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="index.html">商城首页</a><span class="split">|</span>
+        <a href="list.html">商品列表</a><span class="split">|</span>
+        <a href="coupon.html">领券中心</a><span class="split">|</span>
+        <a href="seckill.html">秒杀专场</a><span class="split">|</span>
+        <a href="plus.html">PLUS会员</a><span class="split">|</span>
+        <a href="admin/index.html">总控后台</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有</p>
+    </div>
+  </footer>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/coupon.js"></script>
+</body>
+</html>

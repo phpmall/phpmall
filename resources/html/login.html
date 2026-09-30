@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东-欢迎登录</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-body">
+  <!-- 顶部 Header -->
+  <header class="login-header w">
+    <div class="header-left">
+      <a href="index.html" class="logo-box">
+        <span class="logo-text">JD</span>
+        <span class="logo-sub">京东</span>
+      </a>
+      <h2 class="welcome-title">欢迎登录</h2>
+    </div>
+    <div class="header-right">
+      <a href="javascript:;" class="survey-link"><i>💬</i> 登录页面“调查问卷”</a>
+    </div>
+  </header>
+
+  <!-- 登录中间大通栏背景区 -->
+  <div class="login-banner-wrap">
+    <div class="w login-container">
+      <!-- 右侧登录浮动面板 -->
+      <div class="login-box">
+        <!-- 登录方式切换 Tab -->
+        <div class="login-tab-head">
+          <button class="tab-btn active" data-tab="tab-qrcode">扫码登录</button>
+          <span class="split">|</span>
+          <button class="tab-btn" data-tab="tab-account">账户登录</button>
+        </div>
+
+        <!-- 1. 扫码登录 -->
+        <div class="login-panel active" id="tab-qrcode">
+          <div class="qrcode-wrap">
+            <div class="qrcode-img-box">
+              <!-- 精致内联模拟二维码 -->
+              <svg viewBox="0 0 100 100" class="qr-svg">
+                <rect width="100" height="100" fill="#ffffff"/>
+                <path d="M10,10 h24 v24 h-24 z M16,16 v12 h12 v-12 z" fill="#333"/>
+                <rect x="20" y="20" width="4" height="4" fill="#e1251b"/>
+                <path d="M66,10 h24 v24 h-24 z M72,16 v12 h12 v-12 z" fill="#333"/>
+                <rect x="76" y="20" width="4" height="4" fill="#e1251b"/>
+                <path d="M10,66 h24 v24 h-24 z M16,72 v12 h12 v-12 z" fill="#333"/>
+                <rect x="20" y="76" width="4" height="4" fill="#e1251b"/>
+                <!-- 内部随机黑白块 -->
+                <rect x="42" y="14" width="6" height="6" fill="#333"/>
+                <rect x="52" y="22" width="6" height="6" fill="#333"/>
+                <rect x="44" y="34" width="8" height="8" fill="#e1251b"/>
+                <rect x="18" y="44" width="6" height="6" fill="#333"/>
+                <rect x="28" y="48" width="6" height="6" fill="#333"/>
+                <rect x="64" y="44" width="6" height="6" fill="#333"/>
+                <rect x="76" y="52" width="8" height="8" fill="#333"/>
+                <rect x="42" y="60" width="6" height="6" fill="#333"/>
+                <rect x="56" y="66" width="8" height="8" fill="#333"/>
+                <rect x="68" y="74" width="6" height="6" fill="#e1251b"/>
+                <rect x="44" y="82" width="8" height="8" fill="#333"/>
+              </svg>
+            </div>
+            <p class="qrcode-tip">打开 <strong class="highlight">手机京东</strong> 扫一扫登录</p>
+            <div class="qrcode-features">
+              <span>免输入</span>
+              <span class="dot">·</span>
+              <span>更快</span>
+              <span class="dot">·</span>
+              <span>更安全</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 账号密码登录 -->
+        <div class="login-panel" id="tab-account">
+          <form class="login-form" id="loginForm">
+            <div class="input-row">
+              <span class="input-icon">👤</span>
+              <input type="text" id="username" placeholder="邮箱/用户名/已验证手机" autocomplete="off" value="zhangsan">
+            </div>
+            <div class="input-row">
+              <span class="input-icon">🔒</span>
+              <input type="password" id="password" placeholder="密码" autocomplete="off" value="123456">
+            </div>
+
+            <div class="form-sub-links">
+              <label class="custom-checkbox">
+                <input type="checkbox" checked>
+                <span>自动登录</span>
+              </label>
+              <a href="javascript:;" class="forgot-link">忘记密码</a>
+            </div>
+
+            <button type="submit" class="btn-login-submit">登 录</button>
+          </form>
+        </div>
+
+        <!-- 底部快捷与注册链接 -->
+        <div class="login-box-footer">
+          <div class="oauth-links">
+            <a href="javascript:;" title="QQ登录">🐧 QQ</a>
+            <span class="pipe">|</span>
+            <a href="javascript:;" title="微信登录">💬 微信</a>
+            <span class="pipe">|</span>
+            <a href="javascript:;" title="Apple登录">🍏 Apple</a>
+          </div>
+          <a href="register.html" class="register-now highlight" id="btnRegister"><i>›</i> 立即注册</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="index.html">关于我们</a><span class="split">|</span>
+        <a href="javascript:;">联系我们</a><span class="split">|</span>
+        <a href="javascript:;">人才招聘</a><span class="split">|</span>
+        <a href="javascript:;">商家入驻</a><span class="split">|</span>
+        <a href="javascript:;">广告服务</a><span class="split">|</span>
+        <a href="javascript:;">手机京东</a><span class="split">|</span>
+        <a href="javascript:;">友情链接</a><span class="split">|</span>
+        <a href="javascript:;">销售联盟</a><span class="split">|</span>
+        <a href="javascript:;">京东社区</a><span class="split">|</span>
+        <a href="javascript:;">隐私政策</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有</p>
+    </div>
+  </footer>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

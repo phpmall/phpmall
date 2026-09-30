@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东企业购 - 企业大宗采购与商用场景馆 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230052d9'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>企</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/b2b.css">
+</head>
+<body class="b2b-body">
+  <!-- 1. 顶部快速导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="../login.html" class="highlight">企业用户登录</a>
+          <a href="../login.html" class="register-btn">免费注册企业账号</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="../user/order.html">企业采购订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="../user/index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../merchant/settle.html">企业招商合作</a></li>
+        <li class="spacer"></li>
+        <li><a href="../seller/index.html">商家后台</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回个人商城首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. 企业购专属 Header -->
+  <header class="b2b-header">
+    <div class="w b2b-header-inner">
+      <div class="b2b-logo-brand">
+        <a href="index.html" class="b2b-logo-icon" style="text-decoration:none;">JD</a>
+        <div class="b2b-logo-text">
+          <h2>京东企业购</h2>
+          <p>ENTERPRISE PROCUREMENT · 数字化采购一站式综合解决方案</p>
+        </div>
+      </div>
+      <nav class="b2b-nav-links">
+        <a href="index.html" class="active">企业购首页</a>
+        <a href="javascript:;" class="scene-link" data-cat="office">商用办公</a>
+        <a href="javascript:;" class="scene-link" data-cat="benefit">员工福利与礼品卡</a>
+        <a href="javascript:;" class="scene-link" data-cat="mro">工业品 MRO</a>
+        <a href="javascript:;" class="scene-link" data-cat="finance">企业金采账期</a>
+        <a href="javascript:;" class="btn-b2b-quote-top" id="btnTopQuote">提报大宗采购单</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 3. 企业采购 Hero 大屏 Banner -->
+  <section class="b2b-hero-banner">
+    <div class="w hero-content">
+      <div class="hero-text">
+        <span class="hero-tag">2026 年度企业数字化采购专项扶持</span>
+        <h1 class="hero-title">全品类大宗集采 直享阶梯出厂底价</h1>
+        <p class="hero-desc">
+          专为中小企业、集团集团客户及事业单位打造。正规 13% 增值税专票一键开具、支持 30-90 天对公免息账期，京东全国八大仓一体化智能配送上门。
+        </p>
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <div class="num">800万+</div>
+            <div class="label">入驻注册认证企业</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">15%~35%</div>
+            <div class="label">大宗集采平均综合降本</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1对1</div>
+            <div class="label">专属资深客户经理履约</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧快捷询价单卡片 -->
+      <div class="hero-quote-card">
+        <div class="quote-card-head">
+          <h4>企业大宗采购极速询价</h4>
+          <span>2小时内专人回电</span>
+        </div>
+        <form id="b2bQuoteForm">
+          <div class="quote-form-item">
+            <label>企业主体名称 *</label>
+            <input type="text" class="quote-input" id="quoteCompany" placeholder="如：北京科技有限公司" required>
+          </div>
+          <div class="quote-form-item">
+            <label>采购品类意向 *</label>
+            <select class="quote-select" id="quoteCat">
+              <option value="商用办公数码">商用办公数码 / 电脑会议大屏</option>
+              <option value="员工福利年节卡券">员工福利 / 京东E卡与节日礼品</option>
+              <option value="工业品与五金劳保">工业品 / MRO 与工具劳保</option>
+              <option value="商用家电与中央空调">商用家电与办公环境电器</option>
+            </select>
+          </div>
+          <div class="quote-form-item">
+            <label>预计采购总预算 (元) *</label>
+            <input type="number" class="quote-input" id="quoteBudget" placeholder="如：50000" required>
+          </div>
+          <div class="quote-form-item">
+            <label>联系人姓名与手机号 *</label>
+            <input type="text" class="quote-input" id="quoteContact" placeholder="张经理 13800000000" required>
+          </div>
+          <button type="submit" class="btn-submit-quote">获取大客户专属底价方案</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 四大专享权益金刚区 -->
+  <div class="w">
+    <div class="b2b-benefits-strip">
+      <div class="benefit-box">
+        <span class="b-icon">📉</span>
+        <div class="b-text">
+          <h5>阶梯折扣底价</h5>
+          <p>批量多阶梯专属批发价，买越多单价越低，降本提效看得见</p>
+        </div>
+      </div>
+      <div class="benefit-box">
+        <span class="b-icon">🧾</span>
+        <div class="b-text">
+          <h5>13% 增值税专票</h5>
+          <p>财务合规发票极速开具，品目明细精准，支持集中电子开票</p>
+        </div>
+      </div>
+      <div class="benefit-box">
+        <span class="b-icon">💳</span>
+        <div class="b-text">
+          <h5>企业金采账期</h5>
+          <p>享最高 500 万授信额度，30~90 天先采购后付款，减轻现金流</p>
+        </div>
+      </div>
+      <div class="benefit-box">
+        <span class="b-icon">👨‍💼</span>
+        <div class="b-text">
+          <h5>专属客户经理</h5>
+          <p>一对一专人对接选品、技术方案定制、上门安装与售后专线</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 场景化大宗采购专区 -->
+  <main class="w">
+    <!-- 场景一：商用办公数码采购 -->
+    <section class="scene-section" id="sceneOffice">
+      <div class="scene-head">
+        <div class="scene-title-group">
+          <h3>🖥️ 商用办公数码与智能会议采购</h3>
+          <p>专业商用级稳定性保障，支持定制预装软件与全国联保三年上门</p>
+        </div>
+        <a href="javascript:;" class="scene-more-link">查看更多商用设备 ›</a>
+      </div>
+
+      <div class="b2b-goods-grid">
+        <!-- 办公商品 1 -->
+        <div class="b2b-item-card">
+          <div class="b2b-thumb-box">
+            <span class="b2b-batch-tag">10台起批</span>
+            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&q=80" alt="商用电脑">
+          </div>
+          <div class="b2b-info-body">
+            <h4 class="b2b-item-title">联想 (Lenovo) 扬天 M4000q 商用办公台式机电脑整机 (酷睿i5 16G 512G SSD Win11)</h4>
+            <div class="ladder-price-box">
+              <div class="ladder-row"><span>购买 1~9 台：</span><span>¥3,599/台</span></div>
+              <div class="ladder-row"><span>购买 10~49 台：</span><span class="highlight">¥3,299/台 (-8%)</span></div>
+              <div class="ladder-row highlight"><span>购买 ≥50 台：</span><span>¥2,999/台 (-16%)</span></div>
+            </div>
+            <div class="b2b-action-row">
+              <div class="b2b-unit-price">
+                ¥2,999<small>起/台</small>
+              </div>
+              <button class="btn-batch-order" data-name="联想商用台式机" data-price="2999">阶梯加购</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 办公商品 2 -->
+        <div class="b2b-item-card">
+          <div class="b2b-thumb-box">
+            <span class="b2b-batch-tag">大宗专享</span>
+            <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=400&q=80" alt="会议大屏">
+          </div>
+          <div class="b2b-info-body">
+            <h4 class="b2b-item-title">MAXHUB 75英寸 4K超清智能会议平板 教学触控一体机无线投屏会议大屏</h4>
+            <div class="ladder-price-box">
+              <div class="ladder-row"><span>采购 1~2 台：</span><span>¥8,999/台</span></div>
+              <div class="ladder-row"><span>采购 3~5 台：</span><span class="highlight">¥8,299/台</span></div>
+              <div class="ladder-row highlight"><span>采购 ≥6 台：</span><span>¥7,699/台 (专享赠支架)</span></div>
+            </div>
+            <div class="b2b-action-row">
+              <div class="b2b-unit-price">
+                ¥7,699<small>起/台</small>
+              </div>
+              <button class="btn-batch-order" data-name="MAXHUB智能会议平板" data-price="7699">阶梯加购</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 办公商品 3 -->
+        <div class="b2b-item-card">
+          <div class="b2b-thumb-box">
+            <span class="b2b-batch-tag">5台起批</span>
+            <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&q=80" alt="激光打印机">
+          </div>
+          <div class="b2b-info-body">
+            <h4 class="b2b-item-title">惠普 (HP) LaserJet M233sdw 自动双面无线激光多功能一体机 (打印复印扫描)</h4>
+            <div class="ladder-price-box">
+              <div class="ladder-row"><span>购买 1~4 台：</span><span>¥1,699/台</span></div>
+              <div class="ladder-row"><span>购买 5~19 台：</span><span class="highlight">¥1,499/台</span></div>
+              <div class="ladder-row highlight"><span>购买 ≥20 台：</span><span>¥1,380/台</span></div>
+            </div>
+            <div class="b2b-action-row">
+              <div class="b2b-unit-price">
+                ¥1,380<small>起/台</small>
+              </div>
+              <button class="btn-batch-order" data-name="惠普激光多功能一体机" data-price="1380">阶梯加购</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 办公商品 4 -->
+        <div class="b2b-item-card">
+          <div class="b2b-thumb-box">
+            <span class="b2b-batch-tag">大宗优惠</span>
+            <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400&q=80" alt="iPhone商务机">
+          </div>
+          <div class="b2b-info-body">
+            <h4 class="b2b-item-title">Apple iPhone 16 Pro 256GB 企业采购批售版 (含企业移动设备管理MDM配置)</h4>
+            <div class="ladder-price-box">
+              <div class="ladder-row"><span>批量 5~19 台：</span><span>¥7,699/台</span></div>
+              <div class="ladder-row"><span>批量 20~49 台：</span><span class="highlight">¥7,499/台</span></div>
+              <div class="ladder-row highlight"><span>批量 ≥50 台：</span><span>¥7,299/台</span></div>
+            </div>
+            <div class="b2b-action-row">
+              <div class="b2b-unit-price">
+                ¥7,299<small>起/台</small>
+              </div>
+              <button class="btn-batch-order" data-name="iPhone 16 Pro企业集采" data-price="7299">阶梯加购</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 场景二：员工福利与商务礼品专区 -->
+    <section class="scene-section" id="sceneBenefit">
+      <div class="scene-head">
+        <div class="scene-title-group">
+          <h3>🎁 员工福利与京东 E 卡定制采购</h3>
+          <p>支持企业专属卡面定制、全国通用无门槛消费、千款节日福利套餐一键直发员工</p>
+        </div>
+        <a href="javascript:;" class="scene-more-link">定制企业福利方案 ›</a>
+      </div>
+
+      <div class="b2b-goods-grid">
+        <!-- 福利商品 1 -->
+        <div class="b2b-item-card">
+          <div class="b2b-thumb-box">
+            <span class="b2b-batch-tag" style="background:#ff7d00;">卡面定制</span>
+            <img src="https://images.unsplash.com/photo-1556742049-0a67e557224f?w=400&q=80" alt="京东E卡">
+          </div>
+          <div class="b2b-info-body">
+            <h4 class="b2b-item-title">京东 E 卡 经典商务面额实体卡/电子卡 (500元面值，支持企业LOGO及祝福语定制)</h4>
+            <div class="ladder-price-box">
+              <div class="ladder-row"><span>采购 10~49 张：</span><span>¥495/张 (99折)</span></div>
+              <div class="ladder-row"><span>采购 50~199 张：</span><span class="highlight">¥485/张 (97折)</span></div>
+              <div class="ladder-row highlight"><span>采购 ≥200 张：</span><span>¥475/张 (95折)</span></div>
+            </div>
+            <div class="b2b-action-row">
+              <div class="b2b-unit-price">
+                ¥475<small>起/张</small>
+              </div>
+              <button class="btn-batch-order" data-name="京东E卡500元" data-price="475">阶梯加购</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 福利商品 2 -->
+        <div class="b2b-item-card">
+          <div class="b2b-thumb-box">
+            <span class="b2b-batch-tag" style="background:#ff7d00;">年节甄选</span>
+            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=400&q=80" alt="节日大礼包">
+          </div>
+          <div class="b2b-info-body">
+            <h4 class="b2b-item-title">三只松鼠 坚果大礼包 3.2kg 巨型坚果箱 高档年货员工团购伴手礼盒</h4>
+            <div class="ladder-price-box">
+              <div class="ladder-row"><span>采购 20~49 盒：</span><span>¥138/盒</span></div>
+              <div class="ladder-row"><span>采购 50~99 盒：</span><span class="highlight">¥118/盒</span></div>
+              <div class="ladder-row highlight"><span>采购 ≥100 盒：</span><span>¥99/盒</span></div>
+            </div>
+            <div class="b2b-action-row">
+              <div class="b2b-unit-price">
+                ¥99<small>起/盒</small>
+              </div>
+              <button class="btn-batch-order" data-name="三只松鼠坚果大礼盒" data-price="99">阶梯加购</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 福利商品 3 -->
+        <div class="b2b-item-card">
+          <div class="b2b-thumb-box">
+            <span class="b2b-batch-tag" style="background:#ff7d00;">民生粮油</span>
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80" alt="大米粮油">
+          </div>
+          <div class="b2b-info-body">
+            <h4 class="b2b-item-title">福临门 五常大米 优质东北大米 5kg真空袋装 企业食堂集采/节日福利</h4>
+            <div class="ladder-price-box">
+              <div class="ladder-row"><span>采购 50~99 袋：</span><span>¥49.9/袋</span></div>
+              <div class="ladder-row"><span>采购 100~499 袋：</span><span class="highlight">¥42.0/袋</span></div>
+              <div class="ladder-row highlight"><span>采购 ≥500 袋：</span><span>¥36.5/袋</span></div>
+            </div>
+            <div class="b2b-action-row">
+              <div class="b2b-unit-price">
+                ¥36.5<small>起/袋</small>
+              </div>
+              <button class="btn-batch-order" data-name="福临门五常大米" data-price="36.5">阶梯加购</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 福利商品 4 -->
+        <div class="b2b-item-card">
+          <div class="b2b-thumb-box">
+            <span class="b2b-batch-tag" style="background:#ff7d00;">商务茶歇</span>
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&q=80" alt="商务酒水">
+          </div>
+          <div class="b2b-info-body">
+            <h4 class="b2b-item-title">五粮液 普五 第八代 52度 浓香型白酒 500ml*6瓶 整箱装 企业商务宴请接待</h4>
+            <div class="ladder-price-box">
+              <div class="ladder-row"><span>采购 1~4 箱：</span><span>¥6,599/箱</span></div>
+              <div class="ladder-row"><span>采购 5~9 箱：</span><span class="highlight">¥6,299/箱</span></div>
+              <div class="ladder-row highlight"><span>采购 ≥10 箱：</span><span>¥5,999/箱</span></div>
+            </div>
+            <div class="b2b-action-row">
+              <div class="b2b-unit-price">
+                ¥5,999<small>起/箱</small>
+              </div>
+              <button class="btn-batch-order" data-name="五粮液整箱商务集采" data-price="5999">阶梯加购</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 底部页脚 -->
+  <footer class="footer">
+    <div class="w help-center-wrap">
+      <div class="help-col">
+        <h5>企业采购服务</h5>
+        <ul>
+          <li><a href="javascript:;">企业资质认证</a></li>
+          <li><a href="javascript:;">大宗批量询价</a></li>
+          <li><a href="javascript:;">增值税专票开具</a></li>
+          <li><a href="javascript:;">金采账期开通</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>商用解决方案</h5>
+        <ul>
+          <li><a href="javascript:;">企业办公电脑租赁</a></li>
+          <li><a href="javascript:;">商用显示工程方案</a></li>
+          <li><a href="javascript:;">员工关怀SAAS平台</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>商家与伙伴合作</h5>
+        <ul>
+          <li><a href="../merchant/settle.html">企业供应商入驻</a></li>
+          <li><a href="../seller/index.html">京麦商户工作台</a></li>
+          <li><a href="javascript:;">品牌KA采购招投标</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>售后与保障</h5>
+        <ul>
+          <li><a href="../user/refund.html">企业售后申请</a></li>
+          <li><a href="javascript:;">全国联保上门</a></li>
+          <li><a href="javascript:;">大客户绿色通道</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="../index.html">京东商城</a><span class="split">|</span>
+        <a href="index.html">京东企业购</a><span class="split">|</span>
+        <a href="../seckill.html">京东秒杀</a><span class="split">|</span>
+        <a href="../plus.html">PLUS会员</a><span class="split">|</span>
+        <a href="../merchant/settle.html">商家入驻</a><span class="split">|</span>
+        <a href="../seller/index.html">京麦工作台</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有 | 京东企业业务采购专线：400-026-0000</p>
+    </div>
+  </footer>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/b2b.js"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的订单 - 个人中心 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/user.css">
+</head>
+<body class="user-body">
+  <!-- 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="index.html" class="highlight">张三 (PLUS会员)</a>
+          <a href="../login.html" class="register-btn">退出</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="order.html" class="highlight">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../plus.html">PLUS会员</a></li>
+        <li class="spacer"></li>
+        <li><a href="../cart.html">我的购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 个人中心专属 Header -->
+  <header class="user-header">
+    <div class="w user-header-inner">
+      <div class="logo-user-title">
+        <a href="../index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">订单中心</h2>
+        <a href="index.html" class="back-home-link">&lt; 返回用户中心首页</a>
+      </div>
+      <div class="user-search-box">
+        <input type="text" placeholder="商品名称 / 商品编号 / 订单号" id="orderSearchInput">
+        <button class="user-search-btn" id="btnOrderSearch">查询订单</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 个人中心主布局 (Left Sidebar + Right Content) -->
+  <main class="w user-layout">
+    <!-- 左侧导航栏 -->
+    <aside class="user-sidebar">
+      <div class="side-menu-group">
+        <h3 class="group-title">个人中心</h3>
+        <ul class="menu-list">
+          <li><a href="index.html">我的京东首页</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">订单中心</h3>
+        <ul class="menu-list">
+          <li class="active"><a href="order.html">我的订单</a></li>
+          <li><a href="comment.html">评价晒单 <span class="badge-num">1</span></a></li>
+          <li><a href="favorite.html">常购商品</a></li>
+          <li><a href="order.html">订单回收站</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">我的资产</h3>
+        <ul class="menu-list">
+          <li><a href="../coupon.html">优惠券 <span class="badge-num">5</span></a></li>
+          <li><a href="baitiao.html">京豆余额</a></li>
+          <li><a href="baitiao.html">京东白条</a></li>
+          <li><a href="baitiao.html">礼品卡 / E卡</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">关注中心</h3>
+        <ul class="menu-list">
+          <li><a href="favorite.html">关注商品</a></li>
+          <li><a href="favorite.html">关注店铺</a></li>
+          <li><a href="favorite.html">浏览历史</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">客户服务</h3>
+        <ul class="menu-list">
+          <li><a href="refund.html">返修退换货</a></li>
+          <li><a href="../service/chat.html">价格保护</a></li>
+          <li><a href="../service/chat.html">在线客服</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">设置</h3>
+        <ul class="menu-list">
+          <li><a href="profile.html">个人信息</a></li>
+          <li><a href="address.html">收货地址管理</a></li>
+          <li><a href="profile.html">账号安全</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 右侧主要内容区 -->
+    <section class="user-main-content">
+      <!-- 订单中心板块 -->
+      <div class="order-center-card">
+        <!-- 订单过滤 Tab -->
+        <div class="order-tabs">
+          <button class="order-tab-btn active" data-filter="all">全部订单</button>
+          <button class="order-tab-btn" data-filter="unpaid">待付款 <span class="tab-count">0</span></button>
+          <button class="order-tab-btn" data-filter="shipping">待收货 <span class="tab-count">1</span></button>
+          <button class="order-tab-btn" data-filter="comment">待评价 <span class="tab-count">1</span></button>
+        </div>
+
+        <!-- 订单列表表格表头 -->
+        <div class="order-thead">
+          <span class="th-col col-goods">订单详情</span>
+          <span class="th-col col-receiver">收货人</span>
+          <span class="th-col col-amount">实付金额</span>
+          <span class="th-col col-status">全部状态</span>
+          <span class="th-col col-ops">操作</span>
+        </div>
+
+        <!-- 订单列表 -->
+        <div class="order-list-wrap" id="orderListWrap">
+          
+          <!-- 订单 1 (最新履约中) -->
+          <div class="order-card-item" data-status="shipping">
+            <div class="order-card-header">
+              <span class="order-time">2026-09-28 22:58:30</span>
+              <span class="order-sn">订单号：<strong class="sn-text">JD2026092889104</strong></span>
+              <span class="shop-badge"><span class="badge-zy">自营</span> 京东自营旗舰店</span>
+            </div>
+            <div class="order-card-body">
+              <!-- 商品清单列表 -->
+              <div class="cell-goods-list">
+                <div class="order-goods-row">
+                  <a href="../detail.html" class="g-img">
+                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=100&q=80" alt="iPhone 16 Pro">
+                  </a>
+                  <div class="g-desc">
+                    <a href="../detail.html" class="title">Apple iPhone 16 Pro 256GB 原色钛金属 5G手机</a>
+                    <p class="sku">颜色：原色钛金属 / 256GB</p>
+                  </div>
+                  <span class="g-count">x 1</span>
+                </div>
+                <div class="order-goods-row">
+                  <a href="../detail.html" class="g-img">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="Sony耳机">
+                  </a>
+                  <div class="g-desc">
+                    <a href="../detail.html" class="title">Sony WH-1000XM5 无线头戴主动降噪耳机 黑色</a>
+                    <p class="sku">经典黑 / 官方标配</p>
+                  </div>
+                  <span class="g-count">x 1</span>
+                </div>
+              </div>
+
+              <!-- 收货人 -->
+              <div class="cell-receiver">
+                <p class="r-name">张三</p>
+                <p class="r-tip">北京市朝阳区</p>
+              </div>
+
+              <!-- 金额 -->
+              <div class="cell-amount">
+                <p class="price-val">¥9,597.00</p>
+                <p class="pay-method">在线支付 (已减¥470)</p>
+              </div>
+
+              <!-- 状态 -->
+              <div class="cell-status">
+                <p class="status-text highlight">运输中 (211限时达)</p>
+                <button class="btn-track-logistics" data-sn="JD2026092889104">查看物流轨迹</button>
+                <a href="../detail.html" class="order-detail-link">订单详情</a>
+              </div>
+
+              <!-- 操作 -->
+              <div class="cell-ops">
+                <button class="btn-primary-action btn-confirm-receive">确认收货</button>
+                <button class="btn-link-action btn-buy-again">再次购买</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 订单 2 (已完成待评价) -->
+          <div class="order-card-item" data-status="comment">
+            <div class="order-card-header">
+              <span class="order-time">2026-09-25 10:15:22</span>
+              <span class="order-sn">订单号：<strong class="sn-text">JD2026092566721</strong></span>
+              <span class="shop-badge"><span class="badge-zy">自营</span> 运动户外自营专区</span>
+            </div>
+            <div class="order-card-body">
+              <div class="cell-goods-list">
+                <div class="order-goods-row">
+                  <a href="../detail.html" class="g-img">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100&q=80" alt="跑鞋">
+                  </a>
+                  <div class="g-desc">
+                    <a href="../detail.html" class="title">透气减震专业竞速跑鞋 男款马拉松跑鞋 黑白款 42码</a>
+                    <p class="sku">黑白配色 / 42码</p>
+                  </div>
+                  <span class="g-count">x 1</span>
+                </div>
+              </div>
+
+              <div class="cell-receiver">
+                <p class="r-name">张三</p>
+                <p class="r-tip">北京市海淀区</p>
+              </div>
+
+              <div class="cell-amount">
+                <p class="price-val">¥289.00</p>
+                <p class="pay-method">微信支付</p>
+              </div>
+
+              <div class="cell-status">
+                <p class="status-text">已完成</p>
+                <a href="javascript:;" class="order-detail-link">订单详情</a>
+              </div>
+
+              <div class="cell-ops">
+                <button class="btn-primary-action btn-to-comment">评价晒单 (+20京豆)</button>
+                <button class="btn-link-action btn-buy-again">再次购买</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 物流轨迹弹窗模态框 (Logistics Modal) -->
+  <div class="logistics-modal" id="logisticsModal">
+    <div class="modal-track-box">
+      <div class="modal-header">
+        <h3 class="modal-title">物流轨迹跟踪</h3>
+        <button class="modal-close-btn" id="modalCloseBtn">✕</button>
+      </div>
+      <div class="modal-meta-bar">
+        <span>承运快递：<strong>京东物流 (211限时达)</strong></span>
+        <span>运单号：<strong class="highlight" id="trackOrderSn">JD2026092889104</strong></span>
+        <span>配送员：李师傅 (139****1122)</span>
+      </div>
+      <!-- 动态时间轴 -->
+      <div class="track-timeline">
+        <div class="timeline-node active">
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <p class="node-title highlight">【派送中】北京市朝阳区三环分拣中心正在派送，配送员李师傅正在赶往您的收货地址</p>
+            <p class="node-time">2026-09-28 23:05:10</p>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <p class="node-title">【运输中】快件已由北京顺义自动化分拣中心发往朝阳分拣中心</p>
+            <p class="node-time">2026-09-28 22:59:12</p>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <p class="node-title">【已出库】您的订单在京东北京仓配一体仓已打包完毕，正式出库</p>
+            <p class="node-time">2026-09-28 22:58:45</p>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <p class="node-title">【已接单】您提交的订单已经由系统审核通过，正在分配库存</p>
+            <p class="node-time">2026-09-28 22:58:30</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="../index.html">京东首页</a><span class="split">|</span>
+        <a href="../list.html">商品列表</a><span class="split">|</span>
+        <a href="../cart.html">购物车</a><span class="split">|</span>
+        <a href="../checkout.html">结算中心</a><span class="split">|</span>
+        <a href="../plus.html">PLUS会员</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有</p>
+    </div>
+  </footer>
+
+  <script src="../js/user.js"></script>
+</body>
+</html>

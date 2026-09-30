@@ -1,0 +1,502 @@
+/* ========================================================
+   购物车专用样式表 (cart.css)
+   ======================================================== */
+
+.cart-body {
+  background-color: #fff;
+}
+
+.cart-header {
+  border-bottom: 2px solid var(--primary-red);
+  padding: 16px 0;
+  background-color: #fff;
+}
+
+.cart-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-cart-title {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.logo-cart-title .page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+}
+
+.cart-search-box {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--primary-red);
+  border-radius: 20px;
+  overflow: hidden;
+  height: 36px;
+}
+
+.cart-search-box input {
+  padding: 0 14px;
+  font-size: 12px;
+  width: 240px;
+}
+
+.cart-search-btn {
+  background-color: var(--primary-red);
+  color: #fff;
+  padding: 0 16px;
+  height: 100%;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 购物车主容器 */
+.cart-main-content {
+  margin-top: 16px;
+  padding-bottom: 50px;
+}
+
+/* 顶部状态选项卡 */
+.cart-tabs-bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #e6e6e6;
+  position: relative;
+}
+
+.cart-tabs-bar .tab-item {
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+}
+
+.cart-tabs-bar .tab-item.active {
+  color: var(--primary-red);
+}
+
+.cart-tabs-bar .tab-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-red);
+}
+
+.cart-tabs-bar .tab-num {
+  font-size: 13px;
+}
+
+.deliver-tip {
+  margin-left: auto;
+  font-size: 12px;
+  color: #666;
+}
+
+/* 自定义复选框 */
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  user-select: none;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  accent-color: var(--primary-red);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* 购物车表格 */
+.cart-table {
+  margin-top: 16px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.cart-thead {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  background-color: #f7f7f7;
+  color: #666;
+  font-size: 12px;
+  padding: 0 16px;
+}
+
+.th-chk, .cell-chk { width: 60px; }
+.th-goods, .cell-goods { width: 380px; }
+.th-props, .cell-props { width: 180px; }
+.th-price, .cell-price { width: 140px; text-align: right; }
+.th-quantity, .cell-quantity { width: 150px; text-align: center; }
+.th-sum, .cell-sum { width: 140px; text-align: right; }
+.th-ops, .cell-ops { width: 90px; text-align: center; }
+
+/* 店铺卡片 */
+.shop-group {
+  padding: 16px;
+  background-color: #fff;
+}
+
+.shop-title-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.shop-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
+.free-shipping-tag {
+  background-color: #e5f6ff;
+  color: #0077cc;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+
+/* 满减横幅 */
+.promo-alert-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #fff9f9;
+  border: 1px solid #ffdede;
+  border-radius: 4px;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.promo-label {
+  background-color: var(--primary-red);
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.promo-desc {
+  color: #666;
+}
+
+.go-coudan {
+  margin-left: auto;
+  color: var(--primary-red);
+  font-weight: 500;
+}
+
+/* 商品行 */
+.cart-row {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f2f2f2;
+  transition: background-color 0.2s;
+}
+
+.cart-row:last-child {
+  border-bottom: none;
+}
+
+.cart-row.selected {
+  background-color: #fffdfd;
+}
+
+.cell-goods {
+  display: flex;
+  gap: 12px;
+}
+
+.goods-img img {
+  width: 76px;
+  height: 76px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.goods-detail {
+  flex: 1;
+}
+
+.goods-detail .title {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.goods-detail .title:hover {
+  color: var(--primary-red);
+}
+
+.service-tags {
+  display: flex;
+  gap: 6px;
+}
+
+.tag-safe {
+  color: #999;
+  font-size: 11px;
+}
+
+.cell-props {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.6;
+}
+
+.cell-price .cur-price {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
+.cell-price .orig-price {
+  font-size: 11px;
+  color: #999;
+}
+
+/* 数量加减 */
+.stepper {
+  display: inline-flex;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stepper .step-btn {
+  width: 24px;
+  height: 24px;
+  background-color: #f7f7f7;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.stepper .step-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.stepper .step-val {
+  width: 38px;
+  height: 24px;
+  border: none;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  text-align: center;
+  font-size: 12px;
+}
+
+.stock-tip {
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.cell-sum .sum-price {
+  font-size: 14px;
+  color: var(--primary-red);
+  font-weight: bold;
+}
+
+.cell-ops .btn-op {
+  background: none;
+  color: #666;
+  font-size: 12px;
+  display: block;
+  margin: 2px auto;
+  cursor: pointer;
+}
+
+.cell-ops .btn-op:hover {
+  color: var(--primary-red);
+}
+
+/* 吸底浮动工具条 */
+.cart-floatbar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #dedede;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  height: 52px;
+  padding-left: 16px;
+  z-index: 900;
+}
+
+.floatbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bar-link-btn {
+  background: none;
+  color: #666;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.bar-link-btn:hover {
+  color: var(--primary-red);
+}
+
+.floatbar-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.selected-amount {
+  font-size: 12px;
+  color: #666;
+  margin-right: 20px;
+}
+
+.hl-count {
+  color: var(--primary-red);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.total-price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 20px;
+}
+
+.total-row .txt {
+  font-size: 12px;
+  color: #999;
+}
+
+.total-row .price-val {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-red);
+}
+
+.discount-row {
+  font-size: 11px;
+  color: #999;
+}
+
+.btn-checkout {
+  background-color: var(--primary-red);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  height: 100%;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-checkout:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+/* 猜你喜欢 */
+.cart-guess-like {
+  margin-top: 40px;
+}
+
+.guess-title {
+  border-bottom: 2px solid #333;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.guess-title h3 {
+  font-size: 16px;
+  color: #333;
+}
+
+.guess-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.guess-item {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 16px;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+.guess-item:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.guess-item img {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 10px;
+  border-radius: 4px;
+}
+
+.guess-item .name {
+  font-size: 12px;
+  color: #444;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.guess-item .price {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--primary-red);
+  margin-bottom: 10px;
+}
+
+.btn-add-guess {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #666;
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-add-guess:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+}

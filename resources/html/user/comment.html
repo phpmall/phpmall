@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评价晒单 - 我的京东 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>评</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="../css/user-extend.css">
+</head>
+<body class="user-body">
+  <!-- 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="index.html" class="highlight">张三 (PLUS会员)</a>
+          <a href="../login.html" class="register-btn">退出</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../plus.html">PLUS会员</a></li>
+        <li class="spacer"></li>
+        <li><a href="../cart.html">购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header class="user-header">
+    <div class="w user-header-inner">
+      <div class="logo-user-title">
+        <a href="../index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">订单中心 / 评价晒单</h2>
+        <a href="index.html" class="back-home-link">&lt; 返回用户中心</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="w user-layout">
+    <aside class="user-sidebar">
+      <div class="side-menu-group">
+        <h3 class="group-title">订单中心</h3>
+        <ul class="menu-list">
+          <li><a href="order.html">我的订单 <span class="badge-num">2</span></a></li>
+          <li class="active"><a href="comment.html">评价晒单 <span class="badge-num" id="badgeWaitComment">1</span></a></li>
+          <li><a href="favorite.html">常购与关注</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">我的资产</h3>
+        <ul class="menu-list">
+          <li><a href="../coupon.html">优惠券 <span class="badge-num">5</span></a></li>
+          <li><a href="baitiao.html">京东白条</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">客户服务</h3>
+        <ul class="menu-list">
+          <li><a href="refund.html">返修退换货</a></li>
+          <li><a href="../service/chat.html">在线客服</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">设置</h3>
+        <ul class="menu-list">
+          <li><a href="profile.html">个人信息</a></li>
+          <li><a href="address.html">收货地址管理</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="user-content-area" style="flex:1;">
+      <!-- 评价卡片 -->
+      <div class="order-center-card">
+        <div class="order-tabs">
+          <button class="order-tab-btn active">待评价商品 (1)</button>
+          <button class="order-tab-btn">已评价商品 (3)</button>
+        </div>
+
+        <div id="commentList">
+          <!-- 待评商品 1 -->
+          <div class="comment-item-card" id="cardComment1">
+            <div class="c-goods-side">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=160&q=80" alt="Sony耳机">
+              <p class="g-title">Sony WH-1000XM5 高解析度主动降噪头戴耳机 黑色</p>
+              <span class="g-price">¥1,899.00</span>
+            </div>
+            <div class="c-form-side">
+              <div>
+                <div class="star-rating-row">
+                  <span style="font-size:13px;font-weight:bold;">商品满意度打分：</span>
+                  <div class="stars-wrap" id="starWrap">
+                    <span class="active" data-val="1">★</span>
+                    <span class="active" data-val="2">★</span>
+                    <span class="active" data-val="3">★</span>
+                    <span class="active" data-val="4">★</span>
+                    <span class="active" data-val="5">★</span>
+                  </div>
+                  <span style="font-size:12px;color:#ffaa00;font-weight:bold;" id="starTip">非常满意 (5星好评)</span>
+                </div>
+                <textarea class="comment-textarea" id="commentText" placeholder="宝贝做工如何？佩戴是否舒适？音质满意吗？分享您的使用感受可获得京豆奖励哦～"></textarea>
+              </div>
+              <div class="comment-foot-row">
+                <span style="font-size:12px;color:#888;">📷 晒出精美实物买家秀，可额外获赠 <strong>50京豆</strong></span>
+                <button class="btn-submit-comment" id="btnSubmitComment">提交优质评价</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toastEl = document.getElementById('toast');
+      function showToast(msg) {
+        toastEl.innerText = msg;
+        toastEl.className = 'toast show';
+        setTimeout(() => toastEl.className = 'toast', 2500);
+      }
+
+      // 星星打分
+      const stars = document.querySelectorAll('#starWrap span');
+      const starTip = document.getElementById('starTip');
+      const tips = ['非常差', '较差', '一般', '比较满意', '非常满意 (5星好评)'];
+
+      stars.forEach(s => {
+        s.addEventListener('click', () => {
+          const val = parseInt(s.getAttribute('data-val'), 10);
+          stars.forEach((star, i) => {
+            if (i < val) star.classList.add('active');
+            else star.classList.remove('active');
+          });
+          starTip.innerText = tips[val - 1];
+        });
+      });
+
+      // 提交评价
+      const btn = document.getElementById('btnSubmitComment');
+      const card = document.getElementById('cardComment1');
+      const badge = document.getElementById('badgeWaitComment');
+
+      if (btn && card) {
+        btn.addEventListener('click', () => {
+          card.style.opacity = '0.4';
+          btn.disabled = true;
+          btn.innerText = '已评价 ✓';
+          if (badge) badge.innerText = '0';
+          showToast('🎉 评价成功！已奖励 50 京豆，您的买家秀已同步至商品评价区');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>订单结算页 - 京东商城</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body class="checkout-body">
+  <!-- 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="user/index.html" class="highlight">张三 (PLUS会员)</a>
+          <a href="login.html" class="register-btn">退出</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="user/order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 结算页专属 Header + 步骤流程指示器 -->
+  <header class="checkout-header">
+    <div class="w checkout-header-inner">
+      <div class="logo-checkout-title">
+        <a href="index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">结算页</h2>
+      </div>
+
+      <!-- 步骤流程 -->
+      <div class="checkout-steps">
+        <div class="step-node done">
+          <span class="step-num">1</span>
+          <span class="step-text">1. 我的购物车</span>
+        </div>
+        <div class="step-line done"></div>
+        <div class="step-node active">
+          <span class="step-num">2</span>
+          <span class="step-text">2. 填写核对订单信息</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-node">
+          <span class="step-num">3</span>
+          <span class="step-text">3. 成功提交订单</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 结算核心表单主体 -->
+  <main class="w checkout-main">
+    <div class="checkout-box-title">填写并核对订单信息</div>
+    <div class="checkout-form-container">
+      
+      <!-- 1. 收货人信息 -->
+      <section class="checkout-section">
+        <div class="sec-head">
+          <h3 class="sec-title">收货人信息</h3>
+          <button class="btn-new-address" id="btnNewAddr">+ 新增收货地址</button>
+        </div>
+        <div class="addr-list" id="addrList">
+          <div class="addr-card active">
+            <div class="addr-header">
+              <span class="uname">张三 (北京)</span>
+              <span class="addr-tag">默认地址</span>
+            </div>
+            <p class="addr-detail">北京市 朝阳区 建国路88号 SOHO现代城 A座 1802室</p>
+            <p class="phone">138****8888</p>
+          </div>
+          <div class="addr-card">
+            <div class="addr-header">
+              <span class="uname">张三 (公司)</span>
+            </div>
+            <p class="addr-detail">北京市 海淀区 中关村软件园二期 京东全球总部大厦</p>
+            <p class="phone">138****8888</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 支付方式 -->
+      <section class="checkout-section">
+        <div class="sec-head">
+          <h3 class="sec-title">支付方式</h3>
+        </div>
+        <div class="pay-options" id="payOptions">
+          <button class="pay-btn active" data-pay="在线支付">
+            <span>在线支付</span>
+            <small class="tip">支持微信 / 支付宝 / 银联 / 白条</small>
+          </button>
+          <button class="pay-btn" data-pay="货到付款">
+            <span>货到付款</span>
+            <small class="tip">快递员送货上门刷卡或现金</small>
+          </button>
+          <button class="pay-btn" data-pay="公司转账">
+            <span>公司转账</span>
+            <small class="tip">对公账户公对公打款</small>
+          </button>
+        </div>
+      </section>
+
+      <!-- 3. 送货清单与商家履约 -->
+      <section class="checkout-section">
+        <div class="sec-head">
+          <h3 class="sec-title">送货清单</h3>
+          <a href="cart.html" class="back-cart-link">返回购物车修改 &gt;</a>
+        </div>
+        <div class="order-goods-panel">
+          <!-- 配送时效信息 -->
+          <div class="delivery-side">
+            <h4>配送方式</h4>
+            <div class="delivery-tag active">京东快递 (211限时达)</div>
+            <p class="delivery-time">预计 <strong>明天(次日) 09:00-15:00</strong> 送达</p>
+            <p class="delivery-service">标准配送 · 运输保价 · 破损包赔</p>
+          </div>
+
+          <!-- 商品列表清单 -->
+          <div class="goods-side">
+            <h4>商家：京东自营</h4>
+            <div class="chk-goods-item">
+              <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=100&q=80" alt="iPhone 16 Pro">
+              <div class="info">
+                <p class="name">Apple iPhone 16 Pro 256GB 原色钛金属 5G手机</p>
+                <p class="spec">规格：原色钛金属 / 256GB</p>
+              </div>
+              <div class="price">¥7999.00</div>
+              <div class="count">x 1</div>
+              <div class="stock">有货</div>
+            </div>
+
+            <div class="chk-goods-item">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="Sony耳机">
+              <div class="info">
+                <p class="name">Sony WH-1000XM5 无线头戴主动降噪耳机 黑色</p>
+                <p class="spec">规格：经典黑 / 官方标配</p>
+              </div>
+              <div class="price">¥1899.00</div>
+              <div class="count">x 1</div>
+              <div class="stock">有货</div>
+            </div>
+
+            <div class="chk-goods-item">
+              <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=100&q=80" alt="机械键盘键帽">
+              <div class="info">
+                <p class="name">PBT五面热升华客制化机械键盘主题键帽 128键</p>
+                <p class="spec">规格：复古微水泥</p>
+              </div>
+              <div class="price">¥169.00</div>
+              <div class="count">x 1</div>
+              <div class="stock">有货</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 发票信息与优惠券使用 -->
+      <section class="checkout-section">
+        <div class="sec-head">
+          <h3 class="sec-title">发票与资产抵扣</h3>
+        </div>
+        <div class="deduct-content">
+          <div class="deduct-row">
+            <span class="label">发票信息：</span>
+            <span>普通电子发票 (个人) · 明细：商品类别 · 发送至手机 138****8888</span>
+            <button class="btn-text-edit">修改</button>
+          </div>
+          <div class="deduct-row">
+            <span class="label">使用优惠券：</span>
+            <label class="custom-checkbox">
+              <input type="checkbox" id="couponChk" checked>
+              <span>满5000减400元家电数码专享券 (已抵扣 <strong>¥400.00</strong>)</span>
+            </label>
+          </div>
+          <div class="deduct-row">
+            <span class="label">京豆抵扣：</span>
+            <label class="custom-checkbox">
+              <input type="checkbox" id="beanChk" checked>
+              <span>共 2000 个京豆，可抵扣 <strong>¥20.00</strong></span>
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 订单金额计算汇总明细 -->
+    <div class="checkout-summary-wrap">
+      <div class="summary-list">
+        <div class="sum-line">
+          <span class="k">商品总件数：</span>
+          <span class="v">3 件</span>
+        </div>
+        <div class="sum-line">
+          <span class="k">商品总金额：</span>
+          <span class="v">¥10,067.00</span>
+        </div>
+        <div class="sum-line">
+          <span class="k">运费：</span>
+          <span class="v">¥0.00 (满免)</span>
+        </div>
+        <div class="sum-line">
+          <span class="k">活动满减：</span>
+          <span class="v highlight">-¥50.00</span>
+        </div>
+        <div class="sum-line">
+          <span class="k">优惠券抵扣：</span>
+          <span class="v highlight" id="couponDeductVal">-¥400.00</span>
+        </div>
+        <div class="sum-line">
+          <span class="k">京豆抵现：</span>
+          <span class="v highlight" id="beanDeductVal">-¥20.00</span>
+        </div>
+      </div>
+
+      <!-- 最终应付与提交卡片 -->
+      <div class="final-pay-card">
+        <div class="pay-amount-row">
+          <span class="txt">应付总额：</span>
+          <strong class="total-money" id="finalMoney">¥9,597.00</strong>
+        </div>
+        <div class="receiver-tip-row">
+          <p>寄送至：<span id="finalAddrText">北京市 朝阳区 建国路88号 SOHO现代城 A座 1802室</span></p>
+          <p>收货人：<span id="finalReceiverText">张三 138****8888</span></p>
+        </div>
+        <button class="btn-submit-order" id="btnSubmitOrder">提交订单</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 提交成功模态弹窗 -->
+  <div class="order-success-modal" id="successModal">
+    <div class="modal-card">
+      <div class="modal-icon">🎉</div>
+      <h3 class="modal-title">订单提交成功！</h3>
+      <p class="modal-desc">订单号：<strong class="highlight">JD2026092889104</strong></p>
+      <p class="modal-detail">实付金额：<strong class="highlight" id="modalFinalPay">¥9,597.00</strong> · 预计明天 15:00 前为您送达！</p>
+      <div class="modal-actions">
+        <a href="pay.html" class="modal-btn-home" style="background-color:var(--primary-red);">立即去支付 (¥9,597.00)</a>
+        <a href="user/order.html" class="modal-btn-view">查看订单</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="index.html">京东首页</a><span class="split">|</span>
+        <a href="list.html">商品列表</a><span class="split">|</span>
+        <a href="cart.html">购物车</a><span class="split">|</span>
+        <a href="checkout.html">结算中心</a><span class="split">|</span>
+        <a href="login.html">账号登录</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有</p>
+    </div>
+  </footer>
+
+  <script src="js/checkout.js"></script>
+</body>
+</html>

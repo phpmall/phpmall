@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人信息与设置 - 我的京东 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>人</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="../css/user-extend.css">
+</head>
+<body class="user-body">
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="index.html" class="highlight">张三 (PLUS会员)</a>
+          <a href="../login.html" class="register-btn">退出</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../plus.html">PLUS会员</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header class="user-header">
+    <div class="w user-header-inner">
+      <div class="logo-user-title">
+        <a href="../index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">设置 / 个人信息与安全</h2>
+        <a href="index.html" class="back-home-link">&lt; 返回用户中心</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="w user-layout">
+    <aside class="user-sidebar">
+      <div class="side-menu-group">
+        <h3 class="group-title">订单中心</h3>
+        <ul class="menu-list">
+          <li><a href="order.html">我的订单 <span class="badge-num">2</span></a></li>
+          <li><a href="comment.html">评价晒单</a></li>
+          <li><a href="favorite.html">常购与关注</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">我的资产</h3>
+        <ul class="menu-list">
+          <li><a href="../coupon.html">优惠券 <span class="badge-num">5</span></a></li>
+          <li><a href="baitiao.html">京东白条</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">客户服务</h3>
+        <ul class="menu-list">
+          <li><a href="refund.html">返修退换货</a></li>
+          <li><a href="../service/chat.html">在线客服</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">设置</h3>
+        <ul class="menu-list">
+          <li class="active"><a href="profile.html">个人信息</a></li>
+          <li><a href="address.html">收货地址管理</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="user-content-area" style="flex:1;">
+      <div class="profile-form-box">
+        <h3 style="font-size:16px;color:#222;margin-bottom:20px;border-bottom:1px solid #eee;padding-bottom:12px;">基本信息管理</h3>
+        
+        <form id="profileForm">
+          <div class="p-item">
+            <label>当前头像：</label>
+            <div style="display:flex;align-items:center;gap:16px;">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&q=80" alt="头像" style="width:60px;height:60px;border-radius:50%;border:2px solid #ffde94;">
+              <button type="button" class="btn-am-cancel" style="font-size:12px;padding:4px 12px;">更换头像</button>
+            </div>
+          </div>
+
+          <div class="p-item">
+            <label>京东用户名：</label>
+            <span style="font-size:13px;color:#666;">jd_zhangsan_8888 (不可修改)</span>
+          </div>
+
+          <div class="p-item">
+            <label>用户昵称：</label>
+            <input type="text" class="p-input" value="张三 (极客数码)">
+          </div>
+
+          <div class="p-item">
+            <label>真实姓名：</label>
+            <span style="font-size:13px;color:#333;font-weight:600;">*三 <span style="color:#52c41a;font-size:11px;background:#f6ffed;border:1px solid #b7eb8f;padding:1px 6px;border-radius:2px;margin-left:6px;">✓ 已实名认证</span></span>
+          </div>
+
+          <div class="p-item">
+            <label>绑定手机号：</label>
+            <span style="font-size:13px;color:#333;">138****8888 <a href="javascript:;" style="font-size:12px;color:#005ea7;margin-left:8px;">修改手机</a></span>
+          </div>
+
+          <div class="p-item">
+            <label>安全邮箱：</label>
+            <input type="email" class="p-input" value="zhangsan@example.com">
+          </div>
+
+          <div class="p-item">
+            <label>账号安全等级：</label>
+            <span style="font-size:13px;color:#52c41a;font-weight:bold;">🛡️ 高级 (安全评分 95 分)</span>
+          </div>
+
+          <div style="margin-left:120px;margin-top:20px;">
+            <button type="submit" class="btn-am-submit" style="padding:8px 30px;">保存修改</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toastEl = document.getElementById('toast');
+      function showToast(msg) {
+        toastEl.innerText = msg;
+        toastEl.className = 'toast show';
+        setTimeout(() => toastEl.className = 'toast', 2500);
+      }
+
+      const form = document.getElementById('profileForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          showToast('✅ 个人信息已成功更新并生效！');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

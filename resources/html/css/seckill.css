@@ -1,0 +1,428 @@
+/* ========================================================
+   京东秒杀大促专场样式表 (seckill.css)
+   ======================================================== */
+
+.seckill-body {
+  background-color: #f6f6f6;
+}
+
+/* 秒杀专属红金大顶通 */
+.seckill-header {
+  background: linear-gradient(90deg, #e1251b 0%, #b3140d 100%);
+  color: #fff;
+  padding: 14px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.seckill-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sk-brand-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sk-logo-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.sk-logo-icon {
+  background: #fff;
+  color: #e1251b;
+  font-weight: 900;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.sk-logo-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.sk-sub-tag {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffe6e6;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sk-header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sk-header-links a {
+  color: #fff;
+  font-size: 13px;
+  margin-left: 14px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.sk-header-links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* 秒杀时间场次导航条 (吸顶) */
+.seckill-timeline-bar {
+  background: #fff;
+  border-bottom: 2px solid #e1251b;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sk-timeline-inner {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.timeline-slot {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #fff;
+  border-right: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.timeline-slot:last-child {
+  border-right: none;
+}
+
+.timeline-slot:hover {
+  background: #fafafa;
+}
+
+.timeline-slot .slot-time {
+  font-size: 18px;
+  font-weight: 800;
+  color: #333;
+}
+
+.timeline-slot .slot-status {
+  font-size: 12px;
+  color: #999;
+  margin-top: 2px;
+}
+
+/* 激活场次 */
+.timeline-slot.active {
+  background: #e1251b;
+  color: #fff;
+}
+
+.timeline-slot.active .slot-time {
+  color: #fff;
+}
+
+.timeline-slot.active .slot-status {
+  color: #ffe6e6;
+  font-weight: bold;
+}
+
+.timeline-slot.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #e1251b;
+}
+
+/* 场次看板横条：倒计时与品类分类 */
+.sk-session-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  margin: 16px auto;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.session-countdown-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.session-countdown-box .label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.session-countdown-box .time-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.session-countdown-box .digit {
+  background: #2f3430;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.session-countdown-box .colon {
+  font-weight: bold;
+  color: #2f3430;
+}
+
+/* 品类过滤标签 */
+.sk-cat-filter {
+  display: flex;
+  gap: 8px;
+}
+
+.sk-cat-pill {
+  padding: 4px 14px;
+  font-size: 13px;
+  border-radius: 14px;
+  background: #f4f4f4;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sk-cat-pill:hover {
+  background: #eee;
+  color: var(--primary-red);
+}
+
+.sk-cat-pill.active {
+  background: var(--primary-red);
+  color: #fff;
+}
+
+/* 秒杀商品网格 (Grid) */
+.sk-goods-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.sk-item-card {
+  background: #fff;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sk-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.sk-img-box {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.sk-img-box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.sk-item-card:hover .sk-img-box img {
+  transform: scale(1.05);
+}
+
+.sk-tag-discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(135deg, #ff4142 0%, #e1251b 100%);
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(225, 37, 27, 0.3);
+}
+
+.sk-card-content {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.sk-title {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.4;
+  height: 38px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 8px;
+}
+
+.sk-title:hover {
+  color: var(--primary-red);
+}
+
+/* 进度条与库存 */
+.sk-progress-box {
+  margin-bottom: 10px;
+}
+
+.sk-progress-track {
+  width: 100%;
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.sk-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff7a45 0%, #e1251b 100%);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.sk-stock-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #999;
+}
+
+.sk-stock-label .sold-percent {
+  color: var(--primary-red);
+  font-weight: 600;
+}
+
+/* 价格与抢购按钮行 */
+.sk-price-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.sk-price-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.sk-now-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary-red);
+  line-height: 1;
+}
+
+.sk-now-price small {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sk-origin-price {
+  font-size: 11px;
+  color: #999;
+  text-decoration: line-through;
+  margin-top: 4px;
+}
+
+.btn-sk-buy {
+  background: linear-gradient(90deg, #ff4142 0%, #e1251b 100%);
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(225, 37, 27, 0.25);
+}
+
+.btn-sk-buy:hover {
+  background: linear-gradient(90deg, #f72c2c 0%, #c41810 100%);
+  transform: scale(1.03);
+}
+
+/* 即将开始的提醒按钮 */
+.btn-sk-remind {
+  background: #fff;
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-sk-remind:hover {
+  background: #1890ff;
+  color: #fff;
+}
+
+.btn-sk-remind.active {
+  background: #f6ffed;
+  color: #52c41a;
+  border-color: #52c41a;
+}
+
+/* 已售罄 */
+.sk-item-card.sold-out .btn-sk-buy {
+  background: #d9d9d9;
+  color: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+}

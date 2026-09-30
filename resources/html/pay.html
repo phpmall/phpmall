@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东收银台 - 安全支付</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pay.css">
+</head>
+<body class="pay-body">
+  <!-- 顶部收银台 Header -->
+  <header class="pay-header">
+    <div class="w pay-header-inner">
+      <div class="logo-pay-title">
+        <a href="index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="cashier-title">收银台</h2>
+        <span class="secure-tag"><i>🔒</i> 银行级安全加密防护</span>
+      </div>
+      <div class="countdown-box">
+        <span class="cd-label">请在 </span>
+        <span class="cd-timer" id="payCountdown">29分59秒</span>
+        <span class="cd-label"> 内完成支付，超时订单将自动取消</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 收银台核心交易主体 -->
+  <main class="w pay-main">
+    <!-- 1. 订单摘要卡片 -->
+    <div class="pay-order-summary">
+      <div class="summary-left">
+        <div class="order-primary-info">
+          <span class="check-icon">✔</span>
+          <div class="order-info-text">
+            <h3>订单提交成功，请尽快完成付款！</h3>
+            <p class="order-meta">
+              <span>订单号：<strong class="highlight">JD2026092889104</strong></span>
+              <span class="split">|</span>
+              <span>收货人：张三 (138****8888)</span>
+              <span class="split">|</span>
+              <span>配送地址：北京市朝阳区建国路88号</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="summary-right">
+        <div class="amount-box">
+          <span class="txt">应付金额：</span>
+          <span class="yen">¥</span>
+          <strong class="pay-money" id="payMoneyVal">9,597.00</strong>
+        </div>
+        <button class="btn-toggle-detail" id="btnToggleDetail">订单详情 ▾</button>
+      </div>
+    </div>
+
+    <!-- 展开的商品清单抽屉 -->
+    <div class="order-items-drawer" id="orderDrawer">
+      <div class="drawer-goods-item">
+        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=80&q=80" alt="iPhone 16 Pro">
+        <div class="g-info">
+          <p class="g-title">Apple iPhone 16 Pro 256GB 原色钛金属 5G手机</p>
+          <p class="g-price">¥7,999.00 × 1</p>
+        </div>
+      </div>
+      <div class="drawer-goods-item">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&q=80" alt="Sony耳机">
+        <div class="g-info">
+          <p class="g-title">Sony WH-1000XM5 无线头戴主动降噪耳机 黑色</p>
+          <p class="g-price">¥1,899.00 × 1</p>
+        </div>
+      </div>
+      <div class="drawer-goods-item">
+        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=80&q=80" alt="键帽">
+        <div class="g-info">
+          <p class="g-title">PBT五面热升华客制化机械键盘主题键帽 128键</p>
+          <p class="g-price">¥169.00 × 1</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 支付方式选择面板 -->
+    <div class="pay-methods-card">
+      <div class="methods-tab-header">
+        <button class="method-tab active" data-tab="tab-baitiao">
+          <span class="tab-icon">💳</span> 京东白条 (分期免息)
+        </button>
+        <button class="method-tab" data-tab="tab-wechat">
+          <span class="tab-icon">💬</span> 微信支付
+        </button>
+        <button class="method-tab" data-tab="tab-alipay">
+          <span class="tab-icon">🌐</span> 支付宝
+        </button>
+        <button class="method-tab" data-tab="tab-bank">
+          <span class="tab-icon">🏦</span> 银行卡快捷支付
+        </button>
+        <button class="method-tab" data-tab="tab-b2b">
+          <span class="tab-icon">🏢</span> 企业对公汇款
+        </button>
+      </div>
+
+      <div class="methods-tab-body">
+        <!-- 支付方式 1: 京东白条 -->
+        <div class="method-panel active" id="tab-baitiao">
+          <div class="baitiao-account-bar">
+            <span>白条账户：<strong>zhangsan</strong> (可用额度：¥18,500.00)</span>
+            <span class="tag-safe">白条专属立减已抵扣</span>
+          </div>
+          <div class="installment-options">
+            <label class="inst-card active">
+              <input type="radio" name="baitiao_period" value="1" checked>
+              <div class="inst-info">
+                <strong class="period-title">不分期 (下月全额还款)</strong>
+                <p class="period-sub">无手续费 · 0元立享</p>
+              </div>
+              <span class="period-amount">¥9,597.00 × 1期</span>
+            </label>
+
+            <label class="inst-card">
+              <input type="radio" name="baitiao_period" value="3">
+              <div class="inst-info">
+                <strong class="period-title">分 3 期 <span class="badge-free">限时免息</span></strong>
+                <p class="period-sub">每期手续费：¥0.00</p>
+              </div>
+              <span class="period-amount">¥3,199.00 × 3期</span>
+            </label>
+
+            <label class="inst-card">
+              <input type="radio" name="baitiao_period" value="6">
+              <div class="inst-info">
+                <strong class="period-title">分 6 期 <span class="badge-free">限时免息</span></strong>
+                <p class="period-sub">每期手续费：¥0.00</p>
+              </div>
+              <span class="period-amount">¥1,599.50 × 6期</span>
+            </label>
+
+            <label class="inst-card">
+              <input type="radio" name="baitiao_period" value="12">
+              <div class="inst-info">
+                <strong class="period-title">分 12 期</strong>
+                <p class="period-sub">含每期手续费 ¥40.00</p>
+              </div>
+              <span class="period-amount">¥839.75 × 12期</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 支付方式 2: 微信支付 -->
+        <div class="method-panel" id="tab-wechat">
+          <div class="qrcode-pay-container">
+            <div class="qr-box">
+              <svg viewBox="0 0 100 100" class="qr-code-svg">
+                <rect width="100" height="100" fill="#ffffff"/>
+                <path d="M10,10 h24 v24 h-24 z M16,16 v12 h12 v-12 z" fill="#07c160"/>
+                <rect x="20" y="20" width="4" height="4" fill="#07c160"/>
+                <path d="M66,10 h24 v24 h-24 z M72,16 v12 h12 v-12 z" fill="#07c160"/>
+                <rect x="76" y="20" width="4" height="4" fill="#07c160"/>
+                <path d="M10,66 h24 v24 h-24 z M16,72 v12 h12 v-12 z" fill="#07c160"/>
+                <rect x="20" y="76" width="4" height="4" fill="#07c160"/>
+                <rect x="42" y="14" width="6" height="6" fill="#333"/>
+                <rect x="52" y="22" width="6" height="6" fill="#333"/>
+                <rect x="44" y="34" width="8" height="8" fill="#07c160"/>
+                <rect x="18" y="44" width="6" height="6" fill="#333"/>
+                <rect x="28" y="48" width="6" height="6" fill="#333"/>
+                <rect x="64" y="44" width="6" height="6" fill="#333"/>
+                <rect x="76" y="52" width="8" height="8" fill="#333"/>
+                <rect x="42" y="60" width="6" height="6" fill="#333"/>
+                <rect x="56" y="66" width="8" height="8" fill="#333"/>
+                <rect x="68" y="74" width="6" height="6" fill="#07c160"/>
+                <rect x="44" y="82" width="8" height="8" fill="#333"/>
+              </svg>
+            </div>
+            <div class="qr-guide">
+              <p class="tip-1">请使用 <strong class="wx-green">微信</strong> 扫一扫</p>
+              <p class="tip-2">扫描二维码完成支付</p>
+              <p class="tip-price">应付：<strong>¥9,597.00</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 支付方式 3: 支付宝 -->
+        <div class="method-panel" id="tab-alipay">
+          <div class="qrcode-pay-container">
+            <div class="qr-box">
+              <svg viewBox="0 0 100 100" class="qr-code-svg">
+                <rect width="100" height="100" fill="#ffffff"/>
+                <path d="M10,10 h24 v24 h-24 z M16,16 v12 h12 v-12 z" fill="#1677ff"/>
+                <rect x="20" y="20" width="4" height="4" fill="#1677ff"/>
+                <path d="M66,10 h24 v24 h-24 z M72,16 v12 h12 v-12 z" fill="#1677ff"/>
+                <rect x="76" y="20" width="4" height="4" fill="#1677ff"/>
+                <path d="M10,66 h24 v24 h-24 z M16,72 v12 h12 v-12 z" fill="#1677ff"/>
+                <rect x="20" y="76" width="4" height="4" fill="#1677ff"/>
+                <rect x="42" y="14" width="6" height="6" fill="#333"/>
+                <rect x="52" y="22" width="6" height="6" fill="#333"/>
+                <rect x="44" y="34" width="8" height="8" fill="#1677ff"/>
+                <rect x="64" y="44" width="6" height="6" fill="#333"/>
+                <rect x="76" y="52" width="8" height="8" fill="#333"/>
+                <rect x="56" y="66" width="8" height="8" fill="#333"/>
+              </svg>
+            </div>
+            <div class="qr-guide">
+              <p class="tip-1">打开 <strong class="ali-blue">支付宝</strong> 扫一扫</p>
+              <p class="tip-2">支持余额宝、花呗、绑定的借记卡或信用卡</p>
+              <p class="tip-price">应付：<strong>¥9,597.00</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 支付方式 4: 银行卡快捷支付 -->
+        <div class="method-panel" id="tab-bank">
+          <div class="bank-card-list">
+            <label class="bank-card-row active">
+              <input type="radio" name="bank_card" checked>
+              <span class="bank-logo icbc">ICBC</span>
+              <span class="bank-name">中国工商银行 (储蓄卡)</span>
+              <span class="card-num">尾号 8812</span>
+              <span class="card-discount">单笔满1000减20</span>
+            </label>
+            <label class="bank-card-row">
+              <input type="radio" name="bank_card">
+              <span class="bank-logo ccb">CCB</span>
+              <span class="bank-name">中国建设银行 (信用卡)</span>
+              <span class="card-num">尾号 6023</span>
+            </label>
+            <label class="bank-card-row">
+              <input type="radio" name="bank_card">
+              <span class="bank-logo cmb">CMB</span>
+              <span class="bank-name">招商银行 (储蓄卡)</span>
+              <span class="card-num">尾号 9015</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 支付方式 5: 企业对公汇款 (B端特性) -->
+        <div class="method-panel" id="tab-b2b">
+          <div class="b2b-remit-info">
+            <h4>企业对公转账打款信息</h4>
+            <div class="remit-row"><span>户名：</span><strong>北京京东叁佰陆拾度电子商务有限公司</strong></div>
+            <div class="remit-row"><span>开户银行：</span><strong>中国银行股份有限公司北京经济技术开发区分行</strong></div>
+            <div class="remit-row"><span>对公银行账号：</span><strong>1100 8642 9901 0233</strong></div>
+            <div class="remit-row"><span>打款唯一识别码：</span><strong class="highlight">JD-B2B-20260928</strong> (汇款时请务必备注此识别码)</div>
+            <p class="b2b-tip">如已完成对公转账，请在此上传银行电子回单，平台财务审核无误后即可安排排期发货。</p>
+            <div class="upload-voucher-box">
+              <button class="btn-upload-voucher" id="btnUploadVoucher">📎 上传转账汇款凭证</button>
+              <span class="upload-tip">支持 JPG / PNG / PDF，文件小于 10MB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 立即支付按钮触发区 -->
+      <div class="pay-submit-bar">
+        <button class="btn-do-pay" id="btnDoPay">立即支付 ¥9,597.00</button>
+        <p class="pay-safe-promise">🔒 京东支付联合银联提供金融级风险安全监控保障</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- 支付成功弹窗 (Payment Success Modal) -->
+  <div class="pay-success-modal" id="paySuccessModal">
+    <div class="modal-card">
+      <div class="success-icon">✓</div>
+      <h3>支付成功！</h3>
+      <p class="sub-txt">流水交易号：<strong>PAY2026092877192</strong></p>
+      <p class="detail-txt">实付金额：<strong class="highlight">¥9,597.00</strong></p>
+      <p class="deliver-notice">京东仓配正在加紧为您打包，预计<strong>明天 15:00 前</strong>送达！</p>
+      <div class="modal-btns">
+        <a href="user/order.html" class="btn-go-order">查看订单与物流轨迹</a>
+        <a href="index.html" class="btn-go-home">返回商城首页</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="index.html">京东首页</a><span class="split">|</span>
+        <a href="list.html">商品列表</a><span class="split">|</span>
+        <a href="cart.html">购物车</a><span class="split">|</span>
+        <a href="user/index.html">个人中心</a><span class="split">|</span>
+        <a href="plus.html">PLUS会员</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有 · 支付牌照许可编号：Z2003810000018</p>
+    </div>
+  </footer>
+
+  <script src="js/pay.js"></script>
+</body>
+</html>

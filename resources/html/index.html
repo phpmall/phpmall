@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东(JD.COM)-正品低价、品质保障、配送及时、轻松购物！</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 1. 顶部快捷快捷导航条 (Shortcut Bar) -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="login.html" class="highlight">你好，请登录</a>
+          <a href="register.html" class="register-btn">免费注册</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="user/order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li class="dropdown">
+          <a href="user/index.html">我的京东 <span class="arrow-down">▾</span></a>
+          <div class="dropdown-layer">
+            <a href="user/order.html">待处理订单</a>
+            <a href="user/refund.html">返修退换货</a>
+            <a href="javascript:;">降价商品</a>
+            <a href="javascript:;">我的关注</a>
+            <a href="javascript:;">京东通信</a>
+          </div>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="plus.html">京东会员</a></li>
+        <li class="spacer"></li>
+        <li class="dropdown">
+          <a href="b2b/index.html">企业采购 <span class="arrow-down">▾</span></a>
+          <div class="dropdown-layer">
+            <a href="b2b/index.html">企业购</a>
+            <a href="b2b/index.html">商用场景馆</a>
+            <a href="b2b/index.html">工业品与员工福利</a>
+          </div>
+        </li>
+        <li class="spacer"></li>
+        <li class="dropdown">
+          <a href="javascript:;">商家服务 <span class="arrow-down">▾</span></a>
+          <div class="dropdown-layer">
+            <a href="merchant/settle.html">商家入驻申请</a>
+            <a href="seller/index.html">京麦商家工作台</a>
+            <a href="shop/index.html">品牌旗舰店展示</a>
+            <a href="admin/index.html">平台运营总控</a>
+          </div>
+        </li>
+        <li class="spacer"></li>
+        <li class="dropdown">
+          <a href="service/chat.html">客户服务 <span class="arrow-down">▾</span></a>
+          <div class="dropdown-layer">
+            <a href="service/chat.html">在线客服</a>
+            <a href="user/refund.html">返修退换货</a>
+            <a href="user/address.html">收货地址</a>
+            <a href="user/order.html">订单跟踪</a>
+          </div>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="list.html">网站导航</a></li>
+        <li class="spacer"></li>
+        <li class="mobile-jd">
+          <a href="javascript:;">手机京东</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. 头部搜索与品牌展示区 (Header & Search) -->
+  <header class="header">
+    <div class="w header-main">
+      <!-- 品牌Logo -->
+      <div class="header-logo">
+        <a href="index.html" class="logo-link">
+          <div class="logo-box">
+            <span class="logo-text">JD</span>
+            <span class="logo-sub">京东</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- 搜索主区域 -->
+      <div class="header-search-wrap">
+        <div class="search-bar">
+          <input type="text" class="search-input" id="searchInput" placeholder="微单相机 爆款直降 跨店满减" autocomplete="off">
+          <button class="search-photo-btn" title="拍照找同款">📷</button>
+          <a href="list.html" class="search-submit-btn" id="searchBtn">
+            <span>搜索</span>
+          </a>
+        </div>
+        <!-- 搜索热词 -->
+        <div class="hot-words">
+          <a href="detail.html" class="highlight">iPhone 16 Pro</a>
+          <a href="list.html">洗烘套装</a>
+          <a href="list.html">电竞显示器</a>
+          <a href="list.html">羽绒服特惠</a>
+          <a href="list.html">黄金饰品</a>
+          <a href="list.html">茅台特惠</a>
+          <a href="list.html">机械键盘</a>
+        </div>
+      </div>
+
+      <!-- 购物车入口 -->
+      <div class="header-cart" id="miniCart">
+        <a href="cart.html" class="cart-trigger">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-text">我的购物车</span>
+          <span class="cart-count" id="cartCount">2</span>
+        </a>
+        <!-- 购物车下拉悬浮层 -->
+        <div class="cart-dropdown" id="cartDropdown">
+          <div class="cart-list">
+            <div class="cart-item">
+              <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=80&q=80" alt="智能手表">
+              <div class="cart-item-info">
+                <a href="detail.html" class="cart-item-title">Apple Watch Ultra 智能运动户外手表</a>
+                <p class="cart-item-price">¥4,999.00 × 1</p>
+              </div>
+            </div>
+            <div class="cart-item">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&q=80" alt="无线耳机">
+              <div class="cart-item-info">
+                <a href="detail.html" class="cart-item-title">Sony WH-1000XM5 无线降噪头戴耳机</a>
+                <p class="cart-item-price">¥1,899.00 × 1</p>
+              </div>
+            </div>
+          </div>
+          <div class="cart-footer">
+            <div class="cart-total">
+              共 <span class="highlight">2</span> 件商品 金额合计：<span class="price-val">¥6,898.00</span>
+            </div>
+            <a href="cart.html" class="cart-checkout-btn" style="display:block;text-align:center;">去购物车结算</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主频道栏目导航条 -->
+    <div class="header-channels">
+      <div class="w channels-wrap">
+        <div class="category-title">
+          <span>全部商品分类</span>
+        </div>
+        <ul class="channel-nav-list">
+          <li class="active"><a href="seckill.html">秒杀</a></li>
+          <li><a href="coupon.html">优惠券</a></li>
+          <li><a href="plus.html">PLUS会员</a></li>
+          <li><a href="list.html">品牌闪购</a></li>
+          <li><a href="list.html">京东超市</a></li>
+          <li><a href="list.html">京东生鲜</a></li>
+          <li><a href="list.html">京东国际</a></li>
+          <li><a href="list.html">京东电器</a></li>
+          <li><a href="list.html">拍卖频道</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. 首屏核心区域：品类目录 + 巨幅轮播 + 右侧用户服务资讯 (Hero Section) -->
+  <main class="main-hero">
+    <div class="w hero-layout">
+      <!-- 左侧：细分类目树导航 -->
+      <aside class="category-menu" id="categoryMenu">
+        <ul class="cat-list">
+          <li class="cat-item" data-cat="0">
+            <a href="javascript:;">家用电器</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="1">
+            <a href="javascript:;">手机 / 运营商 / 数码</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="2">
+            <a href="javascript:;">电脑 / 办公 / 文具</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="3">
+            <a href="javascript:;">家居 / 家具 / 家装 / 厨具</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="4">
+            <a href="javascript:;">男装 / 女装 / 童装 / 内衣</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="5">
+            <a href="javascript:;">美妆 / 个人清洁 / 宠物</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="6">
+            <a href="javascript:;">女鞋 / 箱包 / 钟表 / 珠宝</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="7">
+            <a href="javascript:;">男鞋 / 运动 / 户外装备</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="8">
+            <a href="javascript:;">房产 / 汽车 / 汽车用品</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="9">
+            <a href="javascript:;">母婴 / 玩具乐器</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="10">
+            <a href="javascript:;">食品 / 酒类 / 生鲜 / 特产</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="11">
+            <a href="javascript:;">艺术 / 礼品鲜花 / 农资绿植</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="12">
+            <a href="javascript:;">医药保健 / 计生情趣</a>
+            <span class="cat-arrow">›</span>
+          </li>
+          <li class="cat-item" data-cat="13">
+            <a href="javascript:;">图书 / 文娱 / 电子书</a>
+            <span class="cat-arrow">›</span>
+          </li>
+        </ul>
+
+        <!-- 悬浮弹出的详细子分类抽屉面板 (Pop-up Sub-category Layer) -->
+        <div class="category-sub-panel" id="categorySubPanel">
+          <div class="sub-tags-header" id="subTagsHeader">
+            <!-- 动态注入核心快捷标签 -->
+          </div>
+          <div class="sub-detail-groups" id="subDetailGroups">
+            <!-- 动态注入层级列表 -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- 中间：大屏主轮播 + 底部双拼特惠推荐 -->
+      <section class="hero-slider-wrap">
+        <div class="slider-box" id="mainSlider">
+          <div class="slide-list">
+            <div class="slide-item active" style="background: linear-gradient(135deg, #1b263b 0%, #0d1b2a 100%);">
+              <div class="slide-content">
+                <span class="badge">新品首发</span>
+                <h2>旗舰影像 破晓新生</h2>
+                <p>超高动态范围 · 徕卡光学镜头 · 限时立省 600 元</p>
+                <button class="slide-btn">立即选购 ›</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600&q=80" alt="智能手机" class="slide-img">
+            </div>
+            <div class="slide-item" style="background: linear-gradient(135deg, #4a0e17 0%, #1e0008 100%);">
+              <div class="slide-content">
+                <span class="badge">年终盛典</span>
+                <h2>全屋智能家电狂欢</h2>
+                <p>一级能效立享政府补贴20% · 免费上门以旧换新</p>
+                <button class="slide-btn">领取家电补贴 ›</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&q=80" alt="智能家居" class="slide-img">
+            </div>
+            <div class="slide-item" style="background: linear-gradient(135deg, #0b3c5d 0%, #1d2731 100%);">
+              <div class="slide-content">
+                <span class="badge">酷玩电竞</span>
+                <h2>高刷电竞本 战力全开</h2>
+                <p>RTX 4080 显卡加持 · 240Hz 超感屏 · 赠专属外设</p>
+                <button class="slide-btn">去电竞专区 ›</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&q=80" alt="电竞笔电" class="slide-img">
+            </div>
+          </div>
+          <!-- 左右控制按钮 -->
+          <button class="slider-arrow prev" id="sliderPrev">‹</button>
+          <button class="slider-arrow next" id="sliderNext">›</button>
+          <!-- 指示圆点 -->
+          <div class="slider-dots" id="sliderDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+
+        <!-- 轮播图下方的并排双拼促销卡位 -->
+        <div class="hero-sub-promos">
+          <div class="promo-card">
+            <div class="promo-text">
+              <h3>超市爆款榜</h3>
+              <p>好物低至 9.9 包邮</p>
+              <span class="promo-link">去逛逛 ›</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=160&q=80" alt="特惠个护">
+          </div>
+          <div class="promo-card">
+            <div class="promo-text">
+              <h3>数码潮店</h3>
+              <p>无线头戴耳机直降</p>
+              <span class="promo-link">立即抢 ›</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=160&q=80" alt="影音数码">
+          </div>
+        </div>
+      </section>
+
+      <!-- 右侧：个人卡片 + 资讯快报 + 便民服务网格 -->
+      <aside class="hero-user-sidebar">
+        <!-- 登录/用户卡片 -->
+        <div class="user-card">
+          <div class="user-header">
+            <div class="avatar-box">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="用户头像" class="avatar-img">
+            </div>
+            <div class="user-greet">
+              <p class="greet-title">Hi~ 欢迎逛京东！</p>
+              <div class="user-actions">
+                <a href="login.html" class="btn-login">登录</a>
+                <a href="login.html" class="btn-reg">注册</a>
+              </div>
+            </div>
+          </div>
+          <div class="user-benefits">
+            <a href="javascript:;" class="benefit-item">
+              <span class="b-tag">新人专享</span>
+              <span>百元大礼包</span>
+            </a>
+            <a href="plus.html" class="benefit-item plus">
+              <span class="b-tag plus-tag">PLUS</span>
+              <span>全年立省¥1128</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 京东快报 / 资讯公告 -->
+        <div class="jd-news">
+          <div class="news-tab-header">
+            <span class="news-tab active" data-tab="news">JD 快报</span>
+            <span class="news-tab" data-tab="notice">商城公告</span>
+            <a href="javascript:;" class="news-more">更多 ›</a>
+          </div>
+          <ul class="news-list" id="newsList">
+            <li><span class="tag">特惠</span><a href="javascript:;">家电数码新一轮政府补贴开启预约！</a></li>
+            <li><span class="tag">热门</span><a href="javascript:;">京东物流发布春节“不打烊”服务承诺</a></li>
+            <li><span class="tag">活动</span><a href="javascript:;">大牌手机至高24期免息券限量抢</a></li>
+            <li><span class="tag">公益</span><a href="javascript:;">“暖冬计划”持续推进：爱心物资抵达</a></li>
+          </ul>
+        </div>
+
+        <!-- 便民生活服务网格 (金刚区快捷入口) -->
+        <div class="convenience-services">
+          <div class="service-grid">
+            <a href="javascript:;" class="service-item">
+              <span class="icon">📱</span>
+              <span class="title">话费充值</span>
+            </a>
+            <a href="javascript:;" class="service-item">
+              <span class="icon">✈️</span>
+              <span class="title">机票预订</span>
+            </a>
+            <a href="javascript:;" class="service-item">
+              <span class="icon">🏨</span>
+              <span class="title">酒店特惠</span>
+            </a>
+            <a href="javascript:;" class="service-item">
+              <span class="icon">🎬</span>
+              <span class="title">电影票</span>
+            </a>
+            <a href="javascript:;" class="service-item">
+              <span class="icon">⛽</span>
+              <span class="title">加油卡</span>
+            </a>
+            <a href="javascript:;" class="service-item">
+              <span class="icon">🎮</span>
+              <span class="title">游戏充值</span>
+            </a>
+            <a href="javascript:;" class="service-item">
+              <span class="icon">💳</span>
+              <span class="title">白条分期</span>
+            </a>
+            <a href="javascript:;" class="service-item">
+              <span class="icon">🎁</span>
+              <span class="title">京东卡券</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- 4. 京东秒杀 (JD Seckill) 核心促销专区 -->
+  <section class="seckill-section w" id="sec-seckill">
+    <div class="seckill-box">
+      <!-- 秒杀倒计时看板 -->
+      <div class="seckill-countdown-panel">
+        <div class="seckill-title-box">
+          <h2 class="title"><a href="seckill.html" style="color:inherit;text-decoration:none;">京东秒杀</a></h2>
+          <span class="subtitle">FLASH DEALS</span>
+          <span class="bolt-icon">⚡</span>
+        </div>
+        <div class="round-desc">
+          <span class="round-time" id="seckillRound">20:00</span> 点场 距结束还剩
+        </div>
+        <div class="timer-box">
+          <span class="tim-item" id="timerHour">01</span>
+          <span class="tim-sep">:</span>
+          <span class="tim-item" id="timerMinute">45</span>
+          <span class="tim-sep">:</span>
+          <span class="tim-item" id="timerSecond">32</span>
+        </div>
+      </div>
+
+      <!-- 秒杀商品横向轮播滚动区 -->
+      <div class="seckill-goods-slider">
+        <div class="seckill-goods-track" id="seckillTrack">
+          <!-- 商品 1 -->
+          <div class="sk-item">
+            <div class="sk-img-box">
+              <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300&q=80" alt="智能手表">
+              <span class="sk-tag">限量秒杀</span>
+            </div>
+            <h4 class="sk-title">户外GPS智能运动腕表 钛金属蓝宝石</h4>
+            <div class="sk-price-wrap">
+              <span class="cur-price"><small>¥</small>2,999</span>
+              <span class="orig-price">¥3,699</span>
+            </div>
+            <div class="sk-progress">
+              <div class="progress-bar"><div class="fill" style="width: 82%;"></div></div>
+              <span class="progress-txt">已抢82%</span>
+            </div>
+            <button class="sk-add-btn" data-name="智能运动腕表" data-price="2999">立即抢购</button>
+          </div>
+
+          <!-- 商品 2 -->
+          <div class="sk-item">
+            <div class="sk-img-box">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80" alt="无线降噪耳机">
+              <span class="sk-tag">爆款直降</span>
+            </div>
+            <h4 class="sk-title">Hi-Res 无线主动降噪头戴耳机 40小时续航</h4>
+            <div class="sk-price-wrap">
+              <span class="cur-price"><small>¥</small>1,299</span>
+              <span class="orig-price">¥1,899</span>
+            </div>
+            <div class="sk-progress">
+              <div class="progress-bar"><div class="fill" style="width: 95%;"></div></div>
+              <span class="progress-txt">已抢95%</span>
+            </div>
+            <button class="sk-add-btn" data-name="Hi-Res 降噪耳机" data-price="1299">立即抢购</button>
+          </div>
+
+          <!-- 商品 3 -->
+          <div class="sk-item">
+            <div class="sk-img-box">
+              <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&q=80" alt="超清显示器">
+              <span class="sk-tag">热销秒杀</span>
+            </div>
+            <h4 class="sk-title">27英寸 4K 160Hz MiniLED 广色域专业显示器</h4>
+            <div class="sk-price-wrap">
+              <span class="cur-price"><small>¥</small>1,899</span>
+              <span class="orig-price">¥2,499</span>
+            </div>
+            <div class="sk-progress">
+              <div class="progress-bar"><div class="fill" style="width: 64%;"></div></div>
+              <span class="progress-txt">已抢64%</span>
+            </div>
+            <button class="sk-add-btn" data-name="27寸 4K 显示器" data-price="1899">立即抢购</button>
+          </div>
+
+          <!-- 商品 4 -->
+          <div class="sk-item">
+            <div class="sk-img-box">
+              <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&q=80" alt="机械键盘">
+              <span class="sk-tag">一件包邮</span>
+            </div>
+            <h4 class="sk-title">无线三模热插拔机械键盘 RGB客制化手感</h4>
+            <div class="sk-price-wrap">
+              <span class="cur-price"><small>¥</small>349</span>
+              <span class="orig-price">¥499</span>
+            </div>
+            <div class="sk-progress">
+              <div class="progress-bar"><div class="fill" style="width: 76%;"></div></div>
+              <span class="progress-txt">已抢76%</span>
+            </div>
+            <button class="sk-add-btn" data-name="机械键盘" data-price="349">立即抢购</button>
+          </div>
+
+          <!-- 商品 5 -->
+          <div class="sk-item">
+            <div class="sk-img-box">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&q=80" alt="经典书籍">
+              <span class="sk-tag">每满100减50</span>
+            </div>
+            <h4 class="sk-title">深入理解计算机系统 + 算法导论 精装典藏版</h4>
+            <div class="sk-price-wrap">
+              <span class="cur-price"><small>¥</small>128</span>
+              <span class="orig-price">¥256</span>
+            </div>
+            <div class="sk-progress">
+              <div class="progress-bar"><div class="fill" style="width: 50%;"></div></div>
+              <span class="progress-txt">已抢50%</span>
+            </div>
+            <button class="sk-add-btn" data-name="计算机经典典藏套书" data-price="128">立即抢购</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 发现好货 & 特色矩阵专区 (Featured Grid) -->
+  <section class="feature-matrix w" id="sec-features">
+    <!-- 每日特价卡片 -->
+    <div class="matrix-card">
+      <div class="card-head">
+        <h3 class="head-title">每日特价</h3>
+        <span class="head-sub">大牌直降 超值抢</span>
+      </div>
+      <div class="card-body-double">
+        <div class="sub-item">
+          <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=180&q=80" alt="纯棉卫衣">
+          <p class="name">加绒保暖卫衣</p>
+          <span class="price">¥79.00</span>
+        </div>
+        <div class="sub-item">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=180&q=80" alt="跑步鞋">
+          <p class="name">轻量缓震跑鞋</p>
+          <span class="price">¥199.00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 京东排行榜 -->
+    <div class="matrix-card">
+      <div class="card-head">
+        <h3 class="head-title">热卖排行榜</h3>
+        <span class="head-sub">跟榜买 不踩坑</span>
+      </div>
+      <div class="rank-list">
+        <div class="rank-item">
+          <span class="rank-num top1">1</span>
+          <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=100&q=80" alt="智能手机">
+          <div class="rank-info">
+            <p class="name">旗舰5G智能手机 512GB</p>
+            <p class="desc">热销 5.2 万+ 件</p>
+          </div>
+        </div>
+        <div class="rank-item">
+          <span class="rank-num top2">2</span>
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=100&q=80" alt="运动腕表">
+          <div class="rank-info">
+            <p class="name">蓝宝石镜面智能运动腕表</p>
+            <p class="desc">好评率 99%</p>
+          </div>
+        </div>
+        <div class="rank-item">
+          <span class="rank-num top3">3</span>
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="头戴耳机">
+          <div class="rank-info">
+            <p class="name">降噪大师 无线头戴耳机</p>
+            <p class="desc">近30天回购榜第1名</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 新品首发 -->
+    <div class="matrix-card">
+      <div class="card-head">
+        <h3 class="head-title">新品首发</h3>
+        <span class="head-sub">前沿好物抢先体验</span>
+      </div>
+      <div class="card-body-double">
+        <div class="sub-item">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=180&q=80" alt="超薄轻薄本">
+          <p class="name">AI轻薄本 首发立减</p>
+          <span class="price">¥5,499</span>
+        </div>
+        <div class="sub-item">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=180&q=80" alt="折叠屏手机">
+          <p class="name">双旋水滴铰链折叠屏</p>
+          <span class="price">¥7,999</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 领券中心 -->
+    <div class="matrix-card coupon-card">
+      <div class="card-head">
+        <h3 class="head-title">领券中心</h3>
+        <span class="head-sub">大额神券天天领</span>
+      </div>
+      <div class="coupon-list">
+        <div class="coupon-item">
+          <div class="c-left">
+            <span class="c-val"><small>¥</small>100</span>
+            <span class="c-cond">满1000可用</span>
+          </div>
+          <div class="c-right">
+            <span class="c-desc">全品类家电券</span>
+            <button class="c-btn">立即领取</button>
+          </div>
+        </div>
+        <div class="coupon-item">
+          <div class="c-left">
+            <span class="c-val"><small>¥</small>30</span>
+            <span class="c-cond">满200可用</span>
+          </div>
+          <div class="c-right">
+            <span class="c-desc">超市百货通用券</span>
+            <button class="c-btn">立即领取</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 核心品类楼层 (Channel Floors: 3C数码 / 京东超市) -->
+  <section class="floor-section w" id="sec-digital">
+    <div class="floor-header">
+      <div class="floor-title-wrap">
+        <span class="floor-flag">3C</span>
+        <h3 class="floor-title">数码家电馆</h3>
+      </div>
+      <ul class="floor-tabs">
+        <li class="active"><a href="javascript:;">热门推荐</a></li>
+        <li><a href="javascript:;">品质家电</a></li>
+        <li><a href="javascript:;">电脑外设</a></li>
+        <li><a href="javascript:;">智能影音</a></li>
+        <li><a href="javascript:;">游戏电竞</a></li>
+      </ul>
+    </div>
+    <div class="floor-body">
+      <!-- 楼层特色左侧大展板 -->
+      <div class="floor-banner" style="background: linear-gradient(180deg, #304352 0%, #1d2731 100%);">
+        <div class="banner-text">
+          <h4>智能数码巅峰月</h4>
+          <p>国家补贴最高2000元</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=300&q=80" alt="数码电子" class="banner-img">
+        <ul class="banner-tags">
+          <li>以旧换新</li>
+          <li>保修无忧</li>
+          <li>分期免息</li>
+        </ul>
+      </div>
+
+      <!-- 楼层商品矩阵 (8宫格) -->
+      <div class="floor-goods-grid">
+        <div class="f-goods-card">
+          <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=260&q=80" alt="平板电脑">
+          <p class="title">11英寸 2.8K护眼高刷平板电脑 256GB</p>
+          <div class="meta">
+            <span class="price">¥2,499.00</span>
+            <span class="badge-zy">自营</span>
+          </div>
+        </div>
+        <div class="f-goods-card">
+          <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=260&q=80" alt="轻薄笔记本">
+          <p class="title">14核标压轻薄本 全金属机身 超长续航</p>
+          <div class="meta">
+            <span class="price">¥4,699.00</span>
+            <span class="badge-zy">自营</span>
+          </div>
+        </div>
+        <div class="f-goods-card">
+          <img src="https://images.unsplash.com/photo-1510519138161-58474dfab9c7?w=260&q=80" alt="游戏鼠标">
+          <p class="title">轻量化无线双模电竞鼠标 30000DPI传感器</p>
+          <div class="meta">
+            <span class="price">¥399.00</span>
+            <span class="badge-zy">自营</span>
+          </div>
+        </div>
+        <div class="f-goods-card">
+          <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=260&q=80" alt="便携蓝牙音箱">
+          <p class="title">重低音户外防水便携蓝牙音箱 IPX7级</p>
+          <div class="meta">
+            <span class="price">¥299.00</span>
+            <span class="badge-zy">自营</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 为你推荐 (Feed Grid) 无限好物瀑布流 -->
+  <section class="recommend-section w" id="sec-recommend">
+    <div class="section-title-center">
+      <span class="line"></span>
+      <h2 class="title">为你推荐</h2>
+      <span class="subtitle">EXPLORE RECOMMENDATIONS</span>
+      <span class="line"></span>
+    </div>
+    <div class="recommend-grid" id="recommendGrid">
+      <!-- 动态注入或默认预置的高品质商品卡片 -->
+      <div class="goods-card">
+        <div class="thumb-wrap">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="运动鞋">
+          <span class="hover-find">找相似</span>
+        </div>
+        <div class="card-info">
+          <p class="g-title"><span class="tag-zy">自营</span> 透气减震专业竞速跑鞋 男款马拉松跑鞋</p>
+          <div class="g-tags">
+            <span class="promo-tag">满300减50</span>
+            <span class="promo-tag">次日达</span>
+          </div>
+          <div class="g-bottom">
+            <div class="g-price">
+              <span class="yen">¥</span><span class="amount">289</span><span class="decimals">.00</span>
+            </div>
+            <button class="add-cart-btn" data-name="专业竞速跑鞋" data-price="289" title="加入购物车">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="goods-card">
+        <div class="thumb-wrap">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="机械手表">
+          <span class="hover-find">找相似</span>
+        </div>
+        <div class="card-info">
+          <p class="g-title"><span class="tag-zy">自营</span> 自动机械商务男士腕表 50米生活防水</p>
+          <div class="g-tags">
+            <span class="promo-tag">PLUS专享95折</span>
+          </div>
+          <div class="g-bottom">
+            <div class="g-price">
+              <span class="yen">¥</span><span class="amount">1,580</span><span class="decimals">.00</span>
+            </div>
+            <button class="add-cart-btn" data-name="自动机械商务手表" data-price="1580" title="加入购物车">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="goods-card">
+        <div class="thumb-wrap">
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80" alt="护肤套装">
+          <span class="hover-find">找相似</span>
+        </div>
+        <div class="card-info">
+          <p class="g-title"><span class="tag-zy">自营</span> 补水修护赋活水乳套装 敏感肌温和配方</p>
+          <div class="g-tags">
+            <span class="promo-tag">买1送1</span>
+            <span class="promo-tag">赠定制化妆包</span>
+          </div>
+          <div class="g-bottom">
+            <div class="g-price">
+              <span class="yen">¥</span><span class="amount">399</span><span class="decimals">.00</span>
+            </div>
+            <button class="add-cart-btn" data-name="补水修护赋活套装" data-price="399" title="加入购物车">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="goods-card">
+        <div class="thumb-wrap">
+          <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80" alt="客制化键帽">
+          <span class="hover-find">找相似</span>
+        </div>
+        <div class="card-info">
+          <p class="g-title"><span class="tag-zy">自营</span> PBT五面热升华个性主题键帽 128键大全套</p>
+          <div class="g-tags">
+            <span class="promo-tag">限时立减20</span>
+          </div>
+          <div class="g-bottom">
+            <div class="g-price">
+              <span class="yen">¥</span><span class="amount">169</span><span class="decimals">.00</span>
+            </div>
+            <button class="add-cart-btn" data-name="PBT个性主题键帽" data-price="169" title="加入购物车">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="goods-card">
+        <div class="thumb-wrap">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="头戴式耳机">
+          <span class="hover-find">找相似</span>
+        </div>
+        <div class="card-info">
+          <p class="g-title"><span class="tag-zy">自营</span> 旗舰级双芯主动降噪立体声耳机 黑色经典款</p>
+          <div class="g-tags">
+            <span class="promo-tag">12期免息</span>
+            <span class="promo-tag">以旧换新</span>
+          </div>
+          <div class="g-bottom">
+            <div class="g-price">
+              <span class="yen">¥</span><span class="amount">1,799</span><span class="decimals">.00</span>
+            </div>
+            <button class="add-cart-btn" data-name="旗舰主动降噪耳机" data-price="1799" title="加入购物车">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="goods-card">
+        <div class="thumb-wrap">
+          <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&q=80" alt="复古拍立得相机">
+          <span class="hover-find">找相似</span>
+        </div>
+        <div class="card-info">
+          <p class="g-title"><span class="tag-zy">自营</span> 复古一次成像拍立得相机 附赠20张相纸礼盒</p>
+          <div class="g-tags">
+            <span class="promo-tag">节日送礼推荐</span>
+          </div>
+          <div class="g-bottom">
+            <div class="g-price">
+              <span class="yen">¥</span><span class="amount">588</span><span class="decimals">.00</span>
+            </div>
+            <button class="add-cart-btn" data-name="复古拍立得礼盒" data-price="588" title="加入购物车">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="goods-card">
+        <div class="thumb-wrap">
+          <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" alt="轻奢香水">
+          <span class="hover-find">找相似</span>
+        </div>
+        <div class="card-info">
+          <p class="g-title"><span class="tag-zy">自营</span> 英国梨与小苍兰浓香水 50ml 持久留香</p>
+          <div class="g-tags">
+            <span class="promo-tag">送定制试用装</span>
+          </div>
+          <div class="g-bottom">
+            <div class="g-price">
+              <span class="yen">¥</span><span class="amount">620</span><span class="decimals">.00</span>
+            </div>
+            <button class="add-cart-btn" data-name="英国梨与小苍兰香水" data-price="620" title="加入购物车">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="goods-card">
+        <div class="thumb-wrap">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="便携笔记本电脑">
+          <span class="hover-find">找相似</span>
+        </div>
+        <div class="card-info">
+          <p class="g-title"><span class="tag-zy">自营</span> 13.3英寸 超轻薄便携商务办公本 全天续航</p>
+          <div class="g-tags">
+            <span class="promo-tag">立省500</span>
+            <span class="promo-tag">晒单送原装包鼠</span>
+          </div>
+          <div class="g-bottom">
+            <div class="g-price">
+              <span class="yen">¥</span><span class="amount">5,299</span><span class="decimals">.00</span>
+            </div>
+            <button class="add-cart-btn" data-name="13.3寸超薄商务本" data-price="5299" title="加入购物车">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 右侧电梯快速导航 (Lift Elevator / Side Navigation) -->
+  <aside class="lift-nav" id="liftNav">
+    <div class="lift-item" data-target="sec-seckill">
+      <span class="lift-text">京东秒杀</span>
+    </div>
+    <div class="lift-item" data-target="sec-features">
+      <span class="lift-text">特色推荐</span>
+    </div>
+    <div class="lift-item" data-target="sec-digital">
+      <span class="lift-text">数码家电</span>
+    </div>
+    <div class="lift-item" data-target="sec-recommend">
+      <span class="lift-text">为你推荐</span>
+    </div>
+    <div class="lift-item lift-tool" id="btnFeedback">
+      <span class="lift-text">反馈建议</span>
+    </div>
+    <div class="lift-item lift-tool lift-top" id="btnBackTop">
+      <span class="lift-text">▲ 顶部</span>
+    </div>
+  </aside>
+
+  <!-- 9. 底部服务与保障栏 (Footer Multi-Fast-Good-Save Service) -->
+  <footer class="footer">
+    <!-- 京东“多快好省”4大承诺标志 -->
+    <div class="footer-service">
+      <div class="w service-box">
+        <div class="service-item">
+          <div class="s-icon duo">多</div>
+          <div class="s-text">
+            <h4>品类齐全</h4>
+            <p>轻松购物 一应俱全</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="s-icon kuai">快</div>
+          <div class="s-text">
+            <h4>多仓直发</h4>
+            <p>急速配送 准时必达</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="s-icon hao">好</div>
+          <div class="s-text">
+            <h4>正品行货</h4>
+            <p>精致服务 品质保障</p>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="s-icon sheng">省</div>
+          <div class="s-text">
+            <h4>天天低价</h4>
+            <p>畅选无忧 畅享优惠</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 购物指引与帮助中心多列导航 -->
+    <div class="footer-help w">
+      <div class="help-col">
+        <h5>购物指南</h5>
+        <ul>
+          <li><a href="javascript:;">购物流程</a></li>
+          <li><a href="javascript:;">会员介绍</a></li>
+          <li><a href="javascript:;">生活旅行</a></li>
+          <li><a href="javascript:;">常见问题</a></li>
+          <li><a href="javascript:;">大家电</a></li>
+          <li><a href="javascript:;">联系客服</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>配送方式</h5>
+        <ul>
+          <li><a href="javascript:;">上门自提</a></li>
+          <li><a href="javascript:;">211限时达</a></li>
+          <li><a href="javascript:;">配送服务查询</a></li>
+          <li><a href="javascript:;">配送费收取标准</a></li>
+          <li><a href="javascript:;">海外配送</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>支付方式</h5>
+        <ul>
+          <li><a href="javascript:;">货到付款</a></li>
+          <li><a href="javascript:;">在线支付</a></li>
+          <li><a href="javascript:;">分期付款</a></li>
+          <li><a href="javascript:;">公司转账</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>售后服务</h5>
+        <ul>
+          <li><a href="javascript:;">售后政策</a></li>
+          <li><a href="javascript:;">价格保护</a></li>
+          <li><a href="javascript:;">退款说明</a></li>
+          <li><a href="user/refund.html">返修/退换货</a></li>
+          <li><a href="javascript:;">取消订单</a></li>
+        </ul>
+      </div>
+      <div class="help-col">
+        <h5>特色服务</h5>
+        <ul>
+          <li><a href="javascript:;">夺宝岛</a></li>
+          <li><a href="javascript:;">DIY装机</a></li>
+          <li><a href="javascript:;">延保服务</a></li>
+          <li><a href="javascript:;">京东E卡</a></li>
+          <li><a href="javascript:;">京东通信</a></li>
+        </ul>
+      </div>
+      <div class="help-col cover-area">
+        <h5>京东自营覆盖区县</h5>
+        <p>京东已向全国2661个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。</p>
+        <a href="javascript:;" class="more-link">查看详情 ›</a>
+      </div>
+    </div>
+
+    <!-- 资质与版权信息 -->
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="javascript:;">关于我们</a><span class="split">|</span>
+        <a href="javascript:;">联系我们</a><span class="split">|</span>
+        <a href="service/chat.html">联系客服</a><span class="split">|</span>
+        <a href="merchant/settle.html">合作招商</a><span class="split">|</span>
+        <a href="seller/index.html">商家帮助/工作台</a><span class="split">|</span>
+        <a href="javascript:;">营销中心</a><span class="split">|</span>
+        <a href="javascript:;">手机京东</a><span class="split">|</span>
+        <a href="javascript:;">友情链接</a><span class="split">|</span>
+        <a href="javascript:;">销售联盟</a><span class="split">|</span>
+        <a href="javascript:;">京东社区</a><span class="split">|</span>
+        <a href="javascript:;">风险监测</a><span class="split">|</span>
+        <a href="javascript:;">隐私政策</a>
+      </p>
+      <p class="cert-info">
+        <span>京公网安备 11000002000088号</span>
+        <span>京ICP备11041704号</span>
+        <span>ICP经营许可证：京B2-20190132</span>
+        <span>新出发京零 字第大120007号</span>
+      </p>
+      <p class="copy">
+        Copyright © 2004 - 2026 京东JD.com 版权所有 | 消费者维权热线：4006065500
+      </p>
+    </div>
+  </footer>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

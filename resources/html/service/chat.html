@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东智能客服 - 在线咨询与售后协同 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>服</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/chat.css">
+</head>
+<body class="chat-body">
+  <!-- 1. 顶部 Header -->
+  <header class="chat-header-bar">
+    <div class="chat-brand-title">
+      <div class="bot-avatar">Joy</div>
+      <div>
+        <h3>京东智能客服机器人 (Joy)</h3>
+      </div>
+      <span class="service-status">● 7×24小时专属服务中</span>
+    </div>
+    <div class="chat-top-links">
+      <a href="../index.html"><i>🏠</i> 返回商城首页</a>
+      <a href="../user/order.html"><i>📋</i> 我的订单</a>
+      <a href="../user/refund.html"><i>🔄</i> 售后申请</a>
+    </div>
+  </header>
+
+  <!-- 2. IM 三栏工作台 -->
+  <div class="chat-workbench">
+    <!-- 左侧：关联近期订单 -->
+    <aside class="chat-left-side">
+      <div class="side-block-head">📦 咨询关联订单</div>
+      <div class="recent-order-box">
+        <div class="order-mini-card" id="btnSendRecentOrder">
+          <div class="om-top">
+            <span>订单号：JD2026092800101</span>
+            <span style="color:#52c41a;font-weight:bold;">运输中</span>
+          </div>
+          <div class="om-body">
+            <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=80&q=80" alt="iPhone 16 Pro">
+            <div class="info">
+              <h5>Apple iPhone 16 Pro 256GB 原色钛金属</h5>
+              <div class="price">¥7,999.00</div>
+            </div>
+          </div>
+          <button class="btn-send-order">发送此订单给客服咨询 ›</button>
+        </div>
+      </div>
+
+      <div class="side-block-head" style="margin-top:10px;">⚡ 自助快捷服务通道</div>
+      <div style="padding:14px;display:flex;flex-direction:column;gap:8px;">
+        <a href="../user/refund.html" style="font-size:12px;color:#005ea7;text-decoration:none;">• 申请退款 / 7天退货 ›</a>
+        <a href="../user/order.html" style="font-size:12px;color:#005ea7;text-decoration:none;">• 实时物流轨迹时间轴 ›</a>
+        <a href="../user/address.html" style="font-size:12px;color:#005ea7;text-decoration:none;">• 修改默认收货地址 ›</a>
+        <a href="../coupon.html" style="font-size:12px;color:#005ea7;text-decoration:none;">• 领券中心与大额满减 ›</a>
+      </div>
+    </aside>
+
+    <!-- 中间：核心聊天流 -->
+    <main class="chat-main-area">
+      <!-- 消息列表 -->
+      <div class="chat-message-list" id="messageList">
+        <!-- 欢迎气泡 -->
+        <div class="msg-row bot">
+          <div class="msg-avatar">Joy</div>
+          <div>
+            <div class="msg-bubble">
+              您好，尊敬的张三 (PLUS会员)！我是京东智能在线助理 <strong>Joy</strong> 🐶。<br>
+              请问有什么可以帮您？您可以在下方直接提问，或选择快捷问题：
+            </div>
+            <div class="msg-time">刚刚</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 快捷问题药丸 -->
+      <div class="chat-quick-pills" id="quickPills">
+        <span class="quick-pill" data-q="这笔订单什么时候能送达？">🚚 订单什么时候送达？</span>
+        <span class="quick-pill" data-q="如何申请开具增值税发票？">🧾 如何开具发票？</span>
+        <span class="quick-pill" data-q="不喜欢能支持七天无理由退货吗？">🔄 7天无理由退货流程</span>
+        <span class="quick-pill" data-q="转接人工客服专员" style="color:#e1251b;border-color:#ffa39e;">👨‍💼 转人工客服</span>
+      </div>
+
+      <!-- 底部输入框 -->
+      <div class="chat-input-box">
+        <textarea id="chatInput" placeholder="输入您的问题，按回车或点击发送..."></textarea>
+        <div class="chat-bottom-tools">
+          <div class="tool-icons">
+            <span title="发送表情">😊</span>
+            <span title="上传图片/截图">🖼️</span>
+            <span title="发送订单">📦</span>
+          </div>
+          <button class="btn-send-msg" id="btnSendMsg">发送</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- 右侧：常见 FAQ 与帮助 -->
+    <aside class="chat-right-side">
+      <div class="faq-card">
+        <h4>🔥 猜您想问</h4>
+        <ul class="faq-list">
+          <li><a href="javascript:;" class="faq-item">📌 什么是“211限时达”极速配送？</a></li>
+          <li><a href="javascript:;" class="faq-item">📌 降价了怎么申请“一键价格保护”？</a></li>
+          <li><a href="javascript:;" class="faq-item">📌 PLUS 会员每月免费运费券怎么领？</a></li>
+          <li><a href="javascript:;" class="faq-item">📌 收到商品包装破损如何申请换新？</a></li>
+        </ul>
+      </div>
+
+      <div class="faq-card" style="background:#fffaf8;border-color:#ffe8e0;">
+        <h4 style="color:#e1251b;">🛡️ 京东自营服务承诺</h4>
+        <p style="font-size:12px;color:#666;line-height:1.5;">
+          • 正品行货，全国联保<br>
+          • 闪电退款，双向免运费<br>
+          • 7×24小时专业售后服务保障
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/chat.js"></script>
+</body>
+</html>

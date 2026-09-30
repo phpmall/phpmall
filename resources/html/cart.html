@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的购物车 - 京东商城</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body class="cart-body">
+  <!-- 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="login.html" class="highlight">你好，请登录</a>
+          <a href="register.html" class="register-btn">免费注册</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="user/order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="user/index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 购物车专属 Header -->
+  <header class="cart-header">
+    <div class="w cart-header-inner">
+      <div class="logo-cart-title">
+        <a href="index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">购物车</h2>
+      </div>
+      <div class="cart-search-box">
+        <input type="text" placeholder="自营商品特惠直降" id="cartSearchInput">
+        <button class="cart-search-btn">搜索</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 购物车主体内容 -->
+  <main class="w cart-main-content">
+    <!-- 顶部状态选项卡 -->
+    <div class="cart-tabs-bar">
+      <div class="tab-item active">全部商品 <span class="tab-num" id="totalTabNum">3</span></div>
+      <div class="tab-item">降价商品 <span class="tab-num">1</span></div>
+      <div class="tab-item">库存紧张 <span class="tab-num">0</span></div>
+      <div class="deliver-tip">
+        <span>配送至：<strong>北京市朝阳区</strong></span>
+      </div>
+    </div>
+
+    <!-- 购物车表格列表 -->
+    <div class="cart-table">
+      <!-- 表头 -->
+      <div class="cart-thead">
+        <div class="th-chk">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="selectAllTop" checked>
+            <span class="chk-box"></span>
+            <span>全选</span>
+          </label>
+        </div>
+        <div class="th-goods">商品清单</div>
+        <div class="th-props">属性配置</div>
+        <div class="th-price">单价</div>
+        <div class="th-quantity">数量</div>
+        <div class="th-sum">小计</div>
+        <div class="th-ops">操作</div>
+      </div>
+
+      <!-- 店铺分组 1: 京东自营 -->
+      <div class="shop-group">
+        <div class="shop-title-bar">
+          <label class="custom-checkbox">
+            <input type="checkbox" class="shop-chk" checked>
+            <span class="chk-box"></span>
+            <span class="shop-name"><span class="badge-zy">自营</span> 京东自营旗舰店</span>
+          </label>
+          <span class="free-shipping-tag">已免运费</span>
+        </div>
+
+        <!-- 促销满减横幅 -->
+        <div class="promo-alert-bar">
+          <span class="promo-label">满减</span>
+          <span class="promo-desc">活动商品购满 300 元，即可立减 50 元现金（已减 50.00 元）</span>
+          <a href="list.html" class="go-coudan">去凑单 &gt;</a>
+        </div>
+
+        <!-- 商品行 1 -->
+        <div class="cart-row" data-id="101" data-price="7999">
+          <div class="cell-chk">
+            <label class="custom-checkbox">
+              <input type="checkbox" class="item-chk" checked>
+              <span class="chk-box"></span>
+            </label>
+          </div>
+          <div class="cell-goods">
+            <a href="detail.html" class="goods-img">
+              <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=160&q=80" alt="iPhone 16 Pro">
+            </a>
+            <div class="goods-detail">
+              <a href="detail.html" class="title">Apple iPhone 16 Pro 256GB 原色钛金属 5G手机</a>
+              <p class="service-tags">
+                <span class="tag-zy">京东物流</span>
+                <span class="tag-safe">选购安心保障</span>
+              </p>
+            </div>
+          </div>
+          <div class="cell-props">
+            <p>颜色：原色钛金属</p>
+            <p>版本：256GB</p>
+          </div>
+          <div class="cell-price">
+            <p class="cur-price">¥7999.00</p>
+            <p class="orig-price"><del>¥8999.00</del></p>
+          </div>
+          <div class="cell-quantity">
+            <div class="stepper">
+              <button class="step-btn btn-minus">-</button>
+              <input type="text" class="step-val" value="1" readonly>
+              <button class="step-btn btn-plus">+</button>
+            </div>
+            <p class="stock-tip">有货</p>
+          </div>
+          <div class="cell-sum">
+            <strong class="sum-price">¥7999.00</strong>
+          </div>
+          <div class="cell-ops">
+            <button class="btn-op btn-delete">删除</button>
+            <button class="btn-op btn-fav">移到关注</button>
+          </div>
+        </div>
+
+        <!-- 商品行 2 -->
+        <div class="cart-row" data-id="102" data-price="1899">
+          <div class="cell-chk">
+            <label class="custom-checkbox">
+              <input type="checkbox" class="item-chk" checked>
+              <span class="chk-box"></span>
+            </label>
+          </div>
+          <div class="cell-goods">
+            <a href="detail.html" class="goods-img">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=160&q=80" alt="Sony耳机">
+            </a>
+            <div class="goods-detail">
+              <a href="detail.html" class="title">Sony WH-1000XM5 无线头戴主动降噪耳机 黑色</a>
+              <p class="service-tags">
+                <span class="tag-zy">京东物流</span>
+                <span class="tag-safe">7天无理由退货</span>
+              </p>
+            </div>
+          </div>
+          <div class="cell-props">
+            <p>颜色：经典黑</p>
+            <p>套餐：官方标配</p>
+          </div>
+          <div class="cell-price">
+            <p class="cur-price">¥1899.00</p>
+          </div>
+          <div class="cell-quantity">
+            <div class="stepper">
+              <button class="step-btn btn-minus">-</button>
+              <input type="text" class="step-val" value="1" readonly>
+              <button class="step-btn btn-plus">+</button>
+            </div>
+            <p class="stock-tip">有货</p>
+          </div>
+          <div class="cell-sum">
+            <strong class="sum-price">¥1899.00</strong>
+          </div>
+          <div class="cell-ops">
+            <button class="btn-op btn-delete">删除</button>
+            <button class="btn-op btn-fav">移到关注</button>
+          </div>
+        </div>
+
+        <!-- 商品行 3 -->
+        <div class="cart-row" data-id="103" data-price="169">
+          <div class="cell-chk">
+            <label class="custom-checkbox">
+              <input type="checkbox" class="item-chk" checked>
+              <span class="chk-box"></span>
+            </label>
+          </div>
+          <div class="cell-goods">
+            <a href="detail.html" class="goods-img">
+              <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=160&q=80" alt="机械键盘">
+            </a>
+            <div class="goods-detail">
+              <a href="detail.html" class="title">PBT五面热升华客制化机械键盘主题键帽 128键</a>
+              <p class="service-tags">
+                <span class="tag-zy">京东物流</span>
+              </p>
+            </div>
+          </div>
+          <div class="cell-props">
+            <p>主题：复古微水泥</p>
+            <p>配列：全兼容</p>
+          </div>
+          <div class="cell-price">
+            <p class="cur-price">¥169.00</p>
+          </div>
+          <div class="cell-quantity">
+            <div class="stepper">
+              <button class="step-btn btn-minus">-</button>
+              <input type="text" class="step-val" value="1" readonly>
+              <button class="step-btn btn-plus">+</button>
+            </div>
+            <p class="stock-tip">仅剩2件</p>
+          </div>
+          <div class="cell-sum">
+            <strong class="sum-price">¥169.00</strong>
+          </div>
+          <div class="cell-ops">
+            <button class="btn-op btn-delete">删除</button>
+            <button class="btn-op btn-fav">移到关注</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 吸底结算工具条 (Sticky Float Bar) -->
+    <div class="cart-floatbar" id="cartFloatBar">
+      <div class="floatbar-left">
+        <label class="custom-checkbox">
+          <input type="checkbox" id="selectAllBottom" checked>
+          <span class="chk-box"></span>
+          <span>全选</span>
+        </label>
+        <button class="bar-link-btn" id="batchDeleteBtn">删除选中的商品</button>
+        <button class="bar-link-btn">移到我的关注</button>
+        <button class="bar-link-btn">清除下架宝贝</button>
+      </div>
+      <div class="floatbar-right">
+        <div class="selected-amount">
+          已选择 <strong class="hl-count" id="selectedCount">3</strong> 件商品
+        </div>
+        <div class="total-price-box">
+          <div class="total-row">
+            <span class="txt">总价（不含运费）：</span>
+            <strong class="price-val" id="totalAmount">¥10,067.00</strong>
+          </div>
+          <div class="discount-row">
+            <span>已节省：-¥50.00</span>
+          </div>
+        </div>
+        <a href="checkout.html" class="btn-checkout" id="btnCheckout">去结算</a>
+      </div>
+    </div>
+
+    <!-- 猜你喜欢推荐专区 -->
+    <section class="cart-guess-like">
+      <div class="guess-title">
+        <h3>猜你喜欢</h3>
+      </div>
+      <div class="guess-grid">
+        <div class="guess-item">
+          <a href="detail.html"><img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=200&q=80" alt="智能手表"></a>
+          <p class="name">户外GPS智能运动腕表</p>
+          <p class="price">¥2,999.00</p>
+          <button class="btn-add-guess">加入购物车</button>
+        </div>
+        <div class="guess-item">
+          <a href="detail.html"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80" alt="跑鞋"></a>
+          <p class="name">竞速轻量碳板缓震跑鞋</p>
+          <p class="price">¥289.00</p>
+          <button class="btn-add-guess">加入购物车</button>
+        </div>
+        <div class="guess-item">
+          <a href="detail.html"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=200&q=80" alt="显示器"></a>
+          <p class="name">27英寸 4K 160Hz MiniLED 显示器</p>
+          <p class="price">¥1,899.00</p>
+          <button class="btn-add-guess">加入购物车</button>
+        </div>
+        <div class="guess-item">
+          <a href="detail.html"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=200&q=80" alt="护肤"></a>
+          <p class="name">赋活水乳套装 温和滋润</p>
+          <p class="price">¥399.00</p>
+          <button class="btn-add-guess">加入购物车</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="index.html">京东首页</a><span class="split">|</span>
+        <a href="list.html">商品列表</a><span class="split">|</span>
+        <a href="cart.html">购物车</a><span class="split">|</span>
+        <a href="checkout.html">结算中心</a><span class="split">|</span>
+        <a href="login.html">账号登录</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有</p>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京麦商家工作台 - 商家后台管理中心 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231976d2'/><text x='50%' y='55%' font-size='14' font-family='sans-serif' font-weight='bold' fill='%23ffffff' dominant-baseline='middle' text-anchor='middle'>麦</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/seller.css">
+</head>
+<body class="seller-body">
+  <!-- 商家端顶部 Header -->
+  <header class="seller-header">
+    <div class="seller-header-inner">
+      <div class="header-left">
+        <a href="index.html" class="seller-logo-box">
+          <span class="logo-txt">京麦</span>
+          <span class="logo-sub">商家工作台</span>
+        </a>
+        <div class="store-badge">
+          <span class="store-name">索尼数码专营店</span>
+          <span class="store-type">POP专营店</span>
+          <span class="store-score">综合评分 4.9</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-links">
+          <a href="../shop/index.html" class="h-link" title="前往前台店铺"><i>🏬</i> 前台店铺首页</a>
+          <a href="../index.html" class="h-link" title="返回京东主站"><i>🏠</i> 京东商城</a>
+          <span class="split">|</span>
+          <a href="javascript:;" class="h-link notice-link" id="btnNotice">
+            <i>🔔</i> 消息 <span class="badge-num" id="noticeNum">3</span>
+          </a>
+          <a href="javascript:;" class="h-link" id="btnSellerIm"><i>🎧</i> 商家客服IM</a>
+          <span class="split">|</span>
+          <div class="seller-user">
+            <span class="avatar">👨‍💼</span>
+            <span class="uname">李店长 (主账号)</span>
+            <a href="../merchant/settle.html" class="logout-link">退出</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 商家工作台主体布局 (Sidebar + Dashboard) -->
+  <div class="seller-layout">
+    <!-- 左侧管理菜单 (Ant Design Sider 风格) -->
+    <aside class="seller-sidebar ant-layout-sider" id="sellerSidebar">
+      <!-- AntD 风格菜单检索 -->
+      <div class="sidebar-search-box">
+        <div class="ant-input-affix-wrapper">
+          <span class="ant-input-prefix">🔍</span>
+          <input type="text" id="menuSearchInput" placeholder="搜索功能 / 菜单" autocomplete="off">
+          <span class="ant-input-suffix"><kbd class="ant-kbd">Ctrl K</kbd></span>
+        </div>
+      </div>
+
+      <!-- AntD Menu (扁平化清晰两级结构) -->
+      <ul class="ant-menu ant-menu-root ant-menu-inline ant-menu-light nav-tree" role="menu">
+        <!-- 常用直达项 (无子级，直接点击跳转) -->
+        <li class="ant-menu-item active" role="menuitem">
+          <a href="index.html" class="nav-link">
+            <span class="ant-menu-item-icon m-icon">📊</span>
+            <span class="m-txt">工作台总览</span>
+          </a>
+        </li>
+        <li class="ant-menu-item" role="menuitem">
+          <a href="javascript:;" class="nav-link menu-item-link" data-title="待办预警中心">
+            <span class="ant-menu-item-icon m-icon">🚨</span>
+            <span class="m-txt">待办中心与预警</span>
+            <span class="ant-badge-count badge-num">4</span>
+          </a>
+        </li>
+
+        <!-- 1. 商品管理 -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">📦</span>
+            <span class="m-txt">商品管理</span>
+            <span class="ant-badge-count badge-num badge-warn">2</span>
+            <i class="ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item"><a href="javascript:;" id="btnOpenAddGoods" class="sub-link">发布新商品</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="在售商品管理">在售商品列表 (48)</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="库存预警监控">库存监控与预警 (2)</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="审核与草稿箱">审核中与草稿箱 (1)</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="商品资质与品控认证">商品资质与品控认证</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="运费模板配置">运费模板与地址库</a></li>
+          </ul>
+        </li>
+
+        <!-- 2. 订单履约 (当前默认展开) -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent open">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">🚚</span>
+            <span class="m-txt">订单履约</span>
+            <span class="ant-badge-count badge-num">3</span>
+            <i class="ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item active"><a href="javascript:;" class="sub-link menu-item-link" data-title="待发货订单管理">待发货订单处理 (3)</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="全部订单综合查询">全部订单综合查询</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="批量面单打印">批量面单与打单</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="物流异常与时效监控">物流异常与拦截预警 (1)</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="历史发货记录">已发货与归档记录</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="多仓与自提履约">多仓库存调拨与自提</a></li>
+          </ul>
+        </li>
+
+        <!-- 3. 售后与客诉 -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">🔄</span>
+            <span class="m-txt">售后与客诉</span>
+            <span class="ant-badge-count badge-num">1</span>
+            <i class="ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="退换货售后审核">退款/退货退款审核 (1)</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="换货与补发管理">换货与补发管理</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="平台小二仲裁与举证">平台纠纷与举证申诉</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="买家评价管理">评价管理与官方回评</a></li>
+          </ul>
+        </li>
+
+        <!-- 4. 营销与大促 -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">🎯</span>
+            <span class="m-txt">营销与促销</span>
+            <i class="ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="平台大促活动提报">官方大促/百亿补贴报名</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="店铺优惠券设置">店铺优惠券配置</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="满减满折与搭配套餐">满减满折/搭配套餐</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="会员中心与私域运营">会员体系与私域运营</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="达人带货与分销联盟">京粉/达人分销佣金</a></li>
+          </ul>
+        </li>
+
+        <!-- 5. 客服协同 -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">🎧</span>
+            <span class="m-txt">客服管理</span>
+            <i class="arrow-icon ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="在线客服接待台">在线客服接待台</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="常用话术与知识库">快捷短语与智能应答</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="客服质检与排班统计">接待质检与绩效统计</a></li>
+          </ul>
+        </li>
+
+        <!-- 6. 店铺与素材 -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">🎨</span>
+            <span class="m-txt">店铺运营</span>
+            <i class="ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="店铺可视化装修">PC/移动端微页面装修</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="素材中心">素材中心 (图片与视频)</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="店铺商品分类">店铺自定义商品分类</a></li>
+          </ul>
+        </li>
+
+        <!-- 7. 数据中心 -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">📈</span>
+            <span class="m-txt">数据中心</span>
+            <i class="ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="实时经营大屏">实时经营监控大屏</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="单品与流量诊断">商品流量与转化诊断</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="交易漏斗与客群分析">交易转化漏斗与客群</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="店铺体验分诊断">店铺服务体验分 (DSR)</a></li>
+          </ul>
+        </li>
+
+        <!-- 8. 财务结算 -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">💰</span>
+            <span class="m-txt">财务结算</span>
+            <i class="ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="财务账单对账">营业收入结算对账</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="保证金账户管理">店铺保证金账户</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="全电发票管理">数电发票开具与管理</a></li>
+          </ul>
+        </li>
+
+        <!-- 9. 系统与设置 -->
+        <li class="ant-menu-submenu ant-menu-submenu-inline menu-item-parent">
+          <div class="ant-menu-submenu-title parent-title">
+            <span class="ant-menu-item-icon m-icon">⚙️</span>
+            <span class="m-txt">店铺设置</span>
+            <i class="ant-menu-submenu-arrow"></i>
+          </div>
+          <ul class="ant-menu ant-menu-sub ant-menu-inline submenu-list">
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="店铺基本信息">店铺基本信息与主体资质</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="子账号与岗位权限">子账号与角色权限分配</a></li>
+            <li class="ant-menu-item"><a href="javascript:;" class="sub-link menu-item-link" data-title="操作日志安全审计">关键操作日志与安全审计</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- AntD Sider 底部收缩触发条 -->
+      <div class="ant-sider-trigger" id="siderTrigger" title="收起 / 展开侧边栏">
+        <span class="trigger-icon" id="triggerIcon">◀</span>
+        <span class="trigger-text">收起侧边栏</span>
+      </div>
+    </aside>
+
+    <!-- 右侧主驾驶舱 (Workspace Dashboard) -->
+    <main class="seller-main-content">
+      <!-- 1. 经营数据关键指标大屏 (Metrics) -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <p class="m-title">今日支付金额 (GMV)</p>
+          <strong class="m-val">¥38,620.00</strong>
+          <span class="m-compare up">较昨日 +15.4% ↑</span>
+        </div>
+        <div class="metric-card">
+          <p class="m-title">今日支付订单数</p>
+          <strong class="m-val">14 <small>单</small></strong>
+          <span class="m-compare up">较昨日 +3单 ↑</span>
+        </div>
+        <div class="metric-card">
+          <p class="m-title">今日访客数 (UV)</p>
+          <strong class="m-val">1,820 <small>人</small></strong>
+          <span class="m-compare up">较昨日 +240人 ↑</span>
+        </div>
+        <div class="metric-card">
+          <p class="m-title">支付转化率</p>
+          <strong class="m-val">3.85%</strong>
+          <span class="m-compare neutral">高于同行平均水平</span>
+        </div>
+      </div>
+
+      <!-- 2. 待办事项告警磁贴 (Todo Alerts) -->
+      <div class="todo-alerts-bar">
+        <div class="alert-item red">
+          <span class="a-icon">🚨</span>
+          <div class="a-text">
+            <strong>3 笔</strong>待发货订单需在 24 小时内发出
+          </div>
+          <button class="btn-fast-deal" id="btnGoDeliver">立即处理</button>
+        </div>
+        <div class="alert-item yellow">
+          <span class="a-icon">⚠️</span>
+          <div class="a-text">
+            <strong>1 笔</strong>买家申请仅退款待审核
+          </div>
+          <button class="btn-fast-deal" id="btnGoRefund">前往审核</button>
+        </div>
+        <div class="alert-item blue">
+          <span class="a-icon">🎉</span>
+          <div class="a-text">
+            年终大促数码专场招商开启，可提报 <strong>5款</strong> 爆款
+          </div>
+          <button class="btn-fast-deal" id="btnGoActivity">立即报名</button>
+        </div>
+      </div>
+
+      <!-- 3. 【核心履约】待发货订单快捷发货中心 (Orders Dispatch Table) -->
+      <div class="seller-card-box" id="dispatchSection">
+        <div class="card-head-row">
+          <div class="h-left">
+            <h3 class="card-title">待发货订单履约中心</h3>
+            <span class="card-subtitle">支持录入运单号极速履约或使用京东物流一键上门取件</span>
+          </div>
+          <div class="h-right">
+            <button class="btn-batch-print" id="btnBatchPrint">批量打印电子面单</button>
+          </div>
+        </div>
+
+        <div class="dispatch-table-wrap">
+          <table class="dispatch-table">
+            <thead>
+              <tr>
+                <th width="140">订单编号</th>
+                <th>购买商品明细</th>
+                <th width="100">实付金额</th>
+                <th width="180">买家收件信息</th>
+                <th width="140">发货物流选择</th>
+                <th width="140">快递运单号</th>
+                <th width="100">操作</th>
+              </tr>
+            </thead>
+            <tbody id="dispatchTbody">
+              <!-- 待发货订单 1 -->
+              <tr class="order-row" data-sn="JD2026092889104">
+                <td>
+                  <strong>JD2026092889104</strong>
+                  <span class="time-tag">2026-09-28 22:58</span>
+                </td>
+                <td>
+                  <div class="goods-cell">
+                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=60&q=80" alt="iPhone 16 Pro">
+                    <div class="g-info">
+                      <p class="g-name">Apple iPhone 16 Pro 256GB 原色钛金属</p>
+                      <p class="g-sku">规格：原色钛金属 / 256GB × 1</p>
+                    </div>
+                  </div>
+                </td>
+                <td><strong class="price-val">¥7,999.00</strong></td>
+                <td>
+                  <p class="rc-name">张三 (138****8888)</p>
+                  <p class="rc-addr">北京市朝阳区建国路88号 SOHO现代城</p>
+                </td>
+                <td>
+                  <select class="select-express">
+                    <option value="京东快递">京东快递 (211速达)</option>
+                    <option value="顺丰速运">顺丰速运 (特快)</option>
+                    <option value="中通快递">中通快递</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" class="input-tracking" value="JDVB092800123" placeholder="录入运单号">
+                </td>
+                <td>
+                  <button class="btn-do-dispatch">确认发货</button>
+                </td>
+              </tr>
+
+              <!-- 待发货订单 2 -->
+              <tr class="order-row" data-sn="JD2026092877112">
+                <td>
+                  <strong>JD2026092877112</strong>
+                  <span class="time-tag">2026-09-28 21:15</span>
+                </td>
+                <td>
+                  <div class="goods-cell">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=60&q=80" alt="Sony耳机">
+                    <div class="g-info">
+                      <p class="g-name">Sony WH-1000XM5 无线主动降噪头戴耳机</p>
+                      <p class="g-sku">经典黑 / 官方标配 × 1</p>
+                    </div>
+                  </div>
+                </td>
+                <td><strong class="price-val">¥1,899.00</strong></td>
+                <td>
+                  <p class="rc-name">王五 (135****6677)</p>
+                  <p class="rc-addr">上海市浦东新区陆家嘴环路1000号</p>
+                </td>
+                <td>
+                  <select class="select-express">
+                    <option value="顺丰速运">顺丰速运 (特快)</option>
+                    <option value="京东快递">京东快递</option>
+                    <option value="圆通速递">圆通速递</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" class="input-tracking" value="SF188299104" placeholder="录入运单号">
+                </td>
+                <td>
+                  <button class="btn-do-dispatch">确认发货</button>
+                </td>
+              </tr>
+
+              <!-- 待发货订单 3 -->
+              <tr class="order-row" data-sn="JD2026092866205">
+                <td>
+                  <strong>JD2026092866205</strong>
+                  <span class="time-tag">2026-09-28 19:40</span>
+                </td>
+                <td>
+                  <div class="goods-cell">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=60&q=80" alt="机械键盘键帽">
+                    <div class="g-info">
+                      <p class="g-name">PBT五面热升华客制化机械键盘主题键帽</p>
+                      <p class="g-sku">复古微水泥 × 2</p>
+                    </div>
+                  </div>
+                </td>
+                <td><strong class="price-val">¥338.00</strong></td>
+                <td>
+                  <p class="rc-name">李四 (136****1234)</p>
+                  <p class="rc-addr">广州市天河区珠江新城冼村路11号</p>
+                </td>
+                <td>
+                  <select class="select-express">
+                    <option value="中通快递">中通快递</option>
+                    <option value="京东快递">京东快递</option>
+                    <option value="顺丰速运">顺丰速运</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" class="input-tracking" value="ZT776100234" placeholder="录入运单号">
+                </td>
+                <td>
+                  <button class="btn-do-dispatch">确认发货</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 4. 店内商品库存与动销监控 -->
+      <div class="seller-card-box">
+        <div class="card-head-row">
+          <div class="h-left">
+            <h3 class="card-title">店内热销商品与库存预警</h3>
+          </div>
+        </div>
+        <table class="inventory-table">
+          <thead>
+            <tr>
+              <th>商品名称</th>
+              <th>当前售价</th>
+              <th>今日销量</th>
+              <th>剩余库存</th>
+              <th>库存状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apple iPhone 16 Pro 256GB 原色钛金属</td>
+              <td>¥7,999.00</td>
+              <td>12 件</td>
+              <td><strong>128 件</strong></td>
+              <td><span class="status-normal">充足</span></td>
+              <td><button class="btn-table-edit">修改库存/价格</button></td>
+            </tr>
+            <tr>
+              <td>Sony WH-1000XM5 无线降噪耳机 黑色</td>
+              <td>¥1,899.00</td>
+              <td>8 件</td>
+              <td><strong class="highlight">仅剩 3 件</strong></td>
+              <td><span class="status-warning">库存紧缺</span></td>
+              <td><button class="btn-table-edit highlight-btn">快速补货</button></td>
+            </tr>
+            <tr>
+              <td>PBT五面热升华客制化机械键盘键帽</td>
+              <td>¥169.00</td>
+              <td>15 件</td>
+              <td><strong class="highlight">仅剩 2 件</strong></td>
+              <td><span class="status-warning">库存紧缺</span></td>
+              <td><button class="btn-table-edit highlight-btn">快速补货</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- 发布新商品弹出抽屉 (Add Goods Modal) -->
+  <div class="add-goods-modal" id="addGoodsModal">
+    <div class="modal-inner-card">
+      <div class="modal-head">
+        <h3>发布新商品 (SPU/SKU 配置)</h3>
+        <button class="modal-close" id="btnCloseAddGoods">✕</button>
+      </div>
+      <form class="goods-form" id="goodsForm">
+        <div class="f-item">
+          <label>商品标题 <span class="required">*</span></label>
+          <input type="text" id="newGoodsTitle" placeholder="如：索尼 (SONY) Alpha 7 IV 全画幅微单数码相机 单机身" required>
+        </div>
+        <div class="f-row-2">
+          <div class="f-item">
+            <label>所属商品类目 <span class="required">*</span></label>
+            <select id="newGoodsCat">
+              <option value="微单相机">3C数码 &gt; 摄影摄像 &gt; 微单相机</option>
+              <option value="智能手机">3C数码 &gt; 手机通讯 &gt; 5G智能机</option>
+              <option value="影音耳机">3C数码 &gt; 智能影音 &gt; 头戴耳机</option>
+            </select>
+          </div>
+          <div class="f-item">
+            <label>统一售价 (元) <span class="required">*</span></label>
+            <input type="number" id="newGoodsPrice" placeholder="15999.00" required>
+          </div>
+        </div>
+        <div class="f-row-2">
+          <div class="f-item">
+            <label>首批入库总件数 <span class="required">*</span></label>
+            <input type="number" id="newGoodsStock" placeholder="50" required value="50">
+          </div>
+          <div class="f-item">
+            <label>物流发货模式</label>
+            <select id="newGoodsLogistics">
+              <option value="POP自主发货">商家自主发货 (顺丰/京东快递)</option>
+              <option value="京东仓配自营入仓">入京东八大仓一体仓 (带自营标)</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-item">
+          <label>商品主图 URL</label>
+          <input type="text" id="newGoodsImg" value="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&q=80">
+        </div>
+        <div class="modal-foot-btns">
+          <button type="button" class="btn-cancel" id="btnCancelAddGoods">取消</button>
+          <button type="submit" class="btn-submit-goods">审核并上架到前台店铺</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/seller.js"></script>
+</body>
+</html>

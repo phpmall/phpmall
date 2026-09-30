@@ -1,0 +1,289 @@
+/* ========================================================
+   京东领券中心样式表 (coupon.css)
+   ======================================================== */
+
+.coupon-body {
+  background-color: #f6f6f6;
+}
+
+/* 顶部红金专场 Header */
+.coupon-header-banner {
+  background: linear-gradient(135deg, #e1251b 0%, #f53127 50%, #c41810 100%);
+  color: #fff;
+  padding: 32px 0 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.coupon-header-banner::before {
+  content: '🎟️';
+  position: absolute;
+  right: 5%;
+  top: -10px;
+  font-size: 140px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.c-head-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-brand h1 {
+  font-size: 32px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.c-brand p {
+  font-size: 14px;
+  color: #ffe6e6;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+.c-head-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.btn-my-coupons {
+  background: #fff;
+  color: #e1251b;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 9px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+}
+
+.btn-my-coupons:hover {
+  transform: scale(1.04);
+}
+
+/* 券品类吸顶分类条 */
+.coupon-cat-nav {
+  background: #fff;
+  border-bottom: 2px solid #e1251b;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.c-cat-inner {
+  display: flex;
+  height: 50px;
+}
+
+.c-cat-tab {
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.c-cat-tab:hover {
+  color: #e1251b;
+}
+
+.c-cat-tab.active {
+  color: #e1251b;
+  font-weight: 700;
+}
+
+.c-cat-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  right: 24px;
+  height: 3px;
+  background: #e1251b;
+}
+
+/* 优惠券卡片网格 */
+.coupon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 24px auto 40px;
+}
+
+/* 京东经典锯齿券卡片 */
+.coupon-card {
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  height: 140px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.coupon-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* 左侧面额区 (红色) */
+.c-left-amount {
+  width: 130px;
+  background: linear-gradient(135deg, #ff4d4f 0%, #e1251b 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 左右分界锯齿微动效 */
+.c-left-amount::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: radial-gradient(circle, transparent 4px, #fff 5px);
+  background-size: 10px 14px;
+}
+
+.c-val {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.c-val small {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.c-limit {
+  font-size: 12px;
+  color: #ffe6e6;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* 右侧详情与领取区 */
+.c-right-info {
+  flex: 1;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.c-info-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.c-scope-tag {
+  font-size: 11px;
+  background: #fff1f0;
+  color: #f5222d;
+  border: 1px solid #ffa39e;
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.c-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.35;
+}
+
+.c-expiry {
+  font-size: 11px;
+  color: #999;
+  margin-top: 2px;
+}
+
+.c-foot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-progress-wrap {
+  width: 90px;
+}
+
+.c-prog-bar {
+  height: 6px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+
+.c-prog-fill {
+  height: 100%;
+  background: #e1251b;
+}
+
+.c-prog-txt {
+  font-size: 10px;
+  color: #999;
+}
+
+.btn-get-coupon {
+  background: #e1251b;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-get-coupon:hover {
+  background: #c41810;
+}
+
+.btn-get-coupon.received {
+  background: #fff;
+  color: #52c41a;
+  border: 1px solid #52c41a;
+}
+
+.btn-get-coupon.received:hover {
+  background: #f6ffed;
+}
+
+/* 已抢光状态 */
+.coupon-card.soldout .c-left-amount {
+  background: #999;
+}
+
+.coupon-card.soldout .btn-get-coupon {
+  background: #ccc;
+  cursor: not-allowed;
+}

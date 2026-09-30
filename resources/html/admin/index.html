@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东运营总控中台 - Platform Super Admin</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23141f36'/><text x='50%' y='55%' font-size='14' font-family='sans-serif' font-weight='bold' fill='%231890ff' dominant-baseline='middle' text-anchor='middle'>台</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+  <!-- 1. 左侧超级后台侧边栏 -->
+  <aside class="admin-sidebar">
+    <div class="admin-logo-box">
+      <div class="admin-logo-badge">JD</div>
+      <div class="admin-logo-title">
+        <h3>运营总控中台</h3>
+        <p>SUPER ADMIN V3.8</p>
+      </div>
+    </div>
+
+    <div class="admin-menu-scroll">
+      <div class="admin-menu-group">
+        <div class="admin-group-label">经营大盘</div>
+        <ul class="admin-nav-list">
+          <li class="admin-nav-item active"><a href="index.html"><i>📊</i> 全网经营监控</a></li>
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="实时GMV大屏"><i>📈</i> 实时交易大屏</a></li>
+        </ul>
+      </div>
+
+      <div class="admin-menu-group">
+        <div class="admin-group-label">商户与入驻管理</div>
+        <ul class="admin-nav-list">
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="入驻资质审核" id="navSettleAudit"><i>🏢</i> 入驻资质审核 <span class="admin-badge" id="sidebarAuditBadge">3</span></a></li>
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="在册商户名录"><i>🏬</i> 在册店铺列表 (42,850)</a></li>
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="商户保证金池"><i>💰</i> 质保金监管池</a></li>
+        </ul>
+      </div>
+
+      <div class="admin-menu-group">
+        <div class="admin-group-label">商品与合规中心</div>
+        <ul class="admin-nav-list">
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="商品违规巡检" id="navGoodsInspect"><i>🛡️</i> 商品合规与违规下架</a></li>
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="品类类目扣点设置"><i>🏷️</i> 类目扣点费率配置</a></li>
+        </ul>
+      </div>
+
+      <div class="admin-menu-group">
+        <div class="admin-group-label">全网履约与风控</div>
+        <ul class="admin-nav-list">
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="全网订单履约监控"><i>🚚</i> 京东物流全网干线</a></li>
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="交易风控拦截"><i>🚨</i> 羊毛党与刷单风控</a></li>
+        </ul>
+      </div>
+
+      <div class="admin-menu-group">
+        <div class="admin-group-label">财务与结算</div>
+        <ul class="admin-nav-list">
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="平台抽成对账"><i>🧾</i> 平台佣金与分账结算</a></li>
+          <li class="admin-nav-item"><a href="javascript:;" class="menu-link" data-title="商家提现审批"><i>💸</i> 商家资金提现放款</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. 右侧主工作区容器 -->
+  <div class="admin-main-wrapper">
+    <!-- 顶部操作条 -->
+    <header class="admin-top-header">
+      <div class="top-left-env">
+        <span class="env-tag">● 生产主节点集群</span>
+        <span class="node-text">华北数据中心 (北京亦庄机房) | 响应延时 14ms</span>
+      </div>
+      <div class="top-right-user">
+        <div class="quick-links-group">
+          <a href="../index.html" target="_blank"><i>🏠</i> 京东商城主站</a>
+          <a href="../seller/index.html" target="_blank"><i>💼</i> 京麦商家端</a>
+          <a href="../merchant/settle.html" target="_blank"><i>📝</i> 招商入驻页</a>
+          <a href="../b2b/index.html" target="_blank"><i>🏢</i> 企业购专区</a>
+        </div>
+        <div class="admin-profile">
+          <div class="admin-avatar">超</div>
+          <span class="admin-name">Admin (运营总控)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 滚动主体内容 -->
+    <div class="admin-content-scroll">
+      <!-- 1. 核心经营大盘指标卡片 -->
+      <div class="admin-metrics-row">
+        <div class="admin-card">
+          <div class="card-title-row">
+            <span>今日全网支付流水 (GMV)</span>
+            <span class="card-tag up">+8.4% ↑</span>
+          </div>
+          <div class="metric-big-num">¥128,490,200</div>
+          <div class="metric-footer">较昨日同期增长 <strong>¥9,960,000</strong></div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title-row">
+            <span>全网今日有效订单量</span>
+            <span class="card-tag up">+12.1% ↑</span>
+          </div>
+          <div class="metric-big-num">385,210 <small style="font-size:14px;">单</small></div>
+          <div class="metric-footer">自营仓配履约占比 <strong>76.8%</strong></div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title-row">
+            <span>入驻在册合作商家</span>
+            <span class="card-tag blue">今日新增 +18</span>
+          </div>
+          <div class="metric-big-num">42,850 <small style="font-size:14px;">家</small></div>
+          <div class="metric-footer">POP专营 65% | 品牌自营 35%</div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title-row">
+            <span>平台佣金抽成预估收益</span>
+            <span class="card-tag up">日均 5%</span>
+          </div>
+          <div class="metric-big-num">¥6,424,510</div>
+          <div class="metric-footer">已入账保证金监管池 <strong>¥8.5亿</strong></div>
+        </div>
+      </div>
+
+      <!-- 2. 重点板块一：商家入驻资质审核工单池 -->
+      <div class="admin-section-box" id="sectionSettleAudit">
+        <div class="section-head">
+          <h4>🏢 待处理商户入驻申请与资质审核 (<span id="auditCountHead" style="color:#e1251b;">3</span> 笔待审)</h4>
+          <div class="section-actions">
+            <button class="btn-admin-action" id="btnBatchPass">一键批量准入通过</button>
+            <button class="btn-admin-action" id="btnRefreshAudit">刷新工单</button>
+          </div>
+        </div>
+
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>企业主体名称</th>
+              <th>统一社会信用代码</th>
+              <th>拟开店铺类型与名称</th>
+              <th>申请主营类目</th>
+              <th>保证金缴纳状态</th>
+              <th>提报申请时间</th>
+              <th>审核操作</th>
+            </tr>
+          </thead>
+          <tbody id="auditTbody">
+            <!-- 申请 1 -->
+            <tr data-sn="SQ20260928001">
+              <td><strong>北京索尼数码科技有限公司</strong></td>
+              <td><code>91110108MA01ABC99X</code></td>
+              <td>索尼数码专营店 (POP专营)</td>
+              <td>3C数码 &gt; 摄影摄像</td>
+              <td><span class="status-pill approved">¥50,000 已全额验资</span></td>
+              <td>2026-09-28 22:50</td>
+              <td>
+                <button class="btn-table-inspect" data-company="北京索尼数码科技有限公司" data-code="91110108MA01ABC99X" data-boss="李店长" data-fund="1000万元" data-store="索尼数码专营店">查验资质</button>
+                <button class="btn-table-pass">准入通过</button>
+                <button class="btn-table-reject">驳回补件</button>
+              </td>
+            </tr>
+
+            <!-- 申请 2 -->
+            <tr data-sn="SQ20260928002">
+              <td><strong>深圳市大疆极客贸易有限公司</strong></td>
+              <td><code>91440300MA5EXY772L</code></td>
+              <td>DJI大疆创新授权专卖店</td>
+              <td>智能设备 &gt; 无人机航模</td>
+              <td><span class="status-pill approved">¥50,000 已全额验资</span></td>
+              <td>2026-09-28 21:18</td>
+              <td>
+                <button class="btn-table-inspect" data-company="深圳市大疆极客贸易有限公司" data-code="91440300MA5EXY772L" data-boss="张航模" data-fund="500万元" data-store="DJI大疆创新授权专卖店">查验资质</button>
+                <button class="btn-table-pass">准入通过</button>
+                <button class="btn-table-reject">驳回补件</button>
+              </td>
+            </tr>
+
+            <!-- 申请 3 -->
+            <tr data-sn="SQ20260928003">
+              <td><strong>上海复古客制化科技有限公司</strong></td>
+              <td><code>91310115MA1HAA880K</code></td>
+              <td>极客外设客制化专门店</td>
+              <td>电脑办公 &gt; 机械键盘键帽</td>
+              <td><span class="status-pill pending">¥20,000 划账冻结中</span></td>
+              <td>2026-09-28 19:35</td>
+              <td>
+                <button class="btn-table-inspect" data-company="上海复古客制化科技有限公司" data-code="91310115MA1HAA880K" data-boss="王外设" data-fund="200万元" data-store="极客外设客制化专门店">查验资质</button>
+                <button class="btn-table-pass">准入通过</button>
+                <button class="btn-table-reject">驳回补件</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 3. 重点板块二：全网商品合规巡检与违规下架治理 -->
+      <div class="admin-section-box" id="sectionGoodsInspect">
+        <div class="section-head">
+          <h4>🛡️ 全平台商品合规监控与风险治理巡检</h4>
+          <div class="section-actions">
+            <button class="btn-admin-action" id="btnAutoScan">运行 AI 价格异常与侵权巡检</button>
+          </div>
+        </div>
+
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>商品名称</th>
+              <th>所属在售店铺</th>
+              <th>商品类目</th>
+              <th>平台售价</th>
+              <th>合规风控识别</th>
+              <th>处置操作</th>
+            </tr>
+          </thead>
+          <tbody id="inspectTbody">
+            <tr>
+              <td>Apple iPhone 16 Pro 256GB 原色钛金属</td>
+              <td>Apple 自营旗舰店</td>
+              <td>手机通讯</td>
+              <td><strong>¥7,999.00</strong></td>
+              <td><span class="status-pill normal">合规达标</span></td>
+              <td>
+                <button class="btn-table-reject btn-ban-goods">违规下架</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Sony WH-1000XM5 无线头戴降噪耳机 黑色</td>
+              <td>索尼数码专营店</td>
+              <td>智能影音</td>
+              <td><strong>¥1,899.00</strong></td>
+              <td><span class="status-pill normal">合规达标</span></td>
+              <td>
+                <button class="btn-table-reject btn-ban-goods">违规下架</button>
+              </td>
+            </tr>
+            <tr>
+              <td>某品牌 9.9包邮 飞天白酒 500ml 纯粮酿造</td>
+              <td>酒水拼购特惠小店</td>
+              <td>酒水饮料</td>
+              <td><strong style="color:#e1251b;">¥9.90</strong></td>
+              <td><span class="status-pill rejected">疑似价格异常/虚假宣传</span></td>
+              <td>
+                <button class="btn-table-reject btn-ban-goods" style="background:#f5222d;color:#fff;">强制下架封禁</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 查验营业执照弹窗 (License Modal) -->
+  <div class="license-modal" id="licenseModal">
+    <div class="license-modal-card">
+      <div class="l-head">
+        <h4>企业工商资质与法人核验</h4>
+        <button class="l-close" id="btnCloseLicense">✕</button>
+      </div>
+      <div class="l-body">
+        <div class="l-grid">
+          <span class="key">企业名称：</span>
+          <span class="val" id="licCompanyName">-</span>
+          <span class="key">信用代码：</span>
+          <span class="val" id="licCompanyCode">-</span>
+          <span class="key">法定代表人：</span>
+          <span class="val" id="licBoss">-</span>
+          <span class="key">注册资本：</span>
+          <span class="val" id="licFund">-</span>
+          <span class="key">拟开店铺：</span>
+          <span class="val" id="licStore">-</span>
+          <span class="key">工商状态：</span>
+          <span class="val" style="color:#52c41a;">✓ 国家企业信用信息公示系统在营存续</span>
+        </div>
+        <div class="l-preview-box">
+          <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?w=600&q=80" alt="企业资质原件">
+          <p style="font-size:12px;color:#888;margin-top:8px;">原件彩色扫描件已通过电子签章防伪验真（含数字公章防伪水印）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/admin.js"></script>
+</body>
+</html>

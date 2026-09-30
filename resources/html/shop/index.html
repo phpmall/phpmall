@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple产品京东自营旗舰店 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111111'/><text x='50%' y='55%' font-size='18' font-family='sans-serif' fill='%23ffffff' dominant-baseline='middle' text-anchor='middle'></text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/shop.css">
+</head>
+<body class="shop-body">
+  <!-- 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="../login.html" class="highlight">你好，请登录</a>
+          <a href="../register.html" class="register-btn">免费注册</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="../user/order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="../user/index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../plus.html">PLUS会员</a></li>
+        <li class="spacer"></li>
+        <li><a href="../cart.html">我的购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回京东首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 品牌旗舰店专属头部 -->
+  <header class="shop-header">
+    <div class="w shop-header-inner">
+      <!-- 店铺品牌认证与评分信息 -->
+      <div class="shop-brand-info">
+        <div class="brand-avatar">
+          <span></span>
+        </div>
+        <div class="brand-detail">
+          <div class="title-row">
+            <h1 class="shop-title">Apple产品京东自营旗舰店</h1>
+            <span class="badge-zy">自营官方旗舰</span>
+          </div>
+          <div class="shop-scores">
+            <span class="score-item">商品评价：<strong>4.9 高</strong></span>
+            <span class="dot">|</span>
+            <span class="score-item">物流时效：<strong>4.9 高</strong></span>
+            <span class="dot">|</span>
+            <span class="score-item">售后服务：<strong>4.9 高</strong></span>
+            <span class="dot">|</span>
+            <span class="fans-count">粉丝数：<strong>4285.6万</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧互动与店内搜索 -->
+      <div class="shop-header-right">
+        <div class="shop-actions">
+          <button class="btn-shop-follow" id="btnShopFollow">
+            <span class="icon">♥</span> <span class="txt">关注店铺</span>
+          </button>
+          <button class="btn-shop-im" id="btnShopIm">
+            <span class="icon">💬</span> 联系客服
+          </button>
+        </div>
+        <div class="shop-search-bar">
+          <input type="text" placeholder="在店内搜索商品..." id="shopSearchInput">
+          <button class="btn-shop-search" id="btnShopSearch">搜店内</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 店铺专属导航栏 -->
+    <nav class="shop-navbar">
+      <div class="w shop-nav-inner">
+        <ul class="shop-nav-list" id="shopNavList">
+          <li class="active"><a href="index.html">店铺首页</a></li>
+          <li><a href="#all-goods">全部商品</a></li>
+          <li><a href="#iphone-zone">iPhone 专区</a></li>
+          <li><a href="#mac-zone">Mac 电脑</a></li>
+          <li><a href="#ipad-zone">iPad 平板</a></li>
+          <li><a href="#watch-zone">Apple Watch</a></li>
+          <li><a href="#audio-zone">AirPods 影音</a></li>
+          <li><a href="#all-goods">官方正品配件</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 店铺巨幕海报 (Store Hero Banner) -->
+  <section class="shop-hero-banner">
+    <div class="w shop-hero-content">
+      <div class="hero-text-box">
+        <span class="hero-tag">官方旗舰首发</span>
+        <h2>iPhone 16 Pro 钛金属</h2>
+        <p>A18 Pro 芯片，超强性能跃升。4800万微距超广角，捕捉惊艳瞬间。</p>
+        <div class="hero-btns">
+          <a href="../detail.html" class="btn-hero-buy">立即选购 ›</a>
+          <a href="#all-goods" class="btn-hero-more">了解更多产品</a>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800&q=80" alt="iPhone 16 Pro" class="hero-img">
+    </div>
+  </section>
+
+  <!-- 店铺专属优惠券领取横幅 -->
+  <section class="w shop-coupons-bar">
+    <div class="coupon-banner-card">
+      <div class="cp-item">
+        <div class="cp-left">
+          <span class="yen">¥</span><span class="val">400</span>
+        </div>
+        <div class="cp-mid">
+          <p class="cond">满 5000 元可用</p>
+          <p class="desc">iPhone 16 系列专享券</p>
+        </div>
+        <button class="btn-get-coupon">立即领取</button>
+      </div>
+
+      <div class="cp-item">
+        <div class="cp-left">
+          <span class="yen">¥</span><span class="val">200</span>
+        </div>
+        <div class="cp-mid">
+          <p class="cond">满 3000 元可用</p>
+          <p class="desc">iPad / Watch 专享券</p>
+        </div>
+        <button class="btn-get-coupon">立即领取</button>
+      </div>
+
+      <div class="cp-item">
+        <div class="cp-left">
+          <span class="yen">¥</span><span class="val">50</span>
+        </div>
+        <div class="cp-mid">
+          <p class="cond">满 500 元可用</p>
+          <p class="desc">原装配件专享券</p>
+        </div>
+        <button class="btn-get-coupon">立即领取</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 爆款热卖榜 (Store Best Sellers) -->
+  <section class="w shop-bestseller-section">
+    <div class="section-header-row">
+      <h3 class="sec-title">镇店爆款排行</h3>
+      <span class="sec-sub">旗舰精选 · 亿万用户的品质信赖之选</span>
+    </div>
+
+    <div class="bestseller-grid">
+      <!-- 爆款 1 -->
+      <div class="top-item">
+        <span class="rank-badge top1">TOP 1</span>
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=300&q=80" alt="iPhone 16 Pro">
+        </a>
+        <div class="info">
+          <a href="../detail.html" class="title">Apple iPhone 16 Pro 256GB 原色钛金属 5G手机</a>
+          <p class="price">¥7999.00</p>
+          <span class="sales">已售 50万+ 件</span>
+          <a href="../detail.html" class="btn-buy-link">立即抢购</a>
+        </div>
+      </div>
+
+      <!-- 爆款 2 -->
+      <div class="top-item">
+        <span class="rank-badge top2">TOP 2</span>
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300&q=80" alt="Apple Watch">
+        </a>
+        <div class="info">
+          <a href="../detail.html" class="title">Apple Watch Ultra 2 智能运动户外手表 49毫米钛金属</a>
+          <p class="price">¥5899.00</p>
+          <span class="sales">已售 12万+ 件</span>
+          <a href="../detail.html" class="btn-buy-link">立即抢购</a>
+        </div>
+      </div>
+
+      <!-- 爆款 3 -->
+      <div class="top-item">
+        <span class="rank-badge top3">TOP 3</span>
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&q=80" alt="MacBook">
+        </a>
+        <div class="info">
+          <a href="../detail.html" class="title">Apple MacBook Air 13.6英寸 M3芯片 16G+512G 深空灰</a>
+          <p class="price">¥9999.00</p>
+          <span class="sales">已售 8.8万+ 件</span>
+          <a href="../detail.html" class="btn-buy-link">立即抢购</a>
+        </div>
+      </div>
+
+      <!-- 爆款 4 -->
+      <div class="top-item">
+        <span class="rank-badge">TOP 4</span>
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80" alt="AirPods Max">
+        </a>
+        <div class="info">
+          <a href="../detail.html" class="title">Apple AirPods Max 无线头戴式主动降噪耳机 银色</a>
+          <p class="price">¥3999.00</p>
+          <span class="sales">已售 6.5万+ 件</span>
+          <a href="../detail.html" class="btn-buy-link">立即抢购</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 全部商品陈列与过滤 (All Products) -->
+  <main class="w shop-all-goods" id="all-goods">
+    <div class="goods-filter-bar">
+      <div class="filter-left">
+        <button class="f-btn active">综合推荐</button>
+        <button class="f-btn">销量最高</button>
+        <button class="f-btn">新品上市</button>
+        <button class="f-btn">价格 ↕</button>
+      </div>
+      <div class="filter-right">
+        <span class="count-tip">共找到 <strong>48</strong> 件店内在售正品商品</span>
+      </div>
+    </div>
+
+    <!-- 商品网格 (4列) -->
+    <div class="shop-goods-grid">
+      <div class="s-card" id="iphone-zone">
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=360&q=80" alt="iPhone 16 Pro">
+        </a>
+        <div class="meta">
+          <p class="price">¥7999.00</p>
+          <a href="../detail.html" class="title"><span class="badge-zy">自营</span> Apple iPhone 16 Pro 256GB 原色钛金属</a>
+          <p class="comment">50万+条评价 · 98%好评</p>
+          <button class="btn-shop-add-cart" data-name="iPhone 16 Pro">加入购物车</button>
+        </div>
+      </div>
+
+      <div class="s-card" id="mac-zone">
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=360&q=80" alt="MacBook">
+        </a>
+        <div class="meta">
+          <p class="price">¥9999.00</p>
+          <a href="../detail.html" class="title"><span class="badge-zy">自营</span> Apple MacBook Air 13.6英寸 M3芯片 16G+512G</a>
+          <p class="comment">8.8万+条评价 · 99%好评</p>
+          <button class="btn-shop-add-cart" data-name="MacBook Air M3">加入购物车</button>
+        </div>
+      </div>
+
+      <div class="s-card" id="ipad-zone">
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=360&q=80" alt="iPad Pro">
+        </a>
+        <div class="meta">
+          <p class="price">¥8999.00</p>
+          <a href="../detail.html" class="title"><span class="badge-zy">自营</span> Apple iPad Pro 11英寸 Ultra Retina XDR OLED屏</a>
+          <p class="comment">15万+条评价 · 98%好评</p>
+          <button class="btn-shop-add-cart" data-name="iPad Pro 11寸">加入购物车</button>
+        </div>
+      </div>
+
+      <div class="s-card" id="watch-zone">
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=360&q=80" alt="Apple Watch">
+        </a>
+        <div class="meta">
+          <p class="price">¥5899.00</p>
+          <a href="../detail.html" class="title"><span class="badge-zy">自营</span> Apple Watch Ultra 2 智能运动户外腕表 49毫米</a>
+          <p class="comment">12万+条评价 · 99%好评</p>
+          <button class="btn-shop-add-cart" data-name="Apple Watch Ultra 2">加入购物车</button>
+        </div>
+      </div>
+
+      <div class="s-card" id="audio-zone">
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=360&q=80" alt="AirPods">
+        </a>
+        <div class="meta">
+          <p class="price">¥1899.00</p>
+          <a href="../detail.html" class="title"><span class="badge-zy">自营</span> Apple AirPods Pro (第二代) 配USB-C充电盒</a>
+          <p class="comment">100万+条评价 · 98%好评</p>
+          <button class="btn-shop-add-cart" data-name="AirPods Pro 2">加入购物车</button>
+        </div>
+      </div>
+
+      <div class="s-card">
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=360&q=80" alt="MagSafe充电器">
+        </a>
+        <div class="meta">
+          <p class="price">¥329.00</p>
+          <a href="../detail.html" class="title"><span class="badge-zy">自营</span> Apple MagSafe 磁吸无线充电器 (2米)</a>
+          <p class="comment">20万+条评价 · 98%好评</p>
+          <button class="btn-shop-add-cart" data-name="MagSafe充电器">加入购物车</button>
+        </div>
+      </div>
+
+      <div class="s-card">
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=360&q=80" alt="妙控键盘">
+        </a>
+        <div class="meta">
+          <p class="price">¥2399.00</p>
+          <a href="../detail.html" class="title"><span class="badge-zy">自营</span> Apple 妙控键盘 适用于 iPad Pro 悬浮设计</a>
+          <p class="comment">3.4万+条评价 · 97%好评</p>
+          <button class="btn-shop-add-cart" data-name="iPad 妙控键盘">加入购物车</button>
+        </div>
+      </div>
+
+      <div class="s-card">
+        <a href="../detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=360&q=80" alt="Apple Pencil">
+        </a>
+        <div class="meta">
+          <p class="price">¥999.00</p>
+          <a href="../detail.html" class="title"><span class="badge-zy">自营</span> Apple Pencil Pro 触控笔 支持轻捏与侧旋手势</a>
+          <p class="comment">8.2万+条评价 · 99%好评</p>
+          <button class="btn-shop-add-cart" data-name="Apple Pencil Pro">加入购物车</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="../index.html">京东首页</a><span class="split">|</span>
+        <a href="../list.html">商品列表</a><span class="split">|</span>
+        <a href="../cart.html">购物车</a><span class="split">|</span>
+        <a href="../user/index.html">个人中心</a><span class="split">|</span>
+        <a href="../plus.html">PLUS会员</a>
+      </p>
+      <p class="copy">Apple产品京东自营旗舰店 · 京东正品保障 · 全程京东物流配送</p>
+    </div>
+  </footer>
+
+  <script src="../js/shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>收货地址管理 - 我的京东 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="../css/address.css">
+</head>
+<body class="user-body">
+  <!-- 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="index.html" class="highlight">张三 (PLUS会员)</a>
+          <a href="../login.html" class="register-btn">退出</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../plus.html">PLUS会员</a></li>
+        <li class="spacer"></li>
+        <li><a href="../cart.html">购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 用户中心 Header -->
+  <header class="user-header">
+    <div class="w user-header-inner">
+      <div class="logo-user-title">
+        <a href="../index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">设置 / 收货地址管理</h2>
+        <a href="index.html" class="back-home-link">&lt; 返回用户中心</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主布局 (Sidebar + Content) -->
+  <main class="w user-layout">
+    <!-- 左侧菜单 -->
+    <aside class="user-sidebar">
+      <div class="side-menu-group">
+        <h3 class="group-title">订单中心</h3>
+        <ul class="menu-list">
+          <li><a href="order.html">我的订单 <span class="badge-num">2</span></a></li>
+          <li><a href="comment.html">评价晒单</a></li>
+          <li><a href="favorite.html">常购与关注</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">我的资产</h3>
+        <ul class="menu-list">
+          <li><a href="../coupon.html">优惠券 <span class="badge-num">5</span></a></li>
+          <li><a href="baitiao.html">京东白条</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">客户服务</h3>
+        <ul class="menu-list">
+          <li><a href="refund.html">返修退换货</a></li>
+          <li><a href="../service/chat.html">在线客服</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">设置</h3>
+        <ul class="menu-list">
+          <li><a href="profile.html">个人信息</a></li>
+          <li class="active"><a href="address.html">收货地址管理</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 右侧地址主体 -->
+    <div class="user-content-area" style="flex:1;">
+      <!-- 1. 顶部操作栏 -->
+      <div class="address-top-bar">
+        <div class="addr-count-info">
+          已保存 <strong id="addrCount">3</strong> 个收货地址（最多可保存 20 个）
+        </div>
+        <button class="btn-open-add-addr" id="btnOpenAddAddr">+ 新增收货地址</button>
+      </div>
+
+      <!-- 2. 智能文本识别粘贴卡片 -->
+      <div class="smart-parse-box">
+        <h4><span>⚡</span> 智能地址快速识别（支持粘贴整段地址文本）</h4>
+        <div class="smart-input-row">
+          <textarea class="smart-textarea" id="smartInput" placeholder="如：张三，13800138000，北京市朝阳区建国门外大街1号国贸大厦A座1808室"></textarea>
+          <button class="btn-smart-parse" id="btnSmartParse">识别并自动填入</button>
+        </div>
+      </div>
+
+      <!-- 3. 地址卡片网格 -->
+      <div class="address-grid" id="addressGrid">
+        <!-- 地址 1 (默认) -->
+        <div class="address-card is-default" data-id="1">
+          <span class="default-ribbon">默认地址</span>
+          <div>
+            <div class="card-recipient-line">
+              <span class="name">张三</span>
+              <span class="phone">138****8888</span>
+              <span class="addr-tag-pill">公司</span>
+            </div>
+            <p class="card-addr-detail">
+              北京市 朝阳区 建国路88号 SOHO现代城 A座 1608室
+            </p>
+          </div>
+          <div class="card-bottom-actions">
+            <span style="font-size:12px;color:#52c41a;font-weight:bold;">✓ 默认收货地址</span>
+            <div class="action-btns-right">
+              <button class="btn-edit-addr">编辑</button>
+              <button class="btn-del-addr">删除</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 地址 2 -->
+        <div class="address-card" data-id="2">
+          <div>
+            <div class="card-recipient-line">
+              <span class="name">张三 (家)</span>
+              <span class="phone">138****8888</span>
+              <span class="addr-tag-pill" style="background:#f6ffed;color:#52c41a;border-color:#b7eb8f;">家</span>
+            </div>
+            <p class="card-addr-detail">
+              北京市 海淀区 中关村南大街1号 友谊社区 3号楼 2单元 501
+            </p>
+          </div>
+          <div class="card-bottom-actions">
+            <button class="btn-set-default">设为默认</button>
+            <div class="action-btns-right">
+              <button class="btn-edit-addr">编辑</button>
+              <button class="btn-del-addr">删除</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 地址 3 -->
+        <div class="address-card" data-id="3">
+          <div>
+            <div class="card-recipient-line">
+              <span class="name">李四 (父母家)</span>
+              <span class="phone">139****1234</span>
+              <span class="addr-tag-pill" style="background:#fffbe6;color:#faad14;border-color:#ffe58f;">家</span>
+            </div>
+            <p class="card-addr-detail">
+              上海市 浦东新区 陆家嘴环路1000号 恒生大厦 22层
+            </p>
+          </div>
+          <div class="card-bottom-actions">
+            <button class="btn-set-default">设为默认</button>
+            <div class="action-btns-right">
+              <button class="btn-edit-addr">编辑</button>
+              <button class="btn-del-addr">删除</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 新增/编辑收货地址模态框 -->
+  <div class="addr-modal" id="addrModal">
+    <div class="addr-modal-card">
+      <div class="am-head">
+        <h3 id="modalTitle">新增收货地址</h3>
+        <button class="am-close" id="btnCloseAddrModal">✕</button>
+      </div>
+      <form class="am-body" id="addrForm">
+        <div class="am-row-2">
+          <div class="am-form-item">
+            <label>收货人姓名 <span class="req">*</span></label>
+            <input type="text" class="am-input" id="inputName" placeholder="如：张三" required>
+          </div>
+          <div class="am-form-item">
+            <label>手机号码 <span class="req">*</span></label>
+            <input type="tel" class="am-input" id="inputPhone" placeholder="11位手机号" required>
+          </div>
+        </div>
+
+        <div class="am-row-2">
+          <div class="am-form-item">
+            <label>所在省市 <span class="req">*</span></label>
+            <select class="am-select" id="inputProvince">
+              <option value="北京市 朝阳区">北京市 朝阳区</option>
+              <option value="北京市 海淀区">北京市 海淀区</option>
+              <option value="上海市 浦东新区">上海市 浦东新区</option>
+              <option value="广东省 广州市天河区">广东省 广州市天河区</option>
+              <option value="广东省 深圳市南山区">广东省 深圳市南山区</option>
+            </select>
+          </div>
+          <div class="am-form-item">
+            <label>地址标签</label>
+            <div class="am-tag-select">
+              <span class="am-tag-pill active" data-tag="家">家</span>
+              <span class="am-tag-pill" data-tag="公司">公司</span>
+              <span class="am-tag-pill" data-tag="学校">学校</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="am-form-item">
+          <label>详细地址街道门牌 <span class="req">*</span></label>
+          <textarea class="am-textarea" id="inputDetail" rows="2" placeholder="街道、小区、楼牌号等" required></textarea>
+        </div>
+
+        <div class="am-form-item">
+          <label class="am-check-label">
+            <input type="checkbox" id="checkDefault"> 设为默认收货地址
+          </label>
+        </div>
+
+        <div class="am-foot-actions">
+          <button type="button" class="btn-am-cancel" id="btnCancelAddrModal">取消</button>
+          <button type="submit" class="btn-am-submit">保存收货地址</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/address.js"></script>
+</body>
+</html>

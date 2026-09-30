@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人用户注册 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body class="register-body">
+  <!-- 1. 顶部 Header -->
+  <header class="register-header">
+    <div class="w reg-header-inner">
+      <a href="index.html" class="reg-logo-box">
+        <div class="reg-logo-text">JD</div>
+        <h2 class="reg-title">欢迎注册</h2>
+      </a>
+      <div class="reg-login-link">
+        已有账号？<a href="login.html">请登录 &gt;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. 主体注册区域 -->
+  <main class="w register-main">
+    <!-- 三步流程指示条 -->
+    <div class="reg-step-bar">
+      <div class="step-item active" id="step1">
+        <div class="step-num">1</div>
+        <span class="step-text">验证手机号</span>
+      </div>
+      <div class="step-line" id="line1"></div>
+      <div class="step-item" id="step2">
+        <div class="step-num">2</div>
+        <span class="step-text">设置账户密码</span>
+      </div>
+      <div class="step-line" id="line2"></div>
+      <div class="step-item" id="step3">
+        <div class="step-num">3</div>
+        <span class="step-text">注册成功</span>
+      </div>
+    </div>
+
+    <!-- 核心注册表单卡片 -->
+    <div class="register-card">
+      <form id="regForm">
+        <!-- 手机号 -->
+        <div class="form-field-group">
+          <label class="form-label">手机号码 <span class="req">*</span></label>
+          <div class="reg-input-wrap">
+            <select class="reg-select-prefix" id="countryCode">
+              <option value="+86">中国大陆 +86</option>
+              <option value="+852">中国香港 +852</option>
+              <option value="+886">中国台湾 +886</option>
+              <option value="+1">美国 +1</option>
+            </select>
+            <input type="tel" class="reg-input" id="regPhone" placeholder="建议使用常用手机号" required maxlength="11">
+          </div>
+        </div>
+
+        <!-- 验证码 -->
+        <div class="form-field-group">
+          <label class="form-label">短信验证码 <span class="req">*</span></label>
+          <div class="reg-input-wrap">
+            <input type="text" class="reg-input" id="regCode" placeholder="请输入6位验证码" required maxlength="6">
+            <button type="button" class="btn-send-code" id="btnSendCode">获取验证码</button>
+          </div>
+        </div>
+
+        <!-- 用户名 -->
+        <div class="form-field-group">
+          <label class="form-label">设置用户名 <span class="req">*</span></label>
+          <div class="reg-input-wrap">
+            <input type="text" class="reg-input" id="regUsername" placeholder="支持中英文、数字、下划线 (4-20位)" required>
+          </div>
+        </div>
+
+        <!-- 设置密码 -->
+        <div class="form-field-group">
+          <label class="form-label">设置登录密码 <span class="req">*</span></label>
+          <div class="reg-input-wrap">
+            <input type="password" class="reg-input" id="regPwd" placeholder="8-20位，建议混合字母、数字和符号" required>
+          </div>
+          <div class="pwd-strength-bar">
+            <span class="strength-label">安全强度：</span>
+            <div class="strength-pills">
+              <span class="s-pill" id="pill1"></span>
+              <span class="s-pill" id="pill2"></span>
+              <span class="s-pill" id="pill3"></span>
+            </div>
+            <span style="font-size:11px;color:#888;" id="strengthTxt">未输入</span>
+          </div>
+        </div>
+
+        <!-- 确认密码 -->
+        <div class="form-field-group">
+          <label class="form-label">确认登录密码 <span class="req">*</span></label>
+          <div class="reg-input-wrap">
+            <input type="password" class="reg-input" id="regConfirmPwd" placeholder="请再次输入登录密码" required>
+          </div>
+        </div>
+
+        <!-- 协议勾选 -->
+        <div class="agree-terms-row">
+          <input type="checkbox" id="checkTerms" required checked>
+          <label for="checkTerms">
+            我已阅读并同意 <a href="javascript:;">《京东用户注册协议》</a>、<a href="javascript:;">《隐私政策》</a> 以及 <a href="javascript:;">《京东网络服务使用协议》</a>
+          </label>
+        </div>
+
+        <!-- 提交注册按钮 -->
+        <button type="submit" class="btn-reg-submit" id="btnRegSubmit">立即注册</button>
+
+        <!-- 企业用户入口 -->
+        <div class="b2b-reg-tip">
+          买大宗办公、工业品或为企业采购？<a href="b2b/index.html">注册企业采购账号 &gt;</a>
+        </div>
+      </form>
+
+      <!-- 注册成功反馈面板 (默认隐藏) -->
+      <div class="reg-success-card" id="successPanel">
+        <div class="reg-success-icon">🎉</div>
+        <h3 class="reg-success-title">恭喜您，注册成功！</h3>
+        <p class="reg-success-sub">您的京东会员账号已激活，已自动为您开通极速支付与售后保障</p>
+
+        <div class="gift-box-preview">
+          <h4>🎁 新人专属 188 元全品类礼包已到账</h4>
+          <p>含全场满减券、免运费券及 PLUS 会员专属立减神券</p>
+        </div>
+
+        <div class="success-action-btns">
+          <a href="index.html" class="btn-go-shop">立即去商城选购</a>
+          <a href="user/index.html" class="btn-go-user">进入个人中心</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="index.html">关于我们</a><span class="split">|</span>
+        <a href="service/chat.html">联系客服</a><span class="split">|</span>
+        <a href="merchant/settle.html">合作招商</a><span class="split">|</span>
+        <a href="b2b/index.html">企业采购</a><span class="split">|</span>
+        <a href="seller/index.html">商家后台</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有</p>
+    </div>
+  </footer>
+
+  <script src="js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>京东白条 - 我的资产 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231f2738'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='%23e2b46c' dominant-baseline='middle' text-anchor='middle'>条</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="../css/user-extend.css">
+</head>
+<body class="user-body">
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="index.html" class="highlight">张三 (PLUS会员)</a>
+          <a href="../login.html" class="register-btn">退出</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../plus.html">PLUS会员</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header class="user-header">
+    <div class="w user-header-inner">
+      <div class="logo-user-title">
+        <a href="../index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">我的资产 / 京东白条</h2>
+        <a href="index.html" class="back-home-link">&lt; 返回用户中心</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="w user-layout">
+    <aside class="user-sidebar">
+      <div class="side-menu-group">
+        <h3 class="group-title">订单中心</h3>
+        <ul class="menu-list">
+          <li><a href="order.html">我的订单 <span class="badge-num">2</span></a></li>
+          <li><a href="comment.html">评价晒单</a></li>
+          <li><a href="favorite.html">常购与关注</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">我的资产</h3>
+        <ul class="menu-list">
+          <li><a href="../coupon.html">优惠券 <span class="badge-num">5</span></a></li>
+          <li class="active"><a href="baitiao.html">京东白条</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">客户服务</h3>
+        <ul class="menu-list">
+          <li><a href="refund.html">返修退换货</a></li>
+          <li><a href="../service/chat.html">在线客服</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">设置</h3>
+        <ul class="menu-list">
+          <li><a href="profile.html">个人信息</a></li>
+          <li><a href="address.html">收货地址管理</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="user-content-area" style="flex:1;">
+      <!-- 白条尊享大看板 -->
+      <div class="baitiao-dashboard">
+        <div class="bt-credit-info">
+          <h4>京东白条信用额度 (先享后付 · 最长40天免息)</h4>
+          <div class="big-limit" id="availLimit">¥22,001.00</div>
+          <p>总授信额度 ¥30,000.00 | 良好信用已点亮</p>
+        </div>
+        <div class="bt-actions">
+          <div style="text-align:right;margin-right:12px;">
+            <div style="font-size:11px;color:#a0aec0;">本期应还款</div>
+            <div style="font-size:18px;font-weight:bold;color:#ff4d4f;" id="repayAmount">¥1,299.58</div>
+            <div style="font-size:11px;color:#cbd5e0;">还款日：10月15日</div>
+          </div>
+          <button class="btn-bt-repay" id="btnRepay">立即还款</button>
+        </div>
+      </div>
+
+      <!-- 账单明细卡片 -->
+      <div class="order-center-card">
+        <div class="order-tabs">
+          <button class="order-tab-btn active">本期待还账单明细 (2笔)</button>
+          <button class="order-tab-btn">已结清账单</button>
+        </div>
+
+        <table style="width:100%;border-collapse:collapse;font-size:13px;text-align:left;">
+          <thead>
+            <tr style="background:#fafafa;border-bottom:1px solid #eee;">
+              <th style="padding:12px 16px;">消费项目 / 商品</th>
+              <th style="padding:12px 16px;">分期方式</th>
+              <th style="padding:12px 16px;">本期应还本金</th>
+              <th style="padding:12px 16px;">免息状态</th>
+              <th style="padding:12px 16px;">到期日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f0f0f0;">
+              <td style="padding:14px 16px;">
+                <strong>Apple iPhone 16 Pro 256GB 原色钛金属</strong>
+                <div style="font-size:11px;color:#999;">订单号：JD2026092800101</div>
+              </td>
+              <td style="padding:14px 16px;">12期分期 (第1期)</td>
+              <td style="padding:14px 16px;"><strong style="color:#e1251b;">¥666.58</strong></td>
+              <td style="padding:14px 16px;"><span style="color:#52c41a;background:#f6ffed;border:1px solid #b7eb8f;padding:2px 6px;border-radius:2px;font-size:11px;">12期免息</span></td>
+              <td style="padding:14px 16px;">2026-10-15</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f0f0f0;">
+              <td style="padding:14px 16px;">
+                <strong>Sony WH-1000XM5 无线降噪头戴耳机 黑色</strong>
+                <div style="font-size:11px;color:#999;">订单号：JD2026092800102</div>
+              </td>
+              <td style="padding:14px 16px;">3期分期 (第1期)</td>
+              <td style="padding:14px 16px;"><strong style="color:#e1251b;">¥633.00</strong></td>
+              <td style="padding:14px 16px;"><span style="color:#52c41a;background:#f6ffed;border:1px solid #b7eb8f;padding:2px 6px;border-radius:2px;font-size:11px;">3期免息</span></td>
+              <td style="padding:14px 16px;">2026-10-15</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toastEl = document.getElementById('toast');
+      function showToast(msg) {
+        toastEl.innerText = msg;
+        toastEl.className = 'toast show';
+        setTimeout(() => toastEl.className = 'toast', 2500);
+      }
+
+      const btnRepay = document.getElementById('btnRepay');
+      const repayAmount = document.getElementById('repayAmount');
+      const availLimit = document.getElementById('availLimit');
+
+      if (btnRepay) {
+        btnRepay.addEventListener('click', () => {
+          btnRepay.disabled = true;
+          btnRepay.innerText = '正在对公扣款...';
+          setTimeout(() => {
+            if (repayAmount) repayAmount.innerText = '¥0.00 (已结清)';
+            if (availLimit) availLimit.innerText = '¥23,300.58';
+            btnRepay.innerText = '✓ 本期已结清';
+            btnRepay.style.background = '#52c41a';
+            btnRepay.style.color = '#fff';
+            showToast('🎉 还款成功！您的白条可用额度已实时恢复');
+          }, 800);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手机 - 商品搜索与筛选列表 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/list.css">
+</head>
+<body>
+  <!-- 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="login.html" class="highlight">你好，请登录</a>
+          <a href="register.html" class="register-btn">免费注册</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="user/order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="user/index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="cart.html">我的购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 头部搜索 -->
+  <header class="header">
+    <div class="w header-main">
+      <div class="header-logo">
+        <a href="index.html" class="logo-link">
+          <div class="logo-box">
+            <span class="logo-text">JD</span>
+            <span class="logo-sub">京东</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="header-search-wrap">
+        <div class="search-bar">
+          <input type="text" class="search-input" id="listSearchInput" value="手机" placeholder="手机 5G 全网通" autocomplete="off">
+          <button class="search-photo-btn">📷</button>
+          <button class="search-submit-btn">
+            <span>搜索</span>
+          </button>
+        </div>
+        <div class="hot-words">
+          <a href="detail.html" class="highlight">iPhone 16 Pro</a>
+          <a href="javascript:;">华为 Mate 60</a>
+          <a href="javascript:;">小米 14</a>
+          <a href="javascript:;">折叠屏手机</a>
+          <a href="javascript:;">百元老人机</a>
+        </div>
+      </div>
+
+      <div class="header-cart" id="miniCart">
+        <a href="cart.html" class="cart-trigger">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-text">我的购物车</span>
+          <span class="cart-count">3</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 面包屑与结果统计 -->
+  <div class="w list-crumb">
+    <a href="index.html">全部结果</a>
+    <span class="sep">&gt;</span>
+    <strong class="current">"手机"</strong>
+    <span class="total-res">共筛选出 <strong>12,850</strong> 件相关商品</span>
+  </div>
+
+  <!-- 多维筛选器 (Selector Box) -->
+  <section class="w selector-box">
+    <!-- 品牌行 -->
+    <div class="selector-row">
+      <div class="s-key">品 牌：</div>
+      <div class="s-values brand-values">
+        <a href="javascript:;" class="b-item active">全部</a>
+        <a href="javascript:;" class="b-item">Apple (苹果)</a>
+        <a href="javascript:;" class="b-item">华为 (HUAWEI)</a>
+        <a href="javascript:;" class="b-item">小米 (MI)</a>
+        <a href="javascript:;" class="b-item">荣耀 (HONOR)</a>
+        <a href="javascript:;" class="b-item">vivo</a>
+        <a href="javascript:;" class="b-item">OPPO</a>
+        <a href="javascript:;" class="b-item">三星 (SAMSUNG)</a>
+        <a href="javascript:;" class="b-item">一加 (OnePlus)</a>
+      </div>
+    </div>
+
+    <!-- 价格区间 -->
+    <div class="selector-row">
+      <div class="s-key">价 格：</div>
+      <div class="s-values">
+        <a href="javascript:;" class="active">全部</a>
+        <a href="javascript:;">0-1999</a>
+        <a href="javascript:;">2000-3999</a>
+        <a href="javascript:;">4000-5999</a>
+        <a href="javascript:;">6000及以上</a>
+        <div class="price-input-range">
+          <input type="text" placeholder="¥"> - <input type="text" placeholder="¥">
+          <button class="btn-price-ok">确定</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 运行内存 -->
+    <div class="selector-row">
+      <div class="s-key">运行内存：</div>
+      <div class="s-values">
+        <a href="javascript:;" class="active">全部</a>
+        <a href="javascript:;">8GB</a>
+        <a href="javascript:;">12GB</a>
+        <a href="javascript:;">16GB</a>
+        <a href="javascript:;">24GB及以上</a>
+      </div>
+    </div>
+
+    <!-- 屏幕尺寸 -->
+    <div class="selector-row">
+      <div class="s-key">屏幕尺寸：</div>
+      <div class="s-values">
+        <a href="javascript:;" class="active">全部</a>
+        <a href="javascript:;">6.1英寸及以下 (小屏旗舰)</a>
+        <a href="javascript:;">6.2 - 6.6英寸</a>
+        <a href="javascript:;">6.7英寸及以上</a>
+        <a href="javascript:;">大折叠双屏</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 排序与过滤工具条 (Filter Bar) -->
+  <section class="w filter-bar">
+    <div class="filter-sort-group">
+      <button class="sort-btn active">综合推荐</button>
+      <button class="sort-btn">销量最高</button>
+      <button class="sort-btn">评论数 ↓</button>
+      <button class="sort-btn">新品上市</button>
+      <button class="sort-btn">价格 ↕</button>
+    </div>
+
+    <div class="filter-extra-checkboxes">
+      <label class="custom-checkbox">
+        <input type="checkbox" checked>
+        <span>京东物流 (自营直发)</span>
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox" checked>
+        <span>仅看有货</span>
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox">
+        <span>货到付款</span>
+      </label>
+      <label class="custom-checkbox">
+        <input type="checkbox">
+        <span>促销满减</span>
+      </label>
+    </div>
+
+    <div class="filter-pager-mini">
+      <span class="page-num"><strong class="highlight">1</strong>/35</span>
+      <button class="btn-page-step disabled">&lt;</button>
+      <button class="btn-page-step">&gt;</button>
+    </div>
+  </section>
+
+  <!-- 商品网格矩阵 (Goods Grid) -->
+  <main class="w goods-matrix-wrap">
+    <div class="goods-grid-5cols">
+      <!-- 商品 1 (跳转详情页) -->
+      <div class="item-card">
+        <a href="detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400&q=80" alt="iPhone 16 Pro">
+        </a>
+        <div class="item-body">
+          <div class="item-price">
+            <span class="yen">¥</span><span class="amount">7999</span><span class="dec">.00</span>
+          </div>
+          <a href="detail.html" class="item-title">
+            <span class="tag-zy">自营</span> Apple iPhone 16 Pro 256GB 原色钛金属 5G旗舰手机
+          </a>
+          <div class="item-commit">
+            已有 <strong class="c-num">50万+</strong> 人评价 <span class="rate">98%好评</span>
+          </div>
+          <div class="item-tags">
+            <span class="t-badge">满5000减400</span>
+            <span class="t-badge">次日达</span>
+          </div>
+          <div class="item-shop">
+            <a href="shop/index.html" style="color:#666;">Apple产品京东自营旗舰店 &gt;</a>
+          </div>
+          <div class="item-action-btns">
+            <a href="detail.html" class="btn-view-detail">查看详情</a>
+            <button class="btn-list-add-cart" data-name="iPhone 16 Pro">加入购物车</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品 2 -->
+      <div class="item-card">
+        <a href="detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="华为旗舰">
+        </a>
+        <div class="item-body">
+          <div class="item-price">
+            <span class="yen">¥</span><span class="amount">6999</span><span class="dec">.00</span>
+          </div>
+          <a href="detail.html" class="item-title">
+            <span class="tag-zy">自营</span> HUAWEI Mate 60 Pro 12GB+512GB 雅川青 卫星通话手机
+          </a>
+          <div class="item-commit">
+            已有 <strong class="c-num">30万+</strong> 人评价 <span class="rate">99%好评</span>
+          </div>
+          <div class="item-tags">
+            <span class="t-badge">政府补贴20%</span>
+            <span class="t-badge">分期免息</span>
+          </div>
+          <div class="item-shop">
+            <span>华为京东自营官方旗舰店</span>
+          </div>
+          <div class="item-action-btns">
+            <a href="detail.html" class="btn-view-detail">查看详情</a>
+            <button class="btn-list-add-cart" data-name="HUAWEI Mate 60 Pro">加入购物车</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品 3 -->
+      <div class="item-card">
+        <a href="detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&q=80" alt="折叠大屏">
+        </a>
+        <div class="item-body">
+          <div class="item-price">
+            <span class="yen">¥</span><span class="amount">8999</span><span class="dec">.00</span>
+          </div>
+          <a href="detail.html" class="item-title">
+            <span class="tag-zy">自营</span> 超轻薄横向折叠屏手机 16GB+512GB 零感悬停
+          </a>
+          <div class="item-commit">
+            已有 <strong class="c-num">8.9万</strong> 人评价 <span class="rate">97%好评</span>
+          </div>
+          <div class="item-tags">
+            <span class="t-badge">立省800</span>
+            <span class="t-badge">赠碎屏保</span>
+          </div>
+          <div class="item-shop">
+            <span>折叠旗舰自营专区</span>
+          </div>
+          <div class="item-action-btns">
+            <a href="detail.html" class="btn-view-detail">查看详情</a>
+            <button class="btn-list-add-cart" data-name="超轻薄折叠屏手机">加入购物车</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品 4 -->
+      <div class="item-card">
+        <a href="detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&q=80" alt="性价比旗舰">
+        </a>
+        <div class="item-body">
+          <div class="item-price">
+            <span class="yen">¥</span><span class="amount">3999</span><span class="dec">.00</span>
+          </div>
+          <a href="detail.html" class="item-title">
+            <span class="tag-zy">自营</span> 第三代骁龙8 性能旗舰手机 16GB+256GB 120W快充
+          </a>
+          <div class="item-commit">
+            已有 <strong class="c-num">15万+</strong> 人评价 <span class="rate">98%好评</span>
+          </div>
+          <div class="item-tags">
+            <span class="t-badge">限时免息</span>
+            <span class="t-badge">赠原装耳机</span>
+          </div>
+          <div class="item-shop">
+            <span>小米京东自营旗舰店</span>
+          </div>
+          <div class="item-action-btns">
+            <a href="detail.html" class="btn-view-detail">查看详情</a>
+            <button class="btn-list-add-cart" data-name="第三代骁龙8性能旗舰">加入购物车</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品 5 -->
+      <div class="item-card">
+        <a href="detail.html" class="thumb">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="千元长续航">
+        </a>
+        <div class="item-body">
+          <div class="item-price">
+            <span class="yen">¥</span><span class="amount">1299</span><span class="dec">.00</span>
+          </div>
+          <a href="detail.html" class="item-title">
+            <span class="tag-zy">自营</span> 6000mAh 超长续航千元质感手机 双扬声器大字体
+          </a>
+          <div class="item-commit">
+            已有 <strong class="c-num">20万+</strong> 人评价 <span class="rate">99%好评</span>
+          </div>
+          <div class="item-tags">
+            <span class="t-badge">爆款热销</span>
+            <span class="t-badge">送长辈首选</span>
+          </div>
+          <div class="item-shop">
+            <span>国民手机自营专区</span>
+          </div>
+          <div class="item-action-btns">
+            <a href="detail.html" class="btn-view-detail">查看详情</a>
+            <button class="btn-list-add-cart" data-name="6000mAh长续航手机">加入购物车</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部标准分页器 (Pagination) -->
+    <div class="list-pagination">
+      <button class="page-btn disabled">&lt; 上一页</button>
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <span class="page-ellipsis">...</span>
+      <button class="page-btn">35</button>
+      <button class="page-btn">下一页 &gt;</button>
+      <span class="jump-text">向第 <input type="text" value="2" class="page-jump-input"> 页</span>
+      <button class="btn-jump-submit">确定</button>
+    </div>
+  </main>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="index.html">京东首页</a><span class="split">|</span>
+        <a href="list.html">商品列表</a><span class="split">|</span>
+        <a href="cart.html">购物车</a><span class="split">|</span>
+        <a href="checkout.html">结算中心</a><span class="split">|</span>
+        <a href="login.html">账号登录</a>
+      </p>
+      <p class="copy">Copyright © 2004 - 2026 京东JD.com 版权所有</p>
+    </div>
+  </footer>
+
+  <script src="js/list.js"></script>
+</body>
+</html>

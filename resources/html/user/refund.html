@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>返修退换货服务中心 - 我的京东 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>JD</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="../css/refund.css">
+</head>
+<body class="user-body">
+  <!-- 顶部快捷导航 -->
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="index.html" class="highlight">张三 (PLUS会员)</a>
+          <a href="../login.html" class="register-btn">退出</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../plus.html">PLUS会员</a></li>
+        <li class="spacer"></li>
+        <li><a href="../cart.html">我的购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 个人中心专属 Header -->
+  <header class="user-header">
+    <div class="w user-header-inner">
+      <div class="logo-user-title">
+        <a href="../index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">客户服务 / 返修退换货</h2>
+        <a href="index.html" class="back-home-link">&lt; 返回用户中心首页</a>
+      </div>
+      <div class="user-search-box">
+        <input type="text" placeholder="服务单号 / 订单号 / 商品名称" id="refundSearchInput">
+        <button class="user-search-btn" id="btnRefundSearch">查询服务单</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 个人中心主布局 (Left Sidebar + Right Content) -->
+  <main class="w user-layout">
+    <!-- 左侧导航栏 -->
+    <aside class="user-sidebar">
+      <div class="side-menu-group">
+        <h3 class="group-title">订单中心</h3>
+        <ul class="menu-list">
+          <li><a href="order.html">我的订单 <span class="badge-num">2</span></a></li>
+          <li><a href="javascript:;">评价晒单 <span class="badge-num">1</span></a></li>
+          <li><a href="javascript:;">常购商品</a></li>
+          <li><a href="javascript:;">订单回收站</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">我的资产</h3>
+        <ul class="menu-list">
+          <li><a href="javascript:;">优惠券 <span class="badge-num">5</span></a></li>
+          <li><a href="javascript:;">京豆余额</a></li>
+          <li><a href="javascript:;">京东白条</a></li>
+          <li><a href="javascript:;">礼品卡 / E卡</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">关注中心</h3>
+        <ul class="menu-list">
+          <li><a href="javascript:;">关注商品 (12)</a></li>
+          <li><a href="javascript:;">关注店铺 (5)</a></li>
+          <li><a href="javascript:;">浏览足迹</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">客户服务</h3>
+        <ul class="menu-list">
+          <li class="active"><a href="refund.html">返修退换货</a></li>
+          <li><a href="javascript:;">价格保护</a></li>
+          <li><a href="javascript:;">我的问答</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">设置</h3>
+        <ul class="menu-list">
+          <li><a href="javascript:;">个人信息</a></li>
+          <li><a href="address.html">收货地址管理</a></li>
+          <li><a href="javascript:;">账号安全</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 右侧售后中心主体 -->
+    <div class="user-content-area" style="flex:1;">
+      <!-- 1. 售后保障权益横幅 -->
+      <div class="refund-notice-banner">
+        <div class="notice-left">
+          <span class="notice-icon">🛡️</span>
+          <div class="notice-text">
+            <h4>京东自营品质售后无忧保障</h4>
+            <p>支持 7 天无理由退货、15 天免费换货、退货快递上门免收运费（PLUS 会员专享极速审核退款）</p>
+          </div>
+        </div>
+        <div class="notice-right">
+          <a href="javascript:;" class="policy-btn" id="btnPolicy">查看售后政策细则 ›</a>
+        </div>
+      </div>
+
+      <!-- 2. 选项卡 Tab -->
+      <div class="refund-tabs">
+        <div class="refund-tab-item active" data-target="pane-apply">
+          申请售后 (可售后订单) <span class="badge" id="applyCountBadge">3</span>
+        </div>
+        <div class="refund-tab-item" data-target="pane-records">
+          售后进度与记录 <span class="badge" id="recordCountBadge">2</span>
+        </div>
+      </div>
+
+      <!-- 3. Pane 1: 可申请售后订单列表 -->
+      <div class="refund-pane active" id="pane-apply">
+        <!-- 订单 1 -->
+        <div class="refundable-card" data-order="JD2026092800101" data-goods="Apple iPhone 16 Pro 256GB 原色钛金属" data-price="7999.00" data-img="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=120&q=80">
+          <div class="r-card-head">
+            <div class="order-meta">
+              <span>订单号：<strong>JD2026092800101</strong></span>
+              <span>下单时间：2026-09-28 22:30</span>
+            </div>
+            <span class="store-label">京东自营旗舰店</span>
+          </div>
+          <div class="r-card-body">
+            <div class="r-goods-info">
+              <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=120&q=80" alt="iPhone 16 Pro">
+              <div class="r-goods-desc">
+                <p class="title">Apple iPhone 16 Pro 256GB 原色钛金属 移动联通电信5G全网通手机</p>
+                <p class="sku">规格：原色钛金属 / 256GB</p>
+              </div>
+            </div>
+            <div class="r-goods-price">
+              <p class="price">¥7,999.00</p>
+              <p class="qty">数量：1</p>
+            </div>
+            <div class="r-actions">
+              <button class="btn-apply-refund">申请售后</button>
+              <button class="btn-contact-service">联系客服</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 订单 2 -->
+        <div class="refundable-card" data-order="JD2026092800102" data-goods="Sony WH-1000XM5 无线降噪头戴耳机 黑色" data-price="1899.00" data-img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&q=80">
+          <div class="r-card-head">
+            <div class="order-meta">
+              <span>订单号：<strong>JD2026092800102</strong></span>
+              <span>下单时间：2026-09-28 21:00</span>
+            </div>
+            <span class="store-label">索尼数码自营专区</span>
+          </div>
+          <div class="r-card-body">
+            <div class="r-goods-info">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&q=80" alt="Sony耳机">
+              <div class="r-goods-desc">
+                <p class="title">Sony WH-1000XM5 高解析度无线主动降噪头戴式耳机 黑色</p>
+                <p class="sku">规格：经典黑 / 官方标配</p>
+              </div>
+            </div>
+            <div class="r-goods-price">
+              <p class="price">¥1,899.00</p>
+              <p class="qty">数量：1</p>
+            </div>
+            <div class="r-actions">
+              <button class="btn-apply-refund">申请售后</button>
+              <button class="btn-contact-service">联系客服</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 订单 3 -->
+        <div class="refundable-card" data-order="JD2026092511092" data-goods="罗技 MX Master 3S 无线蓝牙鼠标" data-price="549.00" data-img="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=120&q=80">
+          <div class="r-card-head">
+            <div class="order-meta">
+              <span>订单号：<strong>JD2026092511092</strong></span>
+              <span>下单时间：2026-09-25 14:15</span>
+            </div>
+            <span class="store-label">罗技官方旗舰店</span>
+          </div>
+          <div class="r-card-body">
+            <div class="r-goods-info">
+              <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=120&q=80" alt="Logitech鼠标">
+              <div class="r-goods-desc">
+                <p class="title">罗技 (Logitech) MX Master 3S 人体工学双模无线办公鼠标 石墨黑</p>
+                <p class="sku">规格：静音微动 / 8000DPI</p>
+              </div>
+            </div>
+            <div class="r-goods-price">
+              <p class="price">¥549.00</p>
+              <p class="qty">数量：1</p>
+            </div>
+            <div class="r-actions">
+              <button class="btn-apply-refund">申请售后</button>
+              <button class="btn-contact-service">联系客服</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Pane 2: 售后进度与记录 -->
+      <div class="refund-pane" id="pane-records">
+        <div id="recordsContainer">
+          <!-- 售后记录 1 (进行中) -->
+          <div class="record-card">
+            <div class="record-head">
+              <div class="record-sn-tag">
+                <span>服务单号：<strong>AS202609280088</strong></span>
+                <span class="service-type-badge">退货退款</span>
+                <span class="time" style="color:#999;font-size:12px;">申请时间：2026-09-28 23:05</span>
+              </div>
+              <span class="status-highlight">商家已同意退货，等待快递取件</span>
+            </div>
+
+            <!-- 5节点进度步进条 -->
+            <div class="timeline-steps">
+              <div class="step-node completed">
+                <div class="step-dot">✓</div>
+                <span class="step-title">提交申请</span>
+              </div>
+              <div class="step-node completed">
+                <div class="step-dot">✓</div>
+                <span class="step-title">审核通过</span>
+              </div>
+              <div class="step-node active">
+                <div class="step-dot">3</div>
+                <span class="step-title">快递取件中</span>
+              </div>
+              <div class="step-node">
+                <div class="step-dot">4</div>
+                <span class="step-title">商家验货</span>
+              </div>
+              <div class="step-node">
+                <div class="step-dot">5</div>
+                <span class="step-title">退款到账</span>
+              </div>
+            </div>
+
+            <!-- 商品与操作行 -->
+            <div class="record-goods-row">
+              <div class="r-mini-info">
+                <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=80&q=80" alt="iPhone 16 Pro">
+                <div class="r-mini-desc">
+                  <h5>Apple iPhone 16 Pro 256GB 原色钛金属</h5>
+                  <p>退款金额：<strong style="color:#e1251b;">¥7,999.00</strong> | 取件方式：京东快递免费上门取件</p>
+                </div>
+              </div>
+              <div class="record-btn-row">
+                <button class="btn-contact-service btn-view-progress">查看进度详情</button>
+                <button class="btn-contact-service btn-cancel-refund">撤销售后</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 售后记录 2 (已完成) -->
+          <div class="record-card">
+            <div class="record-head">
+              <div class="record-sn-tag">
+                <span>服务单号：<strong>AS202609200052</strong></span>
+                <span class="service-type-badge" style="background:#f6ffed;color:#52c41a;border-color:#b7eb8f;">仅退款</span>
+                <span class="time" style="color:#999;font-size:12px;">申请时间：2026-09-20 15:30</span>
+              </div>
+              <span class="status-highlight success">✓ 退款成功 (¥338.00)</span>
+            </div>
+
+            <div class="timeline-steps">
+              <div class="step-node completed">
+                <div class="step-dot">✓</div>
+                <span class="step-title">提交申请</span>
+              </div>
+              <div class="step-node completed">
+                <div class="step-dot">✓</div>
+                <span class="step-title">商家审核</span>
+              </div>
+              <div class="step-node completed">
+                <div class="step-dot">✓</div>
+                <span class="step-title">系统处理</span>
+              </div>
+              <div class="step-node completed">
+                <div class="step-dot">✓</div>
+                <span class="step-title">退款到账</span>
+              </div>
+            </div>
+
+            <div class="record-goods-row">
+              <div class="r-mini-info">
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=80&q=80" alt="键盘键帽">
+                <div class="r-mini-desc">
+                  <h5>PBT五面热升华客制化机械键盘主题键帽</h5>
+                  <p>已退款：<strong style="color:#52c41a;">¥338.00</strong> (原路退回微信支付，交易单号：WX202609200192)</p>
+                </div>
+              </div>
+              <div class="record-btn-row">
+                <button class="btn-contact-service btn-view-progress">查看退款单据</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 申请售后抽屉/弹窗 (Apply Modal) -->
+  <div class="refund-modal" id="refundModal">
+    <div class="modal-content-box">
+      <div class="modal-header-line">
+        <h3>申请售后服务单</h3>
+        <button class="modal-close-x" id="btnCloseRefundModal">✕</button>
+      </div>
+      <form class="refund-form-body" id="refundForm">
+        <!-- 选中的商品概要 -->
+        <div class="selected-goods-preview">
+          <img id="formGoodsImg" src="" alt="商品预览">
+          <div class="sg-desc">
+            <h4 id="formGoodsTitle"></h4>
+            <p>订单实付：<strong id="formGoodsPrice" style="color:#e1251b;"></strong> | 订单编号：<span id="formOrderSn"></span></p>
+          </div>
+        </div>
+
+        <!-- 1. 服务类型 -->
+        <div class="form-group-item">
+          <label>服务类型 <span class="req">*</span></label>
+          <div class="type-select-pills">
+            <div class="pill-option active" data-type="退货退款">
+              <h5>退货退款</h5>
+              <p>已收到货，需寄回商品并全额退款</p>
+            </div>
+            <div class="pill-option" data-type="仅退款">
+              <h5>仅退款</h5>
+              <p>未收到货或协商一致退款，无需退货</p>
+            </div>
+            <div class="pill-option" data-type="换货">
+              <h5>换货</h5>
+              <p>商品有质量瑕疵，换同规格新机</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 申请原因 -->
+        <div class="form-group-item">
+          <label>申请原因 <span class="req">*</span></label>
+          <select class="form-control-select" id="formReason" required>
+            <option value="7天无理由退货（商品及包装完好）">7天无理由退货（商品及包装完好）</option>
+            <option value="商品质量问题 / 功能故障无法使用">商品质量问题 / 功能故障无法使用</option>
+            <option value="外包装破损 / 商品有划痕磨损">外包装破损 / 商品有划痕磨损</option>
+            <option value="少件 / 漏发配件 / 卖家发错货">少件 / 漏发配件 / 卖家发错货</option>
+            <option value="商品尺寸/参数与页面描述不符">商品尺寸/参数与页面描述不符</option>
+          </select>
+        </div>
+
+        <!-- 3. 退款金额 -->
+        <div class="form-group-item">
+          <label>申请退款金额 (元) <span class="req">*</span></label>
+          <input type="number" class="form-control-input" id="formRefundAmount" step="0.01" required>
+        </div>
+
+        <!-- 4. 问题描述 -->
+        <div class="form-group-item">
+          <label>问题描述 (限200字)</label>
+          <textarea class="form-control-textarea" id="formRemark" rows="3" placeholder="请详细描述您遇到的问题，以便京东售后客服更快速为您审核处理..."></textarea>
+        </div>
+
+        <!-- 5. 举证凭证图片 -->
+        <div class="form-group-item">
+          <label>上传举证凭证 (最多3张)</label>
+          <div class="proof-upload-box">
+            <img class="upload-preview-thumb" src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=100&q=80" alt="凭证1">
+            <div class="upload-slot" id="btnUploadProof">
+              <span>📷</span>
+              <p>添加照片</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. 寄件方式 -->
+        <div class="form-group-item">
+          <label>寄件返回方式</label>
+          <select class="form-control-select" id="formShippingWay">
+            <option value="京东快递免费上门取件">京东快递上门取件 (PLUS 会员免收运费，快递员携带打包箱)</option>
+            <option value="客户自行邮寄寄回">客户自行邮寄寄回 (需先行垫付运费，验收后报销)</option>
+          </select>
+        </div>
+
+        <div class="modal-foot-actions">
+          <button type="button" class="btn-modal-cancel" id="btnCancelRefundModal">取消</button>
+          <button type="submit" class="btn-modal-submit">确认提交售后申请</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 浮动提示 Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="../js/refund.js"></script>
+</body>
+</html>

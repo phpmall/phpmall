@@ -1,0 +1,449 @@
+/* ========================================================
+   京东企业采购 (B2B) 专场样式表 (b2b.css)
+   ======================================================== */
+
+:root {
+  --b2b-primary: #0052d9;
+  --b2b-hover: #003cab;
+  --b2b-dark: #002266;
+  --b2b-orange: #ff7d00;
+  --b2b-light: #f2f6fc;
+}
+
+.b2b-body {
+  background-color: #f7f9fb;
+  color: #333;
+}
+
+/* 顶部企业购专属 Header */
+.b2b-header {
+  background: #fff;
+  border-bottom: 2px solid var(--b2b-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.b2b-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.b2b-logo-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.b2b-logo-icon {
+  background: var(--b2b-primary);
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.b2b-logo-text h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.b2b-logo-text p {
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 0.5px;
+}
+
+.b2b-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.b2b-nav-links a {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.b2b-nav-links a:hover,
+.b2b-nav-links a.active {
+  color: var(--b2b-primary);
+  font-weight: 700;
+}
+
+.btn-b2b-quote-top {
+  background: var(--b2b-orange);
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  padding: 8px 18px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.btn-b2b-quote-top:hover {
+  background: #e66f00;
+}
+
+/* 企业采购 Hero 大 Banner */
+.b2b-hero-banner {
+  background: linear-gradient(135deg, #072a6b 0%, #0052d9 60%, #1e70eb 100%);
+  color: #fff;
+  padding: 48px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.b2b-hero-banner::after {
+  content: '';
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.hero-title {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.hero-desc {
+  font-size: 15px;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.hero-stats-row {
+  display: flex;
+  gap: 32px;
+}
+
+.stat-item .num {
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffe066;
+}
+
+.stat-item .label {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* 询价卡片 (浮动右侧) */
+.hero-quote-card {
+  background: #fff;
+  color: #333;
+  width: 360px;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.quote-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.quote-card-head h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.quote-card-head span {
+  font-size: 12px;
+  color: var(--b2b-orange);
+  font-weight: 600;
+}
+
+.quote-form-item {
+  margin-bottom: 12px;
+}
+
+.quote-form-item label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.quote-input,
+.quote-select {
+  width: 100%;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.quote-input:focus,
+.quote-select:focus {
+  border-color: var(--b2b-primary);
+  outline: none;
+}
+
+.btn-submit-quote {
+  width: 100%;
+  background: var(--b2b-orange);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+.btn-submit-quote:hover {
+  background: #e66f00;
+}
+
+/* 4大专享权益金刚区 */
+.b2b-benefits-strip {
+  background: #fff;
+  margin: -24px auto 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.benefit-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+  border-right: 1px solid #eee;
+}
+
+.benefit-box:last-child {
+  border-right: none;
+}
+
+.b-icon {
+  font-size: 32px;
+}
+
+.b-text h5 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.b-text p {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.4;
+}
+
+/* 场景采购展厅 */
+.scene-section {
+  margin-bottom: 40px;
+}
+
+.scene-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 18px;
+}
+
+.scene-title-group h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scene-title-group p {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.scene-more-link {
+  font-size: 13px;
+  color: var(--b2b-primary);
+  font-weight: 600;
+}
+
+/* 阶梯大宗商品卡片网格 */
+.b2b-goods-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.b2b-item-card {
+  background: #fff;
+  border: 1px solid #e8ecf2;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.b2b-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 82, 217, 0.12);
+  border-color: #b5ceff;
+}
+
+.b2b-thumb-box {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  background: #f8fafc;
+}
+
+.b2b-thumb-box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.b2b-batch-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--b2b-primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.b2b-info-body {
+  padding: 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.b2b-item-title {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.4;
+  height: 38px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 10px;
+}
+
+/* 阶梯价格梯级 */
+.ladder-price-box {
+  background: #f4f8fe;
+  border: 1px dashed #b5ceff;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+}
+
+.ladder-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 3px;
+}
+
+.ladder-row.highlight {
+  color: var(--b2b-primary);
+  font-weight: bold;
+}
+
+.b2b-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+}
+
+.b2b-unit-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: #e1251b;
+}
+
+.b2b-unit-price small {
+  font-size: 11px;
+  color: #999;
+  font-weight: normal;
+  margin-left: 2px;
+}
+
+.btn-batch-order {
+  background: var(--b2b-primary);
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-batch-order:hover {
+  background: var(--b2b-hover);
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关注中心 - 我的京东 - 京东</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e1251b'/><text x='50%' y='55%' font-size='16' font-family='sans-serif' font-weight='bold' fill='white' dominant-baseline='middle' text-anchor='middle'>心</text></svg>" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="../css/user-extend.css">
+</head>
+<body class="user-body">
+  <div class="shortcut-nav">
+    <div class="w container-flex">
+      <div class="nav-location">
+        <span class="location-icon">📍</span>
+        <span class="current-city">北京</span>
+      </div>
+      <ul class="nav-quick-links">
+        <li class="login-item">
+          <a href="index.html" class="highlight">张三 (PLUS会员)</a>
+          <a href="../login.html" class="register-btn">退出</a>
+        </li>
+        <li class="spacer"></li>
+        <li><a href="order.html">我的订单</a></li>
+        <li class="spacer"></li>
+        <li><a href="index.html">我的京东</a></li>
+        <li class="spacer"></li>
+        <li><a href="../cart.html">购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="../index.html">返回首页</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header class="user-header">
+    <div class="w user-header-inner">
+      <div class="logo-user-title">
+        <a href="../index.html" class="logo-box">
+          <span class="logo-text">JD</span>
+          <span class="logo-sub">京东</span>
+        </a>
+        <h2 class="page-title">关注中心 / 我的收藏与常购</h2>
+        <a href="index.html" class="back-home-link">&lt; 返回用户中心</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="w user-layout">
+    <aside class="user-sidebar">
+      <div class="side-menu-group">
+        <h3 class="group-title">订单中心</h3>
+        <ul class="menu-list">
+          <li><a href="order.html">我的订单 <span class="badge-num">2</span></a></li>
+          <li><a href="comment.html">评价晒单</a></li>
+          <li class="active"><a href="favorite.html">常购与关注</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">我的资产</h3>
+        <ul class="menu-list">
+          <li><a href="../coupon.html">优惠券 <span class="badge-num">5</span></a></li>
+          <li><a href="baitiao.html">京东白条</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">客户服务</h3>
+        <ul class="menu-list">
+          <li><a href="refund.html">返修退换货</a></li>
+          <li><a href="../service/chat.html">在线客服</a></li>
+        </ul>
+      </div>
+
+      <div class="side-menu-group">
+        <h3 class="group-title">设置</h3>
+        <ul class="menu-list">
+          <li><a href="profile.html">个人信息</a></li>
+          <li><a href="address.html">收货地址管理</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="user-content-area" style="flex:1;">
+      <div class="order-center-card">
+        <div class="order-tabs">
+          <button class="order-tab-btn active">关注的商品 (4)</button>
+          <button class="order-tab-btn">关注的店铺 (2)</button>
+        </div>
+
+        <div class="fav-goods-grid" id="favGrid">
+          <!-- 商品 1 -->
+          <div class="fav-card">
+            <div class="fav-thumb">
+              <a href="../detail.html"><img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=300&q=80" alt="iPhone 16 Pro"></a>
+            </div>
+            <a href="../detail.html" class="fav-title">Apple iPhone 16 Pro 256GB 原色钛金属</a>
+            <div class="fav-price-row">
+              <span class="fav-price">¥7,999.00</span>
+              <button class="btn-cancel-fav">取消关注</button>
+            </div>
+          </div>
+
+          <!-- 商品 2 -->
+          <div class="fav-card">
+            <div class="fav-thumb">
+              <a href="../detail.html"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80" alt="Sony耳机"></a>
+            </div>
+            <a href="../detail.html" class="fav-title">Sony WH-1000XM5 无线降噪头戴耳机 黑色</a>
+            <div class="fav-price-row">
+              <span class="fav-price">¥1,899.00</span>
+              <button class="btn-cancel-fav">取消关注</button>
+            </div>
+          </div>
+
+          <!-- 商品 3 -->
+          <div class="fav-card">
+            <div class="fav-thumb">
+              <a href="../detail.html"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&q=80" alt="Dyson吹风机"></a>
+            </div>
+            <a href="../detail.html" class="fav-title">戴森 (Dyson) Supersonic HD15 智能吹风机</a>
+            <div class="fav-price-row">
+              <span class="fav-price">¥2,399.00</span>
+              <button class="btn-cancel-fav">取消关注</button>
+            </div>
+          </div>
+
+          <!-- 商品 4 -->
+          <div class="fav-card">
+            <div class="fav-thumb">
+              <a href="../detail.html"><img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=300&q=80" alt="Logitech鼠标"></a>
+            </div>
+            <a href="../detail.html" class="fav-title">罗技 (Logitech) MX Master 3S 无线双模鼠标</a>
+            <div class="fav-price-row">
+              <span class="fav-price">¥479.00</span>
+              <button class="btn-cancel-fav">取消关注</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toastEl = document.getElementById('toast');
+      function showToast(msg) {
+        toastEl.innerText = msg;
+        toastEl.className = 'toast show';
+        setTimeout(() => toastEl.className = 'toast', 2000);
+      }
+
+      const grid = document.getElementById('favGrid');
+      if (grid) {
+        grid.addEventListener('click', (e) => {
+          const btn = e.target.closest('.btn-cancel-fav');
+          if (btn) {
+            const card = btn.closest('.fav-card');
+            card.remove();
+            showToast('已取消对该商品的关注');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
