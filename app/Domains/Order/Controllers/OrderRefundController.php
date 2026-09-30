@@ -29,7 +29,7 @@ class OrderRefundController extends BaseController
         private readonly OrderRefundService $orderRefundService,
     ) {}
 
-    #[OA\Post(path: '/orderRefund/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderRefund/search', summary: '查询订单退款售后列表接口', security: [['bearerAuth' => []]], tags: ['订单退款售后模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderRefundQueryRequest::class))]
@@ -89,7 +89,7 @@ class OrderRefundController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/orderRefund/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderRefund/store', summary: '新增订单退款售后接口', security: [['bearerAuth' => []]], tags: ['订单退款售后模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderRefundCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -126,7 +126,7 @@ class OrderRefundController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/orderRefund/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/orderRefund/show', summary: '获取订单退款售后详情接口', security: [['bearerAuth' => []]], tags: ['订单退款售后模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -159,7 +159,7 @@ class OrderRefundController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/orderRefund/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/orderRefund/update', summary: '更新订单退款售后接口', security: [['bearerAuth' => []]], tags: ['订单退款售后模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderRefundUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -201,7 +201,7 @@ class OrderRefundController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/orderRefund/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderRefund/destroy', summary: '删除订单退款售后接口', security: [['bearerAuth' => []]], tags: ['订单退款售后模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderRefundDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

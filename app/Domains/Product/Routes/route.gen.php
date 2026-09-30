@@ -12,43 +12,43 @@ use App\Domains\Product\Controllers\ProductReviewController;
 use App\Domains\Product\Controllers\ProductSkuController;
 use Illuminate\Support\Facades\Route;
 
-// 查询列表接口
+// 查询商品分类列表接口
 Route::post('productCategory/search', [ProductCategoryController::class, 'search']);
-// 新增接口
+// 新增商品分类接口
 Route::post('productCategory/store', [ProductCategoryController::class, 'store']);
-// 获取详情接口
+// 获取商品分类详情接口
 Route::get('productCategory/show', [ProductCategoryController::class, 'show'])->name('productCategory.show');
-// 更新接口
+// 更新商品分类接口
 Route::put('productCategory/update', [ProductCategoryController::class, 'update']);
-// 删除接口
+// 删除商品分类接口
 Route::post('productCategory/destroy', [ProductCategoryController::class, 'destroy']);
-// 查询列表接口
+// 查询商品列表接口
 Route::post('product/search', [ProductController::class, 'search']);
-// 新增接口
+// 新增商品接口
 Route::post('product/store', [ProductController::class, 'store']);
-// 获取详情接口
+// 获取商品详情接口
 Route::get('product/show', [ProductController::class, 'show'])->name('product.show');
-// 更新接口
+// 更新商品接口
 Route::put('product/update', [ProductController::class, 'update']);
-// 删除接口
+// 删除商品接口
 Route::post('product/destroy', [ProductController::class, 'destroy']);
-// 查询列表接口
+// 查询商品评价列表接口
 Route::post('productReview/search', [ProductReviewController::class, 'search']);
-// 新增接口
+// 新增商品评价接口
 Route::post('productReview/store', [ProductReviewController::class, 'store']);
-// 获取详情接口
+// 获取商品评价详情接口
 Route::get('productReview/show', [ProductReviewController::class, 'show'])->name('productReview.show');
-// 更新接口
+// 更新商品评价接口
 Route::put('productReview/update', [ProductReviewController::class, 'update']);
-// 删除接口
+// 删除商品评价接口
 Route::post('productReview/destroy', [ProductReviewController::class, 'destroy']);
-// 查询列表接口
+// 查询商品规格SKU列表接口
 Route::post('productSku/search', [ProductSkuController::class, 'search']);
-// 新增接口
+// 新增商品规格SKU接口
 Route::post('productSku/store', [ProductSkuController::class, 'store']);
-// 获取详情接口
+// 获取商品规格SKU详情接口
 Route::get('productSku/show', [ProductSkuController::class, 'show'])->name('productSku.show');
-// 更新接口
+// 更新商品规格SKU接口
 Route::put('productSku/update', [ProductSkuController::class, 'update']);
-// 删除接口
+// 删除商品规格SKU接口
 Route::post('productSku/destroy', [ProductSkuController::class, 'destroy']);

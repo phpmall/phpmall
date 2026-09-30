@@ -12,19 +12,19 @@ class UserResponse implements \JsonSerializable
 {
     use HasSerializableAttributes;
 
-    #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
+    #[OA\Property(property: 'id', description: '用户ID', type: 'integer')]
     private int $id;
 
-    #[OA\Property(property: 'name', description: '', type: 'string')]
+    #[OA\Property(property: 'name', description: '用户名称', type: 'string')]
     private string $name;
 
-    #[OA\Property(property: 'email', description: '', type: 'string')]
+    #[OA\Property(property: 'email', description: '邮箱账号', type: 'string')]
     private string $email;
 
-    #[OA\Property(property: 'emailVerifiedAt', description: '', type: 'string')]
+    #[OA\Property(property: 'emailVerifiedAt', description: '邮箱验证时间', type: 'string')]
     private string $emailVerifiedAt;
 
-    #[OA\Property(property: 'rememberToken', description: '', type: 'string')]
+    #[OA\Property(property: 'rememberToken', description: '记住我Token', type: 'string')]
     private string $rememberToken;
 
     #[OA\Property(property: 'createdAt', description: '创建时间', type: 'string')]
@@ -34,7 +34,7 @@ class UserResponse implements \JsonSerializable
     private string $updatedAt;
 
     /**
-     * 获取ID
+     * 获取用户ID
      */
     public function getId(): int
     {
@@ -42,7 +42,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 设置ID
+     * 设置用户ID
      */
     public function setId(int $id): void
     {
@@ -50,7 +50,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取用户名称
      */
     public function getName(): string
     {
@@ -58,7 +58,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置用户名称
      */
     public function setName(string $name): void
     {
@@ -66,7 +66,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取邮箱账号
      */
     public function getEmail(): string
     {
@@ -74,7 +74,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置邮箱账号
      */
     public function setEmail(string $email): void
     {
@@ -82,7 +82,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取邮箱验证时间
      */
     public function getEmailVerifiedAt(): string
     {
@@ -90,7 +90,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置邮箱验证时间
      */
     public function setEmailVerifiedAt(string $emailVerifiedAt): void
     {
@@ -98,7 +98,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取记住我Token
      */
     public function getRememberToken(): string
     {
@@ -106,7 +106,7 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置记住我Token
      */
     public function setRememberToken(string $rememberToken): void
     {

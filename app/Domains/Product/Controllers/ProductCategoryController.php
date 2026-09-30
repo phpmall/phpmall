@@ -29,7 +29,7 @@ class ProductCategoryController extends BaseController
         private readonly ProductCategoryService $productCategoryService,
     ) {}
 
-    #[OA\Post(path: '/productCategory/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productCategory/search', summary: '查询商品分类列表接口', security: [['bearerAuth' => []]], tags: ['商品分类模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductCategoryQueryRequest::class))]
@@ -83,7 +83,7 @@ class ProductCategoryController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/productCategory/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productCategory/store', summary: '新增商品分类接口', security: [['bearerAuth' => []]], tags: ['商品分类模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductCategoryCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -120,7 +120,7 @@ class ProductCategoryController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/productCategory/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/productCategory/show', summary: '获取商品分类详情接口', security: [['bearerAuth' => []]], tags: ['商品分类模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -153,7 +153,7 @@ class ProductCategoryController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/productCategory/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/productCategory/update', summary: '更新商品分类接口', security: [['bearerAuth' => []]], tags: ['商品分类模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductCategoryUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -195,7 +195,7 @@ class ProductCategoryController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/productCategory/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productCategory/destroy', summary: '删除商品分类接口', security: [['bearerAuth' => []]], tags: ['商品分类模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductCategoryDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

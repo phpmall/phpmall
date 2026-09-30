@@ -35,15 +35,15 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getSkuId, description: 'SKU ID', type: 'integer'),
         new OA\Property(property: self::getUserId, description: '用户ID', type: 'integer'),
         new OA\Property(property: self::getMerchantId, description: '商家ID', type: 'integer'),
-        new OA\Property(property: self::getRating, description: '1-5星', type: 'integer'),
+        new OA\Property(property: self::getRating, description: '评分星级：1-一星，2-二星，3-三星，4-四星，5-五星', type: 'integer'),
         new OA\Property(property: self::getContent, description: '评价内容', type: 'string'),
         new OA\Property(property: self::getImages, description: '评价图片', type: 'string'),
-        new OA\Property(property: self::getIsAnonymous, description: '是否匿名', type: 'integer'),
-        new OA\Property(property: self::getIsAppend, description: '是否追评', type: 'integer'),
+        new OA\Property(property: self::getIsAnonymous, description: '是否匿名：0-否，1-是', type: 'integer'),
+        new OA\Property(property: self::getIsAppend, description: '是否追评：0-否，1-是', type: 'integer'),
         new OA\Property(property: self::getParentId, description: '追评时指向原评价', type: 'integer'),
         new OA\Property(property: self::getMerchantReply, description: '商家回复', type: 'string'),
         new OA\Property(property: self::getMerchantReplyAt, description: '', type: 'string'),
-        new OA\Property(property: self::getStatus, description: '0=隐藏 1=显示', type: 'integer'),
+        new OA\Property(property: self::getStatus, description: '状态：0-隐藏，1-显示', type: 'integer'),
     ]
 )]
 class ProductReviewUpdateRequest extends FormRequest
@@ -112,15 +112,15 @@ class ProductReviewUpdateRequest extends FormRequest
             self::getSkuId.'.required' => '请设置SKU ID',
             self::getUserId.'.required' => '请设置用户ID',
             self::getMerchantId.'.required' => '请设置商家ID',
-            self::getRating.'.required' => '请设置1-5星',
+            self::getRating.'.required' => '请设置评分星级：1-一星，2-二星，3-三星，4-四星，5-五星',
             self::getContent.'.required' => '请设置评价内容',
             self::getImages.'.required' => '请设置评价图片',
-            self::getIsAnonymous.'.required' => '请设置是否匿名',
-            self::getIsAppend.'.required' => '请设置是否追评',
+            self::getIsAnonymous.'.required' => '请设置是否匿名：0-否，1-是',
+            self::getIsAppend.'.required' => '请设置是否追评：0-否，1-是',
             self::getParentId.'.required' => '请设置追评时指向原评价',
             self::getMerchantReply.'.required' => '请设置商家回复',
             self::getMerchantReplyAt.'.required' => '请设置',
-            self::getStatus.'.required' => '请设置0=隐藏 1=显示',
+            self::getStatus.'.required' => '请设置状态：0-隐藏，1-显示',
         ];
     }
 }

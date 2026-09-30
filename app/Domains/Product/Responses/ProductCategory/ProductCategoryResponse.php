@@ -27,10 +27,10 @@ class ProductCategoryResponse implements \JsonSerializable
     #[OA\Property(property: 'sortOrder', description: '排序', type: 'integer')]
     private int $sortOrder;
 
-    #[OA\Property(property: 'isShow', description: '是否显示 0=否 1=是', type: 'integer')]
+    #[OA\Property(property: 'isShow', description: '是否显示：0-否，1-是', type: 'integer')]
     private int $isShow;
 
-    #[OA\Property(property: 'level', description: '层级 1/2/3', type: 'integer')]
+    #[OA\Property(property: 'level', description: '层级：1-一级，2-二级，3-三级', type: 'integer')]
     private int $level;
 
     #[OA\Property(property: 'path', description: '层级路径', type: 'string')]
@@ -123,7 +123,7 @@ class ProductCategoryResponse implements \JsonSerializable
     }
 
     /**
-     * 获取是否显示 0=否 1=是
+     * 获取是否显示：0-否，1-是
      */
     public function getIsShow(): int
     {
@@ -131,7 +131,7 @@ class ProductCategoryResponse implements \JsonSerializable
     }
 
     /**
-     * 设置是否显示 0=否 1=是
+     * 设置是否显示：0-否，1-是
      */
     public function setIsShow(int $isShow): void
     {
@@ -139,7 +139,7 @@ class ProductCategoryResponse implements \JsonSerializable
     }
 
     /**
-     * 获取层级 1/2/3
+     * 获取层级：1-一级，2-二级，3-三级
      */
     public function getLevel(): int
     {
@@ -147,7 +147,7 @@ class ProductCategoryResponse implements \JsonSerializable
     }
 
     /**
-     * 设置层级 1/2/3
+     * 设置层级：1-一级，2-二级，3-三级
      */
     public function setLevel(int $level): void
     {

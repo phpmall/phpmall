@@ -22,11 +22,11 @@ class PaymentEntity implements \JsonSerializable
 
     public const string getAmount = 'amount'; // 支付金额（分）
 
-    public const string getChannel = 'channel'; // 1=微信 2=支付宝 3=余额 4=银联
+    public const string getChannel = 'channel'; // 支付渠道：1-微信，2-支付宝，3-余额，4-银联
 
     public const string getChannelAppId = 'channel_app_id'; // 渠道AppID
 
-    public const string getStatus = 'status'; // 0=待支付 1=支付中 2=成功 3=失败 4=关闭
+    public const string getStatus = 'status'; // 支付状态：0-待支付，1-支付中，2-成功，3-失败，4-关闭
 
     public const string getPaidAt = 'paid_at'; // 支付成功时间
 
@@ -59,13 +59,13 @@ class PaymentEntity implements \JsonSerializable
     #[OA\Property(property: 'amount', description: '支付金额（分）', type: 'integer')]
     private int $amount;
 
-    #[OA\Property(property: 'channel', description: '1=微信 2=支付宝 3=余额 4=银联', type: 'integer')]
+    #[OA\Property(property: 'channel', description: '支付渠道：1-微信，2-支付宝，3-余额，4-银联', type: 'integer')]
     private int $channel;
 
     #[OA\Property(property: 'channelAppId', description: '渠道AppID', type: 'string')]
     private string $channelAppId;
 
-    #[OA\Property(property: 'status', description: '0=待支付 1=支付中 2=成功 3=失败 4=关闭', type: 'integer')]
+    #[OA\Property(property: 'status', description: '支付状态：0-待支付，1-支付中，2-成功，3-失败，4-关闭', type: 'integer')]
     private int $status;
 
     #[OA\Property(property: 'paidAt', description: '支付成功时间', type: 'string')]
@@ -173,7 +173,7 @@ class PaymentEntity implements \JsonSerializable
     }
 
     /**
-     * 获取1=微信 2=支付宝 3=余额 4=银联
+     * 获取支付渠道：1-微信，2-支付宝，3-余额，4-银联
      */
     public function getChannel(): int
     {
@@ -181,7 +181,7 @@ class PaymentEntity implements \JsonSerializable
     }
 
     /**
-     * 设置1=微信 2=支付宝 3=余额 4=银联
+     * 设置支付渠道：1-微信，2-支付宝，3-余额，4-银联
      */
     public function setChannel(int $channel): void
     {
@@ -205,7 +205,7 @@ class PaymentEntity implements \JsonSerializable
     }
 
     /**
-     * 获取0=待支付 1=支付中 2=成功 3=失败 4=关闭
+     * 获取支付状态：0-待支付，1-支付中，2-成功，3-失败，4-关闭
      */
     public function getStatus(): int
     {
@@ -213,7 +213,7 @@ class PaymentEntity implements \JsonSerializable
     }
 
     /**
-     * 设置0=待支付 1=支付中 2=成功 3=失败 4=关闭
+     * 设置支付状态：0-待支付，1-支付中，2-成功，3-失败，4-关闭
      */
     public function setStatus(int $status): void
     {

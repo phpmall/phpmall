@@ -27,16 +27,16 @@ class OrderResponse implements \JsonSerializable
     #[OA\Property(property: 'parentOrderId', description: '父订单ID（拆单）', type: 'integer')]
     private int $parentOrderId;
 
-    #[OA\Property(property: 'orderType', description: '1=普通 2=秒杀 3=拼团 4=分销', type: 'integer')]
+    #[OA\Property(property: 'orderType', description: '订单类型：1-普通，2-秒杀，3-拼团，4-分销', type: 'integer')]
     private int $orderType;
 
-    #[OA\Property(property: 'status', description: '10=待付款 20=已支付 30=待发货 40=已发货 50=待收货 60=已收货 70=已完成 80=已取消 90=退款中 100=已退款', type: 'integer')]
+    #[OA\Property(property: 'status', description: '订单状态：10-待付款，20-已支付，30-待发货，40-已发货，50-待收货，60-已收货，70-已完成，80-已取消，90-退款中，100-已退款', type: 'integer')]
     private int $status;
 
-    #[OA\Property(property: 'payStatus', description: '0=未支付 20=已支付 30=部分退款 100=全额退款', type: 'integer')]
+    #[OA\Property(property: 'payStatus', description: '支付状态：0-未支付，20-已支付，30-部分退款，100-全额退款', type: 'integer')]
     private int $payStatus;
 
-    #[OA\Property(property: 'refundStatus', description: '0=无退款 10=退款申请中 20=退款中 30=已退款 40=拒绝退款', type: 'integer')]
+    #[OA\Property(property: 'refundStatus', description: '退款状态：0-无退款，10-退款申请中，20-退款中，30-已退款，40-拒绝退款', type: 'integer')]
     private int $refundStatus;
 
     #[OA\Property(property: 'productAmount', description: '商品总金额（分）', type: 'integer')]
@@ -51,7 +51,7 @@ class OrderResponse implements \JsonSerializable
     #[OA\Property(property: 'payAmount', description: '实付金额（分）', type: 'integer')]
     private int $payAmount;
 
-    #[OA\Property(property: 'payMethod', description: '1=微信 2=支付宝 3=余额 4=银联', type: 'integer')]
+    #[OA\Property(property: 'payMethod', description: '支付方式：1-微信，2-支付宝，3-余额，4-银联', type: 'integer')]
     private int $payMethod;
 
     #[OA\Property(property: 'payTime', description: '支付时间', type: 'string')]
@@ -78,7 +78,7 @@ class OrderResponse implements \JsonSerializable
     #[OA\Property(property: 'remark', description: '用户备注', type: 'string')]
     private string $remark;
 
-    #[OA\Property(property: 'source', description: '来源 1=PC 2=H5 3=小程序 4=App', type: 'integer')]
+    #[OA\Property(property: 'source', description: '订单来源：1-PC，2-H5，3-小程序，4-App', type: 'integer')]
     private int $source;
 
     #[OA\Property(property: 'sellerRemark', description: '商家备注', type: 'string')]
@@ -174,7 +174,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 获取1=普通 2=秒杀 3=拼团 4=分销
+     * 获取订单类型：1-普通，2-秒杀，3-拼团，4-分销
      */
     public function getOrderType(): int
     {
@@ -182,7 +182,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 设置1=普通 2=秒杀 3=拼团 4=分销
+     * 设置订单类型：1-普通，2-秒杀，3-拼团，4-分销
      */
     public function setOrderType(int $orderType): void
     {
@@ -190,7 +190,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 获取10=待付款 20=已支付 30=待发货 40=已发货 50=待收货 60=已收货 70=已完成 80=已取消 90=退款中 100=已退款
+     * 获取订单状态：10-待付款，20-已支付，30-待发货，40-已发货，50-待收货，60-已收货，70-已完成，80-已取消，90-退款中，100-已退款
      */
     public function getStatus(): int
     {
@@ -198,7 +198,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 设置10=待付款 20=已支付 30=待发货 40=已发货 50=待收货 60=已收货 70=已完成 80=已取消 90=退款中 100=已退款
+     * 设置订单状态：10-待付款，20-已支付，30-待发货，40-已发货，50-待收货，60-已收货，70-已完成，80-已取消，90-退款中，100-已退款
      */
     public function setStatus(int $status): void
     {
@@ -206,7 +206,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 获取0=未支付 20=已支付 30=部分退款 100=全额退款
+     * 获取支付状态：0-未支付，20-已支付，30-部分退款，100-全额退款
      */
     public function getPayStatus(): int
     {
@@ -214,7 +214,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 设置0=未支付 20=已支付 30=部分退款 100=全额退款
+     * 设置支付状态：0-未支付，20-已支付，30-部分退款，100-全额退款
      */
     public function setPayStatus(int $payStatus): void
     {
@@ -222,7 +222,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 获取0=无退款 10=退款申请中 20=退款中 30=已退款 40=拒绝退款
+     * 获取退款状态：0-无退款，10-退款申请中，20-退款中，30-已退款，40-拒绝退款
      */
     public function getRefundStatus(): int
     {
@@ -230,7 +230,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 设置0=无退款 10=退款申请中 20=退款中 30=已退款 40=拒绝退款
+     * 设置退款状态：0-无退款，10-退款申请中，20-退款中，30-已退款，40-拒绝退款
      */
     public function setRefundStatus(int $refundStatus): void
     {
@@ -302,7 +302,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 获取1=微信 2=支付宝 3=余额 4=银联
+     * 获取支付方式：1-微信，2-支付宝，3-余额，4-银联
      */
     public function getPayMethod(): int
     {
@@ -310,7 +310,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 设置1=微信 2=支付宝 3=余额 4=银联
+     * 设置支付方式：1-微信，2-支付宝，3-余额，4-银联
      */
     public function setPayMethod(int $payMethod): void
     {
@@ -446,7 +446,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 获取来源 1=PC 2=H5 3=小程序 4=App
+     * 获取订单来源：1-PC，2-H5，3-小程序，4-App
      */
     public function getSource(): int
     {
@@ -454,7 +454,7 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
-     * 设置来源 1=PC 2=H5 3=小程序 4=App
+     * 设置订单来源：1-PC，2-H5，3-小程序，4-App
      */
     public function setSource(int $source): void
     {

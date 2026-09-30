@@ -10,23 +10,23 @@ use App\Domains\Payment\Controllers\PaymentController;
 use App\Domains\Payment\Controllers\PaymentRefundController;
 use Illuminate\Support\Facades\Route;
 
-// 查询列表接口
+// 查询支付流水列表接口
 Route::post('payment/search', [PaymentController::class, 'search']);
-// 新增接口
+// 新增支付流水接口
 Route::post('payment/store', [PaymentController::class, 'store']);
-// 获取详情接口
+// 获取支付流水详情接口
 Route::get('payment/show', [PaymentController::class, 'show'])->name('payment.show');
-// 更新接口
+// 更新支付流水接口
 Route::put('payment/update', [PaymentController::class, 'update']);
-// 删除接口
+// 删除支付流水接口
 Route::post('payment/destroy', [PaymentController::class, 'destroy']);
-// 查询列表接口
+// 查询支付退款流水列表接口
 Route::post('paymentRefund/search', [PaymentRefundController::class, 'search']);
-// 新增接口
+// 新增支付退款流水接口
 Route::post('paymentRefund/store', [PaymentRefundController::class, 'store']);
-// 获取详情接口
+// 获取支付退款流水详情接口
 Route::get('paymentRefund/show', [PaymentRefundController::class, 'show'])->name('paymentRefund.show');
-// 更新接口
+// 更新支付退款流水接口
 Route::put('paymentRefund/update', [PaymentRefundController::class, 'update']);
-// 删除接口
+// 删除支付退款流水接口
 Route::post('paymentRefund/destroy', [PaymentRefundController::class, 'destroy']);

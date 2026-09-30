@@ -25,7 +25,7 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getProductId, description: '商品ID', type: 'integer'),
         new OA\Property(property: self::getSkuId, description: 'SKU ID', type: 'integer'),
         new OA\Property(property: self::getQuantity, description: '数量', type: 'integer'),
-        new OA\Property(property: self::getIsSelected, description: '是否选中', type: 'integer'),
+        new OA\Property(property: self::getIsSelected, description: '是否选中：0-未选中，1-已选中', type: 'integer'),
     ]
 )]
 class CartUpdateRequest extends FormRequest
@@ -66,7 +66,7 @@ class CartUpdateRequest extends FormRequest
             self::getProductId.'.required' => '请设置商品ID',
             self::getSkuId.'.required' => '请设置SKU ID',
             self::getQuantity.'.required' => '请设置数量',
-            self::getIsSelected.'.required' => '请设置是否选中',
+            self::getIsSelected.'.required' => '请设置是否选中：0-未选中，1-已选中',
         ];
     }
 }

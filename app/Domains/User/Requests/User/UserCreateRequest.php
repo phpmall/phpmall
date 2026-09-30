@@ -17,11 +17,11 @@ use OpenApi\Attributes as OA;
         self::getRememberToken,
     ],
     properties: [
-        new OA\Property(property: self::getName, description: '', type: 'string'),
-        new OA\Property(property: self::getEmail, description: '', type: 'string'),
-        new OA\Property(property: self::getEmailVerifiedAt, description: '', type: 'string'),
-        new OA\Property(property: self::getPassword, description: '', type: 'string'),
-        new OA\Property(property: self::getRememberToken, description: '', type: 'string'),
+        new OA\Property(property: self::getName, description: '用户名称', type: 'string'),
+        new OA\Property(property: self::getEmail, description: '邮箱账号', type: 'string'),
+        new OA\Property(property: self::getEmailVerifiedAt, description: '邮箱验证时间', type: 'string'),
+        new OA\Property(property: self::getPassword, description: '加密密码', type: 'string'),
+        new OA\Property(property: self::getRememberToken, description: '记住我Token', type: 'string'),
     ]
 )]
 class UserCreateRequest extends FormRequest
@@ -50,11 +50,11 @@ class UserCreateRequest extends FormRequest
     public function messages(): array
     {
         return [
-            self::getName.'.required' => '请设置',
-            self::getEmail.'.required' => '请设置',
-            self::getEmailVerifiedAt.'.required' => '请设置',
-            self::getPassword.'.required' => '请设置',
-            self::getRememberToken.'.required' => '请设置',
+            self::getName.'.required' => '请设置用户名称',
+            self::getEmail.'.required' => '请设置邮箱账号',
+            self::getEmailVerifiedAt.'.required' => '请设置邮箱验证时间',
+            self::getPassword.'.required' => '请设置加密密码',
+            self::getRememberToken.'.required' => '请设置记住我Token',
         ];
     }
 }

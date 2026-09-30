@@ -37,7 +37,7 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getWeight, description: '重量（克）', type: 'integer'),
         new OA\Property(property: self::getImage, description: 'SKU独立图片', type: 'string'),
         new OA\Property(property: self::getSalesCount, description: 'SKU销量', type: 'integer'),
-        new OA\Property(property: self::getStatus, description: '0=禁用 1=启用', type: 'integer'),
+        new OA\Property(property: self::getStatus, description: '状态：0-禁用，1-启用', type: 'integer'),
     ]
 )]
 class ProductSkuCreateRequest extends FormRequest
@@ -102,7 +102,7 @@ class ProductSkuCreateRequest extends FormRequest
             self::getWeight.'.required' => '请设置重量（克）',
             self::getImage.'.required' => '请设置SKU独立图片',
             self::getSalesCount.'.required' => '请设置SKU销量',
-            self::getStatus.'.required' => '请设置0=禁用 1=启用',
+            self::getStatus.'.required' => '请设置状态：0-禁用，1-启用',
         ];
     }
 }

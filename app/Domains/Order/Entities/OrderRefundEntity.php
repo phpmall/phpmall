@@ -24,7 +24,7 @@ class OrderRefundEntity implements \JsonSerializable
 
     public const string getMerchantId = 'merchant_id'; // 商家ID
 
-    public const string getType = 'type'; // 1=仅退款 2=退货退款 3=换货
+    public const string getType = 'type'; // 退款类型：1-仅退款，2-退货退款，3-换货
 
     public const string getReason = 'reason'; // 退款原因
 
@@ -38,7 +38,7 @@ class OrderRefundEntity implements \JsonSerializable
 
     public const string getRefundAmount = 'refund_amount'; // 实际退款金额（分）
 
-    public const string getStatus = 'status'; // 0=待商家处理 1=商家同意 2=商家拒绝 3=退货中 4=平台介入 5=已退款 6=已拒绝 7=用户撤销
+    public const string getStatus = 'status'; // 售后状态：0-待商家处理，1-商家同意，2-商家拒绝，3-退货中，4-平台介入，5-已退款，6-已拒绝，7-用户撤销
 
     public const string getMerchantRemark = 'merchant_remark'; // 商家处理备注
 
@@ -76,7 +76,7 @@ class OrderRefundEntity implements \JsonSerializable
     #[OA\Property(property: 'merchantId', description: '商家ID', type: 'integer')]
     private int $merchantId;
 
-    #[OA\Property(property: 'type', description: '1=仅退款 2=退货退款 3=换货', type: 'integer')]
+    #[OA\Property(property: 'type', description: '退款类型：1-仅退款，2-退货退款，3-换货', type: 'integer')]
     private int $type;
 
     #[OA\Property(property: 'reason', description: '退款原因', type: 'string')]
@@ -97,7 +97,7 @@ class OrderRefundEntity implements \JsonSerializable
     #[OA\Property(property: 'refundAmount', description: '实际退款金额（分）', type: 'integer')]
     private int $refundAmount;
 
-    #[OA\Property(property: 'status', description: '0=待商家处理 1=商家同意 2=商家拒绝 3=退货中 4=平台介入 5=已退款 6=已拒绝 7=用户撤销', type: 'integer')]
+    #[OA\Property(property: 'status', description: '售后状态：0-待商家处理，1-商家同意，2-商家拒绝，3-退货中，4-平台介入，5-已退款，6-已拒绝，7-用户撤销', type: 'integer')]
     private int $status;
 
     #[OA\Property(property: 'merchantRemark', description: '商家处理备注', type: 'string')]
@@ -224,7 +224,7 @@ class OrderRefundEntity implements \JsonSerializable
     }
 
     /**
-     * 获取1=仅退款 2=退货退款 3=换货
+     * 获取退款类型：1-仅退款，2-退货退款，3-换货
      */
     public function getType(): int
     {
@@ -232,7 +232,7 @@ class OrderRefundEntity implements \JsonSerializable
     }
 
     /**
-     * 设置1=仅退款 2=退货退款 3=换货
+     * 设置退款类型：1-仅退款，2-退货退款，3-换货
      */
     public function setType(int $type): void
     {
@@ -336,7 +336,7 @@ class OrderRefundEntity implements \JsonSerializable
     }
 
     /**
-     * 获取0=待商家处理 1=商家同意 2=商家拒绝 3=退货中 4=平台介入 5=已退款 6=已拒绝 7=用户撤销
+     * 获取售后状态：0-待商家处理，1-商家同意，2-商家拒绝，3-退货中，4-平台介入，5-已退款，6-已拒绝，7-用户撤销
      */
     public function getStatus(): int
     {
@@ -344,7 +344,7 @@ class OrderRefundEntity implements \JsonSerializable
     }
 
     /**
-     * 设置0=待商家处理 1=商家同意 2=商家拒绝 3=退货中 4=平台介入 5=已退款 6=已拒绝 7=用户撤销
+     * 设置售后状态：0-待商家处理，1-商家同意，2-商家拒绝，3-退货中，4-平台介入，5-已退款，6-已拒绝，7-用户撤销
      */
     public function setStatus(int $status): void
     {

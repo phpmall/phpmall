@@ -29,7 +29,7 @@ class OrderItemController extends BaseController
         private readonly OrderItemService $orderItemService,
     ) {}
 
-    #[OA\Post(path: '/orderItem/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderItem/search', summary: '查询订单商品明细列表接口', security: [['bearerAuth' => []]], tags: ['订单商品明细模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderItemQueryRequest::class))]
@@ -83,7 +83,7 @@ class OrderItemController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/orderItem/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderItem/store', summary: '新增订单商品明细接口', security: [['bearerAuth' => []]], tags: ['订单商品明细模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderItemCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -120,7 +120,7 @@ class OrderItemController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/orderItem/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/orderItem/show', summary: '获取订单商品明细详情接口', security: [['bearerAuth' => []]], tags: ['订单商品明细模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -153,7 +153,7 @@ class OrderItemController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/orderItem/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/orderItem/update', summary: '更新订单商品明细接口', security: [['bearerAuth' => []]], tags: ['订单商品明细模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderItemUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -195,7 +195,7 @@ class OrderItemController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/orderItem/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderItem/destroy', summary: '删除订单商品明细接口', security: [['bearerAuth' => []]], tags: ['订单商品明细模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderItemDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

@@ -11,8 +11,8 @@ use OpenApi\Attributes as OA;
     schema: 'UserQueryRequest',
     required: [],
     properties: [
-        new OA\Property(property: self::getId, description: 'ID', type: 'integer'),
-        new OA\Property(property: self::getEmail, description: '', type: 'string'),
+        new OA\Property(property: self::getId, description: '用户ID', type: 'integer'),
+        new OA\Property(property: self::getEmail, description: '邮箱账号', type: 'string'),
     ]
 )]
 class UserQueryRequest extends FormRequest

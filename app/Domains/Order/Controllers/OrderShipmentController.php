@@ -29,7 +29,7 @@ class OrderShipmentController extends BaseController
         private readonly OrderShipmentService $orderShipmentService,
     ) {}
 
-    #[OA\Post(path: '/orderShipment/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderShipment/search', summary: '查询订单物流发货列表接口', security: [['bearerAuth' => []]], tags: ['订单物流发货模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderShipmentQueryRequest::class))]
@@ -83,7 +83,7 @@ class OrderShipmentController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/orderShipment/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderShipment/store', summary: '新增订单物流发货接口', security: [['bearerAuth' => []]], tags: ['订单物流发货模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderShipmentCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -120,7 +120,7 @@ class OrderShipmentController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/orderShipment/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/orderShipment/show', summary: '获取订单物流发货详情接口', security: [['bearerAuth' => []]], tags: ['订单物流发货模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -153,7 +153,7 @@ class OrderShipmentController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/orderShipment/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/orderShipment/update', summary: '更新订单物流发货接口', security: [['bearerAuth' => []]], tags: ['订单物流发货模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderShipmentUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -195,7 +195,7 @@ class OrderShipmentController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/orderShipment/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/orderShipment/destroy', summary: '删除订单物流发货接口', security: [['bearerAuth' => []]], tags: ['订单物流发货模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: OrderShipmentDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

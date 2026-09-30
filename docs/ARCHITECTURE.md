@@ -197,3 +197,34 @@ sequenceDiagram
 | **各用户模块 UI** | `app/Modules/{Module}/` | 包含 `Admin`, `Seller`, `Supplier`, `User` 模块的控制器与 UI 骨架视图 | 页面内前端 Ajax 访问对应 `app/Api/{Module}` |
 | **数据接口 API** | `app/Api/{Module}/` | 统一 RESTful API 控制器与路由定义，提供标准化 JSON 响应 | 调用 `app/Domains` 业务服务 |
 | **业务领域模型** | `app/Domains/{Domain}/` | 沉淀高内聚的业务逻辑、模型实体、状态机、仓储接口与计算规则 | 读写 MySQL 与 Redis |
+
+---
+
+## 4. 工程落地与编码军规 (Engineering Conventions)
+
+### 4.1 迁移文件按领域组织与表/字段注释规范
+- **规则**：
+  1. 严禁按单表无节制新建 migration 文件。必须**按领域（如 Goods、Trade、User、Supplier）集中创建与维护迁移文件**（例如 `create_goods_domain_tables.php`、`create_trade_domain_tables.php`）。
+  2. **Schema 必须包含简洁清晰的表注释**：每个表的迁移定义中必须显式声明 `$table->comment('XXX表');`（例如 `users` 表标注“用户表”、`orders` 表标注“订单表”、`carts` 表标注“购物车表”）。
+  3. **字段注释与枚举字段格式规范**：所有字段必须带有简洁的 comment 信息。若为状态或类型枚举字段，描述信息必须严格统一使用形如：**`状态：1-启用，2-不启用`** 格式（格式：`描述：值1-标签1，值2-标签2`，使用冒号与破折号、逗号隔开），以供 `php artisan gen:enums` 工具精准解析并自动生成对应的 PHP Enum 类。
+- **目的**：杜绝 `database/migrations` 随着表数增多而产生上百个碎片文件的无限膨胀；同时保障代码生成器（`php artisan gen:xxx`）及数据库字典工具能够精准提取表业务语义与枚举映射，自动生成规范的代码命名与枚举类。
+
+### 4.2 服务层 (app/Services) 与领域生成代码防腐隔离
+- **规则**：
+  1. 通过 `php artisan gen:xxx`（DevTools）生成的 `app/Domains/{Domain}/` 基础代码（Model, Entity, Dao/Repository, Service, Request, Response）作为基底资产，**原则上严禁手工侵入修改**。
+  2. 复杂的跨表组装、跨领域协同、业务计算等应用层服务，统一在 **`app/Services/{Domain}/`** 中按领域创建，通过继承或依赖注入（DI）消费 `app/Domains/{Domain}/Services`。
+- **目的**：代码生成器后续重新执行或覆盖时，不会抹掉应用层手工编写的核心业务代码。
+
+### 4.3 数据接口按业务实体控制器聚合
+- **规则**：严禁为每个 API 动作单独创建单动作控制器（Single Action Controller）。相关联的业务动作必须统一聚合在一个控制器中（例如：商品列表 `search`、商品详情 `show`、商品分类 `categories` 统一在 `GoodsController` 中）。
+- **目的**：保持路由配置清晰紧凑，控制器职责聚合，大幅度降低文件维护成本。
+
+### 4.4 接口文档 OpenAPI 注解与 DTO 规范
+- **规则**：
+  1. 所有 API 控制器方法必须采用 PHP 8 原生属性 `#[OA\...]`（OpenApi\Attributes）标准注解，声明请求方式、路径、入参、请求体 Schema 与响应结构。
+  2. 请求入参 DTO 与响应出参 DTO **严禁使用任意无约束的数组**，必须分别在对应模块的 `Requests/` 与 `Responses/` 目录中单独定义，配合注解实现强类型契约。
+
+### 4.5 模块视图就近定义原则
+- **规则**：`app/Modules/{Admin,Seller,Supplier,User}` 各角色的 Blade 视图统一就近存放在 `app/Modules/{Module}/Views/` 目录中。
+- **服务提供者注册**：通过各模块专属 ServiceProvider 或全局加载器使用 `View::addNamespace('{module}', app_path('Modules/{Module}/Views'))` 进行命名空间加载，在控制器中使用 `view('{module}::xxx')` 进行渲染。
+

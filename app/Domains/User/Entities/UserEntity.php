@@ -12,38 +12,38 @@ class UserEntity implements \JsonSerializable
 {
     use HasSerializableAttributes;
 
-    public const string getId = 'id'; // ID
+    public const string getId = 'id'; // 用户ID
 
-    public const string getName = 'name';
+    public const string getName = 'name'; // 用户名称
 
-    public const string getEmail = 'email';
+    public const string getEmail = 'email'; // 邮箱账号
 
-    public const string getEmailVerifiedAt = 'email_verified_at';
+    public const string getEmailVerifiedAt = 'email_verified_at'; // 邮箱验证时间
 
-    public const string getPassword = 'password';
+    public const string getPassword = 'password'; // 加密密码
 
-    public const string getRememberToken = 'remember_token';
+    public const string getRememberToken = 'remember_token'; // 记住我Token
 
     public const string getCreatedAt = 'created_at'; // 创建时间
 
     public const string getUpdatedAt = 'updated_at'; // 更新时间
 
-    #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
+    #[OA\Property(property: 'id', description: '用户ID', type: 'integer')]
     private int $id;
 
-    #[OA\Property(property: 'name', description: '', type: 'string')]
+    #[OA\Property(property: 'name', description: '用户名称', type: 'string')]
     private string $name;
 
-    #[OA\Property(property: 'email', description: '', type: 'string')]
+    #[OA\Property(property: 'email', description: '邮箱账号', type: 'string')]
     private string $email;
 
-    #[OA\Property(property: 'emailVerifiedAt', description: '', type: 'string')]
+    #[OA\Property(property: 'emailVerifiedAt', description: '邮箱验证时间', type: 'string')]
     private string $emailVerifiedAt;
 
-    #[OA\Property(property: 'password', description: '', type: 'string')]
+    #[OA\Property(property: 'password', description: '加密密码', type: 'string')]
     private string $password;
 
-    #[OA\Property(property: 'rememberToken', description: '', type: 'string')]
+    #[OA\Property(property: 'rememberToken', description: '记住我Token', type: 'string')]
     private string $rememberToken;
 
     #[OA\Property(property: 'createdAt', description: '创建时间', type: 'string')]
@@ -53,7 +53,7 @@ class UserEntity implements \JsonSerializable
     private string $updatedAt;
 
     /**
-     * 获取ID
+     * 获取用户ID
      */
     public function getId(): int
     {
@@ -61,7 +61,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 设置ID
+     * 设置用户ID
      */
     public function setId(int $id): void
     {
@@ -69,7 +69,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取用户名称
      */
     public function getName(): string
     {
@@ -77,7 +77,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置用户名称
      */
     public function setName(string $name): void
     {
@@ -85,7 +85,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取邮箱账号
      */
     public function getEmail(): string
     {
@@ -93,7 +93,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置邮箱账号
      */
     public function setEmail(string $email): void
     {
@@ -101,7 +101,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取邮箱验证时间
      */
     public function getEmailVerifiedAt(): string
     {
@@ -109,7 +109,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置邮箱验证时间
      */
     public function setEmailVerifiedAt(string $emailVerifiedAt): void
     {
@@ -117,7 +117,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取加密密码
      */
     public function getPassword(): string
     {
@@ -125,7 +125,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置加密密码
      */
     public function setPassword(string $password): void
     {
@@ -133,7 +133,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 获取
+     * 获取记住我Token
      */
     public function getRememberToken(): string
     {
@@ -141,7 +141,7 @@ class UserEntity implements \JsonSerializable
     }
 
     /**
-     * 设置
+     * 设置记住我Token
      */
     public function setRememberToken(string $rememberToken): void
     {

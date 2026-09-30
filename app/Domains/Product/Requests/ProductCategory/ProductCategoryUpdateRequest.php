@@ -25,8 +25,8 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getName, description: '分类名称', type: 'string'),
         new OA\Property(property: self::getIconUrl, description: '图标', type: 'string'),
         new OA\Property(property: self::getSortOrder, description: '排序', type: 'integer'),
-        new OA\Property(property: self::getIsShow, description: '是否显示 0=否 1=是', type: 'integer'),
-        new OA\Property(property: self::getLevel, description: '层级 1/2/3', type: 'integer'),
+        new OA\Property(property: self::getIsShow, description: '是否显示：0-否，1-是', type: 'integer'),
+        new OA\Property(property: self::getLevel, description: '层级：1-一级，2-二级，3-三级', type: 'integer'),
         new OA\Property(property: self::getPath, description: '层级路径', type: 'string'),
     ]
 )]
@@ -70,8 +70,8 @@ class ProductCategoryUpdateRequest extends FormRequest
             self::getName.'.required' => '请设置分类名称',
             self::getIconUrl.'.required' => '请设置图标',
             self::getSortOrder.'.required' => '请设置排序',
-            self::getIsShow.'.required' => '请设置是否显示 0=否 1=是',
-            self::getLevel.'.required' => '请设置层级 1/2/3',
+            self::getIsShow.'.required' => '请设置是否显示：0-否，1-是',
+            self::getLevel.'.required' => '请设置层级：1-一级，2-二级，3-三级',
             self::getPath.'.required' => '请设置层级路径',
         ];
     }

@@ -13,8 +13,8 @@ use OpenApi\Attributes as OA;
     properties: [
         new OA\Property(property: self::getId, description: 'ID', type: 'integer'),
         new OA\Property(property: self::getTitle, description: '商品标题', type: 'string'),
-        new OA\Property(property: self::getStatus, description: '0=下架 1=上架', type: 'integer'),
-        new OA\Property(property: self::getAuditStatus, description: '0=待审核 1=通过 2=拒绝', type: 'integer'),
+        new OA\Property(property: self::getStatus, description: '状态：0-下架，1-上架', type: 'integer'),
+        new OA\Property(property: self::getAuditStatus, description: '审核状态：0-待审核，1-通过，2-拒绝', type: 'integer'),
         new OA\Property(property: self::getCreatedAt, description: '创建时间', type: 'string'),
     ]
 )]

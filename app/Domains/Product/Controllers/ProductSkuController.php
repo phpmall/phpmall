@@ -29,7 +29,7 @@ class ProductSkuController extends BaseController
         private readonly ProductSkuService $productSkuService,
     ) {}
 
-    #[OA\Post(path: '/productSku/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productSku/search', summary: '查询商品规格SKU列表接口', security: [['bearerAuth' => []]], tags: ['商品规格SKU模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductSkuQueryRequest::class))]
@@ -86,7 +86,7 @@ class ProductSkuController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/productSku/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productSku/store', summary: '新增商品规格SKU接口', security: [['bearerAuth' => []]], tags: ['商品规格SKU模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductSkuCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -123,7 +123,7 @@ class ProductSkuController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/productSku/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/productSku/show', summary: '获取商品规格SKU详情接口', security: [['bearerAuth' => []]], tags: ['商品规格SKU模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -156,7 +156,7 @@ class ProductSkuController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/productSku/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/productSku/update', summary: '更新商品规格SKU接口', security: [['bearerAuth' => []]], tags: ['商品规格SKU模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductSkuUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -198,7 +198,7 @@ class ProductSkuController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/productSku/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productSku/destroy', summary: '删除商品规格SKU接口', security: [['bearerAuth' => []]], tags: ['商品规格SKU模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductSkuDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

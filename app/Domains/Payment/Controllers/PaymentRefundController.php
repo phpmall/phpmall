@@ -29,7 +29,7 @@ class PaymentRefundController extends BaseController
         private readonly PaymentRefundService $paymentRefundService,
     ) {}
 
-    #[OA\Post(path: '/paymentRefund/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/paymentRefund/search', summary: '查询支付退款流水列表接口', security: [['bearerAuth' => []]], tags: ['支付退款流水模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: PaymentRefundQueryRequest::class))]
@@ -89,7 +89,7 @@ class PaymentRefundController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/paymentRefund/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/paymentRefund/store', summary: '新增支付退款流水接口', security: [['bearerAuth' => []]], tags: ['支付退款流水模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: PaymentRefundCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -126,7 +126,7 @@ class PaymentRefundController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/paymentRefund/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/paymentRefund/show', summary: '获取支付退款流水详情接口', security: [['bearerAuth' => []]], tags: ['支付退款流水模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -159,7 +159,7 @@ class PaymentRefundController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/paymentRefund/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/paymentRefund/update', summary: '更新支付退款流水接口', security: [['bearerAuth' => []]], tags: ['支付退款流水模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: PaymentRefundUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -201,7 +201,7 @@ class PaymentRefundController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/paymentRefund/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/paymentRefund/destroy', summary: '删除支付退款流水接口', security: [['bearerAuth' => []]], tags: ['支付退款流水模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: PaymentRefundDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

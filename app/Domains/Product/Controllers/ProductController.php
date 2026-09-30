@@ -29,7 +29,7 @@ class ProductController extends BaseController
         private readonly ProductService $productService,
     ) {}
 
-    #[OA\Post(path: '/product/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/product/search', summary: '查询商品列表接口', security: [['bearerAuth' => []]], tags: ['商品模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductQueryRequest::class))]
@@ -92,7 +92,7 @@ class ProductController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/product/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/product/store', summary: '新增商品接口', security: [['bearerAuth' => []]], tags: ['商品模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -129,7 +129,7 @@ class ProductController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/product/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/product/show', summary: '获取商品详情接口', security: [['bearerAuth' => []]], tags: ['商品模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -162,7 +162,7 @@ class ProductController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/product/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/product/update', summary: '更新商品接口', security: [['bearerAuth' => []]], tags: ['商品模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -204,7 +204,7 @@ class ProductController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/product/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/product/destroy', summary: '删除商品接口', security: [['bearerAuth' => []]], tags: ['商品模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

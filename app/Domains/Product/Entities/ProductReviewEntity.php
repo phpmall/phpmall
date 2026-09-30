@@ -26,15 +26,15 @@ class ProductReviewEntity implements \JsonSerializable
 
     public const string getMerchantId = 'merchant_id'; // 商家ID
 
-    public const string getRating = 'rating'; // 1-5星
+    public const string getRating = 'rating'; // 评分星级：1-一星，2-二星，3-三星，4-四星，5-五星
 
     public const string getContent = 'content'; // 评价内容
 
     public const string getImages = 'images'; // 评价图片
 
-    public const string getIsAnonymous = 'is_anonymous'; // 是否匿名
+    public const string getIsAnonymous = 'is_anonymous'; // 是否匿名：0-否，1-是
 
-    public const string getIsAppend = 'is_append'; // 是否追评
+    public const string getIsAppend = 'is_append'; // 是否追评：0-否，1-是
 
     public const string getParentId = 'parent_id'; // 追评时指向原评价
 
@@ -42,7 +42,7 @@ class ProductReviewEntity implements \JsonSerializable
 
     public const string getMerchantReplyAt = 'merchant_reply_at';
 
-    public const string getStatus = 'status'; // 0=隐藏 1=显示
+    public const string getStatus = 'status'; // 状态：0-隐藏，1-显示
 
     public const string getCreatedAt = 'created_at'; // 创建时间
 
@@ -71,7 +71,7 @@ class ProductReviewEntity implements \JsonSerializable
     #[OA\Property(property: 'merchantId', description: '商家ID', type: 'integer')]
     private int $merchantId;
 
-    #[OA\Property(property: 'rating', description: '1-5星', type: 'integer')]
+    #[OA\Property(property: 'rating', description: '评分星级：1-一星，2-二星，3-三星，4-四星，5-五星', type: 'integer')]
     private int $rating;
 
     #[OA\Property(property: 'content', description: '评价内容', type: 'string')]
@@ -80,10 +80,10 @@ class ProductReviewEntity implements \JsonSerializable
     #[OA\Property(property: 'images', description: '评价图片', type: 'string')]
     private string $images;
 
-    #[OA\Property(property: 'isAnonymous', description: '是否匿名', type: 'integer')]
+    #[OA\Property(property: 'isAnonymous', description: '是否匿名：0-否，1-是', type: 'integer')]
     private int $isAnonymous;
 
-    #[OA\Property(property: 'isAppend', description: '是否追评', type: 'integer')]
+    #[OA\Property(property: 'isAppend', description: '是否追评：0-否，1-是', type: 'integer')]
     private int $isAppend;
 
     #[OA\Property(property: 'parentId', description: '追评时指向原评价', type: 'integer')]
@@ -95,7 +95,7 @@ class ProductReviewEntity implements \JsonSerializable
     #[OA\Property(property: 'merchantReplyAt', description: '', type: 'string')]
     private string $merchantReplyAt;
 
-    #[OA\Property(property: 'status', description: '0=隐藏 1=显示', type: 'integer')]
+    #[OA\Property(property: 'status', description: '状态：0-隐藏，1-显示', type: 'integer')]
     private int $status;
 
     #[OA\Property(property: 'createdAt', description: '创建时间', type: 'string')]
@@ -220,7 +220,7 @@ class ProductReviewEntity implements \JsonSerializable
     }
 
     /**
-     * 获取1-5星
+     * 获取评分星级：1-一星，2-二星，3-三星，4-四星，5-五星
      */
     public function getRating(): int
     {
@@ -228,7 +228,7 @@ class ProductReviewEntity implements \JsonSerializable
     }
 
     /**
-     * 设置1-5星
+     * 设置评分星级：1-一星，2-二星，3-三星，4-四星，5-五星
      */
     public function setRating(int $rating): void
     {
@@ -268,7 +268,7 @@ class ProductReviewEntity implements \JsonSerializable
     }
 
     /**
-     * 获取是否匿名
+     * 获取是否匿名：0-否，1-是
      */
     public function getIsAnonymous(): int
     {
@@ -276,7 +276,7 @@ class ProductReviewEntity implements \JsonSerializable
     }
 
     /**
-     * 设置是否匿名
+     * 设置是否匿名：0-否，1-是
      */
     public function setIsAnonymous(int $isAnonymous): void
     {
@@ -284,7 +284,7 @@ class ProductReviewEntity implements \JsonSerializable
     }
 
     /**
-     * 获取是否追评
+     * 获取是否追评：0-否，1-是
      */
     public function getIsAppend(): int
     {
@@ -292,7 +292,7 @@ class ProductReviewEntity implements \JsonSerializable
     }
 
     /**
-     * 设置是否追评
+     * 设置是否追评：0-否，1-是
      */
     public function setIsAppend(int $isAppend): void
     {
@@ -348,7 +348,7 @@ class ProductReviewEntity implements \JsonSerializable
     }
 
     /**
-     * 获取0=隐藏 1=显示
+     * 获取状态：0-隐藏，1-显示
      */
     public function getStatus(): int
     {
@@ -356,7 +356,7 @@ class ProductReviewEntity implements \JsonSerializable
     }
 
     /**
-     * 设置0=隐藏 1=显示
+     * 设置状态：0-隐藏，1-显示
      */
     public function setStatus(int $status): void
     {

@@ -14,7 +14,7 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getId, description: 'ID', type: 'integer'),
         new OA\Property(property: self::getProductId, description: '商品ID', type: 'integer'),
         new OA\Property(property: self::getMerchantId, description: '商家ID', type: 'integer'),
-        new OA\Property(property: self::getStatus, description: '0=禁用 1=启用', type: 'integer'),
+        new OA\Property(property: self::getStatus, description: '状态：0-禁用，1-启用', type: 'integer'),
     ]
 )]
 class ProductSkuQueryRequest extends FormRequest

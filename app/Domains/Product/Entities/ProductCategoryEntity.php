@@ -22,9 +22,9 @@ class ProductCategoryEntity implements \JsonSerializable
 
     public const string getSortOrder = 'sort_order'; // 排序
 
-    public const string getIsShow = 'is_show'; // 是否显示 0=否 1=是
+    public const string getIsShow = 'is_show'; // 是否显示：0-否，1-是
 
-    public const string getLevel = 'level'; // 层级 1/2/3
+    public const string getLevel = 'level'; // 层级：1-一级，2-二级，3-三级
 
     public const string getPath = 'path'; // 层级路径
 
@@ -47,10 +47,10 @@ class ProductCategoryEntity implements \JsonSerializable
     #[OA\Property(property: 'sortOrder', description: '排序', type: 'integer')]
     private int $sortOrder;
 
-    #[OA\Property(property: 'isShow', description: '是否显示 0=否 1=是', type: 'integer')]
+    #[OA\Property(property: 'isShow', description: '是否显示：0-否，1-是', type: 'integer')]
     private int $isShow;
 
-    #[OA\Property(property: 'level', description: '层级 1/2/3', type: 'integer')]
+    #[OA\Property(property: 'level', description: '层级：1-一级，2-二级，3-三级', type: 'integer')]
     private int $level;
 
     #[OA\Property(property: 'path', description: '层级路径', type: 'string')]
@@ -143,7 +143,7 @@ class ProductCategoryEntity implements \JsonSerializable
     }
 
     /**
-     * 获取是否显示 0=否 1=是
+     * 获取是否显示：0-否，1-是
      */
     public function getIsShow(): int
     {
@@ -151,7 +151,7 @@ class ProductCategoryEntity implements \JsonSerializable
     }
 
     /**
-     * 设置是否显示 0=否 1=是
+     * 设置是否显示：0-否，1-是
      */
     public function setIsShow(int $isShow): void
     {
@@ -159,7 +159,7 @@ class ProductCategoryEntity implements \JsonSerializable
     }
 
     /**
-     * 获取层级 1/2/3
+     * 获取层级：1-一级，2-二级，3-三级
      */
     public function getLevel(): int
     {
@@ -167,7 +167,7 @@ class ProductCategoryEntity implements \JsonSerializable
     }
 
     /**
-     * 设置层级 1/2/3
+     * 设置层级：1-一级，2-二级，3-三级
      */
     public function setLevel(int $level): void
     {

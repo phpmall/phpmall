@@ -14,7 +14,7 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getId, description: 'ID', type: 'integer'),
         new OA\Property(property: self::getPaymentNo, description: '支付单号', type: 'string'),
         new OA\Property(property: self::getOrderId, description: '订单ID', type: 'integer'),
-        new OA\Property(property: self::getStatus, description: '0=待支付 1=支付中 2=成功 3=失败 4=关闭', type: 'integer'),
+        new OA\Property(property: self::getStatus, description: '支付状态：0-待支付，1-支付中，2-成功，3-失败，4-关闭', type: 'integer'),
         new OA\Property(property: self::getTransactionId, description: '第三方支付流水号', type: 'string'),
     ]
 )]

@@ -24,9 +24,9 @@ class PaymentRefundEntity implements \JsonSerializable
 
     public const string getAmount = 'amount'; // 退款金额（分）
 
-    public const string getChannel = 'channel'; // 原支付渠道
+    public const string getChannel = 'channel'; // 原支付渠道：1-微信，2-支付宝，3-余额，4-银联
 
-    public const string getStatus = 'status'; // 0=待退款 1=退款中 2=成功 3=失败
+    public const string getStatus = 'status'; // 退款状态：0-待退款，1-退款中，2-成功，3-失败
 
     public const string getRefundedAt = 'refunded_at'; // 退款成功时间
 
@@ -56,10 +56,10 @@ class PaymentRefundEntity implements \JsonSerializable
     #[OA\Property(property: 'amount', description: '退款金额（分）', type: 'integer')]
     private int $amount;
 
-    #[OA\Property(property: 'channel', description: '原支付渠道', type: 'integer')]
+    #[OA\Property(property: 'channel', description: '原支付渠道：1-微信，2-支付宝，3-余额，4-银联', type: 'integer')]
     private int $channel;
 
-    #[OA\Property(property: 'status', description: '0=待退款 1=退款中 2=成功 3=失败', type: 'integer')]
+    #[OA\Property(property: 'status', description: '退款状态：0-待退款，1-退款中，2-成功，3-失败', type: 'integer')]
     private int $status;
 
     #[OA\Property(property: 'refundedAt', description: '退款成功时间', type: 'string')]
@@ -174,7 +174,7 @@ class PaymentRefundEntity implements \JsonSerializable
     }
 
     /**
-     * 获取原支付渠道
+     * 获取原支付渠道：1-微信，2-支付宝，3-余额，4-银联
      */
     public function getChannel(): int
     {
@@ -182,7 +182,7 @@ class PaymentRefundEntity implements \JsonSerializable
     }
 
     /**
-     * 设置原支付渠道
+     * 设置原支付渠道：1-微信，2-支付宝，3-余额，4-银联
      */
     public function setChannel(int $channel): void
     {
@@ -190,7 +190,7 @@ class PaymentRefundEntity implements \JsonSerializable
     }
 
     /**
-     * 获取0=待退款 1=退款中 2=成功 3=失败
+     * 获取退款状态：0-待退款，1-退款中，2-成功，3-失败
      */
     public function getStatus(): int
     {
@@ -198,7 +198,7 @@ class PaymentRefundEntity implements \JsonSerializable
     }
 
     /**
-     * 设置0=待退款 1=退款中 2=成功 3=失败
+     * 设置退款状态：0-待退款，1-退款中，2-成功，3-失败
      */
     public function setStatus(int $status): void
     {

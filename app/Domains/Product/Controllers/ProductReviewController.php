@@ -29,7 +29,7 @@ class ProductReviewController extends BaseController
         private readonly ProductReviewService $productReviewService,
     ) {}
 
-    #[OA\Post(path: '/productReview/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productReview/search', summary: '查询商品评价列表接口', security: [['bearerAuth' => []]], tags: ['商品评价模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductReviewQueryRequest::class))]
@@ -89,7 +89,7 @@ class ProductReviewController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/productReview/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productReview/store', summary: '新增商品评价接口', security: [['bearerAuth' => []]], tags: ['商品评价模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductReviewCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -126,7 +126,7 @@ class ProductReviewController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/productReview/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/productReview/show', summary: '获取商品评价详情接口', security: [['bearerAuth' => []]], tags: ['商品评价模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -159,7 +159,7 @@ class ProductReviewController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/productReview/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/productReview/update', summary: '更新商品评价接口', security: [['bearerAuth' => []]], tags: ['商品评价模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductReviewUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -201,7 +201,7 @@ class ProductReviewController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/productReview/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/productReview/destroy', summary: '删除商品评价接口', security: [['bearerAuth' => []]], tags: ['商品评价模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: ProductReviewDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

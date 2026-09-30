@@ -29,7 +29,7 @@ class CartController extends BaseController
         private readonly CartService $cartService,
     ) {}
 
-    #[OA\Post(path: '/cart/search', summary: '查询列表接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/cart/search', summary: '查询购物车列表接口', security: [['bearerAuth' => []]], tags: ['购物车模块'])]
     #[OA\Parameter(name: 'page', description: '当前页码', in: 'query', required: true, example: 1)]
     #[OA\Parameter(name: 'pageSize', description: '每页分页数', in: 'query', required: false, example: 10)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: CartQueryRequest::class))]
@@ -86,7 +86,7 @@ class CartController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/cart/store', summary: '新增接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/cart/store', summary: '新增购物车接口', security: [['bearerAuth' => []]], tags: ['购物车模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: CartCreateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -123,7 +123,7 @@ class CartController extends BaseController
         }
     }
 
-    #[OA\Get(path: '/cart/show', summary: '获取详情接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Get(path: '/cart/show', summary: '获取购物车详情接口', security: [['bearerAuth' => []]], tags: ['购物车模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [
@@ -156,7 +156,7 @@ class CartController extends BaseController
         }
     }
 
-    #[OA\Put(path: '/cart/update', summary: '更新接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Put(path: '/cart/update', summary: '更新购物车接口', security: [['bearerAuth' => []]], tags: ['购物车模块'])]
     #[OA\Parameter(name: 'id', description: 'ID', in: 'query', required: true, example: 1)]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: CartUpdateRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
@@ -198,7 +198,7 @@ class CartController extends BaseController
         }
     }
 
-    #[OA\Post(path: '/cart/destroy', summary: '删除接口', security: [['bearerAuth' => []]], tags: ['模块'])]
+    #[OA\Post(path: '/cart/destroy', summary: '删除购物车接口', security: [['bearerAuth' => []]], tags: ['购物车模块'])]
     #[OA\RequestBody(required: true, content: new OA\JsonContent(ref: CartDestroyRequest::class))]
     #[OA\Response(response: 200, description: 'OK', content: new OA\JsonContent(
         properties: [

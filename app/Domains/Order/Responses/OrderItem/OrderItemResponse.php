@@ -51,10 +51,10 @@ class OrderItemResponse implements \JsonSerializable
     #[OA\Property(property: 'refundAmount', description: '已退款金额（分）', type: 'integer')]
     private int $refundAmount;
 
-    #[OA\Property(property: 'refundStatus', description: '0=无 1=申请中 2=已退款 3=拒绝', type: 'integer')]
+    #[OA\Property(property: 'refundStatus', description: '售后状态：0-无售后，1-申请中，2-已退款，3-已拒绝', type: 'integer')]
     private int $refundStatus;
 
-    #[OA\Property(property: 'isCommented', description: '是否已评价', type: 'integer')]
+    #[OA\Property(property: 'isCommented', description: '是否评价：0-未评价，1-已评价', type: 'integer')]
     private int $isCommented;
 
     #[OA\Property(property: 'createdAt', description: '创建时间', type: 'string')]
@@ -272,7 +272,7 @@ class OrderItemResponse implements \JsonSerializable
     }
 
     /**
-     * 获取0=无 1=申请中 2=已退款 3=拒绝
+     * 获取售后状态：0-无售后，1-申请中，2-已退款，3-已拒绝
      */
     public function getRefundStatus(): int
     {
@@ -280,7 +280,7 @@ class OrderItemResponse implements \JsonSerializable
     }
 
     /**
-     * 设置0=无 1=申请中 2=已退款 3=拒绝
+     * 设置售后状态：0-无售后，1-申请中，2-已退款，3-已拒绝
      */
     public function setRefundStatus(int $refundStatus): void
     {
@@ -288,7 +288,7 @@ class OrderItemResponse implements \JsonSerializable
     }
 
     /**
-     * 获取是否已评价
+     * 获取是否评价：0-未评价，1-已评价
      */
     public function getIsCommented(): int
     {
@@ -296,7 +296,7 @@ class OrderItemResponse implements \JsonSerializable
     }
 
     /**
-     * 设置是否已评价
+     * 设置是否评价：0-未评价，1-已评价
      */
     public function setIsCommented(int $isCommented): void
     {

@@ -24,7 +24,7 @@ class CartEntity implements \JsonSerializable
 
     public const string getQuantity = 'quantity'; // 数量
 
-    public const string getIsSelected = 'is_selected'; // 是否选中
+    public const string getIsSelected = 'is_selected'; // 是否选中：0-未选中，1-已选中
 
     public const string getCreatedAt = 'created_at'; // 创建时间
 
@@ -48,7 +48,7 @@ class CartEntity implements \JsonSerializable
     #[OA\Property(property: 'quantity', description: '数量', type: 'integer')]
     private int $quantity;
 
-    #[OA\Property(property: 'isSelected', description: '是否选中', type: 'integer')]
+    #[OA\Property(property: 'isSelected', description: '是否选中：0-未选中，1-已选中', type: 'integer')]
     private int $isSelected;
 
     #[OA\Property(property: 'createdAt', description: '创建时间', type: 'string')]
@@ -154,7 +154,7 @@ class CartEntity implements \JsonSerializable
     }
 
     /**
-     * 获取是否选中
+     * 获取是否选中：0-未选中，1-已选中
      */
     public function getIsSelected(): int
     {
@@ -162,7 +162,7 @@ class CartEntity implements \JsonSerializable
     }
 
     /**
-     * 设置是否选中
+     * 设置是否选中：0-未选中，1-已选中
      */
     public function setIsSelected(int $isSelected): void
     {

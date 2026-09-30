@@ -15,7 +15,7 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getRefundNo, description: '退款单号', type: 'string'),
         new OA\Property(property: self::getOrderId, description: '订单ID', type: 'integer'),
         new OA\Property(property: self::getUserId, description: '用户ID', type: 'integer'),
-        new OA\Property(property: self::getStatus, description: '0=待商家处理 1=商家同意 2=商家拒绝 3=退货中 4=平台介入 5=已退款 6=已拒绝 7=用户撤销', type: 'integer'),
+        new OA\Property(property: self::getStatus, description: '售后状态：0-待商家处理，1-商家同意，2-商家拒绝，3-退货中，4-平台介入，5-已退款，6-已拒绝，7-用户撤销', type: 'integer'),
     ]
 )]
 class OrderRefundQueryRequest extends FormRequest

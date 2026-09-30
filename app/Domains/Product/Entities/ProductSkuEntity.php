@@ -38,7 +38,7 @@ class ProductSkuEntity implements \JsonSerializable
 
     public const string getSalesCount = 'sales_count'; // SKU销量
 
-    public const string getStatus = 'status'; // 0=禁用 1=启用
+    public const string getStatus = 'status'; // 状态：0-禁用，1-启用
 
     public const string getCreatedAt = 'created_at'; // 创建时间
 
@@ -83,7 +83,7 @@ class ProductSkuEntity implements \JsonSerializable
     #[OA\Property(property: 'salesCount', description: 'SKU销量', type: 'integer')]
     private int $salesCount;
 
-    #[OA\Property(property: 'status', description: '0=禁用 1=启用', type: 'integer')]
+    #[OA\Property(property: 'status', description: '状态：0-禁用，1-启用', type: 'integer')]
     private int $status;
 
     #[OA\Property(property: 'createdAt', description: '创建时间', type: 'string')]
@@ -301,7 +301,7 @@ class ProductSkuEntity implements \JsonSerializable
     }
 
     /**
-     * 获取0=禁用 1=启用
+     * 获取状态：0-禁用，1-启用
      */
     public function getStatus(): int
     {
@@ -309,7 +309,7 @@ class ProductSkuEntity implements \JsonSerializable
     }
 
     /**
-     * 设置0=禁用 1=启用
+     * 设置状态：0-禁用，1-启用
      */
     public function setStatus(int $status): void
     {

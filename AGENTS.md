@@ -184,6 +184,10 @@ Use Wayfinder to generate TypeScript functions for Laravel routes. Import from `
 
 1. **PC 前台商城 (Web Portal)**：在 `app/Http/Controllers` 中实现页面入口路由与 Blade 视图渲染，页面内数据交互通过 Ajax/Fetch 统一调用 `app/Api/Portal`。
 2. **移动端 (packages/mobile)**：Uni-App 多端工程直接调用 `app/Api/Portal` 接口，与 PC 端完全复用商品检索、SKU 规格、购物车与交易下单逻辑。
-3. **各类用户模块 UI (app/Modules)**：在 `app/Modules/{Admin,Seller,Supplier,User}` 中实现控制器与 Blade 视图骨架，前端通过 Ajax/Fetch 消费对应的 `app/Api/{Module}` 接口。
-4. **领域业务防腐 (app/Domains)**：所有商品计价、促销折扣、库存变更、订单状态扭转业务规则必须闭环在 `app/Domains` 中，Controller 保持薄层接入。
+3. **各类用户模块 UI (app/Modules)**：在 `app/Modules/{Admin,Seller,Supplier,User}` 中实现控制器与 Blade 视图骨架，前端通过 Ajax/Fetch 消费对应的 `app/Api/{Module}` 接口。各模块 Blade 视图就近定义在 `app/Modules/{Module}/Views` 目录中。
+4. **数据迁移文件按领域组织与表注释规范**：数据迁移文件按领域（如 Goods、Trade 等）创建和更新，严禁按单表散落创建迁移，避免迁移文件目录无限膨胀；每个表的 Schema 定义必须包含简洁明确的表注释（如 `$table->comment('用户表');`）；所有字段必须带有简洁的 comment 信息，若为枚举或状态字段，描述信息必须严格使用 `状态：1-启用，2-不启用` 格式（冒号/破折号/逗号分隔），以供 `php artisan gen:enums` 工具精准解析并自动生成枚举类。
+5. **服务层 (app/Services) 与领域防腐**：在 `app/Services` 中按领域实现业务服务类，可继承或注入 `App\Domains\{Domain}\Services`。原则上严禁修改 `app/Domains` 中通过 `php artisan gen:xxx` 生成的代码，业务扩展统一在 `app/Services` 中完成。
+6. **接口按业务实体控制器聚合**：数据接口控制器按业务实体组织（如商品列表、详情等动作统一聚合在 `GoodsController` 中），杜绝每个 action 建单独控制器，保证高内聚与维护性。
+7. **OpenAPI 注解与 DTO 规范**：遵循标准 OpenAPI (PHP 8 Attributes `#[OA\...]`) 注解控制器方法，便于自动化生成 API 文档；请求 (Requests) 与响应 (Responses) DTO 一律单独定义在对应模块的 `Requests` 和 `Responses` 目录下。
+
 

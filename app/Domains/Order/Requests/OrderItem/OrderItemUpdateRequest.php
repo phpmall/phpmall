@@ -40,8 +40,8 @@ use OpenApi\Attributes as OA;
         new OA\Property(property: self::getTotalAmount, description: '小计（分）', type: 'integer'),
         new OA\Property(property: self::getDiscountAmount, description: '优惠分摊（分）', type: 'integer'),
         new OA\Property(property: self::getRefundAmount, description: '已退款金额（分）', type: 'integer'),
-        new OA\Property(property: self::getRefundStatus, description: '0=无 1=申请中 2=已退款 3=拒绝', type: 'integer'),
-        new OA\Property(property: self::getIsCommented, description: '是否已评价', type: 'integer'),
+        new OA\Property(property: self::getRefundStatus, description: '售后状态：0-无售后，1-申请中，2-已退款，3-已拒绝', type: 'integer'),
+        new OA\Property(property: self::getIsCommented, description: '是否评价：0-未评价，1-已评价', type: 'integer'),
     ]
 )]
 class OrderItemUpdateRequest extends FormRequest
@@ -113,8 +113,8 @@ class OrderItemUpdateRequest extends FormRequest
             self::getTotalAmount.'.required' => '请设置小计（分）',
             self::getDiscountAmount.'.required' => '请设置优惠分摊（分）',
             self::getRefundAmount.'.required' => '请设置已退款金额（分）',
-            self::getRefundStatus.'.required' => '请设置0=无 1=申请中 2=已退款 3=拒绝',
-            self::getIsCommented.'.required' => '请设置是否已评价',
+            self::getRefundStatus.'.required' => '请设置售后状态：0-无售后，1-申请中，2-已退款，3-已拒绝',
+            self::getIsCommented.'.required' => '请设置是否评价：0-未评价，1-已评价',
         ];
     }
 }

@@ -9,13 +9,13 @@ declare(strict_types=1);
 use App\Domains\User\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-// 查询列表接口
+// 查询用户列表接口
 Route::post('user/search', [UserController::class, 'search']);
-// 新增接口
+// 新增用户接口
 Route::post('user/store', [UserController::class, 'store']);
-// 获取详情接口
+// 获取用户详情接口
 Route::get('user/show', [UserController::class, 'show'])->name('user.show');
-// 更新接口
+// 更新用户接口
 Route::put('user/update', [UserController::class, 'update']);
-// 删除接口
+// 删除用户接口
 Route::post('user/destroy', [UserController::class, 'destroy']);

@@ -28,9 +28,9 @@ class ProductEntity implements \JsonSerializable
 
     public const string getImages = 'images'; // 相册
 
-    public const string getStatus = 'status'; // 0=下架 1=上架
+    public const string getStatus = 'status'; // 状态：0-下架，1-上架
 
-    public const string getAuditStatus = 'audit_status'; // 0=待审核 1=通过 2=拒绝
+    public const string getAuditStatus = 'audit_status'; // 审核状态：0-待审核，1-通过，2-拒绝
 
     public const string getAuditRemark = 'audit_remark'; // 审核备注
 
@@ -42,7 +42,7 @@ class ProductEntity implements \JsonSerializable
 
     public const string getSalesCount = 'sales_count'; // 销量
 
-    public const string getStockType = 'stock_type'; // 1=统一库存 2=SKU独立库存
+    public const string getStockType = 'stock_type'; // 库存类型：1-统一库存，2-规格独立库存
 
     public const string getTotalStock = 'total_stock'; // 总库存
 
@@ -58,11 +58,11 @@ class ProductEntity implements \JsonSerializable
 
     public const string getSeoDescription = 'seo_description'; // SEO描述
 
-    public const string getIsHot = 'is_hot'; // 是否热销
+    public const string getIsHot = 'is_hot'; // 是否热销：0-否，1-是
 
-    public const string getIsNew = 'is_new'; // 是否新品
+    public const string getIsNew = 'is_new'; // 是否新品：0-否，1-是
 
-    public const string getIsRecommend = 'is_recommend'; // 是否推荐
+    public const string getIsRecommend = 'is_recommend'; // 是否推荐：0-否，1-是
 
     public const string getSortOrder = 'sort_order'; // 排序权重
 
@@ -96,10 +96,10 @@ class ProductEntity implements \JsonSerializable
     #[OA\Property(property: 'images', description: '相册', type: 'string')]
     private string $images;
 
-    #[OA\Property(property: 'status', description: '0=下架 1=上架', type: 'integer')]
+    #[OA\Property(property: 'status', description: '状态：0-下架，1-上架', type: 'integer')]
     private int $status;
 
-    #[OA\Property(property: 'auditStatus', description: '0=待审核 1=通过 2=拒绝', type: 'integer')]
+    #[OA\Property(property: 'auditStatus', description: '审核状态：0-待审核，1-通过，2-拒绝', type: 'integer')]
     private int $auditStatus;
 
     #[OA\Property(property: 'auditRemark', description: '审核备注', type: 'string')]
@@ -117,7 +117,7 @@ class ProductEntity implements \JsonSerializable
     #[OA\Property(property: 'salesCount', description: '销量', type: 'integer')]
     private int $salesCount;
 
-    #[OA\Property(property: 'stockType', description: '1=统一库存 2=SKU独立库存', type: 'integer')]
+    #[OA\Property(property: 'stockType', description: '库存类型：1-统一库存，2-规格独立库存', type: 'integer')]
     private int $stockType;
 
     #[OA\Property(property: 'totalStock', description: '总库存', type: 'integer')]
@@ -141,13 +141,13 @@ class ProductEntity implements \JsonSerializable
     #[OA\Property(property: 'seoDescription', description: 'SEO描述', type: 'string')]
     private string $seoDescription;
 
-    #[OA\Property(property: 'isHot', description: '是否热销', type: 'integer')]
+    #[OA\Property(property: 'isHot', description: '是否热销：0-否，1-是', type: 'integer')]
     private int $isHot;
 
-    #[OA\Property(property: 'isNew', description: '是否新品', type: 'integer')]
+    #[OA\Property(property: 'isNew', description: '是否新品：0-否，1-是', type: 'integer')]
     private int $isNew;
 
-    #[OA\Property(property: 'isRecommend', description: '是否推荐', type: 'integer')]
+    #[OA\Property(property: 'isRecommend', description: '是否推荐：0-否，1-是', type: 'integer')]
     private int $isRecommend;
 
     #[OA\Property(property: 'sortOrder', description: '排序权重', type: 'integer')]
@@ -291,7 +291,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 获取0=下架 1=上架
+     * 获取状态：0-下架，1-上架
      */
     public function getStatus(): int
     {
@@ -299,7 +299,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 设置0=下架 1=上架
+     * 设置状态：0-下架，1-上架
      */
     public function setStatus(int $status): void
     {
@@ -307,7 +307,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 获取0=待审核 1=通过 2=拒绝
+     * 获取审核状态：0-待审核，1-通过，2-拒绝
      */
     public function getAuditStatus(): int
     {
@@ -315,7 +315,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 设置0=待审核 1=通过 2=拒绝
+     * 设置审核状态：0-待审核，1-通过，2-拒绝
      */
     public function setAuditStatus(int $auditStatus): void
     {
@@ -403,7 +403,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 获取1=统一库存 2=SKU独立库存
+     * 获取库存类型：1-统一库存，2-规格独立库存
      */
     public function getStockType(): int
     {
@@ -411,7 +411,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 设置1=统一库存 2=SKU独立库存
+     * 设置库存类型：1-统一库存，2-规格独立库存
      */
     public function setStockType(int $stockType): void
     {
@@ -531,7 +531,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 获取是否热销
+     * 获取是否热销：0-否，1-是
      */
     public function getIsHot(): int
     {
@@ -539,7 +539,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 设置是否热销
+     * 设置是否热销：0-否，1-是
      */
     public function setIsHot(int $isHot): void
     {
@@ -547,7 +547,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 获取是否新品
+     * 获取是否新品：0-否，1-是
      */
     public function getIsNew(): int
     {
@@ -555,7 +555,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 设置是否新品
+     * 设置是否新品：0-否，1-是
      */
     public function setIsNew(int $isNew): void
     {
@@ -563,7 +563,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 获取是否推荐
+     * 获取是否推荐：0-否，1-是
      */
     public function getIsRecommend(): int
     {
@@ -571,7 +571,7 @@ class ProductEntity implements \JsonSerializable
     }
 
     /**
-     * 设置是否推荐
+     * 设置是否推荐：0-否，1-是
      */
     public function setIsRecommend(int $isRecommend): void
     {
