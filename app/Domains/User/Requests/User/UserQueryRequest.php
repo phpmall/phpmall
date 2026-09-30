@@ -13,7 +13,6 @@ use OpenApi\Attributes as OA;
     properties: [
         new OA\Property(property: self::getId, description: 'ID', type: 'integer'),
         new OA\Property(property: self::getEmail, description: '', type: 'string'),
-        new OA\Property(property: self::getPhone, description: '手机号', type: 'string'),
     ]
 )]
 class UserQueryRequest extends FormRequest
@@ -21,8 +20,6 @@ class UserQueryRequest extends FormRequest
     public const string getId = 'id';
 
     public const string getEmail = 'email';
-
-    public const string getPhone = 'phone';
 
     public function rules(): array
     {

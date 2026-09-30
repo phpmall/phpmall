@@ -21,23 +21,8 @@ class UserResponse implements \JsonSerializable
     #[OA\Property(property: 'email', description: '', type: 'string')]
     private string $email;
 
-    #[OA\Property(property: 'phone', description: '手机号', type: 'string')]
-    private string $phone;
-
-    #[OA\Property(property: 'phoneVerifiedAt', description: '手机号验证时间', type: 'string')]
-    private string $phoneVerifiedAt;
-
     #[OA\Property(property: 'emailVerifiedAt', description: '', type: 'string')]
     private string $emailVerifiedAt;
-
-    #[OA\Property(property: 'status', description: '状态：1-正常 2-禁用', type: 'integer')]
-    private int $status;
-
-    #[OA\Property(property: 'avatar', description: '头像', type: 'string')]
-    private string $avatar;
-
-    #[OA\Property(property: 'nickname', description: '昵称', type: 'string')]
-    private string $nickname;
 
     #[OA\Property(property: 'rememberToken', description: '', type: 'string')]
     private string $rememberToken;
@@ -97,38 +82,6 @@ class UserResponse implements \JsonSerializable
     }
 
     /**
-     * 获取手机号
-     */
-    public function getPhone(): string
-    {
-        return $this->phone;
-    }
-
-    /**
-     * 设置手机号
-     */
-    public function setPhone(string $phone): void
-    {
-        $this->phone = $phone;
-    }
-
-    /**
-     * 获取手机号验证时间
-     */
-    public function getPhoneVerifiedAt(): string
-    {
-        return $this->phoneVerifiedAt;
-    }
-
-    /**
-     * 设置手机号验证时间
-     */
-    public function setPhoneVerifiedAt(string $phoneVerifiedAt): void
-    {
-        $this->phoneVerifiedAt = $phoneVerifiedAt;
-    }
-
-    /**
      * 获取
      */
     public function getEmailVerifiedAt(): string
@@ -142,54 +95,6 @@ class UserResponse implements \JsonSerializable
     public function setEmailVerifiedAt(string $emailVerifiedAt): void
     {
         $this->emailVerifiedAt = $emailVerifiedAt;
-    }
-
-    /**
-     * 获取状态：1-正常 2-禁用
-     */
-    public function getStatus(): int
-    {
-        return $this->status;
-    }
-
-    /**
-     * 设置状态：1-正常 2-禁用
-     */
-    public function setStatus(int $status): void
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * 获取头像
-     */
-    public function getAvatar(): string
-    {
-        return $this->avatar;
-    }
-
-    /**
-     * 设置头像
-     */
-    public function setAvatar(string $avatar): void
-    {
-        $this->avatar = $avatar;
-    }
-
-    /**
-     * 获取昵称
-     */
-    public function getNickname(): string
-    {
-        return $this->nickname;
-    }
-
-    /**
-     * 设置昵称
-     */
-    public function setNickname(string $nickname): void
-    {
-        $this->nickname = $nickname;
     }
 
     /**

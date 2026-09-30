@@ -7,6 +7,9 @@
 declare(strict_types=1);
 
 use App\Domains\Order\Controllers\OrderController;
+use App\Domains\Order\Controllers\OrderItemController;
+use App\Domains\Order\Controllers\OrderRefundController;
+use App\Domains\Order\Controllers\OrderShipmentController;
 use Illuminate\Support\Facades\Route;
 
 // 查询列表接口
@@ -19,3 +22,33 @@ Route::get('order/show', [OrderController::class, 'show'])->name('order.show');
 Route::put('order/update', [OrderController::class, 'update']);
 // 删除接口
 Route::post('order/destroy', [OrderController::class, 'destroy']);
+// 查询列表接口
+Route::post('orderItem/search', [OrderItemController::class, 'search']);
+// 新增接口
+Route::post('orderItem/store', [OrderItemController::class, 'store']);
+// 获取详情接口
+Route::get('orderItem/show', [OrderItemController::class, 'show'])->name('orderItem.show');
+// 更新接口
+Route::put('orderItem/update', [OrderItemController::class, 'update']);
+// 删除接口
+Route::post('orderItem/destroy', [OrderItemController::class, 'destroy']);
+// 查询列表接口
+Route::post('orderRefund/search', [OrderRefundController::class, 'search']);
+// 新增接口
+Route::post('orderRefund/store', [OrderRefundController::class, 'store']);
+// 获取详情接口
+Route::get('orderRefund/show', [OrderRefundController::class, 'show'])->name('orderRefund.show');
+// 更新接口
+Route::put('orderRefund/update', [OrderRefundController::class, 'update']);
+// 删除接口
+Route::post('orderRefund/destroy', [OrderRefundController::class, 'destroy']);
+// 查询列表接口
+Route::post('orderShipment/search', [OrderShipmentController::class, 'search']);
+// 新增接口
+Route::post('orderShipment/store', [OrderShipmentController::class, 'store']);
+// 获取详情接口
+Route::get('orderShipment/show', [OrderShipmentController::class, 'show'])->name('orderShipment.show');
+// 更新接口
+Route::put('orderShipment/update', [OrderShipmentController::class, 'update']);
+// 删除接口
+Route::post('orderShipment/destroy', [OrderShipmentController::class, 'destroy']);

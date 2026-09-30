@@ -58,13 +58,13 @@ class OrderEntity implements \JsonSerializable
 
     public const string getSource = 'source'; // 来源 1=PC 2=H5 3=小程序 4=App
 
+    public const string getSellerRemark = 'seller_remark'; // 商家备注
+
     public const string getCreatedAt = 'created_at'; // 创建时间
 
     public const string getUpdatedAt = 'updated_at'; // 更新时间
 
     public const string getDeletedAt = 'deleted_at'; // 删除时间
-
-    public const string getSellerRemark = 'seller_remark'; // 商家备注
 
     #[OA\Property(property: 'id', description: 'ID', type: 'integer')]
     private int $id;
@@ -135,6 +135,9 @@ class OrderEntity implements \JsonSerializable
     #[OA\Property(property: 'source', description: '来源 1=PC 2=H5 3=小程序 4=App', type: 'integer')]
     private int $source;
 
+    #[OA\Property(property: 'sellerRemark', description: '商家备注', type: 'string')]
+    private string $sellerRemark;
+
     #[OA\Property(property: 'createdAt', description: '创建时间', type: 'string')]
     private string $createdAt;
 
@@ -143,9 +146,6 @@ class OrderEntity implements \JsonSerializable
 
     #[OA\Property(property: 'deletedAt', description: '删除时间', type: 'string')]
     private string $deletedAt;
-
-    #[OA\Property(property: 'sellerRemark', description: '商家备注', type: 'string')]
-    private string $sellerRemark;
 
     /**
      * 获取ID
@@ -516,6 +516,22 @@ class OrderEntity implements \JsonSerializable
     }
 
     /**
+     * 获取商家备注
+     */
+    public function getSellerRemark(): string
+    {
+        return $this->sellerRemark;
+    }
+
+    /**
+     * 设置商家备注
+     */
+    public function setSellerRemark(string $sellerRemark): void
+    {
+        $this->sellerRemark = $sellerRemark;
+    }
+
+    /**
      * 获取创建时间
      */
     public function getCreatedAt(): string
@@ -561,21 +577,5 @@ class OrderEntity implements \JsonSerializable
     public function setDeletedAt(string $deletedAt): void
     {
         $this->deletedAt = $deletedAt;
-    }
-
-    /**
-     * 获取商家备注
-     */
-    public function getSellerRemark(): string
-    {
-        return $this->sellerRemark;
-    }
-
-    /**
-     * 设置商家备注
-     */
-    public function setSellerRemark(string $sellerRemark): void
-    {
-        $this->sellerRemark = $sellerRemark;
     }
 }

@@ -54,9 +54,6 @@ class UserController extends BaseController
             if (isset($requestData[UserQueryRequest::getEmail])) {
                 $condition[] = [UserEntity::getEmail, '=', $requestData[UserQueryRequest::getEmail]];
             }
-            if (isset($requestData[UserQueryRequest::getPhone])) {
-                $condition[] = [UserEntity::getPhone, '=', $requestData[UserQueryRequest::getPhone]];
-            }
 
             $result = $this->userService->page($condition, $page, $pageSize);
 

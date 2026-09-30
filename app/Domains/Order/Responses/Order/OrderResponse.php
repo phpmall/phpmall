@@ -81,6 +81,9 @@ class OrderResponse implements \JsonSerializable
     #[OA\Property(property: 'source', description: '来源 1=PC 2=H5 3=小程序 4=App', type: 'integer')]
     private int $source;
 
+    #[OA\Property(property: 'sellerRemark', description: '商家备注', type: 'string')]
+    private string $sellerRemark;
+
     #[OA\Property(property: 'createdAt', description: '创建时间', type: 'string')]
     private string $createdAt;
 
@@ -89,9 +92,6 @@ class OrderResponse implements \JsonSerializable
 
     #[OA\Property(property: 'deletedAt', description: '删除时间', type: 'string')]
     private string $deletedAt;
-
-    #[OA\Property(property: 'sellerRemark', description: '商家备注', type: 'string')]
-    private string $sellerRemark;
 
     /**
      * 获取ID
@@ -462,6 +462,22 @@ class OrderResponse implements \JsonSerializable
     }
 
     /**
+     * 获取商家备注
+     */
+    public function getSellerRemark(): string
+    {
+        return $this->sellerRemark;
+    }
+
+    /**
+     * 设置商家备注
+     */
+    public function setSellerRemark(string $sellerRemark): void
+    {
+        $this->sellerRemark = $sellerRemark;
+    }
+
+    /**
      * 获取创建时间
      */
     public function getCreatedAt(): string
@@ -507,21 +523,5 @@ class OrderResponse implements \JsonSerializable
     public function setDeletedAt(string $deletedAt): void
     {
         $this->deletedAt = $deletedAt;
-    }
-
-    /**
-     * 获取商家备注
-     */
-    public function getSellerRemark(): string
-    {
-        return $this->sellerRemark;
-    }
-
-    /**
-     * 设置商家备注
-     */
-    public function setSellerRemark(string $sellerRemark): void
-    {
-        $this->sellerRemark = $sellerRemark;
     }
 }

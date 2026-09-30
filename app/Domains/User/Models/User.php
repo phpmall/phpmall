@@ -30,13 +30,8 @@ class User extends Model
     protected $fillable = [
         'name',
         'email',
-        'phone',
-        'phone_verified_at',
         'email_verified_at',
         'password',
-        'status',
-        'avatar',
-        'nickname',
         'remember_token',
     ];
 }
