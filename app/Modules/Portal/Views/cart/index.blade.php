@@ -2,47 +2,77 @@
 
 @section('title', '我的购物车 - 优品商城')
 
+@push('styles')
+  <link rel="stylesheet" href="{{ asset('static/css/cart.css') }}">
+@endpush
+
 @section('content')
-<div class="w" style="margin-top: 20px;">
-  <div style="background: #fff; border-radius: 8px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-    <h2 style="font-size: 20px; font-weight: bold; margin: 0 0 20px; color: #333;">
-      全部商品 (<span id="cartTotalQty">0</span>)
-    </h2>
+<main class="w cart-main-content" style="margin-top: 20px;">
+  <!-- 顶部状态选项卡 -->
+  <div class="cart-tabs-bar">
+    <div class="tab-item active">全部商品 <span class="tab-num" id="totalTabNum">0</span></div>
+    <div class="deliver-tip">
+      <span>配送至：<strong>北京市朝阳区</strong></span>
+    </div>
+  </div>
 
+  <!-- 购物车表格列表 -->
+  <div class="cart-table">
     <!-- 表头 -->
-    <div style="display: flex; align-items: center; background: #f7f7f7; padding: 12px 20px; font-size: 13px; color: #666; border-radius: 4px; margin-bottom: 15px;">
-      <div style="width: 80px;"><label><input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll(this)"> 全选</label></div>
-      <div style="flex: 1;">商品信息</div>
-      <div style="width: 120px; text-align: center;">单价</div>
-      <div style="width: 140px; text-align: center;">数量</div>
-      <div style="width: 120px; text-align: center;">小计</div>
-      <div style="width: 80px; text-align: center;">操作</div>
+    <div class="cart-thead">
+      <div class="th-chk">
+        <label class="custom-checkbox">
+          <input type="checkbox" id="selectAllTop" onchange="toggleSelectAll(this)">
+          <span class="chk-box"></span>
+          <span>全选</span>
+        </label>
+      </div>
+      <div class="th-goods">商品清单</div>
+      <div class="th-props">属性配置</div>
+      <div class="th-price">单价</div>
+      <div class="th-quantity">数量</div>
+      <div class="th-sum">小计</div>
+      <div class="th-ops">操作</div>
     </div>
 
-    <!-- 列表项容器 -->
-    <div id="cartItemsList">
-      <div style="text-align: center; padding: 50px; color: #888;">正在加载购物车...</div>
-    </div>
-
-    <!-- 底部结算栏 -->
-    <div style="display: flex; justify-content: space-between; align-items: center; background: #fafafa; border: 1px solid #eee; border-radius: 6px; padding: 12px 20px; margin-top: 25px;">
-      <div style="display: flex; gap: 20px; align-items: center; font-size: 13px;">
-        <label><input type="checkbox" id="bottomSelectAll" onchange="toggleSelectAll(this)"> 全选</label>
-        <a href="javascript:;" onclick="deleteSelected()" style="color: #666; text-decoration: none;">删除选中的商品</a>
+    <!-- 店铺分组容器 -->
+    <div class="shop-group" id="cartShopGroup">
+      <div class="shop-title-bar">
+        <span class="shop-name"><span class="badge-zy">自营</span> 优品商城自营旗舰店</span>
+        <span class="free-shipping-tag">已免运费</span>
       </div>
 
-      <div style="display: flex; align-items: center; gap: 25px;">
-        <div style="font-size: 14px; color: #666;">
-          已选择 <strong style="color: #e1251b;" id="selectedQty">0</strong> 件商品，
-          总价：<strong style="color: #e1251b; font-size: 24px;">¥<span id="selectedAmount">0.00</span></strong>
-        </div>
-        <button onclick="goCheckout()" id="checkoutBtn" style="height: 44px; padding: 0 35px; background: #e1251b; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer;">
-          去结算 ›
-        </button>
+      <!-- 商品行容器 -->
+      <div id="cartItemsList">
+        <div style="text-align: center; padding: 60px; color: #888;">正在加载购物车...</div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- 吸底结算工具条 (Sticky Float Bar) -->
+  <div class="cart-floatbar" id="cartFloatBar" style="margin-top: 20px;">
+    <div class="floatbar-left">
+      <label class="custom-checkbox">
+        <input type="checkbox" id="selectAllBottom" onchange="toggleSelectAll(this)">
+        <span class="chk-box"></span>
+        <span>全选</span>
+      </label>
+      <button class="bar-link-btn" id="batchDeleteBtn" onclick="deleteSelected()">删除选中的商品</button>
+    </div>
+    <div class="floatbar-right">
+      <div class="selected-amount">
+        已选择 <strong class="hl-count" id="selectedCount">0</strong> 件商品
+      </div>
+      <div class="total-price-box">
+        <div class="total-row">
+          <span class="txt">总价（不含运费）：</span>
+          <strong class="price-val" id="totalAmount">¥0.00</strong>
+        </div>
+      </div>
+      <a href="javascript:;" onclick="goCheckout()" class="btn-checkout" id="btnCheckout">去结算</a>
+    </div>
+  </div>
+</main>
 
 @push('scripts')
 <script>
@@ -59,67 +89,80 @@
         cartData = json.data;
         renderCart();
       } else {
-        document.getElementById('cartItemsList').innerHTML = '<div style="text-align: center; padding: 50px; color: #999;">购物车空空如也，快去选购吧！</div>';
+        document.getElementById('cartItemsList').innerHTML = '<div style="text-align: center; padding: 60px; color: #999;">购物车空空如也，快去选购吧！</div>';
       }
     } catch (e) {
-      document.getElementById('cartItemsList').innerHTML = '<div style="text-align: center; padding: 50px; color: #e1251b;">加载失败，请检查网络或刷新</div>';
+      document.getElementById('cartItemsList').innerHTML = '<div style="text-align: center; padding: 60px; color: #e1251b;">加载失败，请检查网络或刷新</div>';
     }
   }
 
   function renderCart() {
     const list = document.getElementById('cartItemsList');
-    document.getElementById('cartTotalQty').innerText = cartData.total_quantity;
-    document.getElementById('selectedQty').innerText = cartData.selected_quantity;
-    document.getElementById('selectedAmount').innerText = formatPrice(cartData.selected_amount);
+    document.getElementById('totalTabNum').innerText = cartData.total_quantity;
+    document.getElementById('selectedCount').innerText = cartData.selected_quantity;
+    document.getElementById('totalAmount').innerText = '¥' + formatPrice(cartData.selected_amount);
 
     const allSelected = cartData.items.length > 0 && cartData.items.every(i => i.is_selected);
-    document.getElementById('selectAllCheckbox').checked = allSelected;
-    document.getElementById('bottomSelectAll').checked = allSelected;
+    document.getElementById('selectAllTop').checked = allSelected;
+    document.getElementById('selectAllBottom').checked = allSelected;
 
     if (!cartData.items || cartData.items.length === 0) {
-      list.innerHTML = '<div style="text-align: center; padding: 60px; color: #999;"><span style="font-size: 48px;">🛒</span><p>购物车还是空的，去挑挑喜欢的商品吧！</p><a href="/goods" style="display: inline-block; margin-top: 10px; padding: 8px 24px; background: #e1251b; color: #fff; text-decoration: none; border-radius: 4px;">去选购 ›</a></div>';
-      document.getElementById('checkoutBtn').disabled = true;
-      document.getElementById('checkoutBtn').style.opacity = 0.5;
+      list.innerHTML = '<div style="text-align: center; padding: 80px; color: #999;"><span style="font-size: 48px;">🛒</span><p style="margin: 15px 0;">购物车还是空的，去挑选喜欢的商品吧！</p><a href="/goods" style="display: inline-block; padding: 8px 24px; background: #e1251b; color: #fff; text-decoration: none; border-radius: 4px;">去选购好物 ›</a></div>';
+      document.getElementById('btnCheckout').style.pointerEvents = 'none';
+      document.getElementById('btnCheckout').style.opacity = '0.5';
       return;
     }
 
-    document.getElementById('checkoutBtn').disabled = cartData.selected_quantity === 0;
-    document.getElementById('checkoutBtn').style.opacity = cartData.selected_quantity === 0 ? 0.5 : 1;
+    const canCheckout = cartData.selected_quantity > 0;
+    document.getElementById('btnCheckout').style.pointerEvents = canCheckout ? 'auto' : 'none';
+    document.getElementById('btnCheckout').style.opacity = canCheckout ? '1' : '0.5';
 
     list.innerHTML = cartData.items.map(item => {
       let specStr = '';
       if (item.sku_specs) {
         const specs = typeof item.sku_specs === 'string' ? JSON.parse(item.sku_specs) : item.sku_specs;
-        specStr = Object.values(specs).join(' / ');
+        specStr = Object.entries(specs).map(([k, v]) => `${k}：${v}`).join('<br>');
       }
 
       return `
-        <div style="display: flex; align-items: center; padding: 18px 20px; border-bottom: 1px solid #f0f0f0; transition: background 0.2s;" onmouseover="this.style.background='#fdfdfd'" onmouseout="this.style.background='transparent'">
-          <div style="width: 80px;">
-            <input type="checkbox" ${item.is_selected ? 'checked' : ''} onchange="toggleItemSelect(${item.id}, this.checked)">
+        <div class="cart-row" data-id="${item.id}">
+          <div class="cell-chk">
+            <label class="custom-checkbox">
+              <input type="checkbox" class="item-chk" ${item.is_selected ? 'checked' : ''} onchange="toggleItemSelect(${item.id}, this.checked)">
+              <span class="chk-box"></span>
+            </label>
           </div>
-          <div style="flex: 1; display: flex; gap: 15px; align-items: center;">
-            <img src="${item.product_image || '/images/default.jpg'}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 4px; border: 1px solid #eee;">
-            <div>
-              <div style="font-size: 14px; color: #333; font-weight: 500; margin-bottom: 6px;">${item.product_title}</div>
-              <div style="font-size: 12px; color: #999;">${specStr}</div>
+          <div class="cell-goods">
+            <a href="/goods/${item.product_id}" class="goods-img">
+              <img src="${item.product_image || '/images/default.jpg'}" alt="${item.product_title}">
+            </a>
+            <div class="goods-detail">
+              <a href="/goods/${item.product_id}" class="title">${item.product_title}</a>
+              <p class="service-tags">
+                <span class="tag-zy">商城自营</span>
+                <span class="tag-safe">正品保障</span>
+              </p>
             </div>
           </div>
-          <div style="width: 120px; text-align: center; color: #444; font-size: 14px;">
-            ¥${formatPrice(item.price)}
+          <div class="cell-props">
+            <p>${specStr || '默认规格'}</p>
           </div>
-          <div style="width: 140px; text-align: center;">
-            <div style="display: inline-flex; border: 1px solid #ddd; border-radius: 4px; overflow: hidden;">
-              <button onclick="updateQty(${item.id}, ${item.quantity - 1})" style="width: 28px; height: 28px; border: none; background: #f5f5f5; cursor: pointer;">-</button>
-              <input type="text" value="${item.quantity}" readonly style="width: 40px; height: 28px; text-align: center; border: none; border-left: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 13px;">
-              <button onclick="updateQty(${item.id}, ${item.quantity + 1})" style="width: 28px; height: 28px; border: none; background: #f5f5f5; cursor: pointer;">+</button>
+          <div class="cell-price">
+            <p class="cur-price">¥${formatPrice(item.price)}</p>
+          </div>
+          <div class="cell-quantity">
+            <div class="stepper">
+              <button class="step-btn btn-minus" onclick="updateQty(${item.id}, ${item.quantity - 1})">-</button>
+              <input type="text" class="step-val" value="${item.quantity}" readonly>
+              <button class="step-btn btn-plus" onclick="updateQty(${item.id}, ${item.quantity + 1})">+</button>
             </div>
+            <p class="stock-tip">${item.stock > 0 ? '有货' : '缺货'}</p>
           </div>
-          <div style="width: 120px; text-align: center; color: #e1251b; font-weight: bold; font-size: 15px;">
-            ¥${formatPrice(item.subtotal)}
+          <div class="cell-sum">
+            <strong class="sum-price">¥${formatPrice(item.subtotal)}</strong>
           </div>
-          <div style="width: 80px; text-align: center;">
-            <a href="javascript:;" onclick="removeItem(${item.id})" style="color: #999; text-decoration: none; font-size: 13px;" onmouseover="this.style.color='#e1251b'" onmouseout="this.style.color='#999'">删除</a>
+          <div class="cell-ops">
+            <button class="btn-op btn-delete" onclick="removeItem(${item.id})">删除</button>
           </div>
         </div>
       `;
@@ -128,6 +171,7 @@
 
   async function updateQty(cartId, qty) {
     if (qty < 1) return;
+    const loadIdx = showLoading();
     try {
       const res = await fetch(`/api/portal/cart/${cartId}`, {
         method: 'PUT',
@@ -143,14 +187,17 @@
         loadCart();
         refreshCartBadge();
       } else {
-        showToast(json.message || '更新失败');
+        showToast(json.message || '更新失败', 2);
       }
     } catch (e) {
-      showToast('网络错误');
+      showToast('网络错误', 2);
+    } finally {
+      closeLoading(loadIdx);
     }
   }
 
   async function toggleItemSelect(cartId, isSelected) {
+    const loadIdx = showLoading();
     try {
       await fetch('/api/portal/cart/select', {
         method: 'POST',
@@ -162,10 +209,14 @@
         body: JSON.stringify({ cart_ids: [cartId], is_selected: isSelected })
       });
       loadCart();
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      closeLoading(loadIdx);
+    }
   }
 
   async function toggleSelectAll(checkbox) {
+    const loadIdx = showLoading();
     try {
       await fetch('/api/portal/cart/select', {
         method: 'POST',
@@ -177,7 +228,10 @@
         body: JSON.stringify({ is_selected: checkbox.checked })
       });
       loadCart();
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      closeLoading(loadIdx);
+    }
   }
 
   function removeItem(cartId) {

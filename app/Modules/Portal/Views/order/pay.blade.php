@@ -1,80 +1,76 @@
 @extends('portal::layouts.portal')
 
-@section('title', '收银台 - 优品商城')
+@section('title', '商城收银台 - 安全支付')
+
+@push('styles')
+  <link rel="stylesheet" href="{{ asset('static/css/pay.css') }}">
+@endpush
 
 @section('content')
-<div class="w" style="margin-top: 25px;">
-  <!-- 成功提交提醒与订单摘要面板 -->
-  <div style="background: #fff; border-radius: 8px; padding: 35px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 20px;">
-    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f0f0f0; padding-bottom: 25px;">
-      <div style="display: flex; align-items: center; gap: 20px;">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: #eefbf1; color: #28a745; display: flex; align-items: center; justify-content: center; font-size: 28px;">
-          ✓
-        </div>
-        <div>
-          <h2 style="font-size: 20px; font-weight: bold; color: #333; margin: 0 0 8px;">
-            订单提交成功，请尽快完成支付！
-          </h2>
-          <p style="font-size: 13px; color: #888; margin: 0;">
-            请在 <strong style="color: #e1251b;" id="countdownTimer">29分59秒</strong> 内完成支付，超时订单将自动取消
+<!-- 收银台核心交易主体 -->
+<main class="w pay-main" style="margin-top: 25px;">
+  <!-- 1. 订单摘要卡片 -->
+  <div class="pay-order-summary">
+    <div class="summary-left">
+      <div class="order-primary-info">
+        <span class="check-icon" style="background:#28a745;color:white;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:18px;">✔</span>
+        <div class="order-info-text">
+          <h3>订单提交成功，请尽快完成付款！</h3>
+          <p class="order-meta">
+            <span>订单号：<strong class="highlight">{{ $order->order_no }}</strong></span>
+            <span class="split">|</span>
+            <span>配送服务：普通快递 (自营直发)</span>
+            <span class="split">|</span>
+            <span>请在 <strong class="highlight" id="payCountdown">29分59秒</strong> 内完成支付</span>
           </p>
         </div>
       </div>
-
-      <div style="text-align: right;">
-        <span style="font-size: 14px; color: #666;">应付总额：</span>
-        <strong style="color: #e1251b; font-size: 32px; font-weight: 800;">
-          <span style="font-size: 18px;">¥</span>{{ number_format($order->pay_amount / 100, 2) }}
-        </strong>
-      </div>
     </div>
-
-    <!-- 订单关键详情展开 -->
-    <div style="margin-top: 20px; font-size: 13px; color: #666; display: flex; flex-direction: column; gap: 8px;">
-      <div>订单编号：<strong style="color: #333;">{{ $order->order_no }}</strong></div>
-      <div>下单时间：<span>{{ $order->created_at }}</span></div>
-      <div>配送方式：<span>普通快递（免运费）</span></div>
+    <div class="summary-right">
+      <div class="amount-box">
+        <span class="txt">应付金额：</span>
+        <span class="yen">¥</span>
+        <strong class="pay-money" id="payMoneyVal">{{ number_format($order->pay_amount / 100, 2) }}</strong>
+      </div>
     </div>
   </div>
 
-  <!-- 支付渠道选择 -->
-  <div style="background: #fff; border-radius: 8px; padding: 35px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-    <h3 style="font-size: 16px; font-weight: bold; margin: 0 0 20px; color: #333;">选择支付方式</h3>
-
-    <div style="display: flex; gap: 20px; margin-bottom: 35px;">
-      <!-- 微信支付 -->
-      <label class="pay-method-card selected" onclick="choosePayment('wechat', this)" style="border: 2px solid #e1251b; border-radius: 6px; padding: 15px 25px; display: flex; align-items: center; gap: 12px; cursor: pointer; background: #fff8f8;">
-        <input type="radio" name="pay_type" value="wechat" checked style="accent-color: #e1251b;">
-        <span style="font-size: 20px;">💬</span>
-        <span style="font-size: 15px; font-weight: bold; color: #333;">微信支付</span>
-      </label>
-
-      <!-- 支付宝 -->
-      <label class="pay-method-card" onclick="choosePayment('alipay', this)" style="border: 2px solid #eee; border-radius: 6px; padding: 15px 25px; display: flex; align-items: center; gap: 12px; cursor: pointer; background: #fff;">
-        <input type="radio" name="pay_type" value="alipay" style="accent-color: #e1251b;">
-        <span style="font-size: 20px;">🔵</span>
-        <span style="font-size: 15px; font-weight: bold; color: #333;">支付宝支付</span>
-      </label>
-
-      <!-- 银联快捷 -->
-      <label class="pay-method-card" onclick="choosePayment('unionpay', this)" style="border: 2px solid #eee; border-radius: 6px; padding: 15px 25px; display: flex; align-items: center; gap: 12px; cursor: pointer; background: #fff;">
-        <input type="radio" name="pay_type" value="unionpay" style="accent-color: #e1251b;">
-        <span style="font-size: 20px;">💳</span>
-        <span style="font-size: 15px; font-weight: bold; color: #333;">银联快捷支付</span>
-      </label>
+  <!-- 2. 支付方式选择面板 -->
+  <div class="pay-methods-card" style="margin-top: 20px;">
+    <div class="methods-tab-header">
+      <button class="method-tab active" data-tab="tab-wechat" onclick="choosePayment('wechat', this)">
+        <span class="tab-icon">💬</span> 微信支付
+      </button>
+      <button class="method-tab" data-tab="tab-alipay" onclick="choosePayment('alipay', this)">
+        <span class="tab-icon">🌐</span> 支付宝支付
+      </button>
+      <button class="method-tab" data-tab="tab-bank" onclick="choosePayment('bank', this)">
+        <span class="tab-icon">🏦</span> 银行卡快捷支付
+      </button>
     </div>
 
-    <!-- 支付二维码 / 按钮操作区 -->
-    <div style="border-top: 1px solid #f0f0f0; padding-top: 25px; display: flex; align-items: center; justify-content: space-between;">
-      <div style="font-size: 13px; color: #999;">
-        点击立即支付，将安全跳转至第三方加密收银环境
+    <div class="methods-tab-body">
+      <!-- 微信支付面板 -->
+      <div class="method-panel active" id="tab-wechat" style="display: block; padding: 30px; text-align: center;">
+        <div style="font-size: 16px; font-weight: bold; margin-bottom: 15px; color: #333;" id="methodDescTitle">
+          微信扫码支付
+        </div>
+        <div style="display: inline-block; padding: 15px; border: 1px solid #eee; border-radius: 8px; background: #fafafa;">
+          <div style="font-size: 72px;">📱</div>
+          <p style="font-size: 13px; color: #666; margin-top: 10px;">点击下方按钮完成安全模拟支付</p>
+        </div>
       </div>
-      <button onclick="handlePay()" id="btnPay" style="padding: 12px 50px; background: #e1251b; color: white; border: none; border-radius: 4px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(225,37,27,0.3);">
+    </div>
+
+    <!-- 底部确认支付动作区 -->
+    <div class="pay-action-bottom" style="margin-top: 25px; padding: 20px; border-top: 1px solid #eee; display: flex; justify-content: flex-end; align-items: center; gap: 20px;">
+      <span style="font-size: 13px; color: #999;">由金融级安全网关提供加密传输保障</span>
+      <button class="btn-pay-confirm" id="btnPayConfirm" onclick="handlePay()" style="padding: 12px 40px; background: #e1251b; color: white; border: none; border-radius: 4px; font-size: 18px; font-weight: bold; cursor: pointer;">
         立即支付 ¥{{ number_format($order->pay_amount / 100, 2) }}
       </button>
     </div>
   </div>
-</div>
+</main>
 
 @push('scripts')
 <script>
@@ -82,12 +78,15 @@
 
   function choosePayment(method, el) {
     selectedMethod = method;
-    document.querySelectorAll('.pay-method-card').forEach(card => {
-      card.style.borderColor = '#eee';
-      card.style.background = '#fff';
-    });
-    el.style.borderColor = '#e1251b';
-    el.style.background = '#fff8f8';
+    document.querySelectorAll('.methods-tab-header .method-tab').forEach(btn => btn.classList.remove('active'));
+    el.classList.add('active');
+
+    const desc = {
+      'wechat': '微信扫码支付',
+      'alipay': '支付宝网页/扫码支付',
+      'bank': '银联快捷安全支付'
+    };
+    document.getElementById('methodDescTitle').innerText = desc[method] || '在线安全支付';
   }
 
   // 30分钟倒计时
@@ -97,23 +96,25 @@
     secondsLeft--;
     const m = Math.floor(secondsLeft / 60);
     const s = secondsLeft % 60;
-    const timerEl = document.getElementById('countdownTimer');
+    const timerEl = document.getElementById('payCountdown');
     if (timerEl) {
       timerEl.innerText = `${m}分${s < 10 ? '0' : ''}${s}秒`;
     }
   }, 1000);
 
   function handlePay() {
-    const btn = document.getElementById('btnPay');
+    const btn = document.getElementById('btnPayConfirm');
     btn.disabled = true;
     btn.innerText = '正在调起安全支付...';
+    const loadIdx = showLoading();
 
     setTimeout(() => {
-      showToast('🎉 模拟支付成功！');
+      closeLoading(loadIdx);
+      showToast('🎉 模拟支付成功！', 1);
       setTimeout(() => {
         window.location.href = '/orders';
-      }, 1200);
-    }, 1000);
+      }, 1000);
+    }, 800);
   }
 </script>
 @endpush

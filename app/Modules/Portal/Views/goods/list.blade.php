@@ -1,49 +1,82 @@
 @extends('portal::layouts.portal')
 
-@section('title', '商品搜索与检索 - 优品商城')
+@section('title', '商品搜索与筛选列表 - 优品商城')
+
+@push('styles')
+  <link rel="stylesheet" href="{{ asset('static/css/list.css') }}">
+@endpush
 
 @section('content')
-<div class="w" style="margin-top: 15px;">
-  <!-- 筛选条件栏 -->
-  <div style="background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 15px;">
-    <div style="display: flex; align-items: center; border-bottom: 1px dashed #eee; padding-bottom: 12px; margin-bottom: 12px;">
-      <span style="width: 80px; color: #888; font-size: 13px;">商品分类：</span>
-      <div style="display: flex; gap: 15px; flex-wrap: wrap;" id="categoryFilter">
-        <a href="javascript:;" onclick="filterByCategory(null)" class="cat-pill active" style="text-decoration: none; font-size: 13px; color: #e1251b; font-weight: bold;">全部</a>
-        @foreach($categories as $cat)
-          <a href="javascript:;" onclick="filterByCategory({{ $cat['id'] }})" class="cat-pill" style="text-decoration: none; font-size: 13px; color: #555;">{{ $cat['name'] }}</a>
-        @endforeach
-      </div>
-    </div>
-
-    <!-- 排序工具栏 -->
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-      <div style="display: flex; gap: 10px;">
-        <button onclick="setSort('sort_order', 'desc')" class="sort-btn active" id="sortDefault" style="padding: 6px 14px; border: 1px solid #e1251b; background: #e1251b; color: white; border-radius: 4px; font-size: 13px; cursor: pointer;">综合排序</button>
-        <button onclick="setSort('sales', 'desc')" class="sort-btn" id="sortSales" style="padding: 6px 14px; border: 1px solid #ddd; background: #fff; color: #555; border-radius: 4px; font-size: 13px; cursor: pointer;">按销量 ↓</button>
-        <button onclick="togglePriceSort()" class="sort-btn" id="sortPrice" style="padding: 6px 14px; border: 1px solid #ddd; background: #fff; color: #555; border-radius: 4px; font-size: 13px; cursor: pointer;">按价格 ↕</button>
-        <button onclick="setSort('created_at', 'desc')" class="sort-btn" id="sortNew" style="padding: 6px 14px; border: 1px solid #ddd; background: #fff; color: #555; border-radius: 4px; font-size: 13px; cursor: pointer;">新品优先</button>
-      </div>
-
-      <!-- 价格区间过滤 -->
-      <div style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
-        <span style="color: #888;">价格区间(元)：</span>
-        <input type="number" id="minPriceInput" placeholder="最低" style="width: 70px; padding: 4px 6px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;">
-        <span>-</span>
-        <input type="number" id="maxPriceInput" placeholder="最高" style="width: 70px; padding: 4px 6px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;">
-        <button onclick="applyPriceFilter()" style="padding: 4px 10px; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; font-size: 12px;">确定</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 商品网格展示区 -->
-  <div id="goodsListContainer" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;">
-    <!-- 动态通过 /api/portal/goods 异步渲染 -->
-  </div>
-
-  <!-- 分页栏 -->
-  <div id="paginationBar" style="display: flex; justify-content: center; gap: 8px; margin: 30px 0;"></div>
+<!-- 面包屑与结果统计 -->
+<div class="w list-crumb">
+  <a href="{{ route('home') }}">全部结果</a>
+  <span class="sep">&gt;</span>
+  <strong class="current">"{{ $keyword ?: '全部商品' }}"</strong>
+  <span class="total-res" id="totalResultTxt">正在检索商品...</span>
 </div>
+
+<!-- 多维筛选器 (Selector Box) -->
+<section class="w selector-box">
+  <!-- 商品分类行 -->
+  <div class="selector-row">
+    <div class="s-key">分 类：</div>
+    <div class="s-values brand-values" id="categoryFilter">
+      <a href="javascript:;" onclick="filterByCategory(null)" class="b-item {{ empty($categoryId) ? 'active' : '' }}">全部</a>
+      @foreach($categories as $cat)
+        <a href="javascript:;" onclick="filterByCategory({{ $cat['id'] }})" class="b-item {{ $categoryId == $cat['id'] ? 'active' : '' }}">
+          {{ $cat['name'] }}
+        </a>
+      @endforeach
+    </div>
+  </div>
+
+  <!-- 价格区间 -->
+  <div class="selector-row">
+    <div class="s-key">价 格：</div>
+    <div class="s-values">
+      <a href="javascript:;" onclick="setPriceRange('', '')" class="active" id="priceAll">全部</a>
+      <a href="javascript:;" onclick="setPriceRange(0, 1999)">0-1999</a>
+      <a href="javascript:;" onclick="setPriceRange(2000, 3999)">2000-3999</a>
+      <a href="javascript:;" onclick="setPriceRange(4000, 5999)">4000-5999</a>
+      <a href="javascript:;" onclick="setPriceRange(6000, '')">6000及以上</a>
+      <div class="price-input-range">
+        <input type="number" id="minPriceInput" placeholder="¥"> - <input type="number" id="maxPriceInput" placeholder="¥">
+        <button class="btn-price-ok" onclick="applyPriceFilter()">确定</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 排序与过滤工具条 (Filter Bar) -->
+<section class="w filter-bar">
+  <div class="filter-sort-group">
+    <button class="sort-btn active" id="sortDefault" onclick="setSort('sort_order', 'desc')">综合推荐</button>
+    <button class="sort-btn" id="sortSales" onclick="setSort('sales', 'desc')">销量最高</button>
+    <button class="sort-btn" id="sortNew" onclick="setSort('created_at', 'desc')">新品上市</button>
+    <button class="sort-btn" id="sortPrice" onclick="togglePriceSort()">价格 ↕</button>
+  </div>
+
+  <div class="filter-extra-checkboxes">
+    <label class="custom-checkbox">
+      <input type="checkbox" checked>
+      <span>商城自营 (正品直发)</span>
+    </label>
+    <label class="custom-checkbox">
+      <input type="checkbox" checked>
+      <span>仅看有货</span>
+    </label>
+  </div>
+</section>
+
+<!-- 商品网格展示区 -->
+<main class="w list-goods-wrap">
+  <div class="goods-items-grid" id="goodsList">
+    <div style="grid-column: span 5; text-align: center; padding: 60px; color: #888;">正在加载商品列表中...</div>
+  </div>
+</main>
+
+<!-- 分页栏 -->
+<div class="w pagination-wrap" id="paginationWrap"></div>
 
 @push('scripts')
 <script>
@@ -61,7 +94,7 @@
   let priceOrder = 'asc';
 
   async function loadGoods() {
-    const container = document.getElementById('goodsListContainer');
+    const container = document.getElementById('goodsList');
     container.innerHTML = '<div style="grid-column: span 5; text-align: center; padding: 60px; color: #888;">正在加载商品列表中...</div>';
 
     const url = new URL('/api/portal/goods', window.location.origin);
@@ -76,11 +109,13 @@
       const json = await res.json();
 
       if (json.code === 0 && json.data && json.data.data.length > 0) {
+        document.getElementById('totalResultTxt').innerHTML = `共筛选出 <strong>${json.data.total}</strong> 件相关商品`;
         renderGoods(json.data.data);
         renderPagination(json.data.current_page, json.data.last_page);
       } else {
+        document.getElementById('totalResultTxt').innerText = '未找到匹配商品';
         container.innerHTML = '<div style="grid-column: span 5; text-align: center; padding: 80px; color: #999;">抱歉，未找到匹配的商品</div>';
-        document.getElementById('paginationBar').innerHTML = '';
+        document.getElementById('paginationWrap').innerHTML = '';
       }
     } catch (e) {
       container.innerHTML = '<div style="grid-column: span 5; text-align: center; padding: 80px; color: #e1251b;">数据加载失败，请重试</div>';
@@ -88,53 +123,75 @@
   }
 
   function renderGoods(list) {
-    const container = document.getElementById('goodsListContainer');
+    const container = document.getElementById('goodsList');
     container.innerHTML = list.map(item => `
-      <div style="background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-        <a href="/goods/${item.id}" style="text-decoration: none; color: inherit; display: block;">
-          <div style="width: 100%; height: 210px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-            ${item.main_image ? `<img src="${item.main_image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;">` : '<span style="font-size: 40px;">📦</span>'}
+      <div class="gl-item">
+        <div class="gl-i-wrap">
+          <div class="p-img">
+            <a href="/goods/${item.id}">
+              ${item.main_image ? `<img src="${item.main_image}" alt="${item.title}">` : '<div style="height:210px;display:flex;align-items:center;justify-content:center;font-size:40px;">📦</div>'}
+            </a>
           </div>
-          <div style="padding: 12px;">
-            <div style="color: #e1251b; font-size: 18px; font-weight: bold;">
-              <span style="font-size: 12px;">¥</span>${formatPrice(item.min_price)}
-            </div>
-            <div style="font-size: 14px; color: #333; font-weight: 500; margin: 6px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+          <div class="p-price">
+            <span class="price-val"><em>¥</em><i>${formatPrice(item.min_price)}</i></span>
+            ${item.max_price && item.max_price > item.min_price ? `<span class="tag-save">至高 ¥${formatPrice(item.max_price)}</span>` : ''}
+          </div>
+          <div class="p-name">
+            <a href="/goods/${item.id}" title="${item.title}">
+              <span class="badge-zy">自营</span>
               ${item.title}
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 12px; color: #999;">
-              <span>销量 ${item.sales_count}</span>
-              ${item.is_hot ? '<span style="color: #e1251b; background: #fdf2f2; padding: 1px 4px; border-radius: 2px;">热销</span>' : ''}
-            </div>
+            </a>
           </div>
-        </a>
+          <div class="p-commit">
+            已有 <strong class="commit-count">${item.sales_count * 5}+</strong> 人评价
+            <span class="rate-good">98%好评</span>
+          </div>
+          <div class="p-shop">
+            <span class="shop-name">优品商城自营旗舰店</span>
+            <span class="im-icon">💬</span>
+          </div>
+          <div class="p-icons">
+            <span class="icon-zy">自营次日达</span>
+            ${item.is_hot ? '<span class="icon-tag">热销爆款</span>' : ''}
+          </div>
+          <div class="p-operate">
+            <a href="/goods/${item.id}" class="btn-quick-cart">查看详情 / 选购</a>
+          </div>
+        </div>
       </div>
     `).join('');
   }
 
   function renderPagination(current, last) {
-    const bar = document.getElementById('paginationBar');
+    const wrap = document.getElementById('paginationWrap');
     if (last <= 1) {
-      bar.innerHTML = '';
+      wrap.innerHTML = '';
       return;
     }
     let html = '';
-    for (let p = 1; p <= last; p++) {
-      const activeStyle = p === current ? 'background: #e1251b; color: white; border-color: #e1251b;' : 'background: white; color: #555; border-color: #ddd;';
-      html += `<button onclick="goPage(${p})" style="padding: 6px 12px; border: 1px solid; border-radius: 4px; cursor: pointer; ${activeStyle}">${p}</button>`;
+    if (current > 1) {
+      html += `<button class="p-btn" onclick="goPage(${current - 1})">&lt; 上一页</button>`;
     }
-    bar.innerHTML = html;
+    for (let p = 1; p <= last; p++) {
+      html += `<button class="p-btn ${p === current ? 'active' : ''}" onclick="goPage(${p})">${p}</button>`;
+    }
+    if (current < last) {
+      html += `<button class="p-btn" onclick="goPage(${current + 1})">下一页 &gt;</button>`;
+    }
+    wrap.innerHTML = html;
   }
 
   function goPage(p) {
     currentParams.page = p;
     loadGoods();
-    window.scrollTo({ top: 180, behavior: 'smooth' });
+    window.scrollTo({ top: 120, behavior: 'smooth' });
   }
 
   function filterByCategory(id) {
     currentParams.category_id = id || '';
     currentParams.page = 1;
+    document.querySelectorAll('#categoryFilter .b-item').forEach(el => el.classList.remove('active'));
+    event.target.classList.add('active');
     loadGoods();
   }
 
@@ -142,22 +199,34 @@
     currentParams.sort_by = by;
     currentParams.sort_order = order;
     currentParams.page = 1;
+    document.querySelectorAll('.filter-sort-group .sort-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
     loadGoods();
   }
 
   function togglePriceSort() {
     priceOrder = priceOrder === 'asc' ? 'desc' : 'asc';
-    setSort('price', priceOrder);
-    document.getElementById('sortPrice').innerText = priceOrder === 'asc' ? '价格 ↑' : '价格 ↓';
+    currentParams.sort_by = 'price';
+    currentParams.sort_order = priceOrder;
+    currentParams.page = 1;
+    document.querySelectorAll('.filter-sort-group .sort-btn').forEach(btn => btn.classList.remove('active'));
+    const btn = document.getElementById('sortPrice');
+    btn.classList.add('active');
+    btn.innerText = priceOrder === 'asc' ? '价格 ↑' : '价格 ↓';
+    loadGoods();
+  }
+
+  function setPriceRange(min, max) {
+    currentParams.min_price = min !== '' ? Math.round(Number(min) * 100) : '';
+    currentParams.max_price = max !== '' ? Math.round(Number(max) * 100) : '';
+    currentParams.page = 1;
+    loadGoods();
   }
 
   function applyPriceFilter() {
     const min = document.getElementById('minPriceInput').value;
     const max = document.getElementById('maxPriceInput').value;
-    currentParams.min_price = min ? Math.round(Number(min) * 100) : '';
-    currentParams.max_price = max ? Math.round(Number(max) * 100) : '';
-    currentParams.page = 1;
-    loadGoods();
+    setPriceRange(min, max);
   }
 
   document.addEventListener('DOMContentLoaded', loadGoods);

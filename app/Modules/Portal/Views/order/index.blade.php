@@ -1,56 +1,63 @@
 @extends('portal::layouts.portal')
 
-@section('title', '我的订单 - 优品商城')
+@section('title', '我的订单 - 个人中心 - 优品商城')
+
+@push('styles')
+  <link rel="stylesheet" href="{{ asset('static/css/user.css') }}">
+@endpush
 
 @section('content')
-<div class="w" style="margin-top: 20px;">
-  <!-- 面包屑 -->
-  <div style="font-size: 13px; color: #888; margin-bottom: 15px;">
-    <a href="{{ route('home') }}" style="color: #666; text-decoration: none;">首页</a> ›
-    <span style="color: #333;">我的订单</span>
-  </div>
-
-  <div style="background: #fff; border-radius: 8px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-    <!-- 状态筛选 Tab -->
-    <div style="display: flex; gap: 30px; border-bottom: 2px solid #f0f0f0; margin-bottom: 20px;">
-      <a href="javascript:;" onclick="switchStatus('')" class="order-tab {{ empty($currentStatus) ? 'active' : '' }}" data-status="" style="padding-bottom: 12px; font-size: 16px; font-weight: bold; color: {{ empty($currentStatus) ? '#e1251b' : '#666' }}; border-bottom: 2px solid {{ empty($currentStatus) ? '#e1251b' : 'transparent' }}; text-decoration: none; margin-bottom: -2px;">
-        全部订单
-      </a>
-      <a href="javascript:;" onclick="switchStatus('10')" class="order-tab {{ $currentStatus == '10' ? 'active' : '' }}" data-status="10" style="padding-bottom: 12px; font-size: 16px; font-weight: bold; color: {{ $currentStatus == '10' ? '#e1251b' : '#666' }}; border-bottom: 2px solid {{ $currentStatus == '10' ? '#e1251b' : 'transparent' }}; text-decoration: none; margin-bottom: -2px;">
-        待付款
-      </a>
-      <a href="javascript:;" onclick="switchStatus('30')" class="order-tab {{ $currentStatus == '30' ? 'active' : '' }}" data-status="30" style="padding-bottom: 12px; font-size: 16px; font-weight: bold; color: {{ $currentStatus == '30' ? '#e1251b' : '#666' }}; border-bottom: 2px solid {{ $currentStatus == '30' ? '#e1251b' : 'transparent' }}; text-decoration: none; margin-bottom: -2px;">
-        待发货
-      </a>
-      <a href="javascript:;" onclick="switchStatus('50')" class="order-tab {{ $currentStatus == '50' ? 'active' : '' }}" data-status="50" style="padding-bottom: 12px; font-size: 16px; font-weight: bold; color: {{ $currentStatus == '50' ? '#e1251b' : '#666' }}; border-bottom: 2px solid {{ $currentStatus == '50' ? '#e1251b' : 'transparent' }}; text-decoration: none; margin-bottom: -2px;">
-        待收货
-      </a>
-      <a href="javascript:;" onclick="switchStatus('70')" class="order-tab {{ $currentStatus == '70' ? 'active' : '' }}" data-status="70" style="padding-bottom: 12px; font-size: 16px; font-weight: bold; color: {{ $currentStatus == '70' ? '#e1251b' : '#666' }}; border-bottom: 2px solid {{ $currentStatus == '70' ? '#e1251b' : 'transparent' }}; text-decoration: none; margin-bottom: -2px;">
-        已完成
-      </a>
-      <a href="javascript:;" onclick="switchStatus('80')" class="order-tab {{ $currentStatus == '80' ? 'active' : '' }}" data-status="80" style="padding-bottom: 12px; font-size: 16px; font-weight: bold; color: {{ $currentStatus == '80' ? '#e1251b' : '#666' }}; border-bottom: 2px solid {{ $currentStatus == '80' ? '#e1251b' : 'transparent' }}; text-decoration: none; margin-bottom: -2px;">
-        已取消
-      </a>
+<!-- 个人中心主布局 (Left Sidebar + Right Content) -->
+<main class="w user-layout" style="margin-top: 20px;">
+  <!-- 左侧导航栏 -->
+  <aside class="user-sidebar">
+    <div class="side-menu-group">
+      <h3 class="group-title">订单中心</h3>
+      <ul class="menu-list">
+        <li class="active"><a href="{{ route('portal.order.my') }}">我的订单</a></li>
+      </ul>
     </div>
-
-    <!-- 订单列表表头 -->
-    <div style="background: #f7f7f7; padding: 12px 20px; font-size: 13px; color: #666; border-radius: 4px; display: flex; margin-bottom: 15px;">
-      <div style="flex: 1;">商品详情</div>
-      <div style="width: 120px; text-align: center;">单价 / 数量</div>
-      <div style="width: 140px; text-align: center;">实付款</div>
-      <div style="width: 120px; text-align: center;">交易状态</div>
-      <div style="width: 120px; text-align: center;">交易操作</div>
+    <div class="side-menu-group">
+      <h3 class="group-title">快捷入口</h3>
+      <ul class="menu-list">
+        <li><a href="{{ route('portal.cart.view') }}">我的购物车</a></li>
+        <li><a href="{{ route('portal.goods.list') }}">选购商品</a></li>
+      </ul>
     </div>
+  </aside>
 
-    <!-- 订单列表内容容器 -->
-    <div id="orderListContainer">
-      <div style="text-align: center; padding: 50px; color: #888;">正在加载我的订单...</div>
+  <!-- 右侧主要内容区 -->
+  <section class="user-main-content">
+    <div class="order-center-card">
+      <!-- 订单过滤 Tab -->
+      <div class="order-tabs">
+        <button class="order-tab-btn {{ empty($currentStatus) ? 'active' : '' }}" onclick="switchStatus('')">全部订单</button>
+        <button class="order-tab-btn {{ $currentStatus == '10' ? 'active' : '' }}" onclick="switchStatus('10')">待付款</button>
+        <button class="order-tab-btn {{ $currentStatus == '30' ? 'active' : '' }}" onclick="switchStatus('30')">待发货</button>
+        <button class="order-tab-btn {{ $currentStatus == '50' ? 'active' : '' }}" onclick="switchStatus('50')">待收货</button>
+        <button class="order-tab-btn {{ $currentStatus == '70' ? 'active' : '' }}" onclick="switchStatus('70')">已完成</button>
+        <button class="order-tab-btn {{ $currentStatus == '80' ? 'active' : '' }}" onclick="switchStatus('80')">已取消</button>
+      </div>
+
+      <!-- 订单列表表格表头 -->
+      <div class="order-thead">
+        <span class="th-col col-goods">订单详情</span>
+        <span class="th-col col-receiver">收货人</span>
+        <span class="th-col col-amount">实付金额</span>
+        <span class="th-col col-status">全部状态</span>
+        <span class="th-col col-ops">操作</span>
+      </div>
+
+      <!-- 订单列表内容容器 -->
+      <div class="order-list-wrap" id="orderListWrap">
+        <div style="text-align: center; padding: 60px; color: #888;">正在加载我的订单...</div>
+      </div>
+
+      <!-- 分页栏 -->
+      <div id="orderPagination" style="display: flex; justify-content: center; gap: 8px; margin: 30px 0;"></div>
     </div>
-
-    <!-- 分页器 -->
-    <div id="orderPagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;"></div>
-  </div>
-</div>
+  </section>
+</main>
 
 @push('scripts')
 <script>
@@ -68,8 +75,8 @@
 
   async function loadOrders(page = 1) {
     currentPage = page;
-    const container = document.getElementById('orderListContainer');
-    container.innerHTML = '<div style="text-align: center; padding: 50px; color: #888;">正在加载订单列表...</div>';
+    const container = document.getElementById('orderListWrap');
+    container.innerHTML = '<div style="text-align: center; padding: 60px; color: #888;">正在加载订单列表...</div>';
 
     let url = `/api/portal/order?page=${page}&pageSize=10`;
     if (currentStatus) {
@@ -85,23 +92,23 @@
       if (json.code === 0 && json.data) {
         renderOrderList(json.data);
       } else {
-        container.innerHTML = `<div style="text-align: center; padding: 50px; color: #999;">${json.message || '加载订单失败，请登录后重试'}</div>`;
+        container.innerHTML = `<div style="text-align: center; padding: 60px; color: #999;">${json.message || '加载订单失败，请登录后重试'}</div>`;
       }
     } catch (e) {
-      container.innerHTML = '<div style="text-align: center; padding: 50px; color: #e1251b;">网络加载失败，请重试</div>';
+      container.innerHTML = '<div style="text-align: center; padding: 60px; color: #e1251b;">网络加载失败，请重试</div>';
     }
   }
 
   function renderOrderList(paginator) {
-    const container = document.getElementById('orderListContainer');
+    const container = document.getElementById('orderListWrap');
     const orders = paginator.data;
 
     if (!orders || orders.length === 0) {
       container.innerHTML = `
-        <div style="text-align: center; padding: 60px 0; color: #999;">
+        <div style="text-align: center; padding: 80px 0; color: #999;">
           <span style="font-size: 48px;">📦</span>
-          <p style="margin-top: 10px;">暂无相关订单记录</p>
-          <a href="/goods" style="display: inline-block; margin-top: 10px; padding: 8px 24px; background: #e1251b; color: #fff; text-decoration: none; border-radius: 4px;">去选购好物 ›</a>
+          <p style="margin: 15px 0;">暂无相关订单记录</p>
+          <a href="/goods" style="display: inline-block; padding: 8px 24px; background: #e1251b; color: #fff; text-decoration: none; border-radius: 4px;">去选购好物 ›</a>
         </div>
       `;
       document.getElementById('orderPagination').innerHTML = '';
@@ -112,7 +119,6 @@
       const st = STATUS_MAP[order.status] || { label: '处理中', color: '#666' };
       const items = order.items || [];
 
-      // 渲染商品行
       const itemsHtml = items.map(item => {
         let specStr = '';
         if (item.sku_specs) {
@@ -120,32 +126,29 @@
           specStr = Object.values(specs).join(' / ');
         }
         return `
-          <div style="display: flex; align-items: center; padding: 12px 15px; border-bottom: 1px solid #f5f5f5;">
-            <div style="flex: 1; display: flex; gap: 12px; align-items: center;">
-              <img src="${item.product_image || '/images/default.jpg'}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #eee;">
-              <div>
-                <div style="font-size: 13px; color: #333; line-height: 1.4;">${item.product_title}</div>
-                <div style="font-size: 12px; color: #999; margin-top: 3px;">${specStr}</div>
-              </div>
+          <div class="sub-item" style="display: flex; gap: 12px; padding: 12px 15px; border-bottom: 1px solid #f5f5f5;">
+            <a href="/goods/${item.product_id}"><img src="${item.product_image || '/images/default.jpg'}" alt="${item.product_title}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #eee;"></a>
+            <div style="flex: 1;">
+              <a href="/goods/${item.product_id}" style="font-size: 13px; color: #333; line-height: 1.4; display: block;">${item.product_title}</a>
+              <span style="font-size: 12px; color: #999; margin-top: 3px; display: block;">${specStr || '默认规格'}</span>
             </div>
-            <div style="width: 120px; text-align: center; font-size: 13px; color: #666;">
-              <div>¥${formatPrice(item.price)}</div>
-              <div style="color: #999;">x ${item.quantity}</div>
+            <div style="text-align: right; width: 100px;">
+              <div style="font-size: 13px; color: #333;">¥${formatPrice(item.price)}</div>
+              <div style="font-size: 12px; color: #999;">x ${item.quantity}</div>
             </div>
           </div>
         `;
       }).join('');
 
-      // 操作按钮
       let actionButtons = '';
       if (order.status === 10) {
         actionButtons = `
-          <a href="/pay/${order.order_no}" style="display: inline-block; padding: 5px 12px; background: #e1251b; color: white; border-radius: 3px; font-size: 12px; text-decoration: none; font-weight: bold; margin-bottom: 6px;">立即付款</a>
+          <a href="/pay/${order.order_no}" style="display: inline-block; padding: 5px 14px; background: #e1251b; color: white; border-radius: 3px; font-size: 12px; text-decoration: none; font-weight: bold; margin-bottom: 6px;">立即付款</a>
           <div><a href="javascript:;" onclick="cancelOrder(${order.id})" style="font-size: 12px; color: #999; text-decoration: none;">取消订单</a></div>
         `;
       } else if (order.status === 50) {
         actionButtons = `
-          <button onclick="confirmReceipt(${order.id})" style="padding: 5px 12px; background: #28a745; color: white; border: none; border-radius: 3px; font-size: 12px; cursor: pointer;">确认收货</button>
+          <button onclick="confirmReceipt(${order.id})" style="padding: 5px 14px; background: #28a745; color: white; border: none; border-radius: 3px; font-size: 12px; cursor: pointer;">确认收货</button>
         `;
       } else {
         actionButtons = `
@@ -154,9 +157,8 @@
       }
 
       return `
-        <div style="border: 1px solid #eee; border-radius: 6px; margin-bottom: 20px; overflow: hidden;">
-          <!-- 订单头部条 -->
-          <div style="background: #fafafa; padding: 10px 20px; font-size: 12px; color: #666; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee;">
+        <div class="order-card-item" style="border: 1px solid #eee; border-radius: 6px; margin-bottom: 20px; overflow: hidden; background: #fff;">
+          <div class="order-card-header" style="background: #f7f7f7; padding: 10px 20px; font-size: 12px; color: #666; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee;">
             <div style="display: flex; gap: 20px;">
               <span>下单时间：<strong>${order.created_at}</strong></span>
               <span>订单号：<strong style="color: #333;">${order.order_no}</strong></span>
@@ -164,26 +166,25 @@
             <div style="color: #999;">优品商城自营</div>
           </div>
 
-          <!-- 订单主体表格 -->
-          <div style="display: flex; align-items: stretch;">
-            <!-- 商品列表区域 -->
-            <div style="flex: 1; border-right: 1px solid #eee;">
+          <div class="order-card-body" style="display: flex; align-items: stretch;">
+            <div class="goods-col-list" style="flex: 1; border-right: 1px solid #eee;">
               ${itemsHtml}
             </div>
 
-            <!-- 实付总额 -->
-            <div style="width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #eee; padding: 15px;">
-              <strong style="font-size: 16px; color: #333;">¥${formatPrice(order.pay_amount)}</strong>
+            <div class="receiver-col" style="width: 120px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #eee; padding: 15px; font-size: 13px; color: #333;">
+              {{ auth()->user()?->name ?? '张三' }}
+            </div>
+
+            <div class="amount-col" style="width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #eee; padding: 15px;">
+              <strong style="font-size: 15px; color: #333;">¥${formatPrice(order.pay_amount)}</strong>
               <span style="font-size: 12px; color: #999; margin-top: 3px;">(免运费)</span>
             </div>
 
-            <!-- 交易状态 -->
-            <div style="width: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #eee; padding: 15px;">
+            <div class="status-col" style="width: 120px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #eee; padding: 15px;">
               <span style="color: ${st.color}; font-weight: bold; font-size: 13px;">${st.label}</span>
             </div>
 
-            <!-- 交易操作 -->
-            <div style="width: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px;">
+            <div class="ops-col" style="width: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px;">
               ${actionButtons}
             </div>
           </div>
@@ -214,11 +215,8 @@
 
   function switchStatus(status) {
     currentStatus = status;
-    document.querySelectorAll('.order-tab').forEach(tab => {
-      const match = tab.getAttribute('data-status') === status;
-      tab.style.color = match ? '#e1251b' : '#666';
-      tab.style.borderBottomColor = match ? '#e1251b' : 'transparent';
-    });
+    document.querySelectorAll('.order-tabs .order-tab-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
     loadOrders(1);
   }
 

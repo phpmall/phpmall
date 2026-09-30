@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>@yield('title', '商城 - 正品低价、品质保障、轻松购物！')</title>
+  <title>@yield('title', '商城 - 正品低价、品质保障、配送及时、轻松购物！')</title>
   <link rel="stylesheet" href="{{ asset('static/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('static/layui/css/layui.css') }}">
   @stack('styles')
 </head>
 <body>
-  <!-- 1. 顶部快捷导航条 -->
+  <!-- 1. 顶部快捷导航条 (Shortcut Bar) -->
   <div class="shortcut-nav">
     <div class="w container-flex">
       <div class="nav-location">
@@ -35,78 +35,121 @@
         <li class="spacer"></li>
         <li><a href="{{ route('portal.order.my') }}">我的订单</a></li>
         <li class="spacer"></li>
-        <li><a href="{{ route('portal.cart.view') }}">购物车</a></li>
+        <li><a href="{{ route('portal.cart.view') }}">我的购物车</a></li>
+        <li class="spacer"></li>
+        <li><a href="{{ route('home') }}">返回首页</a></li>
         <li class="spacer"></li>
         <li><a href="/admin">管理后台</a></li>
       </ul>
     </div>
   </div>
 
-  <!-- 2. 头部搜索与 Logo 区域 -->
-  <header class="header-main">
-    <div class="w header-flex">
-      <div class="logo-box">
+  <!-- 2. 头部搜索与品牌展示区 (Header & Search) -->
+  <header class="header">
+    <div class="w header-main">
+      <!-- 品牌Logo -->
+      <div class="header-logo">
         <a href="{{ route('home') }}" class="logo-link">
-          <div style="display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 26px; color: #e1251b;">
-            <span style="background: #e1251b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 20px;">MALL</span>
-            <span>优品商城</span>
+          <div class="logo-box">
+            <span class="logo-text">MALL</span>
+            <span class="logo-sub">优品商城</span>
           </div>
         </a>
       </div>
 
-      <div class="search-box">
-        <form action="{{ route('portal.goods.list') }}" method="GET" class="search-form" id="searchForm">
-          <input type="text" name="keyword" class="search-input" placeholder="搜索商品、品牌、型号..." value="{{ request('keyword', '') }}">
-          <button type="submit" class="search-btn">搜索</button>
+      <!-- 搜索主区域 -->
+      <div class="header-search-wrap">
+        <form action="{{ route('portal.goods.list') }}" method="GET" class="search-bar" id="searchForm">
+          <input type="text" class="search-input" name="keyword" placeholder="搜索商品、品牌、规格型号..." value="{{ request('keyword', '') }}" autocomplete="off">
+          <button type="submit" class="search-submit-btn">
+            <span>搜索</span>
+          </button>
         </form>
-        <div class="hotwords">
+        <div class="hot-words">
           <a href="{{ route('portal.goods.list', ['keyword' => '手机']) }}" class="highlight">智能手机</a>
           <a href="{{ route('portal.goods.list', ['keyword' => '电脑']) }}">轻薄笔记本</a>
           <a href="{{ route('portal.goods.list', ['keyword' => '耳机']) }}">降噪耳机</a>
           <a href="{{ route('portal.goods.list', ['is_hot' => 1]) }}">热销爆款</a>
+          <a href="{{ route('portal.goods.list', ['is_new' => 1]) }}">新品首发</a>
         </div>
       </div>
 
-      <div class="cart-box">
-        <a href="{{ route('portal.cart.view') }}" class="cart-btn">
+      <!-- 购物车入口 -->
+      <div class="header-cart" id="miniCart">
+        <a href="{{ route('portal.cart.view') }}" class="cart-trigger">
           <span class="cart-icon">🛒</span>
           <span class="cart-text">我的购物车</span>
-          <span class="cart-badge" id="globalCartCount">0</span>
+          <span class="cart-count" id="globalCartCount">0</span>
         </a>
+      </div>
+    </div>
+
+    <!-- 主频道栏目导航条 -->
+    <div class="header-channels">
+      <div class="w channels-wrap">
+        <div class="category-title">
+          <span>全部商品分类</span>
+        </div>
+        <ul class="channel-nav-list">
+          <li class="{{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}">首页</a></li>
+          <li class="{{ request()->routeIs('portal.goods.list') && !request()->filled('is_hot') && !request()->filled('is_new') ? 'active' : '' }}"><a href="{{ route('portal.goods.list') }}">全部商品</a></li>
+          <li class="{{ request('is_hot') ? 'active' : '' }}"><a href="{{ route('portal.goods.list', ['is_hot' => 1]) }}">热销榜单</a></li>
+          <li class="{{ request('is_new') ? 'active' : '' }}"><a href="{{ route('portal.goods.list', ['is_new' => 1]) }}">新品首发</a></li>
+          <li class="{{ request()->routeIs('portal.order.my') ? 'active' : '' }}"><a href="{{ route('portal.order.my') }}">我的订单</a></li>
+        </ul>
       </div>
     </div>
   </header>
 
   <!-- 3. 主体内容区 -->
-  <main>
+  <main class="portal-main-wrapper">
     @yield('content')
   </main>
 
-  <!-- 4. 页脚服务与保障 -->
-  <footer class="footer-main" style="margin-top: 50px;">
-    <div class="w">
-      <div class="slogans" style="display: flex; justify-content: space-around; padding: 30px 0; border-bottom: 1px solid #dedede;">
-        <div class="slogan-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 32px;">品</span>
-          <div><strong>品类齐全</strong><p style="color: #999; font-size: 12px;">轻松购物 一站搞定</p></div>
-        </div>
-        <div class="slogan-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 32px;">快</span>
-          <div><strong>极速配送</strong><p style="color: #999; font-size: 12px;">多仓直发 准时到达</p></div>
-        </div>
-        <div class="slogan-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 32px;">好</span>
-          <div><strong>正品行货</strong><p style="color: #999; font-size: 12px;">精致服务 品质护航</p></div>
-        </div>
-        <div class="slogan-item" style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 32px;">省</span>
-          <div><strong>天天低价</strong><p style="color: #999; font-size: 12px;">畅选无忧 畅享优惠</p></div>
+  <!-- 4. 页脚服务保障与版权信息 (Footer) -->
+  <footer class="footer">
+    <div class="service-slogans w">
+      <div class="slogan-item">
+        <span class="slogan-icon duo">多</span>
+        <div class="slogan-text">
+          <h4>品类齐全</h4>
+          <p>轻松购物 多样选择</p>
         </div>
       </div>
+      <div class="slogan-item">
+        <span class="slogan-icon kuai">快</span>
+        <div class="slogan-text">
+          <h4>极速配送</h4>
+          <p>多仓直发 极速达</p>
+        </div>
+      </div>
+      <div class="slogan-item">
+        <span class="slogan-icon hao">好</span>
+        <div class="slogan-text">
+          <h4>正品行货</h4>
+          <p>精致服务 品质护航</p>
+        </div>
+      </div>
+      <div class="slogan-item">
+        <span class="slogan-icon sheng">省</span>
+        <div class="slogan-text">
+          <h4>天天低价</h4>
+          <p>畅选无忧 畅享实惠</p>
+        </div>
+      </div>
+    </div>
 
-      <div class="footer-copy" style="text-align: center; padding: 25px 0; color: #888; font-size: 12px; line-height: 1.8;">
-        <p>Copyright © 2026 商城系统 PHPMall 版权所有 | 统一采用 app/Api/Portal 驱动</p>
-      </div>
+    <div class="footer-copyright w">
+      <p class="links">
+        <a href="{{ route('home') }}">商城首页</a><span class="split">|</span>
+        <a href="{{ route('portal.goods.list') }}">全部商品</a><span class="split">|</span>
+        <a href="{{ route('portal.order.my') }}">我的订单</a><span class="split">|</span>
+        <a href="{{ route('portal.cart.view') }}">购物车</a><span class="split">|</span>
+        <a href="/admin">管理后台</a>
+      </p>
+      <p class="copy">
+        Copyright © 2026 商城系统 PHPMall 版权所有 | 统一采用 app/Api/Portal 驱动
+      </p>
     </div>
   </footer>
 

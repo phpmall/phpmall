@@ -12,13 +12,9 @@ abstract class BaseController extends Controller
     /**
      * 统一成功响应
      */
-    protected function success(mixed $data = null, string $message = 'ok', int $code = 0): JsonResponse
+    protected function success(array|string|null $data = null, array $headers = []): JsonResponse
     {
-        return response()->json([
-            'code' => $code,
-            'message' => $message,
-            'data' => $data,
-        ]);
+        return parent::success($data, $headers);
     }
 
     /**

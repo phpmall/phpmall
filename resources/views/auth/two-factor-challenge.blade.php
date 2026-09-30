@@ -1,35 +1,42 @@
-<x-layouts.guest>
-    <x-slot:heading>双重身份验证</x-slot:heading>
-    <x-slot:subheading>请输入身份验证器应用提供的验证码，或使用备用恢复码</x-slot:subheading>
+<x-layouts.guest title="双重身份验证 - {{ config('app.name', '商城系统') }}" headerTitle="双重身份验证" mode="simple">
+  @push('styles')
+    <link rel="stylesheet" href="{{ asset('static/css/register.css') }}">
+  @endpush
 
-    <form method="POST" action="{{ route('two-factor.login.store') }}" class="space-y-5">
+  <main class="w register-main" style="padding: 40px 0;">
+    <div class="register-card" style="max-width: 480px;">
+      <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 8px; color: #333;">双重身份验证</h3>
+      <p style="font-size: 13px; color: #666; margin-bottom: 24px;">请输入身份验证器提供的动态验证码或应急恢复码</p>
+
+      @if ($errors->any())
+        <div style="background: #fff2f0; border: 1px solid #ffccc7; color: #cf1322; padding: 10px 14px; border-radius: 4px; font-size: 13px; margin-bottom: 20px;">
+          ⚠️ {{ $errors->first() }}
+        </div>
+      @endif
+
+      <form method="POST" action="{{ route('two-factor.login.store') }}">
         @csrf
 
-        <div>
-            <label for="code" class="block text-sm font-medium text-gray-700">验证码</label>
+        <div class="form-field-group">
+          <label class="form-label" for="code">动态验证码</label>
+          <div class="reg-input-wrap">
             <input id="code" type="text" inputmode="numeric" name="code" autofocus autocomplete="one-time-code"
-                   placeholder="请输入6位验证码"
-                   class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 @error('code') border-red-500 @enderror">
-            @error('code')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-            @enderror
+                   placeholder="请输入6位动态验证码" class="reg-input">
+          </div>
         </div>
 
-        <div>
-            <label for="recovery_code" class="block text-sm font-medium text-gray-700">或使用恢复码</label>
+        <div class="form-field-group">
+          <label class="form-label" for="recovery_code">或使用应急恢复码</label>
+          <div class="reg-input-wrap">
             <input id="recovery_code" type="text" name="recovery_code" autocomplete="one-time-code"
-                   placeholder="请输入应急恢复码"
-                   class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm placeholder-gray-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 @error('recovery_code') border-red-500 @enderror">
-            @error('recovery_code')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-            @enderror
+                   placeholder="请输入应急恢复码" class="reg-input">
+          </div>
         </div>
 
-        <div>
-            <button type="submit"
-                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
-                验证并登录
-            </button>
-        </div>
-    </form>
+        <button type="submit" class="btn-reg-submit" style="margin-top: 10px;">
+          验证并登录
+        </button>
+      </form>
+    </div>
+  </main>
 </x-layouts.guest>
