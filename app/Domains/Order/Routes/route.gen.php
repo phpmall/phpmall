@@ -6,15 +6,16 @@
 
 declare(strict_types=1);
 
+use App\Domains\Order\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 // 查询列表接口
-Route::post('order/search', [\App\Domains\Order\Controllers\OrderController::class, 'search']);
+Route::post('order/search', [OrderController::class, 'search']);
 // 新增接口
-Route::post('order/store', [\App\Domains\Order\Controllers\OrderController::class, 'store']);
+Route::post('order/store', [OrderController::class, 'store']);
 // 获取详情接口
-Route::get('order/show', [\App\Domains\Order\Controllers\OrderController::class, 'show'])->name('order.show');
+Route::get('order/show', [OrderController::class, 'show'])->name('order.show');
 // 更新接口
-Route::put('order/update', [\App\Domains\Order\Controllers\OrderController::class, 'update']);
+Route::put('order/update', [OrderController::class, 'update']);
 // 删除接口
-Route::post('order/destroy', [\App\Domains\Order\Controllers\OrderController::class, 'destroy']);
+Route::post('order/destroy', [OrderController::class, 'destroy']);

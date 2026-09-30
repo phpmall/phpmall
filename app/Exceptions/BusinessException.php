@@ -6,7 +6,4 @@ namespace App\Exceptions;
 
 use Juling\Foundation\Exceptions\BusinessException as FoundationBusinessException;
 
-class BusinessException extends FoundationBusinessException
-{
-    
-}
+class BusinessException extends FoundationBusinessException {}

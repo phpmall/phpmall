@@ -12,7 +12,6 @@
         "php": "^8.4",
         "barryvdh/laravel-dompdf": "^3.1",
         "filament/filament": "^5.9",
-        "inertiajs/inertia-laravel": "^3.0",
         "intervention/image": "^4.3",
         "laravel-lang/common": "^6.8",
         "laravel/chisel": "^0.1.0",

@@ -6,7 +6,6 @@ namespace App\Domains\User\Controllers;
 
 use App\Api\Admin\Controllers\BaseController;
 use App\Domains\User\Entities\UserEntity;
-use App\Domains\User\Services\UserService;
 use App\Domains\User\Requests\User\UserCreateRequest;
 use App\Domains\User\Requests\User\UserDestroyRequest;
 use App\Domains\User\Requests\User\UserQueryRequest;
@@ -14,6 +13,7 @@ use App\Domains\User\Requests\User\UserUpdateRequest;
 use App\Domains\User\Responses\User\UserDestroyResponse;
 use App\Domains\User\Responses\User\UserQueryResponse;
 use App\Domains\User\Responses\User\UserResponse;
+use App\Domains\User\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -57,7 +57,7 @@ class UserController extends BaseController
             if (isset($requestData[UserQueryRequest::getPhone])) {
                 $condition[] = [UserEntity::getPhone, '=', $requestData[UserQueryRequest::getPhone]];
             }
-            
+
             $result = $this->userService->page($condition, $page, $pageSize);
 
             foreach ($result['data'] as $key => $item) {
