@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Goods\GoodsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use OpenApi\Attributes as OA;
 
 class GoodsController extends Controller
 {
@@ -18,6 +19,7 @@ class GoodsController extends Controller
     /**
      * 商品搜索与分类列表页
      */
+    #[OA\Get(path: '/goods', summary: '前台商品列表与搜索页', tags: ['前台-页面展示'])]
     public function index(Request $request): View
     {
         $keyword = (string) $request->query('keyword', '');
@@ -34,6 +36,7 @@ class GoodsController extends Controller
     /**
      * 商品详情页
      */
+    #[OA\Get(path: '/goods/{id}', summary: '前台商品详情页', tags: ['前台-页面展示'])]
     public function show(int $id): View
     {
         $detail = $this->goodsService->getDetail($id);

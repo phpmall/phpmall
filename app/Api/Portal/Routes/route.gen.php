@@ -6,4 +6,38 @@
 
 declare(strict_types=1);
 
+use App\Api\Portal\Controllers\CartController;
+use App\Api\Portal\Controllers\GoodsController;
+use App\Api\Portal\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
+
+// 获取购物车列表及汇总
+Route::get('api/portal/cart', [CartController::class, 'index'])->name('api.portal.cart');
+// 添加商品到购物车
+Route::post('api/portal/cart', [CartController::class, 'store']);
+// 更新购物车条目数量
+Route::put('api/portal/cart/{id}', [CartController::class, 'updateQuantity']);
+// 批量或全选购物车条目
+Route::post('api/portal/cart/select', [CartController::class, 'select']);
+// 批量删除购物车商品
+Route::post('api/portal/cart/remove', [CartController::class, 'destroy']);
+// 前台商品分页检索
+Route::get('api/portal/goods', [GoodsController::class, 'search'])->name('api.portal.goods');
+// 获取商品详情
+Route::get('api/portal/goods/{id}', [GoodsController::class, 'show'])->name('api.portal.goods.{id}');
+// 获取全部分类树
+Route::get('api/portal/categories', [GoodsController::class, 'categories'])->name('api.portal.categories');
+// 首页推荐/热销商品
+Route::get('api/portal/goods/featured', [GoodsController::class, 'featured'])->name('api.portal.goods.featured');
+// 结算预览与验价
+Route::post('api/portal/order/preview', [OrderController::class, 'preview']);
+// 提交创建订单
+Route::post('api/portal/order', [OrderController::class, 'store']);
+// 获取我的订单分页列表
+Route::get('api/portal/order', [OrderController::class, 'index'])->name('api.portal.order');
+// 获取订单详情
+Route::get('api/portal/order/{id}', [OrderController::class, 'show'])->name('api.portal.order.{id}');
+// 用户自行取消订单
+Route::post('api/portal/order/{id}/cancel', [OrderController::class, 'cancel']);
+// 用户确认收货
+Route::post('api/portal/order/{id}/confirm-receipt', [OrderController::class, 'confirmReceipt']);

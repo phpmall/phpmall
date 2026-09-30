@@ -66,7 +66,7 @@
     <section class="checkout-section">
       <div class="sec-head">
         <h3 class="sec-title">送货清单</h3>
-        <a href="{{ route('portal.cart.view') }}" class="back-cart-link">返回购物车修改 &gt;</a>
+        <a href="{{ route('portal.cart') }}" class="back-cart-link">返回购物车修改 &gt;</a>
       </div>
       <div class="order-goods-panel">
         <!-- 配送时效信息 -->

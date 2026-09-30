@@ -228,4 +228,23 @@ sequenceDiagram
 - **规则**：`app/Modules/{Portal,Admin,Seller,Supplier,User}` 各模块的 Blade 视图统一就近存放在 `app/Modules/{Module}/Views/` 目录中，Web 路由统一定义在 `app/Modules/{Module}/Routes/route.php`。
 - **服务提供者注册**：在全局服务提供者中自动扫描 `app/Modules/*/Views`，通过 `loadViewsFrom($viewsPath, $moduleName)` 进行视图命名空间注入；在控制器中使用 `view('{module}::xxx')` 进行视图渲染。
 
+### 4.6 Modules 控制器 OpenAPI 注解与 gen:route 自动化路由规范
+- **规则**：
+  1. `app/Modules/{Portal,Admin,Seller,Supplier,User}` 下的所有控制器公共方法，必须在其首个 Attribute 位置标注标准 OpenAPI HTTP 动词注解（例如 `#[OA\Get(path: '...', summary: '...')]` 或 `#[OA\Post(path: '...', summary: '...')]`）。
+  2. 必须严格声明 `path` 与 `summary` 两个命名参数。`path` 为相对于模块根路径的路由路径（如 `path: '/goods'`），`summary` 为该页面或动作的中文简述。
+  3. 路由由命令行工具 `php artisan gen:route` 统一自动化扫描并生成至对应模块的 `Routes/route.gen.php` 中。
+  4. 各模块的主路由入口 `Routes/route.php` 必须严格遵循轻量化原则，仅负责通过命名空间分组引入生成的路由文件（如 `Route::name('{module}.')->group(function () { require __DIR__.'/route.gen.php'; });`），杜绝手工散落定义路由。
+
+### 4.7 任务完成收尾三部曲自动化执行规范
+- **规则**：每次编码或重构任务完成准备向用户交付前，必须在项目根目录下按序自动执行以下三条命令：
+  ```bash
+  php artisan gen:route
+  php artisan optimize
+  vendor\bin\pint.bat app
+  ```
+- **目的**：
+  1. 确保新增或修改的模块控制器路由定义即时同步至 `route.gen.php`；
+  2. 编译并刷新框架配置、路由与事件缓存，验证无语法或依赖死锁异常；
+  3. 统一代码规范格式化，保持代码库整洁一致。
+
 

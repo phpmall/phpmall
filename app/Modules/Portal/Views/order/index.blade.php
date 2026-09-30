@@ -14,14 +14,14 @@
     <div class="side-menu-group">
       <h3 class="group-title">订单中心</h3>
       <ul class="menu-list">
-        <li class="active"><a href="{{ route('portal.order.my') }}">我的订单</a></li>
+        <li class="active"><a href="{{ route('portal.orders') }}">我的订单</a></li>
       </ul>
     </div>
     <div class="side-menu-group">
       <h3 class="group-title">快捷入口</h3>
       <ul class="menu-list">
-        <li><a href="{{ route('portal.cart.view') }}">我的购物车</a></li>
-        <li><a href="{{ route('portal.goods.list') }}">选购商品</a></li>
+        <li><a href="{{ route('portal.cart') }}">我的购物车</a></li>
+        <li><a href="{{ route('portal.goods') }}">选购商品</a></li>
       </ul>
     </div>
   </aside>

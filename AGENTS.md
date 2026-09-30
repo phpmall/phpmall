@@ -189,5 +189,12 @@ Use Wayfinder to generate TypeScript functions for Laravel routes. Import from `
 5. **服务层 (app/Services) 与领域防腐**：在 `app/Services` 中按领域实现业务服务类，可继承或注入 `App\Domains\{Domain}\Services`。原则上严禁修改 `app/Domains` 中通过 `php artisan gen:xxx` 生成的代码，业务扩展统一在 `app/Services` 中完成。
 6. **接口按业务实体控制器聚合**：数据接口控制器按业务实体组织（如商品列表、详情等动作统一聚合在 `GoodsController` 中），杜绝每个 action 建单独控制器，保证高内聚与维护性。
 7. **OpenAPI 注解与 DTO 规范**：遵循标准 OpenAPI (PHP 8 Attributes `#[OA\...]`) 注解控制器方法，便于自动化生成 API 文档；请求 (Requests) 与响应 (Responses) DTO 一律单独定义在对应模块的 `Requests` 和 `Responses` 目录下。
+8. **Modules 控制器 OpenAPI 注解与 gen:route 自动化路由**：`app/Modules/{Portal,Admin,Seller,Supplier,User}` 各模块控制器方法上也必须增加 OpenAPI 属性定义（首个 Attribute 定义 `#[OA\Get(path: '...', summary: '...')]` 或 `#[OA\Post(...)]` 等），必须严格包含 `path` 与 `summary` 命名参数，以供 `php artisan gen:route` CLI 工具自动化扫描并精准生成对应模块的 `Routes/route.gen.php` 路由配置；各模块的主路由入口 `Routes/route.php` 统一通过分组命名空间（如 `Route::name('portal.')->group(...)`）载入生成的 `route.gen.php`。
+9. **任务完成收尾三部曲自动化执行**：每次编码或重构任务完成准备向用户交付前，必须在项目根目录自动按序执行以下三条命令，以确保全站路由生成最新、框架缓存编译优化以及代码规范统一：
+   ```bash
+   php artisan gen:route
+   php artisan optimize
+   vendor\bin\pint.bat app
+   ```
 
 

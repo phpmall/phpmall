@@ -33,9 +33,9 @@
           </li>
         @endauth
         <li class="spacer"></li>
-        <li><a href="{{ route('portal.order.my') }}">我的订单</a></li>
+        <li><a href="{{ route('portal.orders') }}">我的订单</a></li>
         <li class="spacer"></li>
-        <li><a href="{{ route('portal.cart.view') }}">我的购物车</a></li>
+        <li><a href="{{ route('portal.cart') }}">我的购物车</a></li>
         <li class="spacer"></li>
         <li><a href="{{ route('home') }}">返回首页</a></li>
         <li class="spacer"></li>
@@ -59,24 +59,24 @@
 
       <!-- 搜索主区域 -->
       <div class="header-search-wrap">
-        <form action="{{ route('portal.goods.list') }}" method="GET" class="search-bar" id="searchForm">
+        <form action="{{ route('portal.goods') }}" method="GET" class="search-bar" id="searchForm">
           <input type="text" class="search-input" name="keyword" placeholder="搜索商品、品牌、规格型号..." value="{{ request('keyword', '') }}" autocomplete="off">
           <button type="submit" class="search-submit-btn">
             <span>搜索</span>
           </button>
         </form>
         <div class="hot-words">
-          <a href="{{ route('portal.goods.list', ['keyword' => '手机']) }}" class="highlight">智能手机</a>
-          <a href="{{ route('portal.goods.list', ['keyword' => '电脑']) }}">轻薄笔记本</a>
-          <a href="{{ route('portal.goods.list', ['keyword' => '耳机']) }}">降噪耳机</a>
-          <a href="{{ route('portal.goods.list', ['is_hot' => 1]) }}">热销爆款</a>
-          <a href="{{ route('portal.goods.list', ['is_new' => 1]) }}">新品首发</a>
+          <a href="{{ route('portal.goods', ['keyword' => '手机']) }}" class="highlight">智能手机</a>
+          <a href="{{ route('portal.goods', ['keyword' => '电脑']) }}">轻薄笔记本</a>
+          <a href="{{ route('portal.goods', ['keyword' => '耳机']) }}">降噪耳机</a>
+          <a href="{{ route('portal.goods', ['is_hot' => 1]) }}">热销爆款</a>
+          <a href="{{ route('portal.goods', ['is_new' => 1]) }}">新品首发</a>
         </div>
       </div>
 
       <!-- 购物车入口 -->
       <div class="header-cart" id="miniCart">
-        <a href="{{ route('portal.cart.view') }}" class="cart-trigger">
+        <a href="{{ route('portal.cart') }}" class="cart-trigger">
           <span class="cart-icon">🛒</span>
           <span class="cart-text">我的购物车</span>
           <span class="cart-count" id="globalCartCount">0</span>
@@ -92,10 +92,10 @@
         </div>
         <ul class="channel-nav-list">
           <li class="{{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}">首页</a></li>
-          <li class="{{ request()->routeIs('portal.goods.list') && !request()->filled('is_hot') && !request()->filled('is_new') ? 'active' : '' }}"><a href="{{ route('portal.goods.list') }}">全部商品</a></li>
-          <li class="{{ request('is_hot') ? 'active' : '' }}"><a href="{{ route('portal.goods.list', ['is_hot' => 1]) }}">热销榜单</a></li>
-          <li class="{{ request('is_new') ? 'active' : '' }}"><a href="{{ route('portal.goods.list', ['is_new' => 1]) }}">新品首发</a></li>
-          <li class="{{ request()->routeIs('portal.order.my') ? 'active' : '' }}"><a href="{{ route('portal.order.my') }}">我的订单</a></li>
+          <li class="{{ request()->routeIs('portal.goods') && !request()->filled('is_hot') && !request()->filled('is_new') ? 'active' : '' }}"><a href="{{ route('portal.goods') }}">全部商品</a></li>
+          <li class="{{ request('is_hot') ? 'active' : '' }}"><a href="{{ route('portal.goods', ['is_hot' => 1]) }}">热销榜单</a></li>
+          <li class="{{ request('is_new') ? 'active' : '' }}"><a href="{{ route('portal.goods', ['is_new' => 1]) }}">新品首发</a></li>
+          <li class="{{ request()->routeIs('portal.orders') ? 'active' : '' }}"><a href="{{ route('portal.orders') }}">我的订单</a></li>
         </ul>
       </div>
     </div>
@@ -142,9 +142,9 @@
     <div class="footer-copyright w">
       <p class="links">
         <a href="{{ route('home') }}">商城首页</a><span class="split">|</span>
-        <a href="{{ route('portal.goods.list') }}">全部商品</a><span class="split">|</span>
-        <a href="{{ route('portal.order.my') }}">我的订单</a><span class="split">|</span>
-        <a href="{{ route('portal.cart.view') }}">购物车</a><span class="split">|</span>
+        <a href="{{ route('portal.goods') }}">全部商品</a><span class="split">|</span>
+        <a href="{{ route('portal.orders') }}">我的订单</a><span class="split">|</span>
+        <a href="{{ route('portal.cart') }}">购物车</a><span class="split">|</span>
         <a href="/admin">管理后台</a>
       </p>
       <p class="copy">

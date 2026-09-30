@@ -11,10 +11,10 @@
 <nav class="breadcrumb w">
   <a href="{{ route('home') }}">首页</a>
   <span class="sep">&gt;</span>
-  <a href="{{ route('portal.goods.list') }}">全部商品</a>
+  <a href="{{ route('portal.goods') }}">全部商品</a>
   <span class="sep">&gt;</span>
   @if(!empty($detail['category']))
-    <a href="{{ route('portal.goods.list', ['category_id' => $detail['category']['id']]) }}">{{ $detail['category']['name'] }}</a>
+    <a href="{{ route('portal.goods', ['category_id' => $detail['category']['id']]) }}">{{ $detail['category']['name'] }}</a>
     <span class="sep">&gt;</span>
   @endif
   <span class="current">{{ $detail['product']['title'] }}</span>
