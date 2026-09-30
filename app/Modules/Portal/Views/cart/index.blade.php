@@ -1,4 +1,4 @@
-@extends('portal.layouts.portal')
+@extends('portal::layouts.portal')
 
 @section('title', '我的购物车 - 优品商城')
 
@@ -180,44 +180,76 @@
     } catch (e) {}
   }
 
-  async function removeItem(cartId) {
-    if (!confirm('确定从购物车移除该商品？')) return;
-    try {
-      await fetch('/api/portal/cart/remove', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: JSON.stringify({ cart_ids: [cartId] })
+  function removeItem(cartId) {
+    const doRemove = async () => {
+      const loadIdx = showLoading();
+      try {
+        await fetch('/api/portal/cart/remove', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+          },
+          body: JSON.stringify({ cart_ids: [cartId] })
+        });
+        showToast('商品已从购物车移除', 1);
+        loadCart();
+        refreshCartBadge();
+      } catch (e) {
+        showToast('操作失败', 2);
+      } finally {
+        closeLoading(loadIdx);
+      }
+    };
+
+    if (window.layer) {
+      layer.confirm('确定从购物车移除该商品？', { icon: 3, title: '提示' }, function (index) {
+        layer.close(index);
+        doRemove();
       });
-      loadCart();
-      refreshCartBadge();
-    } catch (e) {}
+    } else if (confirm('确定从购物车移除该商品？')) {
+      doRemove();
+    }
   }
 
-  async function deleteSelected() {
+  function deleteSelected() {
     const selectedIds = cartData.items.filter(i => i.is_selected).map(i => i.id);
     if (selectedIds.length === 0) {
-      showToast('请先勾选要删除的商品');
+      showToast('请先勾选要删除的商品', 0);
       return;
     }
-    if (!confirm(`确定删除已选中的 ${selectedIds.length} 件商品？`)) return;
 
-    try {
-      await fetch('/api/portal/cart/remove', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: JSON.stringify({ cart_ids: selectedIds })
+    const doDelete = async () => {
+      const loadIdx = showLoading();
+      try {
+        await fetch('/api/portal/cart/remove', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+          },
+          body: JSON.stringify({ cart_ids: selectedIds })
+        });
+        showToast(`已删除选中的 ${selectedIds.length} 件商品`, 1);
+        loadCart();
+        refreshCartBadge();
+      } catch (e) {
+        showToast('操作失败', 2);
+      } finally {
+        closeLoading(loadIdx);
+      }
+    };
+
+    if (window.layer) {
+      layer.confirm(`确定删除已选中的 ${selectedIds.length} 件商品？`, { icon: 3, title: '提示' }, function (index) {
+        layer.close(index);
+        doDelete();
       });
-      loadCart();
-      refreshCartBadge();
-    } catch (e) {}
+    } else if (confirm(`确定删除已选中的 ${selectedIds.length} 件商品？`)) {
+      doDelete();
+    }
   }
 
   function goCheckout() {

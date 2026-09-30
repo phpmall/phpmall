@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Portal;
+namespace App\Modules\Portal\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\Goods\GoodsService;
@@ -24,7 +24,7 @@ class GoodsController extends Controller
         $categoryId = $request->filled('category_id') ? (int) $request->query('category_id') : null;
         $categories = $this->goodsService->getCategoryTree();
 
-        return view('portal.goods.list', [
+        return view('portal::goods.list', [
             'keyword' => $keyword,
             'categoryId' => $categoryId,
             'categories' => $categories,
@@ -42,7 +42,7 @@ class GoodsController extends Controller
             abort(404, '商品不存在或已下架');
         }
 
-        return view('portal.goods.detail', [
+        return view('portal::goods.detail', [
             'productId' => $id,
             'detail' => $detail,
         ]);

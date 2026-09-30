@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use Carbon\CarbonImmutable;
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+        $this->registerModuleViews();
     }
 
     /**
@@ -46,5 +49,22 @@ class AppServiceProvider extends ServiceProvider
                 ->uncompromised()
             : null,
         );
+    }
+
+    /**
+     * 自动注册 app/Modules 目录下各模块的 Blade 视图命名空间
+     */
+    protected function registerModuleViews(): void
+    {
+        $moduleDirs = glob(app_path('Modules/*'), GLOB_ONLYDIR);
+        if (! empty($moduleDirs)) {
+            foreach ($moduleDirs as $dir) {
+                $viewsPath = $dir.'/Views';
+                if (is_dir($viewsPath)) {
+                    $namespace = strtolower(basename($dir));
+                    $this->loadViewsFrom($viewsPath, $namespace);
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-@extends('portal.layouts.portal')
+@extends('portal::layouts.portal')
 
 @section('title', ($detail['product']['title'] ?? '商品详情') . ' - 优品商城')
 
@@ -102,6 +102,7 @@
 @push('scripts')
 <script>
   let selectedSkuId = null;
+  const productId = {{ $productId }};
 
   function selectSku(el) {
     document.querySelectorAll('.sku-pill').forEach(btn => {

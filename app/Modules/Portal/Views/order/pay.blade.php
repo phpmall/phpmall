@@ -1,4 +1,4 @@
-@extends('portal.layouts.portal')
+@extends('portal::layouts.portal')
 
 @section('title', '收银台 - 优品商城')
 

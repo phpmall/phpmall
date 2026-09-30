@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Portal;
+namespace App\Modules\Portal\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
@@ -14,6 +14,6 @@ class CartController extends Controller
      */
     public function index(): View
     {
-        return view('portal.cart.index');
+        return view('portal::cart.index');
     }
 }

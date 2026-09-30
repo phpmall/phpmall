@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Portal;
+namespace App\Modules\Portal\Controllers;
 
 use App\Domains\Order\Models\Order;
 use App\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class OrderController extends Controller
         $skuId = $request->query('sku_id');
         $quantity = $request->query('quantity', '1');
 
-        return view('portal.order.checkout', [
+        return view('portal::order.checkout', [
             'directSkuId' => $skuId ? (int) $skuId : null,
             'directQuantity' => (int) $quantity,
         ]);
@@ -36,7 +36,7 @@ class OrderController extends Controller
             abort(404, '订单不存在');
         }
 
-        return view('portal.order.pay', [
+        return view('portal::order.pay', [
             'order' => $order,
         ]);
     }
@@ -48,7 +48,7 @@ class OrderController extends Controller
     {
         $status = $request->query('status');
 
-        return view('portal.order.index', [
+        return view('portal::order.index', [
             'currentStatus' => $status,
         ]);
     }

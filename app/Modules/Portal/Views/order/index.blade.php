@@ -1,4 +1,4 @@
-@extends('portal.layouts.portal')
+@extends('portal::layouts.portal')
 
 @section('title', '我的订单 - 优品商城')
 
@@ -222,50 +222,76 @@
     loadOrders(1);
   }
 
-  async function cancelOrder(orderId) {
-    if (!confirm('确定要取消此订单吗？')) return;
-    try {
-      const res = await fetch(`/api/portal/order/${orderId}/cancel`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: JSON.stringify({ reason: '买家主动取消' })
-      });
-      const json = await res.json();
-      if (json.code === 0) {
-        showToast('订单已成功取消');
-        loadOrders(currentPage);
-      } else {
-        showToast(json.message || '取消失败');
+  function cancelOrder(orderId) {
+    const doCancel = async () => {
+      const loadIdx = showLoading();
+      try {
+        const res = await fetch(`/api/portal/order/${orderId}/cancel`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+          },
+          body: JSON.stringify({ reason: '买家主动取消' })
+        });
+        const json = await res.json();
+        if (json.code === 0) {
+          showToast('订单已成功取消', 1);
+          loadOrders(currentPage);
+        } else {
+          showToast(json.message || '取消失败', 2);
+        }
+      } catch (e) {
+        showToast('网络异常', 2);
+      } finally {
+        closeLoading(loadIdx);
       }
-    } catch (e) {
-      showToast('网络异常');
+    };
+
+    if (window.layer) {
+      layer.confirm('确定要取消此订单吗？', { icon: 3, title: '取消确认' }, function (index) {
+        layer.close(index);
+        doCancel();
+      });
+    } else if (confirm('确定要取消此订单吗？')) {
+      doCancel();
     }
   }
 
-  async function confirmReceipt(orderId) {
-    if (!confirm('确认已收到货物吗？')) return;
-    try {
-      const res = await fetch(`/api/portal/order/${orderId}/confirm-receipt`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+  function confirmReceipt(orderId) {
+    const doConfirm = async () => {
+      const loadIdx = showLoading();
+      try {
+        const res = await fetch(`/api/portal/order/${orderId}/confirm-receipt`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+          }
+        });
+        const json = await res.json();
+        if (json.code === 0) {
+          showToast('已确认收货！', 1);
+          loadOrders(currentPage);
+        } else {
+          showToast(json.message || '操作失败', 2);
         }
-      });
-      const json = await res.json();
-      if (json.code === 0) {
-        showToast('已确认收货！');
-        loadOrders(currentPage);
-      } else {
-        showToast(json.message || '操作失败');
+      } catch (e) {
+        showToast('网络异常', 2);
+      } finally {
+        closeLoading(loadIdx);
       }
-    } catch (e) {
-      showToast('网络异常');
+    };
+
+    if (window.layer) {
+      layer.confirm('确认已收到货物吗？', { icon: 3, title: '收货确认' }, function (index) {
+        layer.close(index);
+        doConfirm();
+      });
+    } else if (confirm('确认已收到货物吗？')) {
+      doConfirm();
     }
   }
 

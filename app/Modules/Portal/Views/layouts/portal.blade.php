@@ -6,6 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', '商城 - 正品低价、品质保障、轻松购物！')</title>
   <link rel="stylesheet" href="{{ asset('static/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('static/layui/css/layui.css') }}">
   @stack('styles')
 </head>
 <body>
@@ -109,16 +110,28 @@
     </div>
   </footer>
 
-  <!-- 浮动通知 Toast -->
-  <div class="toast" id="toast" style="display: none; position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.8); color: white; padding: 12px 24px; border-radius: 6px; z-index: 9999;"></div>
+  <!-- Layui 核心脚本 -->
+  <script src="{{ asset('static/layui/layui.js') }}"></script>
 
   <script>
-    // 通用提示函数
-    function showToast(msg, duration = 2000) {
-      const toast = document.getElementById('toast');
-      toast.innerText = msg;
-      toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, duration);
+    // 通用轻提示函数（基于 Layui layer.msg，平滑降级）
+    function showToast(msg, icon = 0, duration = 2000) {
+      if (window.layer) {
+        layer.msg(msg, { icon: icon, time: duration });
+      } else {
+        alert(msg);
+      }
+    }
+
+    // 全局 Loading 加载层
+    function showLoading() {
+      return window.layer ? layer.load(2, { shade: [0.1, '#000'] }) : null;
+    }
+
+    function closeLoading(index) {
+      if (window.layer && index !== null) {
+        layer.close(index);
+      }
     }
 
     // 格式化价格（分 -> 元）

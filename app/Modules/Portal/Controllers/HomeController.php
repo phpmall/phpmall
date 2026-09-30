@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Portal;
+namespace App\Modules\Portal\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\Goods\GoodsService;
@@ -23,7 +23,7 @@ class HomeController extends Controller
         $featured = $this->goodsService->getFeaturedProducts('recommend', 10);
         $hot = $this->goodsService->getFeaturedProducts('hot', 5);
 
-        return view('portal.home', [
+        return view('portal::home', [
             'categories' => $categories,
             'featured' => $featured,
             'hot' => $hot,

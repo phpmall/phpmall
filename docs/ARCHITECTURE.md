@@ -14,8 +14,8 @@
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        终端展现层 (UI / View)                          │
 ├──────────────────┬───────────────────────┬─────────────────────────────┤
-│   PC 前台商城    │   移动多端 (Uni-App)  │    四大用户模块 UI 视图     │
-│ Http/Controllers │    packages/mobile    │         app/Modules         │
+│   PC 前台商城    │   移动多端 (Uni-App)  │    用户与运营模块 UI 视图   │
+│app/Modules/Portal│    packages/mobile    │         app/Modules         │
 │  (Blade 页面)    │  (H5/小程序/App)      │ Admin / Seller / Supplier / │
 │                  │                       │      User (Blade 视图)      │
 └─────────┬────────┴───────────┬───────────┴──────────────┬──────────────┘
@@ -192,9 +192,9 @@ sequenceDiagram
 
 | 模块定位 | 对应代码路径 | 主要职责与规范 | 数据交互目标 |
 | :--- | :--- | :--- | :--- |
-| **PC 前台页面** | `app/Http/Controllers/` | 负责前台商城页面的 HTTP 入口，返回 Blade 视图（复用 `resources/html` 切片样式） | 页面内前端 Ajax 访问 `app/Api/Portal` |
+| **PC 前台页面** | `app/Modules/Portal/` | 负责前台商城页面的 HTTP 入口与 Blade 视图（`Views/`），路由位于 `Routes/route.php` | 页面内前端 Ajax 访问 `app/Api/Portal` |
 | **移动多端** | `packages/mobile/` | Uni-App Vue3 移动端工程，构建 H5、微信小程序与移动 App | HTTP 请求 `app/Api/Portal` |
-| **各用户模块 UI** | `app/Modules/{Module}/` | 包含 `Admin`, `Seller`, `Supplier`, `User` 模块的控制器与 UI 骨架视图 | 页面内前端 Ajax 访问对应 `app/Api/{Module}` |
+| **各角色模块 UI** | `app/Modules/{Module}/` | 包含 `Portal`, `Admin`, `Seller`, `Supplier`, `User` 模块的控制器与 UI 骨架视图 | 页面内前端 Ajax 访问对应 `app/Api/{Module}` |
 | **数据接口 API** | `app/Api/{Module}/` | 统一 RESTful API 控制器与路由定义，提供标准化 JSON 响应 | 调用 `app/Domains` 业务服务 |
 | **业务领域模型** | `app/Domains/{Domain}/` | 沉淀高内聚的业务逻辑、模型实体、状态机、仓储接口与计算规则 | 读写 MySQL 与 Redis |
 
@@ -224,7 +224,8 @@ sequenceDiagram
   1. 所有 API 控制器方法必须采用 PHP 8 原生属性 `#[OA\...]`（OpenApi\Attributes）标准注解，声明请求方式、路径、入参、请求体 Schema 与响应结构。
   2. 请求入参 DTO 与响应出参 DTO **严禁使用任意无约束的数组**，必须分别在对应模块的 `Requests/` 与 `Responses/` 目录中单独定义，配合注解实现强类型契约。
 
-### 4.5 模块视图就近定义原则
-- **规则**：`app/Modules/{Admin,Seller,Supplier,User}` 各角色的 Blade 视图统一就近存放在 `app/Modules/{Module}/Views/` 目录中。
-- **服务提供者注册**：通过各模块专属 ServiceProvider 或全局加载器使用 `View::addNamespace('{module}', app_path('Modules/{Module}/Views'))` 进行命名空间加载，在控制器中使用 `view('{module}::xxx')` 进行渲染。
+### 4.5 模块视图与路由就近定义原则
+- **规则**：`app/Modules/{Portal,Admin,Seller,Supplier,User}` 各模块的 Blade 视图统一就近存放在 `app/Modules/{Module}/Views/` 目录中，Web 路由统一定义在 `app/Modules/{Module}/Routes/route.php`。
+- **服务提供者注册**：在全局服务提供者中自动扫描 `app/Modules/*/Views`，通过 `loadViewsFrom($viewsPath, $moduleName)` 进行视图命名空间注入；在控制器中使用 `view('{module}::xxx')` 进行视图渲染。
+
 
