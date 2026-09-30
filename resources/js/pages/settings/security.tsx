@@ -19,15 +19,15 @@ export default function Security(props: Props) {
 
     return (
         <>
-            <Head title="Security settings" />
+            <Head title="安全设置" />
 
-            <h1 className="sr-only">Security settings</h1>
+            <h1 className="sr-only">安全设置</h1>
 
             <div className="space-y-6">
                 <Heading
                     variant="small"
-                    title="Update password"
-                    description="Ensure your account is using a long, random password to stay secure"
+                    title="修改密码"
+                    description="确保您的账号使用足够复杂且随机的密码以保障安全"
                 />
 
                 <Form
@@ -56,7 +56,7 @@ export default function Security(props: Props) {
                         <>
                             <div className="grid gap-2">
                                 <Label htmlFor="current_password">
-                                    Current password
+                                    当前密码
                                 </Label>
 
                                 <PasswordInput
@@ -65,14 +65,14 @@ export default function Security(props: Props) {
                                     name="current_password"
                                     className="mt-1 block w-full"
                                     autoComplete="current-password"
-                                    placeholder="Current password"
+                                    placeholder="请输入当前密码"
                                 />
 
                                 <InputError message={errors.current_password} />
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="password">New password</Label>
+                                <Label htmlFor="password">新密码</Label>
 
                                 <PasswordInput
                                     id="password"
@@ -80,7 +80,7 @@ export default function Security(props: Props) {
                                     name="password"
                                     className="mt-1 block w-full"
                                     autoComplete="new-password"
-                                    placeholder="New password"
+                                    placeholder="请输入新密码"
                                     passwordrules={props.passwordRules}
                                 />
 
@@ -89,7 +89,7 @@ export default function Security(props: Props) {
 
                             <div className="grid gap-2">
                                 <Label htmlFor="password_confirmation">
-                                    Confirm password
+                                    确认新密码
                                 </Label>
 
                                 <PasswordInput
@@ -97,7 +97,7 @@ export default function Security(props: Props) {
                                     name="password_confirmation"
                                     className="mt-1 block w-full"
                                     autoComplete="new-password"
-                                    placeholder="Confirm password"
+                                    placeholder="请再次输入新密码"
                                     passwordrules={props.passwordRules}
                                 />
 
@@ -111,7 +111,7 @@ export default function Security(props: Props) {
                                     disabled={processing}
                                     data-test="update-password-button"
                                 >
-                                    Save
+                                    保存
                                 </Button>
                             </div>
                         </>
@@ -125,7 +125,7 @@ export default function Security(props: Props) {
 Security.layout = {
     breadcrumbs: [
         {
-            title: 'Security settings',
+            title: '安全设置',
             href: edit(),
         },
     ],

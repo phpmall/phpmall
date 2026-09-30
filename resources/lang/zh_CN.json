@@ -1,4 +1,6 @@
 {
+    "Profile updated.": "个人资料已更新。",
+    "Password updated.": "密码已更新。",
     "(and :count more error)": "(还有 :count 个错误)",
     "(and :count more errors)": "(还有 :count 个错误)",
     "A decryption key is required.": "需要解密密钥。",
